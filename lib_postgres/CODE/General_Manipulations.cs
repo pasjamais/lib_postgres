@@ -30,7 +30,7 @@ namespace lib_postgres
                     MessageBoxDefaultButton.Button1,
                     MessageBoxOptions.DefaultDesktopOnly);
         }
-                 // ++ тут безобразие, не знаю как исправить
+        // ++ тут безобразие, не знаю как исправить
         public static object Bind_List_to_DGV(List<Author> list)
         {
             BindingSource source = new BindingSource();
@@ -49,7 +49,7 @@ namespace lib_postgres
             source.DataSource = list;
             return source;
         }
-                                    // --
+        // --
         public static string simple_element_modify(string caption, string label, string name)
         {
             Form_Simple_Element form_element = new Form_Simple_Element(caption, label);
@@ -80,282 +80,82 @@ namespace lib_postgres
             else
                 return form_element.tb_Name.Text;
         }
-
-        public static long Add_Genre()
+        #region ComboBox_chargers
+        public static void CB_visual_reload<T>(ComboBox CB, int i, List<T> elements)
         {
-            var new_name = simple_element_add("Добавить жанр", "Наименование:");
-            if (new_name != "")
-            {
-                if (DB_Agent.db.Genres.ToList().Exists(e => e.Name == new_name))
-                {
-                    simple_message("Жанр уже существует");
-                    return 0;
-                }
-                else
-                {
-                    Genre element = new Genre();
-                    element.Name = new_name;
-                    DB_Agent.db.Genres.Add(element);
-                    DB_Agent.db.SaveChanges();
-                    return element.Id;
-                }
-            }
-            else return 0;
+            CB.DataSource = elements;
+            CB.ValueMember = "Id";
+            CB.DisplayMember = "Name";
+            CB.SelectedIndex = i;
         }
 
-        public static long Add_Language()
+        /// <summary>
+        /// Перезагружает содержимое ComboBox и ставит указатель на id
+        /// </summary>
+        public static void CB_reload<T>(ComboBox CB, long id)
         {
-            var new_name = General_Manipulations.simple_element_add("Добавить язык", "Наименование:");
-            if (new_name != "")
+            Type type = typeof(T);
+            if (type == typeof(Place))
             {
-                if (DB_Agent.db.Languages.ToList().Exists(e => e.Name == new_name))
-                {
-                    General_Manipulations.simple_message("Язык уже существует");
-                    return 0;
-                }
-                else
-                {
-                    Language element = new Language();
-                    element.Name = new_name;
-                    DB_Agent.db.Languages.Add(element);
-                    DB_Agent.db.SaveChanges();
-                    return element.Id;
-                }
+                var elements = DB_Agent.Get_Places();
+                var item = (from q in elements
+                            where q.Id == id
+                            select q).Take(1).First();
+                CB_visual_reload<Place>(CB, elements.IndexOf(item), elements);
             }
-            else return 0;
-        }
-
-        public static void Edit_Author(DataGridView dataGridView)
-        {
-            int index = dataGridView.SelectedRows[0].Index;
-            long id = (long)dataGridView.Rows[index].Cells["Id"].Value;
-            Author element = DB_Agent.Get_Author(id);
-            var new_name = simple_element_modify("Изменить автора", "Новое имя:", element.Name);
-            if (new_name != "")
+            else if (type == typeof(Art))
             {
-                if (DB_Agent.db.Authors.ToList().Exists(e => e.Name == new_name))
-                {
-                    simple_message("Автор уже существует");
-                    return;
-                }
-                element.Name = new_name;
-                DB_Agent.db.SaveChanges();
+                var elements = DB_Agent.Get_Arts();
+                var item = (from q in elements
+                            where q.Id == id
+                            select q).Take(1).First();
+                CB_visual_reload<Art>(CB, elements.IndexOf(item), elements);
             }
-            dataGridView.DataSource = DB_Agent.Get_Authors();
-            show_row(dataGridView, element.Name, "Name");
-        }
-
-        public static void Add_PubHouse(DataGridView dataGridView)
-        {
-            dataGridView.DataSource = DB_Agent.Get_Publishing_Houses();
-            var new_name = simple_element_add("Добавить издательство", "Название:");
-            if (new_name != "")
+            else if (type == typeof(Series))
             {
-                if (DB_Agent.db.PublishingHouses.ToList().Exists(e => e.Name == new_name))
-                {
-                    simple_message("Издательство уже существует");
-                    return;
-                }
-                PublishingHouse element = new PublishingHouse();
-                element.Name = new_name;
-                DB_Agent.db.PublishingHouses.Add(element);
-                DB_Agent.db.SaveChanges();
-                dataGridView.DataSource = DB_Agent.Get_Publishing_Houses();
-                show_row(dataGridView, element.Name, "Name");
+                var elements = DB_Agent.Get_Series();
+                var item = (from q in elements
+                            where q.Id == id
+                            select q).Take(1).First();
+                CB_visual_reload<Series>(CB, elements.IndexOf(item), elements);
+            }
+            else if (type == typeof(PublishingHouse))
+            {
+                var elements = DB_Agent.Get_Publishing_Houses();
+                var item = (from q in elements
+                            where q.Id == id
+                            select q).Take(1).First();
+                CB_visual_reload<PublishingHouse>(CB, elements.IndexOf(item), elements);
+            }
+            else if (type == typeof(City))
+            {
+                var elements = DB_Agent.Get_Cities();
+                var item = (from q in elements
+                            where q.Id == id
+                            select q).Take(1).First();
+                CB_visual_reload<City>(CB, elements.IndexOf(item), elements);
+            }
+            else if (type == typeof(Language))
+            {
+                var elements = DB_Agent.Get_Languages();
+                var item = (from q in elements
+                            where q.Id == id
+                            select q).Take(1).First();
+                CB_visual_reload<Language>(CB, elements.IndexOf(item), elements);
+            }
+            else if (type == typeof(ActionType))
+            {
+                var elements = DB_Agent.Get_ActionTypes();
+                var item = (from q in elements
+                            where q.Id == id
+                            select q).Take(1).First();
+                CB_visual_reload<ActionType>(CB, elements.IndexOf(item), elements);
             }
         }
-
-        public static void Edit_PubHouse(DataGridView dataGridView)
-        {
-            int index = dataGridView.SelectedRows[0].Index;
-            long id = (long)dataGridView.Rows[index].Cells["Id"].Value;
-            PublishingHouse element = DB_Agent.Get_Publishing_House(id);
-            var new_name = simple_element_modify("Изменить издательство", "Новое название:", element.Name);
-            if (new_name != "")
-            {
-                if (DB_Agent.db.PublishingHouses.ToList().Exists(e => e.Name == new_name))
-                {
-                    simple_message("Издательство уже существует");
-                    return;
-                }
-                element.Name = new_name;
-                DB_Agent.db.SaveChanges();
-            }
-            dataGridView.DataSource = DB_Agent.Get_Publishing_Houses();
-            show_row(dataGridView, element.Id.ToString(), "Id");
-        }
-
-        public static void Edit_Genre(DataGridView dataGridView)
-        {
-            int index = dataGridView.SelectedRows[0].Index;
-            long id = (long)dataGridView.Rows[index].Cells["Id"].Value;
-            Genre element = DB_Agent.Get_Genre(id);
-            var new_name = simple_element_modify("Изменить жанр", "Новое название:", element.Name);
-            if (new_name != "")
-            {
-                if (DB_Agent.db.Genres.ToList().Exists(e => e.Name == new_name))
-                {
-                    simple_message("Жанр уже существует");
-                    return;
-                }
-                element.Name = new_name;
-                DB_Agent.db.SaveChanges();
-            }
-            dataGridView.DataSource = DB_Agent.Get_Genres();
-            show_row(dataGridView, element.Id.ToString(), "Id");
-        }
-
-        public static void Add_City(DataGridView dataGridView)
-        {
-            dataGridView.DataSource = DB_Agent.Get_Cities();
-            var new_name = simple_element_add("Добавить город", "Название:");
-            if (new_name != "")
-            {
-                if (DB_Agent.db.Cities.ToList().Exists(e => e.Name == new_name))
-                {
-                    simple_message("Город уже существует");
-                    return;
-                }
-                City element = new City();
-                element.Name = new_name;
-                DB_Agent.db.Cities.Add(element);
-                DB_Agent.db.SaveChanges();
-                dataGridView.DataSource = DB_Agent.Get_Cities();
-                show_row(dataGridView, element.Id.ToString(), "Id");
-            }
-        }
-
-        public static void Edit_City(DataGridView dataGridView)
-        {
-            int index = dataGridView.SelectedRows[0].Index;
-            long id = (long)dataGridView.Rows[index].Cells["Id"].Value;
-            City element = DB_Agent.Get_City(id);
-            var new_name = simple_element_modify("Изменить город", "Новое название:", element.Name);
-            if (new_name != "")
-            {
-                if (DB_Agent.db.Cities.ToList().Exists(e => e.Name == new_name))
-                {
-                    simple_message("Город уже существует");
-                    return;
-                }
-                element.Name = new_name;
-                DB_Agent.db.SaveChanges();
-            }
-            dataGridView.DataSource = DB_Agent.Get_Cities();
-            show_row(dataGridView, element.Id.ToString(), "Id");
-        }
-
-        public static void Edit_Language(DataGridView dataGridView)
-        {
-            int index = dataGridView.SelectedRows[0].Index;
-            long id = (long)dataGridView.Rows[index].Cells["Id"].Value;
-            Language element = DB_Agent.Get_Language(id);
-            var new_name = simple_element_modify("Изменить язык", "Новое наименование:", element.Name);
-            if (new_name != "")
-            {
-                if (DB_Agent.db.Languages.ToList().Exists(e => e.Name == new_name))
-                {
-                    simple_message("Язык уже существует");
-                    return;
-                }
-                element.Name = new_name;
-                DB_Agent.db.SaveChanges();
-            }
-            dataGridView.DataSource = DB_Agent.Get_Languages();
-            show_row(dataGridView, element.Name, "Name");
-        }
-
-        public static void Add_Author(DataGridView dataGridView)
-        {
-            dataGridView.DataSource = DB_Agent.Get_Authors();
-            var new_name = simple_element_add("Добавить автора", "ФИО:");
-            if (new_name != "")
-            {
-                if (DB_Agent.db.Authors.ToList().Exists(e => e.Name == new_name))
-                {
-                    simple_message("Автор уже существует");
-                    return;
-                }
-                Author element = new Author();
-                element.Name = new_name;
-                DB_Agent.db.Authors.Add(element);
-                DB_Agent.db.SaveChanges();
-                dataGridView.DataSource = DB_Agent.Get_Authors();
-                show_row(dataGridView, element.Id.ToString(), "Id");
-            }
-        }
-
-
-        public static long Add_Art()
-        {
-            Form_Art form_Art = new Form_Art();
-            var DialogResult = form_Art.ShowDialog();
-            if (DialogResult == DialogResult.OK)
-            {
-                Art art = new Art();
-                art.Name = form_Art.tb_Name.Text;
-                art.Genre = (long)form_Art.CB_Genre.SelectedValue;
-                art.OrigLanguage = (System.Int64)form_Art.CB_Langue.SelectedValue;
-                if (form_Art.TB_YearCreation.Text != "")
-                {
-                    int x = 0;
-                    Int32.TryParse(form_Art.TB_YearCreation.Text, out x);
-                    if (x>0)
-                        art.WritingYear = new DateOnly(x, 1, 1);
-
-                }
-                DB_Agent.db.Arts.Add(art);
-                DB_Agent.db.SaveChanges();
-                if ((form_Art.selected_Autors != null) && (form_Art.selected_Autors.Count > 0))
-                    foreach (Author author in form_Art.selected_Autors)
-                    {
-                        AuthorArt authorArt = new AuthorArt();
-                        authorArt.Author = author.Id;
-                        authorArt.Art = art.Id;
-                        DB_Agent.db.AuthorArts.Add(authorArt);
-                        DB_Agent.db.SaveChanges();
-                    }
-                return art.Id;
-            }
-            else return -1;
-        }
-
-
-        public static long Add_Book()
-        {
-            
-
-            Form_Book formBook = new Form_Book();
-            DialogResult dialogResult = formBook.ShowDialog();
-            if (dialogResult != DialogResult.OK) return -1;
-            Book book = new Book();
-
-                book.IdArt = (System.Int64)formBook.CB_Art.SelectedValue;
-                if (formBook.ChB_Publishing_House.Checked) book.IdPublishingHouse = (System.Int64)formBook.CB_Publishing_House.SelectedValue;
-                if (formBook.ChB_City.Checked) book.IdCity = (System.Int64)formBook.CB_City.SelectedValue;
-                if (formBook.ChB_Language.Checked) book.IdLanguage = (System.Int64)formBook.CB_Book_Language.SelectedValue;
-                if (formBook.ChB_Series.Checked) book.IdSeries = (System.Int64)formBook.CB_Series.SelectedValue;
-                int x = 0;
-                if (formBook.TB_Publication_Year.Text != "")
-                {
-                    Int32.TryParse(formBook.TB_Publication_Year.Text, out x);
-                    book.PublicationYear = new DateOnly(x, 1, 1);
-                }
-                book.HasJacket = formBook.CB_Jacket.Checked;
-                book.IsArtBook = formBook.CB_Art_Book.Checked;
-                if (formBook.TB_Pages.Text != "")
-                {
-                    Int32.TryParse(formBook.TB_Pages.Text, out x);
-                    book.Pages = x;
-                }
-                if (formBook.TB_Comment.Text != "") book.Comment = formBook.TB_Comment.Text;
-                if (formBook.TB_Notes.Text != "")   book.Notes = formBook.TB_Notes.Text;
-                if (formBook.TB_Code.Text != "")    book.Code = formBook.TB_Code.Text;
-                if (formBook.TB_Family_Notes.Text != "")
-                    book.FamilyNotes = formBook.TB_Family_Notes.Text;
-                DB_Agent.Book_Add(book);
-                return book.Id;
-        }
+        #endregion
+         
+         
+        #region Action
         public static void Edit_Action(DataGridView dataGridView)
 
         {
@@ -367,7 +167,61 @@ namespace lib_postgres
             dataGridView.DataSource = DB_Agent.Get_Actions();
             show_row(dataGridView, action.Comment, "Comment");
         }
+        #endregion
 
+  
+        #region Traitement of data
+        public static string? compare_string_values(string? old_string, string new_string)
+        {
+            bool A = old_string is not null;
+            bool B = new_string != "";
+            if (!A && B)
+                return new_string;
+            else if (A && !B)
+                return null;
+            else if (A && B && old_string != new_string)
+                return new_string;
+            else //!A && !B
+                return null; // Хотя и перезапись
+        }
 
+        public static long? compare_values_logic(long? old_value, object? new_value, bool checked_in_form)
+        {
+            // IdPublishingHouse
+            bool A = checked_in_form;
+            bool B = old_value is null;
+            bool C = new_value is not null;
+            if (!B && !A) return null;
+            else
+            if (A && C && (B || (!B && (old_value != (System.Int64)new_value))))
+                return (System.Int64)new_value;
+            else return null;// это приводит к ненужной перезаписи
+        }
+        public static DateOnly? compare_data_values(DateOnly? d, string? t)
+        {
+            if ((d != null && t != d.Value.Year.ToString()) || (d == null && t != ""))
+                if (t != "")
+                {
+                    int x = 0;
+                    Int32.TryParse(t, out x);
+                    return new DateOnly(x, 1, 1);
+                }
+                else return null;
+            else return null;
+        }
+
+        public static int? Get_Number_from_String(string? str)
+        {
+            int x = 0;
+
+            if (str is not null && str != "")
+            {
+                Int32.TryParse(str, out x);
+                return x;
+            }
+            else return null;
+        }
+
+        #endregion
     }
 }

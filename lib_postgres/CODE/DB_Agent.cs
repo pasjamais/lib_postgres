@@ -21,9 +21,14 @@ namespace lib_postgres
             return db.Books.Find(id);
         }
 
-        public static List<Book1> Get_Books()
+        public static Book1 Get_Book1(long id)
         {
-              return db.Books1.ToList().OrderBy(n => n.Название).ToList(); ;
+            return db.Books1.Find(id);
+        }
+
+        public static List<Book1> Get_Books_Special_View()
+        {
+              return db.Books1.ToList().OrderBy(n => n.Название).ToList(); 
           
         }
         public static List<Book> Get_Real_Books()
@@ -89,6 +94,11 @@ namespace lib_postgres
         public static List<Series> Get_Series()
         {
             return db.Series.ToList().OrderBy(n => n.Name).ToList();
+        }
+
+        public static Series Get_Serie(long idSerie)
+        {
+            return db.Series.Find(idSerie);
         }
         #endregion
 

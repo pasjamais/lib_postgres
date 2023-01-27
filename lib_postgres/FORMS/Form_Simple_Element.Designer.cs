@@ -37,25 +37,27 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 15);
+            this.label1.Location = new System.Drawing.Point(10, 11);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(39, 20);
+            this.label1.Size = new System.Drawing.Size(31, 15);
             this.label1.TabIndex = 10;
             this.label1.Text = "XXX:";
             // 
             // tb_Name
             // 
-            this.tb_Name.Location = new System.Drawing.Point(296, 15);
+            this.tb_Name.Location = new System.Drawing.Point(259, 11);
+            this.tb_Name.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tb_Name.Name = "tb_Name";
-            this.tb_Name.Size = new System.Drawing.Size(493, 27);
+            this.tb_Name.Size = new System.Drawing.Size(432, 23);
             this.tb_Name.TabIndex = 9;
             // 
             // button_Cancel
             // 
             this.button_Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button_Cancel.Location = new System.Drawing.Point(695, 104);
+            this.button_Cancel.Location = new System.Drawing.Point(608, 78);
+            this.button_Cancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button_Cancel.Name = "button_Cancel";
-            this.button_Cancel.Size = new System.Drawing.Size(94, 29);
+            this.button_Cancel.Size = new System.Drawing.Size(82, 22);
             this.button_Cancel.TabIndex = 7;
             this.button_Cancel.Text = "Cancel";
             this.button_Cancel.UseVisualStyleBackColor = true;
@@ -63,9 +65,10 @@
             // button_OK
             // 
             this.button_OK.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.button_OK.Location = new System.Drawing.Point(578, 104);
+            this.button_OK.Location = new System.Drawing.Point(506, 78);
+            this.button_OK.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button_OK.Name = "button_OK";
-            this.button_OK.Size = new System.Drawing.Size(94, 29);
+            this.button_OK.Size = new System.Drawing.Size(82, 22);
             this.button_OK.TabIndex = 8;
             this.button_OK.Text = "OK";
             this.button_OK.UseVisualStyleBackColor = true;
@@ -74,17 +77,19 @@
             // Form_Simple_Element
             // 
             this.AcceptButton = this.button_OK;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.button_Cancel;
-            this.ClientSize = new System.Drawing.Size(801, 151);
+            this.ClientSize = new System.Drawing.Size(701, 113);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tb_Name);
             this.Controls.Add(this.button_Cancel);
             this.Controls.Add(this.button_OK);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MaximizeBox = false;
             this.Name = "Form_Simple_Element";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Form_Simple_Element";
             this.ResumeLayout(false);
             this.PerformLayout();

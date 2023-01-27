@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
+
+
 namespace lib_postgres
 {
     public partial class Form_Book : Form
@@ -15,62 +18,11 @@ namespace lib_postgres
         public Form_Book()
         {
             InitializeComponent();
-            CB_Art_Reload(1);
-            CB_Book_Language_Reload();
-            CB_City_Reload();
-            CB_Publishing_House_Reload();
-            CB_Series_Reload();
-        }
-
-        private void CB_Art_Reload(long id)
-        {
-            var arts = DB_Agent.Get_Arts();
-            var item = (from q in arts
-                        where q.Id == id
-                        select q).Take(1).First();
-            CB_Art.DataSource = arts;
-            CB_Art.ValueMember = "Id";
-            CB_Art.DisplayMember = "Name";
-            CB_Art.SelectedIndex = arts.IndexOf(item);
-        }
-        private void CB_Book_Language_Reload()
-        {
-            var languages = DB_Agent.Get_Languages();
-            CB_Book_Language.DataSource = languages;
-            CB_Book_Language.ValueMember = "Id";
-            CB_Book_Language.DisplayMember = "Name";
-            var item = (from q in languages
-                        where q.Name == "Русский"
-                        select q).Take(1).First();
-            CB_Book_Language.SelectedIndex = languages.IndexOf(item);
-        }
-
-        private void CB_City_Reload()
-        {
-            CB_City.DataSource      = DB_Agent.Get_Cities();
-            CB_City.ValueMember     = "Id";
-            CB_City.DisplayMember   = "Name";
-            CB_City.SelectedIndex   = 0;
-        }
-        
-
-        private void CB_Publishing_House_Reload()
-        {
-            CB_Publishing_House.DataSource = DB_Agent.Get_Publishing_Houses();
-            CB_Publishing_House.ValueMember = "Id";
-            CB_Publishing_House.DisplayMember = "Name";
-            CB_Publishing_House.SelectedIndex = 0;
-        }
-   
-        
-
-
-        private void CB_Series_Reload()
-        {
-            CB_Series.DataSource = DB_Agent.Get_Series();
-            CB_Series.ValueMember = "Id";
-            CB_Series.DisplayMember = "Name";
-            CB_Series.SelectedIndex = 0;
+            General_Manipulations.CB_reload<Art>(CB_Art, 1);
+            General_Manipulations.CB_reload<Language>(CB_Book_Language, 3);//русский по-умолчанию
+            General_Manipulations.CB_reload<City>(CB_City, 1);
+            General_Manipulations.CB_reload<PublishingHouse>(CB_Publishing_House, 1);
+            General_Manipulations.CB_reload<Series>(CB_Series, 1);
         }
 
         private void ChB_Publishing_House_CheckedChanged(object sender, EventArgs e)
@@ -85,42 +37,47 @@ namespace lib_postgres
 
         private void ChB_City_CheckedChanged(object sender, EventArgs e)
         {
-            label9.Enabled = CB_City.Enabled = ChB_City.Checked;
-            
+            label9.Enabled = CB_City.Enabled = ChB_City.Checked; 
         }
 
         private void ChB_Language_CheckedChanged(object sender, EventArgs e)
         {
-            label6.Enabled = CB_Book_Language.Enabled = ChB_Language.Checked;
-            
+            label6.Enabled = CB_Book_Language.Enabled = ChB_Language.Checked; 
         }
 
         private void BT_Add_Art_Click(object sender, EventArgs e)
         {
-            CB_Art_Reload(General_Manipulations.Add_Art());
+            var id = PARTIAL.Art.Add_Art();
+            if (id > 0) General_Manipulations.CB_reload<Art>(CB_Art, id);
             DialogResult = DialogResult.None;
         }
 
-        private void button_OK_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ChB_Pages_CheckedChanged(object sender, EventArgs e)
-        {
-            label10.Enabled = TB_Pages.Enabled = ChB_Pages.Checked;
-        }
-
-        private void ChB_Publication_Year_CheckedChanged(object sender, EventArgs e)
-        {
-            label7.Enabled = TB_Publication_Year.Enabled = ChB_Publication_Year.Checked;
-        }
 
         private void BT_Add_Maison_Click(object sender, EventArgs e)
         {
-        
+            var id = PARTIAL.PublishingHouse.Add_PubHouse();
+            if (id != 0) General_Manipulations.CB_reload<PublishingHouse>(CB_Publishing_House, id);
+            DialogResult = DialogResult.None;
+        }
 
-            CB_Publishing_House_Reload();
+        private void BT_Add_Langue_Book_Click(object sender, EventArgs e)
+        {
+            var id = PARTIAL.Language.Add_Language();
+            if (id != 0) General_Manipulations.CB_reload<Language>(CB_Book_Language, id);
+            DialogResult = DialogResult.None;
+        }
+
+        private void BT_Add_City_Click(object sender, EventArgs e)
+        {
+            var id = PARTIAL.City.Add_City();
+            if (id != 0) General_Manipulations.CB_reload<City>( CB_City, id);
+            DialogResult = DialogResult.None;
+        }
+
+        private void BT_Add_Serie_Click(object sender, EventArgs e)
+        {
+            var id = PARTIAL.Series.Add_Serie();
+            if (id != 0) General_Manipulations.CB_reload<Series>(CB_Series, id);
             DialogResult = DialogResult.None;
         }
     }
