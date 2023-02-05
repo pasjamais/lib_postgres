@@ -436,7 +436,13 @@ namespace lib_postgres
 
         private void ToolStripMenuItem_Actions_Edit_Click(object sender, EventArgs e)
         {
-            PARTIAL.Action.Edit_Action(dataGridView1);
+            long action_id = PARTIAL.Action.Edit_Action(dataGridView1);
+            if (action_id > 0)
+            {
+                CODE.Code_Queries.Show_Actions(dataGridView1);
+                dataGridView1.Refresh();
+                General_Manipulations.show_row(dataGridView1, action_id.ToString(), "Id");
+            }
         }
     }
 }

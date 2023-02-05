@@ -12,8 +12,6 @@ namespace lib_postgres.PARTIAL
         public static long Add_Action()
         {
             FORMS.Form_Action form_Action = new lib_postgres.FORMS.Form_Action();
-
-
             var DialogResult = form_Action.ShowDialog();
             if (DialogResult != DialogResult.OK) return -1;
             else if ((form_Action.action_books != null) && (form_Action.action_books.Count > 0))
@@ -43,41 +41,33 @@ namespace lib_postgres.PARTIAL
             }
             else return -1;
         }
-        public static void Edit_Action(DataGridView dataGridView)
-
+        public static long Edit_Action(DataGridView dataGridView)
         {
             int index = dataGridView.SelectedRows[0].Index;
             long id = (long)dataGridView.Rows[index].Cells["Id"].Value;
             lib_postgres.Action action = DB_Agent.Get_Action(id);
-
-                        var all_locations = DB_Agent.Get_Locations();
+            // prepare action
+            var all_locations = DB_Agent.Get_Locations();
             var action_books_Ids = (from loc in all_locations
                                 where loc.Action == id 
                                     select loc.Book).ToList();
-
             var all_books = DB_Agent.Get_Books_Special_View();
-
             var action_books = (from x in all_books
                          where action_books_Ids.Contains(x.Id)
                          select x).ToList() ;
-            
             FORMS.Form_Action form_Action = new lib_postgres.FORMS.Form_Action();
-             
-
-
             BindingSource source_action_books = new BindingSource();
             BindingSource source_all_books = new BindingSource();
+
             source_action_books.DataSource = action_books;
-            form_Action.DGV_ActionBooks.DataSource =(source_action_books);
+            form_Action.DGV_ActionBooks.DataSource = source_action_books;
             form_Action.DGV_ActionBooks.Refresh();
 
-            source_all_books.DataSource = all_books;
-            form_Action.DGV_AllBooks.DataSource = (source_all_books);
-            form_Action.DGV_ActionBooks.Refresh();
+            source_all_books.DataSource         = all_books;
+            form_Action.DGV_AllBooks.DataSource = source_all_books;
+            form_Action.DGV_AllBooks.Refresh();
 
             form_Action.action_books = action_books;
-
-
             if (action.Place != null) form_Action.CB_Place.SelectedValue = action.Place;
             if (action.ActionType != null) form_Action.CB_Action_Type.SelectedValue = action.ActionType;
             if (action.Comment != null) form_Action.TB_Comment.Text = action.Comment;
@@ -88,11 +78,12 @@ namespace lib_postgres.PARTIAL
                 form_Action.dateTimePicker.Value = d;
             }
             var DialogResult = form_Action.ShowDialog();
-           //if (DialogResult != DialogResult.OK) return -1;
+            if (DialogResult != DialogResult.OK) return -1;
+            else return -1;
 
 
-     
-           
+
+
 
 
 

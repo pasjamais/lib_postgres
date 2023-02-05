@@ -84,6 +84,7 @@
             this.button_Del_Book_from_Action.TabIndex = 73;
             this.button_Del_Book_from_Action.Text = "Удалить книгу";
             this.button_Del_Book_from_Action.UseVisualStyleBackColor = true;
+            this.button_Del_Book_from_Action.Click += new System.EventHandler(this.button_Del_Book_from_Action_Click);
             // 
             // label2
             // 
@@ -157,7 +158,7 @@
             this.TB_Comment.Size = new System.Drawing.Size(594, 23);
             this.TB_Comment.TabIndex = 63;
             // 
-            // DGV_AcrtionBooks
+            // DGV_ActionBooks
             // 
             this.DGV_ActionBooks.AllowUserToAddRows = false;
             this.DGV_ActionBooks.AllowUserToDeleteRows = false;
@@ -168,7 +169,7 @@
             this.DGV_ActionBooks.Location = new System.Drawing.Point(3, 114);
             this.DGV_ActionBooks.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.DGV_ActionBooks.MultiSelect = false;
-            this.DGV_ActionBooks.Name = "DGV_AcrtionBooks";
+            this.DGV_ActionBooks.Name = "DGV_ActionBooks";
             this.DGV_ActionBooks.ReadOnly = true;
             this.DGV_ActionBooks.RowHeadersVisible = false;
             this.DGV_ActionBooks.RowHeadersWidth = 51;
