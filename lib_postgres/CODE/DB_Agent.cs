@@ -130,7 +130,7 @@ namespace lib_postgres
         #region Actions
         public static List<Action> Get_Actions()
         {
-            return db.Actions.ToList().OrderBy(n => n.Name).ToList();
+            return db.Actions.ToList().OrderBy(n => n.Date).ToList();
         }
 
         public static Action Get_Action(long id_Action)
@@ -154,6 +154,20 @@ namespace lib_postgres
         public static List<Location> Get_Locations()
         {
             return db.Locations.ToList().OrderBy(n => n.Action).ToList();
+        }
+        public static long? Get_Location_Id_by_Action_Id_and_Book_Id(long? action_id, long? book_id)
+        {
+            List<Location> locations = db.Locations.ToList();
+
+            var location_id = (from loc in locations
+                            where loc.Action == action_id && loc.Book == book_id
+                            select loc.Id).ToList().First();
+            return location_id;
+        }
+
+        public static Location Get_Location(long? id_Location)
+        {
+            return db.Locations.Find(id_Location);
         }
         #endregion
 

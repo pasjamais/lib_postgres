@@ -27,9 +27,9 @@ namespace lib_postgres.PARTIAL
                     return element.Id;
                 }
             }
-            else return 0;
+            else return -1;
         }
-        public static void Edit_City(DataGridView dataGridView)
+        public static long Edit_City(DataGridView dataGridView)
         {
             int index = dataGridView.SelectedRows[0].Index;
             long id = (long)dataGridView.Rows[index].Cells["Id"].Value;
@@ -40,13 +40,13 @@ namespace lib_postgres.PARTIAL
                 if (DB_Agent.db.Cities.ToList().Exists(e => e.Name == new_name))
                 {
                     General_Manipulations.simple_message("Город уже существует");
-                    return;
+                    return 0;
                 }
                 element.Name = new_name;
                 DB_Agent.db.SaveChanges();
+                return element.Id;
             }
-            dataGridView.DataSource = DB_Agent.Get_Cities();
-            General_Manipulations.show_row(dataGridView, element.Id.ToString(), "Id");
+            else return -1;
         }
     }
 }

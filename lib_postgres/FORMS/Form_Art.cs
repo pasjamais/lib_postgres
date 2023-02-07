@@ -56,7 +56,7 @@ namespace lib_postgres
         private void BT_Add_Genre_Click(object sender, EventArgs e)
         {
             var id = PARTIAL.Genre.Add_Genre();
-            if (id != 0) CB_Genre_reload(id);
+            if (id > 0) CB_Genre_reload(id);
             DialogResult = DialogResult.None;
         }
 
@@ -75,7 +75,13 @@ namespace lib_postgres
 
         private void BT_Add_Author_Click(object sender, EventArgs e)
         {
-            PARTIAL.Author.Add_Author(DGV_All_Authors);
+            var id = PARTIAL.Author.Add_Author();
+            if (id > 0)
+            {
+                DGV_All_Authors.DataSource = DB_Agent.Get_Authors();
+                CODE.Form_Element_DGV.Prepare_DGV_For_Type<Author>(DGV_All_Authors);
+                General_Manipulations.show_row(DGV_All_Authors, id.ToString(), "Id");
+            }
             DialogResult = DialogResult.None;
         }
 
@@ -104,10 +110,15 @@ namespace lib_postgres
             DGV_Selected_Authors.DataSource = source;
             DialogResult = DialogResult.None;
         }
-
-        private void DGV_Selected_Authors_CellContentClick(object sender, DataGridViewCellEventArgs e)
+         
+        private void DGV_Selected_Authors_DoubleClick(object sender, EventArgs e)
         {
+            BT_Deselect_Author_Click(sender, e);
+        }
 
+        private void DGV_All_Authors_DoubleClick(object sender, EventArgs e)
+        {
+            BT_Select_Author_Click(sender, e);
         }
     }
 }

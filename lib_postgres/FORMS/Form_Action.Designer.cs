@@ -176,6 +176,7 @@
             this.DGV_ActionBooks.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DGV_ActionBooks.Size = new System.Drawing.Size(1310, 207);
             this.DGV_ActionBooks.TabIndex = 0;
+            this.DGV_ActionBooks.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGV_ActionBooks_CellContentClick);
             // 
             // groupBox1
             // 
@@ -256,6 +257,7 @@
             this.DGV_AllBooks.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DGV_AllBooks.Size = new System.Drawing.Size(1310, 324);
             this.DGV_AllBooks.TabIndex = 0;
+            this.DGV_AllBooks.DoubleClick += new System.EventHandler(this.DGV_AllBooks_DoubleClick);
             // 
             // button_OK
             // 
@@ -305,7 +307,7 @@
             this.MaximizeBox = false;
             this.Name = "Form_Action";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form_Action";
+            this.Text = "Действие";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_ActionBooks)).EndInit();

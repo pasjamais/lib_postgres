@@ -19,13 +19,13 @@ namespace lib_postgres.PARTIAL
                 if (form_Art.tb_Name.Text == "")
                 {
                     General_Manipulations.simple_message("Не указано названия");
-                    return -1;
+                    return 0;
                 }
                 else
                 if ((form_Art.selected_Autors == null) || (form_Art.selected_Autors.Count == 0))
                 {
                     General_Manipulations.simple_message("Не указано ни одного автора");
-                    return -1;
+                    return -2;
                 }
                 else
                 {
@@ -56,7 +56,7 @@ namespace lib_postgres.PARTIAL
             else return -1;
         }
 
-        public static void Edit_Art(DataGridView dataGridView)
+        public static long Edit_Art(DataGridView dataGridView)
         {
             // загрузка в форму
             int index = dataGridView.SelectedRows[0].Index;
@@ -79,13 +79,13 @@ namespace lib_postgres.PARTIAL
             if (art.WritingYear != null) form_Art.TB_YearCreation.Text = art.WritingYear.Value.Year.ToString();
 
             DialogResult dialog_result = form_Art.ShowDialog();
-            if (dialog_result != DialogResult.OK) return;
+            if (dialog_result != DialogResult.OK) return -1;
 
             // проверка на изменение введённых данных
             if (form_Art.tb_Name.Text == "")
             {
                 General_Manipulations.simple_message("Не указано названия");
-                return;
+                return 0;
             }
             else
                 if (art.Name != form_Art.tb_Name.Text) art.Name = form_Art.tb_Name.Text;
@@ -95,36 +95,31 @@ namespace lib_postgres.PARTIAL
                 if (art.Genre != (long)form_Art.CB_Genre.SelectedValue) art.Genre = (long)form_Art.CB_Genre.SelectedValue;
 
             if (art.OrigLanguage != (System.Int64)form_Art.CB_Langue.SelectedValue) art.OrigLanguage = (System.Int64)form_Art.CB_Langue.SelectedValue;
+
             art.WritingYear = General_Manipulations.compare_data_values(art.WritingYear, form_Art.TB_YearCreation.Text);
-            
 
             DB_Agent.db.SaveChanges();
+            return art.Id;
 
-            // авторов не перезаписывает
-            /* //  if (    (!form_Art.selected_Autors.Any()) && 
-             //        (!selected_auteurs.Any())           )
+            /*      // авторов не перезаписывает
+                  //  if (    (!form_Art.selected_Autors.Any()) && 
+                   //      (!selected_auteurs.Any())           )
 
-             //// Допилить -- не удалять старые и писать новые, тратя первичный ключ, а аккуратно заменять
-             if (selected_auteurs_old.Any())
-                 foreach (Author author in selected_auteurs_old)
-                 {
-                     //delete
-                 }
+                   // Допилить -- не удалять старые и писать новые, тратя первичный ключ, а аккуратно заменять
+                   if (selected_auteurs_old.Any())
+                       foreach (Author author in selected_auteurs_old)
+                       {
+                           //delete
+                       }
 
 
-             foreach (Author author in form_Art.selected_Autors)
-             {//add
-                 AuthorArt authorArt = new AuthorArt();
-                 authorArt.Author = author.Id;
-                 authorArt.Art = art.Id;
-                 DB_Agent.db.AuthorArts.Add(authorArt);
-                 //      DB_Agent.db.SaveChanges();
-             }
-
-             // DB_Agent.db.SaveChanges();*/
-
-            dataGridView.DataSource = DB_Agent.Get_Arts();
-            General_Manipulations.show_row(dataGridView, art.Id.ToString(), "Id");
+                   foreach (Author author in form_Art.selected_Autors)
+                   {//add
+                       AuthorArt authorArt = new AuthorArt();
+                       authorArt.Author = author.Id;
+                       authorArt.Art = art.Id;
+                       DB_Agent.db.AuthorArts.Add(authorArt);
+                           DB_Agent.db.SaveChanges()*/
         }
     }
 }

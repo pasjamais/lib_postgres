@@ -179,8 +179,11 @@ namespace lib_postgres
                 return new_string;
             else if (A && !B)
                 return null;
-            else if (A && B && old_string != new_string)
-                return new_string;
+            else if (A && B)
+                if (old_string != new_string)
+                    return new_string;
+                else
+                    return old_string; // нужно что-то возвращать, так пусть будет исходное значение
             else //!A && !B
                 return null; // Хотя и перезапись
         }

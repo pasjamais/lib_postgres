@@ -21,11 +21,15 @@ namespace lib_postgres.FORMS
             InitializeComponent();
             General_Manipulations.CB_reload<Place>(CB_Place, 1);
             General_Manipulations.CB_reload<ActionType>(CB_Action_Type, 1);
+
             all_books = DB_Agent.Get_Books_Special_View();
             DGV_AllBooks.DataSource = General_Manipulations.Bind_List_to_DGV(all_books);
+            CODE.Form_Element_DGV.Prepare_DGV_For_Type<Book1>(DGV_AllBooks);
             DGV_AllBooks.Refresh();
+
             action_books = new();
             DGV_ActionBooks.DataSource = General_Manipulations.Bind_List_to_DGV(action_books);
+            CODE.Form_Element_DGV.Prepare_DGV_For_Type<Book1>(DGV_ActionBooks);
             DGV_ActionBooks.Refresh();
         }
 
@@ -33,14 +37,14 @@ namespace lib_postgres.FORMS
         private void button_New_Book_Click(object sender, EventArgs e)
         {
             long book_id = PARTIAL.Book.Add_Book();
-            if (book_id != -1)
+            if (book_id > 0)
             {
-                DGV_AllBooks.DataSource = DB_Agent.Get_Books_Special_View();
-                DGV_AllBooks.Refresh();
+                all_books = DB_Agent.Get_Books_Special_View();
+                DGV_AllBooks.DataSource = General_Manipulations.Bind_List_to_DGV(all_books);
+                CODE.Form_Element_DGV.Prepare_DGV_For_Type<Book1>(DGV_AllBooks);
+
                 General_Manipulations.show_row(DGV_AllBooks, book_id.ToString(), "Id");
             }
-            all_books = DB_Agent.Get_Books_Special_View();
-            DGV_AcrtionBooks_Refresh();
             DialogResult = DialogResult.None; // works?
         }
 
@@ -78,6 +82,16 @@ namespace lib_postgres.FORMS
                     action_books.Remove(b);
                 DGV_AcrtionBooks_Refresh();
             }
+        }
+
+        private void DGV_AllBooks_DoubleClick(object sender, EventArgs e)
+        {
+            button_Add_Book_to_Action_Click(sender, e);
+        }
+
+        private void DGV_ActionBooks_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            button_Del_Book_from_Action_Click(sender, e);
         }
     }
 }

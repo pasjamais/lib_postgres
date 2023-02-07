@@ -50,18 +50,14 @@
             this.ToolStripMenuItem_Author_Add = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Author_Edit = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Author_Delete = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.фToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Actions = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Actions_Open = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItem_Actions_Show = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.ToolStripMenuItem_Actions_Create = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Actions_Edit = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Actions_Delete = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator13 = new System.Windows.Forms.ToolStripSeparator();
             this.ToolStripMenuItem_Location_Show = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItem_Reader = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Cataloques = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Languages = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Language_Show = new System.Windows.Forms.ToolStripMenuItem();
@@ -101,6 +97,7 @@
             this.ToolStripMenuItem_Places = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
             this.ToolStripMenuItem_People = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem_Reader = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.book1BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -124,6 +121,7 @@
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(1036, 362);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentDoubleClick);
             // 
             // menuStrip1
             // 
@@ -132,10 +130,9 @@
             this.ToolStripMenuItem_Books,
             this.ToolStripMenuItem_Arts,
             this.ToolStripMenuItem_Autors,
-            this.toolStripMenuItem1,
             this.ToolStripMenuItem_Actions,
-            this.ToolStripMenuItem_Reader,
-            this.ToolStripMenuItem_Cataloques});
+            this.ToolStripMenuItem_Cataloques,
+            this.ToolStripMenuItem_Reader});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
@@ -176,6 +173,7 @@
             // 
             // ToolStripMenuItem__Book_Edit
             // 
+            this.ToolStripMenuItem__Book_Edit.Enabled = false;
             this.ToolStripMenuItem__Book_Edit.Name = "ToolStripMenuItem__Book_Edit";
             this.ToolStripMenuItem__Book_Edit.Size = new System.Drawing.Size(183, 22);
             this.ToolStripMenuItem__Book_Edit.Text = "Изменить...";
@@ -278,27 +276,10 @@
             this.ToolStripMenuItem_Author_Delete.Size = new System.Drawing.Size(183, 22);
             this.ToolStripMenuItem_Author_Delete.Text = "Удалить...";
             // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.фToolStripMenuItem});
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(42, 20);
-            this.toolStripMenuItem1.Text = " Test";
-            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
-            // 
-            // фToolStripMenuItem
-            // 
-            this.фToolStripMenuItem.Name = "фToolStripMenuItem";
-            this.фToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
-            this.фToolStripMenuItem.Text = "Get_Action_and_Books";
-            this.фToolStripMenuItem.Click += new System.EventHandler(this.фToolStripMenuItem_Click);
-            // 
             // ToolStripMenuItem_Actions
             // 
             this.ToolStripMenuItem_Actions.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ToolStripMenuItem_Actions_Open,
-            this.ToolStripMenuItem_Actions_Show,
             this.toolStripSeparator8,
             this.ToolStripMenuItem_Actions_Create,
             this.ToolStripMenuItem_Actions_Edit,
@@ -315,13 +296,6 @@
             this.ToolStripMenuItem_Actions_Open.Size = new System.Drawing.Size(225, 22);
             this.ToolStripMenuItem_Actions_Open.Text = "Показать/Обновить";
             this.ToolStripMenuItem_Actions_Open.Click += new System.EventHandler(this.ToolStripMenuItem_Actions_Open_Click);
-            // 
-            // ToolStripMenuItem_Actions_Show
-            // 
-            this.ToolStripMenuItem_Actions_Show.Name = "ToolStripMenuItem_Actions_Show";
-            this.ToolStripMenuItem_Actions_Show.Size = new System.Drawing.Size(225, 22);
-            this.ToolStripMenuItem_Actions_Show.Text = "Показать";
-            this.ToolStripMenuItem_Actions_Show.Click += new System.EventHandler(this.ToolStripMenuItem_Actions_Show_Click);
             // 
             // toolStripSeparator8
             // 
@@ -360,12 +334,6 @@
             this.ToolStripMenuItem_Location_Show.Size = new System.Drawing.Size(225, 22);
             this.ToolStripMenuItem_Location_Show.Text = "Показать таблицу действий";
             this.ToolStripMenuItem_Location_Show.Click += new System.EventHandler(this.ToolStripMenuItem_Location_Show_Click);
-            // 
-            // ToolStripMenuItem_Reader
-            // 
-            this.ToolStripMenuItem_Reader.Name = "ToolStripMenuItem_Reader";
-            this.ToolStripMenuItem_Reader.Size = new System.Drawing.Size(69, 20);
-            this.ToolStripMenuItem_Reader.Text = "Читатель";
             // 
             // ToolStripMenuItem_Cataloques
             // 
@@ -656,6 +624,12 @@
             this.ToolStripMenuItem_People.Size = new System.Drawing.Size(163, 22);
             this.ToolStripMenuItem_People.Text = "Люди";
             // 
+            // ToolStripMenuItem_Reader
+            // 
+            this.ToolStripMenuItem_Reader.Name = "ToolStripMenuItem_Reader";
+            this.ToolStripMenuItem_Reader.Size = new System.Drawing.Size(69, 20);
+            this.ToolStripMenuItem_Reader.Text = "Читатель";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -698,7 +672,6 @@
         private ToolStripMenuItem ToolStripMenuItem_Author_Add;
         private ToolStripMenuItem ToolStripMenuItem_Author_Edit;
         private ToolStripMenuItem ToolStripMenuItem_Author_Delete;
-        private ToolStripMenuItem toolStripMenuItem1;
         private ToolStripMenuItem ToolStripMenuItem_Cataloques;
         private ToolStripMenuItem ToolStripMenuItem_Languages;
         private ToolStripMenuItem ToolStripMenuItem_Language_Show;
@@ -726,10 +699,8 @@
         private ToolStripMenuItem ToolStripMenuItem_City_Delete;
         public DataGridView dataGridView1;
         private ToolStripMenuItem ToolStripMenuItem_Actions;
-        private ToolStripMenuItem ToolStripMenuItem_Actions_Show;
         private ToolStripMenuItem ToolStripMenuItem_Actions_Open;
         private ToolStripMenuItem ToolStripMenuItem_Reader;
-        private ToolStripMenuItem фToolStripMenuItem;
         private ToolStripSeparator toolStripSeparator8;
         private ToolStripMenuItem ToolStripMenuItem_Actions_Create;
         private ToolStripMenuItem ToolStripMenuItem_Book_Format;

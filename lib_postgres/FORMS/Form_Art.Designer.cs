@@ -186,6 +186,7 @@
             this.DGV_All_Authors.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DGV_All_Authors.Size = new System.Drawing.Size(493, 261);
             this.DGV_All_Authors.TabIndex = 45;
+            this.DGV_All_Authors.DoubleClick += new System.EventHandler(this.DGV_All_Authors_DoubleClick);
             // 
             // DGV_Selected_Authors
             // 
@@ -203,7 +204,7 @@
             this.DGV_Selected_Authors.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DGV_Selected_Authors.Size = new System.Drawing.Size(331, 146);
             this.DGV_Selected_Authors.TabIndex = 46;
-            this.DGV_Selected_Authors.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGV_Selected_Authors_CellContentClick);
+            this.DGV_Selected_Authors.DoubleClick += new System.EventHandler(this.DGV_Selected_Authors_DoubleClick);
             // 
             // BT_Select_Author
             // 

@@ -31,7 +31,7 @@ namespace lib_postgres.PARTIAL
             else return 0;
         }
 
-        public static void Edit_Serie(DataGridView dataGridView)
+        public static long Edit_Serie(DataGridView dataGridView)
         {
             int index = dataGridView.SelectedRows[0].Index;
             long id = (long)dataGridView.Rows[index].Cells["Id"].Value;
@@ -42,13 +42,13 @@ namespace lib_postgres.PARTIAL
                 if (DB_Agent.db.Series.ToList().Exists(e => e.Name == new_name))
                 {
                     General_Manipulations.simple_message("Серия уже существует");
-                    return;
+                    return 0;
                 }
                 element.Name = new_name;
                 DB_Agent.db.SaveChanges();
+                return element.Id;
             }
-            dataGridView.DataSource = DB_Agent.Get_Series();
-            General_Manipulations.show_row(dataGridView, element.Id.ToString(), "Id");
+            else return 0;
         }
     }
 }

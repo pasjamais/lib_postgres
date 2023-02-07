@@ -70,7 +70,7 @@ namespace lib_postgres.CODE
                              Дата = act.Date,
                           //   Место = pla.Name,
                          //    Тип = act_typ.Name
-                         }).ToList();
+                         }).ToList().OrderBy(n => n.Дата).ToList(); ;
             dataGridView.DataSource = items;
         }
 

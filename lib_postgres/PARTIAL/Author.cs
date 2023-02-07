@@ -8,26 +8,25 @@ namespace lib_postgres.PARTIAL
 {
     public partial class Author
     {
-        public static void Add_Author(DataGridView dataGridView)
+        public static long Add_Author()
         {
-            dataGridView.DataSource = DB_Agent.Get_Authors();
             var new_name = General_Manipulations.simple_element_add("Добавить автора", "ФИО:");
             if (new_name != "")
             {
                 if (DB_Agent.db.Authors.ToList().Exists(e => e.Name == new_name))
                 {
                     General_Manipulations.simple_message("Автор уже существует");
-                    return;
+                    return 0;
                 }
                 lib_postgres.Author element = new lib_postgres.Author();
                 element.Name = new_name;
                 DB_Agent.db.Authors.Add(element);
                 DB_Agent.db.SaveChanges();
-                dataGridView.DataSource = DB_Agent.Get_Authors();
-                General_Manipulations.show_row(dataGridView, element.Id.ToString(), "Id");
+                return element.Id;
             }
+            else return -1;
         }
-        public static void Edit_Author(DataGridView dataGridView)
+        public static long Edit_Author(DataGridView dataGridView)
         {
             int index = dataGridView.SelectedRows[0].Index;
             long id = (long)dataGridView.Rows[index].Cells["Id"].Value;
@@ -38,13 +37,13 @@ namespace lib_postgres.PARTIAL
                 if (DB_Agent.db.Authors.ToList().Exists(e => e.Name == new_name))
                 {
                     General_Manipulations.simple_message("Автор уже существует");
-                    return;
+                    return 0;
                 }
                 element.Name = new_name;
                 DB_Agent.db.SaveChanges();
+                return element.Id;
             }
-            dataGridView.DataSource = DB_Agent.Get_Authors();
-            General_Manipulations.show_row(dataGridView, element.Name, "Name");
+            else return -1;
         }
     }
 }

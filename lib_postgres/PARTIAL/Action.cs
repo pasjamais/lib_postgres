@@ -32,7 +32,7 @@ namespace lib_postgres.PARTIAL
                     location.Book = book1.Id;
                     location.Place = action.Place;
                     location.Owner = 1;
-                    location.Comment = null;
+                    location.Comment = action.Comment;
                     location.Action = action.Id;
                     DB_Agent.db.Locations.Add(location);
                     DB_Agent.db.SaveChanges();
@@ -41,6 +41,19 @@ namespace lib_postgres.PARTIAL
             }
             else return -1;
         }
+
+
+        private static bool Get_Operation(long? operation)
+        {
+            if (operation != null)
+                if (operation == 1 || operation == 3 || operation == 5)
+                return true;
+                else if (operation == 2 || operation == 4)
+                return false;
+            else return false;
+            else return false;
+        }
+
         public static long Edit_Action(DataGridView dataGridView)
         {
             int index = dataGridView.SelectedRows[0].Index;
@@ -56,8 +69,8 @@ namespace lib_postgres.PARTIAL
                          where action_books_Ids.Contains(x.Id)
                          select x).ToList() ;
             FORMS.Form_Action form_Action = new lib_postgres.FORMS.Form_Action();
-            BindingSource source_action_books = new BindingSource();
-            BindingSource source_all_books = new BindingSource();
+            BindingSource source_action_books   = new BindingSource();
+            BindingSource source_all_books      = new BindingSource();
 
             source_action_books.DataSource = action_books;
             form_Action.DGV_ActionBooks.DataSource = source_action_books;
@@ -68,9 +81,9 @@ namespace lib_postgres.PARTIAL
             form_Action.DGV_AllBooks.Refresh();
 
             form_Action.action_books = action_books;
-            if (action.Place != null) form_Action.CB_Place.SelectedValue = action.Place;
-            if (action.ActionType != null) form_Action.CB_Action_Type.SelectedValue = action.ActionType;
-            if (action.Comment != null) form_Action.TB_Comment.Text = action.Comment;
+            if (action.Place        != null) form_Action.CB_Place.SelectedValue = action.Place;
+            if (action.ActionType   != null) form_Action.CB_Action_Type.SelectedValue = action.ActionType;
+            if (action.Comment      != null) form_Action.TB_Comment.Text = action.Comment;
 
             if (action.Date is not null)
             {
@@ -79,12 +92,37 @@ namespace lib_postgres.PARTIAL
             }
             var DialogResult = form_Action.ShowDialog();
             if (DialogResult != DialogResult.OK) return -1;
-            else return -1;
+            // check if changed
+            if (form_Action.CB_Place.SelectedValue != null)
+                if (action.Place != (System.Int64)form_Action.CB_Place.SelectedValue)
+                    action.Place = (System.Int64)form_Action.CB_Place.SelectedValue;
 
+            if (form_Action.CB_Action_Type.SelectedValue != null)
+                if (action.ActionType != (System.Int64)form_Action.CB_Action_Type.SelectedValue)
+                    action.ActionType = (System.Int64)form_Action.CB_Action_Type.SelectedValue;
 
+                        action.Comment = General_Manipulations.compare_string_values(action.Comment, form_Action.TB_Comment.Text);
+            action.Date = DateOnly.FromDateTime(form_Action.dateTimePicker.Value.Date);
+            DB_Agent.db.SaveChanges();
 
+            foreach (lib_postgres.Book1 book1 in form_Action.action_books)
+            {
+                Location location = DB_Agent.Get_Location(DB_Agent.Get_Location_Id_by_Action_Id_and_Book_Id(action.Id, book1.Id)  );
+                location.Operation = Get_Operation(action.ActionType);
+                //location.Book = book1.Id;
 
-
+                //!!! В Action хранится Place указанный пользователем в форме, а в Location - действительное расположение, в т. ч. null
+                // 
+                if (Get_Operation(action.ActionType)  )
+                    location.Place = action.Place;
+                else location.Place = null;
+                if (action.ActionType == 2) location.Owner = null;
+                //location.Owner = 1;
+                location.Comment = action.Comment;
+                //location.Action = action.Id;
+                DB_Agent.db.SaveChanges();
+            }
+            return action.Id;
 
 
         }

@@ -36,7 +36,7 @@ namespace lib_postgres.PARTIAL
             return book.Id;
         }
 
-        private static void Edit_Book(DataGridView dataGridView)
+        public static long Edit_Book(DataGridView dataGridView)
         {
             int index = dataGridView.SelectedRows[0].Index;
             long id = (long)dataGridView.Rows[index].Cells["Id"].Value;
@@ -62,12 +62,11 @@ namespace lib_postgres.PARTIAL
             formBook.TB_Family_Notes.Text = book.FamilyNotes ?? "";
 
             DialogResult dialog_result = formBook.ShowDialog();
-            if (dialog_result != DialogResult.OK) return;
-
+            if (dialog_result != DialogResult.OK) return -1;
+            // check if changed
             if (formBook.CB_Art.SelectedValue != null)
                 if (book.IdArt != (System.Int64)formBook.CB_Art.SelectedValue)
                     book.IdArt = (System.Int64)formBook.CB_Art.SelectedValue;
-
             book.IdPublishingHouse = General_Manipulations.compare_values_logic(book.IdPublishingHouse, formBook.CB_Publishing_House.SelectedValue, formBook.ChB_Publishing_House.Checked);
             book.IdCity = General_Manipulations.compare_values_logic(book.IdCity, formBook.CB_City.SelectedValue, formBook.ChB_City.Checked);
             book.IdLanguage = General_Manipulations.compare_values_logic(book.IdLanguage, formBook.CB_Book_Language.SelectedValue, formBook.ChB_Language.Checked);
@@ -81,8 +80,7 @@ namespace lib_postgres.PARTIAL
             book.FamilyNotes = General_Manipulations.compare_string_values(book.FamilyNotes, formBook.TB_Family_Notes.Text);
             book.Pages = General_Manipulations.Get_Number_from_String(General_Manipulations.compare_string_values(book.Pages.ToString(), formBook.TB_Pages.Text));
             DB_Agent.db.SaveChanges();
-            dataGridView.DataSource = DB_Agent.Get_Books_Special_View();
-            General_Manipulations.show_row(dataGridView, book.Id.ToString(), "Id");
+            return book.Id;
         }
     }
 }
