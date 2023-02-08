@@ -12,7 +12,10 @@ namespace lib_postgres
 
         public long Id { get; set; }
         public string Name { get; set; } = null!;
+        public bool? IsDeleted { get; set; }
+        public bool? Operation { get; set; }
 
         public virtual ICollection<Action> Actions { get; set; }
     }
 }
+

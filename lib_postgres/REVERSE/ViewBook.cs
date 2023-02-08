@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace lib_postgres
 {
-    public partial class Book1
+    public partial class ViewBook
     {
         public long? Id { get; set; }
         public string? Название { get; set; }

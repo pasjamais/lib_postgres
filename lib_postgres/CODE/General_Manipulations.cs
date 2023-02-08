@@ -37,7 +37,7 @@ namespace lib_postgres
             source.DataSource = list;
             return source;
         }
-        public static object Bind_List_to_DGV(List<Book1> list)
+        public static object Bind_List_to_DGV(List<ViewBook> list)
         {
             BindingSource source = new BindingSource();
             source.DataSource = list;

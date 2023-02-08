@@ -9,5 +9,6 @@ namespace lib_postgres
         public long Id { get; set; }
         public long IdGenre { get; set; }
         public BitArray? Chifre { get; set; }
+        public bool? IsDeleted { get; set; }
     }
 }

@@ -12,6 +12,7 @@ namespace lib_postgres
         public long? Owner { get; set; }
         public string? Comment { get; set; }
         public long? Action { get; set; }
+        public bool? IsDeleted { get; set; }
 
         public virtual Action? ActionNavigation { get; set; }
         public virtual Book? BookNavigation { get; set; }

@@ -14,8 +14,8 @@ namespace lib_postgres.FORMS
     public partial class Form_Action : Form
     {
 
-        public List<Book1> action_books;
-        public List<Book1> all_books;
+        public List<ViewBook> action_books;
+        public List<ViewBook> all_books;
         public Form_Action()
         {
             InitializeComponent();
@@ -24,12 +24,12 @@ namespace lib_postgres.FORMS
 
             all_books = DB_Agent.Get_Books_Special_View();
             DGV_AllBooks.DataSource = General_Manipulations.Bind_List_to_DGV(all_books);
-            CODE.Form_Element_DGV.Prepare_DGV_For_Type<Book1>(DGV_AllBooks);
+            CODE.Form_Element_DGV.Prepare_DGV_For_Type<ViewBook>(DGV_AllBooks);
             DGV_AllBooks.Refresh();
 
             action_books = new();
             DGV_ActionBooks.DataSource = General_Manipulations.Bind_List_to_DGV(action_books);
-            CODE.Form_Element_DGV.Prepare_DGV_For_Type<Book1>(DGV_ActionBooks);
+            CODE.Form_Element_DGV.Prepare_DGV_For_Type<ViewBook>(DGV_ActionBooks);
             DGV_ActionBooks.Refresh();
         }
 
@@ -41,7 +41,7 @@ namespace lib_postgres.FORMS
             {
                 all_books = DB_Agent.Get_Books_Special_View();
                 DGV_AllBooks.DataSource = General_Manipulations.Bind_List_to_DGV(all_books);
-                CODE.Form_Element_DGV.Prepare_DGV_For_Type<Book1>(DGV_AllBooks);
+                CODE.Form_Element_DGV.Prepare_DGV_For_Type<ViewBook>(DGV_AllBooks);
 
                 General_Manipulations.show_row(DGV_AllBooks, book_id.ToString(), "Id");
             }

@@ -19,22 +19,32 @@ namespace lib_postgres
         public virtual DbSet<Action> Actions { get; set; } = null!;
         public virtual DbSet<ActionType> ActionTypes { get; set; } = null!;
         public virtual DbSet<Art> Arts { get; set; } = null!;
+        public virtual DbSet<ArtRead> ArtReads { get; set; } = null!;
         public virtual DbSet<Author> Authors { get; set; } = null!;
         public virtual DbSet<AuthorArt> AuthorArts { get; set; } = null!;
         public virtual DbSet<Book> Books { get; set; } = null!;
-        public virtual DbSet<Book1> Books1 { get; set; } = null!;
+        public virtual DbSet<BookFormat> BookFormats { get; set; } = null!;
         public virtual DbSet<ChifresName> ChifresNames { get; set; } = null!;
         public virtual DbSet<City> Cities { get; set; } = null!;
         public virtual DbSet<Genre> Genres { get; set; } = null!;
-        public virtual DbSet<Genre1> Genres1 { get; set; } = null!;
         public virtual DbSet<Language> Languages { get; set; } = null!;
         public virtual DbSet<Location> Locations { get; set; } = null!;
+        public virtual DbSet<Mark> Marks { get; set; } = null!;
         public virtual DbSet<Person> People { get; set; } = null!;
         public virtual DbSet<Place> Places { get; set; } = null!;
         public virtual DbSet<Possession> Possessions { get; set; } = null!;
         public virtual DbSet<PublishingHouse> PublishingHouses { get; set; } = null!;
+        public virtual DbSet<Query> Queries { get; set; } = null!;
         public virtual DbSet<Series> Series { get; set; } = null!;
-        public virtual DbSet<Произведения> Произведенияs { get; set; } = null!;
+        public virtual DbSet<ViewAction> ViewActions { get; set; } = null!;
+        public virtual DbSet<ViewAllRealBook> ViewAllRealBooks { get; set; } = null!;
+        public virtual DbSet<ViewArt> ViewArts { get; set; } = null!;
+        public virtual DbSet<ViewBook> ViewBooks { get; set; } = null!;
+        public virtual DbSet<ViewCode> ViewCodes { get; set; } = null!;
+        public virtual DbSet<ViewGenre> ViewGenres { get; set; } = null!;
+        public virtual DbSet<ViewHasRead> ViewHasReads { get; set; } = null!;
+        public virtual DbSet<ViewMyBook> ViewMyBooks { get; set; } = null!;
+        public virtual DbSet<ViewMyBooksInOtherHand> ViewMyBooksInOtherHands { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -63,6 +73,8 @@ namespace lib_postgres
                     .HasColumnName("date")
                     .HasDefaultValueSql("CURRENT_DATE");
 
+                entity.Property(e => e.IsDeleted).HasColumnName("_is_deleted");
+
                 entity.Property(e => e.Name)
                     .HasMaxLength(100)
                     .HasColumnName("name");
@@ -86,9 +98,13 @@ namespace lib_postgres
 
                 entity.Property(e => e.Id).HasColumnName("id");
 
+                entity.Property(e => e.IsDeleted).HasColumnName("_is_deleted");
+
                 entity.Property(e => e.Name)
                     .HasMaxLength(100)
                     .HasColumnName("name");
+
+                entity.Property(e => e.Operation).HasColumnName("operation");
             });
 
             modelBuilder.Entity<Art>(entity =>
@@ -98,6 +114,8 @@ namespace lib_postgres
                 entity.Property(e => e.Id).HasColumnName("id");
 
                 entity.Property(e => e.Genre).HasColumnName("genre");
+
+                entity.Property(e => e.IsDeleted).HasColumnName("_is_deleted");
 
                 entity.Property(e => e.Name)
                     .HasMaxLength(100)
@@ -118,11 +136,59 @@ namespace lib_postgres
                     .HasConstraintName("art_orig_language_fkey");
             });
 
+            modelBuilder.Entity<ArtRead>(entity =>
+            {
+                entity.ToTable("art_read");
+
+                entity.Property(e => e.Id)
+                    .HasColumnName("id")
+                    .UseIdentityAlwaysColumn();
+
+                entity.Property(e => e.ArtId).HasColumnName("art_id");
+
+                entity.Property(e => e.BookFormatId).HasColumnName("book_format_id");
+
+                entity.Property(e => e.BookId).HasColumnName("book_id");
+
+                entity.Property(e => e.Comment)
+                    .HasMaxLength(255)
+                    .HasColumnName("comment");
+
+                entity.Property(e => e.Date).HasColumnName("date");
+
+                entity.Property(e => e.IsDeleted).HasColumnName("_is_deleted");
+
+                entity.Property(e => e.MarkId).HasColumnName("mark_id");
+
+                entity.HasOne(d => d.Art)
+                    .WithMany(p => p.ArtReads)
+                    .HasForeignKey(d => d.ArtId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("art_read_art_id_fkey");
+
+                entity.HasOne(d => d.BookFormat)
+                    .WithMany(p => p.ArtReads)
+                    .HasForeignKey(d => d.BookFormatId)
+                    .HasConstraintName("art_read_book_format_id_fkey");
+
+                entity.HasOne(d => d.Book)
+                    .WithMany(p => p.ArtReads)
+                    .HasForeignKey(d => d.BookId)
+                    .HasConstraintName("art_read_book_id_fkey");
+
+                entity.HasOne(d => d.Mark)
+                    .WithMany(p => p.ArtReads)
+                    .HasForeignKey(d => d.MarkId)
+                    .HasConstraintName("art_read_mark_id_fkey");
+            });
+
             modelBuilder.Entity<Author>(entity =>
             {
                 entity.ToTable("author");
 
                 entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.IsDeleted).HasColumnName("_is_deleted");
 
                 entity.Property(e => e.Name)
                     .HasMaxLength(100)
@@ -138,6 +204,8 @@ namespace lib_postgres
                 entity.Property(e => e.Art).HasColumnName("art");
 
                 entity.Property(e => e.Author).HasColumnName("author");
+
+                entity.Property(e => e.IsDeleted).HasColumnName("_is_deleted");
 
                 entity.HasOne(d => d.ArtNavigation)
                     .WithMany(p => p.AuthorArts)
@@ -180,6 +248,8 @@ namespace lib_postgres
 
                 entity.Property(e => e.IsArtBook).HasColumnName("is_art_book");
 
+                entity.Property(e => e.IsDeleted).HasColumnName("_is_deleted");
+
                 entity.Property(e => e.Notes).HasColumnName("notes");
 
                 entity.Property(e => e.Pages).HasColumnName("pages");
@@ -215,25 +285,19 @@ namespace lib_postgres
                     .HasConstraintName("book_id_series_fkey");
             });
 
-            modelBuilder.Entity<Book1>(entity =>
+            modelBuilder.Entity<BookFormat>(entity =>
             {
-                entity.HasNoKey();
+                entity.ToTable("book_format");
 
-                entity.ToView("books");
+                entity.Property(e => e.Id)
+                    .HasColumnName("id")
+                    .UseIdentityAlwaysColumn();
 
-                entity.Property(e => e.Id).HasColumnName("id");
+                entity.Property(e => e.IsDeleted).HasColumnName("_is_deleted");
 
-                entity.Property(e => e.АвторЫ).HasColumnName("Автор(ы)");
-
-                entity.Property(e => e.ГодИздания).HasColumnName("Год издания");
-
-                entity.Property(e => e.Жанр).HasMaxLength(100);
-
-                entity.Property(e => e.Издательство).HasMaxLength(100);
-
-                entity.Property(e => e.Название).HasMaxLength(100);
-
-                entity.Property(e => e.Шифр).HasMaxLength(100);
+                entity.Property(e => e.Name)
+                    .HasMaxLength(30)
+                    .HasColumnName("name");
             });
 
             modelBuilder.Entity<ChifresName>(entity =>
@@ -252,6 +316,8 @@ namespace lib_postgres
                 entity.Property(e => e.Id)
                     .ValueGeneratedOnAdd()
                     .HasColumnName("id");
+
+                entity.Property(e => e.IsDeleted).HasColumnName("_is_deleted");
             });
 
             modelBuilder.Entity<City>(entity =>
@@ -261,6 +327,8 @@ namespace lib_postgres
                 entity.Property(e => e.Id)
                     .HasColumnName("id")
                     .HasDefaultValueSql("nextval('\"City_id_seq\"'::regclass)");
+
+                entity.Property(e => e.IsDeleted).HasColumnName("_is_deleted");
 
                 entity.Property(e => e.Name)
                     .HasMaxLength(100)
@@ -273,18 +341,7 @@ namespace lib_postgres
 
                 entity.Property(e => e.Id).HasColumnName("id");
 
-                entity.Property(e => e.Name)
-                    .HasMaxLength(100)
-                    .HasColumnName("name");
-            });
-
-            modelBuilder.Entity<Genre1>(entity =>
-            {
-                entity.HasNoKey();
-
-                entity.ToView("genres");
-
-                entity.Property(e => e.Id).HasColumnName("id");
+                entity.Property(e => e.IsDeleted).HasColumnName("_is_deleted");
 
                 entity.Property(e => e.Name)
                     .HasMaxLength(100)
@@ -300,6 +357,8 @@ namespace lib_postgres
                 entity.Property(e => e.Bref)
                     .HasMaxLength(5)
                     .HasColumnName("bref");
+
+                entity.Property(e => e.IsDeleted).HasColumnName("_is_deleted");
 
                 entity.Property(e => e.Name)
                     .HasColumnType("character varying")
@@ -321,6 +380,8 @@ namespace lib_postgres
                 entity.Property(e => e.Comment)
                     .HasMaxLength(100)
                     .HasColumnName("comment");
+
+                entity.Property(e => e.IsDeleted).HasColumnName("_is_deleted");
 
                 entity.Property(e => e.Operation).HasColumnName("operation");
 
@@ -349,11 +410,28 @@ namespace lib_postgres
                     .HasConstraintName("location_place_fkey");
             });
 
+            modelBuilder.Entity<Mark>(entity =>
+            {
+                entity.ToTable("mark");
+
+                entity.Property(e => e.Id)
+                    .HasColumnName("id")
+                    .UseIdentityAlwaysColumn();
+
+                entity.Property(e => e.IsDeleted).HasColumnName("_is_deleted");
+
+                entity.Property(e => e.Name)
+                    .HasMaxLength(30)
+                    .HasColumnName("name");
+            });
+
             modelBuilder.Entity<Person>(entity =>
             {
                 entity.ToTable("people");
 
                 entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.IsDeleted).HasColumnName("_is_deleted");
 
                 entity.Property(e => e.Name)
                     .HasMaxLength(100)
@@ -369,6 +447,8 @@ namespace lib_postgres
                 entity.Property(e => e.Comment)
                     .HasMaxLength(100)
                     .HasColumnName("comment");
+
+                entity.Property(e => e.IsDeleted).HasColumnName("_is_deleted");
 
                 entity.Property(e => e.Name)
                     .HasMaxLength(100)
@@ -390,6 +470,8 @@ namespace lib_postgres
                     .HasColumnName("comment");
 
                 entity.Property(e => e.Date).HasColumnName("date");
+
+                entity.Property(e => e.IsDeleted).HasColumnName("_is_deleted");
 
                 entity.Property(e => e.Person).HasColumnName("person");
 
@@ -416,9 +498,28 @@ namespace lib_postgres
 
                 entity.Property(e => e.Id).HasColumnName("id");
 
+                entity.Property(e => e.IsDeleted).HasColumnName("_is_deleted");
+
                 entity.Property(e => e.Name)
                     .HasMaxLength(100)
                     .HasColumnName("name");
+            });
+
+            modelBuilder.Entity<Query>(entity =>
+            {
+                entity.ToTable("query");
+
+                entity.Property(e => e.Id)
+                    .HasColumnName("id")
+                    .UseIdentityAlwaysColumn();
+
+                entity.Property(e => e.IsDeleted).HasColumnName("_is_deleted");
+
+                entity.Property(e => e.Name)
+                    .HasMaxLength(100)
+                    .HasColumnName("name");
+
+                entity.Property(e => e.Text).HasColumnName("text");
             });
 
             modelBuilder.Entity<Series>(entity =>
@@ -427,22 +528,232 @@ namespace lib_postgres
 
                 entity.Property(e => e.Id).HasColumnName("id");
 
+                entity.Property(e => e.IsDeleted).HasColumnName("_is_deleted");
+
                 entity.Property(e => e.Name)
                     .HasMaxLength(100)
                     .HasColumnName("name");
             });
 
-            modelBuilder.Entity<Произведения>(entity =>
+            modelBuilder.Entity<ViewAction>(entity =>
             {
                 entity.HasNoKey();
 
-                entity.ToView("произведения");
+                entity.ToView("view_actions");
+
+                entity.Property(e => e.ActionId).HasColumnName("action_id");
+
+                entity.Property(e => e.Comment)
+                    .HasMaxLength(100)
+                    .HasColumnName("comment");
+
+                entity.Property(e => e.Date).HasColumnName("date");
+
+                entity.Property(e => e.Place)
+                    .HasMaxLength(100)
+                    .HasColumnName("place");
+            });
+
+            modelBuilder.Entity<ViewAllRealBook>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToView("view_all_real_books");
+
+                entity.Property(e => e.UniqueBookId).HasColumnName("unique_book_id");
+
+                entity.Property(e => e.АвторЫ).HasColumnName("Автор(ы)");
+
+                entity.Property(e => e.ГодИздания).HasColumnName("Год издания");
+
+                entity.Property(e => e.Движ)
+                    .HasMaxLength(100)
+                    .HasColumnName("Движ.");
+
+                entity.Property(e => e.Действие).HasMaxLength(100);
+
+                entity.Property(e => e.Жанр).HasMaxLength(100);
+
+                entity.Property(e => e.Издательство).HasMaxLength(100);
+
+                entity.Property(e => e.Место).HasMaxLength(100);
+
+                entity.Property(e => e.Название).HasMaxLength(100);
+
+                entity.Property(e => e.Шифр).HasMaxLength(100);
+
+                entity.Property(e => e.ЯзыкИздания)
+                    .HasColumnType("character varying")
+                    .HasColumnName("Язык издания");
+
+                entity.Property(e => e.ЯзыкНаписания)
+                    .HasColumnType("character varying")
+                    .HasColumnName("Язык написания");
+            });
+
+            modelBuilder.Entity<ViewArt>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToView("view_arts");
 
                 entity.Property(e => e.АвторЫ).HasColumnName("Автор(ы)");
 
                 entity.Property(e => e.Жанр).HasMaxLength(100);
 
                 entity.Property(e => e.Название).HasMaxLength(100);
+            });
+
+            modelBuilder.Entity<ViewBook>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToView("view_books");
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.АвторЫ).HasColumnName("Автор(ы)");
+
+                entity.Property(e => e.ГодИздания).HasColumnName("Год издания");
+
+                entity.Property(e => e.Жанр).HasMaxLength(100);
+
+                entity.Property(e => e.Издательство).HasMaxLength(100);
+
+                entity.Property(e => e.Название).HasMaxLength(100);
+
+                entity.Property(e => e.Шифр).HasMaxLength(100);
+            });
+
+            modelBuilder.Entity<ViewCode>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToView("view_codes");
+
+                entity.Property(e => e.BookId).HasColumnName("book_id");
+
+                entity.Property(e => e.Code)
+                    .HasMaxLength(100)
+                    .HasColumnName("code");
+
+                entity.Property(e => e.Genre)
+                    .HasMaxLength(100)
+                    .HasColumnName("genre");
+
+                entity.Property(e => e.Name)
+                    .HasMaxLength(100)
+                    .HasColumnName("name");
+            });
+
+            modelBuilder.Entity<ViewGenre>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToView("view_genres");
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.Name)
+                    .HasMaxLength(100)
+                    .HasColumnName("name");
+            });
+
+            modelBuilder.Entity<ViewHasRead>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToView("view_has_read");
+
+                entity.Property(e => e.АвторЫ).HasColumnName("Автор(ы)");
+
+                entity.Property(e => e.Впечатление).HasMaxLength(255);
+
+                entity.Property(e => e.Жанр).HasMaxLength(100);
+
+                entity.Property(e => e.Название).HasMaxLength(100);
+
+                entity.Property(e => e.Оценка).HasMaxLength(30);
+
+                entity.Property(e => e.Формат).HasMaxLength(30);
+
+                entity.Property(e => e.ЯзыкОригинала)
+                    .HasColumnType("character varying")
+                    .HasColumnName("Язык оригинала");
+            });
+
+            modelBuilder.Entity<ViewMyBook>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToView("view_my_books");
+
+                entity.Property(e => e.UniqueBookId).HasColumnName("unique_book_id");
+
+                entity.Property(e => e.АвторЫ).HasColumnName("Автор(ы)");
+
+                entity.Property(e => e.ГодИздания).HasColumnName("Год издания");
+
+                entity.Property(e => e.Движ)
+                    .HasMaxLength(100)
+                    .HasColumnName("Движ.");
+
+                entity.Property(e => e.Действие).HasMaxLength(100);
+
+                entity.Property(e => e.Жанр).HasMaxLength(100);
+
+                entity.Property(e => e.Издательство).HasMaxLength(100);
+
+                entity.Property(e => e.Место).HasMaxLength(100);
+
+                entity.Property(e => e.Название).HasMaxLength(100);
+
+                entity.Property(e => e.Шифр).HasMaxLength(100);
+
+                entity.Property(e => e.ЯзыкИздания)
+                    .HasColumnType("character varying")
+                    .HasColumnName("Язык издания");
+
+                entity.Property(e => e.ЯзыкНаписания)
+                    .HasColumnType("character varying")
+                    .HasColumnName("Язык написания");
+            });
+
+            modelBuilder.Entity<ViewMyBooksInOtherHand>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToView("view_my_books_in_other_hands");
+
+                entity.Property(e => e.UniqueBookId).HasColumnName("unique_book_id");
+
+                entity.Property(e => e.АвторЫ).HasColumnName("Автор(ы)");
+
+                entity.Property(e => e.ГодИздания).HasColumnName("Год издания");
+
+                entity.Property(e => e.Движ)
+                    .HasMaxLength(100)
+                    .HasColumnName("Движ.");
+
+                entity.Property(e => e.Действие).HasMaxLength(100);
+
+                entity.Property(e => e.Жанр).HasMaxLength(100);
+
+                entity.Property(e => e.Издательство).HasMaxLength(100);
+
+                entity.Property(e => e.Место).HasMaxLength(100);
+
+                entity.Property(e => e.Название).HasMaxLength(100);
+
+                entity.Property(e => e.Шифр).HasMaxLength(100);
+
+                entity.Property(e => e.ЯзыкИздания)
+                    .HasColumnType("character varying")
+                    .HasColumnName("Язык издания");
+
+                entity.Property(e => e.ЯзыкНаписания)
+                    .HasColumnType("character varying")
+                    .HasColumnName("Язык написания");
             });
 
             OnModelCreatingPartial(modelBuilder);

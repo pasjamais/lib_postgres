@@ -3,17 +3,17 @@ using System.Collections.Generic;
 
 namespace lib_postgres
 {
-    public partial class Series
+    public partial class BookFormat
     {
-        public Series()
+        public BookFormat()
         {
-            Books = new HashSet<Book>();
+            ArtReads = new HashSet<ArtRead>();
         }
 
         public long Id { get; set; }
         public string? Name { get; set; }
         public bool? IsDeleted { get; set; }
 
-        public virtual ICollection<Book> Books { get; set; }
+        public virtual ICollection<ArtRead> ArtReads { get; set; }
     }
 }

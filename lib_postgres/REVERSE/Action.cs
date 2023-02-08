@@ -17,6 +17,7 @@ namespace lib_postgres
         public string? Comment { get; set; }
         public long? Place { get; set; }
         public long? ActionType { get; set; }
+        public bool? IsDeleted { get; set; }
 
         public virtual ActionType? ActionTypeNavigation { get; set; }
         public virtual Place? PlaceNavigation { get; set; }

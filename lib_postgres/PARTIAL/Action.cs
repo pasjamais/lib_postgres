@@ -25,7 +25,7 @@ namespace lib_postgres.PARTIAL
                     action.ActionType = (long)form_Action.CB_Action_Type.SelectedValue;
                 DB_Agent.db.Actions.Add(action);
                 DB_Agent.db.SaveChanges();
-                foreach (lib_postgres.Book1 book1 in form_Action.action_books)
+                foreach (lib_postgres.ViewBook book1 in form_Action.action_books)
                 {
                     Location location = new Location();
                     location.Operation = true;
@@ -105,7 +105,7 @@ namespace lib_postgres.PARTIAL
             action.Date = DateOnly.FromDateTime(form_Action.dateTimePicker.Value.Date);
             DB_Agent.db.SaveChanges();
 
-            foreach (lib_postgres.Book1 book1 in form_Action.action_books)
+            foreach (lib_postgres.ViewBook book1 in form_Action.action_books)
             {
                 Location location = DB_Agent.Get_Location(DB_Agent.Get_Location_Id_by_Action_Id_and_Book_Id(action.Id, book1.Id)  );
                 location.Operation = Get_Operation(action.ActionType);

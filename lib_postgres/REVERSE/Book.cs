@@ -7,6 +7,7 @@ namespace lib_postgres
     {
         public Book()
         {
+            ArtReads = new HashSet<ArtRead>();
             Locations = new HashSet<Location>();
             Possessions = new HashSet<Possession>();
         }
@@ -26,12 +27,14 @@ namespace lib_postgres
         public int? State { get; set; }
         public string? FamilyNotes { get; set; }
         public bool? IsArtBook { get; set; }
+        public bool? IsDeleted { get; set; }
 
         public virtual Art IdArtNavigation { get; set; } = null!;
         public virtual City? IdCityNavigation { get; set; }
         public virtual Language? IdLanguageNavigation { get; set; }
         public virtual PublishingHouse? IdPublishingHouseNavigation { get; set; }
         public virtual Series? IdSeriesNavigation { get; set; }
+        public virtual ICollection<ArtRead> ArtReads { get; set; }
         public virtual ICollection<Location> Locations { get; set; }
         public virtual ICollection<Possession> Possessions { get; set; }
     }

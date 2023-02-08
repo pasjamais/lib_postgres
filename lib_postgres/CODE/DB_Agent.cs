@@ -21,14 +21,14 @@ namespace lib_postgres
             return db.Books.Find(id);
         }
 
-        public static Book1 Get_Book1(long id)
+        public static ViewBook Get_Book1(long id)
         {
-            return db.Books1.Find(id);
+            return db.ViewBooks.Find(id);
         }
 
-        public static List<Book1> Get_Books_Special_View()
+        public static List<ViewBook> Get_Books_Special_View()
         {
-              return db.Books1.ToList().OrderBy(n => n.Название).ToList(); 
+              return db.ViewBooks.ToList().OrderBy(n => n.Название).ToList(); 
           
         }
         public static List<Book> Get_Real_Books()

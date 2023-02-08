@@ -196,7 +196,7 @@
             this.ToolStripMenuItem_Arts_Delete});
             this.ToolStripMenuItem_Arts.Name = "ToolStripMenuItem_Arts";
             this.ToolStripMenuItem_Arts.Size = new System.Drawing.Size(98, 20);
-            this.ToolStripMenuItem_Arts.Text = "Произведения";
+            this.ToolStripMenuItem_Arts.Text = "ViewArt";
             // 
             // ToolStripMenuItem_Arts_Show
             // 
