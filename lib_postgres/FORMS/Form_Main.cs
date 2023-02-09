@@ -8,12 +8,12 @@ using System.Windows.Forms;
 
 namespace lib_postgres
 {
-    public partial class Form1 : Form
+    public partial class Form_Main : Form
     {
         private static Type? gridViewItemType;
         public Main_Form_Status_Update StatusProperty { get; set; } = new Main_Form_Status_Update();
         const string Caption = "Lib.";
-        public Form1()
+        public Form_Main()
         {
             InitializeComponent();
             Binding_Elements();
@@ -25,18 +25,17 @@ namespace lib_postgres
         {
             GridViewItemType = null;
             this.DataBindings.Add("Text", StatusProperty, "Message");
-       //     this.DataBindings.Add("ToolStripMenuItem__Book_Edit.Enabled", StatusProperty, "ToolStripMenuItem__Book_Edit");
-
-
+            //     this.DataBindings.Add("ToolStripMenuItem__Book_Edit.Enabled", StatusProperty, "ToolStripMenuItem__Book_Edit");
 
         }
 
         public static Type? GridViewItemType
         {
             get { return gridViewItemType; }
-            set {
- 
-                gridViewItemType = value; }
+            set
+            {
+                gridViewItemType = value;
+            }
         }
         public override string Text
         {
@@ -138,7 +137,7 @@ namespace lib_postgres
                          select a).ToList();
             dataGridView1.DataSource = items;
         }
-       
+
         #region Genre
         private void ToolStripMenuItem_Genres_Show_Click(object sender, EventArgs e)
         {
@@ -151,7 +150,7 @@ namespace lib_postgres
             var id = PARTIAL.Genre.Add_Genre();
             if (id > 0)
             {
-                ToolStripMenuItem_Genres_Show_Click( sender,  e);
+                ToolStripMenuItem_Genres_Show_Click(sender, e);
                 General_Manipulations.show_row(dataGridView1, id.ToString(), "Id");
             }
 
@@ -283,14 +282,14 @@ namespace lib_postgres
         }
 
         #endregion
-        
+
 
         #region PubHouse
 
 
         private void ToolStripMenuItem_PubHouse_Add_Click(object sender, EventArgs e)
         {
-            var id = PARTIAL.PublishingHouse.Add_PubHouse(); 
+            var id = PARTIAL.PublishingHouse.Add_PubHouse();
             if (id > 0)
             {
                 ToolStripMenuItem_PubHouse_Show_Click(sender, e);
@@ -411,19 +410,61 @@ namespace lib_postgres
         }
         #endregion
 
+
+        #region Read
+
+        private void ToolStripMenuItem__Read_Open_Click(object sender, EventArgs e)
+        {
+            dataGridView1.Columns.Clear();
+            dataGridView1.DataSource = DB_Agent.Get_ViewHasReads();
+            CODE.Form_Element_DGV.Prepare_DGV_For_Type<ViewHasRead>(dataGridView1, StatusProperty);
+            Colorise_DGV();
+        }
+
+        private void Colorise_DGV()
+        {
+            var formats = DB_Agent.Get_BookFormats();
+            var marks = DB_Agent.Get_Marks();
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                var format_color_id = (from f in formats
+                                where f.Name == row.Cells["‘ормат"].Value.ToString()
+                         select f.Id).First();
+                row.DefaultCellStyle.BackColor = lib_postgres.CODE.Data.format_colors[format_color_id];
+                var mark_color_id = (from m in marks
+                                     where m.Name == row.Cells["ќценка"].Value.ToString()
+                                select m.Id).First();
+                if (mark_color_id < 4 ||  mark_color_id > 6)
+                    row.Cells["ќценка"].Style.BackColor = lib_postgres.CODE.Data.marks_colors[mark_color_id];
+            }
+
+        }
+
+        private void ToolStripMenuItem__Read_Add_Click(object sender, EventArgs e)
+        {
+            var id = PARTIAL.ArtRead.Add_ArtRead();
+            if (id > 0)
+            {
+                ToolStripMenuItem__Read_Open_Click(sender, e);
+                General_Manipulations.show_row(dataGridView1, id.ToString(), "Id");
+            }
+        }
+        #endregion
+
         private void dataGridView1_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if      (gridViewItemType == typeof(Place)) ;
-            else if (gridViewItemType == typeof(Language))  ToolStripMenuItem_Language_Edit_Click(sender, e);
-            else if (gridViewItemType == typeof(Author))    ToolStripMenuItem_Author_Edit_Click(sender, e);
-            else if (gridViewItemType == typeof(Action))    ToolStripMenuItem_Actions_Edit_Click(sender, e);
-            else if (gridViewItemType == typeof(Series))    ToolStripMenuItem_Series_Edit_Click(sender, e);
+            if (gridViewItemType == typeof(Place)) ;
+            else if (gridViewItemType == typeof(Language)) ToolStripMenuItem_Language_Edit_Click(sender, e);
+            else if (gridViewItemType == typeof(Author)) ToolStripMenuItem_Author_Edit_Click(sender, e);
+            else if (gridViewItemType == typeof(Action)) ToolStripMenuItem_Actions_Edit_Click(sender, e);
+            else if (gridViewItemType == typeof(Series)) ToolStripMenuItem_Series_Edit_Click(sender, e);
             else if (gridViewItemType == typeof(PublishingHouse)) ToolStripMenuItem_PubHouse_Edit_Click(sender, e);
-            else if (gridViewItemType == typeof(City))      ToolStripMenuItem_City_Edit_Click(sender, e);
-            else if (gridViewItemType == typeof(ViewBook))     ToolStripMenuItem__Book_Edit_Click(sender, e);
-            else if (gridViewItemType == typeof(Art))       ToolStripMenuItem_Arts_Edit_Click(sender, e);
-            else if (gridViewItemType == typeof(Genre))     ToolStripMenuItem_Genres_Edit_Click(sender, e);
+            else if (gridViewItemType == typeof(City)) ToolStripMenuItem_City_Edit_Click(sender, e);
+            else if (gridViewItemType == typeof(ViewBook)) ToolStripMenuItem__Book_Edit_Click(sender, e);
+            else if (gridViewItemType == typeof(Art)) ToolStripMenuItem_Arts_Edit_Click(sender, e);
+            else if (gridViewItemType == typeof(Genre)) ToolStripMenuItem_Genres_Edit_Click(sender, e);
         }
+
 
     }
 }

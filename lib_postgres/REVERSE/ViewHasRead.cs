@@ -5,6 +5,7 @@ namespace lib_postgres
 {
     public partial class ViewHasRead
     {
+        public long? Id { get; set; }
         public DateOnly? Дата { get; set; }
         public string? АвторЫ { get; set; }
         public string? Название { get; set; }

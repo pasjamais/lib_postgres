@@ -1,6 +1,6 @@
 ﻿namespace lib_postgres
 {
-    partial class Form1
+    partial class Form_Main
     {
         /// <summary>
         ///  Required designer variable.
@@ -98,6 +98,8 @@
             this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
             this.ToolStripMenuItem_People = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Reader = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem__Read_Open = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem__Read_Add = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.book1BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -195,7 +197,7 @@
             this.ToolStripMenuItem_Arts_Edit,
             this.ToolStripMenuItem_Arts_Delete});
             this.ToolStripMenuItem_Arts.Name = "ToolStripMenuItem_Arts";
-            this.ToolStripMenuItem_Arts.Size = new System.Drawing.Size(98, 20);
+            this.ToolStripMenuItem_Arts.Size = new System.Drawing.Size(60, 20);
             this.ToolStripMenuItem_Arts.Text = "ViewArt";
             // 
             // ToolStripMenuItem_Arts_Show
@@ -626,11 +628,28 @@
             // 
             // ToolStripMenuItem_Reader
             // 
+            this.ToolStripMenuItem_Reader.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripMenuItem__Read_Open,
+            this.ToolStripMenuItem__Read_Add});
             this.ToolStripMenuItem_Reader.Name = "ToolStripMenuItem_Reader";
             this.ToolStripMenuItem_Reader.Size = new System.Drawing.Size(69, 20);
             this.ToolStripMenuItem_Reader.Text = "Читатель";
             // 
-            // Form1
+            // ToolStripMenuItem__Read_Open
+            // 
+            this.ToolStripMenuItem__Read_Open.Name = "ToolStripMenuItem__Read_Open";
+            this.ToolStripMenuItem__Read_Open.Size = new System.Drawing.Size(248, 22);
+            this.ToolStripMenuItem__Read_Open.Text = "Показать прочитанное";
+            this.ToolStripMenuItem__Read_Open.Click += new System.EventHandler(this.ToolStripMenuItem__Read_Open_Click);
+            // 
+            // ToolStripMenuItem__Read_Add
+            // 
+            this.ToolStripMenuItem__Read_Add.Name = "ToolStripMenuItem__Read_Add";
+            this.ToolStripMenuItem__Read_Add.Size = new System.Drawing.Size(248, 22);
+            this.ToolStripMenuItem__Read_Add.Text = "Добавить прочитанную книгу...";
+            this.ToolStripMenuItem__Read_Add.Click += new System.EventHandler(this.ToolStripMenuItem__Read_Add_Click);
+            // 
+            // Form_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -639,7 +658,7 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Name = "Form1";
+            this.Name = "Form_Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Lib.";
             ((System.ComponentModel.ISupportInitialize)(this.book1BindingSource)).EndInit();
@@ -721,5 +740,7 @@
         private ToolStripMenuItem ToolStripMenuItem_Series_Add;
         private ToolStripMenuItem ToolStripMenuItem_Series_Edit;
         private ToolStripMenuItem ToolStripMenuItem_Series_Delete;
+        private ToolStripMenuItem ToolStripMenuItem__Read_Open;
+        private ToolStripMenuItem ToolStripMenuItem__Read_Add;
     }
 }

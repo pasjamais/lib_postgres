@@ -665,6 +665,8 @@ namespace lib_postgres
 
                 entity.ToView("view_has_read");
 
+                entity.Property(e => e.Id).HasColumnName("id");
+
                 entity.Property(e => e.АвторЫ).HasColumnName("Автор(ы)");
 
                 entity.Property(e => e.Впечатление).HasMaxLength(255);

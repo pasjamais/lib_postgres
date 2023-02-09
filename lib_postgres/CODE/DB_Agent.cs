@@ -7,9 +7,10 @@ using System.Threading.Tasks;
 
 namespace lib_postgres
 {
-    public  class DB_Agent
+    public class DB_Agent
     {
-        public static libContext db = new  libContext();
+        public static libContext db = new libContext();
+      
         #region Books
         public static void Book_Add(Book book)
         {
@@ -21,19 +22,13 @@ namespace lib_postgres
             return db.Books.Find(id);
         }
 
-        public static ViewBook Get_Book1(long id)
-        {
-            return db.ViewBooks.Find(id);
-        }
-
         public static List<ViewBook> Get_Books_Special_View()
         {
-              return db.ViewBooks.ToList().OrderBy(n => n.Название).ToList(); 
-          
+            return db.ViewBooks.ToList().OrderBy(n => n.Название).ToList();
         }
         public static List<Book> Get_Real_Books()
         {
-            return db.Books.ToList().OrderBy(n => n.IdArt).ToList(); 
+            return db.Books.ToList().OrderBy(n => n.IdArt).ToList();
 
         }
         #endregion
@@ -126,7 +121,6 @@ namespace lib_postgres
         }
         #endregion
 
-
         #region Actions
         public static List<Action> Get_Actions()
         {
@@ -148,8 +142,6 @@ namespace lib_postgres
         }
         #endregion
 
-
-
         #region Locations
         public static List<Location> Get_Locations()
         {
@@ -160,8 +152,8 @@ namespace lib_postgres
             List<Location> locations = db.Locations.ToList();
 
             var location_id = (from loc in locations
-                            where loc.Action == action_id && loc.Book == book_id
-                            select loc.Id).ToList().First();
+                               where loc.Action == action_id && loc.Book == book_id
+                               select loc.Id).ToList().First();
             return location_id;
         }
 
@@ -200,6 +192,52 @@ namespace lib_postgres
         {
             db.AuthorArts.Remove(authorArt);
             db.SaveChanges();
+        }
+        #endregion
+
+        #region Read
+        public static List<ArtRead> Get_ArtReads()
+        {
+            return db.ArtReads.ToList().OrderBy(n => n.Date).ToList();
+        }
+
+        public static ArtRead Get_ArtRead(long id)
+        {
+            return db.ArtReads.Find(id);
+        }
+
+        public static List<ViewHasRead> Get_ViewHasReads()
+        {
+            return db.ViewHasReads.ToList().OrderBy(n => n.Дата).ToList();
+        }
+
+        public static ViewHasRead Get_ViewAllRealBook(long id)
+        {
+            return db.ViewHasReads.Find(id);
+        }
+        public static void ArtRead_Add(ArtRead artRead)
+        {
+            db.ArtReads.Add(artRead);
+            db.SaveChanges();
+        }
+        #endregion
+
+        #region BookFormat
+        public static List<BookFormat> Get_BookFormats()
+        {
+            return db.BookFormats.ToList();
+        }
+
+        public static BookFormat Get_BookFormat(long id)
+        {
+            return db.BookFormats.Find(id);
+        }
+        #endregion
+
+        #region Marks
+        public static List<Mark> Get_Marks()
+        {
+            return db.Marks.ToList();
         }
         #endregion
     }

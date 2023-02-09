@@ -151,6 +151,23 @@ namespace lib_postgres
                             select q).Take(1).First();
                 CB_visual_reload<ActionType>(CB, elements.IndexOf(item), elements);
             }
+            else if (type == typeof(BookFormat))
+            {
+                var elements = DB_Agent.Get_BookFormats();
+                var item = (from q in elements
+                            where q.Id == id
+                            select q).Take(1).First();
+                CB_visual_reload<BookFormat>(CB, elements.IndexOf(item), elements);
+            }
+            else if (type == typeof(Mark))
+            {
+                var elements = DB_Agent.Get_Marks();
+                var item = (from q in elements
+                            where q.Id == id
+                            select q).Take(1).First();
+                CB_visual_reload<Mark>(CB, elements.IndexOf(item), elements);
+            }
+
         }
         #endregion
          

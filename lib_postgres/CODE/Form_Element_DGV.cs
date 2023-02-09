@@ -14,7 +14,7 @@ namespace lib_postgres.CODE
         {
            // return;
             Type type = typeof(T);
-            if (StatusProperty is not null) Form1.GridViewItemType = type;
+            if (StatusProperty is not null) Form_Main.GridViewItemType = type;
             if (type == typeof(Action))
             {
                 DGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
@@ -138,8 +138,15 @@ namespace lib_postgres.CODE
                 DGV.Columns[1].FillWeight = (int)(DGV.Width * 0.85);
                 DGV.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 if (StatusProperty is not null) StatusProperty.Message = "Список жанров";
-
             }
+            else if (type == typeof(ViewHasRead))
+            {
+                DGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                if (StatusProperty is not null) StatusProperty.Message = "Список прочтённого";
+            }
+
+
+
         }
     }
 }
