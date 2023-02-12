@@ -21,7 +21,8 @@ namespace lib_postgres.PARTIAL
             artRead.BookFormatId = (System.Int64)form.CB_BookFormat.SelectedValue;
             if (form.TB_Comment.Text != "") artRead.Comment = form.TB_Comment.Text;
             artRead.Date = DateOnly.FromDateTime(form.dateTimePicker.Value.Date);
-
+            if (form.ChB_PaperBook.Checked && form.ChB_PaperBook.Enabled)
+                artRead.BookId = (System.Int64)form.CB_PaperBook.SelectedValue;
             DB_Agent.ArtRead_Add(artRead);
             return artRead.Id;
         }

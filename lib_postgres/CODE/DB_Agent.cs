@@ -237,7 +237,7 @@ namespace lib_postgres
         #region Marks
         public static List<Mark> Get_Marks()
         {
-            return db.Marks.ToList();
+            return db.Marks.ToList().OrderBy(n => n.Id).ToList();
         }
         #endregion
     }

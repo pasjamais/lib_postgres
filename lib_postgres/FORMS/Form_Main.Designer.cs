@@ -221,6 +221,7 @@
             // 
             // ToolStripMenuItem_Arts_Edit
             // 
+            this.ToolStripMenuItem_Arts_Edit.Enabled = false;
             this.ToolStripMenuItem_Arts_Edit.Name = "ToolStripMenuItem_Arts_Edit";
             this.ToolStripMenuItem_Arts_Edit.Size = new System.Drawing.Size(183, 22);
             this.ToolStripMenuItem_Arts_Edit.Text = "Изменить....";
@@ -266,6 +267,7 @@
             // 
             // ToolStripMenuItem_Author_Edit
             // 
+            this.ToolStripMenuItem_Author_Edit.Enabled = false;
             this.ToolStripMenuItem_Author_Edit.Name = "ToolStripMenuItem_Author_Edit";
             this.ToolStripMenuItem_Author_Edit.Size = new System.Drawing.Size(183, 22);
             this.ToolStripMenuItem_Author_Edit.Text = "Изменить...";
@@ -313,6 +315,7 @@
             // 
             // ToolStripMenuItem_Actions_Edit
             // 
+            this.ToolStripMenuItem_Actions_Edit.Enabled = false;
             this.ToolStripMenuItem_Actions_Edit.Name = "ToolStripMenuItem_Actions_Edit";
             this.ToolStripMenuItem_Actions_Edit.Size = new System.Drawing.Size(225, 22);
             this.ToolStripMenuItem_Actions_Edit.Text = "Изменить....";
@@ -366,7 +369,7 @@
             this.ToolStripMenuItem_Language_Edit,
             this.ToolStripMenuItem_Language_Delete});
             this.ToolStripMenuItem_Languages.Name = "ToolStripMenuItem_Languages";
-            this.ToolStripMenuItem_Languages.Size = new System.Drawing.Size(163, 22);
+            this.ToolStripMenuItem_Languages.Size = new System.Drawing.Size(180, 22);
             this.ToolStripMenuItem_Languages.Text = "Языки";
             // 
             // ToolStripMenuItem_Language_Show
@@ -390,6 +393,7 @@
             // 
             // ToolStripMenuItem_Language_Edit
             // 
+            this.ToolStripMenuItem_Language_Edit.Enabled = false;
             this.ToolStripMenuItem_Language_Edit.Name = "ToolStripMenuItem_Language_Edit";
             this.ToolStripMenuItem_Language_Edit.Size = new System.Drawing.Size(183, 22);
             this.ToolStripMenuItem_Language_Edit.Text = "Изменить...";
@@ -405,7 +409,7 @@
             // toolStripSeparator11
             // 
             this.toolStripSeparator11.Name = "toolStripSeparator11";
-            this.toolStripSeparator11.Size = new System.Drawing.Size(160, 6);
+            this.toolStripSeparator11.Size = new System.Drawing.Size(177, 6);
             // 
             // ToolStripMenuItem_Genres
             // 
@@ -416,7 +420,7 @@
             this.ToolStripMenuItem_Genres_Edit,
             this.ToolStripMenuItem__Genres_Delete});
             this.ToolStripMenuItem_Genres.Name = "ToolStripMenuItem_Genres";
-            this.ToolStripMenuItem_Genres.Size = new System.Drawing.Size(163, 22);
+            this.ToolStripMenuItem_Genres.Size = new System.Drawing.Size(180, 22);
             this.ToolStripMenuItem_Genres.Text = "Жанры";
             // 
             // ToolStripMenuItem_Genres_Show
@@ -440,6 +444,7 @@
             // 
             // ToolStripMenuItem_Genres_Edit
             // 
+            this.ToolStripMenuItem_Genres_Edit.Enabled = false;
             this.ToolStripMenuItem_Genres_Edit.Name = "ToolStripMenuItem_Genres_Edit";
             this.ToolStripMenuItem_Genres_Edit.Size = new System.Drawing.Size(183, 22);
             this.ToolStripMenuItem_Genres_Edit.Text = "Изменить...";
@@ -461,7 +466,7 @@
             this.ToolStripMenuItem_City_Edit,
             this.ToolStripMenuItem_City_Delete});
             this.ToolStripMenuItem_Cities.Name = "ToolStripMenuItem_Cities";
-            this.ToolStripMenuItem_Cities.Size = new System.Drawing.Size(163, 22);
+            this.ToolStripMenuItem_Cities.Size = new System.Drawing.Size(180, 22);
             this.ToolStripMenuItem_Cities.Text = "Города";
             // 
             // ToolStripMenuItem__City_Show
@@ -485,6 +490,7 @@
             // 
             // ToolStripMenuItem_City_Edit
             // 
+            this.ToolStripMenuItem_City_Edit.Enabled = false;
             this.ToolStripMenuItem_City_Edit.Name = "ToolStripMenuItem_City_Edit";
             this.ToolStripMenuItem_City_Edit.Size = new System.Drawing.Size(183, 22);
             this.ToolStripMenuItem_City_Edit.Text = "Изменить...";
@@ -506,7 +512,7 @@
             this.ToolStripMenuItem_Series_Edit,
             this.ToolStripMenuItem_Series_Delete});
             this.ToolStripMenuItem_Series.Name = "ToolStripMenuItem_Series";
-            this.ToolStripMenuItem_Series.Size = new System.Drawing.Size(163, 22);
+            this.ToolStripMenuItem_Series.Size = new System.Drawing.Size(180, 22);
             this.ToolStripMenuItem_Series.Text = "Серии книг";
             // 
             // ToolStripMenuItem_Series_Show
@@ -530,6 +536,7 @@
             // 
             // ToolStripMenuItem_Series_Edit
             // 
+            this.ToolStripMenuItem_Series_Edit.Enabled = false;
             this.ToolStripMenuItem_Series_Edit.Name = "ToolStripMenuItem_Series_Edit";
             this.ToolStripMenuItem_Series_Edit.Size = new System.Drawing.Size(183, 22);
             this.ToolStripMenuItem_Series_Edit.Text = "Изменить...";
@@ -551,7 +558,7 @@
             this.ToolStripMenuItem_PubHouse_Edit,
             this.ToolStripMenuItem_PubHouse_Delete});
             this.ToolStripMenuItem_PubHouse.Name = "ToolStripMenuItem_PubHouse";
-            this.ToolStripMenuItem_PubHouse.Size = new System.Drawing.Size(163, 22);
+            this.ToolStripMenuItem_PubHouse.Size = new System.Drawing.Size(180, 22);
             this.ToolStripMenuItem_PubHouse.Text = "Издательства";
             // 
             // ToolStripMenuItem_PubHouse_Show
@@ -575,6 +582,7 @@
             // 
             // ToolStripMenuItem_PubHouse_Edit
             // 
+            this.ToolStripMenuItem_PubHouse_Edit.Enabled = false;
             this.ToolStripMenuItem_PubHouse_Edit.Name = "ToolStripMenuItem_PubHouse_Edit";
             this.ToolStripMenuItem_PubHouse_Edit.Size = new System.Drawing.Size(183, 22);
             this.ToolStripMenuItem_PubHouse_Edit.Text = "Изменить...";
@@ -590,40 +598,40 @@
             // toolStripSeparator10
             // 
             this.toolStripSeparator10.Name = "toolStripSeparator10";
-            this.toolStripSeparator10.Size = new System.Drawing.Size(160, 6);
+            this.toolStripSeparator10.Size = new System.Drawing.Size(177, 6);
             // 
             // ToolStripMenuItem_Marks
             // 
             this.ToolStripMenuItem_Marks.Name = "ToolStripMenuItem_Marks";
-            this.ToolStripMenuItem_Marks.Size = new System.Drawing.Size(163, 22);
+            this.ToolStripMenuItem_Marks.Size = new System.Drawing.Size(180, 22);
             this.ToolStripMenuItem_Marks.Text = "Оценки книг";
             // 
             // ToolStripMenuItem_Book_Format
             // 
             this.ToolStripMenuItem_Book_Format.Name = "ToolStripMenuItem_Book_Format";
-            this.ToolStripMenuItem_Book_Format.Size = new System.Drawing.Size(163, 22);
+            this.ToolStripMenuItem_Book_Format.Size = new System.Drawing.Size(180, 22);
             this.ToolStripMenuItem_Book_Format.Text = "Форматы";
             // 
             // toolStripSeparator12
             // 
             this.toolStripSeparator12.Name = "toolStripSeparator12";
-            this.toolStripSeparator12.Size = new System.Drawing.Size(160, 6);
+            this.toolStripSeparator12.Size = new System.Drawing.Size(177, 6);
             // 
             // ToolStripMenuItem_Places
             // 
             this.ToolStripMenuItem_Places.Name = "ToolStripMenuItem_Places";
-            this.ToolStripMenuItem_Places.Size = new System.Drawing.Size(163, 22);
+            this.ToolStripMenuItem_Places.Size = new System.Drawing.Size(180, 22);
             this.ToolStripMenuItem_Places.Text = "Места хранения";
             // 
             // toolStripSeparator9
             // 
             this.toolStripSeparator9.Name = "toolStripSeparator9";
-            this.toolStripSeparator9.Size = new System.Drawing.Size(160, 6);
+            this.toolStripSeparator9.Size = new System.Drawing.Size(177, 6);
             // 
             // ToolStripMenuItem_People
             // 
             this.ToolStripMenuItem_People.Name = "ToolStripMenuItem_People";
-            this.ToolStripMenuItem_People.Size = new System.Drawing.Size(163, 22);
+            this.ToolStripMenuItem_People.Size = new System.Drawing.Size(180, 22);
             this.ToolStripMenuItem_People.Text = "Люди";
             // 
             // ToolStripMenuItem_Reader

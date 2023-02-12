@@ -143,7 +143,9 @@ namespace lib_postgres
         {
             dataGridView1.Columns.Clear();
             dataGridView1.DataSource = DB_Agent.Get_Genres();
+            Turn_Off_Current_Menu_Item();
             CODE.Form_Element_DGV.Prepare_DGV_For_Type<Genre>(dataGridView1, StatusProperty);
+            Turn_On_Current_Menu_Item();
         }
         private void ToolStripMenuItem_Genres_Add_Click(object sender, EventArgs e)
         {
@@ -181,7 +183,9 @@ namespace lib_postgres
         {
             dataGridView1.Columns.Clear();
             dataGridView1.DataSource = DB_Agent.Get_Authors();
+            Turn_Off_Current_Menu_Item();
             CODE.Form_Element_DGV.Prepare_DGV_For_Type<Author>(dataGridView1, StatusProperty);
+            Turn_On_Current_Menu_Item();
         }
 
         private void ToolStripMenuItem_Author_Add_Click(object sender, EventArgs e)
@@ -201,7 +205,9 @@ namespace lib_postgres
         {
             dataGridView1.Columns.Clear();
             dataGridView1.DataSource = CODE.Code_Queries.Get_Arts();
+            Turn_Off_Current_Menu_Item();
             CODE.Form_Element_DGV.Prepare_DGV_For_Type<Art>(dataGridView1, StatusProperty);
+            Turn_On_Current_Menu_Item();
         }
         private void ToolStripMenuItem_Arts_Add_Click(object sender, EventArgs e)
         {
@@ -230,7 +236,9 @@ namespace lib_postgres
         {
             dataGridView1.Columns.Clear();
             dataGridView1.DataSource = DB_Agent.Get_Languages();
+            Turn_Off_Current_Menu_Item();
             CODE.Form_Element_DGV.Prepare_DGV_For_Type<Language>(dataGridView1, StatusProperty);
+            Turn_On_Current_Menu_Item();
         }
 
         private void ToolStripMenuItem_Language_Add_Click(object sender, EventArgs e)
@@ -268,7 +276,9 @@ namespace lib_postgres
         {
             dataGridView1.Columns.Clear();
             dataGridView1.DataSource = DB_Agent.Get_Books_Special_View();
+            Turn_Off_Current_Menu_Item();
             CODE.Form_Element_DGV.Prepare_DGV_For_Type<ViewBook>(dataGridView1, StatusProperty);
+            Turn_On_Current_Menu_Item();
         }
 
         private void ToolStripMenuItem__Book_Edit_Click(object sender, EventArgs e)
@@ -301,8 +311,9 @@ namespace lib_postgres
         {
             dataGridView1.Columns.Clear();
             dataGridView1.DataSource = DB_Agent.Get_Publishing_Houses();
+            Turn_Off_Current_Menu_Item();
             CODE.Form_Element_DGV.Prepare_DGV_For_Type<PublishingHouse>(dataGridView1, StatusProperty);
-
+            Turn_On_Current_Menu_Item();
         }
 
         private void ToolStripMenuItem_PubHouse_Edit_Click(object sender, EventArgs e)
@@ -322,7 +333,9 @@ namespace lib_postgres
         {
             dataGridView1.Columns.Clear();
             dataGridView1.DataSource = DB_Agent.Get_Cities();
+            Turn_Off_Current_Menu_Item();
             CODE.Form_Element_DGV.Prepare_DGV_For_Type<City>(dataGridView1, StatusProperty);
+            Turn_On_Current_Menu_Item();
         }
 
         private void ToolStripMenuItem_City_Add_Click(object sender, EventArgs e)
@@ -351,7 +364,9 @@ namespace lib_postgres
         {
             dataGridView1.Columns.Clear();
             dataGridView1.DataSource = DB_Agent.Get_Actions();
+            Turn_Off_Current_Menu_Item();
             CODE.Form_Element_DGV.Prepare_DGV_For_Type<Action>(dataGridView1, StatusProperty);
+            Turn_On_Current_Menu_Item();
         }
 
         private void ToolStripMenuItem_Actions_Create_Click(object sender, EventArgs e)
@@ -386,7 +401,9 @@ namespace lib_postgres
         {
             dataGridView1.Columns.Clear();
             dataGridView1.DataSource = DB_Agent.Get_Series();
+            Turn_Off_Current_Menu_Item();
             CODE.Form_Element_DGV.Prepare_DGV_For_Type<Series>(dataGridView1, StatusProperty);
+            Turn_On_Current_Menu_Item();
         }
 
         private void ToolStripMenuItem_Series_Add_Click(object sender, EventArgs e)
@@ -466,5 +483,33 @@ namespace lib_postgres
         }
 
 
+        #region enable_edit
+        private void Turn_Off_Current_Menu_Item()
+        {
+            Turn_Menu_Item(false);
+        }
+        private void Turn_On_Current_Menu_Item()
+        {
+            Turn_Menu_Item(true);
+        }
+        private void Turn_Menu_Item(bool state)
+        {
+            if (gridViewItemType == typeof(Place)) ;
+            else if (gridViewItemType == typeof(Language)) Turn_On_Off_Menu_Item(ToolStripMenuItem_Language_Edit, state);
+            else if (gridViewItemType == typeof(Author)) Turn_On_Off_Menu_Item(ToolStripMenuItem_Author_Edit, state);
+            else if (gridViewItemType == typeof(Action)) Turn_On_Off_Menu_Item(ToolStripMenuItem_Actions_Edit, state);
+            else if (gridViewItemType == typeof(Series)) Turn_On_Off_Menu_Item(ToolStripMenuItem_Series_Edit, state);
+            else if (gridViewItemType == typeof(PublishingHouse)) Turn_On_Off_Menu_Item(ToolStripMenuItem_PubHouse_Edit, state);
+            else if (gridViewItemType == typeof(City)) Turn_On_Off_Menu_Item(ToolStripMenuItem_City_Edit, state);
+            else if (gridViewItemType == typeof(ViewBook)) Turn_On_Off_Menu_Item(ToolStripMenuItem__Book_Edit, state);
+            else if (gridViewItemType == typeof(Art)) Turn_On_Off_Menu_Item(ToolStripMenuItem_Arts_Edit, state);
+            else if (gridViewItemType == typeof(Genre)) Turn_On_Off_Menu_Item(ToolStripMenuItem_Genres_Edit, state);
+        }
+
+        private void Turn_On_Off_Menu_Item(ToolStripMenuItem menu_item, bool state) 
+        {
+            menu_item.Enabled = state;
+        }
+        #endregion
     }
 }

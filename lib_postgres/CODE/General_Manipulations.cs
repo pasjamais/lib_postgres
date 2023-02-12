@@ -167,11 +167,17 @@ namespace lib_postgres
                             select q).Take(1).First();
                 CB_visual_reload<Mark>(CB, elements.IndexOf(item), elements);
             }
-
+else        if (type == typeof(ViewBook))
+            {
+                CB.DataSource = CODE.Code_Queries.Get_Books_Short();
+                CB.ValueMember = "Id";
+                CB.DisplayMember = "Name";
+                CB.SelectedIndex = 1;
+            }
         }
         #endregion
-         
-         
+
+
         #region Action
         public static void Edit_Action(DataGridView dataGridView)
 
@@ -186,7 +192,7 @@ namespace lib_postgres
         }
         #endregion
 
-  
+
         #region Traitement of data
         public static string? compare_string_values(string? old_string, string new_string)
         {
@@ -207,27 +213,23 @@ namespace lib_postgres
 
         public static long? compare_values_logic(long? old_value, object? new_value, bool checked_in_form)
         {
-            // IdPublishingHouse
-            bool A = checked_in_form;
-            bool B = old_value is null;
-            bool C = new_value is not null;
-            if (!B && !A) return null;
+            if (!checked_in_form) return null;
             else
-            if (A && C && (B || (!B && (old_value != (System.Int64)new_value))))
-                return (System.Int64)new_value;
-            else return null;// это приводит к ненужной перезаписи
+                if (new_value is null ) return null;
+                else return (System.Int64)new_value;
         }
+
         public static DateOnly? compare_data_values(DateOnly? d, string? t)
         {
-            if ((d != null && t != d.Value.Year.ToString()) || (d == null && t != ""))
-                if (t != "")
-                {
-                    int x = 0;
-                    Int32.TryParse(t, out x);
-                    return new DateOnly(x, 1, 1);
-                }
-                else return null;
-            else return null;
+            if (t != "")
+            {
+                int x = 0;
+                Int32.TryParse(t, out x);
+                return new DateOnly(x, 1, 1);
+
+            }
+            else
+                return null;
         }
 
         public static int? Get_Number_from_String(string? str)

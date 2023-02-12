@@ -195,6 +195,17 @@ namespace lib_postgres.CODE
                          }).ToList().OrderBy(n => n.loc_record).ToList();
             return items;
         }
+        public static dynamic Get_Books_Short()
+        {
+            var books = DB_Agent.Get_Books_Special_View();
+            var items = (from b in books
+                      select new
+                      { Id = b.Id, 
+                          Name =  b.Название + " | " + b.АвторЫ +       " | "
+                                    + b.Жанр + " | " + b.Издательство + " | " + b.Шифр
+                      }).ToList().OrderBy(n => n.Name).ToList();
+            return items;
+        }
 
     }
 }
