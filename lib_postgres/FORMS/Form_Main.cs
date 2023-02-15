@@ -3,7 +3,9 @@ using lib_postgres.FORMS;
 using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Npgsql;
+using System.Reflection.Emit;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 
 namespace lib_postgres
@@ -15,12 +17,30 @@ namespace lib_postgres
         const string Caption = "Lib.";
         public Form_Main()
         {
+            
             InitializeComponent();
             Binding_Elements();
             main_menu_generation();
             ToolStripMenuItem_Book_Show_Click(this, null);
         }
 
+        #region popup
+        private void Cmi_item_find_book_Click(object? sender, EventArgs e)
+        {
+            if (gridViewItemType == typeof(ViewBook))
+            {
+                int index = dataGridView1.SelectedRows[0].Index;
+                long id = (long)dataGridView1.Rows[index].Cells["Id"].Value;
+                Form_Report form_report = new Form_Report();
+                form_report.Text = (string)dataGridView1.Rows[index].Cells["Название"].Value + " / " + (string)dataGridView1.Rows[index].Cells["АвторЫ"].Value;
+                form_report.DGV.DataSource = CODE.Code_Queries.Fill_DataTable_by_Query_with_Parameter
+                    <long>(DB_Agent.Get_Query(2).Text, ":book_id_parameter", id);
+                var DialogResult = form_report.ShowDialog();
+                if (DialogResult != DialogResult.OK)
+                    return;
+            }
+        }
+        #endregion
         private void Binding_Elements()
         {
             GridViewItemType = null;
@@ -42,7 +62,7 @@ namespace lib_postgres
             get => base.Text;
             set => base.Text = Caption + value;
         }
-
+        #region main_menu
         private void main_menu_generation()
         {
             ToolStripMenuItem newItem = new ToolStripMenuItem("Где книги");
@@ -137,7 +157,8 @@ namespace lib_postgres
                          select a).ToList();
             dataGridView1.DataSource = items;
         }
-
+        #endregion
+        
         #region Genre
         private void ToolStripMenuItem_Genres_Show_Click(object sender, EventArgs e)
         {
@@ -483,7 +504,7 @@ namespace lib_postgres
         }
 
 
-        #region enable_edit
+        #region enable_disable_menu_items
         private void Turn_Off_Current_Menu_Item()
         {
             Turn_Menu_Item(false);
@@ -494,21 +515,23 @@ namespace lib_postgres
         }
         private void Turn_Menu_Item(bool state)
         {
-            if (gridViewItemType == typeof(Place)) ;
+            if (gridViewItemType == typeof(Place));
             else if (gridViewItemType == typeof(Language)) Turn_On_Off_Menu_Item(ToolStripMenuItem_Language_Edit, state);
             else if (gridViewItemType == typeof(Author)) Turn_On_Off_Menu_Item(ToolStripMenuItem_Author_Edit, state);
             else if (gridViewItemType == typeof(Action)) Turn_On_Off_Menu_Item(ToolStripMenuItem_Actions_Edit, state);
             else if (gridViewItemType == typeof(Series)) Turn_On_Off_Menu_Item(ToolStripMenuItem_Series_Edit, state);
             else if (gridViewItemType == typeof(PublishingHouse)) Turn_On_Off_Menu_Item(ToolStripMenuItem_PubHouse_Edit, state);
             else if (gridViewItemType == typeof(City)) Turn_On_Off_Menu_Item(ToolStripMenuItem_City_Edit, state);
-            else if (gridViewItemType == typeof(ViewBook)) Turn_On_Off_Menu_Item(ToolStripMenuItem__Book_Edit, state);
+            else if (gridViewItemType == typeof(ViewBook)) Turn_On_Off_Menu_Item(ToolStripMenuItem__Book_Edit, state, cmi_item_find_book);
             else if (gridViewItemType == typeof(Art)) Turn_On_Off_Menu_Item(ToolStripMenuItem_Arts_Edit, state);
             else if (gridViewItemType == typeof(Genre)) Turn_On_Off_Menu_Item(ToolStripMenuItem_Genres_Edit, state);
         }
 
-        private void Turn_On_Off_Menu_Item(ToolStripMenuItem menu_item, bool state) 
+        private void Turn_On_Off_Menu_Item(ToolStripMenuItem menu_item, bool state, ToolStripMenuItem toolStripMenuItem = null) 
         {
             menu_item.Enabled = state;
+            if (toolStripMenuItem is not null)
+                toolStripMenuItem.Visible = state;
         }
         #endregion
     }

@@ -234,11 +234,34 @@ namespace lib_postgres
         }
         #endregion
 
+        #region Queries
+        public static List<Query> Get_Queries()
+        {
+            return db.Queries.ToList();
+        }
+
+        public static Query Get_Query(long id)
+        {
+            return db.Queries.Find(id);
+        }
+        #endregion
+       
         #region Marks
         public static List<Mark> Get_Marks()
         {
             return db.Marks.ToList().OrderBy(n => n.Id).ToList();
         }
         #endregion
+
+        #region general
+        public static string Get_Connection_String ()
+        {
+            CODE.IniFile ini = new CODE.IniFile(CODE.Data.ini_file_name);
+            string? connection_string = ini.Read("connection_string", "GENERAL");
+            return connection_string;
+        }
+        #endregion
+
+
     }
 }

@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             this.book1BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.cmi_item_find_book = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.ToolStripMenuItem_Books = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Book_Show = new System.Windows.Forms.ToolStripMenuItem();
@@ -102,6 +104,7 @@
             this.ToolStripMenuItem__Read_Add = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.book1BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.contextMenuStrip.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -112,6 +115,7 @@
             this.dataGridView1.AllowUserToResizeRows = false;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.ContextMenuStrip = this.contextMenuStrip;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 24);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -124,6 +128,20 @@
             this.dataGridView1.Size = new System.Drawing.Size(1036, 362);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentDoubleClick);
+            // 
+            // contextMenuStrip
+            // 
+            this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cmi_item_find_book});
+            this.contextMenuStrip.Name = "contextMenuStrip";
+            this.contextMenuStrip.Size = new System.Drawing.Size(152, 26);
+            // 
+            // cmi_item_find_book
+            // 
+            this.cmi_item_find_book.Name = "cmi_item_find_book";
+            this.cmi_item_find_book.Size = new System.Drawing.Size(151, 22);
+            this.cmi_item_find_book.Text = "Найти книгу...";
+            this.cmi_item_find_book.Click += new System.EventHandler(this.Cmi_item_find_book_Click);
             // 
             // menuStrip1
             // 
@@ -369,7 +387,7 @@
             this.ToolStripMenuItem_Language_Edit,
             this.ToolStripMenuItem_Language_Delete});
             this.ToolStripMenuItem_Languages.Name = "ToolStripMenuItem_Languages";
-            this.ToolStripMenuItem_Languages.Size = new System.Drawing.Size(180, 22);
+            this.ToolStripMenuItem_Languages.Size = new System.Drawing.Size(163, 22);
             this.ToolStripMenuItem_Languages.Text = "Языки";
             // 
             // ToolStripMenuItem_Language_Show
@@ -409,7 +427,7 @@
             // toolStripSeparator11
             // 
             this.toolStripSeparator11.Name = "toolStripSeparator11";
-            this.toolStripSeparator11.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator11.Size = new System.Drawing.Size(160, 6);
             // 
             // ToolStripMenuItem_Genres
             // 
@@ -420,7 +438,7 @@
             this.ToolStripMenuItem_Genres_Edit,
             this.ToolStripMenuItem__Genres_Delete});
             this.ToolStripMenuItem_Genres.Name = "ToolStripMenuItem_Genres";
-            this.ToolStripMenuItem_Genres.Size = new System.Drawing.Size(180, 22);
+            this.ToolStripMenuItem_Genres.Size = new System.Drawing.Size(163, 22);
             this.ToolStripMenuItem_Genres.Text = "Жанры";
             // 
             // ToolStripMenuItem_Genres_Show
@@ -466,7 +484,7 @@
             this.ToolStripMenuItem_City_Edit,
             this.ToolStripMenuItem_City_Delete});
             this.ToolStripMenuItem_Cities.Name = "ToolStripMenuItem_Cities";
-            this.ToolStripMenuItem_Cities.Size = new System.Drawing.Size(180, 22);
+            this.ToolStripMenuItem_Cities.Size = new System.Drawing.Size(163, 22);
             this.ToolStripMenuItem_Cities.Text = "Города";
             // 
             // ToolStripMenuItem__City_Show
@@ -512,7 +530,7 @@
             this.ToolStripMenuItem_Series_Edit,
             this.ToolStripMenuItem_Series_Delete});
             this.ToolStripMenuItem_Series.Name = "ToolStripMenuItem_Series";
-            this.ToolStripMenuItem_Series.Size = new System.Drawing.Size(180, 22);
+            this.ToolStripMenuItem_Series.Size = new System.Drawing.Size(163, 22);
             this.ToolStripMenuItem_Series.Text = "Серии книг";
             // 
             // ToolStripMenuItem_Series_Show
@@ -558,7 +576,7 @@
             this.ToolStripMenuItem_PubHouse_Edit,
             this.ToolStripMenuItem_PubHouse_Delete});
             this.ToolStripMenuItem_PubHouse.Name = "ToolStripMenuItem_PubHouse";
-            this.ToolStripMenuItem_PubHouse.Size = new System.Drawing.Size(180, 22);
+            this.ToolStripMenuItem_PubHouse.Size = new System.Drawing.Size(163, 22);
             this.ToolStripMenuItem_PubHouse.Text = "Издательства";
             // 
             // ToolStripMenuItem_PubHouse_Show
@@ -598,40 +616,40 @@
             // toolStripSeparator10
             // 
             this.toolStripSeparator10.Name = "toolStripSeparator10";
-            this.toolStripSeparator10.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator10.Size = new System.Drawing.Size(160, 6);
             // 
             // ToolStripMenuItem_Marks
             // 
             this.ToolStripMenuItem_Marks.Name = "ToolStripMenuItem_Marks";
-            this.ToolStripMenuItem_Marks.Size = new System.Drawing.Size(180, 22);
+            this.ToolStripMenuItem_Marks.Size = new System.Drawing.Size(163, 22);
             this.ToolStripMenuItem_Marks.Text = "Оценки книг";
             // 
             // ToolStripMenuItem_Book_Format
             // 
             this.ToolStripMenuItem_Book_Format.Name = "ToolStripMenuItem_Book_Format";
-            this.ToolStripMenuItem_Book_Format.Size = new System.Drawing.Size(180, 22);
+            this.ToolStripMenuItem_Book_Format.Size = new System.Drawing.Size(163, 22);
             this.ToolStripMenuItem_Book_Format.Text = "Форматы";
             // 
             // toolStripSeparator12
             // 
             this.toolStripSeparator12.Name = "toolStripSeparator12";
-            this.toolStripSeparator12.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator12.Size = new System.Drawing.Size(160, 6);
             // 
             // ToolStripMenuItem_Places
             // 
             this.ToolStripMenuItem_Places.Name = "ToolStripMenuItem_Places";
-            this.ToolStripMenuItem_Places.Size = new System.Drawing.Size(180, 22);
+            this.ToolStripMenuItem_Places.Size = new System.Drawing.Size(163, 22);
             this.ToolStripMenuItem_Places.Text = "Места хранения";
             // 
             // toolStripSeparator9
             // 
             this.toolStripSeparator9.Name = "toolStripSeparator9";
-            this.toolStripSeparator9.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator9.Size = new System.Drawing.Size(160, 6);
             // 
             // ToolStripMenuItem_People
             // 
             this.ToolStripMenuItem_People.Name = "ToolStripMenuItem_People";
-            this.ToolStripMenuItem_People.Size = new System.Drawing.Size(180, 22);
+            this.ToolStripMenuItem_People.Size = new System.Drawing.Size(163, 22);
             this.ToolStripMenuItem_People.Text = "Люди";
             // 
             // ToolStripMenuItem_Reader
@@ -671,6 +689,7 @@
             this.Text = "Lib.";
             ((System.ComponentModel.ISupportInitialize)(this.book1BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.contextMenuStrip.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -750,5 +769,7 @@
         private ToolStripMenuItem ToolStripMenuItem_Series_Delete;
         private ToolStripMenuItem ToolStripMenuItem__Read_Open;
         private ToolStripMenuItem ToolStripMenuItem__Read_Add;
+        private ContextMenuStrip contextMenuStrip;
+        protected ToolStripMenuItem cmi_item_find_book;
     }
 }

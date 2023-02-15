@@ -28,20 +28,7 @@ namespace lib_postgres.CODE
             {9, Color.MediumVioletRed },
             {10, Color.DarkRed      }
         };
+
+        public static string ini_file_name = "settings.ini";
     }
 }
-/*
-
-    https://qna.habr.com/q/684215
-
-
-
-
-
-
-
-
-
-
-
- */
