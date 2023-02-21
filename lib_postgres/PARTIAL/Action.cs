@@ -1,4 +1,5 @@
-﻿using System;
+﻿using lib_postgres.FORMS;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,18 +26,7 @@ namespace lib_postgres.PARTIAL
                     action.ActionType = (long)form_Action.CB_Action_Type.SelectedValue;
                 DB_Agent.db.Actions.Add(action);
                 DB_Agent.db.SaveChanges();
-                foreach (lib_postgres.ViewBook book1 in form_Action.action_books)
-                {
-                    Location location = new Location();
-                    location.Operation = true;
-                    location.Book = book1.Id;
-                    location.Place = action.Place;
-                    location.Owner = 1;
-                    location.Comment = action.Comment;
-                    location.Action = action.Id;
-                    DB_Agent.db.Locations.Add(location);
-                    DB_Agent.db.SaveChanges();
-                }
+                Save_Books_in_Action(form_Action.action_books, action, true);
                 return action.Id;
             }
             else return -1;
@@ -53,8 +43,30 @@ namespace lib_postgres.PARTIAL
             else return false;
             else return false;
         }
-
-        public static long Edit_Action(DataGridView dataGridView)
+        private static void Save_Books_in_Action(List<ViewBook> action_books, lib_postgres.Action action, bool is_new_action)
+        {
+            foreach (lib_postgres.ViewBook viewBook in action_books)
+            {
+                Location location = is_new_action ? new Location() :
+                    DB_Agent.Get_Location(DB_Agent.Get_Location_Id_by_Action_Id_and_Book_Id(action.Id, viewBook.Id));
+                if (action.ActionType == 2) location.Owner = null;
+                    else location.Owner = 1;
+                if (Get_Operation(action.ActionType)) location.Place = action.Place;
+                else location.Place = null;
+                //!!! В Action хранится Place указанный пользователем в форме, а в Location - действительное расположение, в т. ч. null
+                location.Operation = Get_Operation(action.ActionType);
+                location.Comment = action.Comment;
+                if (is_new_action)
+                {
+                    location.Book = viewBook.Id;
+                    location.Action = action.Id;
+                    DB_Agent.db.Locations.Add(location);
+                }
+                DB_Agent.db.SaveChanges();
+            }
+        }
+      
+    public static long Edit_Action(DataGridView dataGridView)
         {
             int index = dataGridView.SelectedRows[0].Index;
             long id = (long)dataGridView.Rows[index].Cells["Id"].Value;
@@ -104,24 +116,7 @@ namespace lib_postgres.PARTIAL
                         action.Comment = General_Manipulations.compare_string_values(action.Comment, form_Action.TB_Comment.Text);
             action.Date = DateOnly.FromDateTime(form_Action.dateTimePicker.Value.Date);
             DB_Agent.db.SaveChanges();
-
-            foreach (lib_postgres.ViewBook book1 in form_Action.action_books)
-            {
-                Location location = DB_Agent.Get_Location(DB_Agent.Get_Location_Id_by_Action_Id_and_Book_Id(action.Id, book1.Id)  );
-                location.Operation = Get_Operation(action.ActionType);
-                //location.Book = book1.Id;
-
-                //!!! В Action хранится Place указанный пользователем в форме, а в Location - действительное расположение, в т. ч. null
-                // 
-                if (Get_Operation(action.ActionType)  )
-                    location.Place = action.Place;
-                else location.Place = null;
-                if (action.ActionType == 2) location.Owner = null;
-                //location.Owner = 1;
-                location.Comment = action.Comment;
-                //location.Action = action.Id;
-                DB_Agent.db.SaveChanges();
-            }
+            Save_Books_in_Action(form_Action.action_books, action, false);  
             return action.Id;
 
 

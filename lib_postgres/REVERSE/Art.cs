@@ -8,6 +8,9 @@ namespace lib_postgres
         public Art()
         {
             ArtReads = new HashSet<ArtRead>();
+            ArtSpecRegisters = new HashSet<ArtSpecRegister>();
+            ArtToReadSourceArts = new HashSet<ArtToRead>();
+            ArtToReadToreadArts = new HashSet<ArtToRead>();
             AuthorArts = new HashSet<AuthorArt>();
             Books = new HashSet<Book>();
         }
@@ -22,6 +25,9 @@ namespace lib_postgres
         public virtual Genre? GenreNavigation { get; set; }
         public virtual Language? OrigLanguageNavigation { get; set; }
         public virtual ICollection<ArtRead> ArtReads { get; set; }
+        public virtual ICollection<ArtSpecRegister> ArtSpecRegisters { get; set; }
+        public virtual ICollection<ArtToRead> ArtToReadSourceArts { get; set; }
+        public virtual ICollection<ArtToRead> ArtToReadToreadArts { get; set; }
         public virtual ICollection<AuthorArt> AuthorArts { get; set; }
         public virtual ICollection<Book> Books { get; set; }
     }

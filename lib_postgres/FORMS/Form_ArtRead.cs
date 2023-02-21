@@ -19,6 +19,7 @@ namespace lib_postgres.FORMS
             General_Manipulations.CB_reload<BookFormat>(CB_BookFormat, 1);
             General_Manipulations.CB_reload<Mark>(CB_Mark, 1); 
             General_Manipulations.CB_reload<ViewBook>(CB_PaperBook, 1);
+            General_Manipulations.CB_reload<Language>(CB_Langue, 3);//русский по-умолчанию
             ChB_PaperBook.Enabled = (long)CB_BookFormat.SelectedValue == 1;
 
         }

@@ -43,6 +43,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.CB_PaperBook = new System.Windows.Forms.ComboBox();
             this.ChB_PaperBook = new System.Windows.Forms.CheckBox();
+            this.CB_Langue = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button_Cancel
@@ -69,7 +71,7 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label16.Location = new System.Drawing.Point(43, 65);
+            this.label16.Location = new System.Drawing.Point(35, 64);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(118, 20);
             this.label16.TabIndex = 87;
@@ -87,7 +89,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(43, 23);
+            this.label2.Location = new System.Drawing.Point(30, 20);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(123, 20);
             this.label2.TabIndex = 90;
@@ -148,7 +150,7 @@
             // 
             this.CB_BookFormat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CB_BookFormat.FormattingEnabled = true;
-            this.CB_BookFormat.Location = new System.Drawing.Point(161, 169);
+            this.CB_BookFormat.Location = new System.Drawing.Point(161, 166);
             this.CB_BookFormat.Name = "CB_BookFormat";
             this.CB_BookFormat.Size = new System.Drawing.Size(227, 28);
             this.CB_BookFormat.TabIndex = 98;
@@ -157,7 +159,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(74, 172);
+            this.label3.Location = new System.Drawing.Point(87, 169);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(66, 20);
             this.label3.TabIndex = 97;
@@ -185,6 +187,24 @@
             this.ChB_PaperBook.CheckedChanged += new System.EventHandler(this.ChB_PaperBook_CheckedChanged);
             this.ChB_PaperBook.CheckStateChanged += new System.EventHandler(this.ChB_PaperBook_CheckStateChanged);
             // 
+            // CB_Langue
+            // 
+            this.CB_Langue.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CB_Langue.FormattingEnabled = true;
+            this.CB_Langue.Location = new System.Drawing.Point(161, 132);
+            this.CB_Langue.Name = "CB_Langue";
+            this.CB_Langue.Size = new System.Drawing.Size(227, 28);
+            this.CB_Langue.TabIndex = 101;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(30, 140);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(125, 20);
+            this.label4.TabIndex = 102;
+            this.label4.Text = "Язык прочтения:";
+            // 
             // Form_ArtRead
             // 
             this.AcceptButton = this.button_OK;
@@ -193,6 +213,8 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.CancelButton = this.button_Cancel;
             this.ClientSize = new System.Drawing.Size(544, 560);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.CB_Langue);
             this.Controls.Add(this.ChB_PaperBook);
             this.Controls.Add(this.CB_PaperBook);
             this.Controls.Add(this.CB_BookFormat);
@@ -237,5 +259,7 @@
         public Label label3;
         public ComboBox CB_PaperBook;
         public CheckBox ChB_PaperBook;
+        public ComboBox CB_Langue;
+        public Label label4;
     }
 }

@@ -26,7 +26,7 @@ namespace lib_postgres
         {
             return db.ViewBooks.ToList().OrderBy(n => n.Название).ToList();
         }
-        public static List<Book> Get_Real_Books()
+        public static List<Book> Get_Books()
         {
             return db.Books.ToList().OrderBy(n => n.IdArt).ToList();
 

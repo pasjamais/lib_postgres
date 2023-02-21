@@ -13,10 +13,12 @@ namespace lib_postgres
         public long? MarkId { get; set; }
         public long? BookFormatId { get; set; }
         public bool? IsDeleted { get; set; }
+        public long? ReadLanguageId { get; set; }
 
         public virtual Art Art { get; set; } = null!;
         public virtual Book? Book { get; set; }
         public virtual BookFormat? BookFormat { get; set; }
         public virtual Mark? Mark { get; set; }
+        public virtual Language? ReadLanguage { get; set; }
     }
 }

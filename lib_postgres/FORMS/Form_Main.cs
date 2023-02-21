@@ -40,6 +40,21 @@ namespace lib_postgres
                     return;
             }
         }
+
+        private void cmi_item_add_art_to_read_Click(object sender, EventArgs e)
+        {
+            if (gridViewItemType == typeof(Art))
+            {
+                int index = dataGridView1.SelectedRows[0].Index;
+                long id_art = (long)dataGridView1.Rows[index].Cells["Id"].Value;
+                var id = PARTIAL.ArtRead.Add_ArtRead(id_art);
+                if (id > 0)
+                {
+                    ToolStripMenuItem__Read_Open_Click(sender, e);
+                    General_Manipulations.show_row(dataGridView1, id.ToString(), "Id");
+                }
+            }
+        }
         #endregion
         private void Binding_Elements()
         {
@@ -96,7 +111,7 @@ namespace lib_postgres
             var languages = DB_Agent.Get_Languages();
             var arts = DB_Agent.Get_Arts();
             var locations = DB_Agent.Get_Locations();
-            var books = DB_Agent.Get_Real_Books();
+            var books = DB_Agent.Get_Books();
             var genres = DB_Agent.Get_Genres();
             var pubhouse = DB_Agent.Get_Publishing_Houses();
             var cities = DB_Agent.Get_Cities();
@@ -232,7 +247,7 @@ namespace lib_postgres
         }
         private void ToolStripMenuItem_Arts_Add_Click(object sender, EventArgs e)
         {
-            var id = PARTIAL.Art.Add_Art();
+            var id = Art.Add_Art();
             if (id > 0)
             {
                 ToolStripMenuItem_Arts_Show_Click(sender, e);
@@ -242,7 +257,7 @@ namespace lib_postgres
 
         private void ToolStripMenuItem_Arts_Edit_Click(object sender, EventArgs e)
         {
-            var id = PARTIAL.Art.Edit_Art(dataGridView1);
+            var id = Art.Edit_Art(dataGridView1);
             if (id > 0)
             {
                 ToolStripMenuItem_Arts_Show_Click(sender, e);
@@ -523,7 +538,7 @@ namespace lib_postgres
             else if (gridViewItemType == typeof(PublishingHouse)) Turn_On_Off_Menu_Item(ToolStripMenuItem_PubHouse_Edit, state);
             else if (gridViewItemType == typeof(City)) Turn_On_Off_Menu_Item(ToolStripMenuItem_City_Edit, state);
             else if (gridViewItemType == typeof(ViewBook)) Turn_On_Off_Menu_Item(ToolStripMenuItem__Book_Edit, state, cmi_item_find_book);
-            else if (gridViewItemType == typeof(Art)) Turn_On_Off_Menu_Item(ToolStripMenuItem_Arts_Edit, state);
+            else if (gridViewItemType == typeof(Art)) Turn_On_Off_Menu_Item(ToolStripMenuItem_Arts_Edit, state, ToolStripMenuItem_Book_Add);
             else if (gridViewItemType == typeof(Genre)) Turn_On_Off_Menu_Item(ToolStripMenuItem_Genres_Edit, state);
         }
 
@@ -532,7 +547,9 @@ namespace lib_postgres
             menu_item.Enabled = state;
             if (toolStripMenuItem is not null)
                 toolStripMenuItem.Visible = state;
+
         }
         #endregion
+        
     }
 }

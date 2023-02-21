@@ -11,7 +11,7 @@ namespace lib_postgres.CODE
         public long Id { get; set; }
         public string? PublicationYear { get; set; }
         public string? PublishingHouse { get; set; }
-        public string? Language { get; set; }
+        public string? PublishingLanguage { get; set; }
         public string? City { get; set; }
         public int? Pages { get; set; }
         public string? IdSeries { get; set; }

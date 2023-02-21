@@ -12,7 +12,7 @@ namespace lib_postgres.CODE
     public static class Code_Queries
     {
 
-            public static List<Art_and_Author> Get_Arts()
+        public static List<Art_and_Author> Get_Arts()
         {
             var places = DB_Agent.Get_Places();
             var authors = DB_Agent.Get_Authors();
@@ -20,7 +20,7 @@ namespace lib_postgres.CODE
             var languages = DB_Agent.Get_Languages();
             var arts = DB_Agent.Get_Arts();
             var locations = DB_Agent.Get_Locations();
-            var books = DB_Agent.Get_Real_Books();
+            var books = DB_Agent.Get_Books();
             var genres = DB_Agent.Get_Genres();
             var pubhouse = DB_Agent.Get_Publishing_Houses();
             var cities = DB_Agent.Get_Cities();
@@ -56,66 +56,64 @@ namespace lib_postgres.CODE
         }
 
 
+
         public static void Show_Actions(DataGridView dataGridView)
         {
             var actions = DB_Agent.Get_Actions();
             var action_types = DB_Agent.Get_ActionTypes();
             var places = DB_Agent.Get_Places();
             var items = (from act in actions
-                        join act_typ in action_types on act.ActionType equals act_typ.Id
+                         join act_typ in action_types on act.ActionType equals act_typ.Id
                          //      join pla in places on act.Place equals pla.Id //   если нул надо не соединять   
                          select new
                          {
                              Id = act.Id,
-                          //   Действие = act.Name,
+                             //   Действие = act.Name,
                              Примечание = act.Comment,
                              Дата = act.Date,
-                          //   Место = pla.Name,
-                         //    Тип = act_typ.Name
+                             //   Место = pla.Name,
+                             //    Тип = act_typ.Name
                          }).ToList().OrderBy(n => n.Дата).ToList(); ;
             dataGridView.DataSource = items;
         }
 
+
         public static List<Book_Adopted> Get_Books()
         {
-      
-            var authors = DB_Agent.Get_Authors();
-            var authors_arts = DB_Agent.Get_AuthorArts();
-            var languages = DB_Agent.Get_Languages();
-            var arts = DB_Agent.Get_Arts();
-            var locations = DB_Agent.Get_Locations();
-            var books = DB_Agent.Get_Real_Books();
-            var genres = DB_Agent.Get_Genres();
+            var arts_authors = Get_Arts();
+            var books = DB_Agent.Get_Books();
             var pubhouse = DB_Agent.Get_Publishing_Houses();
             var cities = DB_Agent.Get_Cities();
-            var arts_authors = Get_Arts();
-          
-            var items = (from boo in books 
+            var languages = DB_Agent.Get_Languages();
+            var genres = DB_Agent.Get_Genres();
+            var items = (from boo in books
                          join art in arts_authors on boo.IdArt equals art.Id
                          join pub in pubhouse on boo.IdPublishingHouse equals pub.Id
                          join cit in cities on boo.IdCity equals cit.Id
-                         join lan_boo in languages on boo.IdLanguage equals lan_boo.Id  
+                         join lan_boo in languages on boo.IdLanguage equals lan_boo.Id
                          select new Book_Adopted
                          {
                              Id = boo.Id,
+
                              Name = art.Name ?? "",
                              Authors = art.Authors ?? "",
                              Genre = art.Genre ?? "",
+                             WritingYear = art.WritingYear ?? "",
+                             OrigLanguage = art.OrigLanguage ?? "",
+
+                             PublishingLanguage = lan_boo.Name ?? "",
                              PublicationYear = boo.PublicationYear.HasValue ? boo.PublicationYear.Value.Year.ToString() : "",
-                             WritingYear = art.WritingYear,
                              PublishingHouse = pub.Name ?? "",
                              City = cit.Name ?? "",
                              Pages = boo.Pages,
-                             Code = boo.Code ?? "",
-                             Language = lan_boo.Name ?? "",
-                             OrigLanguage = art.OrigLanguage ?? ""
+                             Code = boo.Code ?? ""
                          }).ToList();
             return items;
         }
         public static dynamic Get_Books_a_la_ancienne()
         {
             var languages = DB_Agent.Get_Languages();
-            var books = DB_Agent.Get_Real_Books();
+            var books = DB_Agent.Get_Books();
             var pubhouse = DB_Agent.Get_Publishing_Houses();
             var cities = DB_Agent.Get_Cities();
             var arts_authors = Get_Arts();
@@ -148,36 +146,8 @@ namespace lib_postgres.CODE
             var books = Get_Books();
             var items = (from loc in locations
                          join boo in books on loc.Book equals boo.Id
+                         where boo.Id >= 274
                          join pla in places on loc.Place equals pla.Id
-                         select new
-                         {
-                             loc_record = loc.Id,
-                             Размещение = pla.Name ?? "",
-                             book_id    = boo.Id.ToString() ?? "",
-                             Название   = boo.Name ?? "",
-                             Автор_ы    = boo.Authors ?? "",
-                             Жанр       = boo.Genre ?? "",
-                             Год_издания = boo.PublicationYear ?? "",
-                             Год_написания = boo.WritingYear ?? "",
-                             Издательство   = boo.PublishingHouse ?? "",
-                             Город          = boo.City ?? "",
-                             Страниц        = boo.Pages.ToString() ?? "",
-                             Шифр           = boo.Code ?? "",
-                             Язык_издания   = boo.Language ?? "",
-                             Язык_оригинала = boo.OrigLanguage ?? ""
-                         }).ToList().OrderBy(n => n.loc_record).ToList();
-            return items;
-        }
-
-        public static dynamic Get_Action_and_Books(int action_id)
-        {
-            var places = DB_Agent.Get_Places();
-            var locations = DB_Agent.Get_Locations();
-            var books = Get_Books();
-            var items = (from loc in locations
-                         join boo in books on loc.Book equals boo.Id
-                         join pla in places on loc.Place equals pla.Id
-                         where loc.Action == action_id
                          select new
                          {
                              loc_record = loc.Id,
@@ -192,20 +162,22 @@ namespace lib_postgres.CODE
                              Город = boo.City ?? "",
                              Страниц = boo.Pages.ToString() ?? "",
                              Шифр = boo.Code ?? "",
-                             Язык_издания = boo.Language ?? "",
+                             Язык_издания = boo.PublishingLanguage ?? "",
                              Язык_оригинала = boo.OrigLanguage ?? ""
                          }).ToList().OrderBy(n => n.loc_record).ToList();
             return items;
         }
+
         public static dynamic Get_Books_Short()
         {
             var books = DB_Agent.Get_Books_Special_View();
             var items = (from b in books
-                      select new
-                      { Id = b.Id, 
-                          Name =  b.Название + " | " + b.АвторЫ +       " | "
-                                    + b.Жанр + " | " + b.Издательство + " | " + b.Шифр
-                      }).ToList().OrderBy(n => n.Name).ToList();
+                         select new
+                         {
+                             Id = b.Id,
+                             Name = b.Название + " | " + b.АвторЫ + " | "
+                                       + b.Жанр + " | " + b.Издательство + " | " + b.Шифр
+                         }).ToList().OrderBy(n => n.Name).ToList();
             return items;
         }
         public static DataTable Fill_DataTable_by_Query(string queryString)

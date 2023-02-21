@@ -20,6 +20,8 @@ namespace lib_postgres
         public virtual DbSet<ActionType> ActionTypes { get; set; } = null!;
         public virtual DbSet<Art> Arts { get; set; } = null!;
         public virtual DbSet<ArtRead> ArtReads { get; set; } = null!;
+        public virtual DbSet<ArtSpecRegister> ArtSpecRegisters { get; set; } = null!;
+        public virtual DbSet<ArtToRead> ArtToReads { get; set; } = null!;
         public virtual DbSet<Author> Authors { get; set; } = null!;
         public virtual DbSet<AuthorArt> AuthorArts { get; set; } = null!;
         public virtual DbSet<Book> Books { get; set; } = null!;
@@ -36,6 +38,8 @@ namespace lib_postgres
         public virtual DbSet<PublishingHouse> PublishingHouses { get; set; } = null!;
         public virtual DbSet<Query> Queries { get; set; } = null!;
         public virtual DbSet<Series> Series { get; set; } = null!;
+        public virtual DbSet<SourceToreadAnother> SourceToreadAnothers { get; set; } = null!;
+        public virtual DbSet<SpecRegisterAttribute> SpecRegisterAttributes { get; set; } = null!;
         public virtual DbSet<ViewAction> ViewActions { get; set; } = null!;
         public virtual DbSet<ViewAllRealBook> ViewAllRealBooks { get; set; } = null!;
         public virtual DbSet<ViewArt> ViewArts { get; set; } = null!;
@@ -51,7 +55,7 @@ namespace lib_postgres
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseNpgsql(DB_Agent.Get_Connection_String());
+                optionsBuilder.UseNpgsql(DB_Agent.Get_Connection_String()); 
             }
         }
 
@@ -160,6 +164,8 @@ namespace lib_postgres
 
                 entity.Property(e => e.MarkId).HasColumnName("mark_id");
 
+                entity.Property(e => e.ReadLanguageId).HasColumnName("read_language_id");
+
                 entity.HasOne(d => d.Art)
                     .WithMany(p => p.ArtReads)
                     .HasForeignKey(d => d.ArtId)
@@ -180,6 +186,94 @@ namespace lib_postgres
                     .WithMany(p => p.ArtReads)
                     .HasForeignKey(d => d.MarkId)
                     .HasConstraintName("art_read_mark_id_fkey");
+
+                entity.HasOne(d => d.ReadLanguage)
+                    .WithMany(p => p.ArtReads)
+                    .HasForeignKey(d => d.ReadLanguageId)
+                    .HasConstraintName("art_read_read_language_id_fkey");
+            });
+
+            modelBuilder.Entity<ArtSpecRegister>(entity =>
+            {
+                entity.ToTable("art_spec_register");
+
+                entity.Property(e => e.Id)
+                    .HasColumnName("id")
+                    .UseIdentityAlwaysColumn();
+
+                entity.Property(e => e.ArtId).HasColumnName("art_id");
+
+                entity.Property(e => e.Comment)
+                    .HasColumnType("char")
+                    .HasColumnName("comment");
+
+                entity.Property(e => e.Date).HasColumnName("date");
+
+                entity.Property(e => e.IsDeleted).HasColumnName("_is_deleted");
+
+                entity.Property(e => e.SpecRegisterAttributeId).HasColumnName("spec_register_attribute_id");
+
+                entity.HasOne(d => d.Art)
+                    .WithMany(p => p.ArtSpecRegisters)
+                    .HasForeignKey(d => d.ArtId)
+                    .HasConstraintName("art_spec_register_art_id_fkey");
+
+                entity.HasOne(d => d.SpecRegisterAttribute)
+                    .WithMany(p => p.ArtSpecRegisters)
+                    .HasForeignKey(d => d.SpecRegisterAttributeId)
+                    .HasConstraintName("art_spec_register_spec_register_attribute_id_fkey");
+            });
+
+            modelBuilder.Entity<ArtToRead>(entity =>
+            {
+                entity.ToTable("art_to_read");
+
+                entity.Property(e => e.Id)
+                    .HasColumnName("id")
+                    .UseIdentityAlwaysColumn();
+
+                entity.Property(e => e.Comment)
+                    .HasColumnType("character varying")
+                    .HasColumnName("comment");
+
+                entity.Property(e => e.Date).HasColumnName("date");
+
+                entity.Property(e => e.IsDeleted).HasColumnName("_is_deleted");
+
+                entity.Property(e => e.SourceAnotherId).HasColumnName("source_another_id");
+
+                entity.Property(e => e.SourceArtId).HasColumnName("source_art_id");
+
+                entity.Property(e => e.SourceAuthorId).HasColumnName("source_author_id");
+
+                entity.Property(e => e.ToreadArtId).HasColumnName("toread_art_id");
+
+                entity.Property(e => e.ToreadAuthorId).HasColumnName("toread_author_id");
+
+                entity.HasOne(d => d.SourceAnother)
+                    .WithMany(p => p.ArtToReads)
+                    .HasForeignKey(d => d.SourceAnotherId)
+                    .HasConstraintName("art_to_read_source_another_id_fkey");
+
+                entity.HasOne(d => d.SourceArt)
+                    .WithMany(p => p.ArtToReadSourceArts)
+                    .HasForeignKey(d => d.SourceArtId)
+                    .HasConstraintName("art_to_read_source_art_id_fkey");
+
+                entity.HasOne(d => d.SourceAuthor)
+                    .WithMany(p => p.ArtToReadSourceAuthors)
+                    .HasForeignKey(d => d.SourceAuthorId)
+                    .HasConstraintName("art_to_read_source_author_id_fkey");
+
+                entity.HasOne(d => d.ToreadArt)
+                    .WithMany(p => p.ArtToReadToreadArts)
+                    .HasForeignKey(d => d.ToreadArtId)
+                    .HasConstraintName("art_to_read_toread_art_id_fkey");
+
+                entity.HasOne(d => d.ToreadAuthor)
+                    .WithMany(p => p.ArtToReadToreadAuthors)
+                    .HasForeignKey(d => d.ToreadAuthorId)
+                    .HasConstraintName("art_to_read_toread_author_id_fkey");
             });
 
             modelBuilder.Entity<Author>(entity =>
@@ -532,6 +626,44 @@ namespace lib_postgres
 
                 entity.Property(e => e.Name)
                     .HasMaxLength(100)
+                    .HasColumnName("name");
+            });
+
+            modelBuilder.Entity<SourceToreadAnother>(entity =>
+            {
+                entity.ToTable("source_toread_another");
+
+                entity.Property(e => e.Id)
+                    .HasColumnName("id")
+                    .UseIdentityAlwaysColumn();
+
+                entity.Property(e => e.Comment)
+                    .HasColumnType("character varying")
+                    .HasColumnName("comment");
+
+                entity.Property(e => e.IsDeleted).HasColumnName("_is_deleted");
+
+                entity.Property(e => e.Name)
+                    .HasColumnType("character varying")
+                    .HasColumnName("name");
+            });
+
+            modelBuilder.Entity<SpecRegisterAttribute>(entity =>
+            {
+                entity.ToTable("spec_register_attribute");
+
+                entity.Property(e => e.Id)
+                    .HasColumnName("id")
+                    .UseIdentityAlwaysColumn();
+
+                entity.Property(e => e.Comment)
+                    .HasColumnType("character varying")
+                    .HasColumnName("comment");
+
+                entity.Property(e => e.IsDeleted).HasColumnName("_is_deleted");
+
+                entity.Property(e => e.Name)
+                    .HasColumnType("character varying")
                     .HasColumnName("name");
             });
 

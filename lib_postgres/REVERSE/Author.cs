@@ -7,6 +7,8 @@ namespace lib_postgres
     {
         public Author()
         {
+            ArtToReadSourceAuthors = new HashSet<ArtToRead>();
+            ArtToReadToreadAuthors = new HashSet<ArtToRead>();
             AuthorArts = new HashSet<AuthorArt>();
         }
 
@@ -14,6 +16,8 @@ namespace lib_postgres
         public string Name { get; set; } = null!;
         public bool? IsDeleted { get; set; }
 
+        public virtual ICollection<ArtToRead> ArtToReadSourceAuthors { get; set; }
+        public virtual ICollection<ArtToRead> ArtToReadToreadAuthors { get; set; }
         public virtual ICollection<AuthorArt> AuthorArts { get; set; }
     }
 }

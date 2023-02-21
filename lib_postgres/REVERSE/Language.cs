@@ -7,6 +7,7 @@ namespace lib_postgres
     {
         public Language()
         {
+            ArtReads = new HashSet<ArtRead>();
             Arts = new HashSet<Art>();
             Books = new HashSet<Book>();
         }
@@ -16,6 +17,7 @@ namespace lib_postgres
         public string? Bref { get; set; }
         public bool? IsDeleted { get; set; }
 
+        public virtual ICollection<ArtRead> ArtReads { get; set; }
         public virtual ICollection<Art> Arts { get; set; }
         public virtual ICollection<Book> Books { get; set; }
     }
