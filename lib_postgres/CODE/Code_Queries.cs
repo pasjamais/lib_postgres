@@ -1,4 +1,5 @@
-﻿using Npgsql;
+﻿using lib_postgres.PARTIAL;
+using Npgsql;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -11,7 +12,7 @@ namespace lib_postgres.CODE
 
     public static class Code_Queries
     {
-
+        #region LinQ
         public static List<Art_and_Author> Get_Arts()
         {
             var places = DB_Agent.Get_Places();
@@ -167,7 +168,34 @@ namespace lib_postgres.CODE
                          }).ToList().OrderBy(n => n.loc_record).ToList();
             return items;
         }
-
+        public static dynamic Get_Recommendations()
+        {
+            var arts_authors = Get_Arts();
+            var recs = DB_Agent.Get_Recommendations();
+            var temp = (from rec in recs
+                          join art_source in arts_authors on rec.SourceArtId equals art_source.Id
+                          select new 
+                         {
+                             Id = rec.Id,
+                             Date = rec.Date,
+                             Art_Source = art_source.Name + " | " + art_source.Authors,
+                             Comment = rec.Comment,
+                             ToreadArtId = rec.ToreadArtId
+                          }).ToList();
+            arts_authors = Get_Arts();
+            var result = (from tem in temp
+                            join art_toread in arts_authors on tem.ToreadArtId equals art_toread.Id
+                        select new
+                        {
+                            Id = tem.Id,
+                            Date = tem.Date,
+                            Art_ToRead = art_toread.Name + " | " + art_toread.Authors,
+                            Art_Source = tem.Art_Source,
+                            Comment = tem.Comment
+                        }).ToList();
+            return result;
+        }
+        #endregion
         public static dynamic Get_Books_Short()
         {
             var books = DB_Agent.Get_Books_Special_View();
@@ -180,6 +208,8 @@ namespace lib_postgres.CODE
                          }).ToList().OrderBy(n => n.Name).ToList();
             return items;
         }
+
+        #region SQL_Direct
         public static DataTable Fill_DataTable_by_Query(string queryString)
         {
             DataSet ds = new DataSet();
@@ -218,5 +248,7 @@ namespace lib_postgres.CODE
 
             else return DbType.Object;
         }
+
+        #endregion
     }
 }

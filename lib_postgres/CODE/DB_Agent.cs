@@ -10,7 +10,16 @@ namespace lib_postgres
     public class DB_Agent
     {
         public static libContext db = new libContext();
-      
+
+        #region general
+        public static string Get_Connection_String()
+        {
+            CODE.IniFile ini = new CODE.IniFile(CODE.Data.ini_file_name);
+            string? connection_string = ini.Read("connection_string", "GENERAL");
+            return connection_string;
+        }
+        #endregion
+
         #region Books
         public static void Book_Add(Book book)
         {
@@ -245,21 +254,50 @@ namespace lib_postgres
             return db.Queries.Find(id);
         }
         #endregion
-       
+
         #region Marks
         public static List<Mark> Get_Marks()
         {
             return db.Marks.ToList().OrderBy(n => n.Id).ToList();
         }
+
+        public static Mark Get_Mark(long id)
+        {
+            return db.Marks.Find(id);
+        }
         #endregion
 
-        #region general
-        public static string Get_Connection_String ()
+        #region SourceToreadAnother
+        public static List<SourceToreadAnother> Get_Another_Sources()
         {
-            CODE.IniFile ini = new CODE.IniFile(CODE.Data.ini_file_name);
-            string? connection_string = ini.Read("connection_string", "GENERAL");
-            return connection_string;
+            return db.SourceToreadAnothers.ToList().OrderBy(n => n.Id).ToList();
         }
+
+        public static SourceToreadAnother Get_Another_Source(long id)
+        {
+            return db.SourceToreadAnothers.Find(id);
+        }
+
+        public static bool Is_Exists_Another_Source(string name)
+        {
+            if (DB_Agent.db.SourceToreadAnothers.ToList().Exists(e => e.Name == name))
+                return true;
+            else
+                return false;
+        }
+
+        #endregion
+        #region Recommendations
+        public static List<ArtToRead> Get_Recommendations()
+        {
+            return db.ArtToReads.ToList().OrderBy(n => n.Id).ToList();
+        }
+        public static void Recommendation_Add(ArtToRead item)
+        {
+            db.ArtToReads.Add(item);
+            db.SaveChanges();
+        }
+
         #endregion
 
 

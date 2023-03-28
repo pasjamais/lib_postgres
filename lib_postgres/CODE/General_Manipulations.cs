@@ -174,6 +174,21 @@ else        if (type == typeof(ViewBook))
                 CB.DisplayMember = "Name";
                 CB.SelectedIndex = 1;
             }
+            if (type == typeof(Author))
+            {
+                var elements = DB_Agent.Get_Authors();
+                var item = (from q in elements
+                            where q.Id == id
+                            select q).Take(1).First();
+                CB_visual_reload<Author>(CB, elements.IndexOf(item), elements);
+            }
+            if (type == typeof(SourceToreadAnother))
+            {
+                CB.DataSource = DB_Agent.Get_Another_Sources();
+                CB.ValueMember = "Id";
+                CB.DisplayMember = "Name";
+                if ( ((ICollection<T>)CB.DataSource).Count > 0 ) CB.SelectedIndex = 0;// защита от пустого множества
+            }
         }
         #endregion
 

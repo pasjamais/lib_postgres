@@ -470,7 +470,9 @@ namespace lib_postgres
         {
             dataGridView1.Columns.Clear();
             dataGridView1.DataSource = DB_Agent.Get_ViewHasReads();
+            Turn_Off_Current_Menu_Item();
             CODE.Form_Element_DGV.Prepare_DGV_For_Type<ViewHasRead>(dataGridView1, StatusProperty);
+            Turn_On_Current_Menu_Item();
             Colorise_DGV();
         }
 
@@ -502,6 +504,18 @@ namespace lib_postgres
                 General_Manipulations.show_row(dataGridView1, id.ToString(), "Id");
             }
         }
+
+        private void ToolStripMenuItem__Read_Edit_Click(object sender, EventArgs e)
+        {
+            int index = dataGridView1.SelectedRows[0].Index;
+            long id = (long)dataGridView1.Rows[index].Cells["Id"].Value;
+            id = PARTIAL.ArtRead.Edit_ArtRead(id);
+            if (id > 0)
+            {
+                ToolStripMenuItem__Read_Open_Click(sender, e);
+                General_Manipulations.show_row(dataGridView1, id.ToString(), "Id");
+            }
+        }
         #endregion
 
         private void dataGridView1_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -516,6 +530,8 @@ namespace lib_postgres
             else if (gridViewItemType == typeof(ViewBook)) ToolStripMenuItem__Book_Edit_Click(sender, e);
             else if (gridViewItemType == typeof(Art)) ToolStripMenuItem_Arts_Edit_Click(sender, e);
             else if (gridViewItemType == typeof(Genre)) ToolStripMenuItem_Genres_Edit_Click(sender, e);
+            else if (gridViewItemType == typeof(ViewHasRead)) ToolStripMenuItem__Read_Edit_Click(sender, e);
+
         }
 
 
@@ -538,8 +554,9 @@ namespace lib_postgres
             else if (gridViewItemType == typeof(PublishingHouse)) Turn_On_Off_Menu_Item(ToolStripMenuItem_PubHouse_Edit, state);
             else if (gridViewItemType == typeof(City)) Turn_On_Off_Menu_Item(ToolStripMenuItem_City_Edit, state);
             else if (gridViewItemType == typeof(ViewBook)) Turn_On_Off_Menu_Item(ToolStripMenuItem__Book_Edit, state, cmi_item_find_book);
-            else if (gridViewItemType == typeof(Art)) Turn_On_Off_Menu_Item(ToolStripMenuItem_Arts_Edit, state, ToolStripMenuItem_Book_Add);
+            else if (gridViewItemType == typeof(Art)) Turn_On_Off_Menu_Item(ToolStripMenuItem_Arts_Edit, state, cmi_item_add_art_to_read); //ToolStripMenuItem_Book_Add
             else if (gridViewItemType == typeof(Genre)) Turn_On_Off_Menu_Item(ToolStripMenuItem_Genres_Edit, state);
+            else if (gridViewItemType == typeof(ViewHasRead)) Turn_On_Off_Menu_Item(ToolStripMenuItem__Read_Edit, state);
         }
 
         private void Turn_On_Off_Menu_Item(ToolStripMenuItem menu_item, bool state, ToolStripMenuItem toolStripMenuItem = null) 
@@ -549,7 +566,22 @@ namespace lib_postgres
                 toolStripMenuItem.Visible = state;
 
         }
+
         #endregion
-        
+
+        private void ToolStripMenuItem__Recommendation_Add_Click(object sender, EventArgs e)
+        {
+            var id = PARTIAL.ArtToRead.Add_Recommendation();
+            if (id > 0)
+            {
+                ToolStripMenuItem__Recommendations_Show_Click(sender, e);
+             //   General_Manipulations.show_row(dataGridView1, id.ToString(), "Id");
+            }
+        }
+
+        private void ToolStripMenuItem__Recommendations_Show_Click(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = CODE.Code_Queries.Get_Recommendations();
+        }
     }
 }
