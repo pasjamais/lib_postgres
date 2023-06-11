@@ -33,7 +33,7 @@ namespace lib_postgres
                 long id = (long)dataGridView1.Rows[index].Cells["Id"].Value;
                 Form_Report form_report = new Form_Report();
                 form_report.Text = (string)dataGridView1.Rows[index].Cells["Название"].Value + " / " + (string)dataGridView1.Rows[index].Cells["АвторЫ"].Value;
-                form_report.DGV.DataSource = CODE.Code_Queries.Fill_DataTable_by_Query_with_Parameter
+                form_report.DGV.DataSource = CODE.Queries_SQL_Direct.Fill_DataTable_by_Query_with_Parameter
                     <long>(DB_Agent.Get_Query(2).Text, ":book_id_parameter", id);
                 var DialogResult = form_report.ShowDialog();
                 if (DialogResult != DialogResult.OK)
@@ -81,7 +81,7 @@ namespace lib_postgres
         private void main_menu_generation()
         {
             ToolStripMenuItem newItem = new ToolStripMenuItem("Где книги");
-            menuStrip1.Items.Add(newItem);
+            ToolStripMenuItem_Books.DropDownItems.Add(newItem);
             var places = DB_Agent.Get_Places();
             foreach (var place in places)
             {
@@ -90,7 +90,12 @@ namespace lib_postgres
                 place_item.Click += show_books_in_place;
             }
 
-            newItem = new ToolStripMenuItem("ViewArt по языкам");
+            newItem = new ToolStripMenuItem("У кого мои книги");
+            ToolStripMenuItem_Books.DropDownItems.Add(newItem);
+            newItem.Click += get_My_Books_in_Other_Hands;
+
+
+            newItem = new ToolStripMenuItem("Произведения по языкам");
             menuStrip1.Items.Add(newItem);
             var languages = DB_Agent.Get_Languages();
             var arts = DB_Agent.Get_Arts();
@@ -100,62 +105,15 @@ namespace lib_postgres
                 newItem.DropDownItems.Add(language_item);
                 language_item.Click += show_arts_by_langue;
             }
+
+
+
         }
 
         //для main_menu_generation
         void show_books_in_place(object sender, EventArgs e)
         {
-            var places = DB_Agent.Get_Places();
-            var authors = DB_Agent.Get_Authors();
-            var authors_arts = DB_Agent.Get_AuthorArts();
-            var languages = DB_Agent.Get_Languages();
-            var arts = DB_Agent.Get_Arts();
-            var locations = DB_Agent.Get_Locations();
-            var books = DB_Agent.Get_Books();
-            var genres = DB_Agent.Get_Genres();
-            var pubhouse = DB_Agent.Get_Publishing_Houses();
-            var cities = DB_Agent.Get_Cities();
-
-            // название и авторы
-            var arts_authors = (from art in arts
-                                join aa in authors_arts on art.Id equals aa.Art
-                                join aut in authors on aa.Author equals aut.Id
-                                group aut by new { art } into g
-                                select new
-                                {
-                                    art_name = g.Key.art.Name,
-                                    art_id = g.Key.art.Id,
-                                    art_genre = g.Key.art.Genre,
-                                    lan_orig = g.Key.art.OrigLanguage,
-                                    authors_concat = String.Join(",", g.Select(x => x.Name))
-                                }).ToList();
-            // всё остальное
-            var items = (from loc in locations
-                         join boo in books on loc.Book equals boo.Id
-                         join art in arts_authors on boo.IdArt equals art.art_id
-                         join pub in pubhouse on boo.IdPublishingHouse equals pub.Id
-                         join cit in cities on boo.IdCity equals cit.Id
-                         join lan_boo in languages on boo.IdLanguage equals lan_boo.Id
-                         join pla in places on loc.Place equals pla.Id
-                         join gen in genres on art.art_genre equals gen.Id
-                         join lan_orig in languages on art.lan_orig equals lan_orig.Id
-                         where pla.Name == ((ToolStripMenuItem)sender).Text
-                         select new
-                         {
-                             Размещение = pla.Name ?? "",
-                             book_id = boo.Id.ToString() ?? "",
-                             Название = art.art_name ?? "",
-                             Автор_ы = art.authors_concat ?? "",
-                             Жанр = gen.Name ?? "",
-                             Год_издания = boo.PublicationYear.Value.Year.ToString() ?? "",
-                             Издательство = pub.Name ?? "",
-                             Город = cit.Name ?? "",
-                             Страниц = boo.Pages.ToString() ?? "",
-                             Шифр = boo.Code ?? "",
-                             Язык_издания = lan_boo.Name ?? "",
-                             Язык_оригинала = lan_orig.Name ?? ""
-                         }).ToList();
-            dataGridView1.DataSource = items;
+            dataGridView1.DataSource = Queries_LinQ.Get_Books_by_Place_Name(((ToolStripMenuItem)sender).Text);
         }
 
         //для main_menu_generation
@@ -172,8 +130,18 @@ namespace lib_postgres
                          select a).ToList();
             dataGridView1.DataSource = items;
         }
+
+        void get_My_Books_in_Other_Hands(object sender, EventArgs e)
+        {
+            dataGridView1.Columns.Clear();
+            dataGridView1.DataSource = Queries_from_Views.Get_My_Books_in_Other_Hands();
+            Turn_Off_Current_Menu_Item();
+            CODE.Form_Element_DGV.Prepare_DGV_For_Type<ViewMyBooksInOtherHand>(dataGridView1, StatusProperty);
+            Turn_On_Current_Menu_Item();
+           }
+
         #endregion
-        
+
         #region Genre
         private void ToolStripMenuItem_Genres_Show_Click(object sender, EventArgs e)
         {
@@ -240,7 +208,7 @@ namespace lib_postgres
         private void ToolStripMenuItem_Arts_Show_Click(object sender, EventArgs e)
         {
             dataGridView1.Columns.Clear();
-            dataGridView1.DataSource = CODE.Code_Queries.Get_Arts();
+            dataGridView1.DataSource = CODE.Queries_LinQ.Get_Arts();
             Turn_Off_Current_Menu_Item();
             CODE.Form_Element_DGV.Prepare_DGV_For_Type<Art>(dataGridView1, StatusProperty);
             Turn_On_Current_Menu_Item();
@@ -311,7 +279,7 @@ namespace lib_postgres
         private void ToolStripMenuItem_Book_Show_Click(object sender, EventArgs e)
         {
             dataGridView1.Columns.Clear();
-            dataGridView1.DataSource = DB_Agent.Get_Books_Special_View();
+            dataGridView1.DataSource = Queries_from_Views.Get_Books();
             Turn_Off_Current_Menu_Item();
             CODE.Form_Element_DGV.Prepare_DGV_For_Type<ViewBook>(dataGridView1, StatusProperty);
             Turn_On_Current_Menu_Item();
@@ -427,7 +395,7 @@ namespace lib_postgres
 
         private void ToolStripMenuItem_Location_Show_Click(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = CODE.Code_Queries.Get_Locations();
+            dataGridView1.DataSource = CODE.Queries_LinQ.Get_Locations();
         }
         #endregion
 
@@ -581,7 +549,13 @@ namespace lib_postgres
 
         private void ToolStripMenuItem__Recommendations_Show_Click(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = CODE.Code_Queries.Get_Recommendations();
+            dataGridView1.DataSource = CODE.Queries_LinQ.Get_Recommendations();
+        }
+
+        private void сведенияToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FORMS.Form_Recommendation form_Recommendation  = new Form_Recommendation();
+            var DialogResult = form_Recommendation.ShowDialog();
         }
     }
 }

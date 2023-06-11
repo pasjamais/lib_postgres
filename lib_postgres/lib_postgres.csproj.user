@@ -37,6 +37,9 @@
     <Compile Update="FORMS\Form_Publishing_House.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="FORMS\Form_Recommendation.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="FORMS\Form_Report.cs">
       <SubType>Form</SubType>
     </Compile>

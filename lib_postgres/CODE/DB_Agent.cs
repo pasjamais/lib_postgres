@@ -31,15 +31,26 @@ namespace lib_postgres
             return db.Books.Find(id);
         }
 
-        public static List<ViewBook> Get_Books_Special_View()
+        public static List<ViewBook> Get_ViewBooks()
         {
             return db.ViewBooks.ToList().OrderBy(n => n.Название).ToList();
         }
+        public static List<ViewAllRealBook> Get_ViewAllRealBook()
+        {
+            return db.ViewAllRealBooks.ToList().OrderBy(n => n.Название).ToList();
+        }
+
         public static List<Book> Get_Books()
         {
             return db.Books.ToList().OrderBy(n => n.IdArt).ToList();
 
         }
+        
+        public static List<ViewMyBooksInOtherHand> Get_ViewMyBooksInOtherHands()
+        {
+            return db.ViewMyBooksInOtherHands.ToList().OrderBy(n => n.Дата).ToList();
+        }
+
         #endregion
 
         #region Arts

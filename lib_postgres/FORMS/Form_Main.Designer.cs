@@ -35,12 +35,21 @@
             this.cmi_item_find_book = new System.Windows.Forms.ToolStripMenuItem();
             this.cmi_item_add_art_to_read = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.ToolStripMenuItem_Reader = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem__Read_Open = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem__Read_Add = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem__Read_Edit = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem__Read_Delete = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator15 = new System.Windows.Forms.ToolStripSeparator();
+            this.ToolStripMenuItem__Recommendations_Show = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem__Recommendation_Add = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Books = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Book_Show = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.ToolStripMenuItem_Book_Add = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem__Book_Edit = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Books_Delete = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator16 = new System.Windows.Forms.ToolStripSeparator();
             this.ToolStripMenuItem_Arts = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Arts_Show = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -100,14 +109,7 @@
             this.ToolStripMenuItem_Places = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
             this.ToolStripMenuItem_People = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItem_Reader = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItem__Read_Open = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItem__Read_Add = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItem__Read_Edit = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItem__Read_Delete = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator15 = new System.Windows.Forms.ToolStripSeparator();
-            this.ToolStripMenuItem__Recommendations_Show = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItem__Recommendation_Add = new System.Windows.Forms.ToolStripMenuItem();
+            this.сведенияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.book1BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.contextMenuStrip.SuspendLayout();
@@ -176,6 +178,69 @@
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
+            // ToolStripMenuItem_Reader
+            // 
+            this.ToolStripMenuItem_Reader.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripMenuItem__Read_Open,
+            this.ToolStripMenuItem__Read_Add,
+            this.ToolStripMenuItem__Read_Edit,
+            this.ToolStripMenuItem__Read_Delete,
+            this.toolStripSeparator15,
+            this.ToolStripMenuItem__Recommendations_Show,
+            this.ToolStripMenuItem__Recommendation_Add,
+            this.сведенияToolStripMenuItem});
+            this.ToolStripMenuItem_Reader.Name = "ToolStripMenuItem_Reader";
+            this.ToolStripMenuItem_Reader.Size = new System.Drawing.Size(69, 20);
+            this.ToolStripMenuItem_Reader.Text = "Читатель";
+            // 
+            // ToolStripMenuItem__Read_Open
+            // 
+            this.ToolStripMenuItem__Read_Open.Name = "ToolStripMenuItem__Read_Open";
+            this.ToolStripMenuItem__Read_Open.Size = new System.Drawing.Size(248, 22);
+            this.ToolStripMenuItem__Read_Open.Text = "Показать прочитанное";
+            this.ToolStripMenuItem__Read_Open.Click += new System.EventHandler(this.ToolStripMenuItem__Read_Open_Click);
+            // 
+            // ToolStripMenuItem__Read_Add
+            // 
+            this.ToolStripMenuItem__Read_Add.Name = "ToolStripMenuItem__Read_Add";
+            this.ToolStripMenuItem__Read_Add.Size = new System.Drawing.Size(248, 22);
+            this.ToolStripMenuItem__Read_Add.Text = "Добавить прочитанную книгу...";
+            this.ToolStripMenuItem__Read_Add.Click += new System.EventHandler(this.ToolStripMenuItem__Read_Add_Click);
+            // 
+            // ToolStripMenuItem__Read_Edit
+            // 
+            this.ToolStripMenuItem__Read_Edit.Enabled = false;
+            this.ToolStripMenuItem__Read_Edit.Name = "ToolStripMenuItem__Read_Edit";
+            this.ToolStripMenuItem__Read_Edit.Size = new System.Drawing.Size(248, 22);
+            this.ToolStripMenuItem__Read_Edit.Text = "Изменить прочитанное...";
+            this.ToolStripMenuItem__Read_Edit.Click += new System.EventHandler(this.ToolStripMenuItem__Read_Edit_Click);
+            // 
+            // ToolStripMenuItem__Read_Delete
+            // 
+            this.ToolStripMenuItem__Read_Delete.Enabled = false;
+            this.ToolStripMenuItem__Read_Delete.Name = "ToolStripMenuItem__Read_Delete";
+            this.ToolStripMenuItem__Read_Delete.Size = new System.Drawing.Size(248, 22);
+            this.ToolStripMenuItem__Read_Delete.Text = "Удалить...";
+            // 
+            // toolStripSeparator15
+            // 
+            this.toolStripSeparator15.Name = "toolStripSeparator15";
+            this.toolStripSeparator15.Size = new System.Drawing.Size(245, 6);
+            // 
+            // ToolStripMenuItem__Recommendations_Show
+            // 
+            this.ToolStripMenuItem__Recommendations_Show.Name = "ToolStripMenuItem__Recommendations_Show";
+            this.ToolStripMenuItem__Recommendations_Show.Size = new System.Drawing.Size(248, 22);
+            this.ToolStripMenuItem__Recommendations_Show.Text = "Показать рекомендации";
+            this.ToolStripMenuItem__Recommendations_Show.Click += new System.EventHandler(this.ToolStripMenuItem__Recommendations_Show_Click);
+            // 
+            // ToolStripMenuItem__Recommendation_Add
+            // 
+            this.ToolStripMenuItem__Recommendation_Add.Name = "ToolStripMenuItem__Recommendation_Add";
+            this.ToolStripMenuItem__Recommendation_Add.Size = new System.Drawing.Size(248, 22);
+            this.ToolStripMenuItem__Recommendation_Add.Text = "Добавить рекомендацию...";
+            this.ToolStripMenuItem__Recommendation_Add.Click += new System.EventHandler(this.ToolStripMenuItem__Recommendation_Add_Click);
+            // 
             // ToolStripMenuItem_Books
             // 
             this.ToolStripMenuItem_Books.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -183,7 +248,8 @@
             this.toolStripSeparator2,
             this.ToolStripMenuItem_Book_Add,
             this.ToolStripMenuItem__Book_Edit,
-            this.ToolStripMenuItem_Books_Delete});
+            this.ToolStripMenuItem_Books_Delete,
+            this.toolStripSeparator16});
             this.ToolStripMenuItem_Books.Name = "ToolStripMenuItem_Books";
             this.ToolStripMenuItem_Books.Size = new System.Drawing.Size(52, 20);
             this.ToolStripMenuItem_Books.Text = "Книги";
@@ -221,6 +287,11 @@
             this.ToolStripMenuItem_Books_Delete.Name = "ToolStripMenuItem_Books_Delete";
             this.ToolStripMenuItem_Books_Delete.Size = new System.Drawing.Size(183, 22);
             this.ToolStripMenuItem_Books_Delete.Text = "Удалить...";
+            // 
+            // toolStripSeparator16
+            // 
+            this.toolStripSeparator16.Name = "toolStripSeparator16";
+            this.toolStripSeparator16.Size = new System.Drawing.Size(180, 6);
             // 
             // ToolStripMenuItem_Arts
             // 
@@ -668,67 +739,12 @@
             this.ToolStripMenuItem_People.Size = new System.Drawing.Size(163, 22);
             this.ToolStripMenuItem_People.Text = "Люди";
             // 
-            // ToolStripMenuItem_Reader
+            // сведенияToolStripMenuItem
             // 
-            this.ToolStripMenuItem_Reader.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToolStripMenuItem__Read_Open,
-            this.ToolStripMenuItem__Read_Add,
-            this.ToolStripMenuItem__Read_Edit,
-            this.ToolStripMenuItem__Read_Delete,
-            this.toolStripSeparator15,
-            this.ToolStripMenuItem__Recommendations_Show,
-            this.ToolStripMenuItem__Recommendation_Add});
-            this.ToolStripMenuItem_Reader.Name = "ToolStripMenuItem_Reader";
-            this.ToolStripMenuItem_Reader.Size = new System.Drawing.Size(69, 20);
-            this.ToolStripMenuItem_Reader.Text = "Читатель";
-            // 
-            // ToolStripMenuItem__Read_Open
-            // 
-            this.ToolStripMenuItem__Read_Open.Name = "ToolStripMenuItem__Read_Open";
-            this.ToolStripMenuItem__Read_Open.Size = new System.Drawing.Size(248, 22);
-            this.ToolStripMenuItem__Read_Open.Text = "Показать прочитанное";
-            this.ToolStripMenuItem__Read_Open.Click += new System.EventHandler(this.ToolStripMenuItem__Read_Open_Click);
-            // 
-            // ToolStripMenuItem__Read_Add
-            // 
-            this.ToolStripMenuItem__Read_Add.Name = "ToolStripMenuItem__Read_Add";
-            this.ToolStripMenuItem__Read_Add.Size = new System.Drawing.Size(248, 22);
-            this.ToolStripMenuItem__Read_Add.Text = "Добавить прочитанную книгу...";
-            this.ToolStripMenuItem__Read_Add.Click += new System.EventHandler(this.ToolStripMenuItem__Read_Add_Click);
-            // 
-            // ToolStripMenuItem__Read_Edit
-            // 
-            this.ToolStripMenuItem__Read_Edit.Enabled = false;
-            this.ToolStripMenuItem__Read_Edit.Name = "ToolStripMenuItem__Read_Edit";
-            this.ToolStripMenuItem__Read_Edit.Size = new System.Drawing.Size(248, 22);
-            this.ToolStripMenuItem__Read_Edit.Text = "Изменить прочитанное...";
-            this.ToolStripMenuItem__Read_Edit.Click += new System.EventHandler(this.ToolStripMenuItem__Read_Edit_Click);
-            // 
-            // ToolStripMenuItem__Read_Delete
-            // 
-            this.ToolStripMenuItem__Read_Delete.Enabled = false;
-            this.ToolStripMenuItem__Read_Delete.Name = "ToolStripMenuItem__Read_Delete";
-            this.ToolStripMenuItem__Read_Delete.Size = new System.Drawing.Size(248, 22);
-            this.ToolStripMenuItem__Read_Delete.Text = "Удалить...";
-            // 
-            // toolStripSeparator15
-            // 
-            this.toolStripSeparator15.Name = "toolStripSeparator15";
-            this.toolStripSeparator15.Size = new System.Drawing.Size(245, 6);
-            // 
-            // ToolStripMenuItem__Recommendations_Show
-            // 
-            this.ToolStripMenuItem__Recommendations_Show.Name = "ToolStripMenuItem__Recommendations_Show";
-            this.ToolStripMenuItem__Recommendations_Show.Size = new System.Drawing.Size(248, 22);
-            this.ToolStripMenuItem__Recommendations_Show.Text = "Показать рекомендации";
-            this.ToolStripMenuItem__Recommendations_Show.Click += new System.EventHandler(this.ToolStripMenuItem__Recommendations_Show_Click);
-            // 
-            // ToolStripMenuItem__Recommendation_Add
-            // 
-            this.ToolStripMenuItem__Recommendation_Add.Name = "ToolStripMenuItem__Recommendation_Add";
-            this.ToolStripMenuItem__Recommendation_Add.Size = new System.Drawing.Size(248, 22);
-            this.ToolStripMenuItem__Recommendation_Add.Text = "Добавить рекомендацию...";
-            this.ToolStripMenuItem__Recommendation_Add.Click += new System.EventHandler(this.ToolStripMenuItem__Recommendation_Add_Click);
+            this.сведенияToolStripMenuItem.Name = "сведенияToolStripMenuItem";
+            this.сведенияToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
+            this.сведенияToolStripMenuItem.Text = "Сведения...";
+            this.сведенияToolStripMenuItem.Click += new System.EventHandler(this.сведенияToolStripMenuItem_Click);
             // 
             // Form_Main
             // 
@@ -832,5 +848,7 @@
         private ToolStripSeparator toolStripSeparator15;
         private ToolStripMenuItem ToolStripMenuItem__Recommendation_Add;
         private ToolStripMenuItem ToolStripMenuItem__Recommendations_Show;
+        private ToolStripSeparator toolStripSeparator16;
+        private ToolStripMenuItem сведенияToolStripMenuItem;
     }
 }

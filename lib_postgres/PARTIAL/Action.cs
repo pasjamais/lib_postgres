@@ -1,4 +1,5 @@
-﻿using lib_postgres.FORMS;
+﻿using lib_postgres.CODE;
+using lib_postgres.FORMS;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -76,7 +77,7 @@ namespace lib_postgres.PARTIAL
             var action_books_Ids = (from loc in all_locations
                                 where loc.Action == id 
                                     select loc.Book).ToList();
-            var all_books = DB_Agent.Get_Books_Special_View();
+            var all_books = Queries_from_Views.Get_Books();
             var action_books = (from x in all_books
                          where action_books_Ids.Contains(x.Id)
                          select x).ToList() ;

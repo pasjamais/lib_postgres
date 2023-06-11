@@ -1,18 +1,35 @@
-﻿using lib_postgres.PARTIAL;
-using Npgsql;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace lib_postgres.CODE
 {
-
-    public static class Code_Queries
+    public static class Queries_LinQ
     {
-        #region LinQ
+        public static List<ViewAllRealBook> Get_Books_by_Place_Name(string place_name)
+        {
+            var books = Queries_from_Views.Get_Books_in_their_Places();
+            var items = (from book in books
+                         where book.Место == place_name
+                         select book
+                         ).ToList();
+            return items;
+        }
+        public static dynamic Get_Books_Short()
+        {
+            var books = Queries_from_Views.Get_Books();
+            var items = (from b in books
+                         select new
+                         {
+                             Id = b.Id,
+                             Name = b.Название + " | " + b.АвторЫ + " | "
+                                       + b.Жанр + " | " + b.Издательство + " | " + b.Шифр
+                         }).ToList().OrderBy(n => n.Name).ToList();
+            return items;
+        }
+
         public static List<Art_and_Author> Get_Arts()
         {
             var places = DB_Agent.Get_Places();
@@ -25,7 +42,6 @@ namespace lib_postgres.CODE
             var genres = DB_Agent.Get_Genres();
             var pubhouse = DB_Agent.Get_Publishing_Houses();
             var cities = DB_Agent.Get_Cities();
-
             // название и авторы
             var arts_authors = (from art in arts
                                 join aa in authors_arts on art.Id equals aa.Art
@@ -55,29 +71,6 @@ namespace lib_postgres.CODE
                          }).ToList();
             return items;
         }
-
-
-
-        public static void Show_Actions(DataGridView dataGridView)
-        {
-            var actions = DB_Agent.Get_Actions();
-            var action_types = DB_Agent.Get_ActionTypes();
-            var places = DB_Agent.Get_Places();
-            var items = (from act in actions
-                         join act_typ in action_types on act.ActionType equals act_typ.Id
-                         //      join pla in places on act.Place equals pla.Id //   если нул надо не соединять   
-                         select new
-                         {
-                             Id = act.Id,
-                             //   Действие = act.Name,
-                             Примечание = act.Comment,
-                             Дата = act.Date,
-                             //   Место = pla.Name,
-                             //    Тип = act_typ.Name
-                         }).ToList().OrderBy(n => n.Дата).ToList(); ;
-            dataGridView.DataSource = items;
-        }
-
 
         public static List<Book_Adopted> Get_Books()
         {
@@ -123,7 +116,7 @@ namespace lib_postgres.CODE
                          join pub in pubhouse on boo.IdPublishingHouse equals pub.Id
                          join cit in cities on boo.IdCity equals cit.Id
                          join lan_boo in languages on boo.IdLanguage equals lan_boo.Id
-                         select new 
+                         select new
                          {
                              Id = boo.Id,
                              Name = art.Name ?? "",
@@ -140,6 +133,7 @@ namespace lib_postgres.CODE
                          }).ToList();
             return items;
         }
+
         public static dynamic Get_Locations()
         {
             var places = DB_Agent.Get_Places();
@@ -147,7 +141,7 @@ namespace lib_postgres.CODE
             var books = Get_Books();
             var items = (from loc in locations
                          join boo in books on loc.Book equals boo.Id
-                         where boo.Id >= 274
+
                          join pla in places on loc.Place equals pla.Id
                          select new
                          {
@@ -168,87 +162,53 @@ namespace lib_postgres.CODE
                          }).ToList().OrderBy(n => n.loc_record).ToList();
             return items;
         }
+
         public static dynamic Get_Recommendations()
         {
             var arts_authors = Get_Arts();
             var recs = DB_Agent.Get_Recommendations();
             var temp = (from rec in recs
-                          join art_source in arts_authors on rec.SourceArtId equals art_source.Id
-                          select new 
-                         {
-                             Id = rec.Id,
-                             Date = rec.Date,
-                             Art_Source = art_source.Name + " | " + art_source.Authors,
-                             Comment = rec.Comment,
-                             ToreadArtId = rec.ToreadArtId
-                          }).ToList();
-            arts_authors = Get_Arts();
-            var result = (from tem in temp
-                            join art_toread in arts_authors on tem.ToreadArtId equals art_toread.Id
+                        join art_source in arts_authors on rec.SourceArtId equals art_source.Id
                         select new
                         {
-                            Id = tem.Id,
-                            Date = tem.Date,
-                            Art_ToRead = art_toread.Name + " | " + art_toread.Authors,
-                            Art_Source = tem.Art_Source,
-                            Comment = tem.Comment
+                            Id = rec.Id,
+                            Date = rec.Date,
+                            Art_Source = art_source.Name + " | " + art_source.Authors,
+                            Comment = rec.Comment,
+                            ToreadArtId = rec.ToreadArtId
                         }).ToList();
+            arts_authors = Get_Arts();
+            var result = (from tem in temp
+                          join art_toread in arts_authors on tem.ToreadArtId equals art_toread.Id
+                          select new
+                          {
+                              Id = tem.Id,
+                              Date = tem.Date,
+                              Art_ToRead = art_toread.Name + " | " + art_toread.Authors,
+                              Art_Source = tem.Art_Source,
+                              Comment = tem.Comment
+                          }).ToList();
             return result;
         }
-        #endregion
-        public static dynamic Get_Books_Short()
+        public static void Show_Actions(DataGridView dataGridView)
         {
-            var books = DB_Agent.Get_Books_Special_View();
-            var items = (from b in books
+            var actions = DB_Agent.Get_Actions();
+            var action_types = DB_Agent.Get_ActionTypes();
+            var places = DB_Agent.Get_Places();
+            var items = (from act in actions
+                         join act_typ in action_types on act.ActionType equals act_typ.Id
+                         //      join pla in places on act.Place equals pla.Id //   если нул надо не соединять   
                          select new
                          {
-                             Id = b.Id,
-                             Name = b.Название + " | " + b.АвторЫ + " | "
-                                       + b.Жанр + " | " + b.Издательство + " | " + b.Шифр
-                         }).ToList().OrderBy(n => n.Name).ToList();
-            return items;
+                             Id = act.Id,
+                             //   Действие = act.Name,
+                             Примечание = act.Comment,
+                             Дата = act.Date,
+                             //   Место = pla.Name,
+                             //    Тип = act_typ.Name
+                         }).ToList().OrderBy(n => n.Дата).ToList(); ;
+            dataGridView.DataSource = items;
         }
 
-        #region SQL_Direct
-        public static DataTable Fill_DataTable_by_Query(string queryString)
-        {
-            DataSet ds = new DataSet();
-            NpgsqlConnection conn = new NpgsqlConnection(DB_Agent.Get_Connection_String());
-            conn.Open();
-            NpgsqlDataAdapter da = new NpgsqlDataAdapter(queryString, conn);
-            da.Fill(ds);
-            conn.Close();
-            conn.Dispose();
-            return ds.Tables[0];
-        }
-        public static DataTable Fill_DataTable_by_Query_with_Parameter<T>(string queryString, string parameter_name,T parameter_value)
-        {
-            DataSet ds = new DataSet();
-            NpgsqlConnection conn = new NpgsqlConnection(DB_Agent.Get_Connection_String());
-            conn.Open();
-            NpgsqlCommand command = new NpgsqlCommand(queryString, conn);
-            command.Parameters.Add(new NpgsqlParameter(parameter_name, NormalType_to_BdType<T>()));
-            command.Prepare();
-            command.Parameters[0].Value = parameter_value;
-            NpgsqlDataAdapter da = new NpgsqlDataAdapter(command);
-            da.Fill(ds);
-            conn.Close();
-            conn.Dispose();
-            return ds.Tables[0];
-        }
-
-        public static DbType NormalType_to_BdType<T>()
-        {
-            Type type = typeof(T);
-            if (type is not null)
-                if (type == typeof(Int32)) return DbType.Int32;
-                else if (type == typeof(Int64)) return DbType.Int64;
-                else if (type == typeof(string)) return DbType.String;       
-                else                    return DbType.Object;
-
-            else return DbType.Object;
-        }
-
-        #endregion
     }
 }

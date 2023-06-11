@@ -1,4 +1,5 @@
-﻿using lib_postgres.PARTIAL;
+﻿using lib_postgres.CODE;
+using lib_postgres.PARTIAL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,7 +23,7 @@ namespace lib_postgres.FORMS
             General_Manipulations.CB_reload<Place>(CB_Place, 1);
             General_Manipulations.CB_reload<ActionType>(CB_Action_Type, 1);
 
-            all_books = DB_Agent.Get_Books_Special_View();
+            all_books = Queries_from_Views.Get_Books();
             DGV_AllBooks.DataSource = General_Manipulations.Bind_List_to_DGV(all_books);
             CODE.Form_Element_DGV.Prepare_DGV_For_Type<ViewBook>(DGV_AllBooks);
             DGV_AllBooks.Refresh();
@@ -39,7 +40,7 @@ namespace lib_postgres.FORMS
             long book_id = PARTIAL.Book.Add_Book();
             if (book_id > 0)
             {
-                all_books = DB_Agent.Get_Books_Special_View();
+                all_books = Queries_from_Views.Get_Books();
                 DGV_AllBooks.DataSource = General_Manipulations.Bind_List_to_DGV(all_books);
                 CODE.Form_Element_DGV.Prepare_DGV_For_Type<ViewBook>(DGV_AllBooks);
 

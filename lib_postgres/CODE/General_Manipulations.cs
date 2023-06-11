@@ -169,7 +169,7 @@ namespace lib_postgres
             }
 else        if (type == typeof(ViewBook))
             {
-                CB.DataSource = CODE.Code_Queries.Get_Books_Short();
+                CB.DataSource = CODE.Queries_LinQ.Get_Books_Short();
                 CB.ValueMember = "Id";
                 CB.DisplayMember = "Name";
                 CB.SelectedIndex = 1;

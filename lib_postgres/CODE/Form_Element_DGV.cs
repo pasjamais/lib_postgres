@@ -144,9 +144,16 @@ namespace lib_postgres.CODE
                 DGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 if (StatusProperty is not null) StatusProperty.Message = "Список прочтённого";
             }
-
-
-
+            else if (type == typeof(ViewMyBooksInOtherHand))
+            {
+                DGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                DGV.Columns[0].HeaderText = "Id";
+                DGV.Columns[1].Visible = false;//Место
+                for (int i = 7; i <= 13; i++) { DGV.Columns[i].Visible = false; }
+                DGV.Columns[0].FillWeight = (int)(DGV.Width * 0.1);
+                DGV.Columns[5].FillWeight = (int)(DGV.Width * 0.3);
+                if (StatusProperty is not null) StatusProperty.Message = "Список книг, которые у меня взяли";
+            }
         }
     }
 }
