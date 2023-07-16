@@ -3,6 +3,7 @@ using lib_postgres.FORMS;
 using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Npgsql;
+using System.Collections.Generic;
 using System.Reflection.Emit;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
@@ -15,9 +16,20 @@ namespace lib_postgres
         private static Type? gridViewItemType;
         public Main_Form_Status_Update StatusProperty { get; set; } = new Main_Form_Status_Update();
         const string Caption = "Lib.";
+        public Dictionary<string, long> sources_saved_positions = new Dictionary<string, long>()
+            {
+                { "art", 1      },
+                { "author", 1   },
+                { "another", 1  },
+            };
+
+
+
+
+
         public Form_Main()
         {
-            
+
             InitializeComponent();
             Binding_Elements();
             main_menu_generation();
@@ -138,7 +150,7 @@ namespace lib_postgres
             Turn_Off_Current_Menu_Item();
             CODE.Form_Element_DGV.Prepare_DGV_For_Type<ViewMyBooksInOtherHand>(dataGridView1, StatusProperty);
             Turn_On_Current_Menu_Item();
-           }
+        }
 
         #endregion
 
@@ -451,13 +463,13 @@ namespace lib_postgres
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
                 var format_color_id = (from f in formats
-                                where f.Name == row.Cells["‘ÓÏ‡Ú"].Value.ToString()
-                         select f.Id).First();
+                                       where f.Name == row.Cells["‘ÓÏ‡Ú"].Value.ToString()
+                                       select f.Id).First();
                 row.DefaultCellStyle.BackColor = lib_postgres.CODE.Data.format_colors[format_color_id];
                 var mark_color_id = (from m in marks
                                      where m.Name == row.Cells["ŒˆÂÌÍ‡"].Value.ToString()
-                                select m.Id).First();
-                if (mark_color_id < 4 ||  mark_color_id > 6)
+                                     select m.Id).First();
+                if (mark_color_id < 4 || mark_color_id > 6)
                     row.Cells["ŒˆÂÌÍ‡"].Style.BackColor = lib_postgres.CODE.Data.marks_colors[mark_color_id];
             }
 
@@ -514,7 +526,7 @@ namespace lib_postgres
         }
         private void Turn_Menu_Item(bool state)
         {
-            if (gridViewItemType == typeof(Place));
+            if (gridViewItemType == typeof(Place)) ;
             else if (gridViewItemType == typeof(Language)) Turn_On_Off_Menu_Item(ToolStripMenuItem_Language_Edit, state);
             else if (gridViewItemType == typeof(Author)) Turn_On_Off_Menu_Item(ToolStripMenuItem_Author_Edit, state);
             else if (gridViewItemType == typeof(Action)) Turn_On_Off_Menu_Item(ToolStripMenuItem_Actions_Edit, state);
@@ -527,7 +539,7 @@ namespace lib_postgres
             else if (gridViewItemType == typeof(ViewHasRead)) Turn_On_Off_Menu_Item(ToolStripMenuItem__Read_Edit, state);
         }
 
-        private void Turn_On_Off_Menu_Item(ToolStripMenuItem menu_item, bool state, ToolStripMenuItem toolStripMenuItem = null) 
+        private void Turn_On_Off_Menu_Item(ToolStripMenuItem menu_item, bool state, ToolStripMenuItem toolStripMenuItem = null)
         {
             menu_item.Enabled = state;
             if (toolStripMenuItem is not null)
@@ -539,11 +551,11 @@ namespace lib_postgres
 
         private void ToolStripMenuItem__Recommendation_Add_Click(object sender, EventArgs e)
         {
-            var id = PARTIAL.ArtToRead.Add_Recommendation();
+            var id = PARTIAL.ArtToRead.Add_Recommendation(sources_saved_positions);
             if (id > 0)
             {
                 ToolStripMenuItem__Recommendations_Show_Click(sender, e);
-             //   General_Manipulations.show_row(dataGridView1, id.ToString(), "Id");
+                //   General_Manipulations.show_row(dataGridView1, id.ToString(), "Id");
             }
         }
 
@@ -554,7 +566,7 @@ namespace lib_postgres
 
         private void Ò‚Â‰ÂÌËˇToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FORMS.Form_Recommendation form_Recommendation  = new Form_Recommendation();
+            FORMS.Form_Recommendation form_Recommendation = new Form_Recommendation();
             var DialogResult = form_Recommendation.ShowDialog();
         }
     }

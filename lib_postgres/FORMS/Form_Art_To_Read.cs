@@ -15,14 +15,16 @@ namespace lib_postgres.FORMS
     public partial class Form_Art_To_Read : Form
     {
         public RadioButton selectedrb_toread, selectedrb_source;
-        public Form_Art_To_Read()
+        private Dictionary<string, long> Sources_saved_positions;
+        public Form_Art_To_Read(Dictionary<string, long> sources_saved_positions)
         {
             InitializeComponent();
+            Sources_saved_positions = sources_saved_positions;
             General_Manipulations.CB_reload<Art>(CB_Toread_Art, 1);
             General_Manipulations.CB_reload<Author>(CB_Toread_Author, 1);
-            General_Manipulations.CB_reload<Art>(CB_Source_Art, 1);
-            General_Manipulations.CB_reload<Author>(CB_Source_Author, 1);
-            General_Manipulations.CB_reload<SourceToreadAnother>(CB_Source_Another, 1);
+            General_Manipulations.CB_reload<Art>(CB_Source_Art, sources_saved_positions["art"]);
+            General_Manipulations.CB_reload<Author>(CB_Source_Author, sources_saved_positions["author"]);
+            General_Manipulations.CB_reload<SourceToreadAnother>(CB_Source_Another, sources_saved_positions["another"]);
             RB_Toread_Art.Tag = true;
             RB_Toread_Author.Tag = false;
         }
@@ -33,7 +35,7 @@ namespace lib_postgres.FORMS
             if (id > 0)
             {
                 General_Manipulations.CB_reload<Art>(CB_Toread_Art, id);
-                General_Manipulations.CB_reload<Art>(CB_Source_Art, 1);
+                General_Manipulations.CB_reload<Art>(CB_Source_Art, Sources_saved_positions["art"]);
             } 
             DialogResult = DialogResult.None;
         }
