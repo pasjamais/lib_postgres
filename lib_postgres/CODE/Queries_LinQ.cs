@@ -209,6 +209,18 @@ namespace lib_postgres.CODE
                          }).ToList().OrderBy(n => n.Дата).ToList(); ;
             dataGridView.DataSource = items;
         }
+        #region Books
+
+       
+        #endregion
+
+        #region Arts
+       
+
+        #endregion
+
+
+       
 
     }
 }

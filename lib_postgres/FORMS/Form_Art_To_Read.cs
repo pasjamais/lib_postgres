@@ -31,7 +31,7 @@ namespace lib_postgres.FORMS
 
         private void BT_Add_Art_Click(object sender, EventArgs e)
         {
-            var id = Art.Add_Art();
+            var id = PARTIAL.Art.Add_Art();
             if (id > 0)
             {
                 General_Manipulations.CB_reload<Art>(CB_Toread_Art, id);

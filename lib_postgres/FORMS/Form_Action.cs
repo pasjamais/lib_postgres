@@ -37,7 +37,7 @@ namespace lib_postgres.FORMS
 
         private void button_New_Book_Click(object sender, EventArgs e)
         {
-            long book_id = PARTIAL.Book.Add_Book();
+            long book_id = PARTIAL.Book.Create_Book();
             if (book_id > 0)
             {
                 all_books = Queries_from_Views.Get_Books();

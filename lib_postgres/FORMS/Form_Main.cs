@@ -1,11 +1,15 @@
 using lib_postgres.CODE;
+using lib_postgres.CODE.VIEW.DELITEMS;
 using lib_postgres.FORMS;
 using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Npgsql;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
 using System.Reflection.Emit;
 using System.Windows.Forms;
+using static System.Windows.Forms.DataFormats;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 
@@ -23,28 +27,51 @@ namespace lib_postgres
                 { "another", 1  },
             };
 
-
-
-
-
+        DeletedEntities DelItemsColorization;
+        bool is_Colorize_del_items;
         public Form_Main()
         {
-
             InitializeComponent();
             Binding_Elements();
             main_menu_generation();
-            ToolStripMenuItem_Book_Show_Click(this, null);
+            Backup_on_Start();
+            Colorization_Prepare();
         }
+
+        private void Colorization_Prepare()
+        {
+            DelItemsColorization = new DeletedEntities();
+            DelItemsColorization.SetCommand(true, new DeletedItemsColorizator());
+            DelItemsColorization.SetCommand(false, new NothingDo());
+            is_Colorize_del_items = DeletedEntities.is_Show_Deleted_Items();
+        }
+        private void Backup_on_Start()
+        {
+            Backup.Backup_on_Start();
+        }
+
+        private void BackupBD()
+        {
+            Backup.BackupBD();
+        }
+
+        private long Get_Selected_Entity_ID()
+        {
+            int index = dataGridView.SelectedRows[0].Index;
+            long id = (long)dataGridView.Rows[index].Cells["Id"].Value;
+            return id;
+        }
+
 
         #region popup
         private void Cmi_item_find_book_Click(object? sender, EventArgs e)
         {
             if (gridViewItemType == typeof(ViewBook))
             {
-                int index = dataGridView1.SelectedRows[0].Index;
-                long id = (long)dataGridView1.Rows[index].Cells["Id"].Value;
+                int index = dataGridView.SelectedRows[0].Index;
+                long id = (long)dataGridView.Rows[index].Cells["Id"].Value;
                 Form_Report form_report = new Form_Report();
-                form_report.Text = (string)dataGridView1.Rows[index].Cells["Название"].Value + " / " + (string)dataGridView1.Rows[index].Cells["АвторЫ"].Value;
+                form_report.Text = (string)dataGridView.Rows[index].Cells["Название"].Value + " / " + (string)dataGridView.Rows[index].Cells["АвторЫ"].Value;
                 form_report.DGV.DataSource = CODE.Queries_SQL_Direct.Fill_DataTable_by_Query_with_Parameter
                     <long>(DB_Agent.Get_Query(2).Text, ":book_id_parameter", id);
                 var DialogResult = form_report.ShowDialog();
@@ -57,13 +84,13 @@ namespace lib_postgres
         {
             if (gridViewItemType == typeof(Art))
             {
-                int index = dataGridView1.SelectedRows[0].Index;
-                long id_art = (long)dataGridView1.Rows[index].Cells["Id"].Value;
+                int index = dataGridView.SelectedRows[0].Index;
+                long id_art = (long)dataGridView.Rows[index].Cells["Id"].Value;
                 var id = PARTIAL.ArtRead.Add_ArtRead(id_art);
                 if (id > 0)
                 {
                     ToolStripMenuItem__Read_Open_Click(sender, e);
-                    General_Manipulations.show_row(dataGridView1, id.ToString(), "Id");
+                    General_Manipulations.show_row(dataGridView, id.ToString(), "Id");
                 }
             }
         }
@@ -125,7 +152,7 @@ namespace lib_postgres
         //для main_menu_generation
         void show_books_in_place(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = Queries_LinQ.Get_Books_by_Place_Name(((ToolStripMenuItem)sender).Text);
+            dataGridView.DataSource = Queries_LinQ.Get_Books_by_Place_Name(((ToolStripMenuItem)sender).Text);
         }
 
         //для main_menu_generation
@@ -140,15 +167,15 @@ namespace lib_postgres
                          where l.Name == ((ToolStripMenuItem)sender).Text
                          select l).First().Id
                          select a).ToList();
-            dataGridView1.DataSource = items;
+            dataGridView.DataSource = items;
         }
 
         void get_My_Books_in_Other_Hands(object sender, EventArgs e)
         {
-            dataGridView1.Columns.Clear();
-            dataGridView1.DataSource = Queries_from_Views.Get_My_Books_in_Other_Hands();
+            dataGridView.Columns.Clear();
+            dataGridView.DataSource = Queries_from_Views.Get_My_Books_in_Other_Hands();
             Turn_Off_Current_Menu_Item();
-            CODE.Form_Element_DGV.Prepare_DGV_For_Type<ViewMyBooksInOtherHand>(dataGridView1, StatusProperty);
+            CODE.Form_Element_DGV.Prepare_DGV_For_Type<ViewMyBooksInOtherHand>(dataGridView, StatusProperty);
             Turn_On_Current_Menu_Item();
         }
 
@@ -157,10 +184,10 @@ namespace lib_postgres
         #region Genre
         private void ToolStripMenuItem_Genres_Show_Click(object sender, EventArgs e)
         {
-            dataGridView1.Columns.Clear();
-            dataGridView1.DataSource = DB_Agent.Get_Genres();
+            dataGridView.Columns.Clear();
+            dataGridView.DataSource = DB_Agent.Get_Genres();
             Turn_Off_Current_Menu_Item();
-            CODE.Form_Element_DGV.Prepare_DGV_For_Type<Genre>(dataGridView1, StatusProperty);
+            CODE.Form_Element_DGV.Prepare_DGV_For_Type<Genre>(dataGridView, StatusProperty);
             Turn_On_Current_Menu_Item();
         }
         private void ToolStripMenuItem_Genres_Add_Click(object sender, EventArgs e)
@@ -169,17 +196,17 @@ namespace lib_postgres
             if (id > 0)
             {
                 ToolStripMenuItem_Genres_Show_Click(sender, e);
-                General_Manipulations.show_row(dataGridView1, id.ToString(), "Id");
+                General_Manipulations.show_row(dataGridView, id.ToString(), "Id");
             }
 
         }
         private void ToolStripMenuItem_Genres_Edit_Click(object sender, EventArgs e)
         {
-            var id = PARTIAL.Genre.Edit_Genre(dataGridView1);
+            var id = PARTIAL.Genre.Edit_Genre(dataGridView);
             if (id > 0)
             {
                 ToolStripMenuItem_Genres_Show_Click(sender, e);
-                General_Manipulations.show_row(dataGridView1, id.ToString(), "Id");
+                General_Manipulations.show_row(dataGridView, id.ToString(), "Id");
             }
         }
         #endregion
@@ -187,31 +214,18 @@ namespace lib_postgres
         #region Authors
         private void ToolStripMenuItem_Author_Edit_Click(object sender, EventArgs e)
         {
-            var id = PARTIAL.Author.Edit_Author(dataGridView1);
-            if (id > 0)
-            {
-                ToolStripMenuItem_Autors_Show_Click(sender, e);
-                General_Manipulations.show_row(dataGridView1, id.ToString(), "Id");
-            }
+            Edit_Author();
         }
 
         private void ToolStripMenuItem_Autors_Show_Click(object sender, EventArgs e)
         {
-            dataGridView1.Columns.Clear();
-            dataGridView1.DataSource = DB_Agent.Get_Authors();
-            Turn_Off_Current_Menu_Item();
-            CODE.Form_Element_DGV.Prepare_DGV_For_Type<Author>(dataGridView1, StatusProperty);
-            Turn_On_Current_Menu_Item();
+            Refresh_DGV_for_Item_Type<Author>();
+
         }
 
         private void ToolStripMenuItem_Author_Add_Click(object sender, EventArgs e)
         {
-            var id = PARTIAL.Author.Add_Author();
-            if (id > 0)
-            {
-                ToolStripMenuItem_Autors_Show_Click(sender, e);
-                General_Manipulations.show_row(dataGridView1, id.ToString(), "Id");
-            }
+            Create_Author();
         }
         #endregion
 
@@ -219,29 +233,25 @@ namespace lib_postgres
 
         private void ToolStripMenuItem_Arts_Show_Click(object sender, EventArgs e)
         {
-            dataGridView1.Columns.Clear();
-            dataGridView1.DataSource = CODE.Queries_LinQ.Get_Arts();
-            Turn_Off_Current_Menu_Item();
-            CODE.Form_Element_DGV.Prepare_DGV_For_Type<Art>(dataGridView1, StatusProperty);
-            Turn_On_Current_Menu_Item();
+            Refresh_DGV_for_Item_Type<Art>();
         }
         private void ToolStripMenuItem_Arts_Add_Click(object sender, EventArgs e)
         {
-            var id = Art.Add_Art();
+            var id = PARTIAL.Art.Add_Art();
             if (id > 0)
             {
-                ToolStripMenuItem_Arts_Show_Click(sender, e);
-                General_Manipulations.show_row(dataGridView1, id.ToString(), "Id");//ToString() - костыль, переписать всё для id
+                Refresh_DGV_for_Item_Type<Art>();
+                General_Manipulations.show_row(dataGridView, id.ToString(), "Id");//ToString() - костыль, переписать всё для id
             }
         }
 
         private void ToolStripMenuItem_Arts_Edit_Click(object sender, EventArgs e)
         {
-            var id = Art.Edit_Art(dataGridView1);
+            var id = PARTIAL.Art.Edit_Art(dataGridView);
             if (id > 0)
             {
-                ToolStripMenuItem_Arts_Show_Click(sender, e);
-                General_Manipulations.show_row(dataGridView1, id.ToString(), "Id");//ToString() - костыль, переписать всё для id
+                Refresh_DGV_for_Item_Type<Art>();
+                General_Manipulations.show_row(dataGridView, id.ToString(), "Id");//ToString() - костыль, переписать всё для id
             }
         }
 
@@ -250,10 +260,10 @@ namespace lib_postgres
         #region Language
         private void ToolStripMenuItem_Language_Show_Click(object sender, EventArgs e)
         {
-            dataGridView1.Columns.Clear();
-            dataGridView1.DataSource = DB_Agent.Get_Languages();
+            dataGridView.Columns.Clear();
+            dataGridView.DataSource = DB_Agent.Get_Languages();
             Turn_Off_Current_Menu_Item();
-            CODE.Form_Element_DGV.Prepare_DGV_For_Type<Language>(dataGridView1, StatusProperty);
+            CODE.Form_Element_DGV.Prepare_DGV_For_Type<Language>(dataGridView, StatusProperty);
             Turn_On_Current_Menu_Item();
         }
 
@@ -263,16 +273,16 @@ namespace lib_postgres
             if (id > 0)
             {
                 ToolStripMenuItem_Language_Show_Click(sender, e);
-                General_Manipulations.show_row(dataGridView1, id.ToString(), "Id");
+                General_Manipulations.show_row(dataGridView, id.ToString(), "Id");
             }
         }
         private void ToolStripMenuItem_Language_Edit_Click(object sender, EventArgs e)
         {
-            var id = PARTIAL.Language.Edit_Language(dataGridView1);
+            var id = PARTIAL.Language.Edit_Language(dataGridView);
             if (id > 0)
             {
                 ToolStripMenuItem_Language_Show_Click(sender, e);
-                General_Manipulations.show_row(dataGridView1, id.ToString(), "Id");
+                General_Manipulations.show_row(dataGridView, id.ToString(), "Id");
             }
         }
 
@@ -281,30 +291,16 @@ namespace lib_postgres
         #region Book
         private void ToolStripMenuItem_Book_Add_Click(object sender, EventArgs e)
         {
-            long book_id = PARTIAL.Book.Add_Book();
-            if (book_id > 0)
-            {
-                ToolStripMenuItem_Book_Show_Click(sender, e);
-                General_Manipulations.show_row(dataGridView1, book_id.ToString(), "Id");
-            }
+            Create_Book();
         }
         private void ToolStripMenuItem_Book_Show_Click(object sender, EventArgs e)
         {
-            dataGridView1.Columns.Clear();
-            dataGridView1.DataSource = Queries_from_Views.Get_Books();
-            Turn_Off_Current_Menu_Item();
-            CODE.Form_Element_DGV.Prepare_DGV_For_Type<ViewBook>(dataGridView1, StatusProperty);
-            Turn_On_Current_Menu_Item();
+            Refresh_DGV_for_Item_Type<ViewBook>();
         }
 
         private void ToolStripMenuItem__Book_Edit_Click(object sender, EventArgs e)
         {
-            long book_id = PARTIAL.Book.Edit_Book(dataGridView1);
-            if (book_id > 0)
-            {
-                ToolStripMenuItem_Book_Show_Click(sender, e);
-                General_Manipulations.show_row(dataGridView1, book_id.ToString(), "Id");
-            }
+            Edit_Book();
         }
 
         #endregion
@@ -319,26 +315,26 @@ namespace lib_postgres
             if (id > 0)
             {
                 ToolStripMenuItem_PubHouse_Show_Click(sender, e);
-                General_Manipulations.show_row(dataGridView1, id.ToString(), "Id");
+                General_Manipulations.show_row(dataGridView, id.ToString(), "Id");
             }
         }
 
         private void ToolStripMenuItem_PubHouse_Show_Click(object sender, EventArgs e)
         {
-            dataGridView1.Columns.Clear();
-            dataGridView1.DataSource = DB_Agent.Get_Publishing_Houses();
+            dataGridView.Columns.Clear();
+            dataGridView.DataSource = DB_Agent.Get_Publishing_Houses();
             Turn_Off_Current_Menu_Item();
-            CODE.Form_Element_DGV.Prepare_DGV_For_Type<PublishingHouse>(dataGridView1, StatusProperty);
+            CODE.Form_Element_DGV.Prepare_DGV_For_Type<PublishingHouse>(dataGridView, StatusProperty);
             Turn_On_Current_Menu_Item();
         }
 
         private void ToolStripMenuItem_PubHouse_Edit_Click(object sender, EventArgs e)
         {
-            var id = PARTIAL.PublishingHouse.Edit_PubHouse(dataGridView1);
+            var id = PARTIAL.PublishingHouse.Edit_PubHouse(dataGridView);
             if (id > 0)
             {
                 ToolStripMenuItem_PubHouse_Show_Click(sender, e);
-                General_Manipulations.show_row(dataGridView1, id.ToString(), "Id");
+                General_Manipulations.show_row(dataGridView, id.ToString(), "Id");
             }
         }
         #endregion
@@ -347,41 +343,27 @@ namespace lib_postgres
 
         private void ToolStripMenuItem__City_Show_Click(object sender, EventArgs e)
         {
-            dataGridView1.Columns.Clear();
-            dataGridView1.DataSource = DB_Agent.Get_Cities();
-            Turn_Off_Current_Menu_Item();
-            CODE.Form_Element_DGV.Prepare_DGV_For_Type<City>(dataGridView1, StatusProperty);
-            Turn_On_Current_Menu_Item();
+            Refresh_DGV_for_Item_Type<City>();
         }
 
         private void ToolStripMenuItem_City_Add_Click(object sender, EventArgs e)
         {
-            var id = PARTIAL.City.Add_City();
-            if (id > 0)
-            {
-                ToolStripMenuItem__City_Show_Click(sender, e);
-                General_Manipulations.show_row(dataGridView1, id.ToString(), "Id");
-            }
+            Create_City();
         }
 
         private void ToolStripMenuItem_City_Edit_Click(object sender, EventArgs e)
         {
-            var id = PARTIAL.City.Edit_City(dataGridView1);
-            if (id > 0)
-            {
-                ToolStripMenuItem__City_Show_Click(sender, e);
-                General_Manipulations.show_row(dataGridView1, id.ToString(), "Id");
-            }
+            Edit_City();
         }
         #endregion
 
         #region Actions
         private void ToolStripMenuItem_Actions_Open_Click(object sender, EventArgs e)
         {
-            dataGridView1.Columns.Clear();
-            dataGridView1.DataSource = DB_Agent.Get_Actions();
+            dataGridView.Columns.Clear();
+            dataGridView.DataSource = DB_Agent.Get_Actions();
             Turn_Off_Current_Menu_Item();
-            CODE.Form_Element_DGV.Prepare_DGV_For_Type<Action>(dataGridView1, StatusProperty);
+            CODE.Form_Element_DGV.Prepare_DGV_For_Type<Action>(dataGridView, StatusProperty);
             Turn_On_Current_Menu_Item();
         }
 
@@ -391,23 +373,23 @@ namespace lib_postgres
             if (action_id > 0)
             {
                 ToolStripMenuItem_Actions_Open_Click(sender, e);
-                General_Manipulations.show_row(dataGridView1, action_id.ToString(), "Id");
+                General_Manipulations.show_row(dataGridView, action_id.ToString(), "Id");
             }
         }
 
         private void ToolStripMenuItem_Actions_Edit_Click(object sender, EventArgs e)
         {
-            long action_id = PARTIAL.Action.Edit_Action(dataGridView1);
+            long action_id = PARTIAL.Action.Edit_Action(dataGridView);
             if (action_id > 0)
             {
                 ToolStripMenuItem_Actions_Open_Click(sender, e);
-                General_Manipulations.show_row(dataGridView1, action_id.ToString(), "Id");
+                General_Manipulations.show_row(dataGridView, action_id.ToString(), "Id");
             }
         }
 
         private void ToolStripMenuItem_Location_Show_Click(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = CODE.Queries_LinQ.Get_Locations();
+            dataGridView.DataSource = CODE.Queries_LinQ.Get_Locations();
         }
         #endregion
 
@@ -415,31 +397,17 @@ namespace lib_postgres
 
         private void ToolStripMenuItem_Series_Show_Click(object sender, EventArgs e)
         {
-            dataGridView1.Columns.Clear();
-            dataGridView1.DataSource = DB_Agent.Get_Series();
-            Turn_Off_Current_Menu_Item();
-            CODE.Form_Element_DGV.Prepare_DGV_For_Type<Series>(dataGridView1, StatusProperty);
-            Turn_On_Current_Menu_Item();
+            Read_Series();
         }
 
         private void ToolStripMenuItem_Series_Add_Click(object sender, EventArgs e)
         {
-            var id = PARTIAL.Series.Add_Serie();
-            if (id != 0)
-            {
-                ToolStripMenuItem_Series_Show_Click(sender, e);
-                General_Manipulations.show_row(dataGridView1, id.ToString(), "Id");
-            }
+            Create_Series();
         }
 
         private void ToolStripMenuItem_Series_Edit_Click(object sender, EventArgs e)
         {
-            long id = PARTIAL.Series.Edit_Serie(dataGridView1);
-            if (id > 0)
-            {
-                ToolStripMenuItem_Series_Show_Click(sender, e);
-                General_Manipulations.show_row(dataGridView1, id.ToString(), "Id");
-            }
+            Edit_Series();
         }
         #endregion
 
@@ -448,10 +416,10 @@ namespace lib_postgres
 
         private void ToolStripMenuItem__Read_Open_Click(object sender, EventArgs e)
         {
-            dataGridView1.Columns.Clear();
-            dataGridView1.DataSource = DB_Agent.Get_ViewHasReads();
+            dataGridView.Columns.Clear();
+            dataGridView.DataSource = DB_Agent.Get_ViewHasReads();
             Turn_Off_Current_Menu_Item();
-            CODE.Form_Element_DGV.Prepare_DGV_For_Type<ViewHasRead>(dataGridView1, StatusProperty);
+            CODE.Form_Element_DGV.Prepare_DGV_For_Type<ViewHasRead>(dataGridView, StatusProperty);
             Turn_On_Current_Menu_Item();
             Colorise_DGV();
         }
@@ -460,7 +428,7 @@ namespace lib_postgres
         {
             var formats = DB_Agent.Get_BookFormats();
             var marks = DB_Agent.Get_Marks();
-            foreach (DataGridViewRow row in dataGridView1.Rows)
+            foreach (DataGridViewRow row in dataGridView.Rows)
             {
                 var format_color_id = (from f in formats
                                        where f.Name == row.Cells["Формат"].Value.ToString()
@@ -481,19 +449,19 @@ namespace lib_postgres
             if (id > 0)
             {
                 ToolStripMenuItem__Read_Open_Click(sender, e);
-                General_Manipulations.show_row(dataGridView1, id.ToString(), "Id");
+                General_Manipulations.show_row(dataGridView, id.ToString(), "Id");
             }
         }
 
         private void ToolStripMenuItem__Read_Edit_Click(object sender, EventArgs e)
         {
-            int index = dataGridView1.SelectedRows[0].Index;
-            long id = (long)dataGridView1.Rows[index].Cells["Id"].Value;
+            int index = dataGridView.SelectedRows[0].Index;
+            long id = (long)dataGridView.Rows[index].Cells["Id"].Value;
             id = PARTIAL.ArtRead.Edit_ArtRead(id);
             if (id > 0)
             {
                 ToolStripMenuItem__Read_Open_Click(sender, e);
-                General_Manipulations.show_row(dataGridView1, id.ToString(), "Id");
+                General_Manipulations.show_row(dataGridView, id.ToString(), "Id");
             }
         }
         #endregion
@@ -502,16 +470,15 @@ namespace lib_postgres
         {
             if (gridViewItemType == typeof(Place)) ;
             else if (gridViewItemType == typeof(Language)) ToolStripMenuItem_Language_Edit_Click(sender, e);
-            else if (gridViewItemType == typeof(Author)) ToolStripMenuItem_Author_Edit_Click(sender, e);
+            else if (gridViewItemType == typeof(Author))    Edit_Author();
             else if (gridViewItemType == typeof(Action)) ToolStripMenuItem_Actions_Edit_Click(sender, e);
             else if (gridViewItemType == typeof(Series)) ToolStripMenuItem_Series_Edit_Click(sender, e);
             else if (gridViewItemType == typeof(PublishingHouse)) ToolStripMenuItem_PubHouse_Edit_Click(sender, e);
-            else if (gridViewItemType == typeof(City)) ToolStripMenuItem_City_Edit_Click(sender, e);
-            else if (gridViewItemType == typeof(ViewBook)) ToolStripMenuItem__Book_Edit_Click(sender, e);
+            else if (gridViewItemType == typeof(City))      Edit_City();
+            else if (gridViewItemType == typeof(ViewBook))  Edit_Book();
             else if (gridViewItemType == typeof(Art)) ToolStripMenuItem_Arts_Edit_Click(sender, e);
             else if (gridViewItemType == typeof(Genre)) ToolStripMenuItem_Genres_Edit_Click(sender, e);
             else if (gridViewItemType == typeof(ViewHasRead)) ToolStripMenuItem__Read_Edit_Click(sender, e);
-
         }
 
 
@@ -544,7 +511,6 @@ namespace lib_postgres
             menu_item.Enabled = state;
             if (toolStripMenuItem is not null)
                 toolStripMenuItem.Visible = state;
-
         }
 
         #endregion
@@ -561,13 +527,265 @@ namespace lib_postgres
 
         private void ToolStripMenuItem__Recommendations_Show_Click(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = CODE.Queries_LinQ.Get_Recommendations();
+            dataGridView.DataSource = CODE.Queries_LinQ.Get_Recommendations();
         }
 
-        private void сведенияToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ToolStripMenuItem__Recommendations_Tree_Click(object sender, EventArgs e)
         {
             FORMS.Form_Recommendation form_Recommendation = new Form_Recommendation();
             var DialogResult = form_Recommendation.ShowDialog();
+        }
+
+        private void ToolStripMenuItem_File_BackupBD_Click(object sender, EventArgs e)
+        {
+            BackupBD();
+        }
+
+        private void ToolStripMenuItem_File_Open_Settings_Click(object sender, EventArgs e)
+        {
+
+            Form_Settings form_Settings = new Form_Settings();
+            DialogResult dialogResult = form_Settings.ShowDialog();
+            if (dialogResult != DialogResult.OK) return;
+
+            Backup.Set_Value_Backup_on_Start(form_Settings.ChB_Backup_on_Start.Checked);
+
+            DeletedEntities.Set_Value_Show_Deleted(form_Settings.ChB_Show_Deleted_Entities.Checked);
+            is_Colorize_del_items = form_Settings.ChB_Show_Deleted_Entities.Checked;
+            if (gridViewItemType == typeof(ViewBook))
+                Refresh_DGV_for_Item_Type<ViewBook>();
+        }
+
+        private void ToolStripMenuItem_Books_Delete_Click(object sender, EventArgs e)
+        {
+            Delete_Book();
+        }
+
+
+        private void Form_Main_Shown(object sender, EventArgs e)
+        {
+            Refresh_DGV_for_Item_Type<ViewBook>();
+        }
+
+        private void ToolStripMenuItem_Arts_Delete_Click(object sender, EventArgs e)
+        {
+            Delete_Item<Art>();
+        }
+
+        private void ToolStripMenuItem_City_Delete_Click(object sender, EventArgs e)
+        {
+            Delete_City();
+        }
+
+        private void ToolStripMenuItem_Author_Delete_Click(object sender, EventArgs e)
+        {
+            Delete_Author();
+        }
+
+        private void Refresh_DGV_for_Item_Type<T>()
+        {
+            dataGridView.Columns.Clear();
+            dataGridView.DataSource = CODE.CRUD.CRUD_Item_Determinator.Get_All_Items_List_by_Type<T>();
+            Turn_Off_Current_Menu_Item();
+            CODE.Form_Element_DGV.Prepare_DGV_For_Type<T>(dataGridView, StatusProperty);
+            List<long> deleted_IDs = CODE.CRUD.CRUD_Item_Determinator.Get_Deleted_Items_IDs<T>();
+            DelItemsColorization.RunCommand(is_Colorize_del_items, deleted_IDs, dataGridView);
+            Turn_On_Current_Menu_Item();
+        }
+
+        #region general CRUD
+        private void Create_Item<T>()
+        {
+            long _id = CODE.CRUD.CRUD_Item_Determinator.Create_Item<T>();
+            if (_id > 0)
+            {
+                Refresh_DGV_for_Item_Type<T>();
+                General_Manipulations.show_row(dataGridView, _id.ToString(), "Id");
+            }
+        }
+        private void Edit_Item<T>(long id)
+        {
+            long _id = CODE.CRUD.CRUD_Item_Determinator.Edit_Item_by_ID<T>(id);
+            if (_id > 0)
+            {
+                Refresh_DGV_for_Item_Type<T>();
+                General_Manipulations.show_row(dataGridView, _id.ToString(), "Id");
+            }
+        }
+        private void Delete_Item<T>()
+        {
+            long id = CODE.CRUD.CRUD_Item_Determinator.Delete_Item_by_ID<T>(Get_Selected_Entity_ID());
+            if (id > 0)
+            {
+                Refresh_DGV_for_Item_Type<T>();
+                General_Manipulations.show_row(dataGridView, id.ToString(), "Id");
+            }
+        }
+        #endregion general CRUD
+
+        #region CRUD
+
+        #region book CRUD
+        private void Create_Book()
+        {
+          //  Create_Item<ViewBook>(Queries_from_Views.Get_Books());
+            long book_id = PARTIAL.Book.Create_Book();
+            if (book_id > 0)
+            {
+                Refresh_DGV_for_Item_Type<ViewBook>();
+                General_Manipulations.show_row(dataGridView, book_id.ToString(), "Id");
+            }
+        }
+        private void Edit_Book()
+        {
+            Edit_Item<ViewBook>(Get_Selected_Entity_ID());
+        }
+
+        private void Delete_Book()
+        {
+            Delete_Item<ViewBook>();
+        }
+        #endregion
+
+        #region author CRUD
+        private void Create_Author()
+        {
+            var id = PARTIAL.Author.Add_Author();
+            if (id > 0)
+            {
+                Refresh_DGV_for_Item_Type<Author>();
+                General_Manipulations.show_row(dataGridView, id.ToString(), "Id");
+            }
+        }
+
+        private void Edit_Author()
+        {
+            Edit_Item<Author>(Get_Selected_Entity_ID());
+        }
+
+        private void Delete_Author()
+        {
+            Delete_Item<Author>();
+        }
+        #endregion
+
+        #region city CRUD
+        private void Create_City()
+        {
+            var id = PARTIAL.City.Add_City();
+            if (id > 0)
+            {
+                Refresh_DGV_for_Item_Type<City>();
+                General_Manipulations.show_row(dataGridView, id.ToString(), "Id");
+            }
+        }
+        private void Edit_City()
+        {
+            var id = PARTIAL.City.Edit_City(dataGridView);
+            if (id > 0)
+            {
+                Refresh_DGV_for_Item_Type<City>();
+                General_Manipulations.show_row(dataGridView, id.ToString(), "Id");
+            }
+        }
+        private void Delete_City()
+        {
+            Delete_Item<City>();
+        }
+        #endregion
+
+        #region genre CRUD
+        private void Create_Genre()
+        {
+
+        }
+        private void Edit_Genre()
+        {
+
+        }
+        private void Delete_Genre()
+        {
+
+        }
+        #endregion
+
+        #region art CRUD
+        private void Create_Art()
+        {
+
+        }
+        private void Edit_Art()
+        {
+
+        }
+        private void Delete_Art()
+        {
+
+        }
+        #endregion
+
+        #region language CRUD
+        private void Create_Language()
+        {
+
+        }
+        private void Edit_Language()
+        {
+
+        }
+        private void Delete_Language()
+        {
+
+        }
+        #endregion
+
+        #region PublishingHouse CRUD
+        private void Create_PublishingHouse()
+        {
+
+        }
+        private void Edit_PublishingHouse()
+        {
+
+        }
+        private void Delete_PublishingHouse()
+        {
+
+        }
+        #endregion
+
+        #region Series CRUD
+        private void Create_Series()
+        {
+            //     Create_Item<Series>(CODE.CRUD.CRUD_Item_Determinator.Get_All_Items_List_by_Type<Series>());
+            var id = PARTIAL.Series.Create_Item();
+            if (id != 0)
+            {
+                Read_Series();
+                General_Manipulations.show_row(dataGridView, id.ToString(), "Id");
+            }
+        }
+        private void Read_Series()
+        {
+                Refresh_DGV_for_Item_Type<Series>();
+        }
+
+        private void Edit_Series()
+        {
+            Edit_Item<Series>(Get_Selected_Entity_ID());
+
+        }
+        private void Delete_Series()
+        {
+            Delete_Item<Series>();
+        }
+        #endregion
+
+        #endregion CRUD
+
+        private void ToolStripMenuItem_Series_Delete_Click(object sender, EventArgs e)
+        {
+            Delete_Series();
         }
     }
 }

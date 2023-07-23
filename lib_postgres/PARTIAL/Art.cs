@@ -5,8 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using lib_postgres.CODE;
 using lib_postgres.FORMS;
+using lib_postgres.PARTIAL;
 
-namespace lib_postgres
+namespace lib_postgres.PARTIAL
 {
     public partial class Art
     {
@@ -120,6 +121,32 @@ namespace lib_postgres
                        authorArt.Art = art.Id;
                        DB_Agent.db.AuthorArts.Add(authorArt);
                            DB_Agent.db.SaveChanges()*/
+        }
+
+        public static long Delete_Item_by_ID(long id)
+        {
+            lib_postgres.Art art = DB_Agent.Get_Art(id);
+            if (art.IsDeleted.HasValue)
+                art.IsDeleted = !art.IsDeleted;
+            else
+                art.IsDeleted = true;
+            return art.Id;
+        }
+        public static List<lib_postgres.Art> Get_Deleted_Arts()
+        {
+            List<lib_postgres.Art> arts = DB_Agent.Get_Arts();
+            List<lib_postgres.Art> deleted_arts = (from art in arts
+                                      where art.IsDeleted is true
+                                      select art).ToList();
+            return deleted_arts;
+        }
+
+        public static List<long> Get_Deleted_Arts_IDs()
+        {
+            List<lib_postgres.Art> deleted_arts = Get_Deleted_Arts();
+            List<long> del_arts_id = (from art in deleted_arts
+                                      select art.Id).ToList(); ;
+            return del_arts_id;
         }
     }
 }

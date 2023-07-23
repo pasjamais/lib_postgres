@@ -47,7 +47,7 @@ namespace lib_postgres
 
         private void BT_Add_Art_Click(object sender, EventArgs e)
         {
-            var id = Art.Add_Art();
+            var id = PARTIAL.Art.Add_Art();
             if (id > 0) General_Manipulations.CB_reload<Art>(CB_Art, id);
             DialogResult = DialogResult.None;
         }
@@ -76,7 +76,7 @@ namespace lib_postgres
 
         private void BT_Add_Serie_Click(object sender, EventArgs e)
         {
-            var id = PARTIAL.Series.Add_Serie();
+            var id = PARTIAL.Series.Create_Item();
             if (id != 0) General_Manipulations.CB_reload<Series>(CB_Series, id);
             DialogResult = DialogResult.None;
         }

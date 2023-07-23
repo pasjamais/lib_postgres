@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,17 +15,41 @@ namespace lib_postgres
         #region general
         public static string Get_Connection_String()
         {
-            CODE.IniFile ini = new CODE.IniFile(CODE.Data.ini_file_name);
-            string? connection_string = ini.Read("connection_string", "GENERAL");
-            return connection_string;
+            return Get_Value_from_Settings_File(CODE.Data.ini_file_name, "connection_string", "GENERAL");
         }
+
+        public static string Get_Password()
+        {
+            return Get_Value_from_Settings_File(CODE.Data.ini_file_name, "password", "GENERAL");
+        }
+
+        private static string Get_Value_from_Settings_File(string ini_file_name, string key, string section)
+        {
+            CODE.IniFile ini = new CODE.IniFile(ini_file_name);
+            string? value = ini.Read(key, section);
+            return value;
+        }
+        public static void Save_Changes()
+        {
+            db.SaveChanges();
+        }
+        public static dynamic  Get_Entities<T>()
+        {
+            Type type = typeof(T);
+            if (type == typeof(Book))
+                return Get_Books();
+            else return null;
+        }
+        
+
+
         #endregion
 
         #region Books
         public static void Book_Add(Book book)
         {
             db.Books.Add(book);
-            db.SaveChanges();
+            Save_Changes();
         }
         public static Book Get_Book(long id)
         {
