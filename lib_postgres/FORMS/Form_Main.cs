@@ -1,11 +1,14 @@
 using lib_postgres.CODE;
 using lib_postgres.FORMS;
+using lib_postgres.VISUAL;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Npgsql;
 using System.Collections.Generic;
 using System.Reflection.Emit;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 
@@ -568,6 +571,27 @@ namespace lib_postgres
         {
             FORMS.Form_Recommendation form_Recommendation = new Form_Recommendation();
             var DialogResult = form_Recommendation.ShowDialog();
+        }
+
+        private void ToolStripMenuItem__Recommend_Vis_Graphviz_Click(object sender, EventArgs e)
+        {
+            List<Recomendation> recomendatons = Graph_Agent.Get_Recomendations();
+            List<Node_Simple_Element> arts_sources = Graph_Agent.Get_Sources_Arts(recomendatons);
+            Dot_Builder dot_builder = new Dot_Builder("g", arts_sources);
+            dot_builder.Add_Elements(arts_sources);
+            List<Node_Simple_Element> arts_recommended = Graph_Agent.Get_Recommended_Arts(arts_sources, recomendatons);
+            dot_builder.Add_Elements(arts_recommended);
+            dot_builder.Add_Relations(Graph_Agent.Get_Recomendations_from_Arts_for_Graphviz());
+            String graphVizString = dot_builder.ToString();
+            Bitmap bm = GraphViz.FileDotEngine.Run(graphVizString);
+            
+            FORMS.Form_Graphviz form_graphviz = new lib_postgres.FORMS.Form_Graphviz();
+            form_graphviz.pictureBox.Image = bm;
+            form_graphviz.Height = (bm.Height + 32 < System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height) ?
+            bm.Height + 32 : System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height;
+            form_graphviz.Width = (bm.Width < System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width) ?
+            bm.Width : System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width;
+            var DialogResult = form_graphviz.ShowDialog();
         }
     }
 }

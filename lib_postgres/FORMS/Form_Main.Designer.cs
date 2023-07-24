@@ -43,6 +43,7 @@
             this.toolStripSeparator15 = new System.Windows.Forms.ToolStripSeparator();
             this.ToolStripMenuItem__Recommendations_Show = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem__Recommendation_Add = new System.Windows.Forms.ToolStripMenuItem();
+            this.сведенияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Books = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Book_Show = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
@@ -109,7 +110,7 @@
             this.ToolStripMenuItem_Places = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
             this.ToolStripMenuItem_People = new System.Windows.Forms.ToolStripMenuItem();
-            this.сведенияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem__Recommend_Vis_Graphviz = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.book1BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.contextMenuStrip.SuspendLayout();
@@ -188,7 +189,8 @@
             this.toolStripSeparator15,
             this.ToolStripMenuItem__Recommendations_Show,
             this.ToolStripMenuItem__Recommendation_Add,
-            this.сведенияToolStripMenuItem});
+            this.сведенияToolStripMenuItem,
+            this.ToolStripMenuItem__Recommend_Vis_Graphviz});
             this.ToolStripMenuItem_Reader.Name = "ToolStripMenuItem_Reader";
             this.ToolStripMenuItem_Reader.Size = new System.Drawing.Size(69, 20);
             this.ToolStripMenuItem_Reader.Text = "Читатель";
@@ -240,6 +242,13 @@
             this.ToolStripMenuItem__Recommendation_Add.Size = new System.Drawing.Size(248, 22);
             this.ToolStripMenuItem__Recommendation_Add.Text = "Добавить рекомендацию...";
             this.ToolStripMenuItem__Recommendation_Add.Click += new System.EventHandler(this.ToolStripMenuItem__Recommendation_Add_Click);
+            // 
+            // сведенияToolStripMenuItem
+            // 
+            this.сведенияToolStripMenuItem.Name = "сведенияToolStripMenuItem";
+            this.сведенияToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
+            this.сведенияToolStripMenuItem.Text = "Сведения...";
+            this.сведенияToolStripMenuItem.Click += new System.EventHandler(this.сведенияToolStripMenuItem_Click);
             // 
             // ToolStripMenuItem_Books
             // 
@@ -739,12 +748,12 @@
             this.ToolStripMenuItem_People.Size = new System.Drawing.Size(163, 22);
             this.ToolStripMenuItem_People.Text = "Люди";
             // 
-            // сведенияToolStripMenuItem
+            // ToolStripMenuItem__Recommend_Vis_Graphviz
             // 
-            this.сведенияToolStripMenuItem.Name = "сведенияToolStripMenuItem";
-            this.сведенияToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
-            this.сведенияToolStripMenuItem.Text = "Сведения...";
-            this.сведенияToolStripMenuItem.Click += new System.EventHandler(this.сведенияToolStripMenuItem_Click);
+            this.ToolStripMenuItem__Recommend_Vis_Graphviz.Name = "ToolStripMenuItem__Recommend_Vis_Graphviz";
+            this.ToolStripMenuItem__Recommend_Vis_Graphviz.Size = new System.Drawing.Size(248, 22);
+            this.ToolStripMenuItem__Recommend_Vis_Graphviz.Text = "Визулизировать";
+            this.ToolStripMenuItem__Recommend_Vis_Graphviz.Click += new System.EventHandler(this.ToolStripMenuItem__Recommend_Vis_Graphviz_Click);
             // 
             // Form_Main
             // 
@@ -850,5 +859,6 @@
         private ToolStripMenuItem ToolStripMenuItem__Recommendations_Show;
         private ToolStripSeparator toolStripSeparator16;
         private ToolStripMenuItem сведенияToolStripMenuItem;
+        private ToolStripMenuItem ToolStripMenuItem__Recommend_Vis_Graphviz;
     }
 }

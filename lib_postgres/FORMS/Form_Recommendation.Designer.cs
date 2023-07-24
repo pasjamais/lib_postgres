@@ -87,7 +87,6 @@
             this.bt_cancel.TabIndex = 4;
             this.bt_cancel.Text = "Закрыть";
             this.bt_cancel.UseVisualStyleBackColor = true;
-            this.bt_cancel.Click += new System.EventHandler(this.bt_cancel_Click);
             // 
             // panel_buttons
             // 
