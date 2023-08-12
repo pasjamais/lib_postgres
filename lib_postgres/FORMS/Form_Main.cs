@@ -184,30 +184,19 @@ namespace lib_postgres
         #region Genre
         private void ToolStripMenuItem_Genres_Show_Click(object sender, EventArgs e)
         {
-            dataGridView.Columns.Clear();
-            dataGridView.DataSource = DB_Agent.Get_Genres();
-            Turn_Off_Current_Menu_Item();
-            CODE.Form_Element_DGV.Prepare_DGV_For_Type<Genre>(dataGridView, StatusProperty);
-            Turn_On_Current_Menu_Item();
+            Read_Genre();
         }
         private void ToolStripMenuItem_Genres_Add_Click(object sender, EventArgs e)
         {
-            var id = PARTIAL.Genre.Add_Genre();
-            if (id > 0)
-            {
-                ToolStripMenuItem_Genres_Show_Click(sender, e);
-                General_Manipulations.show_row(dataGridView, id.ToString(), "Id");
-            }
-
+            Create_Genre();
         }
         private void ToolStripMenuItem_Genres_Edit_Click(object sender, EventArgs e)
         {
-            var id = PARTIAL.Genre.Edit_Genre(dataGridView);
-            if (id > 0)
-            {
-                ToolStripMenuItem_Genres_Show_Click(sender, e);
-                General_Manipulations.show_row(dataGridView, id.ToString(), "Id");
-            }
+            Edit_Genre();
+        }
+        private void ToolStripMenuItem__Genres_Delete_Click(object sender, EventArgs e)
+        {
+            Delete_Genre();
         }
         #endregion
 
@@ -399,15 +388,17 @@ namespace lib_postgres
         {
             Read_Series();
         }
-
         private void ToolStripMenuItem_Series_Add_Click(object sender, EventArgs e)
         {
             Create_Series();
         }
-
         private void ToolStripMenuItem_Series_Edit_Click(object sender, EventArgs e)
         {
             Edit_Series();
+        }
+        private void ToolStripMenuItem_Series_Delete_Click(object sender, EventArgs e)
+        {
+            Delete_Series();
         }
         #endregion
 
@@ -697,15 +688,20 @@ namespace lib_postgres
         #region genre CRUD
         private void Create_Genre()
         {
-
+            Create_Item<Genre>();
         }
+        private void Read_Genre()
+        {
+            Refresh_DGV_for_Item_Type<Genre>();
+        }
+
         private void Edit_Genre()
         {
-
+            Edit_Item<Genre>(Get_Selected_Entity_ID());
         }
         private void Delete_Genre()
         {
-
+            Delete_Item<Genre>();
         }
         #endregion
 
@@ -757,13 +753,7 @@ namespace lib_postgres
         #region Series CRUD
         private void Create_Series()
         {
-            //     Create_Item<Series>(CODE.CRUD.CRUD_Item_Determinator.Get_All_Items_List_by_Type<Series>());
-            var id = PARTIAL.Series.Create_Item();
-            if (id != 0)
-            {
-                Read_Series();
-                General_Manipulations.show_row(dataGridView, id.ToString(), "Id");
-            }
+            Create_Item<Series>();
         }
         private void Read_Series()
         {
@@ -783,9 +773,8 @@ namespace lib_postgres
 
         #endregion CRUD
 
-        private void ToolStripMenuItem_Series_Delete_Click(object sender, EventArgs e)
-        {
-            Delete_Series();
-        }
+
+
+ 
     }
 }

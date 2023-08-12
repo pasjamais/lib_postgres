@@ -591,6 +591,7 @@
             this.ToolStripMenuItem__Genres_Delete.Name = "ToolStripMenuItem__Genres_Delete";
             this.ToolStripMenuItem__Genres_Delete.Size = new System.Drawing.Size(231, 22);
             this.ToolStripMenuItem__Genres_Delete.Text = "Удалить/Отменить удаление";
+            this.ToolStripMenuItem__Genres_Delete.Click += new System.EventHandler(this.ToolStripMenuItem__Genres_Delete_Click);
             // 
             // ToolStripMenuItem_Cities
             // 

@@ -55,7 +55,7 @@ namespace lib_postgres
 
         private void BT_Add_Genre_Click(object sender, EventArgs e)
         {
-            var id = PARTIAL.Genre.Add_Genre();
+            var id = PARTIAL.Genre.Create_Item();
             if (id > 0) CB_Genre_reload(id);
             DialogResult = DialogResult.None;
         }
