@@ -62,7 +62,7 @@ namespace lib_postgres
 
         private void BT_Add_Langue_Book_Click(object sender, EventArgs e)
         {
-            var id = PARTIAL.Language.Add_Language();
+            var id = PARTIAL.Language.Create_Item();
             if (id != 0) General_Manipulations.CB_reload<Language>(CB_Book_Language, id);
             DialogResult = DialogResult.None;
         }

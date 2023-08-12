@@ -1,6 +1,7 @@
 using lib_postgres.CODE;
 using lib_postgres.CODE.VIEW.DELITEMS;
 using lib_postgres.FORMS;
+using lib_postgres.PARTIAL;
 using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Npgsql;
@@ -249,32 +250,21 @@ namespace lib_postgres
         #region Language
         private void ToolStripMenuItem_Language_Show_Click(object sender, EventArgs e)
         {
-            dataGridView.Columns.Clear();
-            dataGridView.DataSource = DB_Agent.Get_Languages();
-            Turn_Off_Current_Menu_Item();
-            CODE.Form_Element_DGV.Prepare_DGV_For_Type<Language>(dataGridView, StatusProperty);
-            Turn_On_Current_Menu_Item();
+            Read_Languages();
         }
 
         private void ToolStripMenuItem_Language_Add_Click(object sender, EventArgs e)
         {
-            var id = PARTIAL.Language.Add_Language();
-            if (id > 0)
-            {
-                ToolStripMenuItem_Language_Show_Click(sender, e);
-                General_Manipulations.show_row(dataGridView, id.ToString(), "Id");
-            }
+            Create_Language();
         }
         private void ToolStripMenuItem_Language_Edit_Click(object sender, EventArgs e)
         {
-            var id = PARTIAL.Language.Edit_Language(dataGridView);
-            if (id > 0)
-            {
-                ToolStripMenuItem_Language_Show_Click(sender, e);
-                General_Manipulations.show_row(dataGridView, id.ToString(), "Id");
-            }
+            Edit_Language();
         }
-
+        private void ToolStripMenuItem_Language_Delete_Click(object sender, EventArgs e)
+        {
+            Delete_Language();
+        }
         #endregion
 
         #region Book
@@ -723,15 +713,19 @@ namespace lib_postgres
         #region language CRUD
         private void Create_Language()
         {
-
+            Create_Item<Language>();
+        }
+        private void Read_Languages()
+        {
+            Refresh_DGV_for_Item_Type<Language>();
         }
         private void Edit_Language()
         {
-
+            Edit_Item<Language>(Get_Selected_Entity_ID());
         }
         private void Delete_Language()
         {
-
+            Delete_Item<Language>();
         }
         #endregion
 
@@ -757,7 +751,7 @@ namespace lib_postgres
         }
         private void Read_Series()
         {
-                Refresh_DGV_for_Item_Type<Series>();
+            Refresh_DGV_for_Item_Type<Series>();
         }
 
         private void Edit_Series()
@@ -769,12 +763,13 @@ namespace lib_postgres
         {
             Delete_Item<Series>();
         }
+
+
+
         #endregion
 
         #endregion CRUD
 
 
-
- 
     }
 }

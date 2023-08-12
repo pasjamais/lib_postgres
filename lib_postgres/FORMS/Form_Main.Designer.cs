@@ -74,6 +74,7 @@
             this.ToolStripMenuItem_Actions_Delete = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator13 = new System.Windows.Forms.ToolStripSeparator();
             this.ToolStripMenuItem_Location_Show = new System.Windows.Forms.ToolStripMenuItem();
+            this.справочникиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Cataloques = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Languages = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Language_Show = new System.Windows.Forms.ToolStripMenuItem();
@@ -427,7 +428,8 @@
             this.ToolStripMenuItem_Actions_Edit,
             this.ToolStripMenuItem_Actions_Delete,
             this.toolStripSeparator13,
-            this.ToolStripMenuItem_Location_Show});
+            this.ToolStripMenuItem_Location_Show,
+            this.справочникиToolStripMenuItem});
             this.ToolStripMenuItem_Actions.Name = "ToolStripMenuItem_Actions";
             this.ToolStripMenuItem_Actions.Size = new System.Drawing.Size(70, 20);
             this.ToolStripMenuItem_Actions.Text = "Действия";
@@ -476,6 +478,12 @@
             this.ToolStripMenuItem_Location_Show.Size = new System.Drawing.Size(231, 22);
             this.ToolStripMenuItem_Location_Show.Text = "Показать таблицу действий";
             this.ToolStripMenuItem_Location_Show.Click += new System.EventHandler(this.ToolStripMenuItem_Location_Show_Click);
+            // 
+            // справочникиToolStripMenuItem
+            // 
+            this.справочникиToolStripMenuItem.Name = "справочникиToolStripMenuItem";
+            this.справочникиToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
+            this.справочникиToolStripMenuItem.Text = "Справочники";
             // 
             // ToolStripMenuItem_Cataloques
             // 
@@ -541,6 +549,7 @@
             this.ToolStripMenuItem_Language_Delete.Name = "ToolStripMenuItem_Language_Delete";
             this.ToolStripMenuItem_Language_Delete.Size = new System.Drawing.Size(231, 22);
             this.ToolStripMenuItem_Language_Delete.Text = "Удалить/Отменить удаление";
+            this.ToolStripMenuItem_Language_Delete.Click += new System.EventHandler(this.ToolStripMenuItem_Language_Delete_Click);
             // 
             // toolStripSeparator11
             // 
@@ -877,5 +886,6 @@
         private ToolStripMenuItem ToolStripMenuItem_File;
         private ToolStripMenuItem ToolStripMenuItem_File_BackupBD;
         private ToolStripMenuItem ToolStripMenuItem_File_Open_Settings;
+        private ToolStripMenuItem справочникиToolStripMenuItem;
     }
 }
