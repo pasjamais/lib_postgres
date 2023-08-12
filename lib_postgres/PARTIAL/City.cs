@@ -8,7 +8,7 @@ namespace lib_postgres.PARTIAL
 {
     public partial class City 
     {
-        public static long Add_City()
+        public static long Create_Item()
         {
             var new_name = General_Manipulations.simple_element_add("Добавить город", "Название:");
             if (new_name != "")
@@ -29,10 +29,8 @@ namespace lib_postgres.PARTIAL
             }
             else return -1;
         }
-        public static long Edit_City(DataGridView dataGridView)
+        public static long Edit_Item_by_ID(long id)
         {
-            int index = dataGridView.SelectedRows[0].Index;
-            long id = (long)dataGridView.Rows[index].Cells["Id"].Value;
             lib_postgres.City element = DB_Agent.Get_City(id);
             var new_name = General_Manipulations.simple_element_modify("Изменить город", "Новое название:", element.Name);
             if (new_name != "")

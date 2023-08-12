@@ -466,6 +466,7 @@
             this.ToolStripMenuItem_Actions_Delete.Name = "ToolStripMenuItem_Actions_Delete";
             this.ToolStripMenuItem_Actions_Delete.Size = new System.Drawing.Size(231, 22);
             this.ToolStripMenuItem_Actions_Delete.Text = "Удалить/Отменить удаление";
+            this.ToolStripMenuItem_Actions_Delete.Click += new System.EventHandler(this.ToolStripMenuItem_Actions_Delete_Click);
             // 
             // toolStripSeparator13
             // 
@@ -738,6 +739,7 @@
             this.ToolStripMenuItem_PubHouse_Delete.Name = "ToolStripMenuItem_PubHouse_Delete";
             this.ToolStripMenuItem_PubHouse_Delete.Size = new System.Drawing.Size(231, 22);
             this.ToolStripMenuItem_PubHouse_Delete.Text = "Удалить/Отменить удаление";
+            this.ToolStripMenuItem_PubHouse_Delete.Click += new System.EventHandler(this.ToolStripMenuItem_PubHouse_Delete_Click);
             // 
             // toolStripSeparator10
             // 

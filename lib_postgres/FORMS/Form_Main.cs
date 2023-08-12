@@ -182,6 +182,8 @@ namespace lib_postgres
 
         #endregion
 
+        #region entities control
+
         #region Genre
         private void ToolStripMenuItem_Genres_Show_Click(object sender, EventArgs e)
         {
@@ -206,45 +208,37 @@ namespace lib_postgres
         {
             Edit_Author();
         }
-
         private void ToolStripMenuItem_Autors_Show_Click(object sender, EventArgs e)
         {
-            Refresh_DGV_for_Item_Type<Author>();
-
+            Read_Authors();
         }
-
         private void ToolStripMenuItem_Author_Add_Click(object sender, EventArgs e)
         {
             Create_Author();
         }
+        private void ToolStripMenuItem_Author_Delete_Click(object sender, EventArgs e)
+        {
+            Delete_Author();
+        }
         #endregion
 
         #region Art
-
         private void ToolStripMenuItem_Arts_Show_Click(object sender, EventArgs e)
         {
-            Refresh_DGV_for_Item_Type<Art>();
+            Read_Arts();
         }
         private void ToolStripMenuItem_Arts_Add_Click(object sender, EventArgs e)
         {
-            var id = PARTIAL.Art.Add_Art();
-            if (id > 0)
-            {
-                Refresh_DGV_for_Item_Type<Art>();
-                General_Manipulations.show_row(dataGridView, id.ToString(), "Id");//ToString() - костыль, переписать всё для id
-            }
+            Create_Art();
         }
-
         private void ToolStripMenuItem_Arts_Edit_Click(object sender, EventArgs e)
         {
-            var id = PARTIAL.Art.Edit_Art(dataGridView);
-            if (id > 0)
-            {
-                Refresh_DGV_for_Item_Type<Art>();
-                General_Manipulations.show_row(dataGridView, id.ToString(), "Id");//ToString() - костыль, переписать всё для id
-            }
+            Edit_Art();
         }
-
+        private void ToolStripMenuItem_Arts_Delete_Click(object sender, EventArgs e)
+        {
+           Delete_Art();
+        }
         #endregion
 
         #region Language
@@ -274,47 +268,34 @@ namespace lib_postgres
         }
         private void ToolStripMenuItem_Book_Show_Click(object sender, EventArgs e)
         {
-            Refresh_DGV_for_Item_Type<ViewBook>();
+            Read_Books();
         }
-
         private void ToolStripMenuItem__Book_Edit_Click(object sender, EventArgs e)
         {
             Edit_Book();
         }
-
+        private void ToolStripMenuItem_Books_Delete_Click(object sender, EventArgs e)
+        {
+            Delete_Book();
+        }
         #endregion
 
-
         #region PubHouse
-
-
         private void ToolStripMenuItem_PubHouse_Add_Click(object sender, EventArgs e)
         {
-            var id = PARTIAL.PublishingHouse.Add_PubHouse();
-            if (id > 0)
-            {
-                ToolStripMenuItem_PubHouse_Show_Click(sender, e);
-                General_Manipulations.show_row(dataGridView, id.ToString(), "Id");
-            }
+            Create_Item<PublishingHouse>();
         }
-
         private void ToolStripMenuItem_PubHouse_Show_Click(object sender, EventArgs e)
         {
-            dataGridView.Columns.Clear();
-            dataGridView.DataSource = DB_Agent.Get_Publishing_Houses();
-            Turn_Off_Current_Menu_Item();
-            CODE.Form_Element_DGV.Prepare_DGV_For_Type<PublishingHouse>(dataGridView, StatusProperty);
-            Turn_On_Current_Menu_Item();
+            Read_PublishingHouses();
         }
-
         private void ToolStripMenuItem_PubHouse_Edit_Click(object sender, EventArgs e)
         {
-            var id = PARTIAL.PublishingHouse.Edit_PubHouse(dataGridView);
-            if (id > 0)
-            {
-                ToolStripMenuItem_PubHouse_Show_Click(sender, e);
-                General_Manipulations.show_row(dataGridView, id.ToString(), "Id");
-            }
+            Edit_PublishingHouse();
+        }
+        private void ToolStripMenuItem_PubHouse_Delete_Click(object sender, EventArgs e)
+        {
+            Delete_PublishingHouse();
         }
         #endregion
 
@@ -322,58 +303,42 @@ namespace lib_postgres
 
         private void ToolStripMenuItem__City_Show_Click(object sender, EventArgs e)
         {
-            Refresh_DGV_for_Item_Type<City>();
+            Read_Cities();
         }
-
         private void ToolStripMenuItem_City_Add_Click(object sender, EventArgs e)
         {
             Create_City();
         }
-
         private void ToolStripMenuItem_City_Edit_Click(object sender, EventArgs e)
         {
             Edit_City();
+        }
+        private void ToolStripMenuItem_City_Delete_Click(object sender, EventArgs e)
+        {
+            Delete_City();
         }
         #endregion
 
         #region Actions
         private void ToolStripMenuItem_Actions_Open_Click(object sender, EventArgs e)
         {
-            dataGridView.Columns.Clear();
-            dataGridView.DataSource = DB_Agent.Get_Actions();
-            Turn_Off_Current_Menu_Item();
-            CODE.Form_Element_DGV.Prepare_DGV_For_Type<Action>(dataGridView, StatusProperty);
-            Turn_On_Current_Menu_Item();
+            Read_Actions();
         }
-
         private void ToolStripMenuItem_Actions_Create_Click(object sender, EventArgs e)
         {
-            long action_id = PARTIAL.Action.Add_Action();
-            if (action_id > 0)
-            {
-                ToolStripMenuItem_Actions_Open_Click(sender, e);
-                General_Manipulations.show_row(dataGridView, action_id.ToString(), "Id");
-            }
+            Create_Action();
         }
-
         private void ToolStripMenuItem_Actions_Edit_Click(object sender, EventArgs e)
         {
-            long action_id = PARTIAL.Action.Edit_Action(dataGridView);
-            if (action_id > 0)
-            {
-                ToolStripMenuItem_Actions_Open_Click(sender, e);
-                General_Manipulations.show_row(dataGridView, action_id.ToString(), "Id");
-            }
+            Edit_Action();
         }
-
-        private void ToolStripMenuItem_Location_Show_Click(object sender, EventArgs e)
+        private void ToolStripMenuItem_Actions_Delete_Click(object sender, EventArgs e)
         {
-            dataGridView.DataSource = CODE.Queries_LinQ.Get_Locations();
+            Delete_Action();
         }
         #endregion
 
         #region Series
-
         private void ToolStripMenuItem_Series_Show_Click(object sender, EventArgs e)
         {
             Read_Series();
@@ -392,7 +357,11 @@ namespace lib_postgres
         }
         #endregion
 
-
+        #endregion entities control
+        private void ToolStripMenuItem_Location_Show_Click(object sender, EventArgs e)
+        {
+            dataGridView.DataSource = CODE.Queries_LinQ.Get_Locations();
+        }
         #region Read
 
         private void ToolStripMenuItem__Read_Open_Click(object sender, EventArgs e)
@@ -537,30 +506,9 @@ namespace lib_postgres
                 Refresh_DGV_for_Item_Type<ViewBook>();
         }
 
-        private void ToolStripMenuItem_Books_Delete_Click(object sender, EventArgs e)
-        {
-            Delete_Book();
-        }
-
-
         private void Form_Main_Shown(object sender, EventArgs e)
         {
-            Refresh_DGV_for_Item_Type<ViewBook>();
-        }
-
-        private void ToolStripMenuItem_Arts_Delete_Click(object sender, EventArgs e)
-        {
-            Delete_Item<Art>();
-        }
-
-        private void ToolStripMenuItem_City_Delete_Click(object sender, EventArgs e)
-        {
-            Delete_City();
-        }
-
-        private void ToolStripMenuItem_Author_Delete_Click(object sender, EventArgs e)
-        {
-            Delete_Author();
+            Read_Books();
         }
 
         private void Refresh_DGV_for_Item_Type<T>()
@@ -609,19 +557,16 @@ namespace lib_postgres
         #region book CRUD
         private void Create_Book()
         {
-          //  Create_Item<ViewBook>(Queries_from_Views.Get_Books());
-            long book_id = PARTIAL.Book.Create_Book();
-            if (book_id > 0)
-            {
-                Refresh_DGV_for_Item_Type<ViewBook>();
-                General_Manipulations.show_row(dataGridView, book_id.ToString(), "Id");
-            }
+            Create_Item<ViewBook>();
+        }
+        private void Read_Books()
+        {
+            Refresh_DGV_for_Item_Type<ViewBook>();
         }
         private void Edit_Book()
         {
             Edit_Item<ViewBook>(Get_Selected_Entity_ID());
         }
-
         private void Delete_Book()
         {
             Delete_Item<ViewBook>();
@@ -631,19 +576,16 @@ namespace lib_postgres
         #region author CRUD
         private void Create_Author()
         {
-            var id = PARTIAL.Author.Add_Author();
-            if (id > 0)
-            {
-                Refresh_DGV_for_Item_Type<Author>();
-                General_Manipulations.show_row(dataGridView, id.ToString(), "Id");
-            }
+            Create_Item<Author>();
         }
-
+        private void Read_Authors()
+        {
+            Refresh_DGV_for_Item_Type<Author>();
+        }
         private void Edit_Author()
         {
             Edit_Item<Author>(Get_Selected_Entity_ID());
         }
-
         private void Delete_Author()
         {
             Delete_Item<Author>();
@@ -653,21 +595,15 @@ namespace lib_postgres
         #region city CRUD
         private void Create_City()
         {
-            var id = PARTIAL.City.Add_City();
-            if (id > 0)
-            {
-                Refresh_DGV_for_Item_Type<City>();
-                General_Manipulations.show_row(dataGridView, id.ToString(), "Id");
-            }
+            Create_Item<City>();
+        }
+        private void Read_Cities()
+        {
+            Refresh_DGV_for_Item_Type<City>();
         }
         private void Edit_City()
         {
-            var id = PARTIAL.City.Edit_City(dataGridView);
-            if (id > 0)
-            {
-                Refresh_DGV_for_Item_Type<City>();
-                General_Manipulations.show_row(dataGridView, id.ToString(), "Id");
-            }
+            Edit_Item<City>(Get_Selected_Entity_ID());
         }
         private void Delete_City()
         {
@@ -684,7 +620,6 @@ namespace lib_postgres
         {
             Refresh_DGV_for_Item_Type<Genre>();
         }
-
         private void Edit_Genre()
         {
             Edit_Item<Genre>(Get_Selected_Entity_ID());
@@ -698,15 +633,19 @@ namespace lib_postgres
         #region art CRUD
         private void Create_Art()
         {
-
+            Create_Item<Art>();
+        }
+        private void Read_Arts()
+        {
+            Refresh_DGV_for_Item_Type<Art>();
         }
         private void Edit_Art()
         {
-
+            Edit_Item<Art>(Get_Selected_Entity_ID());
         }
         private void Delete_Art()
         {
-
+            Delete_Item<Art>();
         }
         #endregion
 
@@ -732,15 +671,19 @@ namespace lib_postgres
         #region PublishingHouse CRUD
         private void Create_PublishingHouse()
         {
-
+            Create_Item<PublishingHouse>();
+        }
+        private void Read_PublishingHouses()
+        {
+            Refresh_DGV_for_Item_Type<PublishingHouse>();
         }
         private void Edit_PublishingHouse()
         {
-
+            Edit_Item<PublishingHouse>(Get_Selected_Entity_ID());
         }
         private void Delete_PublishingHouse()
         {
-
+            Delete_Item<PublishingHouse>();
         }
         #endregion
 
@@ -763,10 +706,27 @@ namespace lib_postgres
         {
             Delete_Item<Series>();
         }
-
-
-
         #endregion
+
+        #region Action CRUD
+        private void Create_Action()
+        {
+            Create_Item<Action>();
+        }
+        private void Read_Actions()
+        {
+            Refresh_DGV_for_Item_Type<Action>();
+        }
+        private void Edit_Action()
+        {
+            Edit_Item<Action>(Get_Selected_Entity_ID());
+        }
+        private void Delete_Action()
+        {
+            Delete_Item<Action>();
+        }
+
+        #endregion Action CRUD
 
         #endregion CRUD
 

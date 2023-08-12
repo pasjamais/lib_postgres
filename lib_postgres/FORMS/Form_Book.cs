@@ -47,7 +47,7 @@ namespace lib_postgres
 
         private void BT_Add_Art_Click(object sender, EventArgs e)
         {
-            var id = PARTIAL.Art.Add_Art();
+            var id = PARTIAL.Art.Create_Item();
             if (id > 0) General_Manipulations.CB_reload<Art>(CB_Art, id);
             DialogResult = DialogResult.None;
         }
@@ -55,7 +55,7 @@ namespace lib_postgres
 
         private void BT_Add_Maison_Click(object sender, EventArgs e)
         {
-            var id = PARTIAL.PublishingHouse.Add_PubHouse();
+            var id = PARTIAL.PublishingHouse.Create_Item();
             if (id != 0) General_Manipulations.CB_reload<PublishingHouse>(CB_Publishing_House, id);
             DialogResult = DialogResult.None;
         }
@@ -69,7 +69,7 @@ namespace lib_postgres
 
         private void BT_Add_City_Click(object sender, EventArgs e)
         {
-            var id = PARTIAL.City.Add_City();
+            var id = PARTIAL.City.Create_Item();
             if (id != 0) General_Manipulations.CB_reload<City>( CB_City, id);
             DialogResult = DialogResult.None;
         }

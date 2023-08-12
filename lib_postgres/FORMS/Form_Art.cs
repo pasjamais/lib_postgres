@@ -75,7 +75,7 @@ namespace lib_postgres
 
         private void BT_Add_Author_Click(object sender, EventArgs e)
         {
-            var id = PARTIAL.Author.Add_Author();
+            var id = PARTIAL.Author.Create_Item();
             if (id > 0)
             {
                 DGV_All_Authors.DataSource = DB_Agent.Get_Authors();

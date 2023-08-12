@@ -2,16 +2,17 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace lib_postgres.PARTIAL
 {
-    public partial class Book
+    public partial class Book 
     {
         public static long Create_Book()
         {
-            lib_postgres.Book book = Get_First_Deleted_Entity_or_New<Book>();
+            lib_postgres.Book book = DB_Agent.Get_First_Deleted_Entity_or_New<lib_postgres.Book>(DB_Agent.Get_Books());
             Form_Book formBook = new Form_Book();
             DialogResult dialogResult = formBook.ShowDialog();
             if (dialogResult != DialogResult.OK) return -1;
@@ -100,28 +101,6 @@ namespace lib_postgres.PARTIAL
                 book.IsDeleted = true;
             DB_Agent.db.SaveChanges();
             return book.Id;
-        }
-
-         public static dynamic Get_First_Deleted_Entity_or_New<T>()
-        {
-            List<lib_postgres.Book> deleted_books  = Get_Deleted_Books();
-            var deleted_book = deleted_books.FirstOrDefault(new lib_postgres.Book());
-            return deleted_book;
-        }
-        public static List<lib_postgres.Book> Get_Deleted_Books()
-        {
-            List<lib_postgres.Book> books = DB_Agent.Get_Books();
-            List<lib_postgres.Book> deleted_books = (from book in books
-                                        where book.IsDeleted is true
-                                        select book).ToList();
-            return deleted_books;
-        }
-        public static List<long> Get_Deleted_Books_IDs()
-        {
-            List<lib_postgres.Book> deleted_books = Get_Deleted_Books();
-            List<long> del_books_id = (from book in deleted_books
-                                       select book.Id).ToList(); ;
-            return del_books_id;
         }
     }
 }

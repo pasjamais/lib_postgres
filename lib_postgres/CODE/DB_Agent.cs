@@ -152,6 +152,11 @@ namespace lib_postgres
         {
             return db.Authors.Find(idAuthor);
         }
+        public static void Author_Add(Author author)
+        {
+            db.Authors.Add(author);
+            Save_Changes();
+        }
         #endregion
 
         #region Genres
@@ -335,7 +340,31 @@ namespace lib_postgres
         }
 
         #endregion
+        #region general CRUD
+        public static dynamic Get_First_Deleted_Entity_or_New<T>(List<T> all_elements)
+            where T : CODE.CRUD.IHas_field_IsDeleted, new()
+        {
+            List<T> deleted_elements = Get_Deleted_Items<T>(all_elements);
+            T deleted_element = deleted_elements.FirstOrDefault(new T());
+            return deleted_element;
+        }
+        public static dynamic Get_Deleted_Items<T>(List<T> all_elements)
+            where T : CODE.CRUD.IHas_field_IsDeleted
+        {
+            List<T> deleted_elements = (from elem in all_elements
+                                        where elem.IsDeleted is true
+                                        select elem).ToList();
+            return deleted_elements;
+        }
+        public static List<long> Get_Deleted_Entities_IDs<T>(List<T> all_elements)
+            where T : CODE.CRUD.IHas_field_ID, CODE.CRUD.IHas_field_IsDeleted
+        {
+            List<T> deleted_elements = Get_Deleted_Items<T>(all_elements);
+            List<long> deleted_elements_id = (from elem in deleted_elements
+                                              select elem.Id).ToList();
+            return deleted_elements_id;
+        }
 
-
+        #endregion general CRUD
     }
 }

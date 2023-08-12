@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace lib_postgres.CODE.CRUD
+﻿namespace lib_postgres.CODE.CRUD
 {
     public class CRUD_Item_Determinator
     {
@@ -19,8 +13,17 @@ namespace lib_postgres.CODE.CRUD
                 return PARTIAL.Genre.Create_Item();
             if (type == typeof(Language))
                 return PARTIAL.Language.Create_Item();
+            if (type == typeof(Author))
+                return PARTIAL.Author.Create_Item();
+            if (type == typeof(City))
+                return PARTIAL.City.Create_Item();
+            if (type == typeof(Art))
+                return PARTIAL.Art.Create_Item();
+            if (type == typeof(PublishingHouse))
+                return PARTIAL.PublishingHouse.Create_Item(); 
+             if (type == typeof(Action))
+                return PARTIAL.Action.Create_Item(); 
             else return -1;
-
         }
         public static long Delete_Item_by_ID<T>(long id)
         {
@@ -38,7 +41,11 @@ namespace lib_postgres.CODE.CRUD
             else if (type == typeof(Genre))
                 return PARTIAL.Genre.Delete_Item_by_ID(id);
             else if (type == typeof(Language))
-                return PARTIAL.Language.Delete_Item_by_ID(id);
+                return PARTIAL.Language.Delete_Item_by_ID(id); 
+            else if (type == typeof(PublishingHouse))
+                return PARTIAL.PublishingHouse.Delete_Item_by_ID(id);
+            else if (type == typeof(Action))
+                return PARTIAL.Action.Delete_Item_by_ID(id);
             else return -1;
         }
         public static long Edit_Item_by_ID<T>(long id)
@@ -54,6 +61,14 @@ namespace lib_postgres.CODE.CRUD
                 return PARTIAL.Genre.Edit_Item_by_ID(id);
             if (type == typeof(Language))
                 return PARTIAL.Language.Edit_Item_by_ID(id);
+            if (type == typeof(City))
+                return PARTIAL.City.Edit_Item_by_ID(id);
+            if (type == typeof(Art))
+                return PARTIAL.Art.Edit_Item_by_ID(id);
+            if (type == typeof(PublishingHouse))
+                return PARTIAL.PublishingHouse.Edit_Item_by_ID(id);
+            if (type == typeof(Action))
+                return PARTIAL.Action.Edit_Item_by_ID(id);
             else return -1;
 
         }
@@ -61,7 +76,7 @@ namespace lib_postgres.CODE.CRUD
         {
             Type type = typeof(T);
             if (type == typeof(ViewBook))
-                return PARTIAL.Book.Get_Deleted_Books_IDs();
+                return DB_Agent.Get_Deleted_Entities_IDs<lib_postgres.Book>(DB_Agent.Get_Books());
             else if (type == typeof(Art))
                 return PARTIAL.Art.Get_Deleted_Arts_IDs();
             else if (type == typeof(City))
@@ -71,9 +86,13 @@ namespace lib_postgres.CODE.CRUD
             else if (type == typeof(Series))
                 return PARTIAL.Series.Get_Deleted_Series_IDs();
             else if (type == typeof(Genre))
-                return PARTIAL.Genre.Get_Deleted_Series_IDs();
+                return PARTIAL.Genre.Get_Deleted_Items_IDs();
             else if (type == typeof(Language))
                 return PARTIAL.Language.Get_Deleted_Items_IDs();
+            else if (type == typeof(PublishingHouse))
+                return PARTIAL.PublishingHouse.Get_Deleted_Items_IDs();
+            else if (type == typeof(Action))
+                return PARTIAL.Action.Get_Deleted_Items_IDs();
             else return new List<long>();
         }
 
@@ -94,6 +113,10 @@ namespace lib_postgres.CODE.CRUD
                 return DB_Agent.Get_Genres();
             if (type == typeof(Language))
                 return DB_Agent.Get_Languages();
+            if (type == typeof(PublishingHouse))
+                return DB_Agent.Get_Publishing_Houses();
+            if (type == typeof(Action))
+                return DB_Agent.Get_Actions();
             else return -1;
         }
     }

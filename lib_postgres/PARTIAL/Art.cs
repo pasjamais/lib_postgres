@@ -11,7 +11,7 @@ namespace lib_postgres.PARTIAL
 {
     public partial class Art
     {
-        public static long Add_Art()
+        public static long Create_Item()
         {
             Form_Art form_Art = new Form_Art();
             var DialogResult = form_Art.ShowDialog();
@@ -57,11 +57,9 @@ namespace lib_postgres.PARTIAL
             else return -1;
         }
 
-        public static long Edit_Art(DataGridView dataGridView)
+        public static long Edit_Item_by_ID(long id)
         {
             // загрузка в форму
-            int index = dataGridView.SelectedRows[0].Index;
-            long id = (long)dataGridView.Rows[index].Cells["Id"].Value;
             lib_postgres.Art art = DB_Agent.Get_Art(id);
             var all_auteurs_arts = DB_Agent.Get_AuthorArts();
             var all_auteurs = DB_Agent.Get_Authors();

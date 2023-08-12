@@ -65,7 +65,7 @@ namespace lib_postgres.PARTIAL
                                                        select item).ToList();
             return deleted_items;
         }
-        public static List<long> Get_Deleted_Series_IDs()
+        public static List<long> Get_Deleted_Items_IDs()
         {
             List<lib_postgres.Genre> deleted_items = Get_Deleted_Items();
             List<long> deleted_items_IDs = (from item in deleted_items

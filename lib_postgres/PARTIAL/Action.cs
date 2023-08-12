@@ -11,7 +11,7 @@ namespace lib_postgres.PARTIAL
     public partial class Action
     {
 
-        public static long Add_Action()
+        public static long Create_Item()
         {
             FORMS.Form_Action form_Action = new lib_postgres.FORMS.Form_Action();
             var DialogResult = form_Action.ShowDialog();
@@ -67,10 +67,8 @@ namespace lib_postgres.PARTIAL
             }
         }
       
-    public static long Edit_Action(DataGridView dataGridView)
+    public static long Edit_Item_by_ID(long id)
         {
-            int index = dataGridView.SelectedRows[0].Index;
-            long id = (long)dataGridView.Rows[index].Cells["Id"].Value;
             lib_postgres.Action action = DB_Agent.Get_Action(id);
             // prepare action
             var all_locations = DB_Agent.Get_Locations();
@@ -121,6 +119,32 @@ namespace lib_postgres.PARTIAL
             return action.Id;
 
 
+        }
+
+        public static List<lib_postgres.Action> Get_Deleted_Items()
+        {
+            List<lib_postgres.Action> items = DB_Agent.Get_Actions();
+            List<lib_postgres.Action> deleted_items = (from item in items
+                                                                where item.IsDeleted is true
+                                                                select item).ToList();
+            return deleted_items;
+        }
+        public static List<long> Get_Deleted_Items_IDs()
+        {
+            List<lib_postgres.Action> deleted_items = Get_Deleted_Items();
+            List<long> deleted_items_IDs = (from item in deleted_items
+                                            select item.Id).ToList(); ;
+            return deleted_items_IDs;
+        }
+        public static long Delete_Item_by_ID(long id)
+        {
+            lib_postgres.Action item = DB_Agent.Get_Action(id);
+            if (item.IsDeleted.HasValue)
+                item.IsDeleted = !item.IsDeleted;
+            else
+                item.IsDeleted = true;
+            DB_Agent.db.SaveChanges();
+            return item.Id;
         }
     }
 }
