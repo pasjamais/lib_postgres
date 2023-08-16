@@ -63,6 +63,8 @@
             this.button_Cancel = new System.Windows.Forms.Button();
             this.button_OK = new System.Windows.Forms.Button();
             this.BT_Add_Art = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label17
@@ -417,6 +419,28 @@
             this.BT_Add_Art.UseVisualStyleBackColor = true;
             this.BT_Add_Art.Click += new System.EventHandler(this.BT_Add_Art_Click);
             // 
+            // button1
+            // 
+            this.button1.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.button1.Location = new System.Drawing.Point(12, 383);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(82, 22);
+            this.button1.TabIndex = 83;
+            this.button1.Text = "OK";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.button2.Location = new System.Drawing.Point(369, 383);
+            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(82, 22);
+            this.button2.TabIndex = 82;
+            this.button2.Text = "Cancel";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
             // Form_Book
             // 
             this.AcceptButton = this.button_OK;
@@ -426,7 +450,9 @@
             this.CancelButton = this.button_Cancel;
             this.ClientSize = new System.Drawing.Size(476, 420);
             this.Controls.Add(this.BT_Add_Art);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.button_Cancel);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.button_OK);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.TB_Code);
@@ -507,5 +533,7 @@
         public Label label6;
         public CheckBox CB_Jacket;
         public Button BT_Add_Art;
+        private Button button1;
+        private Button button2;
     }
 }

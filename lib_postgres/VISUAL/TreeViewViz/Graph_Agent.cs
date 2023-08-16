@@ -6,13 +6,13 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace lib_postgres.VISUAL
+namespace lib_postgres.VISUAL.TreeViewViz
 {
     public class Graph_Agent
     {
-        public const string caption_from_books      = "Из книг";
-        public const string caption_from_authors    = "От авторов";
-        public const string caption_from_anothers   = "Другое";
+        public const string caption_from_books = "Из книг";
+        public const string caption_from_authors = "От авторов";
+        public const string caption_from_anothers = "Другое";
         public struct element
         {
             public long? number;
@@ -37,7 +37,7 @@ namespace lib_postgres.VISUAL
         {
             return nodes.OfType<TreeNode>().FirstOrDefault(node => node.Text.Equals(text_to_find));
         }
-        
+
         public static TreeNode? Get_First_Node_by_Tag(TreeNodeCollection nodes, object object_to_find)
         {
             return nodes.OfType<TreeNode>().FirstOrDefault(node => node.Tag.Equals(object_to_find));
@@ -48,7 +48,7 @@ namespace lib_postgres.VISUAL
         {
             if (obj == null || obj == DBNull.Value)
             {
-                return default(T); // returns the default value for the type
+                return default; // returns the default value for the type
             }
             else
             {
@@ -88,7 +88,7 @@ namespace lib_postgres.VISUAL
             var rec = CODE.Queries_SQL_Direct.Fill_DataTable_by_Query(DB_Agent.Get_Query(3).Text);
             List<Recomendation> data = new List<Recomendation>();
             data = (from DataRow row in rec.Rows
-                    select (Recomendation)new Recomendation
+                    select new Recomendation
                     {
                         Art_Source_Text = row["Art_Source_Text"].ToString(),
                         Author_Source_Text = row["Author_Source_Text"].ToString(),
@@ -117,7 +117,7 @@ namespace lib_postgres.VISUAL
         {
             List<Recomendation> recomendatons = Get_Recomendations();
             List<Node_Simple_Element> arts_sources = Get_Sources_Arts(recomendatons);
-            
+
             foreach (var s in arts_sources)
             {
                 TreeNode node = new TreeNode(s.Text);
@@ -151,7 +151,7 @@ namespace lib_postgres.VISUAL
             }
         }
 
-        public static List<Graph_Agent.relation>  Get_Recomendations_from_Arts_for_Graphviz()
+        public static List<relation> Get_Recomendations_from_Arts_for_Graphviz()
         {
             List<relation> relations = new List<relation>();
             List<Recomendation> recomendatons = Get_Recomendations();
@@ -159,7 +159,7 @@ namespace lib_postgres.VISUAL
             List<Node_Simple_Element> arts_recommended = Get_Recommended_Arts(arts_sources, recomendatons);
             foreach (var s in arts_recommended)
             {
-                relations.Add(new relation(s.Id_Father,s.Id));
+                relations.Add(new relation(s.Id_Father, s.Id));
             }
             return relations;
         }
@@ -223,7 +223,7 @@ namespace lib_postgres.VISUAL
                 TreeNode node_authors = new TreeNode("Авторы");
                 node.Nodes.Add(node_authors);
             }
-            List<VISUAL.Node_Simple_Element> arts_recommended = get_arts_from_authors(sources, recomendatons);
+            List<Node_Simple_Element> arts_recommended = get_arts_from_authors(sources, recomendatons);
 
             foreach (var s in arts_recommended)
             {

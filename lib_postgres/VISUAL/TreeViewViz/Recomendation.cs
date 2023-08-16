@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace lib_postgres.VISUAL
+namespace lib_postgres.VISUAL.TreeViewViz
 {
     public class Recomendation
     {

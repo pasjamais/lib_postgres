@@ -44,6 +44,7 @@
             this.ToolStripMenuItem__Recommendations_Show = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem__Recommendation_Add = new System.Windows.Forms.ToolStripMenuItem();
             this.сведенияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem__Recommend_Vis_Graphviz = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Books = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Book_Show = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
@@ -110,7 +111,6 @@
             this.ToolStripMenuItem_Places = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
             this.ToolStripMenuItem_People = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItem__Recommend_Vis_Graphviz = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.book1BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.contextMenuStrip.SuspendLayout();
@@ -249,6 +249,13 @@
             this.сведенияToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
             this.сведенияToolStripMenuItem.Text = "Сведения...";
             this.сведенияToolStripMenuItem.Click += new System.EventHandler(this.сведенияToolStripMenuItem_Click);
+            // 
+            // ToolStripMenuItem__Recommend_Vis_Graphviz
+            // 
+            this.ToolStripMenuItem__Recommend_Vis_Graphviz.Name = "ToolStripMenuItem__Recommend_Vis_Graphviz";
+            this.ToolStripMenuItem__Recommend_Vis_Graphviz.Size = new System.Drawing.Size(248, 22);
+            this.ToolStripMenuItem__Recommend_Vis_Graphviz.Text = "Визулизировать...";
+            this.ToolStripMenuItem__Recommend_Vis_Graphviz.Click += new System.EventHandler(this.ToolStripMenuItem__Recommend_Vis_Graphviz_Click);
             // 
             // ToolStripMenuItem_Books
             // 
@@ -747,13 +754,6 @@
             this.ToolStripMenuItem_People.Name = "ToolStripMenuItem_People";
             this.ToolStripMenuItem_People.Size = new System.Drawing.Size(163, 22);
             this.ToolStripMenuItem_People.Text = "Люди";
-            // 
-            // ToolStripMenuItem__Recommend_Vis_Graphviz
-            // 
-            this.ToolStripMenuItem__Recommend_Vis_Graphviz.Name = "ToolStripMenuItem__Recommend_Vis_Graphviz";
-            this.ToolStripMenuItem__Recommend_Vis_Graphviz.Size = new System.Drawing.Size(248, 22);
-            this.ToolStripMenuItem__Recommend_Vis_Graphviz.Text = "Визулизировать";
-            this.ToolStripMenuItem__Recommend_Vis_Graphviz.Click += new System.EventHandler(this.ToolStripMenuItem__Recommend_Vis_Graphviz_Click);
             // 
             // Form_Main
             // 

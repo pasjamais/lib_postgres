@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using static System.Net.Mime.MediaTypeNames;
 
-namespace lib_postgres.VISUAL
+namespace lib_postgres.VISUAL.TreeViewViz
 {
     public class Node_Simple_Element
     {
