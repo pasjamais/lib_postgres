@@ -29,9 +29,11 @@
         private void InitializeComponent()
         {
             this.panel_opt_bottom = new System.Windows.Forms.Panel();
+            this.LL_Graphviz = new System.Windows.Forms.LinkLabel();
             this.BT_Show = new System.Windows.Forms.Button();
             this.BT_Cancel = new System.Windows.Forms.Button();
             this.panel_opt_top = new System.Windows.Forms.Panel();
+            this.CB_Visualisation = new System.Windows.Forms.ComboBox();
             this.label_preset = new System.Windows.Forms.Label();
             this.CB_Preset = new System.Windows.Forms.ComboBox();
             this.panel_DGV_opt = new System.Windows.Forms.Panel();
@@ -50,18 +52,30 @@
             // 
             // panel_opt_bottom
             // 
+            this.panel_opt_bottom.Controls.Add(this.LL_Graphviz);
             this.panel_opt_bottom.Controls.Add(this.BT_Show);
             this.panel_opt_bottom.Controls.Add(this.BT_Cancel);
             this.panel_opt_bottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel_opt_bottom.Location = new System.Drawing.Point(0, 525);
+            this.panel_opt_bottom.Location = new System.Drawing.Point(0, 512);
             this.panel_opt_bottom.Name = "panel_opt_bottom";
-            this.panel_opt_bottom.Size = new System.Drawing.Size(200, 52);
+            this.panel_opt_bottom.Size = new System.Drawing.Size(200, 65);
             this.panel_opt_bottom.TabIndex = 91;
+            // 
+            // LL_Graphviz
+            // 
+            this.LL_Graphviz.AutoSize = true;
+            this.LL_Graphviz.Location = new System.Drawing.Point(25, 5);
+            this.LL_Graphviz.Name = "LL_Graphviz";
+            this.LL_Graphviz.Size = new System.Drawing.Size(144, 15);
+            this.LL_Graphviz.TabIndex = 86;
+            this.LL_Graphviz.TabStop = true;
+            this.LL_Graphviz.Text = "with gratitude to Graphviz";
+            this.LL_Graphviz.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LL_Graphviz_LinkClicked);
             // 
             // BT_Show
             // 
             this.BT_Show.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.BT_Show.Location = new System.Drawing.Point(14, 12);
+            this.BT_Show.Location = new System.Drawing.Point(12, 27);
             this.BT_Show.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BT_Show.Name = "BT_Show";
             this.BT_Show.Size = new System.Drawing.Size(83, 27);
@@ -74,7 +88,7 @@
             // 
             this.BT_Cancel.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.BT_Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.BT_Cancel.Location = new System.Drawing.Point(103, 12);
+            this.BT_Cancel.Location = new System.Drawing.Point(111, 27);
             this.BT_Cancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BT_Cancel.Name = "BT_Cancel";
             this.BT_Cancel.Size = new System.Drawing.Size(83, 27);
@@ -84,14 +98,26 @@
             // 
             // panel_opt_top
             // 
-            this.panel_opt_top.AutoSize = true;
+            this.panel_opt_top.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panel_opt_top.Controls.Add(this.CB_Visualisation);
             this.panel_opt_top.Controls.Add(this.label_preset);
             this.panel_opt_top.Controls.Add(this.CB_Preset);
             this.panel_opt_top.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel_opt_top.Location = new System.Drawing.Point(0, 0);
             this.panel_opt_top.Name = "panel_opt_top";
-            this.panel_opt_top.Size = new System.Drawing.Size(200, 47);
+            this.panel_opt_top.Size = new System.Drawing.Size(200, 72);
             this.panel_opt_top.TabIndex = 90;
+            // 
+            // CB_Visualisation
+            // 
+            this.CB_Visualisation.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.CB_Visualisation.FormattingEnabled = true;
+            this.CB_Visualisation.Location = new System.Drawing.Point(9, 13);
+            this.CB_Visualisation.Name = "CB_Visualisation";
+            this.CB_Visualisation.Size = new System.Drawing.Size(185, 23);
+            this.CB_Visualisation.TabIndex = 88;
             // 
             // label_preset
             // 
@@ -99,7 +125,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label_preset.AutoSize = true;
-            this.label_preset.Location = new System.Drawing.Point(3, 11);
+            this.label_preset.Location = new System.Drawing.Point(9, 46);
             this.label_preset.Name = "label_preset";
             this.label_preset.Size = new System.Drawing.Size(42, 15);
             this.label_preset.TabIndex = 87;
@@ -111,7 +137,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.CB_Preset.FormattingEnabled = true;
-            this.CB_Preset.Location = new System.Drawing.Point(52, 8);
+            this.CB_Preset.Location = new System.Drawing.Point(67, 42);
             this.CB_Preset.Name = "CB_Preset";
             this.CB_Preset.Size = new System.Drawing.Size(127, 23);
             this.CB_Preset.TabIndex = 86;
@@ -122,9 +148,9 @@
             this.panel_DGV_opt.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel_DGV_opt.Controls.Add(this.DGV_Graph_Options);
             this.panel_DGV_opt.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_DGV_opt.Location = new System.Drawing.Point(0, 47);
+            this.panel_DGV_opt.Location = new System.Drawing.Point(0, 72);
             this.panel_DGV_opt.Name = "panel_DGV_opt";
-            this.panel_DGV_opt.Size = new System.Drawing.Size(200, 478);
+            this.panel_DGV_opt.Size = new System.Drawing.Size(200, 440);
             this.panel_DGV_opt.TabIndex = 89;
             // 
             // DGV_Graph_Options
@@ -145,7 +171,7 @@
             this.DGV_Graph_Options.RowHeadersVisible = false;
             this.DGV_Graph_Options.RowHeadersWidth = 51;
             this.DGV_Graph_Options.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.DGV_Graph_Options.Size = new System.Drawing.Size(200, 478);
+            this.DGV_Graph_Options.Size = new System.Drawing.Size(200, 440);
             this.DGV_Graph_Options.TabIndex = 88;
             // 
             // RelatedTo
@@ -200,12 +226,12 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Визуализация Graphviz";
             this.panel_opt_bottom.ResumeLayout(false);
+            this.panel_opt_bottom.PerformLayout();
             this.panel_opt_top.ResumeLayout(false);
             this.panel_opt_top.PerformLayout();
             this.panel_DGV_opt.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DGV_Graph_Options)).EndInit();
             this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -224,5 +250,7 @@
         private DataGridViewTextBoxColumn property;
         private DataGridViewTextBoxColumn value;
         private Panel panel_browser;
+        private LinkLabel LL_Graphviz;
+        private ComboBox CB_Visualisation;
     }
 }

@@ -13,24 +13,24 @@ namespace lib_postgres.VISUAL.GraphViz
 {
     public class Dot_Translator
     {
-        private List<element> elements;
-        private List<relation> relations;
+        private List<Element> elements;
+        private List<Relation> relations;
         private Preset preset;
 
         public Dot_Translator(Preset preset)
         {
-            elements = new List<element>();
-            relations = new List<relation>();
+            elements = new List<Element>();
+            relations = new List<Relation>();
             this.preset = preset;
         }
 
         public void Add_Elements(List<Node_Simple_Element> nodes)
         {
             foreach (var node in nodes)
-                elements.Add(new element(node.Id, node.Text));
+                elements.Add(new Element(node.Id, node.Text));
             elements = elements.Distinct().ToList().OrderBy(d => d.number).ToList();
         }
-        public void Add_Relations(List<relation> relations_to_add)
+        public void Add_Relations(List<Relation> relations_to_add)
         {
             relations.AddRange(relations_to_add);
             relations = relations.Distinct().ToList().OrderBy(d => d.number).ToList();
@@ -93,5 +93,19 @@ namespace lib_postgres.VISUAL.GraphViz
         {
             return "\n}\n";
         }
+
+        public static List<Relation> Get_Recomendations_Arts_to_Arts_for_Graphviz()
+        {
+            List<Relation> relations = new List<Relation>();
+            List<Recomendation> recomendatons = Get_Recommendations();
+            List<Node_Simple_Element> arts_sources = Get_Source_Arts(recomendatons);
+            List<Node_Simple_Element> arts_recommended = Get_Recommended_Arts_for_Arts(arts_sources, recomendatons);
+            foreach (var s in arts_recommended)
+            {
+                relations.Add(new Relation(s.Id_Parent, s.Id));
+            }
+            return relations;
+        }
+
     }
 }

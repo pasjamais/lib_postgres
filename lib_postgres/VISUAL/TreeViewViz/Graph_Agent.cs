@@ -13,21 +13,21 @@ namespace lib_postgres.VISUAL.TreeViewViz
         public const string caption_from_books = "Из книг";
         public const string caption_from_authors = "От авторов";
         public const string caption_from_anothers = "Другое";
-        public struct element
+        public struct Element
         {
             public long? number;
             public string label;
-            public element(long? number, string label)
+            public Element(long? number, string label)
             {
                 this.number = number;
                 this.label = label;
             }
         }
-        public struct relation
+        public struct Relation
         {
             public long? number_parent;
             public long? number;
-            public relation(long? number_parent, long? number)
+            public Relation(long? number_parent, long? number)
             {
                 this.number_parent = number_parent;
                 this.number = number;
@@ -38,12 +38,12 @@ namespace lib_postgres.VISUAL.TreeViewViz
             return nodes.OfType<TreeNode>().FirstOrDefault(node => node.Text.Equals(text_to_find));
         }
 
-        public static TreeNode? Get_First_Node_by_Tag(TreeNodeCollection nodes, object object_to_find)
+        private static TreeNode? Get_First_Node_by_Tag(TreeNodeCollection nodes, object object_to_find)
         {
             return nodes.OfType<TreeNode>().FirstOrDefault(node => node.Tag.Equals(object_to_find));
         }
 
-        public static T ConvertFromDBVal<T>(object obj)
+        private static T ConvertFromDBVal<T>(object obj)
         //for error: Unable to cast object of type 'System.DBNull' to type 'System.String`
         {
             if (obj == null || obj == DBNull.Value)
@@ -55,35 +55,7 @@ namespace lib_postgres.VISUAL.TreeViewViz
                 return (T)obj;
             }
         }
-        private static List<T> ConvertDataTable<T>(DataTable dt)
-        {
-            List<T> data = new List<T>();
-            foreach (DataRow row in dt.Rows)
-            {
-                T item = GetItem<T>(row);
-                data.Add(item);
-            }
-            return data;
-        }
-        private static T GetItem<T>(DataRow dr)
-        {
-            Type temp = typeof(T);
-            T obj = Activator.CreateInstance<T>();
-
-            foreach (DataColumn column in dr.Table.Columns)
-            {
-                foreach (PropertyInfo pro in temp.GetProperties())
-                {
-                    if (pro.Name == column.ColumnName)
-                        pro.SetValue(obj, dr[column.ColumnName], null);
-                    else
-                        continue;
-                }
-            }
-            return obj;
-        }
-
-        public static List<Recomendation> Get_Recomendations()
+         public static List<Recomendation> Get_Recommendations()
         {
             var rec = CODE.Queries_SQL_Direct.Fill_DataTable_by_Query(DB_Agent.Get_Query(3).Text);
             List<Recomendation> data = new List<Recomendation>();
@@ -112,11 +84,14 @@ namespace lib_postgres.VISUAL.TreeViewViz
 
 
         #region from arts
-
-        public static void Get_Recomendations_from_Arts(TreeNodeCollection nodes)
+        /// <summary>
+        /// for DataTreeView
+        /// </summary>
+        /// <param name="nodes"></param>
+        public static void Get_Recommendations_for_Arts(TreeNodeCollection nodes)
         {
-            List<Recomendation> recomendatons = Get_Recomendations();
-            List<Node_Simple_Element> arts_sources = Get_Sources_Arts(recomendatons);
+            List<Recomendation> recomendatons = Get_Recommendations();
+            List<Node_Simple_Element> arts_sources = Get_Source_Arts(recomendatons);
 
             foreach (var s in arts_sources)
             {
@@ -130,42 +105,29 @@ namespace lib_postgres.VISUAL.TreeViewViz
 
             }
 
-            List<Node_Simple_Element> arts_recommended = Get_Recommended_Arts(arts_sources, recomendatons);
+            List<Node_Simple_Element> arts_recommended = Get_Recommended_Arts_for_Arts(arts_sources, recomendatons);
             foreach (var s in arts_recommended)
             {
                 TreeNode node = new TreeNode(s.Text);
                 node.Tag = s.Id;
-                var first_level_node = Get_First_Node_by_Tag(nodes, s.Id_Father);
+                var first_level_node = Get_First_Node_by_Tag(nodes, s.Id_Parent);
                 var second_level_node = Get_First_Node_by_Text(first_level_node.Nodes, "Книги");
                 second_level_node.Nodes.Add(node);
             }
 
-            List<Node_Simple_Element> authors_recommended = Get_Recommended_Authors(arts_sources, recomendatons);
+            List<Node_Simple_Element> authors_recommended = Get_Recommended_Authors_for_Arts(arts_sources, recomendatons);
             foreach (var s in authors_recommended)
             {
                 TreeNode node = new TreeNode(s.Text);
                 node.Tag = s.Id;
-                var first_level_node = Get_First_Node_by_Tag(nodes, s.Id_Father);
+                var first_level_node = Get_First_Node_by_Tag(nodes, s.Id_Parent);
                 var second_level_node = Get_First_Node_by_Text(first_level_node.Nodes, "Авторы");
                 second_level_node.Nodes.Add(node);
             }
         }
+    
 
-        public static List<relation> Get_Recomendations_from_Arts_for_Graphviz()
-        {
-            List<relation> relations = new List<relation>();
-            List<Recomendation> recomendatons = Get_Recomendations();
-            List<Node_Simple_Element> arts_sources = Get_Sources_Arts(recomendatons);
-            List<Node_Simple_Element> arts_recommended = Get_Recommended_Arts(arts_sources, recomendatons);
-            foreach (var s in arts_recommended)
-            {
-                relations.Add(new relation(s.Id_Father, s.Id));
-            }
-            return relations;
-        }
-
-
-        public static List<Node_Simple_Element> Get_Sources_Arts(List<Recomendation> recomendatons)
+        public static List<Node_Simple_Element> Get_Source_Arts(List<Recomendation> recomendatons)
         {
             var arts_sources_ids = (from rec in recomendatons
                                     where rec.SourceArtId != null
@@ -176,11 +138,15 @@ namespace lib_postgres.VISUAL.TreeViewViz
 
                (from art_source_id in arts_sources_ids
                 join rec in arts_authors on art_source_id equals rec.Id
-                select new Node_Simple_Element(art_source_id, rec.Name)).OrderBy(simple_element => simple_element.Text).ToList();
+                select new Node_Simple_Element(art_source_id, rec.Authors + " — " + rec.Name )).OrderBy(simple_element => simple_element.Text).ToList();
             return arts_sources;
         }
+        public static List<Node_Simple_Element> Get_Source_Arts()
+        {
+            return Get_Source_Arts(Get_Recommendations());
+        }
 
-        public static List<Node_Simple_Element> Get_Recommended_Arts(List<Node_Simple_Element> arts_sources, List<Recomendation> recomendatons)
+        public static List<Node_Simple_Element> Get_Recommended_Arts_for_Arts(List<Node_Simple_Element> arts_sources, List<Recomendation> recomendatons)
         {
             var arts_recommended = (from source_art in arts_sources
                                     join rec in recomendatons
@@ -192,8 +158,11 @@ namespace lib_postgres.VISUAL.TreeViewViz
                                    ).OrderBy(simple_element => simple_element.Text).ToList();
             return arts_recommended;
         }
-
-        public static List<Node_Simple_Element> Get_Recommended_Authors(List<Node_Simple_Element> arts_sources, List<Recomendation> recomendatons)
+        public static List<Node_Simple_Element> Get_Recommended_Arts_for_Arts()
+        {
+            return Get_Recommended_Arts_for_Arts(Get_Source_Arts(), Get_Recommendations());
+        }
+        public static List<Node_Simple_Element> Get_Recommended_Authors_for_Arts(List<Node_Simple_Element> arts_sources, List<Recomendation> recomendatons)
         {
             var arts_recommended = (from source_art in arts_sources
                                     join rec in recomendatons
@@ -205,13 +174,21 @@ namespace lib_postgres.VISUAL.TreeViewViz
                                    ).OrderBy(simple_element => simple_element.Text).ToList();
             return arts_recommended;
         }
+        public static List<Node_Simple_Element> Get_Recommended_Authors_for_Arts()
+        {
+            return Get_Recommended_Authors_for_Arts(Get_Source_Arts(), Get_Recommendations());
+        }
         #endregion
 
         #region from authors
-        public static void get_recomendations_from_authors(TreeNodeCollection nodes)
+        /// <summary>
+        ///  for DataTreeView
+        /// </summary>
+        /// <param name="nodes"></param>
+        public static void Get_Recommendations_for_Authors(TreeNodeCollection nodes)
         {
-            List<Recomendation> recomendatons = Get_Recomendations();
-            List<Node_Simple_Element> sources = Get_Sources_Authors(recomendatons);
+            List<Recomendation> recomendatons = Get_Recommendations();
+            List<Node_Simple_Element> sources = Get_Source_Authors(recomendatons);
 
             foreach (var s in sources)
             {
@@ -223,32 +200,32 @@ namespace lib_postgres.VISUAL.TreeViewViz
                 TreeNode node_authors = new TreeNode("Авторы");
                 node.Nodes.Add(node_authors);
             }
-            List<Node_Simple_Element> arts_recommended = get_arts_from_authors(sources, recomendatons);
+            List<Node_Simple_Element> arts_recommended = Get_Recommended_Arts_for_Authors(sources, recomendatons);
 
             foreach (var s in arts_recommended)
             {
                 TreeNode node = new TreeNode(s.Text);
                 node.Tag = s.Id;
                 var first_level_node = nodes.OfType<TreeNode>()
-                            .FirstOrDefault(node => node.Tag.Equals(s.Id_Father));
+                            .FirstOrDefault(node => node.Tag.Equals(s.Id_Parent));
                 var second_level_node = first_level_node.Nodes.OfType<TreeNode>()
                             .FirstOrDefault(node => node.Text.Equals("Книги"));
                 second_level_node.Nodes.Add(node);
             }
-            List<Node_Simple_Element> authors_recommended = get_authors_from_authors(sources, recomendatons);
+            List<Node_Simple_Element> authors_recommended = Get_Recommended_Authors_for_Authors(sources, recomendatons);
             foreach (var s in authors_recommended)
             {
                 TreeNode node = new TreeNode(s.Text);
                 node.Tag = s.Id;
                 var first_level_node = nodes.OfType<TreeNode>()
-                            .FirstOrDefault(node => node.Tag.Equals(s.Id_Father));
+                            .FirstOrDefault(node => node.Tag.Equals(s.Id_Parent));
                 var second_level_node = first_level_node.Nodes.OfType<TreeNode>()
                             .FirstOrDefault(node => node.Text.Equals("Авторы"));
                 second_level_node.Nodes.Add(node);
             }
         }
 
-        public static List<Node_Simple_Element> Get_Sources_Authors(List<Recomendation> recomendatons)
+        public static List<Node_Simple_Element> Get_Source_Authors(List<Recomendation> recomendatons)
         {
             var authors_sources_ids = (from rec in recomendatons
                                        where rec.SourceAuthorId != null
@@ -262,8 +239,11 @@ namespace lib_postgres.VISUAL.TreeViewViz
                 select new Node_Simple_Element(source_id, rec.Name)).OrderBy(simple_element => simple_element.Text).ToList();
             return authors_sources;
         }
-
-        public static List<Node_Simple_Element> get_arts_from_authors(List<Node_Simple_Element> sources, List<Recomendation> recomendatons)
+        public static List<Node_Simple_Element> Get_Source_Authors()
+        {
+           return Get_Source_Authors(Get_Recommendations());
+        }
+        public static List<Node_Simple_Element> Get_Recommended_Arts_for_Authors(List<Node_Simple_Element> sources, List<Recomendation> recomendatons)
         {
             var arts_recommended = (from source in sources
                                     join rec in recomendatons
@@ -275,8 +255,11 @@ namespace lib_postgres.VISUAL.TreeViewViz
                                    ).OrderBy(simple_element => simple_element.Text).ToList();
             return arts_recommended;
         }
-
-        public static List<Node_Simple_Element> get_authors_from_authors(List<Node_Simple_Element> sources, List<Recomendation> recomendatons)
+        public static List<Node_Simple_Element> Get_Recommended_Arts_for_Authors()
+        {
+            return Get_Recommended_Arts_for_Authors(Get_Source_Authors(), Get_Recommendations());
+        }
+        public static List<Node_Simple_Element> Get_Recommended_Authors_for_Authors(List<Node_Simple_Element> sources, List<Recomendation> recomendatons)
         {
             var arts_recommended = (from source in sources
                                     join rec in recomendatons
@@ -288,12 +271,20 @@ namespace lib_postgres.VISUAL.TreeViewViz
                                    ).OrderBy(simple_element => simple_element.Text).ToList();
             return arts_recommended;
         }
+        public static List<Node_Simple_Element> Get_Recommended_Authors_for_Authors()
+        {
+            return Get_Recommended_Authors_for_Authors(Get_Source_Authors(), Get_Recommendations());
+        }
         #endregion
 
         #region from another
-        public static void get_recomendations_from_anothers(TreeNodeCollection nodes)
+        /// <summary>
+        ///  for Graphviz
+        /// </summary>
+        /// <param name="nodes"></param>
+        public static void Get_Recommendations_for_Anothers(TreeNodeCollection nodes)
         {
-            List<Recomendation> recomendatons = Get_Recomendations();
+            List<Recomendation> recomendatons = Get_Recommendations();
             List<Node_Simple_Element> sources = Get_Another_Sources(recomendatons);
 
             foreach (var s in sources)
@@ -306,25 +297,25 @@ namespace lib_postgres.VISUAL.TreeViewViz
                 TreeNode node_authors = new TreeNode("Авторы");
                 node.Nodes.Add(node_authors);
             }
-            List<Node_Simple_Element> arts_recommended = get_arts_from_anothers(sources, recomendatons);
+            List<Node_Simple_Element> arts_recommended = Get_Recommended_Arts_for_Anothers(sources, recomendatons);
 
             foreach (var s in arts_recommended)
             {
                 TreeNode node = new TreeNode(s.Text);
                 node.Tag = s.Id;
                 var first_level_node = nodes.OfType<TreeNode>()
-                            .FirstOrDefault(node => node.Tag.Equals(s.Id_Father));
+                            .FirstOrDefault(node => node.Tag.Equals(s.Id_Parent));
                 var second_level_node = first_level_node.Nodes.OfType<TreeNode>()
                             .FirstOrDefault(node => node.Text.Equals("Книги"));
                 second_level_node.Nodes.Add(node);
             }
-            List<Node_Simple_Element> authors_recommended = get_authors_from_anothers(sources, recomendatons);
+            List<Node_Simple_Element> authors_recommended = Get_Recommended_Authors_for_Anothers(sources, recomendatons);
             foreach (var s in authors_recommended)
             {
                 TreeNode node = new TreeNode(s.Text);
                 node.Tag = s.Id;
                 var first_level_node = nodes.OfType<TreeNode>()
-                            .FirstOrDefault(node => node.Tag.Equals(s.Id_Father));
+                            .FirstOrDefault(node => node.Tag.Equals(s.Id_Parent));
                 var second_level_node = first_level_node.Nodes.OfType<TreeNode>()
                             .FirstOrDefault(node => node.Text.Equals("Авторы"));
                 second_level_node.Nodes.Add(node);
@@ -346,7 +337,12 @@ namespace lib_postgres.VISUAL.TreeViewViz
             return authors_sources;
         }
 
-        public static List<Node_Simple_Element> get_arts_from_anothers(List<Node_Simple_Element> sources, List<Recomendation> recomendatons)
+        public static List<Node_Simple_Element> Get_Another_Sources()
+        {
+            return Get_Another_Sources(Get_Recommendations());
+        }
+
+        public static List<Node_Simple_Element> Get_Recommended_Arts_for_Anothers(List<Node_Simple_Element> sources, List<Recomendation> recomendatons)
         {
             var arts_recommended = (from source in sources
                                     join rec in recomendatons
@@ -358,8 +354,11 @@ namespace lib_postgres.VISUAL.TreeViewViz
                                    ).OrderBy(simple_element => simple_element.Text).ToList();
             return arts_recommended;
         }
-
-        public static List<Node_Simple_Element> get_authors_from_anothers(List<Node_Simple_Element> sources, List<Recomendation> recomendatons)
+        public static List<Node_Simple_Element> Get_Recommended_Arts_for_Anothers()
+        { 
+            return Get_Recommended_Arts_for_Anothers(Get_Another_Sources(),Get_Recommendations());
+        }
+        public static List<Node_Simple_Element> Get_Recommended_Authors_for_Anothers(List<Node_Simple_Element> sources, List<Recomendation> recomendatons)
         {
             var arts_recommended = (from source in sources
                                     join rec in recomendatons
@@ -371,9 +370,11 @@ namespace lib_postgres.VISUAL.TreeViewViz
                                    ).OrderBy(simple_element => simple_element.Text).ToList();
             return arts_recommended;
         }
-
+        public static List<Node_Simple_Element> Get_Recommended_Authors_for_Anothers()
+        {
+            return Get_Recommended_Authors_for_Anothers(Get_Another_Sources(), Get_Recommendations());
+        }
         #endregion
-
 
     }
 }

@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static lib_postgres.VISUAL.GraphViz.Dot_Translator;
+using static lib_postgres.VISUAL.TreeViewViz.Graph_Agent;
 
 namespace lib_postgres.FORMS
 {
@@ -19,6 +20,8 @@ namespace lib_postgres.FORMS
         public Preset_to_DGV_Adapter preset_to_DGV_Adapter;
         public Preset_Builder preset_Builder;
         public WebBrowser webBrowser;
+        public Visualisation_Selector visualisation_Selector;
+        public CB_data_adapter cb_data_adapter;
 
         public Form_Graphviz()
         {
@@ -26,8 +29,12 @@ namespace lib_postgres.FORMS
             create_Browser();
 
             preset_Builder = new Preset_Builder();
-            preset_to_DGV_Adapter = new Preset_to_DGV_Adapter();
-            preset_to_DGV_Adapter.Prepare_DGV(DGV_Graph_Options);
+
+
+
+            this.preset_to_DGV_Adapter = new Preset_to_DGV_Adapter();
+            this.preset_to_DGV_Adapter.Prepare_DGV(DGV_Graph_Options);
+            this.cb_data_adapter = new CB_data_adapter();
 
             var CB_items = preset_Builder.presets.Select
                   (p => new
@@ -36,10 +43,19 @@ namespace lib_postgres.FORMS
                       Name = p.Graph_Options["graphname"],
                   }).ToList();
 
-            CB_Preset.DataSource = CB_items;
-            CB_Preset.ValueMember = "Id";
-            CB_Preset.DisplayMember = "Name";
-            CB_Preset.SelectedIndex = 1;
+            cb_data_adapter.CB_preparation(CB_Preset, CB_items);
+                        
+            visualisation_Selector = new Visualisation_Selector(); ;
+            var CB_visual = visualisation_Selector.visualisations.Select
+                (p => new
+                {
+                    Id = visualisation_Selector.visualisations.IndexOf(p),
+                    Name = p.name,
+                }).ToList();
+            
+            cb_data_adapter.CB_preparation(CB_Visualisation, CB_visual);
+
+
         }
 
         private void create_Browser()
@@ -53,26 +69,19 @@ namespace lib_postgres.FORMS
         private void BT_Show_Click(object sender, EventArgs e)
         {
             var user_preset = preset_to_DGV_Adapter.Get_Preset_from_DGV(DGV_Graph_Options);
-
-            List<Recomendation> recomendatons = Graph_Agent.Get_Recomendations();
-            List<Node_Simple_Element> arts_sources = Graph_Agent.Get_Sources_Arts(recomendatons);
-            List<Node_Simple_Element> arts_recommended = Graph_Agent.Get_Recommended_Arts(arts_sources, recomendatons);
-
-            Dot_Builder dot_builder = new Dot_Builder(user_preset);
-
-            dot_builder.Add_Elements(arts_sources);
-            dot_builder.Add_Elements(arts_recommended);
-            dot_builder.Add_Relations(Graph_Agent.Get_Recomendations_from_Arts_for_Graphviz());
-
-            String graphVizString = dot_builder.ToString();
-
-            string svppath = GraphViz.FileDotEngine.Run(graphVizString);
+            string svppath = visualisation_Selector.Get_Visualisation_by_Index(CB_Visualisation.SelectedIndex).Visualize(user_preset);              
             webBrowser.Navigate(svppath);
         }
         private void CB_Preset_TextChanged(object sender, EventArgs e)
         {
             preset_to_DGV_Adapter.Load_Preset_to_DGV(preset_Builder.Get_Preset_by_Index(CB_Preset.SelectedIndex), DGV_Graph_Options);
         }
+
+        private void LL_Graphviz_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("explorer", "https://graphviz.org/");
+        }
+
 
     }
 }

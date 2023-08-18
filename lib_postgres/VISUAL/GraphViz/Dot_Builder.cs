@@ -28,7 +28,7 @@ namespace lib_postgres.VISUAL.GraphViz
         {
             dot_translator.Add_Elements(nodes);
         }
-        public void Add_Relations(List<relation> relations_to_add)
+        public void Add_Relations(List<Relation> relations_to_add)
         {
             dot_translator.Add_Relations(relations_to_add);
         }

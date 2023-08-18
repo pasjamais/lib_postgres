@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace lib_postgres.GraphViz
+namespace lib_postgres
 {
     public static class FileDotEngine
     {

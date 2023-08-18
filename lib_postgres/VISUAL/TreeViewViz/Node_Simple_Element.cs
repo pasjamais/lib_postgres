@@ -9,7 +9,7 @@ namespace lib_postgres.VISUAL.TreeViewViz
 {
     public class Node_Simple_Element
     {
-        public long? Id_Father;
+        public long? Id_Parent;
         public long? Id;
         public string? Text;
         public Node_Simple_Element(long? id, string? text)
@@ -19,7 +19,7 @@ namespace lib_postgres.VISUAL.TreeViewViz
         }
         public Node_Simple_Element(long? id, string? text, long? id_father) : this(id, text)
         {
-            Id_Father = id_father;
+            Id_Parent = id_father;
         }
     }
 }
