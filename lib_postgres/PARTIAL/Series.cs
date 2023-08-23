@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace lib_postgres.PARTIAL
+namespace lib_postgres
 {
     public partial class Series
     {

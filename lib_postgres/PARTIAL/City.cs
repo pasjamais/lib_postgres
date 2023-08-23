@@ -3,31 +3,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using lib_postgres;
+using lib_postgres.CODE.CRUD;
 
-namespace lib_postgres.PARTIAL
+namespace lib_postgres
 {
     public partial class City 
     {
+        public static DB_Agent.write_item_to_BD deleg;
+     
         public static long Create_Item()
         {
-            var new_name = General_Manipulations.simple_element_add("Добавить город", "Название:");
-            if (new_name != "")
+            lib_postgres.City element = DB_Agent.Get_First_Deleted_Entity_or_New
+                <lib_postgres.City>(DB_Agent.Get_Cities());
+            deleg = delegate (object obj)
             {
-                if (DB_Agent.db.Cities.ToList().Exists(e => e.Name == new_name))
-                {
-                    General_Manipulations.simple_message("Город уже существует");
-                    return 0;
-                }
-                else
-                {
-                    lib_postgres.City element = new lib_postgres.City();
-                    element.Name = new_name;
-                    DB_Agent.db.Cities.Add(element);
-                    DB_Agent.db.SaveChanges();
-                    return element.Id;
-                }
-            }
-            else return -1;
+                DB_Agent.City_Add(element);
+            };
+         
+            return DB_Agent.Create_Item <lib_postgres.City>(element,
+                                                            DB_Agent.Get_Cities(),
+                                                            "Добавить город", 
+                                                            "Название:", 
+                                                            "Город уже существует", 
+                                                            deleg);
         }
         public static long Edit_Item_by_ID(long id)
         {
@@ -73,5 +72,5 @@ namespace lib_postgres.PARTIAL
                                         select city.Id).ToList(); ;
             return del_cities_id;
         }
-    }
+     }
 }

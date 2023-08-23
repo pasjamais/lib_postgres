@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace lib_postgres
 {
-    public partial class Genre
+    public partial class Genre : CODE.CRUD.IHas_field_IsDeleted, CODE.CRUD.IHas_field_ID
     {
         public Genre()
         {

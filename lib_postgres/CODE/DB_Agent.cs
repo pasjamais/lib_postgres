@@ -117,6 +117,11 @@ namespace lib_postgres
         {
             return db.Cities.Find(idCity);
         }
+        public static void City_Add(City city)
+        {
+            db.Cities.Add(city);
+            Save_Changes();
+        }
         #endregion
 
         #region Publishing_Houses
@@ -340,7 +345,16 @@ namespace lib_postgres
         }
 
         #endregion
+
         #region general CRUD
+        public static dynamic Get_Deleted_Items<T>(List<T> all_elements)
+          where T : CODE.CRUD.IHas_field_IsDeleted
+        {
+            List<T> deleted_elements = (from elem in all_elements
+                                        where elem.IsDeleted is true
+                                        select elem).ToList();
+            return deleted_elements;
+        }
         public static dynamic Get_First_Deleted_Entity_or_New<T>(List<T> all_elements)
             where T : CODE.CRUD.IHas_field_IsDeleted, new()
         {
@@ -348,14 +362,7 @@ namespace lib_postgres
             T deleted_element = deleted_elements.FirstOrDefault(new T());
             return deleted_element;
         }
-        public static dynamic Get_Deleted_Items<T>(List<T> all_elements)
-            where T : CODE.CRUD.IHas_field_IsDeleted
-        {
-            List<T> deleted_elements = (from elem in all_elements
-                                        where elem.IsDeleted is true
-                                        select elem).ToList();
-            return deleted_elements;
-        }
+      
         public static List<long> Get_Deleted_Entities_IDs<T>(List<T> all_elements)
             where T : CODE.CRUD.IHas_field_ID, CODE.CRUD.IHas_field_IsDeleted
         {
@@ -365,6 +372,40 @@ namespace lib_postgres
             return deleted_elements_id;
         }
 
+        public delegate void write_item_to_BD(object obj);
+
+        public static long Create_Item<T> ( T element,
+                                            List<T> all_elements, 
+                                            string form_caption, 
+                                            string label_caption, 
+                                            string deja_exists_caption,
+                                            write_item_to_BD add) 
+            where T :   CODE.CRUD.IHas_field_IsDeleted, 
+                        CODE.CRUD.IHas_field_Name, 
+                        CODE.CRUD.IHas_field_ID, new()
+        {
+            var new_name = General_Manipulations.simple_element_add(form_caption, label_caption);
+            if (new_name != "")
+            {
+                if (all_elements.Exists(e => e.Name == new_name))
+                {
+                    General_Manipulations.simple_message(deja_exists_caption);
+                    return 0;
+                }
+                element.Name = new_name;
+                if (element.Id == 0)
+                {
+                    add(element);
+                }
+                else
+                {
+                    element.IsDeleted = false;
+                    Save_Changes();
+                }
+                return element.Id;
+            }
+            else return -1;
+        }
         #endregion general CRUD
     }
 }

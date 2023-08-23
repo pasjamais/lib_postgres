@@ -7,7 +7,7 @@ using lib_postgres.CODE;
 using lib_postgres.FORMS;
 using lib_postgres.PARTIAL;
 
-namespace lib_postgres.PARTIAL
+namespace lib_postgres
 {
     public partial class Art
     {

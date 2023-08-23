@@ -557,7 +557,7 @@ namespace lib_postgres
         #region book CRUD
         private void Create_Book()
         {
-            Create_Item<ViewBook>();
+            Create_Item<Book>();
         }
         private void Read_Books()
         {

@@ -48,14 +48,14 @@ namespace lib_postgres
 
         private void BT_Add_Langue_Original_Click(object sender, EventArgs e)
         {
-            var id = PARTIAL.Language.Create_Item();
+            var id = Language.Create_Item();
             if (id != 0) General_Manipulations.CB_reload<Language>(CB_Langue, id);
             DialogResult = DialogResult.None;
         }
 
         private void BT_Add_Genre_Click(object sender, EventArgs e)
         {
-            var id = PARTIAL.Genre.Create_Item();
+            var id = Genre.Create_Item();
             if (id > 0) CB_Genre_reload(id);
             DialogResult = DialogResult.None;
         }
@@ -75,7 +75,7 @@ namespace lib_postgres
 
         private void BT_Add_Author_Click(object sender, EventArgs e)
         {
-            var id = PARTIAL.Author.Create_Item();
+            var id = Author.Create_Item();
             if (id > 0)
             {
                 DGV_All_Authors.DataSource = DB_Agent.Get_Authors();

@@ -1,74 +1,62 @@
-﻿namespace lib_postgres.CODE.CRUD
+﻿using System.Reflection;
+
+namespace lib_postgres.CODE.CRUD
 {
     public class CRUD_Item_Determinator
     {
         public static long Create_Item<T>()
-        {
+        {//  Reflection!
+            string methodName = "Create_Item";
             Type type = typeof(T);
-            if (type == typeof(ViewBook))
-                return PARTIAL.Book.Create_Book();
-            if (type == typeof(Series))
-                return PARTIAL.Series.Create_Item();
-            if (type == typeof(Genre))
-                return PARTIAL.Genre.Create_Item();
-            if (type == typeof(Language))
-                return PARTIAL.Language.Create_Item();
-            if (type == typeof(Author))
-                return PARTIAL.Author.Create_Item();
-            if (type == typeof(City))
-                return PARTIAL.City.Create_Item();
-            if (type == typeof(Art))
-                return PARTIAL.Art.Create_Item();
-            if (type == typeof(PublishingHouse))
-                return PARTIAL.PublishingHouse.Create_Item(); 
-             if (type == typeof(Action))
-                return PARTIAL.Action.Create_Item(); 
+            if (type.GetMethod(methodName) != null)
+                return (long)type.GetMethod(methodName)
+                    .Invoke(null, null);
             else return -1;
         }
         public static long Delete_Item_by_ID<T>(long id)
         {
             Type type = typeof(T);
             if (type == typeof(ViewBook))
-                return PARTIAL.Book.Delete_Item_by_ID(id);
+                return Book.Delete_Item_by_ID(id);
             else if (type == typeof(Art))
-                return PARTIAL.Art.Delete_Item_by_ID(id);
+                return Art.Delete_Item_by_ID(id);
             else if (type == typeof(City))
-                return PARTIAL.City.Delete_Item_by_ID(id);
+                return City.Delete_Item_by_ID(id);
             else if (type == typeof(Author))
-                return PARTIAL.Author.Delete_Item_by_ID(id);
+                return Author.Delete_Item_by_ID(id);
             else if (type == typeof(Series))
-                return PARTIAL.Series.Delete_Item_by_ID(id);
+                return Series.Delete_Item_by_ID(id);
             else if (type == typeof(Genre))
-                return PARTIAL.Genre.Delete_Item_by_ID(id);
+                return Genre.Delete_Item_by_ID(id);
             else if (type == typeof(Language))
-                return PARTIAL.Language.Delete_Item_by_ID(id); 
+                return Language.Delete_Item_by_ID(id); 
             else if (type == typeof(PublishingHouse))
-                return PARTIAL.PublishingHouse.Delete_Item_by_ID(id);
+                return PublishingHouse.Delete_Item_by_ID(id);
             else if (type == typeof(Action))
-                return PARTIAL.Action.Delete_Item_by_ID(id);
+                return Action.Delete_Item_by_ID(id);
             else return -1;
         }
         public static long Edit_Item_by_ID<T>(long id)
         {
             Type type = typeof(T);
             if (type == typeof(ViewBook))
-                return PARTIAL.Book.Edit_Book(id);
+                return Book.Edit_Book(id);
             if (type == typeof(Author))
-                return PARTIAL.Author.Edit_Author(id);
+                return Author.Edit_Author(id);
             if (type == typeof(Series))
-                return PARTIAL.Series.Edit_Item_by_ID(id);
+                return Series.Edit_Item_by_ID(id);
             if (type == typeof(Genre))
-                return PARTIAL.Genre.Edit_Item_by_ID(id);
+                return Genre.Edit_Item_by_ID(id);
             if (type == typeof(Language))
-                return PARTIAL.Language.Edit_Item_by_ID(id);
+                return Language.Edit_Item_by_ID(id);
             if (type == typeof(City))
-                return PARTIAL.City.Edit_Item_by_ID(id);
+                return City.Edit_Item_by_ID(id);
             if (type == typeof(Art))
-                return PARTIAL.Art.Edit_Item_by_ID(id);
+                return Art.Edit_Item_by_ID(id);
             if (type == typeof(PublishingHouse))
-                return PARTIAL.PublishingHouse.Edit_Item_by_ID(id);
+                return PublishingHouse.Edit_Item_by_ID(id);
             if (type == typeof(Action))
-                return PARTIAL.Action.Edit_Item_by_ID(id);
+                return Action.Edit_Item_by_ID(id);
             else return -1;
 
         }
@@ -78,21 +66,21 @@
             if (type == typeof(ViewBook))
                 return DB_Agent.Get_Deleted_Entities_IDs<lib_postgres.Book>(DB_Agent.Get_Books());
             else if (type == typeof(Art))
-                return PARTIAL.Art.Get_Deleted_Arts_IDs();
+                return Art.Get_Deleted_Arts_IDs();
             else if (type == typeof(City))
-                return PARTIAL.City.Get_Deleted_Cities_IDs();
+                return City.Get_Deleted_Cities_IDs();
             else if (type == typeof(Author))
-                return PARTIAL.Author.Get_Deleted_Authors_IDs();
+                return Author.Get_Deleted_Authors_IDs();
             else if (type == typeof(Series))
-                return PARTIAL.Series.Get_Deleted_Series_IDs();
+                return Series.Get_Deleted_Series_IDs();
             else if (type == typeof(Genre))
-                return PARTIAL.Genre.Get_Deleted_Items_IDs();
+                return Genre.Get_Deleted_Items_IDs();
             else if (type == typeof(Language))
-                return PARTIAL.Language.Get_Deleted_Items_IDs();
+                return Language.Get_Deleted_Items_IDs();
             else if (type == typeof(PublishingHouse))
-                return PARTIAL.PublishingHouse.Get_Deleted_Items_IDs();
+                return PublishingHouse.Get_Deleted_Items_IDs();
             else if (type == typeof(Action))
-                return PARTIAL.Action.Get_Deleted_Items_IDs();
+                return Action.Get_Deleted_Items_IDs();
             else return new List<long>();
         }
 

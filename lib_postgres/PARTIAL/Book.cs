@@ -6,11 +6,11 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace lib_postgres.PARTIAL
+namespace lib_postgres
 {
     public partial class Book 
     {
-        public static long Create_Book()
+        public static long Create_Item()
         {
             lib_postgres.Book book = DB_Agent.Get_First_Deleted_Entity_or_New<lib_postgres.Book>(DB_Agent.Get_Books());
             Form_Book formBook = new Form_Book();
