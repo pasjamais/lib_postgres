@@ -1,9 +1,10 @@
-﻿using System;
+﻿using lib_postgres.CODE.CRUD;
+using System;
 using System.Collections.Generic;
 
 namespace lib_postgres
 {
-    public partial class Genre : CODE.CRUD.IHas_field_IsDeleted, CODE.CRUD.IHas_field_ID
+    public partial class Genre 
     {
         public Genre()
         {

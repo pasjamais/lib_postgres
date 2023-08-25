@@ -1,4 +1,5 @@
 ﻿using lib_postgres.CODE;
+using lib_postgres.CODE.CRUD;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace lib_postgres
 {
-    public partial class Book 
+    public partial class Book : ICan_Create_Item, IHas_field_ID, IHas_field_IsDeleted
     {
         public static long Create_Item()
         {

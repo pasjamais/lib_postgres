@@ -6,6 +6,7 @@ namespace lib_postgres.CODE.CRUD
     {
         public static long Create_Item<T>()
         {//  Reflection!
+         // interface ICan_Create_Item  added to ensure methon presence
             string methodName = "Create_Item";
             Type type = typeof(T);
             if (type.GetMethod(methodName) != null)
@@ -34,6 +35,16 @@ namespace lib_postgres.CODE.CRUD
                 return PublishingHouse.Delete_Item_by_ID(id);
             else if (type == typeof(Action))
                 return Action.Delete_Item_by_ID(id);
+            else if (type == typeof(Mark))
+                return Mark.Delete_Item_by_ID(id);
+            else if (type == typeof(BookFormat))
+                return BookFormat.Delete_Item_by_ID(id);
+            else if (type == typeof(Place))
+                return Place.Delete_Item_by_ID(id);
+            else if (type == typeof(Person))
+                return Person.Delete_Item_by_ID(id);
+            else if (type == typeof(ArtRead))
+                return ArtRead.Delete_Item_by_ID(id);
             else return -1;
         }
         public static long Edit_Item_by_ID<T>(long id)
@@ -57,6 +68,14 @@ namespace lib_postgres.CODE.CRUD
                 return PublishingHouse.Edit_Item_by_ID(id);
             if (type == typeof(Action))
                 return Action.Edit_Item_by_ID(id);
+            if (type == typeof(Mark))
+                return Mark.Edit_Item_by_ID(id);
+            if (type == typeof(BookFormat))
+                return BookFormat.Edit_Item_by_ID(id);
+            if (type == typeof(Place))
+                return Place.Edit_Item_by_ID(id);
+            if (type == typeof(Person))
+                return Person.Edit_Item_by_ID(id);
             else return -1;
 
         }
@@ -81,6 +100,16 @@ namespace lib_postgres.CODE.CRUD
                 return PublishingHouse.Get_Deleted_Items_IDs();
             else if (type == typeof(Action))
                 return Action.Get_Deleted_Items_IDs();
+            else if (type == typeof(Mark))
+                return Mark.Get_Deleted_Items_IDs();
+            else if (type == typeof(BookFormat))
+                return BookFormat.Get_Deleted_Items_IDs();
+            else if (type == typeof(Place))
+                return Place.Get_Deleted_Items_IDs();
+            else if (type == typeof(Person))
+                return Person.Get_Deleted_Items_IDs();
+            else if (type == typeof(ArtRead))
+                return ArtRead.Get_Deleted_Items_IDs();
             else return new List<long>();
         }
 
@@ -105,6 +134,16 @@ namespace lib_postgres.CODE.CRUD
                 return DB_Agent.Get_Publishing_Houses();
             if (type == typeof(Action))
                 return DB_Agent.Get_Actions();
+            if (type == typeof(Mark))
+                return DB_Agent.Get_Marks();
+            if (type == typeof(BookFormat))
+                return DB_Agent.Get_BookFormats();
+            if (type == typeof(Place))
+                return DB_Agent.Get_Places();
+            if (type == typeof(Person))
+                return DB_Agent.Get_Persons();
+            if (type == typeof(ArtRead))
+                return DB_Agent.Get_ArtReads();
             else return -1;
         }
     }

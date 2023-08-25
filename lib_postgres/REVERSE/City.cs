@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace lib_postgres
 {
-    public partial class City : CODE.CRUD.IHas_field_IsDeleted, CODE.CRUD.IHas_field_ID, IHas_field_Name
+    public partial class City 
     {
         public City()
         {

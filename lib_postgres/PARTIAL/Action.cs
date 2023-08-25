@@ -1,4 +1,5 @@
 ﻿using lib_postgres.CODE;
+using lib_postgres.CODE.CRUD;
 using lib_postgres.FORMS;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace lib_postgres
 {
-    public partial class Action
+    public partial class Action : ICan_Create_Item
     {
 
         public static long Create_Item()

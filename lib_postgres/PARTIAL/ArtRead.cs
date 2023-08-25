@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace lib_postgres.PARTIAL
+namespace lib_postgres
 {
     public partial class ArtRead
     {
@@ -60,6 +60,32 @@ namespace lib_postgres.PARTIAL
             if (dialogResult != DialogResult.OK) return -1;
             artRead = Save_ArtRead(artRead, form, false);
             return artRead.Id;
+        }
+
+        public static long Delete_Item_by_ID(long id)
+        {
+            ArtRead item = DB_Agent.Get_ArtRead(id);
+            if (item.IsDeleted.HasValue)
+                item.IsDeleted = !item.IsDeleted;
+            else
+                item.IsDeleted = true;
+            DB_Agent.db.SaveChanges();
+            return item.Id;
+        }
+        public static List<ArtRead> Get_Deleted_Items()
+        {
+            List<ArtRead> items = DB_Agent.Get_ArtReads();
+            List<ArtRead> deleted_items = (from item in items
+                                          where item.IsDeleted is true
+                                          select item).ToList();
+            return deleted_items;
+        }
+        public static List<long> Get_Deleted_Items_IDs()
+        {
+            List<ArtRead> deleted_items = Get_Deleted_Items();
+            List<long> deleted_items_IDs = (from item in deleted_items
+                                            select item.Id).ToList(); ;
+            return deleted_items_IDs;
         }
     }
 }

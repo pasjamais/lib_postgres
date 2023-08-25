@@ -102,7 +102,11 @@ namespace lib_postgres
             return db.Languages.Find(idLanguage);
         }
 
-
+        public static void Language_Add(Language language)
+        {
+            db.Languages.Add(language);
+            Save_Changes();
+        }
 
 
         #endregion
@@ -133,6 +137,12 @@ namespace lib_postgres
         {
             return db.PublishingHouses.Find(idPublishing_House);
         }
+
+        public static void PublishingHouse_Add(PublishingHouse publishingHouse)
+        {
+            db.PublishingHouses.Add(publishingHouse);
+            Save_Changes();
+        }
         #endregion
 
         #region Series
@@ -144,6 +154,12 @@ namespace lib_postgres
         public static Series Get_Serie(long idSerie)
         {
             return db.Series.Find(idSerie);
+        }
+
+        public static void Serie_Add(Series series)
+        {
+            db.Series.Add(series);
+            Save_Changes();
         }
         #endregion
 
@@ -174,6 +190,12 @@ namespace lib_postgres
         {
             return db.Genres.Find(idGenre);
         }
+        public static void Genre_Add(Genre genre)
+        {
+            db.Genres.Add(genre);
+            Save_Changes();
+        }
+
         #endregion
 
         #region Actions
@@ -186,7 +208,11 @@ namespace lib_postgres
         {
             return db.Actions.Find(id_Action);
         }
-
+        public static void Add_Action(Action action)
+        {
+            db.Actions.Add(action);
+            Save_Changes();
+        }
 
         #endregion
 
@@ -229,6 +255,17 @@ namespace lib_postgres
         public static List<Place> Get_Places()
         {
             return db.Places.ToList().OrderBy(n => n.Name).ToList();
+        }
+
+        public static Place Get_Place(long id)
+        {
+            return db.Places.Find(id);
+        }
+
+        public static void Add_Place(Place place)
+        {
+            db.Places.Add(place);
+            Save_Changes();
         }
         #endregion
 
@@ -287,6 +324,12 @@ namespace lib_postgres
         {
             return db.BookFormats.Find(id);
         }
+
+        public static void Add_BookFormat(BookFormat bookFormat)
+        {
+            db.BookFormats.Add(bookFormat);
+            Save_Changes();
+        }
         #endregion
 
         #region Queries
@@ -311,7 +354,32 @@ namespace lib_postgres
         {
             return db.Marks.Find(id);
         }
+
+        public static void Add_Mark(Mark mark)
+        {
+            db.Marks.Add(mark);
+            Save_Changes();
+        }
         #endregion
+
+
+        #region Person
+        public static List<Person> Get_Persons()
+        {
+            return db.People.ToList().OrderBy(n => n.Id).ToList();
+        }
+
+        public static Person Get_Person(long id)
+        {
+            return db.People.Find(id);
+        }
+
+        public static void Add_Person(Person person)
+        {
+            db.People.Add(person);
+            Save_Changes();
+        }
+        #endregion Person
 
         #region SourceToreadAnother
         public static List<SourceToreadAnother> Get_Another_Sources()
@@ -333,6 +401,7 @@ namespace lib_postgres
         }
 
         #endregion
+
         #region Recommendations
         public static List<ArtToRead> Get_Recommendations()
         {
@@ -355,6 +424,12 @@ namespace lib_postgres
                                         select elem).ToList();
             return deleted_elements;
         }
+        /// <summary>
+        /// Check during new object creation
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="all_elements"></param>
+        /// <returns></returns>
         public static dynamic Get_First_Deleted_Entity_or_New<T>(List<T> all_elements)
             where T : CODE.CRUD.IHas_field_IsDeleted, new()
         {
@@ -372,8 +447,23 @@ namespace lib_postgres
             return deleted_elements_id;
         }
 
+        /// <summary>
+        /// Spec. (non-generalized) method for every instance (for using in Create_Item method)
+        /// </summary>
+        /// <param name="obj"></param>
         public delegate void write_item_to_BD(object obj);
 
+        /// <summary>
+        /// simplified instance creation
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="element"></param>
+        /// <param name="all_elements"></param>
+        /// <param name="form_caption"></param>
+        /// <param name="label_caption"></param>
+        /// <param name="deja_exists_caption"></param>
+        /// <param name="add"></param>
+        /// <returns></returns>
         public static long Create_Item<T> ( T element,
                                             List<T> all_elements, 
                                             string form_caption, 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using lib_postgres.CODE.CRUD;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,28 +7,25 @@ using System.Threading.Tasks;
 
 namespace lib_postgres
 {
-    public partial class Genre
+    public partial class Genre : IHas_field_IsDeleted, IHas_field_ID, IHas_field_Name, ICan_Create_Item
     {
+        public static DB_Agent.write_item_to_BD creation_method;
         public static long Create_Item()
+
         {
-            var new_name = General_Manipulations.simple_element_add("Добавить жанр", "Наименование:");
-            if (new_name != "")
+            Genre element = DB_Agent.Get_First_Deleted_Entity_or_New<Genre>(DB_Agent.Get_Genres());
+
+            creation_method = delegate (object obj)
             {
-                if (DB_Agent.db.Genres.ToList().Exists(e => e.Name == new_name))
-                {
-                    General_Manipulations.simple_message("Жанр уже существует");
-                    return 0;
-                }
-                else
-                {
-                    lib_postgres.Genre element = new lib_postgres.Genre();
-                    element.Name = new_name;
-                    DB_Agent.db.Genres.Add(element);
-                    DB_Agent.db.SaveChanges();
-                    return element.Id;
-                }
-            }
-            else return -1;
+                DB_Agent.Genre_Add(element);
+            };
+
+            return DB_Agent.Create_Item<Genre>(element,
+                                                            DB_Agent.Get_Genres(),
+                                                            "Добавить жанр",
+                                                            "Наименование:",
+                                                            "Жанр уже существует",
+                                                            creation_method);
         }
      
         public static long Edit_Item_by_ID(long id)

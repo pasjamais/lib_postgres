@@ -1,4 +1,5 @@
-﻿using System;
+﻿using lib_postgres.CODE.CRUD;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,29 +7,25 @@ using System.Threading.Tasks;
 
 namespace lib_postgres
 {
-    public partial class Series
-    {
+    public partial class Series : IHas_field_IsDeleted, IHas_field_ID, IHas_field_Name, ICan_Create_Item
+      {
+        public static DB_Agent.write_item_to_BD creation_method;
 
         public static long Create_Item()
         {
-            var new_name = General_Manipulations.simple_element_add("Добавить серию книг", "Название:");
-            if (new_name != "")
+            Series element = DB_Agent.Get_First_Deleted_Entity_or_New<Series>(DB_Agent.Get_Series());
+
+            creation_method = delegate (object obj)
             {
-                if (DB_Agent.db.Series.ToList().Exists(e => e.Name == new_name))
-                {
-                    General_Manipulations.simple_message("Серия уже существует");
-                    return 0;
-                }
-                else
-                {
-                    lib_postgres.Series element = new lib_postgres.Series();
-                    element.Name = new_name;
-                    DB_Agent.db.Series.Add(element);
-                    DB_Agent.db.SaveChanges();
-                    return element.Id;
-                }
-            }
-            else return 0;
+                DB_Agent.Serie_Add(element);
+            };
+
+            return DB_Agent.Create_Item<Series>(element,
+                                                            DB_Agent.Get_Series(),
+                                                            "Добавить серию книг",
+                                                            "Название:",
+                                                            "Серия уже существует",
+                                                            creation_method);
         }
 
         public static long Edit_Item_by_ID(long id)

@@ -8,25 +8,25 @@ using lib_postgres.CODE.CRUD;
 
 namespace lib_postgres
 {
-    public partial class City 
+    public partial class City : IHas_field_IsDeleted, IHas_field_ID, IHas_field_Name, ICan_Create_Item
     {
-        public static DB_Agent.write_item_to_BD deleg;
+        public static DB_Agent.write_item_to_BD creation_method;
      
         public static long Create_Item()
         {
-            lib_postgres.City element = DB_Agent.Get_First_Deleted_Entity_or_New
-                <lib_postgres.City>(DB_Agent.Get_Cities());
-            deleg = delegate (object obj)
+            City element = DB_Agent.Get_First_Deleted_Entity_or_New <City>(DB_Agent.Get_Cities());
+
+            creation_method = delegate (object obj)
             {
                 DB_Agent.City_Add(element);
             };
          
-            return DB_Agent.Create_Item <lib_postgres.City>(element,
+            return DB_Agent.Create_Item <City>(element,
                                                             DB_Agent.Get_Cities(),
                                                             "Добавить город", 
                                                             "Название:", 
-                                                            "Город уже существует", 
-                                                            deleg);
+                                                            "Город уже существует",
+                                                            creation_method);
         }
         public static long Edit_Item_by_ID(long id)
         {

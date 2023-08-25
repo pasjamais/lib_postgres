@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using lib_postgres.CODE;
+using lib_postgres.CODE.CRUD;
 using lib_postgres.FORMS;
 using lib_postgres.PARTIAL;
 
 namespace lib_postgres
 {
-    public partial class Art
+    public partial class Art : ICan_Create_Item
     {
         public static long Create_Item()
         {
