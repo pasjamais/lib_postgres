@@ -40,8 +40,11 @@
             this.ToolStripMenuItem_File_Open_Settings = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemRecommendationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem__Recommendations_ِAdd = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItem__Recommendations_Show = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem__Recommendations_Edit = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem__Recommendations_Delete = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem__Recommendations_Show = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Reader = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem__Read_Open = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem__Read_Add = new System.Windows.Forms.ToolStripMenuItem();
@@ -129,9 +132,6 @@
             this.ToolStripMenuItem_People_Add = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_People_Edit = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_People_Delete = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItem__Recommendations_Delete = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
-            this.ToolStripMenuItem__Recommendations_Edit = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.book1BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.contextMenuStrip.SuspendLayout();
@@ -157,7 +157,7 @@
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView.Size = new System.Drawing.Size(1036, 362);
             this.dataGridView.TabIndex = 0;
-            this.dataGridView.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentDoubleClick);
+            this.dataGridView.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellContentDoubleClick);
             // 
             // contextMenuStrip
             // 
@@ -181,7 +181,6 @@
             this.cmi_item_add_art_to_read.Size = new System.Drawing.Size(220, 22);
             this.cmi_item_add_art_to_read.Text = "Добавить в прочитанное...";
             this.cmi_item_add_art_to_read.Visible = false;
-            this.cmi_item_add_art_to_read.Click += new System.EventHandler(this.cmi_item_add_art_to_read_Click);
             // 
             // menuStrip1
             // 
@@ -228,12 +227,12 @@
             // toolStripMenuItemRecommendationToolStripMenuItem
             // 
             this.toolStripMenuItemRecommendationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripMenuItem__Recommendations_Show,
             this.ToolStripMenuItem__Recommendations_ِAdd,
             this.ToolStripMenuItem__Recommendations_Edit,
             this.ToolStripMenuItem__Recommendations_Delete,
             this.toolStripSeparator9,
-            this.toolStripMenuItem2,
-            this.ToolStripMenuItem__Recommendations_Show});
+            this.toolStripMenuItem2});
             this.toolStripMenuItemRecommendationToolStripMenuItem.Name = "toolStripMenuItemRecommendationToolStripMenuItem";
             this.toolStripMenuItemRecommendationToolStripMenuItem.Size = new System.Drawing.Size(100, 20);
             this.toolStripMenuItemRecommendationToolStripMenuItem.Text = "Рекомендации";
@@ -245,12 +244,25 @@
             this.ToolStripMenuItem__Recommendations_ِAdd.Text = "Добавить рекомендацию...";
             this.ToolStripMenuItem__Recommendations_ِAdd.Click += new System.EventHandler(this.ToolStripMenuItem__Recommendation_Add_Click);
             // 
-            // ToolStripMenuItem__Recommendations_Show
+            // ToolStripMenuItem__Recommendations_Edit
             // 
-            this.ToolStripMenuItem__Recommendations_Show.Name = "ToolStripMenuItem__Recommendations_Show";
-            this.ToolStripMenuItem__Recommendations_Show.Size = new System.Drawing.Size(231, 22);
-            this.ToolStripMenuItem__Recommendations_Show.Text = "Таблица рекомендаций";
-            this.ToolStripMenuItem__Recommendations_Show.Click += new System.EventHandler(this.ToolStripMenuItem__Recommendations_Show_Click);
+            this.ToolStripMenuItem__Recommendations_Edit.Enabled = false;
+            this.ToolStripMenuItem__Recommendations_Edit.Name = "ToolStripMenuItem__Recommendations_Edit";
+            this.ToolStripMenuItem__Recommendations_Edit.Size = new System.Drawing.Size(231, 22);
+            this.ToolStripMenuItem__Recommendations_Edit.Text = "Измениь рекомендацию...";
+            this.ToolStripMenuItem__Recommendations_Edit.Click += new System.EventHandler(this.ToolStripMenuItem__Recommendations_Edit_Click);
+            // 
+            // ToolStripMenuItem__Recommendations_Delete
+            // 
+            this.ToolStripMenuItem__Recommendations_Delete.Name = "ToolStripMenuItem__Recommendations_Delete";
+            this.ToolStripMenuItem__Recommendations_Delete.Size = new System.Drawing.Size(231, 22);
+            this.ToolStripMenuItem__Recommendations_Delete.Text = "Удалить/Отменить удаление";
+            this.ToolStripMenuItem__Recommendations_Delete.Click += new System.EventHandler(this.ToolStripMenuItem__Recommendations_Delete_Click);
+            // 
+            // toolStripSeparator9
+            // 
+            this.toolStripSeparator9.Name = "toolStripSeparator9";
+            this.toolStripSeparator9.Size = new System.Drawing.Size(228, 6);
             // 
             // toolStripMenuItem2
             // 
@@ -258,6 +270,13 @@
             this.toolStripMenuItem2.Size = new System.Drawing.Size(231, 22);
             this.toolStripMenuItem2.Text = "Дерево рекомендаций...";
             this.toolStripMenuItem2.Click += new System.EventHandler(this.ToolStripMenuItem__Recommendations_Tree_Click);
+            // 
+            // ToolStripMenuItem__Recommendations_Show
+            // 
+            this.ToolStripMenuItem__Recommendations_Show.Name = "ToolStripMenuItem__Recommendations_Show";
+            this.ToolStripMenuItem__Recommendations_Show.Size = new System.Drawing.Size(231, 22);
+            this.ToolStripMenuItem__Recommendations_Show.Text = "Показать рекомендации";
+            this.ToolStripMenuItem__Recommendations_Show.Click += new System.EventHandler(this.ToolStripMenuItem__Recommendations_Show_Click);
             // 
             // ToolStripMenuItem_Reader
             // 
@@ -935,25 +954,6 @@
             this.ToolStripMenuItem_People_Delete.Size = new System.Drawing.Size(231, 22);
             this.ToolStripMenuItem_People_Delete.Text = "Удалить/Отменить удаление";
             this.ToolStripMenuItem_People_Delete.Click += new System.EventHandler(this.ToolStripMenuItem_People_Delete_Click);
-            // 
-            // ToolStripMenuItem__Recommendations_Delete
-            // 
-            this.ToolStripMenuItem__Recommendations_Delete.Name = "ToolStripMenuItem__Recommendations_Delete";
-            this.ToolStripMenuItem__Recommendations_Delete.Size = new System.Drawing.Size(231, 22);
-            this.ToolStripMenuItem__Recommendations_Delete.Text = "Удалить/Отменить удаление";
-            // 
-            // toolStripSeparator9
-            // 
-            this.toolStripSeparator9.Name = "toolStripSeparator9";
-            this.toolStripSeparator9.Size = new System.Drawing.Size(228, 6);
-            // 
-            // ToolStripMenuItem__Recommendations_Edit
-            // 
-            this.ToolStripMenuItem__Recommendations_Edit.Enabled = false;
-            this.ToolStripMenuItem__Recommendations_Edit.Name = "ToolStripMenuItem__Recommendations_Edit";
-            this.ToolStripMenuItem__Recommendations_Edit.Size = new System.Drawing.Size(231, 22);
-            this.ToolStripMenuItem__Recommendations_Edit.Text = "Измениь рекомендацию...";
-            this.ToolStripMenuItem__Recommendations_Edit.Click += new System.EventHandler(this.ToolStripMenuItem__Recommendations_Edit_Click);
             // 
             // Form_Main
             // 

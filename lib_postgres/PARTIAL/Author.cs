@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -77,5 +78,18 @@ namespace lib_postgres
                                             select item.Id).ToList(); ;
             return deleted_items_IDs;
         }
+
+
+        public static void Prepare_DGV(DataGridView DGV)
+        {
+            DGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
+            DGV.Columns[0].HeaderText = "Id"; DGV.Columns[0].FillWeight = (int)(DGV.Width * 0.15);
+            DGV.Columns[1].HeaderText = "Автор"; DGV.Columns[1].FillWeight = (int)(DGV.Width * 0.85);
+            for (int i = 2; i < DGV.ColumnCount; i++)
+                DGV.Columns[i].Visible = false;
+            DGV.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+        }
+
+
     }
 }

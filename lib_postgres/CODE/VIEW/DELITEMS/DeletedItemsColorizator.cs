@@ -12,7 +12,7 @@ namespace lib_postgres.CODE.VIEW.DELITEMS
         {
             Colorize_Deleted_Entities_Rows(deleted_IDs, DGV);
         }
-        private  void Colorize_Deleted_Entities_Rows(List<long> deleted_IDs, DataGridView DGV)
+        private void Colorize_Deleted_Entities_Rows(List<long> deleted_IDs, DataGridView DGV)
         {
             foreach (DataGridViewRow this_row in DGV.Rows)
             {

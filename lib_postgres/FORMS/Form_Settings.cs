@@ -14,11 +14,13 @@ namespace lib_postgres.FORMS
 {
     public partial class Form_Settings : Form
     {
+        private Deleted_Entities_Visuaisator deleted_Entities_Visuaisator;
         public Form_Settings()
         {
             InitializeComponent();
             ChB_Backup_on_Start.Checked = Backup.is_Backup_on_Start();
-            ChB_Show_Deleted_Entities.Checked = DeletedEntities.is_Show_Deleted_Items();
+            deleted_Entities_Visuaisator = new Deleted_Entities_Visuaisator();
+            ChB_Show_Deleted_Entities.Checked = deleted_Entities_Visuaisator.Is_Colorize_deleted_items;
         }
 
     }

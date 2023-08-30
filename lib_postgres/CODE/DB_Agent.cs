@@ -412,8 +412,12 @@ namespace lib_postgres
             db.ArtToReads.Add(item);
             db.SaveChanges();
         }
+        public static ArtToRead Get_ArtToRead(long id)
+        {
+            return db.ArtToReads.Find(id);
+        }
 
-        #endregion
+        #endregion Recommendations
 
         #region general CRUD
         public static dynamic Get_Deleted_Items<T>(List<T> all_elements)

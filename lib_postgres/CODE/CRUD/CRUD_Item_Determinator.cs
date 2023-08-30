@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using lib_postgres.PARTIAL;
+using System.Reflection;
 
 namespace lib_postgres.CODE.CRUD
 {
@@ -45,6 +46,8 @@ namespace lib_postgres.CODE.CRUD
                 return Person.Delete_Item_by_ID(id);
             else if (type == typeof(ArtRead))
                 return ArtRead.Delete_Item_by_ID(id);
+            else if (type == typeof(ArtToRead))
+                return ArtToRead.Delete_Item_by_ID(id);
             else return -1;
         }
         public static long Edit_Item_by_ID<T>(long id)
@@ -76,6 +79,8 @@ namespace lib_postgres.CODE.CRUD
                 return Place.Edit_Item_by_ID(id);
             if (type == typeof(Person))
                 return Person.Edit_Item_by_ID(id);
+            if (type == typeof(ArtToRead))
+                return ArtToRead.Edit_Item_by_ID(id);
             else return -1;
 
         }
@@ -110,6 +115,8 @@ namespace lib_postgres.CODE.CRUD
                 return Person.Get_Deleted_Items_IDs();
             else if (type == typeof(ArtRead))
                 return ArtRead.Get_Deleted_Items_IDs();
+            else if (type == typeof(ArtToRead))
+                return ArtToRead.Get_Deleted_Items_IDs();
             else return new List<long>();
         }
 
@@ -144,6 +151,8 @@ namespace lib_postgres.CODE.CRUD
                 return DB_Agent.Get_Persons();
             if (type == typeof(ArtRead))
                 return DB_Agent.Get_ArtReads();
+            if (type == typeof(ArtToRead))
+                return CODE.Queries_LinQ.Get_All_Recommendations();
             else return -1;
         }
     }

@@ -5,12 +5,22 @@ using System.Text;
 using System.Threading.Tasks;
 using lib_postgres.FORMS;
 using System.Windows.Forms;
+using lib_postgres.CODE.VIEW.DELITEMS;
+using static lib_postgres.DB_Agent;
+using lib_postgres.PARTIAL;
 
 namespace lib_postgres.CODE
 {
-    public class Form_Element_DGV
+    public class DGV_Visualisator
     {
-        public static void Prepare_DGV_For_Type<T>(DataGridView DGV, Main_Form_Status_Update? StatusProperty = null)
+        public Deleted_Entities_Visuaisator deleted_Entities_Visuaisator;
+        public delegate void Turn_Off_or_ON_Current_Menu_Item();
+        public DGV_Visualisator()
+        {
+            deleted_Entities_Visuaisator = new Deleted_Entities_Visuaisator();
+        }
+
+        public void Prepare_DGV_For_Type<T>(DataGridView DGV, Main_Form_Status_Update? StatusProperty = null)
         {
             // return;
             Type type = typeof(T);
@@ -35,12 +45,7 @@ namespace lib_postgres.CODE
             }
             if (type == typeof(Author))
             {
-                DGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
-                DGV.Columns[0].HeaderText = "Id"; DGV.Columns[0].FillWeight = (int)(DGV.Width * 0.15);
-                DGV.Columns[1].HeaderText = "Автор"; DGV.Columns[1].FillWeight = (int)(DGV.Width * 0.85);
-                DGV.Columns[2].Visible = false;//is_deleted
-                DGV.Columns[3].Visible = false;
-                DGV.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                Author.Prepare_DGV(DGV);
                 if (StatusProperty is not null) StatusProperty.Message = "Список авторов";
             }
             else if (type == typeof(Language))
@@ -48,10 +53,8 @@ namespace lib_postgres.CODE
                 DGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
                 DGV.Columns[0].HeaderText = "Id";
                 DGV.Columns[1].HeaderText = "Язык";
-                DGV.Columns[2].Visible = false;
-                DGV.Columns[3].Visible = false;
-                DGV.Columns[4].Visible = false;
-                DGV.Columns[5].Visible = false;
+                for (int i = 2; i < DGV.ColumnCount; i++)
+                    DGV.Columns[i].Visible = false;
                 DGV.Columns[0].FillWeight = (int)(DGV.Width * 0.15);
                 DGV.Columns[1].FillWeight = (int)(DGV.Width * 0.85);
                 DGV.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -132,8 +135,8 @@ namespace lib_postgres.CODE
                 DGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
                 DGV.Columns[0].HeaderText = "Id";
                 DGV.Columns[1].HeaderText = "Жанр";
-                DGV.Columns[2].Visible = false;
-                DGV.Columns[3].Visible = false;
+                for (int i = 2; i < DGV.ColumnCount; i++)
+                    DGV.Columns[i].Visible = false;
                 DGV.Columns[0].FillWeight = (int)(DGV.Width * 0.15);
                 DGV.Columns[1].FillWeight = (int)(DGV.Width * 0.85);
                 DGV.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -190,7 +193,7 @@ namespace lib_postgres.CODE
                 DGV.Columns[1].FillWeight = (int)(DGV.Width * 0.45);
                 DGV.Columns[2].HeaderText = "Комментарий";
                 DGV.Columns[2].FillWeight = (int)(DGV.Width * 0.45);
-              
+
                 DGV.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 if (StatusProperty is not null) StatusProperty.Message = "Список мест хранения";
             }
@@ -207,11 +210,68 @@ namespace lib_postgres.CODE
                 DGV.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 if (StatusProperty is not null) StatusProperty.Message = "Список лиц";
             }
+            else if (type == typeof(ArtToRead))
+            {
+                DGV.AutoSizeColumnsMode = (DataGridViewAutoSizeColumnsMode)DataGridViewAutoSizeColumnMode.Fill;
+                DGV.Columns[0].HeaderText = "Id";
+                DGV.Columns[1].HeaderText = "Дата";
+                DGV.Columns[2].HeaderText = "Тип ист.";
+                DGV.Columns[3].HeaderText = "Источник";
+                DGV.Columns[4].HeaderText = "Тип рек.";
+                DGV.Columns[5].HeaderText = "Рекомендация";
+                DGV.Columns[6].HeaderText = "Комментарий";
+                DGV.Columns[0].FillWeight = 20;
+                DGV.Columns[1].FillWeight = 20;
+                DGV.Columns[2].FillWeight = 20;
+                DGV.Columns[4].FillWeight = 20;
+                if (StatusProperty is not null) StatusProperty.Message = "Список рекомендаций";
+            }
+        }   
+      
+        public void Refresh_DGV_for_Item_Type<T>(DataGridView DGV,
+                                                 Turn_Off_or_ON_Current_Menu_Item Turn_Off_Current_Menu_Item,
+                                                 Turn_Off_or_ON_Current_Menu_Item Turn_On_Current_Menu_Item,
+                                                 Main_Form_Status_Update? StatusProperty = null)
+        {
+            DGV.Columns.Clear();
+            DGV.DataSource = CODE.CRUD.CRUD_Item_Determinator.Get_All_Items_List_by_Type<T>();
+            Turn_Off_Current_Menu_Item();
+            Prepare_DGV_For_Type<T>(DGV, StatusProperty);
+            List<long> deleted_IDs = CODE.CRUD.CRUD_Item_Determinator.Get_Deleted_Items_IDs<T>();
+            // colorization of deleted elements
+            deleted_Entities_Visuaisator.RunCommand(deleted_IDs, DGV);
+            Turn_On_Current_Menu_Item();
         }
 
-  
+        public long Get_Selected_Entity_ID(DataGridView DGV)
+        {
+            int index = DGV.SelectedRows[0].Index;
+            long id = (long)DGV.Rows[index].Cells["Id"].Value;
+            return id;
+        }
 
+        /// <summary>
+        /// for art have read only
+        /// </summary>
+        /// <param name="DGV"></param>
+        public void Colorise_DGV(DataGridView DGV)
+        {
+            var formats = DB_Agent.Get_BookFormats();
+            var marks = DB_Agent.Get_Marks();
+            foreach (DataGridViewRow row in DGV.Rows)
+            {
+                var format_color_id = (from f in formats
+                                       where f.Name == row.Cells["Формат"].Value.ToString()
+                                       select f.Id).First();
+                row.DefaultCellStyle.BackColor = lib_postgres.CODE.Data.format_colors[format_color_id];
+                var mark_color_id = (from m in marks
+                                     where m.Name == row.Cells["Оценка"].Value.ToString()
+                                     select m.Id).First();
+                if (mark_color_id < 4 || mark_color_id > 6)
+                    row.Cells["Оценка"].Style.BackColor = lib_postgres.CODE.Data.marks_colors[mark_color_id];
+            }
 
+        }
 
     }
 }

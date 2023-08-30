@@ -16,9 +16,8 @@ namespace lib_postgres.FORMS
     {
         public RadioButton selectedrb_toread, selectedrb_source;
         private Dictionary<string, long> Sources_saved_positions;
-        public Form_Art_To_Read(Dictionary<string, long> sources_saved_positions)
+        public Form_Art_To_Read(Dictionary<string, long> sources_saved_positions) :this()
         {
-            InitializeComponent();
             Sources_saved_positions = sources_saved_positions;
             General_Manipulations.CB_reload<Art>(CB_Toread_Art, 1);
             General_Manipulations.CB_reload<Author>(CB_Toread_Author, 1);
@@ -28,7 +27,16 @@ namespace lib_postgres.FORMS
             RB_Toread_Art.Tag = true;
             RB_Toread_Author.Tag = false;
         }
-
+        public Form_Art_To_Read()
+        {
+            InitializeComponent();
+            General_Manipulations.CB_reload<Art>(CB_Toread_Art, 1);
+            General_Manipulations.CB_reload<Author>(CB_Toread_Author, 1);
+            General_Manipulations.CB_reload<Art>(CB_Source_Art, 1);
+            General_Manipulations.CB_reload<Author>(CB_Source_Author, 1);
+            General_Manipulations.CB_reload<SourceToreadAnother>(CB_Source_Another, 1);
+        }
+   
         private void BT_Add_Art_Click(object sender, EventArgs e)
         {
             var id = Art.Create_Item();

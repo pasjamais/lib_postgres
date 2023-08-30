@@ -1,4 +1,5 @@
-﻿using System;
+﻿using lib_postgres.PARTIAL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -190,37 +191,151 @@ namespace lib_postgres.CODE
                           }).ToList();
             return result;
         }
-        public static void Show_Actions(DataGridView dataGridView)
+
+        public struct Recommend
         {
-            var actions = DB_Agent.Get_Actions();
-            var action_types = DB_Agent.Get_ActionTypes();
-            var places = DB_Agent.Get_Places();
-            var items = (from act in actions
-                         join act_typ in action_types on act.ActionType equals act_typ.Id
-                         //      join pla in places on act.Place equals pla.Id //   если нул надо не соединять   
-                         select new
-                         {
-                             Id = act.Id,
-                             //   Действие = act.Name,
-                             Примечание = act.Comment,
-                             Дата = act.Date,
-                             //   Место = pla.Name,
-                             //    Тип = act_typ.Name
-                         }).ToList().OrderBy(n => n.Дата).ToList(); ;
-            dataGridView.DataSource = items;
+            public long Id { get; set; }
+            public DateOnly? Date { get; set; }
+            public string Source_Type { get; set; }
+            public string Source { get; set; }
+            public string Recommend_Type { get; set; }
+            public string Recommended { get; set; }
+            public string Comment { get; set; }
+            public Recommend(long id, DateOnly? date, string source_type, string source, string recommend_type, string recommended, string comment)
+            {
+                Id = id;
+                Date = date;
+                Source_Type = source_type;
+                Source = source;
+                Recommend_Type = recommend_type;
+                Recommended = recommended;
+                Comment = comment;
+            }
         }
-        #region Books
 
-       
-        #endregion
+        public static dynamic Get_All_Recommendations()
+        {
+          
+            var recs = DB_Agent.Get_Recommendations();
+            var _arts_authors = Get_Arts();
+            var _art_sources = (from rec in recs
+                               join art_source in _arts_authors on rec.SourceArtId equals art_source.Id
+                               select new
+                               {
+                                   Id = rec.Id,
+                                   Date = rec.Date,
+                                   Source = art_source.Name + " | " + art_source.Authors,
+                                   Comment = rec.Comment,
+                                   ToreadArtId = rec.ToreadArtId,
+                                   ToreadAuthorId = rec.ToreadAuthorId
+                               }).ToList();
+            _arts_authors = Get_Arts();
+            var arts_to_arts = (from art_source in _art_sources
+                         join art_toread in _arts_authors on art_source.ToreadArtId equals art_toread.Id
+                         select new Recommend()
+                         {
+                             Id = art_source.Id,
+                             Date = art_source.Date,
+                             Source_Type = "Книга",
+                             Source = art_source.Source,
+                             Recommend_Type = "Книга",
+                             Recommended = art_toread.Name + " | " + art_toread.Authors,
+                             Comment = art_source.Comment
+                         }).ToList();
+            var _authors = DB_Agent.Get_Authors();
+            var arts_to_authors = (from art_source in _art_sources
+                                   join author in _authors on art_source.ToreadAuthorId equals author.Id
+                                   select new Recommend()
+                                {
+                                    Id = art_source.Id,
+                                    Date = art_source.Date,
+                                       Source_Type = "Книга",
+                                       Source = art_source.Source,
+                                    Recommend_Type = "Автор",
+                                    Recommended = author.Name,
+                                    Comment = art_source.Comment
+                                }).ToList();
+/////////////////
 
-        #region Arts
-       
+            var _authors_sources = (from rec in recs
+                                   join author in _authors on rec.SourceAuthorId equals author.Id
+                               select new
+                               {
+                                   Id = rec.Id,
+                                   Date = rec.Date,
+                                   Source = author.Name,
+                                   Comment = rec.Comment,
+                                   ToreadArtId = rec.ToreadArtId,
+                                   ToreadAuthorId = rec.ToreadAuthorId
+                               }).ToList();
+            var authors_to_arts = (from author_source in _authors_sources
+                                   join art_toread in _arts_authors on author_source.ToreadArtId equals art_toread.Id
+                                   select new Recommend()
+                                {
+                                    Id = author_source.Id,
+                                    Date = author_source.Date,
+                                       Source_Type = "Автор",
+                                       Source = author_source.Source,
+                                       Recommend_Type = "Книга",
+                                       Recommended = art_toread.Name + " | " + art_toread.Authors,
+                                    Comment = author_source.Comment
+                                }).ToList();
+            var authors_to_authors = (from author_source in _authors_sources
+                                   join author in _authors on author_source.ToreadAuthorId equals author.Id
+                                   select new Recommend()
+                                   {
+                                       Id = author_source.Id,
+                                       Date = author_source.Date,
+                                       Source_Type = "Автор",
+                                       Source = author_source.Source,
+                                       Recommend_Type = "Автор",
+                                       Recommended = author.Name,
+                                       Comment = author_source.Comment
+                                   }).ToList();
 
-        #endregion
+            /////////////////
+            var _anothers = DB_Agent.Get_Another_Sources();
+            var _another_sources = (from rec in recs
+                                    join another in _anothers on rec.SourceAnotherId equals another.Id
+                                    select new
+                                    {
+                                        Id = rec.Id,
+                                        Date = rec.Date,
+                                        Source = another.Name,
+                                        Comment = rec.Comment,
+                                        ToreadArtId = rec.ToreadArtId,
+                                        ToreadAuthorId = rec.ToreadAuthorId
+                                    }).ToList();
+            var another_to_arts = (from another in _another_sources
+                                   join art_toread in _arts_authors on another.ToreadArtId equals art_toread.Id
+                                   select new Recommend()
+                                   {
+                                       Id = another.Id,
+                                       Date = another.Date,
+                                       Source_Type = "Другое",
+                                       Source = another.Source,
+                                       Recommend_Type = "Книга",
+                                       Recommended = art_toread.Name + " | " + art_toread.Authors,
+                                       Comment = another.Comment
+                                   }).ToList();
+            var another_to_authors = (from another in _another_sources
+                                      join author in _authors on another.ToreadAuthorId equals author.Id
+                                      select new Recommend()
+                                      {
+                                          Id = another.Id,
+                                          Date = another.Date,
+                                          Source_Type = "Другое",
+                                          Source = another.Source,
+                                          Recommend_Type = "Автор",
+                                          Recommended = author.Name,
+                                          Comment = another.Comment
+                                      }).ToList();
+            var result = arts_to_arts.Union(arts_to_authors)
+                             .Union(authors_to_arts).Union(authors_to_authors)
+                             .Union(another_to_arts).Union(another_to_authors)
+                             .OrderBy(n => n.Id).ToList(); 
+            return result;
+        }
 
-
-       
-
-    }
+}
 }

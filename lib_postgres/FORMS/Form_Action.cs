@@ -17,20 +17,22 @@ namespace lib_postgres.FORMS
 
         public List<ViewBook> action_books;
         public List<ViewBook> all_books;
+        private DGV_Visualisator dgv_Visualisator;
         public Form_Action()
         {
             InitializeComponent();
+            this.dgv_Visualisator = new DGV_Visualisator();
             General_Manipulations.CB_reload<Place>(CB_Place, 1);
             General_Manipulations.CB_reload<ActionType>(CB_Action_Type, 1);
 
             all_books = Queries_from_Views.Get_Books();
             DGV_AllBooks.DataSource = General_Manipulations.Bind_List_to_DGV(all_books);
-            CODE.Form_Element_DGV.Prepare_DGV_For_Type<ViewBook>(DGV_AllBooks);
+            dgv_Visualisator.Prepare_DGV_For_Type<ViewBook>(DGV_AllBooks);
             DGV_AllBooks.Refresh();
 
             action_books = new();
             DGV_ActionBooks.DataSource = General_Manipulations.Bind_List_to_DGV(action_books);
-            CODE.Form_Element_DGV.Prepare_DGV_For_Type<ViewBook>(DGV_ActionBooks);
+            dgv_Visualisator.Prepare_DGV_For_Type<ViewBook>(DGV_ActionBooks);
             DGV_ActionBooks.Refresh();
         }
 
@@ -42,7 +44,7 @@ namespace lib_postgres.FORMS
             {
                 all_books = Queries_from_Views.Get_Books();
                 DGV_AllBooks.DataSource = General_Manipulations.Bind_List_to_DGV(all_books);
-                CODE.Form_Element_DGV.Prepare_DGV_For_Type<ViewBook>(DGV_AllBooks);
+                dgv_Visualisator.Prepare_DGV_For_Type<ViewBook>(DGV_AllBooks);
 
                 General_Manipulations.show_row(DGV_AllBooks, book_id.ToString(), "Id");
             }

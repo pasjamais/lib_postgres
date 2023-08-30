@@ -1,4 +1,5 @@
-﻿using System;
+﻿using lib_postgres.CODE;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,16 +14,22 @@ namespace lib_postgres
     public partial class Form_Art : Form
     {
         public List<Author>? selected_Autors;
+        private DGV_Visualisator dgv_Visualisator;
         public Form_Art()
         {
             InitializeComponent();
+            this.dgv_Visualisator = new DGV_Visualisator();
             General_Manipulations.CB_reload<Language>(CB_Langue, 3);//русский по-умолчанию
             CB_Genre_reload(1);
+       //     Author.Prepare_DGV(DGV_All_Authors);
+      //      Author.Prepare_DGV(DGV_Selected_Authors);
             selected_Autors = new List<Author>();
             DGV_All_Authors.DataSource      = General_Manipulations.Bind_List_to_DGV(DB_Agent.Get_Authors());
             DGV_Selected_Authors.DataSource = General_Manipulations.Bind_List_to_DGV(selected_Autors);
-            CODE.Form_Element_DGV.Prepare_DGV_For_Type<Author>(DGV_All_Authors);
-            CODE.Form_Element_DGV.Prepare_DGV_For_Type<Author>(DGV_Selected_Authors);
+
+
+            dgv_Visualisator.Prepare_DGV_For_Type<Author>(DGV_All_Authors);
+            dgv_Visualisator.Prepare_DGV_For_Type<Author>(DGV_Selected_Authors);
             DGV_Selected_Authors.Refresh();
             DGV_All_Authors.Refresh();
         }
@@ -79,7 +86,7 @@ namespace lib_postgres
             if (id > 0)
             {
                 DGV_All_Authors.DataSource = DB_Agent.Get_Authors();
-                CODE.Form_Element_DGV.Prepare_DGV_For_Type<Author>(DGV_All_Authors);
+                dgv_Visualisator.Prepare_DGV_For_Type<Author>(DGV_All_Authors);
                 General_Manipulations.show_row(DGV_All_Authors, id.ToString(), "Id");
             }
             DialogResult = DialogResult.None;

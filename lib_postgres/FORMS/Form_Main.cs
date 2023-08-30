@@ -27,25 +27,28 @@ namespace lib_postgres
                 { "author", 1   },
                 { "another", 1  },
             };
-
-        DeletedEntities DelItemsColorization;
-        bool is_Colorize_del_items;
+        DGV_Visualisator dgv_Visualisator;
+        public DGV_Visualisator.Turn_Off_or_ON_Current_Menu_Item Turn_Off;
+        public DGV_Visualisator.Turn_Off_or_ON_Current_Menu_Item Turn_ON;
         public Form_Main()
         {
             InitializeComponent();
             Binding_Elements();
             main_menu_generation();
             Backup_on_Start();
-            Colorization_Prepare();
+                
+            this.dgv_Visualisator = new DGV_Visualisator();
+            Turn_Off =  delegate () { this.Turn_Off_Current_Menu_Item(); };
+            Turn_ON =   delegate () { this.Turn_On_Current_Menu_Item(); };
         }
 
-        private void Colorization_Prepare()
+        #region general
+             
+        private void Form_Main_Shown(object sender, EventArgs e)
         {
-            DelItemsColorization = new DeletedEntities();
-            DelItemsColorization.SetCommand(true, new DeletedItemsColorizator());
-            DelItemsColorization.SetCommand(false, new NothingDo());
-            is_Colorize_del_items = DeletedEntities.is_Show_Deleted_Items();
+            Read_Books();
         }
+
         private void Backup_on_Start()
         {
             Backup.Backup_on_Start();
@@ -56,13 +59,7 @@ namespace lib_postgres
             Backup.BackupBD();
         }
 
-        private long Get_Selected_Entity_ID()
-        {
-            int index = dataGridView.SelectedRows[0].Index;
-            long id = (long)dataGridView.Rows[index].Cells["Id"].Value;
-            return id;
-        }
-
+        #endregion general 
 
         #region popup
         private void Cmi_item_find_book_Click(object? sender, EventArgs e)
@@ -80,22 +77,24 @@ namespace lib_postgres
                     return;
             }
         }
-
-        private void cmi_item_add_art_to_read_Click(object sender, EventArgs e)
+// adding contextly to read-list is temporary out of order
+/*        private void cmi_item_add_art_to_read_Click(object sender, EventArgs e)
         {
             if (gridViewItemType == typeof(Art))
             {
                 int index = dataGridView.SelectedRows[0].Index;
                 long id_art = (long)dataGridView.Rows[index].Cells["Id"].Value;
-                var id = ArtRead.Add_ArtRead(id_art);
+                var id = ArtRead.Create_Item(id_art);
                 if (id > 0)
                 {
                     ToolStripMenuItem__Read_Open_Click(sender, e);
                     General_Manipulations.show_row(dataGridView, id.ToString(), "Id");
                 }
             }
-        }
+        }*/
         #endregion
+
+        #region additional
         private void Binding_Elements()
         {
             GridViewItemType = null;
@@ -117,7 +116,11 @@ namespace lib_postgres
             get => base.Text;
             set => base.Text = Caption + value;
         }
-        #region main_menu
+
+
+        #endregion additional
+
+        #region main_menu_creation
         private void main_menu_generation()
         {
             ToolStripMenuItem newItem = new ToolStripMenuItem("Где книги");
@@ -145,18 +148,30 @@ namespace lib_postgres
                 newItem.DropDownItems.Add(language_item);
                 language_item.Click += show_arts_by_langue;
             }
-
-
-
         }
+        #endregion  main_menu_creation
 
-        //для main_menu_generation
-        void show_books_in_place(object sender, EventArgs e)
+        #region menu_commands
+        private void ToolStripMenuItem_File_BackupBD_Click(object sender, EventArgs e)
         {
-            dataGridView.DataSource = Queries_LinQ.Get_Books_by_Place_Name(((ToolStripMenuItem)sender).Text);
+            BackupBD();
         }
 
-        //для main_menu_generation
+        private void ToolStripMenuItem_File_Open_Settings_Click(object sender, EventArgs e)
+        {
+            Form_Settings form_Settings = new Form_Settings();
+            DialogResult dialogResult = form_Settings.ShowDialog();
+            if (dialogResult != DialogResult.OK) return;
+
+            Backup.Set_Value_Backup_on_Start(form_Settings.ChB_Backup_on_Start.Checked);
+            // save new deleted_elements visualisation into object property
+            dgv_Visualisator.deleted_Entities_Visuaisator.Is_Colorize_deleted_items = form_Settings.ChB_Show_Deleted_Entities.Checked;
+            // save new deleted_elements visualisation to INI file
+            dgv_Visualisator.deleted_Entities_Visuaisator.Write_Value_isShow_Deleted_to_INI_File();
+
+            if (gridViewItemType == typeof(ViewBook))
+                dgv_Visualisator.Refresh_DGV_for_Item_Type<ViewBook>(dataGridView, Turn_Off, Turn_ON, StatusProperty);
+        }
         void show_arts_by_langue(object sender, EventArgs e)
         {
             var Get_Languages = DB_Agent.Get_Languages();
@@ -170,17 +185,23 @@ namespace lib_postgres
                          select a).ToList();
             dataGridView.DataSource = items;
         }
-
         void get_My_Books_in_Other_Hands(object sender, EventArgs e)
         {
             dataGridView.Columns.Clear();
             dataGridView.DataSource = Queries_from_Views.Get_My_Books_in_Other_Hands();
             Turn_Off_Current_Menu_Item();
-            CODE.Form_Element_DGV.Prepare_DGV_For_Type<ViewMyBooksInOtherHand>(dataGridView, StatusProperty);
+            dgv_Visualisator.Prepare_DGV_For_Type<ViewMyBooksInOtherHand>(dataGridView, StatusProperty);
             Turn_On_Current_Menu_Item();
         }
-
-        #endregion
+        void show_books_in_place(object sender, EventArgs e)
+        {
+            dataGridView.DataSource = Queries_LinQ.Get_Books_by_Place_Name(((ToolStripMenuItem)sender).Text);
+        }
+        private void ToolStripMenuItem_Location_Show_Click(object sender, EventArgs e)
+        {
+            dataGridView.DataSource = CODE.Queries_LinQ.Get_Locations();
+        }
+        #endregion menu_commands
 
         #region entities control
 
@@ -446,48 +467,20 @@ namespace lib_postgres
         }
         #endregion
 
-        #endregion entities control
-
-
-        private void ToolStripMenuItem_Location_Show_Click(object sender, EventArgs e)
-        {
-            dataGridView.DataSource = CODE.Queries_LinQ.Get_Locations();
-        }
-        #region Read
-
+        #region ArtRead
         private void ToolStripMenuItem__Read_Open_Click(object sender, EventArgs e)
         {
             Read_ArtReads();
-        
-        }
-
-        private void Colorise_DGV()
-        {
-            var formats = DB_Agent.Get_BookFormats();
-            var marks = DB_Agent.Get_Marks();
-            foreach (DataGridViewRow row in dataGridView.Rows)
-            {
-                var format_color_id = (from f in formats
-                                       where f.Name == row.Cells["Формат"].Value.ToString()
-                                       select f.Id).First();
-                row.DefaultCellStyle.BackColor = lib_postgres.CODE.Data.format_colors[format_color_id];
-                var mark_color_id = (from m in marks
-                                     where m.Name == row.Cells["Оценка"].Value.ToString()
-                                     select m.Id).First();
-                if (mark_color_id < 4 || mark_color_id > 6)
-                    row.Cells["Оценка"].Style.BackColor = lib_postgres.CODE.Data.marks_colors[mark_color_id];
-            }
 
         }
-
         private void ToolStripMenuItem__Read_Add_Click(object sender, EventArgs e)
         {
-            var id = ArtRead.Add_ArtRead();
-            if (id > 0)
-            {
-                ToolStripMenuItem__Read_Open_Click(sender, e);
-                General_Manipulations.show_row(dataGridView, id.ToString(), "Id");
-            }
+            Create_ArtRead();
+        }
+
+        private void ToolStripMenuItem__Read_Delete_Click(object sender, EventArgs e)
+        {
+            Delete_ArtRead();
         }
 
         private void ToolStripMenuItem__Read_Edit_Click(object sender, EventArgs e)
@@ -501,9 +494,41 @@ namespace lib_postgres
                 General_Manipulations.show_row(dataGridView, id.ToString(), "Id");
             }
         }
-        #endregion
+        #endregion ArtRead
 
-        private void dataGridView1_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        #region recommendations
+
+        private void ToolStripMenuItem__Recommendation_Add_Click(object sender, EventArgs e)
+        {
+            Create_Recommendation();
+        }
+
+        private void ToolStripMenuItem__Recommendations_Show_Click(object sender, EventArgs e)
+        {
+            Read_Recommendations();
+        }
+        private void ToolStripMenuItem__Recommendations_Edit_Click(object sender, EventArgs e)
+        {
+            Edit_Recommendation();
+        }
+
+        private void ToolStripMenuItem__Recommendations_Delete_Click(object sender, EventArgs e)
+        {
+            Delete_Recommendation();
+        }
+        private void ToolStripMenuItem__Recommendations_Tree_Click(object sender, EventArgs e)
+        {
+            FORMS.Form_Recommendation form_Recommendation = new Form_Recommendation();
+            var DialogResult = form_Recommendation.ShowDialog();
+        }
+
+        #endregion recommendations
+
+
+        #endregion entities control
+
+        #region click
+        private void dataGridView_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (gridViewItemType == typeof(Place)) ;
             else if (gridViewItemType == typeof(Language)) ToolStripMenuItem_Language_Edit_Click(sender, e);
@@ -517,7 +542,7 @@ namespace lib_postgres
             else if (gridViewItemType == typeof(Genre)) ToolStripMenuItem_Genres_Edit_Click(sender, e);
             else if (gridViewItemType == typeof(ViewHasRead)) ToolStripMenuItem__Read_Edit_Click(sender, e);
         }
-
+        #endregion click
 
         #region enable_disable_menu_items
         private void Turn_Off_Current_Menu_Item()
@@ -545,6 +570,9 @@ namespace lib_postgres
             else if (gridViewItemType == typeof(BookFormat)) Turn_On_Off_Menu_Item(ToolStripMenuItem_Book_Format_Edit, state);
             else if (gridViewItemType == typeof(Place)) Turn_On_Off_Menu_Item(ToolStripMenuItem_Places_Edit, state);
             else if (gridViewItemType == typeof(Person)) Turn_On_Off_Menu_Item(ToolStripMenuItem_People_Edit, state);
+            else if (gridViewItemType == typeof(ArtToRead)) Turn_On_Off_Menu_Item(ToolStripMenuItem__Recommendations_Edit, state);
+
+          
         }
 
         private void Turn_On_Off_Menu_Item(ToolStripMenuItem menu_item, bool state, ToolStripMenuItem toolStripMenuItem = null)
@@ -554,68 +582,9 @@ namespace lib_postgres
                 toolStripMenuItem.Visible = state;
         }
 
-        #endregion
+        #endregion enable_disable_menu_items
 
-        private void ToolStripMenuItem__Recommendation_Add_Click(object sender, EventArgs e)
-        {
-            var id = PARTIAL.ArtToRead.Add_Recommendation(sources_saved_positions);
-            if (id > 0)
-            {
-                ToolStripMenuItem__Recommendations_Show_Click(sender, e);
-                //   General_Manipulations.show_row(dataGridView1, id.ToString(), "Id");
-            }
-        }
-
-        private void ToolStripMenuItem__Recommendations_Show_Click(object sender, EventArgs e)
-        {
-            dataGridView.DataSource = CODE.Queries_LinQ.Get_Recommendations();
-        }
-
-        private void ToolStripMenuItem__Recommendations_Tree_Click(object sender, EventArgs e)
-        {
-            FORMS.Form_Recommendation form_Recommendation = new Form_Recommendation();
-            var DialogResult = form_Recommendation.ShowDialog();
-        }
-
-        private void ToolStripMenuItem_File_BackupBD_Click(object sender, EventArgs e)
-        {
-            BackupBD();
-        }
-
-        private void ToolStripMenuItem_File_Open_Settings_Click(object sender, EventArgs e)
-        {
-
-            Form_Settings form_Settings = new Form_Settings();
-            DialogResult dialogResult = form_Settings.ShowDialog();
-            if (dialogResult != DialogResult.OK) return;
-
-            Backup.Set_Value_Backup_on_Start(form_Settings.ChB_Backup_on_Start.Checked);
-
-            DeletedEntities.Set_Value_Show_Deleted(form_Settings.ChB_Show_Deleted_Entities.Checked);
-            is_Colorize_del_items = form_Settings.ChB_Show_Deleted_Entities.Checked;
-            if (gridViewItemType == typeof(ViewBook))
-                Refresh_DGV_for_Item_Type<ViewBook>();
-        }
-
-        private void Form_Main_Shown(object sender, EventArgs e)
-        {
-            Read_Books();
-        }
-
-        private void Refresh_DGV_for_Item_Type<T>()
-        {
-            dataGridView.Columns.Clear();
-            dataGridView.DataSource = CODE.CRUD.CRUD_Item_Determinator.Get_All_Items_List_by_Type<T>();
-            Turn_Off_Current_Menu_Item();
-            CODE.Form_Element_DGV.Prepare_DGV_For_Type<T>(dataGridView, StatusProperty);
-            List<long> deleted_IDs = CODE.CRUD.CRUD_Item_Determinator.Get_Deleted_Items_IDs<T>();
             
-            // colorization od deleted elements
-            DelItemsColorization.RunCommand(is_Colorize_del_items, deleted_IDs, dataGridView);
-            Turn_On_Current_Menu_Item();
-
-        }
-
         #region general CRUD
         private void Create_Item<T>()
         {
@@ -625,9 +594,13 @@ namespace lib_postgres
                 //++ обработка особого случая отображения Book
                 Type type = typeof(T);
                 if (type == typeof(Book))
-                    Refresh_DGV_for_Item_Type<ViewBook>();
+                    dgv_Visualisator.Refresh_DGV_for_Item_Type<ViewBook>(dataGridView, Turn_Off, Turn_ON, StatusProperty);
+                else if (type == typeof(ArtRead))
+                {
+                    Read_ArtReads();
+                }
                 //--
-                else Refresh_DGV_for_Item_Type<T>();
+                else dgv_Visualisator.Refresh_DGV_for_Item_Type<T>(dataGridView, Turn_Off, Turn_ON, StatusProperty);
                 General_Manipulations.show_row(dataGridView, _id.ToString(), "Id");
             }
         }
@@ -636,17 +609,23 @@ namespace lib_postgres
             long _id = CODE.CRUD.CRUD_Item_Determinator.Edit_Item_by_ID<T>(id);
             if (_id > 0)
             {
-                Refresh_DGV_for_Item_Type<T>();
+                dgv_Visualisator.Refresh_DGV_for_Item_Type<T>(dataGridView, Turn_Off, Turn_ON, StatusProperty);
                 General_Manipulations.show_row(dataGridView, _id.ToString(), "Id");
             }
         }
         private void Delete_Item<T>()
         {
-            long id = CODE.CRUD.CRUD_Item_Determinator.Delete_Item_by_ID<T>(Get_Selected_Entity_ID());
+            long id = CODE.CRUD.CRUD_Item_Determinator.Delete_Item_by_ID<T>(dgv_Visualisator.Get_Selected_Entity_ID(dataGridView));
             if (id > 0)
             {
-                Refresh_DGV_for_Item_Type<T>();
-                General_Manipulations.show_row(dataGridView, id.ToString(), "Id");
+                Type type = typeof(T);
+               if (type == typeof(ArtRead))
+                {
+                    Read_ArtReads();
+                }
+               else
+                    dgv_Visualisator.Refresh_DGV_for_Item_Type<T>(dataGridView, Turn_Off, Turn_ON, StatusProperty);
+               General_Manipulations.show_row(dataGridView, id.ToString(), "Id");
             }
         }
         #endregion general CRUD
@@ -660,11 +639,11 @@ namespace lib_postgres
         }
         private void Read_Books()
         {
-            Refresh_DGV_for_Item_Type<ViewBook>();
+            dgv_Visualisator.Refresh_DGV_for_Item_Type<ViewBook>(dataGridView, Turn_Off, Turn_ON, StatusProperty);
         }
         private void Edit_Book()
         {
-            Edit_Item<ViewBook>(Get_Selected_Entity_ID());
+            Edit_Item<ViewBook>(dgv_Visualisator.Get_Selected_Entity_ID(dataGridView));
         }
         private void Delete_Book()
         {
@@ -679,11 +658,11 @@ namespace lib_postgres
         }
         private void Read_Authors()
         {
-            Refresh_DGV_for_Item_Type<Author>();
+            dgv_Visualisator.Refresh_DGV_for_Item_Type<Author>(dataGridView, Turn_Off, Turn_ON, StatusProperty);
         }
         private void Edit_Author()
         {
-            Edit_Item<Author>(Get_Selected_Entity_ID());
+            Edit_Item<Author>(dgv_Visualisator.Get_Selected_Entity_ID(dataGridView));
         }
         private void Delete_Author()
         {
@@ -698,11 +677,11 @@ namespace lib_postgres
         }
         private void Read_Cities()
         {
-            Refresh_DGV_for_Item_Type<City>();
+            dgv_Visualisator.Refresh_DGV_for_Item_Type<City>(dataGridView, Turn_Off, Turn_ON, StatusProperty);
         }
         private void Edit_City()
         {
-            Edit_Item<City>(Get_Selected_Entity_ID());
+            Edit_Item<City>(dgv_Visualisator.Get_Selected_Entity_ID(dataGridView));
         }
         private void Delete_City()
         {
@@ -717,11 +696,11 @@ namespace lib_postgres
         }
         private void Read_Genre()
         {
-            Refresh_DGV_for_Item_Type<Genre>();
+            dgv_Visualisator.Refresh_DGV_for_Item_Type<Genre>(dataGridView, Turn_Off, Turn_ON, StatusProperty);
         }
         private void Edit_Genre()
         {
-            Edit_Item<Genre>(Get_Selected_Entity_ID());
+            Edit_Item<Genre>(dgv_Visualisator.Get_Selected_Entity_ID(dataGridView));
         }
         private void Delete_Genre()
         {
@@ -736,11 +715,11 @@ namespace lib_postgres
         }
         private void Read_Arts()
         {
-            Refresh_DGV_for_Item_Type<Art>();
+            dgv_Visualisator.Refresh_DGV_for_Item_Type<Art>(dataGridView, Turn_Off, Turn_ON, StatusProperty);
         }
         private void Edit_Art()
         {
-            Edit_Item<Art>(Get_Selected_Entity_ID());
+            Edit_Item<Art>(dgv_Visualisator.Get_Selected_Entity_ID(dataGridView));
         }
         private void Delete_Art()
         {
@@ -755,11 +734,11 @@ namespace lib_postgres
         }
         private void Read_Languages()
         {
-            Refresh_DGV_for_Item_Type<Language>();
+            dgv_Visualisator.Refresh_DGV_for_Item_Type<Language>(dataGridView, Turn_Off, Turn_ON, StatusProperty);
         }
         private void Edit_Language()
         {
-            Edit_Item<Language>(Get_Selected_Entity_ID());
+            Edit_Item<Language>(dgv_Visualisator.Get_Selected_Entity_ID(dataGridView));
         }
         private void Delete_Language()
         {
@@ -774,11 +753,11 @@ namespace lib_postgres
         }
         private void Read_Marks()
         {
-            Refresh_DGV_for_Item_Type<Mark>();
+            dgv_Visualisator.Refresh_DGV_for_Item_Type<Mark>(dataGridView, Turn_Off, Turn_ON, StatusProperty);
         }
         private void Edit_Mark()
         {
-            Edit_Item<Mark>(Get_Selected_Entity_ID());
+            Edit_Item<Mark>(dgv_Visualisator.Get_Selected_Entity_ID(dataGridView));
         }
         private void Delete_Mark()
         {
@@ -793,11 +772,11 @@ namespace lib_postgres
         }
         private void Read_PublishingHouses()
         {
-            Refresh_DGV_for_Item_Type<PublishingHouse>();
+            dgv_Visualisator.Refresh_DGV_for_Item_Type<PublishingHouse>(dataGridView, Turn_Off, Turn_ON, StatusProperty);
         }
         private void Edit_PublishingHouse()
         {
-            Edit_Item<PublishingHouse>(Get_Selected_Entity_ID());
+            Edit_Item<PublishingHouse>(dgv_Visualisator.Get_Selected_Entity_ID(dataGridView));
         }
         private void Delete_PublishingHouse()
         {
@@ -812,12 +791,12 @@ namespace lib_postgres
         }
         private void Read_Series()
         {
-            Refresh_DGV_for_Item_Type<Series>();
+            dgv_Visualisator.Refresh_DGV_for_Item_Type<Series>(dataGridView, Turn_Off, Turn_ON, StatusProperty);
         }
 
         private void Edit_Series()
         {
-            Edit_Item<Series>(Get_Selected_Entity_ID());
+            Edit_Item<Series>(dgv_Visualisator.Get_Selected_Entity_ID(dataGridView));
 
         }
         private void Delete_Series()
@@ -833,11 +812,11 @@ namespace lib_postgres
         }
         private void Read_Actions()
         {
-            Refresh_DGV_for_Item_Type<Action>();
+            dgv_Visualisator.Refresh_DGV_for_Item_Type<Action>(dataGridView, Turn_Off, Turn_ON, StatusProperty);
         }
         private void Edit_Action()
         {
-            Edit_Item<Action>(Get_Selected_Entity_ID());
+            Edit_Item<Action>(dgv_Visualisator.Get_Selected_Entity_ID(dataGridView));
         }
         private void Delete_Action()
         {
@@ -846,7 +825,6 @@ namespace lib_postgres
 
         #endregion Action CRUD
 
-
         #region Book_Format CRUD
         private void Create_Book_Format()
         {
@@ -854,11 +832,11 @@ namespace lib_postgres
         }
         private void Read_Book_Formats()
         {
-            Refresh_DGV_for_Item_Type<BookFormat>();
+            dgv_Visualisator.Refresh_DGV_for_Item_Type<BookFormat>(dataGridView, Turn_Off, Turn_ON, StatusProperty);
         }
         private void Edit_Book_Format()
         {
-            Edit_Item<BookFormat>(Get_Selected_Entity_ID());
+            Edit_Item<BookFormat>(dgv_Visualisator.Get_Selected_Entity_ID(dataGridView));
         }
         private void Delete_Book_Format()
         {
@@ -873,18 +851,17 @@ namespace lib_postgres
         }
         private void Read_Places()
         {
-            Refresh_DGV_for_Item_Type<Place>();
+            dgv_Visualisator.Refresh_DGV_for_Item_Type<Place>(dataGridView, Turn_Off, Turn_ON, StatusProperty);
         }
         private void Edit_Place()
         {
-            Edit_Item<Place>(Get_Selected_Entity_ID());
+            Edit_Item<Place>(dgv_Visualisator.Get_Selected_Entity_ID(dataGridView));
         }
         private void Delete_Place()
         {
             Delete_Item<Place>();
         }
         #endregion Place CRUD
-
 
         #region People CRUD
         private void Create_Person()
@@ -893,23 +870,17 @@ namespace lib_postgres
         }
         private void Read_People()
         {
-            Refresh_DGV_for_Item_Type<Person>();
+            dgv_Visualisator.Refresh_DGV_for_Item_Type<Person>(dataGridView, Turn_Off, Turn_ON, StatusProperty);
         }
         private void Edit_Person()
         {
-            Edit_Item<Person>(Get_Selected_Entity_ID());
+            Edit_Item<Person>(dgv_Visualisator.Get_Selected_Entity_ID(dataGridView));
         }
         private void Delete_Person()
         {
             Delete_Item<Person>();
         }
-
-
-
-
-
         #endregion People CRUD
-
 
         #region ArtRead CRUD
         private void Create_ArtRead()
@@ -921,36 +892,51 @@ namespace lib_postgres
             dataGridView.Columns.Clear();
             dataGridView.DataSource = DB_Agent.Get_ViewHasReads();
             Turn_Off_Current_Menu_Item();
-            CODE.Form_Element_DGV.Prepare_DGV_For_Type<ViewHasRead>(dataGridView, StatusProperty);
+            dgv_Visualisator.Prepare_DGV_For_Type<ViewHasRead>(dataGridView, StatusProperty);
             Turn_On_Current_Menu_Item();
-            Colorise_DGV();
+            dgv_Visualisator.Colorise_DGV(dataGridView);
+            List<long> deleted_IDs = CODE.CRUD.CRUD_Item_Determinator.Get_Deleted_Items_IDs<ArtRead>();
+            dgv_Visualisator.deleted_Entities_Visuaisator.RunCommand(deleted_IDs, dataGridView);
         }
         private void Edit_ArtRead()
         {
-            Edit_Item<ArtRead>(Get_Selected_Entity_ID());
+            Edit_Item<ArtRead>(dgv_Visualisator.Get_Selected_Entity_ID(dataGridView));
         }
         private void Delete_ArtRead()
         {
-            Delete_Item<ArtRead>();
+               Delete_Item<ArtRead>();
+        }
+        #endregion ArtRead CRUD
+
+        #region Recommendation CRUD
+        private void Create_Recommendation()
+        {
+            var id = ArtToRead.Add_Recommendation(sources_saved_positions);
+            if (id > 0)
+            {
+                Read_Recommendations();
+                General_Manipulations.show_row(dataGridView, id.ToString(), "Id");
+            }
+        }
+        private void Read_Recommendations()
+        {
+            dgv_Visualisator.Refresh_DGV_for_Item_Type<ArtToRead>(dataGridView, Turn_Off, Turn_ON, StatusProperty);
+        }
+        private void Edit_Recommendation()
+        {
+            Edit_Item<ArtToRead>(dgv_Visualisator.Get_Selected_Entity_ID(dataGridView));
+        }
+        private void Delete_Recommendation()
+        {
+            Delete_Item<ArtToRead>();
         }
 
 
-
-
-
-        #endregion Read CRUD
+        #endregion Recommendation CRUD
 
         #endregion CRUD
 
-        private void ToolStripMenuItem__Recommendations_Edit_Click(object sender, EventArgs e)
-        {
 
-        }
-
-        private void ToolStripMenuItem__Read_Delete_Click(object sender, EventArgs e)
-        {
-            Delete_ArtRead();
-        }
     }
 }
 
