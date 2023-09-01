@@ -1,5 +1,4 @@
 ﻿using lib_postgres.CODE;
-using lib_postgres.PARTIAL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

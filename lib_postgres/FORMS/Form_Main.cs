@@ -1,7 +1,6 @@
 ﻿using lib_postgres.CODE;
 using lib_postgres.CODE.VIEW.DELITEMS;
 using lib_postgres.FORMS;
-using lib_postgres.PARTIAL;
 using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Npgsql;
@@ -22,10 +21,12 @@ namespace lib_postgres
         public Main_Form_Status_Update StatusProperty { get; set; } = new Main_Form_Status_Update();
         const string Caption = "Lib.";
         public Dictionary<string, long> sources_saved_positions = new Dictionary<string, long>()
-            {
-                { "art", 1      },
-                { "author", 1   },
-                { "another", 1  },
+            {// for faster preparation recommendation form it remembers  last choise to show it again
+                { "art_to_read",    1  },
+                { "author_to_read", 1  },
+                { "art",    1  },
+                { "author", 1  },
+                { "another",1  },
             };
         DGV_Visualisator dgv_Visualisator;
         public DGV_Visualisator.Turn_Off_or_ON_Current_Menu_Item Turn_Off;
@@ -46,7 +47,11 @@ namespace lib_postgres
              
         private void Form_Main_Shown(object sender, EventArgs e)
         {
+            Type type = typeof(ViewBook);
+            GridViewItemType = type;
             Read_Books();
+            Turn_On_Current_Menu_Item();
+
         }
 
         private void Backup_on_Start()
@@ -524,6 +529,27 @@ namespace lib_postgres
 
         #endregion recommendations
 
+        #region  SourceToreadAnother
+        private void ToolStripMenuItem_SourceToreadAnother_Show_Click(object sender, EventArgs e)
+        {
+            Read_SourceToreadAnothers();
+        }
+
+        private void ToolStripMenuItem_SourceToreadAnother_Create_Click(object sender, EventArgs e)
+        {
+            Create_SourceToreadAnother();
+        }
+
+        private void ToolStripMenuItem_SourceToreadAnother_Edit_Click(object sender, EventArgs e)
+        {
+            Edit_Item<SourceToreadAnother>(dgv_Visualisator.Get_Selected_Entity_ID(dataGridView));
+        }
+
+        private void ToolStripMenuItem_SourceToreadAnother_Delete_Click(object sender, EventArgs e)
+        {
+            Delete_SourceToreadAnother();
+        }
+        #endregion SourceToreadAnother
 
         #endregion entities control
 
@@ -571,8 +597,7 @@ namespace lib_postgres
             else if (gridViewItemType == typeof(Place)) Turn_On_Off_Menu_Item(ToolStripMenuItem_Places_Edit, state);
             else if (gridViewItemType == typeof(Person)) Turn_On_Off_Menu_Item(ToolStripMenuItem_People_Edit, state);
             else if (gridViewItemType == typeof(ArtToRead)) Turn_On_Off_Menu_Item(ToolStripMenuItem__Recommendations_Edit, state);
-
-          
+            else if (gridViewItemType == typeof(SourceToreadAnother)) Turn_On_Off_Menu_Item(ToolStripMenuItem_SourceToreadAnother_Edit, state);
         }
 
         private void Turn_On_Off_Menu_Item(ToolStripMenuItem menu_item, bool state, ToolStripMenuItem toolStripMenuItem = null)
@@ -596,10 +621,8 @@ namespace lib_postgres
                 if (type == typeof(Book))
                     dgv_Visualisator.Refresh_DGV_for_Item_Type<ViewBook>(dataGridView, Turn_Off, Turn_ON, StatusProperty);
                 else if (type == typeof(ArtRead))
-                {
                     Read_ArtReads();
-                }
-                //--
+                //-- обработка особого случая отображения Book
                 else dgv_Visualisator.Refresh_DGV_for_Item_Type<T>(dataGridView, Turn_Off, Turn_ON, StatusProperty);
                 General_Manipulations.show_row(dataGridView, _id.ToString(), "Id");
             }
@@ -932,7 +955,28 @@ namespace lib_postgres
         }
 
 
+
         #endregion Recommendation CRUD
+
+        #region SourceToreadAnother CRUD
+        private void Create_SourceToreadAnother()
+        {
+            Create_Item<SourceToreadAnother>();
+        }
+        private void Read_SourceToreadAnothers()
+        {
+            dgv_Visualisator.Refresh_DGV_for_Item_Type<SourceToreadAnother>(dataGridView, Turn_Off, Turn_ON, StatusProperty);
+        }
+        private void Edit_SourceToreadAnother()
+        {
+            Edit_Item<SourceToreadAnother>(dgv_Visualisator.Get_Selected_Entity_ID(dataGridView));
+        }
+        private void Delete_SourceToreadAnother()
+        {
+            Delete_Item<SourceToreadAnother>();
+        }
+        #endregion SourceToreadAnother CRUD
+
 
         #endregion CRUD
 

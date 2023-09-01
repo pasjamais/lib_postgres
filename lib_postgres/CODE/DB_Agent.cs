@@ -40,10 +40,10 @@ namespace lib_postgres
                 return Get_Books();
             else return null;
         }
-        
 
 
-        #endregion
+
+        #endregion general
 
         #region Books
         public static void Book_Add(Book book)
@@ -88,7 +88,11 @@ namespace lib_postgres
         {
             return db.Arts.Find(id);
         }
-
+        public static void Add_Art(Art item)
+        {
+            db.Arts.Add(item);
+            Save_Changes();
+        }
         #endregion
 
         #region Languages
@@ -272,7 +276,7 @@ namespace lib_postgres
         #region AuthorArts
         public static List<AuthorArt> Get_AuthorArts()
         {
-            return db.AuthorArts.ToList().OrderBy(n => n.Art).ToList();
+            return db.AuthorArts.ToList();
         }
 
         public static AuthorArt Get_AuthorArt(long id)
@@ -285,7 +289,14 @@ namespace lib_postgres
             db.AuthorArts.Remove(authorArt);
             db.SaveChanges();
         }
-        #endregion
+
+        public static void Add_AuthorArt(AuthorArt item)
+        {
+            db.AuthorArts.Add(item);
+            Save_Changes();
+        }
+
+        #endregion AuthorArts
 
         #region Read
         public static List<ArtRead> Get_ArtReads()
@@ -399,7 +410,11 @@ namespace lib_postgres
             else
                 return false;
         }
-
+        public static void Add_SourceToreadAnother(SourceToreadAnother item)
+        {
+            db.SourceToreadAnothers.Add(item);
+            Save_Changes();
+        }
         #endregion
 
         #region Recommendations

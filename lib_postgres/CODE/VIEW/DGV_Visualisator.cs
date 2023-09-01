@@ -7,7 +7,6 @@ using lib_postgres.FORMS;
 using System.Windows.Forms;
 using lib_postgres.CODE.VIEW.DELITEMS;
 using static lib_postgres.DB_Agent;
-using lib_postgres.PARTIAL;
 
 namespace lib_postgres.CODE
 {
@@ -226,6 +225,18 @@ namespace lib_postgres.CODE
                 DGV.Columns[4].FillWeight = 20;
                 if (StatusProperty is not null) StatusProperty.Message = "Список рекомендаций";
             }
+            else if (type == typeof(SourceToreadAnother))
+            {
+                DGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
+                DGV.Columns[0].HeaderText = "Id";
+                DGV.Columns[1].HeaderText = "Наименование";
+                for (int i = 2; i < DGV.ColumnCount; i++)
+                    DGV.Columns[i].Visible = false;
+                DGV.Columns[0].FillWeight = (int)(DGV.Width * 0.15);
+                DGV.Columns[1].FillWeight = (int)(DGV.Width * 0.85);
+                DGV.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                if (StatusProperty is not null) StatusProperty.Message = "Список иных источников рекомендаций";
+             }
         }   
       
         public void Refresh_DGV_for_Item_Type<T>(DataGridView DGV,
@@ -237,9 +248,10 @@ namespace lib_postgres.CODE
             DGV.DataSource = CODE.CRUD.CRUD_Item_Determinator.Get_All_Items_List_by_Type<T>();
             Turn_Off_Current_Menu_Item();
             Prepare_DGV_For_Type<T>(DGV, StatusProperty);
+            //++ colorization of deleted elements 
             List<long> deleted_IDs = CODE.CRUD.CRUD_Item_Determinator.Get_Deleted_Items_IDs<T>();
-            // colorization of deleted elements
             deleted_Entities_Visuaisator.RunCommand(deleted_IDs, DGV);
+            //-- colorization of deleted elements
             Turn_On_Current_Menu_Item();
         }
 

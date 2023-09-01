@@ -68,17 +68,19 @@
             this.button_OK.TabIndex = 86;
             this.button_OK.Text = "OK";
             this.button_OK.UseVisualStyleBackColor = true;
+            this.button_OK.Click += new System.EventHandler(this.button_OK_Click);
             // 
             // button_Cancel
             // 
             this.button_Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button_Cancel.Location = new System.Drawing.Point(574, 410);
+            this.button_Cancel.Location = new System.Drawing.Point(619, 410);
             this.button_Cancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button_Cancel.Name = "button_Cancel";
             this.button_Cancel.Size = new System.Drawing.Size(82, 22);
             this.button_Cancel.TabIndex = 87;
             this.button_Cancel.Text = "Cancel";
             this.button_Cancel.UseVisualStyleBackColor = true;
+            this.button_Cancel.Click += new System.EventHandler(this.button_Cancel_Click);
             // 
             // dateTimePicker
             // 
@@ -275,11 +277,12 @@
             // RB_Toread_Art
             // 
             this.RB_Toread_Art.AutoSize = true;
-            this.RB_Toread_Art.Location = new System.Drawing.Point(47, 34);
+            this.RB_Toread_Art.Location = new System.Drawing.Point(47, 29);
             this.RB_Toread_Art.Name = "RB_Toread_Art";
             this.RB_Toread_Art.Size = new System.Drawing.Size(14, 13);
             this.RB_Toread_Art.TabIndex = 98;
             this.RB_Toread_Art.TabStop = true;
+            this.RB_Toread_Art.Tag = "";
             this.RB_Toread_Art.UseVisualStyleBackColor = true;
             this.RB_Toread_Art.CheckedChanged += new System.EventHandler(this.radioButton_ToRead_CheckedChanged);
             // 
@@ -364,6 +367,7 @@
             this.Name = "Form_Art_To_Read";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Рекомендация";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_Art_To_Read_FormClosing);
             this.groupBox_Source.ResumeLayout(false);
             this.groupBox_Source.PerformLayout();
             this.groupBox_ToRead.ResumeLayout(false);

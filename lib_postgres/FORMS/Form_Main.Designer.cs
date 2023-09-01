@@ -39,12 +39,18 @@
             this.ToolStripMenuItem_File_BackupBD = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_File_Open_Settings = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemRecommendationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem__Recommendations_Show = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem__Recommendations_ِAdd = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem__Recommendations_Edit = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem__Recommendations_Delete = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
+            this.ToolStripMenuItem_SourceToreadAnother = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem_SourceToreadAnother_Show = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem_SourceToreadAnother_Create = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem_SourceToreadAnother_Edit = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem_SourceToreadAnother_Delete = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator12 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItem__Recommendations_Show = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Reader = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem__Read_Open = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem__Read_Add = new System.Windows.Forms.ToolStripMenuItem();
@@ -232,15 +238,24 @@
             this.ToolStripMenuItem__Recommendations_Edit,
             this.ToolStripMenuItem__Recommendations_Delete,
             this.toolStripSeparator9,
+            this.ToolStripMenuItem_SourceToreadAnother,
+            this.toolStripSeparator12,
             this.toolStripMenuItem2});
             this.toolStripMenuItemRecommendationToolStripMenuItem.Name = "toolStripMenuItemRecommendationToolStripMenuItem";
             this.toolStripMenuItemRecommendationToolStripMenuItem.Size = new System.Drawing.Size(100, 20);
             this.toolStripMenuItemRecommendationToolStripMenuItem.Text = "Рекомендации";
             // 
+            // ToolStripMenuItem__Recommendations_Show
+            // 
+            this.ToolStripMenuItem__Recommendations_Show.Name = "ToolStripMenuItem__Recommendations_Show";
+            this.ToolStripMenuItem__Recommendations_Show.Size = new System.Drawing.Size(259, 22);
+            this.ToolStripMenuItem__Recommendations_Show.Text = "Показать рекомендации";
+            this.ToolStripMenuItem__Recommendations_Show.Click += new System.EventHandler(this.ToolStripMenuItem__Recommendations_Show_Click);
+            // 
             // ToolStripMenuItem__Recommendations_ِAdd
             // 
             this.ToolStripMenuItem__Recommendations_ِAdd.Name = "ToolStripMenuItem__Recommendations_ِAdd";
-            this.ToolStripMenuItem__Recommendations_ِAdd.Size = new System.Drawing.Size(231, 22);
+            this.ToolStripMenuItem__Recommendations_ِAdd.Size = new System.Drawing.Size(259, 22);
             this.ToolStripMenuItem__Recommendations_ِAdd.Text = "Добавить рекомендацию...";
             this.ToolStripMenuItem__Recommendations_ِAdd.Click += new System.EventHandler(this.ToolStripMenuItem__Recommendation_Add_Click);
             // 
@@ -248,35 +263,73 @@
             // 
             this.ToolStripMenuItem__Recommendations_Edit.Enabled = false;
             this.ToolStripMenuItem__Recommendations_Edit.Name = "ToolStripMenuItem__Recommendations_Edit";
-            this.ToolStripMenuItem__Recommendations_Edit.Size = new System.Drawing.Size(231, 22);
+            this.ToolStripMenuItem__Recommendations_Edit.Size = new System.Drawing.Size(259, 22);
             this.ToolStripMenuItem__Recommendations_Edit.Text = "Измениь рекомендацию...";
             this.ToolStripMenuItem__Recommendations_Edit.Click += new System.EventHandler(this.ToolStripMenuItem__Recommendations_Edit_Click);
             // 
             // ToolStripMenuItem__Recommendations_Delete
             // 
             this.ToolStripMenuItem__Recommendations_Delete.Name = "ToolStripMenuItem__Recommendations_Delete";
-            this.ToolStripMenuItem__Recommendations_Delete.Size = new System.Drawing.Size(231, 22);
+            this.ToolStripMenuItem__Recommendations_Delete.Size = new System.Drawing.Size(259, 22);
             this.ToolStripMenuItem__Recommendations_Delete.Text = "Удалить/Отменить удаление";
             this.ToolStripMenuItem__Recommendations_Delete.Click += new System.EventHandler(this.ToolStripMenuItem__Recommendations_Delete_Click);
             // 
             // toolStripSeparator9
             // 
             this.toolStripSeparator9.Name = "toolStripSeparator9";
-            this.toolStripSeparator9.Size = new System.Drawing.Size(228, 6);
+            this.toolStripSeparator9.Size = new System.Drawing.Size(256, 6);
+            // 
+            // ToolStripMenuItem_SourceToreadAnother
+            // 
+            this.ToolStripMenuItem_SourceToreadAnother.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripMenuItem_SourceToreadAnother_Show,
+            this.ToolStripMenuItem_SourceToreadAnother_Create,
+            this.ToolStripMenuItem_SourceToreadAnother_Edit,
+            this.ToolStripMenuItem_SourceToreadAnother_Delete});
+            this.ToolStripMenuItem_SourceToreadAnother.Name = "ToolStripMenuItem_SourceToreadAnother";
+            this.ToolStripMenuItem_SourceToreadAnother.Size = new System.Drawing.Size(259, 22);
+            this.ToolStripMenuItem_SourceToreadAnother.Text = "Другие источники рекомендаций";
+            // 
+            // ToolStripMenuItem_SourceToreadAnother_Show
+            // 
+            this.ToolStripMenuItem_SourceToreadAnother_Show.Name = "ToolStripMenuItem_SourceToreadAnother_Show";
+            this.ToolStripMenuItem_SourceToreadAnother_Show.Size = new System.Drawing.Size(231, 22);
+            this.ToolStripMenuItem_SourceToreadAnother_Show.Text = "Показать источники";
+            this.ToolStripMenuItem_SourceToreadAnother_Show.Click += new System.EventHandler(this.ToolStripMenuItem_SourceToreadAnother_Show_Click);
+            // 
+            // ToolStripMenuItem_SourceToreadAnother_Create
+            // 
+            this.ToolStripMenuItem_SourceToreadAnother_Create.Name = "ToolStripMenuItem_SourceToreadAnother_Create";
+            this.ToolStripMenuItem_SourceToreadAnother_Create.Size = new System.Drawing.Size(231, 22);
+            this.ToolStripMenuItem_SourceToreadAnother_Create.Text = "Добавить источник...";
+            this.ToolStripMenuItem_SourceToreadAnother_Create.Click += new System.EventHandler(this.ToolStripMenuItem_SourceToreadAnother_Create_Click);
+            // 
+            // ToolStripMenuItem_SourceToreadAnother_Edit
+            // 
+            this.ToolStripMenuItem_SourceToreadAnother_Edit.Enabled = false;
+            this.ToolStripMenuItem_SourceToreadAnother_Edit.Name = "ToolStripMenuItem_SourceToreadAnother_Edit";
+            this.ToolStripMenuItem_SourceToreadAnother_Edit.Size = new System.Drawing.Size(231, 22);
+            this.ToolStripMenuItem_SourceToreadAnother_Edit.Text = "Изменить источник...";
+            this.ToolStripMenuItem_SourceToreadAnother_Edit.Click += new System.EventHandler(this.ToolStripMenuItem_SourceToreadAnother_Edit_Click);
+            // 
+            // ToolStripMenuItem_SourceToreadAnother_Delete
+            // 
+            this.ToolStripMenuItem_SourceToreadAnother_Delete.Name = "ToolStripMenuItem_SourceToreadAnother_Delete";
+            this.ToolStripMenuItem_SourceToreadAnother_Delete.Size = new System.Drawing.Size(231, 22);
+            this.ToolStripMenuItem_SourceToreadAnother_Delete.Text = "Удалить/Отменить удаление";
+            this.ToolStripMenuItem_SourceToreadAnother_Delete.Click += new System.EventHandler(this.ToolStripMenuItem_SourceToreadAnother_Delete_Click);
+            // 
+            // toolStripSeparator12
+            // 
+            this.toolStripSeparator12.Name = "toolStripSeparator12";
+            this.toolStripSeparator12.Size = new System.Drawing.Size(256, 6);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(231, 22);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(259, 22);
             this.toolStripMenuItem2.Text = "Дерево рекомендаций...";
             this.toolStripMenuItem2.Click += new System.EventHandler(this.ToolStripMenuItem__Recommendations_Tree_Click);
-            // 
-            // ToolStripMenuItem__Recommendations_Show
-            // 
-            this.ToolStripMenuItem__Recommendations_Show.Name = "ToolStripMenuItem__Recommendations_Show";
-            this.ToolStripMenuItem__Recommendations_Show.Size = new System.Drawing.Size(231, 22);
-            this.ToolStripMenuItem__Recommendations_Show.Text = "Показать рекомендации";
-            this.ToolStripMenuItem__Recommendations_Show.Click += new System.EventHandler(this.ToolStripMenuItem__Recommendations_Show_Click);
             // 
             // ToolStripMenuItem_Reader
             // 
@@ -1082,5 +1135,11 @@
         private ToolStripMenuItem ToolStripMenuItem__Recommendations_Delete;
         private ToolStripMenuItem ToolStripMenuItem__Recommendations_Edit;
         private ToolStripSeparator toolStripSeparator9;
+        private ToolStripMenuItem ToolStripMenuItem_SourceToreadAnother;
+        private ToolStripMenuItem ToolStripMenuItem_SourceToreadAnother_Show;
+        private ToolStripMenuItem ToolStripMenuItem_SourceToreadAnother_Create;
+        private ToolStripMenuItem ToolStripMenuItem_SourceToreadAnother_Edit;
+        private ToolStripMenuItem ToolStripMenuItem_SourceToreadAnother_Delete;
+        private ToolStripSeparator toolStripSeparator12;
     }
 }
