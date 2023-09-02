@@ -198,9 +198,18 @@ namespace lib_postgres
         #endregion
 
         #region AuthorArts
-        public static List<AuthorArt> Get_AuthorArts()
+        public static List<AuthorArt> _Get_AuthorArts()
         {
             return db.AuthorArts.ToList().OrderBy(n => n.Art).ToList();
+        }
+        //Get_AuthorArts_without_Deleted
+        public static List<AuthorArt> Get_AuthorArts()
+        {
+            List<AuthorArt>  authorArts = db.AuthorArts.ToList();
+            List<AuthorArt> authorArts_actives = (from item in authorArts
+                        where item.IsDeleted != true
+                        select item).ToList().OrderBy(n => n.Art).ToList(); ;
+            return authorArts_actives;
         }
 
         public static AuthorArt Get_AuthorArt(long id)
