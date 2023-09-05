@@ -1,5 +1,4 @@
-﻿using lib_postgres.PARTIAL;
-using lib_postgres.VISUAL.TreeViewViz;
+﻿using lib_postgres.VISUAL.TreeViewViz;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using System.Collections;

@@ -996,11 +996,17 @@ namespace lib_postgres
 
         }
 
+
         #endregion Location CRUD
 
         #endregion CRUD
 
+        private void ToolStripMenuItem__Recommend_Vis_Graphviz_Click(object sender, EventArgs e)
+        {
+            FORMS.Form_Graphviz form_graphviz = new lib_postgres.FORMS.Form_Graphviz();
+            var DialogResult = form_graphviz.ShowDialog();
 
+        }
     }
 }
 
