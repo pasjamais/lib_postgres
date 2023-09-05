@@ -122,6 +122,8 @@ namespace lib_postgres.CODE.CRUD
                 return ArtToRead.Get_Deleted_Items_IDs();
             else if (type == typeof(SourceToreadAnother))
                 return SourceToreadAnother.Get_Deleted_Items_IDs();
+            else if (type == typeof(Location))
+                return Location.Get_Deleted_Items_IDs();
             else return new List<long>();
         }
 
@@ -160,6 +162,8 @@ namespace lib_postgres.CODE.CRUD
                 return CODE.Queries_LinQ.Get_All_Recommendations();
             if (type == typeof(SourceToreadAnother))
                 return DB_Agent.Get_Another_Sources();
+            if (type == typeof(Location))
+                return CODE.Queries_LinQ.Get_Locations();
             else return -1;
         }
     }

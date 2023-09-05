@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using lib_postgres.CODE;
 using lib_postgres.CODE.CRUD;
 using lib_postgres.FORMS;
+using Microsoft.EntityFrameworkCore.Storage;
 
 namespace lib_postgres
 {
@@ -17,20 +18,29 @@ namespace lib_postgres
             Form_Art form_Art = new Form_Art();
             var DialogResult = form_Art.ShowDialog();
             if (DialogResult != DialogResult.OK) return -1;
-            
+
             Art art = DB_Agent.Get_First_Deleted_Entity_or_New<Art>(DB_Agent.Get_Arts());
             //++ transaction section
-            bool is_new_element = Reset_Element_If_Not_New(art);
-
-            Save_Element_from_Form(art, form_Art);
-
-            if (is_new_element) DB_Agent.Add_Art(art);
-            else
+            using (var dbContextTransaction = DB_Agent.db.Database.BeginTransaction())
             {
-                art.IsDeleted = false;
-                DB_Agent.Save_Changes();
+                try
+                {
+                    bool is_new_element = Reset_Element_If_Not_New(art);
+                    Save_Element_from_Form(art, form_Art);
+
+                    if (is_new_element) DB_Agent.Add_Art(art);
+                    else art.IsDeleted = false;
+
+                    Save_Authors_of_Art_from_Form(art, form_Art.selected_Autors!);
+
+                    DB_Agent.Save_Changes();
+                    dbContextTransaction.Commit();
+                }
+                catch (Exception ex)
+                {
+                    dbContextTransaction.Rollback();
+                }
             }
-            Save_Authors_of_Art_from_Form(art, form_Art.selected_Autors);
             //-- transaction section
             return art.Id;
         }
@@ -49,10 +59,22 @@ namespace lib_postgres
             DialogResult dialog_result = form_Art.ShowDialog();
             if (dialog_result != DialogResult.OK) return -1;
             //++ transaction section
-            Reset_Element_If_Not_New(art);
-            Save_Element_from_Form(art, form_Art);
-            DB_Agent.Save_Changes();
-            Save_Authors_of_Art_from_Form(art, form_Art.selected_Autors);
+            using (var dbContextTransaction = DB_Agent.db.Database.BeginTransaction())
+            {
+                try
+                {
+                    Reset_Element_If_Not_New(art);
+                    Save_Element_from_Form(art, form_Art);
+                    Save_Authors_of_Art_from_Form(art, form_Art.selected_Autors!);
+
+                    DB_Agent.Save_Changes();
+                    dbContextTransaction.Commit();
+                }
+                catch (Exception ex)
+                {
+                    dbContextTransaction.Rollback();
+                }
+            }
             //-- transaction section
             return art.Id;
         }
@@ -60,7 +82,7 @@ namespace lib_postgres
         {
             Fill_Element_Without_Authors(art, form_Art);
         }
-        public static void Fill_Element_Without_Authors (Art art, Form_Art form_Art)
+        public static void Fill_Element_Without_Authors(Art art, Form_Art form_Art)
         {
             art.Name = form_Art.tb_Name.Text;
             art.Genre = (long)form_Art.CB_Genre.SelectedValue;
@@ -82,11 +104,7 @@ namespace lib_postgres
                 authorArt.Author = author.Id;
                 authorArt.Art = art.Id;
                 if (is_new_authorArt) DB_Agent.Add_AuthorArt(authorArt);
-                else
-                {
-                    authorArt.IsDeleted = false;
-                    DB_Agent.db.SaveChanges();
-                }
+                    else authorArt.IsDeleted = false;
             }
         }
 
@@ -106,7 +124,6 @@ namespace lib_postgres
                         record.Art = null;
                         record.Author = null;
                         record.IsDeleted = true;
-                        DB_Agent.Save_Changes();
                     }
                 }
             }
@@ -119,75 +136,6 @@ namespace lib_postgres
             if (art.Genre != null) form_Art.CB_Genre.SelectedValue = art.Genre;
             if (art.OrigLanguage != null) form_Art.CB_Langue.SelectedValue = art.OrigLanguage;
             if (art.WritingYear != null) form_Art.TB_YearCreation.Text = art.WritingYear.Value.Year.ToString();
-        }
-
-
-
-
-
-
-        public static long _Edit_Item_by_ID(long id)
-        {
-            Art art = DB_Agent.Get_Art(id);
-
-            var all_auteurs_arts = DB_Agent.Get_AuthorArts();
-            var all_auteurs = DB_Agent.Get_Authors();
-            var selected_auteurs = (from aut_art in all_auteurs_arts
-                                    from aut in all_auteurs
-                                    where aut_art.Art == art.Id && aut_art.Author == aut.Id
-                                    select aut).ToList();
-
-            var selected_auteurs_old = new List<lib_postgres.Author?>(selected_auteurs);
-
-            Form_Art form_Art = new lib_postgres.Form_Art(selected_auteurs);
-
-            if (art.Name != null) form_Art.tb_Name.Text = art.Name;
-            if (art.Genre != null) form_Art.CB_Genre.SelectedValue = art.Genre;
-            if (art.OrigLanguage != null) form_Art.CB_Langue.SelectedValue = art.OrigLanguage;
-            if (art.WritingYear != null) form_Art.TB_YearCreation.Text = art.WritingYear.Value.Year.ToString();
-
-            DialogResult dialog_result = form_Art.ShowDialog();
-            if (dialog_result != DialogResult.OK) return -1;
-
-            // проверка на изменение введённых данных
-            if (form_Art.tb_Name.Text == "")
-            {
-                General_Manipulations.simple_message("Не указано названия");
-                return 0;
-            }
-            else
-                if (art.Name != form_Art.tb_Name.Text) art.Name = form_Art.tb_Name.Text;
-
-
-            if (form_Art.CB_Genre.SelectedValue != null)
-                if (art.Genre != (long)form_Art.CB_Genre.SelectedValue) art.Genre = (long)form_Art.CB_Genre.SelectedValue;
-
-            if (art.OrigLanguage != (System.Int64)form_Art.CB_Langue.SelectedValue) art.OrigLanguage = (System.Int64)form_Art.CB_Langue.SelectedValue;
-
-            art.WritingYear = General_Manipulations.compare_data_values(art.WritingYear, form_Art.TB_YearCreation.Text);
-
-            DB_Agent.db.SaveChanges();
-            return art.Id;
-
-            /*      // авторов не перезаписывает
-                  //  if (    (!form_Art.selected_Autors.Any()) && 
-                   //      (!authors_of_this_art.Any())           )
-
-                   // Допилить -- не удалять старые и писать новые, тратя первичный ключ, а аккуратно заменять
-                   if (authors_of_this_art_before_changing.Any())
-                       foreach (Author author in authors_of_this_art_before_changing)
-                       {
-                           //delete
-                       }
-
-
-                   foreach (Author author in form_Art.selected_Autors)
-                   {//add
-                       AuthorArt authorArt = new AuthorArt();
-                       authorArt.Author = author.Id;
-                       authorArt.Art = art.Id;
-                       DB_Agent.db.AuthorArts.Add(authorArt);
-                           DB_Agent.db.SaveChanges()*/
         }
 
         public static long Delete_Item_by_ID(long id)

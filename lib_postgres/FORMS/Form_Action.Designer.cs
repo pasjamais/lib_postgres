@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
             this.button_Del_Book_from_Action = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
@@ -42,6 +43,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
             this.button_New_Book = new System.Windows.Forms.Button();
             this.button_Add_Book_to_Action = new System.Windows.Forms.Button();
             this.DGV_AllBooks = new System.Windows.Forms.DataGridView();
@@ -59,6 +61,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.button_Del_Book_from_Action);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.dateTimePicker);
@@ -72,17 +75,26 @@
             this.panel1.Location = new System.Drawing.Point(3, 18);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1310, 96);
+            this.panel1.Size = new System.Drawing.Size(1023, 126);
             this.panel1.TabIndex = 0;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(414, 102);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(113, 15);
+            this.label3.TabIndex = 74;
+            this.label3.Text = "Выбранные книги::";
             // 
             // button_Del_Book_from_Action
             // 
-            this.button_Del_Book_from_Action.Location = new System.Drawing.Point(9, 68);
+            this.button_Del_Book_from_Action.Location = new System.Drawing.Point(7, 98);
             this.button_Del_Book_from_Action.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button_Del_Book_from_Action.Name = "button_Del_Book_from_Action";
-            this.button_Del_Book_from_Action.Size = new System.Drawing.Size(100, 22);
+            this.button_Del_Book_from_Action.Size = new System.Drawing.Size(122, 22);
             this.button_Del_Book_from_Action.TabIndex = 73;
-            this.button_Del_Book_from_Action.Text = "Удалить книгу";
+            this.button_Del_Book_from_Action.Text = "Удалить из списка";
             this.button_Del_Book_from_Action.UseVisualStyleBackColor = true;
             this.button_Del_Book_from_Action.Click += new System.EventHandler(this.button_Del_Book_from_Action_Click);
             // 
@@ -107,7 +119,7 @@
             // 
             this.CB_Action_Type.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CB_Action_Type.FormattingEnabled = true;
-            this.CB_Action_Type.Location = new System.Drawing.Point(322, 35);
+            this.CB_Action_Type.Location = new System.Drawing.Point(414, 34);
             this.CB_Action_Type.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CB_Action_Type.Name = "CB_Action_Type";
             this.CB_Action_Type.Size = new System.Drawing.Size(594, 23);
@@ -116,7 +128,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(255, 38);
+            this.label1.Location = new System.Drawing.Point(347, 37);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(61, 15);
             this.label1.TabIndex = 68;
@@ -126,7 +138,7 @@
             // 
             this.CB_Place.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CB_Place.FormattingEnabled = true;
-            this.CB_Place.Location = new System.Drawing.Point(322, 7);
+            this.CB_Place.Location = new System.Drawing.Point(414, 7);
             this.CB_Place.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CB_Place.Name = "CB_Place";
             this.CB_Place.Size = new System.Drawing.Size(594, 23);
@@ -135,24 +147,24 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(271, 10);
+            this.label6.Location = new System.Drawing.Point(289, 10);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(45, 15);
+            this.label6.Size = new System.Drawing.Size(119, 15);
             this.label6.TabIndex = 66;
-            this.label6.Text = "Место:";
+            this.label6.Text = "Место поступления:";
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(229, 68);
+            this.label13.Location = new System.Drawing.Point(262, 70);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(87, 15);
+            this.label13.Size = new System.Drawing.Size(146, 15);
             this.label13.TabIndex = 64;
-            this.label13.Text = "Комментарий:";
+            this.label13.Text = "Примечание к действию:";
             // 
             // TB_Comment
             // 
-            this.TB_Comment.Location = new System.Drawing.Point(322, 65);
+            this.TB_Comment.Location = new System.Drawing.Point(414, 64);
             this.TB_Comment.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.TB_Comment.Name = "TB_Comment";
             this.TB_Comment.Size = new System.Drawing.Size(594, 23);
@@ -166,7 +178,7 @@
             this.DGV_ActionBooks.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DGV_ActionBooks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGV_ActionBooks.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DGV_ActionBooks.Location = new System.Drawing.Point(3, 114);
+            this.DGV_ActionBooks.Location = new System.Drawing.Point(3, 144);
             this.DGV_ActionBooks.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.DGV_ActionBooks.MultiSelect = false;
             this.DGV_ActionBooks.Name = "DGV_ActionBooks";
@@ -174,7 +186,7 @@
             this.DGV_ActionBooks.RowHeadersVisible = false;
             this.DGV_ActionBooks.RowHeadersWidth = 51;
             this.DGV_ActionBooks.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DGV_ActionBooks.Size = new System.Drawing.Size(1310, 207);
+            this.DGV_ActionBooks.Size = new System.Drawing.Size(1023, 177);
             this.DGV_ActionBooks.TabIndex = 0;
             this.DGV_ActionBooks.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGV_ActionBooks_CellContentClick);
             // 
@@ -187,7 +199,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox1.Size = new System.Drawing.Size(1316, 323);
+            this.groupBox1.Size = new System.Drawing.Size(1029, 323);
             this.groupBox1.TabIndex = 71;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Действие";
@@ -201,41 +213,51 @@
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox2.Size = new System.Drawing.Size(1316, 377);
+            this.groupBox2.Size = new System.Drawing.Size(1029, 377);
             this.groupBox2.TabIndex = 72;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Все книги";
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.label4);
             this.panel3.Controls.Add(this.button_New_Book);
             this.panel3.Controls.Add(this.button_Add_Book_to_Action);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(3, 18);
             this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1310, 29);
+            this.panel3.Size = new System.Drawing.Size(1023, 29);
             this.panel3.TabIndex = 3;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(428, 7);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(67, 15);
+            this.label4.TabIndex = 76;
+            this.label4.Text = "Все книги::";
             // 
             // button_New_Book
             // 
-            this.button_New_Book.Location = new System.Drawing.Point(8, 6);
+            this.button_New_Book.Location = new System.Drawing.Point(148, 0);
             this.button_New_Book.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button_New_Book.Name = "button_New_Book";
-            this.button_New_Book.Size = new System.Drawing.Size(82, 22);
+            this.button_New_Book.Size = new System.Drawing.Size(101, 22);
             this.button_New_Book.TabIndex = 75;
-            this.button_New_Book.Text = "Добавить...";
+            this.button_New_Book.Text = "Новая книга...";
             this.button_New_Book.UseVisualStyleBackColor = true;
             this.button_New_Book.Click += new System.EventHandler(this.button_New_Book_Click);
             // 
             // button_Add_Book_to_Action
             // 
-            this.button_Add_Book_to_Action.Location = new System.Drawing.Point(96, 6);
+            this.button_Add_Book_to_Action.Location = new System.Drawing.Point(7, 0);
             this.button_Add_Book_to_Action.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button_Add_Book_to_Action.Name = "button_Add_Book_to_Action";
-            this.button_Add_Book_to_Action.Size = new System.Drawing.Size(36, 22);
+            this.button_Add_Book_to_Action.Size = new System.Drawing.Size(122, 22);
             this.button_Add_Book_to_Action.TabIndex = 74;
-            this.button_Add_Book_to_Action.Text = "^";
+            this.button_Add_Book_to_Action.Text = "Добавить в список";
             this.button_Add_Book_to_Action.UseVisualStyleBackColor = true;
             this.button_Add_Book_to_Action.Click += new System.EventHandler(this.button_Add_Book_to_Action_Click);
             // 
@@ -255,20 +277,21 @@
             this.DGV_AllBooks.RowHeadersVisible = false;
             this.DGV_AllBooks.RowHeadersWidth = 51;
             this.DGV_AllBooks.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DGV_AllBooks.Size = new System.Drawing.Size(1310, 324);
+            this.DGV_AllBooks.Size = new System.Drawing.Size(1023, 324);
             this.DGV_AllBooks.TabIndex = 0;
             this.DGV_AllBooks.DoubleClick += new System.EventHandler(this.DGV_AllBooks_DoubleClick);
             // 
             // button_OK
             // 
             this.button_OK.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.button_OK.Location = new System.Drawing.Point(10, 4);
+            this.button_OK.Location = new System.Drawing.Point(12, 7);
             this.button_OK.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button_OK.Name = "button_OK";
             this.button_OK.Size = new System.Drawing.Size(82, 22);
             this.button_OK.TabIndex = 74;
             this.button_OK.Text = "OK";
             this.button_OK.UseVisualStyleBackColor = true;
+            this.button_OK.Click += new System.EventHandler(this.button_OK_Click);
             // 
             // panel_Bottom
             // 
@@ -278,19 +301,20 @@
             this.panel_Bottom.Location = new System.Drawing.Point(0, 700);
             this.panel_Bottom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel_Bottom.Name = "panel_Bottom";
-            this.panel_Bottom.Size = new System.Drawing.Size(1316, 35);
+            this.panel_Bottom.Size = new System.Drawing.Size(1029, 35);
             this.panel_Bottom.TabIndex = 75;
             // 
             // button_Cancel
             // 
             this.button_Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button_Cancel.Location = new System.Drawing.Point(102, 4);
+            this.button_Cancel.Location = new System.Drawing.Point(939, 7);
             this.button_Cancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button_Cancel.Name = "button_Cancel";
             this.button_Cancel.Size = new System.Drawing.Size(82, 22);
             this.button_Cancel.TabIndex = 75;
             this.button_Cancel.Text = "Cancel";
             this.button_Cancel.UseVisualStyleBackColor = true;
+            this.button_Cancel.Click += new System.EventHandler(this.button_Cancel_Click);
             // 
             // Form_Action
             // 
@@ -298,7 +322,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.button_Cancel;
-            this.ClientSize = new System.Drawing.Size(1316, 735);
+            this.ClientSize = new System.Drawing.Size(1029, 735);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.panel_Bottom);
             this.Controls.Add(this.groupBox1);
@@ -308,12 +332,14 @@
             this.Name = "Form_Action";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Действие";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_Action_FormClosing);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_ActionBooks)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_AllBooks)).EndInit();
             this.panel_Bottom.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -342,5 +368,7 @@
         private Panel panel_Bottom;
         private Button button_Cancel;
         public DateTimePicker dateTimePicker;
+        public Label label3;
+        public Label label4;
     }
 }

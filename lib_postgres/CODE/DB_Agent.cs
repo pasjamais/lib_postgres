@@ -241,10 +241,19 @@ namespace lib_postgres
                                select loc.Id).ToList().First();
             return location_id;
         }
-
+        public static void Add_Location(Location item)
+        {
+            db.Locations.Add(item);
+            Save_Changes();
+        }
         public static Location Get_Location(long? id_Location)
         {
             return db.Locations.Find(id_Location);
+        }
+
+        public static Location Get_Location_by_Action_Id_and_Book_Id(long? action_id, long? book_id)
+        {
+            return db.Locations.Find(Get_Location_Id_by_Action_Id_and_Book_Id(action_id, book_id));
         }
         #endregion
 

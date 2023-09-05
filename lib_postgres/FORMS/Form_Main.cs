@@ -144,7 +144,7 @@ namespace lib_postgres
 
 
             newItem = new ToolStripMenuItem("Произведения по языкам");
-            menuStrip1.Items.Add(newItem);
+            ToolStripMenuItem_Arts.DropDownItems.Add(newItem);
             var languages = DB_Agent.Get_Languages();
             var arts = DB_Agent.Get_Arts();
             foreach (var language in languages)
@@ -179,16 +179,21 @@ namespace lib_postgres
         }
         void show_arts_by_langue(object sender, EventArgs e)
         {
-            var Get_Languages = DB_Agent.Get_Languages();
-            var arts = DB_Agent.Get_Arts();
-            var items = (
-                         from a in arts
-                         where a.OrigLanguage ==
-                        (from l in Get_Languages
-                         where l.Name == ((ToolStripMenuItem)sender).Text
-                         select l).First().Id
-                         select a).ToList();
-            dataGridView.DataSource = items;
+            List<Art_and_Author> arts = CODE.Queries_LinQ.Get_Arts_by_LanguageName(((ToolStripMenuItem)sender).Text);
+            // ++ sept 2023
+            // Pasted from DGV_Visualisator.Refresh_DGV_for_Item_Type
+            // for special projection of selection for languages
+            // added for better view in DGV
+            dataGridView.Columns.Clear();
+            dataGridView.DataSource = arts;
+            Turn_Off_Current_Menu_Item();
+            dgv_Visualisator.Prepare_DGV_For_Type<Art>(dataGridView, StatusProperty);
+            //++ colorization of deleted elements 
+            List<long> deleted_IDs = CODE.CRUD.CRUD_Item_Determinator.Get_Deleted_Items_IDs<Art>();
+            dgv_Visualisator.deleted_Entities_Visuaisator.RunCommand(deleted_IDs, dataGridView);
+            //-- colorization of deleted elements
+            Turn_On_Current_Menu_Item();
+            //-- sept 2023
         }
         void get_My_Books_in_Other_Hands(object sender, EventArgs e)
         {
@@ -202,10 +207,7 @@ namespace lib_postgres
         {
             dataGridView.DataSource = Queries_LinQ.Get_Books_by_Place_Name(((ToolStripMenuItem)sender).Text);
         }
-        private void ToolStripMenuItem_Location_Show_Click(object sender, EventArgs e)
-        {
-            dataGridView.DataSource = CODE.Queries_LinQ.Get_Locations();
-        }
+
         #endregion menu_commands
 
         #region entities control
@@ -550,6 +552,14 @@ namespace lib_postgres
             Delete_SourceToreadAnother();
         }
         #endregion SourceToreadAnother
+
+        #region Location
+        private void ToolStripMenuItem_Location_Show_Click(object sender, EventArgs e)
+        {
+            Read_Locations();
+        }
+    
+        #endregion
 
         #endregion entities control
 
@@ -977,6 +987,14 @@ namespace lib_postgres
         }
         #endregion SourceToreadAnother CRUD
 
+        #region Location CRUD
+        private void Read_Locations()
+        {
+            dgv_Visualisator.Refresh_DGV_for_Item_Type<Location>(dataGridView, Turn_Off, Turn_ON, StatusProperty);
+
+        }
+
+        #endregion Location CRUD
 
         #endregion CRUD
 

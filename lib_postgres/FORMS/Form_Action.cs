@@ -95,5 +95,32 @@ namespace lib_postgres.FORMS
         {
             button_Del_Book_from_Action_Click(sender, e);
         }
+
+        private void button_OK_Click(object sender, EventArgs e)
+        {
+            if (TB_Comment.Text == "")
+            {
+                General_Manipulations.simple_message("Не указано примечания к действию");
+                this.DialogResult = DialogResult.TryAgain;
+            }
+            else 
+                if (action_books == null || action_books.Count < 1)
+            {
+                General_Manipulations.simple_message("Не выбрано ни одной книги");
+                this.DialogResult = DialogResult.TryAgain;
+            }
+            else this.DialogResult = DialogResult.OK;
+        }
+
+        private void button_Cancel_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+        }
+
+        private void Form_Action_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (this.DialogResult == DialogResult.TryAgain)
+                e.Cancel = true;
+        }
     }
 }

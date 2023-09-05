@@ -6,105 +6,172 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
+using static System.Windows.Forms.DataFormats;
 
 namespace lib_postgres
 {
-    public partial class Action : ICan_Create_Item
+    public partial class Action : ICan_Create_Item, IHas_field_IsDeleted
     {
-
         public static long Create_Item()
         {
-            FORMS.Form_Action form_Action = new lib_postgres.FORMS.Form_Action();
+            Form_Action form_Action = new Form_Action();
             var DialogResult = form_Action.ShowDialog();
             if (DialogResult != DialogResult.OK) return -1;
-            else if ((form_Action.action_books != null) && (form_Action.action_books.Count > 0))
-            {
-                lib_postgres.Action action = new lib_postgres.Action();
-                action.Date = DateOnly.FromDateTime(form_Action.dateTimePicker.Value.Date); // interesting
-                action.Comment = form_Action.TB_Comment.Text;
-                if (form_Action.CB_Place.SelectedValue != null)
-                    action.Place = (long)form_Action.CB_Place.SelectedValue;
-                if (form_Action.CB_Action_Type.SelectedValue != null)
-                    action.ActionType = (long)form_Action.CB_Action_Type.SelectedValue;
-                DB_Agent.db.Actions.Add(action);
-                DB_Agent.db.SaveChanges();
-                Save_Books_in_Action(form_Action.action_books, action, true);
-                return action.Id;
-            }
-            else return -1;
-        }
 
+            Action action = DB_Agent.Get_First_Deleted_Entity_or_New<Action>(DB_Agent.Get_Actions());
 
-        private static bool Get_Operation(long? operation)
-        {
-            if (operation != null)
-                if (operation == 1 || operation == 3 || operation == 5)
-                return true;
-                else if (operation == 2 || operation == 4)
-                return false;
-            else return false;
-            else return false;
-        }
-        private static void Save_Books_in_Action(List<ViewBook> action_books, lib_postgres.Action action, bool is_new_action)
-        {
-            foreach (lib_postgres.ViewBook viewBook in action_books)
+            //++ transaction section
+            using (var dbContextTransaction = DB_Agent.db.Database.BeginTransaction())
             {
-                Location location = is_new_action ? new Location() :
-                    DB_Agent.Get_Location(DB_Agent.Get_Location_Id_by_Action_Id_and_Book_Id(action.Id, viewBook.Id));
-                if (action.ActionType == 2) location.Owner = null;
-                    else location.Owner = 1;
-                if (Get_Operation(action.ActionType)) location.Place = action.Place;
-                else location.Place = null;
-                //!!! В Action хранится Place указанный пользователем в форме, а в Location - действительное расположение, в т. ч. null
-                location.Operation = Get_Operation(action.ActionType);
-                location.Comment = action.Comment;
-                if (is_new_action)
+                try
                 {
-                    location.Book = viewBook.Id;
-                    location.Action = action.Id;
-                    DB_Agent.db.Locations.Add(location);
+                    bool is_new_element = Reset_Element_If_Not_New(action);
+                    Save_Element_from_Form(action, form_Action);
+
+                    if (is_new_element) DB_Agent.Add_Action(action);
+                    else action.IsDeleted = false;
+                    Add_New_Books_to_Action(form_Action.action_books, action);
+
+                    DB_Agent.Save_Changes();
+                    dbContextTransaction.Commit();
                 }
-                DB_Agent.db.SaveChanges();
+                catch (Exception ex)
+                {
+                    dbContextTransaction.Rollback();
+                }
+            }
+            //-- transaction section
+            return action.Id;
+        }
+
+        public static bool Reset_Element_If_Not_New(Action element)
+        {
+            bool is_new_element = (element.Id == 0) ? true : false;
+            if (!is_new_element)
+            {
+                element.Date = null;
+                element.Name = null;
+                element.Comment = null;
+                element.Place = null;
+                element.ActionType = null;
+                if (element.Locations.Count > 0)
+                {
+                    foreach (Location record in element.Locations)
+                    {// using navigation properties! 
+                     //does the use of navigation properties violate SOLID?.. 
+                        record.IsDeleted = true;
+                        record.Operation = null;
+                        record.Book = null;
+                        record.Place = null;
+                        record.Owner = null;
+                        record.Comment = null;
+                        record.Action = null;
+                    }
+                }
+            }
+            return is_new_element;
+        }
+        private static void Save_Element_from_Form(Action element, Form_Action form)
+        {
+            Fill_Element_Without_Books(element, form);
+        }
+
+        public static void Fill_Element_Without_Books(Action element, Form_Action form)
+        {
+            element.Date = DateOnly.FromDateTime(form.dateTimePicker.Value.Date); // interesting
+            element.Comment = form.TB_Comment.Text;
+            if (form.CB_Place.SelectedValue != null)
+                element.Place = (long)form.CB_Place.SelectedValue;
+            if (form.CB_Action_Type.SelectedValue != null)
+                element.ActionType = (long)form.CB_Action_Type.SelectedValue;
+        }
+
+        private static void Add_New_Books_to_Action(List<ViewBook> action_books, Action action)
+        {
+            foreach (ViewBook viewBook in action_books)
+            {
+                Location location = DB_Agent.Get_First_Deleted_Entity_or_New<Location>(DB_Agent.Get_Locations());
+                bool is_new_location = Location.Reset_Element_if_not_New(location); //redundancy in fact, for super sure
+
+                Location.Update_Location_with_Action_values_and_BookID(location, action, viewBook.Id);
+
+                if (is_new_location) DB_Agent.Add_Location(location);
+                    else location.IsDeleted = false;
             }
         }
-      
-    public static long Edit_Item_by_ID(long id)
+
+        public static long Edit_Item_by_ID(long id)
         {
             lib_postgres.Action action = DB_Agent.Get_Action(id);
-            // prepare action
-            var all_locations = DB_Agent.Get_Locations();
-            var action_books_Ids = (from loc in all_locations
-                                where loc.Action == id 
-                                    select loc.Book).ToList();
-            var all_books = Queries_from_Views.Get_Books();
-            var action_books = (from x in all_books
-                         where action_books_Ids.Contains(x.Id)
-                         select x).ToList() ;
-            FORMS.Form_Action form_Action = new lib_postgres.FORMS.Form_Action();
-            BindingSource source_action_books   = new BindingSource();
-            BindingSource source_all_books      = new BindingSource();
+            //++ preparation
+            List<Location> all_locations = DB_Agent.Get_Locations();
+            List<long?> action_books_Ids = (from loc in all_locations
+                                            where loc.Action == id
+                                            select loc.Book).ToList();
+            List<ViewBook> all_books = Queries_from_Views.Get_Books();
+            List<ViewBook> action_books = (from x in all_books
+                                           where action_books_Ids.Contains(x.Id)
+                                           select x).ToList();
 
-            source_action_books.DataSource = action_books;
-            form_Action.DGV_ActionBooks.DataSource = source_action_books;
-            form_Action.DGV_ActionBooks.Refresh();
+            List<ViewBook> action_books_before_modification = new List<ViewBook>(action_books);
+            //-- preparation
 
-            source_all_books.DataSource         = all_books;
-            form_Action.DGV_AllBooks.DataSource = source_all_books;
-            form_Action.DGV_AllBooks.Refresh();
+            Form_Action form_Action = new Form_Action();
 
-            form_Action.action_books = action_books;
-            if (action.Place        != null) form_Action.CB_Place.SelectedValue = action.Place;
-            if (action.ActionType   != null) form_Action.CB_Action_Type.SelectedValue = action.ActionType;
-            if (action.Comment      != null) form_Action.TB_Comment.Text = action.Comment;
+            Load_Element_in_Form(action, form_Action, all_books, action_books);
 
-            if (action.Date is not null)
+            DialogResult dialog_result = form_Action.ShowDialog();
+            if (dialog_result != DialogResult.OK) return -1;
+
+            Load_Modifications_to_Action_from_Form_without_Authors(action, form_Action);
+
+            List<ViewBook> same_books_in_action = action_books_before_modification.Intersect(form_Action.action_books).ToList(); ;
+            List<ViewBook> deleted_books_from_action = action_books_before_modification.Except(same_books_in_action).ToList();
+            List<ViewBook> new_books_in_action = form_Action.action_books.Except(same_books_in_action).ToList();
+
+            //++ transaction section
+            using (var dbContextTransaction = DB_Agent.db.Database.BeginTransaction())
             {
-                DateTime d = new DateTime(action.Date.Value.Year, action.Date.Value.Month, action.Date.Value.Day);
-                form_Action.dateTimePicker.Value = d;
+                try
+                {
+                    Remove_Books_from_Action(action, deleted_books_from_action);
+                    Actualize_Existings_Books(action, same_books_in_action);
+                    Add_New_Books_to_Action(new_books_in_action, action);
+
+                    DB_Agent.Save_Changes();
+                    dbContextTransaction.Commit();
+                }
+                catch (Exception ex)
+                {
+                    dbContextTransaction.Rollback();
+                }
             }
-            var DialogResult = form_Action.ShowDialog();
-            if (DialogResult != DialogResult.OK) return -1;
-            // check if changed
+            //-- transaction section
+            return action.Id;
+        }
+
+        private static void Remove_Books_from_Action(Action action, List<ViewBook> deleted_books)
+        {
+            foreach (ViewBook book in deleted_books)
+            {
+                Location record = DB_Agent.Get_Location_by_Action_Id_and_Book_Id(action.Id, book.Id);
+                Location.Reset_Element(record);
+                Location.Delete_Element(record);
+            }
+        }
+
+        private static void Actualize_Existings_Books(Action action, List<ViewBook> existiting_boooks)
+        {
+            foreach (ViewBook viewBook in existiting_boooks)
+            {
+                Location location = DB_Agent.Get_Location_by_Action_Id_and_Book_Id(action.Id, viewBook.Id);
+                Location.Update_Location_with_Action_values_and_BookID(location, action, viewBook.Id);
+            }
+        }
+
+        private static void Load_Modifications_to_Action_from_Form_without_Authors(Action action, Form_Action form_Action)
+        {
             if (form_Action.CB_Place.SelectedValue != null)
                 if (action.Place != (System.Int64)form_Action.CB_Place.SelectedValue)
                     action.Place = (System.Int64)form_Action.CB_Place.SelectedValue;
@@ -113,21 +180,48 @@ namespace lib_postgres
                 if (action.ActionType != (System.Int64)form_Action.CB_Action_Type.SelectedValue)
                     action.ActionType = (System.Int64)form_Action.CB_Action_Type.SelectedValue;
 
-                        action.Comment = General_Manipulations.compare_string_values(action.Comment, form_Action.TB_Comment.Text);
+            action.Comment = General_Manipulations.compare_string_values(action.Comment, form_Action.TB_Comment.Text);
+
             action.Date = DateOnly.FromDateTime(form_Action.dateTimePicker.Value.Date);
-            DB_Agent.db.SaveChanges();
-            Save_Books_in_Action(form_Action.action_books, action, false);  
-            return action.Id;
+        }
 
 
+        private static void Load_Element_in_Form(Action action, Form_Action form_Action,
+                                                   List<ViewBook> all_books,
+                                                   List<ViewBook> action_books
+                                                   )
+        {
+            // loading authors
+            BindingSource source_action_books = new BindingSource();
+            source_action_books.DataSource = action_books;
+            form_Action.DGV_ActionBooks.DataSource = source_action_books;
+            form_Action.DGV_ActionBooks.Refresh();
+
+            BindingSource source_all_books = new BindingSource();
+            source_all_books.DataSource = all_books;
+            form_Action.DGV_AllBooks.DataSource = source_all_books;
+            form_Action.DGV_AllBooks.Refresh();
+
+            // loading current authors
+            form_Action.action_books = action_books;
+
+            // loading remaining action content
+            if (action.Place != null) form_Action.CB_Place.SelectedValue = action.Place;
+            if (action.ActionType != null) form_Action.CB_Action_Type.SelectedValue = action.ActionType;
+            if (action.Comment != null) form_Action.TB_Comment.Text = action.Comment;
+            if (action.Date is not null)
+            {
+                DateTime d = new DateTime(action.Date.Value.Year, action.Date.Value.Month, action.Date.Value.Day);
+                form_Action.dateTimePicker.Value = d;
+            }
         }
 
         public static List<lib_postgres.Action> Get_Deleted_Items()
         {
             List<lib_postgres.Action> items = DB_Agent.Get_Actions();
             List<lib_postgres.Action> deleted_items = (from item in items
-                                                                where item.IsDeleted is true
-                                                                select item).ToList();
+                                                       where item.IsDeleted is true
+                                                       select item).ToList();
             return deleted_items;
         }
         public static List<long> Get_Deleted_Items_IDs()

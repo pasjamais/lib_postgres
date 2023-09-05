@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace lib_postgres.CODE
 {
@@ -71,6 +72,14 @@ namespace lib_postgres.CODE
                          }).ToList();
             return items;
         }
+        public static List<Art_and_Author> Get_Arts_by_LanguageName(string language_name)
+        {
+            List<Language> Get_Languages = DB_Agent.Get_Languages();
+            List<Art_and_Author> arts = CODE.Queries_LinQ.Get_Arts();
+            return (from a in arts
+                    where a.OrigLanguage == language_name
+                    select a).ToList();
+        }
 
         public static List<Book_Adopted> Get_Books()
         {
@@ -134,32 +143,104 @@ namespace lib_postgres.CODE
             return items;
         }
 
+        public struct Location_Record
+        {
+            public long Id { get; set; }
+            public DateOnly? Date { get; set; }
+            public string ActType { get; set; }
+            public string Comment { get; set; }
+            public string Name { get; set; }
+            public string Authors { get; set; }
+            public string Genre { get; set; }
+            public string PublicationYear { get; set; }
+            public string Code { get; set; }
+            public string Id_book { get; set; }
+            public string Place { get; set; }
+
+            public Location_Record(long id, 
+                                    DateOnly date,
+                                    string act_type,
+                                    string comment, 
+                                    string book_name, 
+                                    string authors,
+                                    string genre,
+                                    string publication_year, 
+                                    string code,
+                                    string id_book, 
+                                    string place)
+            {
+                Id = id;
+                Date = date;
+                ActType = act_type;
+                Comment = comment;
+                Name = book_name;
+                Authors = authors;
+                Genre = genre;
+                PublicationYear = publication_year;
+                Code = code;
+                Id_book = id_book;
+                Place = place;
+            }
+        }
         public static dynamic Get_Locations()
         {
+            var actions = DB_Agent.Get_Actions();
             var places = DB_Agent.Get_Places();
             var locations = DB_Agent.Get_Locations();
             var books = Get_Books();
+            var act_type = DB_Agent.Get_ActionTypes();
             var items = (from loc in locations
                          join boo in books on loc.Book equals boo.Id
+                         join pla in places on loc.Place equals pla.Id into PL // LEFT JOIN
+                         from pl in PL.DefaultIfEmpty()                      // LEFT JOIN
 
-                         join pla in places on loc.Place equals pla.Id
+                         join acc in actions on loc.Action equals acc.Id
+                         join actype in act_type on acc.ActionType equals actype.Id
+                         select new Location_Record()
+                         {
+                             Id = loc.Id,
+                             Date = acc.Date,
+                             ActType = actype.Name,
+                             Comment = acc.Comment,
+                             Name = boo.Name ?? "",
+                             Authors = boo.Authors ?? "",
+                             Genre = boo.Genre ?? "",
+                             PublicationYear = boo.PublicationYear ?? "",
+                             Code = boo.Code ?? "",
+                             Id_book = boo.Id.ToString() ?? "",
+                             Place = pl == null ? "" : pl.Name, // LEFT JOIN
+                         }).ToList().OrderByDescending(n => n.Date).ToList();
+
+            return items;
+        }
+        public static dynamic _Get_Locations()
+        {
+            var actions = DB_Agent.Get_Actions();
+            var places = DB_Agent.Get_Places();
+            var locations = DB_Agent.Get_Locations();
+            var books = Get_Books();
+            var act_type = DB_Agent.Get_ActionTypes();
+            var items = (from loc in locations
+                         join boo in books   on loc.Book equals boo.Id
+                         join pla in places  on loc.Place equals pla.Id into PL // LEFT JOIN
+                            from pl in PL.DefaultIfEmpty()                      // LEFT JOIN
+
+                         join acc in actions on loc.Action equals acc.Id
+                         join actype in act_type on acc.ActionType equals actype.Id
                          select new
                          {
-                             loc_record = loc.Id,
-                             Размещение = pla.Name ?? "",
-                             book_id = boo.Id.ToString() ?? "",
+                             Id = loc.Id,
+                             Дата = acc.Date,
+                             действие = actype.Name,
+                             Примечание = acc.Comment,
                              Название = boo.Name ?? "",
                              Автор_ы = boo.Authors ?? "",
                              Жанр = boo.Genre ?? "",
-                             Год_издания = boo.PublicationYear ?? "",
-                             Год_написания = boo.WritingYear ?? "",
-                             Издательство = boo.PublishingHouse ?? "",
-                             Город = boo.City ?? "",
-                             Страниц = boo.Pages.ToString() ?? "",
+                             Годизд = boo.PublicationYear ?? "",
                              Шифр = boo.Code ?? "",
-                             Язык_издания = boo.PublishingLanguage ?? "",
-                             Язык_оригинала = boo.OrigLanguage ?? ""
-                         }).ToList().OrderBy(n => n.loc_record).ToList();
+                             Idкниги = boo.Id.ToString() ?? "",
+                             Размещение = pl == null ? "" : pl.Name, // LEFT JOIN
+                         }).ToList().OrderByDescending(n => n.Дата).ToList();
             return items;
         }
 
