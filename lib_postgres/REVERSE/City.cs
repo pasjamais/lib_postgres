@@ -1,9 +1,10 @@
-﻿using System;
+﻿using lib_postgres.CODE.CRUD;
+using System;
 using System.Collections.Generic;
 
 namespace lib_postgres
 {
-    public partial class City
+    public partial class City 
     {
         public City()
         {

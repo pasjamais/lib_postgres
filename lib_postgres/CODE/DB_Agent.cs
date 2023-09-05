@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,17 +15,41 @@ namespace lib_postgres
         #region general
         public static string Get_Connection_String()
         {
-            CODE.IniFile ini = new CODE.IniFile(CODE.Data.ini_file_name);
-            string? connection_string = ini.Read("connection_string", "GENERAL");
-            return connection_string;
+            return Get_Value_from_Settings_File(CODE.Data.ini_file_name, "connection_string", "GENERAL");
         }
-        #endregion
+
+        public static string Get_Password()
+        {
+            return Get_Value_from_Settings_File(CODE.Data.ini_file_name, "password", "GENERAL");
+        }
+
+        private static string Get_Value_from_Settings_File(string ini_file_name, string key, string section)
+        {
+            CODE.IniFile ini = new CODE.IniFile(ini_file_name);
+            string? value = ini.Read(key, section);
+            return value;
+        }
+        public static void Save_Changes()
+        {
+            db.SaveChanges();
+        }
+        public static dynamic  Get_Entities<T>()
+        {
+            Type type = typeof(T);
+            if (type == typeof(Book))
+                return Get_Books();
+            else return null;
+        }
+
+
+
+        #endregion general
 
         #region Books
         public static void Book_Add(Book book)
         {
             db.Books.Add(book);
-            db.SaveChanges();
+            Save_Changes();
         }
         public static Book Get_Book(long id)
         {
@@ -63,7 +88,11 @@ namespace lib_postgres
         {
             return db.Arts.Find(id);
         }
-
+        public static void Add_Art(Art item)
+        {
+            db.Arts.Add(item);
+            Save_Changes();
+        }
         #endregion
 
         #region Languages
@@ -77,7 +106,11 @@ namespace lib_postgres
             return db.Languages.Find(idLanguage);
         }
 
-
+        public static void Language_Add(Language language)
+        {
+            db.Languages.Add(language);
+            Save_Changes();
+        }
 
 
         #endregion
@@ -92,6 +125,11 @@ namespace lib_postgres
         {
             return db.Cities.Find(idCity);
         }
+        public static void City_Add(City city)
+        {
+            db.Cities.Add(city);
+            Save_Changes();
+        }
         #endregion
 
         #region Publishing_Houses
@@ -102,6 +140,12 @@ namespace lib_postgres
         public static PublishingHouse Get_Publishing_House(long idPublishing_House)
         {
             return db.PublishingHouses.Find(idPublishing_House);
+        }
+
+        public static void PublishingHouse_Add(PublishingHouse publishingHouse)
+        {
+            db.PublishingHouses.Add(publishingHouse);
+            Save_Changes();
         }
         #endregion
 
@@ -115,6 +159,12 @@ namespace lib_postgres
         {
             return db.Series.Find(idSerie);
         }
+
+        public static void Serie_Add(Series series)
+        {
+            db.Series.Add(series);
+            Save_Changes();
+        }
         #endregion
 
         #region Authors
@@ -126,6 +176,11 @@ namespace lib_postgres
         public static Author Get_Author(long idAuthor)
         {
             return db.Authors.Find(idAuthor);
+        }
+        public static void Author_Add(Author author)
+        {
+            db.Authors.Add(author);
+            Save_Changes();
         }
         #endregion
 
@@ -139,6 +194,12 @@ namespace lib_postgres
         {
             return db.Genres.Find(idGenre);
         }
+        public static void Genre_Add(Genre genre)
+        {
+            db.Genres.Add(genre);
+            Save_Changes();
+        }
+
         #endregion
 
         #region Actions
@@ -151,7 +212,11 @@ namespace lib_postgres
         {
             return db.Actions.Find(id_Action);
         }
-
+        public static void Add_Action(Action action)
+        {
+            db.Actions.Add(action);
+            Save_Changes();
+        }
 
         #endregion
 
@@ -176,10 +241,19 @@ namespace lib_postgres
                                select loc.Id).ToList().First();
             return location_id;
         }
-
+        public static void Add_Location(Location item)
+        {
+            db.Locations.Add(item);
+            Save_Changes();
+        }
         public static Location Get_Location(long? id_Location)
         {
             return db.Locations.Find(id_Location);
+        }
+
+        public static Location Get_Location_by_Action_Id_and_Book_Id(long? action_id, long? book_id)
+        {
+            return db.Locations.Find(Get_Location_Id_by_Action_Id_and_Book_Id(action_id, book_id));
         }
         #endregion
 
@@ -195,12 +269,23 @@ namespace lib_postgres
         {
             return db.Places.ToList().OrderBy(n => n.Name).ToList();
         }
+
+        public static Place Get_Place(long id)
+        {
+            return db.Places.Find(id);
+        }
+
+        public static void Add_Place(Place place)
+        {
+            db.Places.Add(place);
+            Save_Changes();
+        }
         #endregion
 
         #region AuthorArts
         public static List<AuthorArt> _Get_AuthorArts()
         {
-            return db.AuthorArts.ToList().OrderBy(n => n.Art).ToList();
+            return db.AuthorArts.ToList();
         }
         //Get_AuthorArts_without_Deleted
         public static List<AuthorArt> Get_AuthorArts()
@@ -222,7 +307,14 @@ namespace lib_postgres
             db.AuthorArts.Remove(authorArt);
             db.SaveChanges();
         }
-        #endregion
+
+        public static void Add_AuthorArt(AuthorArt item)
+        {
+            db.AuthorArts.Add(item);
+            Save_Changes();
+        }
+
+        #endregion AuthorArts
 
         #region Read
         public static List<ArtRead> Get_ArtReads()
@@ -261,6 +353,12 @@ namespace lib_postgres
         {
             return db.BookFormats.Find(id);
         }
+
+        public static void Add_BookFormat(BookFormat bookFormat)
+        {
+            db.BookFormats.Add(bookFormat);
+            Save_Changes();
+        }
         #endregion
 
         #region Queries
@@ -285,7 +383,32 @@ namespace lib_postgres
         {
             return db.Marks.Find(id);
         }
+
+        public static void Add_Mark(Mark mark)
+        {
+            db.Marks.Add(mark);
+            Save_Changes();
+        }
         #endregion
+
+
+        #region Person
+        public static List<Person> Get_Persons()
+        {
+            return db.People.ToList().OrderBy(n => n.Id).ToList();
+        }
+
+        public static Person Get_Person(long id)
+        {
+            return db.People.Find(id);
+        }
+
+        public static void Add_Person(Person person)
+        {
+            db.People.Add(person);
+            Save_Changes();
+        }
+        #endregion Person
 
         #region SourceToreadAnother
         public static List<SourceToreadAnother> Get_Another_Sources()
@@ -305,8 +428,13 @@ namespace lib_postgres
             else
                 return false;
         }
-
+        public static void Add_SourceToreadAnother(SourceToreadAnother item)
+        {
+            db.SourceToreadAnothers.Add(item);
+            Save_Changes();
+        }
         #endregion
+
         #region Recommendations
         public static List<ArtToRead> Get_Recommendations()
         {
@@ -317,9 +445,94 @@ namespace lib_postgres
             db.ArtToReads.Add(item);
             db.SaveChanges();
         }
+        public static ArtToRead Get_ArtToRead(long id)
+        {
+            return db.ArtToReads.Find(id);
+        }
 
-        #endregion
+        #endregion Recommendations
 
+        #region general CRUD
+        public static dynamic Get_Deleted_Items<T>(List<T> all_elements)
+          where T : CODE.CRUD.IHas_field_IsDeleted
+        {
+            List<T> deleted_elements = (from elem in all_elements
+                                        where elem.IsDeleted is true
+                                        select elem).ToList();
+            return deleted_elements;
+        }
+        /// <summary>
+        /// Check during new object creation
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="all_elements"></param>
+        /// <returns></returns>
+        public static dynamic Get_First_Deleted_Entity_or_New<T>(List<T> all_elements)
+            where T : CODE.CRUD.IHas_field_IsDeleted, new()
+        {
+            List<T> deleted_elements = Get_Deleted_Items<T>(all_elements);
+            T deleted_element = deleted_elements.FirstOrDefault(new T());
+            return deleted_element;
+        }
+      
+        public static List<long> Get_Deleted_Entities_IDs<T>(List<T> all_elements)
+            where T : CODE.CRUD.IHas_field_ID, CODE.CRUD.IHas_field_IsDeleted
+        {
+            List<T> deleted_elements = Get_Deleted_Items<T>(all_elements);
+            List<long> deleted_elements_id = (from elem in deleted_elements
+                                              select elem.Id).ToList();
+            return deleted_elements_id;
+        }
 
+        /// <summary>
+        /// Spec. (non-generalized) method for every instance (for using in Create_Item method)
+        /// </summary>
+        /// <param name="obj"></param>
+        public delegate void write_item_to_BD(object obj);
+
+        /// <summary>
+        /// simplified instance creation
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="element"></param>
+        /// <param name="all_elements"></param>
+        /// <param name="form_caption"></param>
+        /// <param name="label_caption"></param>
+        /// <param name="deja_exists_caption"></param>
+        /// <param name="add"></param>
+        /// <returns></returns>
+        public static long Create_Item<T> ( T element,
+                                            List<T> all_elements, 
+                                            string form_caption, 
+                                            string label_caption, 
+                                            string deja_exists_caption,
+                                            write_item_to_BD add) 
+            where T :   CODE.CRUD.IHas_field_IsDeleted, 
+                        CODE.CRUD.IHas_field_Name, 
+                        CODE.CRUD.IHas_field_ID, new()
+        {
+            var new_name = General_Manipulations.simple_element_add(form_caption, label_caption);
+            if (new_name != "")
+            {
+                if (all_elements.Exists(e => e.Name == new_name))
+                {
+                    General_Manipulations.simple_message(deja_exists_caption);
+                    return 0;
+                }
+                element.Name = new_name;
+                if (element.Id == 0)
+                {
+                    add(element);
+                }
+                else
+                {
+                    element.IsDeleted = false;
+                    Save_Changes();
+                }
+                return element.Id;
+            }
+            else return -1;
+        }
+        #endregion general CRUD
     }
 }

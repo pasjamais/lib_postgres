@@ -1,35 +1,35 @@
-﻿using System;
+﻿using lib_postgres.CODE.CRUD;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace lib_postgres.PARTIAL
+namespace lib_postgres
 {
-    public partial class Author
+    public partial class Author : IHas_field_IsDeleted, IHas_field_ID, IHas_field_Name, ICan_Create_Item
     {
-        public static long Add_Author()
+        public static DB_Agent.write_item_to_BD creation_method;
+        public static long Create_Item()
         {
-            var new_name = General_Manipulations.simple_element_add("Добавить автора", "ФИО:");
-            if (new_name != "")
+            Author element = DB_Agent.Get_First_Deleted_Entity_or_New<Author>(DB_Agent.Get_Authors());
+            
+            creation_method = delegate (object obj)
             {
-                if (DB_Agent.db.Authors.ToList().Exists(e => e.Name == new_name))
-                {
-                    General_Manipulations.simple_message("Автор уже существует");
-                    return 0;
-                }
-                lib_postgres.Author element = new lib_postgres.Author();
-                element.Name = new_name;
-                DB_Agent.db.Authors.Add(element);
-                DB_Agent.db.SaveChanges();
-                return element.Id;
-            }
-            else return -1;
+                DB_Agent.Author_Add(element);
+            };
+
+            return DB_Agent.Create_Item <Author>(element,
+                                                           DB_Agent.Get_Authors(),
+                                                           "Добавить автора",
+                                                           "ФИО:",
+                                                           "Автор уже существует",
+                                                           creation_method);
+
         }
-        public static long Edit_Author(DataGridView dataGridView)
+        public static long Edit_Author(long id)
         {
-            int index = dataGridView.SelectedRows[0].Index;
-            long id = (long)dataGridView.Rows[index].Cells["Id"].Value;
             lib_postgres.Author element = DB_Agent.Get_Author(id);
             var new_name = General_Manipulations.simple_element_modify("Изменить автора", "Новое имя:", element.Name);
             if (new_name != "")
@@ -45,5 +45,51 @@ namespace lib_postgres.PARTIAL
             }
             else return -1;
         }
+        public static long Delete_Item_by_ID(long id)
+        {
+            lib_postgres.Author item = DB_Agent.Get_Author(id);
+            if (item.IsDeleted.HasValue)
+                item.IsDeleted = !item.IsDeleted;
+            else
+                item.IsDeleted = true;
+            DB_Agent.db.SaveChanges();
+            return item.Id;
+        }
+        /// <summary>
+        /// for view
+        /// </summary>
+        /// <returns></returns>
+        public static List<lib_postgres.Author> Get_Deleted_Authors()
+        {
+            List<lib_postgres.Author> items = DB_Agent.Get_Authors();
+            List<lib_postgres.Author> deleted_items = (from item in items
+                                                     where item.IsDeleted is true
+                                                     select item).ToList();
+            return deleted_items;
+        }
+        /// <summary>
+        /// for view
+        /// </summary>
+        /// <returns></returns>
+        public static List<long> Get_Deleted_Authors_IDs()
+        {
+            List<lib_postgres.Author> deleted_items = Get_Deleted_Authors();
+            List<long> deleted_items_IDs = (from item in deleted_items
+                                            select item.Id).ToList(); ;
+            return deleted_items_IDs;
+        }
+
+
+        public static void Prepare_DGV(DataGridView DGV)
+        {
+            DGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
+            DGV.Columns[0].HeaderText = "Id"; DGV.Columns[0].FillWeight = (int)(DGV.Width * 0.15);
+            DGV.Columns[1].HeaderText = "Автор"; DGV.Columns[1].FillWeight = (int)(DGV.Width * 0.85);
+            for (int i = 2; i < DGV.ColumnCount; i++)
+                DGV.Columns[i].Visible = false;
+            DGV.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+        }
+
+
     }
 }

@@ -86,7 +86,7 @@ namespace lib_postgres
             CB.DataSource = elements;
             CB.ValueMember = "Id";
             CB.DisplayMember = "Name";
-            CB.SelectedIndex = i;
+            if (((ICollection<T>)CB.DataSource).Count >0) CB.SelectedIndex = i;// защита от пустого множества
         }
 
         /// <summary>
@@ -184,10 +184,11 @@ else        if (type == typeof(ViewBook))
             }
             if (type == typeof(SourceToreadAnother))
             {
-                CB.DataSource = DB_Agent.Get_Another_Sources();
-                CB.ValueMember = "Id";
-                CB.DisplayMember = "Name";
-                if ( ((ICollection<T>)CB.DataSource).Count > 0 ) CB.SelectedIndex = 0;// защита от пустого множества
+                var elements = DB_Agent.Get_Another_Sources();
+                var item = (from q in elements
+                            where q.Id == id
+                            select q).Take(1).First();
+                CB_visual_reload<SourceToreadAnother>(CB, elements.IndexOf(item), elements);
             }
         }
         #endregion
@@ -260,5 +261,8 @@ else        if (type == typeof(ViewBook))
         }
 
         #endregion
+
+
     }
+
 }

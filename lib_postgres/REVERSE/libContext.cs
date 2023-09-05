@@ -304,13 +304,11 @@ namespace lib_postgres
                 entity.HasOne(d => d.ArtNavigation)
                     .WithMany(p => p.AuthorArts)
                     .HasForeignKey(d => d.Art)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("author_art_art_fkey");
 
                 entity.HasOne(d => d.AuthorNavigation)
                     .WithMany(p => p.AuthorArts)
                     .HasForeignKey(d => d.Author)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("author_art_author_fkey");
             });
 

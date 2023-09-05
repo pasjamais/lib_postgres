@@ -1,5 +1,4 @@
 ﻿using lib_postgres.CODE;
-using lib_postgres.PARTIAL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,32 +16,34 @@ namespace lib_postgres.FORMS
 
         public List<ViewBook> action_books;
         public List<ViewBook> all_books;
+        private DGV_Visualisator dgv_Visualisator;
         public Form_Action()
         {
             InitializeComponent();
+            this.dgv_Visualisator = new DGV_Visualisator();
             General_Manipulations.CB_reload<Place>(CB_Place, 1);
             General_Manipulations.CB_reload<ActionType>(CB_Action_Type, 1);
 
             all_books = Queries_from_Views.Get_Books();
             DGV_AllBooks.DataSource = General_Manipulations.Bind_List_to_DGV(all_books);
-            CODE.Form_Element_DGV.Prepare_DGV_For_Type<ViewBook>(DGV_AllBooks);
+            dgv_Visualisator.Prepare_DGV_For_Type<ViewBook>(DGV_AllBooks);
             DGV_AllBooks.Refresh();
 
             action_books = new();
             DGV_ActionBooks.DataSource = General_Manipulations.Bind_List_to_DGV(action_books);
-            CODE.Form_Element_DGV.Prepare_DGV_For_Type<ViewBook>(DGV_ActionBooks);
+            dgv_Visualisator.Prepare_DGV_For_Type<ViewBook>(DGV_ActionBooks);
             DGV_ActionBooks.Refresh();
         }
 
 
         private void button_New_Book_Click(object sender, EventArgs e)
         {
-            long book_id = PARTIAL.Book.Add_Book();
+            long book_id = Book.Create_Item();
             if (book_id > 0)
             {
                 all_books = Queries_from_Views.Get_Books();
                 DGV_AllBooks.DataSource = General_Manipulations.Bind_List_to_DGV(all_books);
-                CODE.Form_Element_DGV.Prepare_DGV_For_Type<ViewBook>(DGV_AllBooks);
+                dgv_Visualisator.Prepare_DGV_For_Type<ViewBook>(DGV_AllBooks);
 
                 General_Manipulations.show_row(DGV_AllBooks, book_id.ToString(), "Id");
             }
@@ -93,6 +94,33 @@ namespace lib_postgres.FORMS
         private void DGV_ActionBooks_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             button_Del_Book_from_Action_Click(sender, e);
+        }
+
+        private void button_OK_Click(object sender, EventArgs e)
+        {
+            if (TB_Comment.Text == "")
+            {
+                General_Manipulations.simple_message("Не указано примечания к действию");
+                this.DialogResult = DialogResult.TryAgain;
+            }
+            else 
+                if (action_books == null || action_books.Count < 1)
+            {
+                General_Manipulations.simple_message("Не выбрано ни одной книги");
+                this.DialogResult = DialogResult.TryAgain;
+            }
+            else this.DialogResult = DialogResult.OK;
+        }
+
+        private void button_Cancel_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+        }
+
+        private void Form_Action_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (this.DialogResult == DialogResult.TryAgain)
+                e.Cancel = true;
         }
     }
 }

@@ -49,7 +49,8 @@
             this.tb_Name.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tb_Name.Name = "tb_Name";
             this.tb_Name.Size = new System.Drawing.Size(432, 23);
-            this.tb_Name.TabIndex = 9;
+            this.tb_Name.TabIndex = 0;
+            this.tb_Name.TabStop = false;
             // 
             // button_Cancel
             // 
@@ -72,7 +73,6 @@
             this.button_OK.TabIndex = 8;
             this.button_OK.Text = "OK";
             this.button_OK.UseVisualStyleBackColor = true;
-            this.button_OK.Click += new System.EventHandler(this.button_OK_Click);
             // 
             // Form_Simple_Element
             // 
@@ -91,6 +91,7 @@
             this.Name = "Form_Simple_Element";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Form_Simple_Element";
+            this.Activated += new System.EventHandler(this.Form_Simple_Element_Activated);
             this.ResumeLayout(false);
             this.PerformLayout();
 

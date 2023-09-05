@@ -47,7 +47,7 @@ namespace lib_postgres
 
         private void BT_Add_Art_Click(object sender, EventArgs e)
         {
-            var id = Art.Add_Art();
+            var id = Art.Create_Item();
             if (id > 0) General_Manipulations.CB_reload<Art>(CB_Art, id);
             DialogResult = DialogResult.None;
         }
@@ -55,28 +55,28 @@ namespace lib_postgres
 
         private void BT_Add_Maison_Click(object sender, EventArgs e)
         {
-            var id = PARTIAL.PublishingHouse.Add_PubHouse();
+            var id = PublishingHouse.Create_Item();
             if (id != 0) General_Manipulations.CB_reload<PublishingHouse>(CB_Publishing_House, id);
             DialogResult = DialogResult.None;
         }
 
         private void BT_Add_Langue_Book_Click(object sender, EventArgs e)
         {
-            var id = PARTIAL.Language.Add_Language();
+            var id = Language.Create_Item();
             if (id != 0) General_Manipulations.CB_reload<Language>(CB_Book_Language, id);
             DialogResult = DialogResult.None;
         }
 
         private void BT_Add_City_Click(object sender, EventArgs e)
         {
-            var id = PARTIAL.City.Add_City();
+            var id = City.Create_Item();
             if (id != 0) General_Manipulations.CB_reload<City>( CB_City, id);
             DialogResult = DialogResult.None;
         }
 
         private void BT_Add_Serie_Click(object sender, EventArgs e)
         {
-            var id = PARTIAL.Series.Add_Serie();
+            var id = Series.Create_Item();
             if (id != 0) General_Manipulations.CB_reload<Series>(CB_Series, id);
             DialogResult = DialogResult.None;
         }

@@ -18,15 +18,15 @@ namespace lib_postgres
         }
 
         public Form_Simple_Element(string caption, string label)
-        {    
+        {
             InitializeComponent();
             this.Text = caption;
             label1.Text = label;
         }
 
-        private void button_OK_Click(object sender, EventArgs e)
+        private void Form_Simple_Element_Activated(object sender, EventArgs e)
         {
-
+            tb_Name.Focus();
         }
     }
 }

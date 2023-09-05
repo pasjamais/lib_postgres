@@ -1,19 +1,22 @@
-﻿using System;
+﻿using lib_postgres.CODE;
+using lib_postgres.CODE.CRUD;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace lib_postgres.PARTIAL
+namespace lib_postgres
 {
-    public partial class Book
+    public partial class Book : ICan_Create_Item, IHas_field_ID, IHas_field_IsDeleted
     {
-        public static long Add_Book()
+        public static long Create_Item()
         {
+            lib_postgres.Book book = DB_Agent.Get_First_Deleted_Entity_or_New<lib_postgres.Book>(DB_Agent.Get_Books());
             Form_Book formBook = new Form_Book();
             DialogResult dialogResult = formBook.ShowDialog();
             if (dialogResult != DialogResult.OK) return -1;
-            lib_postgres.Book book = new lib_postgres.Book();
             book.IdArt = (System.Int64)formBook.CB_Art.SelectedValue;
             if (formBook.ChB_Publishing_House.Checked) book.IdPublishingHouse = (System.Int64)formBook.CB_Publishing_House.SelectedValue;
             if (formBook.ChB_City.Checked) book.IdCity = (System.Int64)formBook.CB_City.SelectedValue;
@@ -32,14 +35,21 @@ namespace lib_postgres.PARTIAL
             if (formBook.TB_Notes.Text != "") book.Notes = formBook.TB_Notes.Text;
             if (formBook.TB_Code.Text != "") book.Code = formBook.TB_Code.Text;
             if (formBook.TB_Family_Notes.Text != "") book.FamilyNotes = formBook.TB_Family_Notes.Text;
-            DB_Agent.Book_Add(book);
+
+            if (book.Id == 0)
+            {
+                DB_Agent.Book_Add(book);
+            }
+            else
+            {
+                book.IsDeleted = false;
+                DB_Agent.Save_Changes();
+            }
             return book.Id;
         }
 
-        public static long Edit_Book(DataGridView dataGridView)
+        public static long Edit_Book(long id)
         {
-            int index = dataGridView.SelectedRows[0].Index;
-            long id = (long)dataGridView.Rows[index].Cells["Id"].Value;
             lib_postgres.Book book = DB_Agent.Get_Book(id);
             Form_Book formBook = new Form_Book();
             formBook.CB_Art.SelectedValue = book.IdArt;
@@ -79,6 +89,17 @@ namespace lib_postgres.PARTIAL
             book.Code = General_Manipulations.compare_string_values(book.Code, formBook.TB_Code.Text);
             book.FamilyNotes = General_Manipulations.compare_string_values(book.FamilyNotes, formBook.TB_Family_Notes.Text);
             book.Pages = General_Manipulations.Get_Number_from_String(General_Manipulations.compare_string_values(book.Pages.ToString(), formBook.TB_Pages.Text));
+            DB_Agent.db.SaveChanges();
+            return book.Id;
+        }
+
+        public static long Delete_Item_by_ID(long id)
+        {
+            lib_postgres.Book book = DB_Agent.Get_Book(id);
+            if (book.IsDeleted.HasValue)
+                book.IsDeleted = !book.IsDeleted;
+            else
+                book.IsDeleted = true;
             DB_Agent.db.SaveChanges();
             return book.Id;
         }
