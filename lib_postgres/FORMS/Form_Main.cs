@@ -8,10 +8,12 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Npgsql;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Reflection.Emit;
 using System.Windows.Forms;
 using static System.Windows.Forms.DataFormats;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 
@@ -33,12 +35,13 @@ namespace lib_postgres
         DGV_Visualisator dgv_Visualisator;
         public DGV_Visualisator.Turn_Off_or_ON_Current_Menu_Item Turn_Off;
         public DGV_Visualisator.Turn_Off_or_ON_Current_Menu_Item Turn_ON;
+
+        private Deploy deploy = new Deploy();
         public Form_Main()
         {
             InitializeComponent();
             Binding_Elements();
             main_menu_generation();
-            Backup_on_Start();
                 
             this.dgv_Visualisator = new DGV_Visualisator();
             Turn_Off =  delegate () { this.Turn_Off_Current_Menu_Item(); };
@@ -163,7 +166,21 @@ namespace lib_postgres
         {
             BackupBD();
         }
+        private void ToolStripMenuItem_File_RestoreBD_Click(object sender, EventArgs e)
+        {
+            if (Directory.Exists(Deploy.backup_dir_path))
+                openFileDialog_BD_Backup.InitialDirectory = Deploy.backup_dir_path;
+            else
+            {
+                openFileDialog_BD_Backup.InitialDirectory = @"C:\";
+            }
+            if (openFileDialog_BD_Backup.ShowDialog() == DialogResult.Cancel)
+                return; 
+            string filename = openFileDialog_BD_Backup.FileName;
+            Deploy.Restore_BD(filename);
 
+
+        }
         private void ToolStripMenuItem_File_Open_Settings_Click(object sender, EventArgs e)
         {
             Form_Settings form_Settings = new Form_Settings();
@@ -1007,6 +1024,8 @@ namespace lib_postgres
             var DialogResult = form_graphviz.ShowDialog();
 
         }
+
+
     }
 }
 

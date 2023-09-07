@@ -57,7 +57,7 @@ namespace lib_postgres.VISUAL.TreeViewViz
         }
          public static List<Recomendation> Get_Recommendations()
         {
-            var rec = CODE.Queries_SQL_Direct.Fill_DataTable_by_Query(DB_Agent.Get_Query(3).Text);
+            var rec = CODE.Queries_SQL_Direct.Fill_DataTable_by_Query(DB_Agent.Get_Query(3).Text, DB_Agent.Get_Connection_String());
             List<Recomendation> data = new List<Recomendation>();
             data = (from DataRow row in rec.Rows
                     select new Recomendation

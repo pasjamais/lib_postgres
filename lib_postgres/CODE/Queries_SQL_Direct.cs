@@ -5,16 +5,18 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace lib_postgres.CODE
 {
 
     public static class Queries_SQL_Direct
     {
-        public static DataTable Fill_DataTable_by_Query(string queryString)
+        public static DataTable Fill_DataTable_by_Query(string queryString, string connection_string)
         {
             DataSet ds = new DataSet();
-            NpgsqlConnection conn = new NpgsqlConnection(DB_Agent.Get_Connection_String());
+            NpgsqlConnection conn = new NpgsqlConnection(connection_string);
             conn.Open();
             NpgsqlDataAdapter da = new NpgsqlDataAdapter(queryString, conn);
             da.Fill(ds);
@@ -49,6 +51,20 @@ namespace lib_postgres.CODE
 
             else return DbType.Object;
         }
+
+        public static void Execute_Command(string command_text, string conn_string)
+        {
+            NpgsqlConnection conn = new NpgsqlConnection(conn_string);
+            conn.Open();
+            var command = conn.CreateCommand();
+            command.CommandText = command_text;
+            command.ExecuteReader();
+            conn.Close();
+        }
+
+     
+
+
 
     }
 }

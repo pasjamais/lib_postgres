@@ -9,11 +9,14 @@ namespace lib_postgres
 {
     public static class FileDotEngine
     {
+        private static string dt_file_name = "testgraph.dt";
+        private static string svg_file_name = "testgraph.dt.svg";
         public static string Run(string dot)
         {
             string executable = @".\external\dot.exe";
-            string output = @".\external\testgraph.dt";
-            string svgfilename = AppDomain.CurrentDomain.BaseDirectory + "external\\testgraph.dt.svg";
+            string output = Deploy.Output_Directory + "\\" + dt_file_name;
+            string svgfilename = Deploy.Output_Directory + "\\" + svg_file_name;
+
             File.WriteAllText(output, dot);
 
             System.Diagnostics.Process process = new System.Diagnostics.Process();

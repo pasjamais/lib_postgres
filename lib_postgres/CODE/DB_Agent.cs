@@ -41,7 +41,12 @@ namespace lib_postgres
             else return null;
         }
 
-
+        public static void Renew_Connection()
+        {
+            db.Dispose();
+            libContext new_context = new libContext();
+            db = new_context;
+        }
 
         #endregion general
 
@@ -283,12 +288,12 @@ namespace lib_postgres
         #endregion
 
         #region AuthorArts
-        public static List<AuthorArt> _Get_AuthorArts()
+        public static List<AuthorArt> Get_AuthorArts()
         {
             return db.AuthorArts.ToList();
         }
         //Get_AuthorArts_without_Deleted
-        public static List<AuthorArt> Get_AuthorArts()
+        public static List<AuthorArt> _Get_AuthorArts()
         {
             List<AuthorArt>  authorArts = db.AuthorArts.ToList();
             List<AuthorArt> authorArts_actives = (from item in authorArts
