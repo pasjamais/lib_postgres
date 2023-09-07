@@ -38,8 +38,7 @@ namespace lib_postgres
 
         private Deploy deploy = new Deploy();
         public Form_Main()
-        {
-            InitializeComponent();
+        {   InitializeComponent();
             Binding_Elements();
             main_menu_generation();
                 
@@ -177,9 +176,7 @@ namespace lib_postgres
             if (openFileDialog_BD_Backup.ShowDialog() == DialogResult.Cancel)
                 return; 
             string filename = openFileDialog_BD_Backup.FileName;
-            Deploy.Restore_BD(filename);
-
-
+            Deploy.Restore_BD(filename,Deploy.is_DB_Exists());
         }
         private void ToolStripMenuItem_File_Open_Settings_Click(object sender, EventArgs e)
         {

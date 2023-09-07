@@ -7,6 +7,9 @@
     <Compile Update="FORMS\Form_Art_To_Read.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="FORMS\Form_DB.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="FORMS\Form_Graphviz.cs">
       <SubType>Form</SubType>
     </Compile>

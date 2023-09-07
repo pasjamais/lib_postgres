@@ -15,6 +15,7 @@ namespace lib_postgres
         #region general
         public static string Get_Connection_String()
         {
+
             return Get_Value_from_Settings_File(CODE.Data.ini_file_name, "connection_string", "GENERAL");
         }
 

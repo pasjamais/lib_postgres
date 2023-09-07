@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Language));
             this.label1 = new System.Windows.Forms.Label();
             this.tb_Name = new System.Windows.Forms.TextBox();
             this.button_Cancel = new System.Windows.Forms.Button();
@@ -36,56 +37,37 @@
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(29, 22);
+            resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(37, 15);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Язык:";
             // 
             // tb_Name
             // 
-            this.tb_Name.Location = new System.Drawing.Point(74, 20);
-            this.tb_Name.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            resources.ApplyResources(this.tb_Name, "tb_Name");
             this.tb_Name.Name = "tb_Name";
-            this.tb_Name.Size = new System.Drawing.Size(336, 23);
-            this.tb_Name.TabIndex = 5;
             // 
             // button_Cancel
             // 
             this.button_Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button_Cancel.Location = new System.Drawing.Point(143, 88);
-            this.button_Cancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            resources.ApplyResources(this.button_Cancel, "button_Cancel");
             this.button_Cancel.Name = "button_Cancel";
-            this.button_Cancel.Size = new System.Drawing.Size(82, 22);
-            this.button_Cancel.TabIndex = 3;
-            this.button_Cancel.Text = "Cancel";
             this.button_Cancel.UseVisualStyleBackColor = true;
             // 
             // button_OK
             // 
             this.button_OK.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.button_OK.Location = new System.Drawing.Point(29, 88);
-            this.button_OK.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            resources.ApplyResources(this.button_OK, "button_OK");
             this.button_OK.Name = "button_OK";
-            this.button_OK.Size = new System.Drawing.Size(82, 22);
-            this.button_OK.TabIndex = 4;
-            this.button_OK.Text = "OK";
             this.button_OK.UseVisualStyleBackColor = true;
             // 
             // Form_Language
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(436, 128);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tb_Name);
             this.Controls.Add(this.button_Cancel);
             this.Controls.Add(this.button_OK);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Form_Language";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Язык";
             this.ResumeLayout(false);
             this.PerformLayout();
 

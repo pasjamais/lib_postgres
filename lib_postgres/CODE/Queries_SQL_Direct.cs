@@ -62,9 +62,16 @@ namespace lib_postgres.CODE
             conn.Close();
         }
 
-     
-
-
-
+        public static object? ExecuteScalar(string command_text, string conn_string)
+        {
+            using (NpgsqlConnection conn = new NpgsqlConnection(conn_string))
+            {
+                conn.Open();
+                using (NpgsqlCommand cmd = new NpgsqlCommand(command_text, conn))
+                {
+                    return cmd.ExecuteScalar();
+                }
+            }
+        }
     }
 }
