@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Action));
             this.panel1 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.button_Del_Book_from_Action = new System.Windows.Forms.Button();
@@ -61,6 +62,7 @@
             // 
             // panel1
             // 
+            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.button_Del_Book_from_Action);
             this.panel1.Controls.Add(this.label2);
@@ -71,267 +73,172 @@
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.label13);
             this.panel1.Controls.Add(this.TB_Comment);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(3, 18);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1023, 126);
-            this.panel1.TabIndex = 0;
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(414, 102);
+            resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(113, 15);
-            this.label3.TabIndex = 74;
-            this.label3.Text = "Выбранные книги::";
             // 
             // button_Del_Book_from_Action
             // 
-            this.button_Del_Book_from_Action.Location = new System.Drawing.Point(7, 98);
-            this.button_Del_Book_from_Action.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            resources.ApplyResources(this.button_Del_Book_from_Action, "button_Del_Book_from_Action");
             this.button_Del_Book_from_Action.Name = "button_Del_Book_from_Action";
-            this.button_Del_Book_from_Action.Size = new System.Drawing.Size(122, 22);
-            this.button_Del_Book_from_Action.TabIndex = 73;
-            this.button_Del_Book_from_Action.Text = "Удалить из списка";
             this.button_Del_Book_from_Action.UseVisualStyleBackColor = true;
             this.button_Del_Book_from_Action.Click += new System.EventHandler(this.button_Del_Book_from_Action_Click);
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 13);
+            resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 15);
-            this.label2.TabIndex = 70;
-            this.label2.Text = "Дата:";
             // 
             // dateTimePicker
             // 
-            this.dateTimePicker.Location = new System.Drawing.Point(50, 7);
-            this.dateTimePicker.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            resources.ApplyResources(this.dateTimePicker, "dateTimePicker");
             this.dateTimePicker.Name = "dateTimePicker";
-            this.dateTimePicker.Size = new System.Drawing.Size(199, 23);
-            this.dateTimePicker.TabIndex = 69;
             // 
             // CB_Action_Type
             // 
+            resources.ApplyResources(this.CB_Action_Type, "CB_Action_Type");
             this.CB_Action_Type.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CB_Action_Type.FormattingEnabled = true;
-            this.CB_Action_Type.Location = new System.Drawing.Point(414, 34);
-            this.CB_Action_Type.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CB_Action_Type.Name = "CB_Action_Type";
-            this.CB_Action_Type.Size = new System.Drawing.Size(594, 23);
-            this.CB_Action_Type.TabIndex = 67;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(347, 37);
+            resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(61, 15);
-            this.label1.TabIndex = 68;
-            this.label1.Text = "Действие:";
             // 
             // CB_Place
             // 
+            resources.ApplyResources(this.CB_Place, "CB_Place");
             this.CB_Place.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CB_Place.FormattingEnabled = true;
-            this.CB_Place.Location = new System.Drawing.Point(414, 7);
-            this.CB_Place.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CB_Place.Name = "CB_Place";
-            this.CB_Place.Size = new System.Drawing.Size(594, 23);
-            this.CB_Place.TabIndex = 65;
             // 
             // label6
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(289, 10);
+            resources.ApplyResources(this.label6, "label6");
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(119, 15);
-            this.label6.TabIndex = 66;
-            this.label6.Text = "Место поступления:";
             // 
             // label13
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(262, 70);
+            resources.ApplyResources(this.label13, "label13");
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(146, 15);
-            this.label13.TabIndex = 64;
-            this.label13.Text = "Примечание к действию:";
             // 
             // TB_Comment
             // 
-            this.TB_Comment.Location = new System.Drawing.Point(414, 64);
-            this.TB_Comment.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            resources.ApplyResources(this.TB_Comment, "TB_Comment");
             this.TB_Comment.Name = "TB_Comment";
-            this.TB_Comment.Size = new System.Drawing.Size(594, 23);
-            this.TB_Comment.TabIndex = 63;
             // 
             // DGV_ActionBooks
             // 
+            resources.ApplyResources(this.DGV_ActionBooks, "DGV_ActionBooks");
             this.DGV_ActionBooks.AllowUserToAddRows = false;
             this.DGV_ActionBooks.AllowUserToDeleteRows = false;
             this.DGV_ActionBooks.AllowUserToResizeRows = false;
             this.DGV_ActionBooks.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DGV_ActionBooks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DGV_ActionBooks.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DGV_ActionBooks.Location = new System.Drawing.Point(3, 144);
-            this.DGV_ActionBooks.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.DGV_ActionBooks.MultiSelect = false;
             this.DGV_ActionBooks.Name = "DGV_ActionBooks";
             this.DGV_ActionBooks.ReadOnly = true;
             this.DGV_ActionBooks.RowHeadersVisible = false;
-            this.DGV_ActionBooks.RowHeadersWidth = 51;
             this.DGV_ActionBooks.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DGV_ActionBooks.Size = new System.Drawing.Size(1023, 177);
-            this.DGV_ActionBooks.TabIndex = 0;
             this.DGV_ActionBooks.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGV_ActionBooks_CellContentClick);
             // 
             // groupBox1
             // 
+            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Controls.Add(this.DGV_ActionBooks);
             this.groupBox1.Controls.Add(this.panel1);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox1.Location = new System.Drawing.Point(0, 0);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox1.Size = new System.Drawing.Size(1029, 323);
-            this.groupBox1.TabIndex = 71;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Действие";
             // 
             // groupBox2
             // 
+            resources.ApplyResources(this.groupBox2, "groupBox2");
             this.groupBox2.Controls.Add(this.panel3);
             this.groupBox2.Controls.Add(this.DGV_AllBooks);
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox2.Location = new System.Drawing.Point(0, 323);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox2.Size = new System.Drawing.Size(1029, 377);
-            this.groupBox2.TabIndex = 72;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Все книги";
             // 
             // panel3
             // 
+            resources.ApplyResources(this.panel3, "panel3");
             this.panel3.Controls.Add(this.label4);
             this.panel3.Controls.Add(this.button_New_Book);
             this.panel3.Controls.Add(this.button_Add_Book_to_Action);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(3, 18);
-            this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1023, 29);
-            this.panel3.TabIndex = 3;
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(428, 7);
+            resources.ApplyResources(this.label4, "label4");
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(67, 15);
-            this.label4.TabIndex = 76;
-            this.label4.Text = "Все книги::";
             // 
             // button_New_Book
             // 
-            this.button_New_Book.Location = new System.Drawing.Point(148, 0);
-            this.button_New_Book.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            resources.ApplyResources(this.button_New_Book, "button_New_Book");
             this.button_New_Book.Name = "button_New_Book";
-            this.button_New_Book.Size = new System.Drawing.Size(101, 22);
-            this.button_New_Book.TabIndex = 75;
-            this.button_New_Book.Text = "Новая книга...";
             this.button_New_Book.UseVisualStyleBackColor = true;
             this.button_New_Book.Click += new System.EventHandler(this.button_New_Book_Click);
             // 
             // button_Add_Book_to_Action
             // 
-            this.button_Add_Book_to_Action.Location = new System.Drawing.Point(7, 0);
-            this.button_Add_Book_to_Action.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            resources.ApplyResources(this.button_Add_Book_to_Action, "button_Add_Book_to_Action");
             this.button_Add_Book_to_Action.Name = "button_Add_Book_to_Action";
-            this.button_Add_Book_to_Action.Size = new System.Drawing.Size(122, 22);
-            this.button_Add_Book_to_Action.TabIndex = 74;
-            this.button_Add_Book_to_Action.Text = "Добавить в список";
             this.button_Add_Book_to_Action.UseVisualStyleBackColor = true;
             this.button_Add_Book_to_Action.Click += new System.EventHandler(this.button_Add_Book_to_Action_Click);
             // 
             // DGV_AllBooks
             // 
+            resources.ApplyResources(this.DGV_AllBooks, "DGV_AllBooks");
             this.DGV_AllBooks.AllowUserToAddRows = false;
             this.DGV_AllBooks.AllowUserToDeleteRows = false;
             this.DGV_AllBooks.AllowUserToResizeRows = false;
             this.DGV_AllBooks.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DGV_AllBooks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DGV_AllBooks.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.DGV_AllBooks.Location = new System.Drawing.Point(3, 51);
-            this.DGV_AllBooks.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.DGV_AllBooks.MultiSelect = false;
             this.DGV_AllBooks.Name = "DGV_AllBooks";
             this.DGV_AllBooks.ReadOnly = true;
             this.DGV_AllBooks.RowHeadersVisible = false;
-            this.DGV_AllBooks.RowHeadersWidth = 51;
             this.DGV_AllBooks.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DGV_AllBooks.Size = new System.Drawing.Size(1023, 324);
-            this.DGV_AllBooks.TabIndex = 0;
             this.DGV_AllBooks.DoubleClick += new System.EventHandler(this.DGV_AllBooks_DoubleClick);
             // 
             // button_OK
             // 
+            resources.ApplyResources(this.button_OK, "button_OK");
             this.button_OK.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.button_OK.Location = new System.Drawing.Point(12, 7);
-            this.button_OK.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button_OK.Name = "button_OK";
-            this.button_OK.Size = new System.Drawing.Size(82, 22);
-            this.button_OK.TabIndex = 74;
-            this.button_OK.Text = "OK";
             this.button_OK.UseVisualStyleBackColor = true;
             this.button_OK.Click += new System.EventHandler(this.button_OK_Click);
             // 
             // panel_Bottom
             // 
+            resources.ApplyResources(this.panel_Bottom, "panel_Bottom");
             this.panel_Bottom.Controls.Add(this.button_Cancel);
             this.panel_Bottom.Controls.Add(this.button_OK);
-            this.panel_Bottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel_Bottom.Location = new System.Drawing.Point(0, 700);
-            this.panel_Bottom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel_Bottom.Name = "panel_Bottom";
-            this.panel_Bottom.Size = new System.Drawing.Size(1029, 35);
-            this.panel_Bottom.TabIndex = 75;
             // 
             // button_Cancel
             // 
+            resources.ApplyResources(this.button_Cancel, "button_Cancel");
             this.button_Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button_Cancel.Location = new System.Drawing.Point(939, 7);
-            this.button_Cancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button_Cancel.Name = "button_Cancel";
-            this.button_Cancel.Size = new System.Drawing.Size(82, 22);
-            this.button_Cancel.TabIndex = 75;
-            this.button_Cancel.Text = "Cancel";
             this.button_Cancel.UseVisualStyleBackColor = true;
             this.button_Cancel.Click += new System.EventHandler(this.button_Cancel_Click);
             // 
             // Form_Action
             // 
             this.AcceptButton = this.button_OK;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.button_Cancel;
-            this.ClientSize = new System.Drawing.Size(1029, 735);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.panel_Bottom);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
             this.Name = "Form_Action";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Действие";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_Action_FormClosing);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

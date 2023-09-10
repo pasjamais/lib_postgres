@@ -182,5 +182,10 @@ namespace lib_postgres
             if (this.DialogResult == DialogResult.TryAgain)
                 e.Cancel = true;
         }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

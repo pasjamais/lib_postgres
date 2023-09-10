@@ -15,7 +15,8 @@ using System.Windows.Forms;
 using static System.Windows.Forms.DataFormats;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
-
+using System.Globalization;
+using System.Threading;
 
 namespace lib_postgres
 {
@@ -41,7 +42,6 @@ namespace lib_postgres
         {   InitializeComponent();
             Binding_Elements();
             main_menu_generation();
-                
             this.dgv_Visualisator = new DGV_Visualisator();
             Turn_Off =  delegate () { this.Turn_Off_Current_Menu_Item(); };
             Turn_ON =   delegate () { this.Turn_On_Current_Menu_Item(); };

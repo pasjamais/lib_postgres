@@ -39,5 +39,6 @@ namespace lib_postgres.FORMS
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
+
     }
 }
