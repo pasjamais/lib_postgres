@@ -39,11 +39,11 @@
             this.CB_Preset = new System.Windows.Forms.ComboBox();
             this.panel_DGV_opt = new System.Windows.Forms.Panel();
             this.DGV_Graph_Options = new System.Windows.Forms.DataGridView();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel_browser = new System.Windows.Forms.Panel();
             this.RelatedTo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.property = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.value = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel_browser = new System.Windows.Forms.Panel();
             this.panel_opt_bottom.SuspendLayout();
             this.panel_opt_top.SuspendLayout();
             this.panel_DGV_opt.SuspendLayout();
@@ -53,10 +53,10 @@
             // 
             // panel_opt_bottom
             // 
-            resources.ApplyResources(this.panel_opt_bottom, "panel_opt_bottom");
             this.panel_opt_bottom.Controls.Add(this.LL_Graphviz);
             this.panel_opt_bottom.Controls.Add(this.BT_Show);
             this.panel_opt_bottom.Controls.Add(this.BT_Cancel);
+            resources.ApplyResources(this.panel_opt_bottom, "panel_opt_bottom");
             this.panel_opt_bottom.Name = "panel_opt_bottom";
             // 
             // LL_Graphviz
@@ -114,7 +114,6 @@
             // 
             // DGV_Graph_Options
             // 
-            resources.ApplyResources(this.DGV_Graph_Options, "DGV_Graph_Options");
             this.DGV_Graph_Options.AllowUserToAddRows = false;
             this.DGV_Graph_Options.AllowUserToDeleteRows = false;
             this.DGV_Graph_Options.AllowUserToResizeRows = false;
@@ -123,11 +122,25 @@
             this.RelatedTo,
             this.property,
             this.value});
+            resources.ApplyResources(this.DGV_Graph_Options, "DGV_Graph_Options");
             this.DGV_Graph_Options.MultiSelect = false;
             this.DGV_Graph_Options.Name = "DGV_Graph_Options";
             this.DGV_Graph_Options.RowHeadersVisible = false;
             this.DGV_Graph_Options.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.DGV_Graph_Options.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGV_Graph_Options_CellContentClick);
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.panel_DGV_opt);
+            this.panel2.Controls.Add(this.panel_opt_bottom);
+            this.panel2.Controls.Add(this.panel_opt_top);
+            resources.ApplyResources(this.panel2, "panel2");
+            this.panel2.Name = "panel2";
+            // 
+            // panel_browser
+            // 
+            resources.ApplyResources(this.panel_browser, "panel_browser");
+            this.panel_browser.Name = "panel_browser";
             // 
             // RelatedTo
             // 
@@ -145,19 +158,6 @@
             // 
             resources.ApplyResources(this.value, "value");
             this.value.Name = "value";
-            // 
-            // panel2
-            // 
-            resources.ApplyResources(this.panel2, "panel2");
-            this.panel2.Controls.Add(this.panel_DGV_opt);
-            this.panel2.Controls.Add(this.panel_opt_bottom);
-            this.panel2.Controls.Add(this.panel_opt_top);
-            this.panel2.Name = "panel2";
-            // 
-            // panel_browser
-            // 
-            resources.ApplyResources(this.panel_browser, "panel_browser");
-            this.panel_browser.Name = "panel_browser";
             // 
             // Form_Graphviz
             // 

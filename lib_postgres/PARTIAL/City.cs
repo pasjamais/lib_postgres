@@ -11,7 +11,12 @@ namespace lib_postgres
     public partial class City : IHas_field_IsDeleted, IHas_field_ID, IHas_field_Name, ICan_Create_Item
     {
         public static DB_Agent.write_item_to_BD creation_method;
-     
+
+        static string form_caption = Localization.Substitute("Edit_city");
+        static string label_caption = Localization.Substitute("Appellation");
+        static string deja_exists_caption = Localization.Substitute("City_already_exists");
+        static string edit_element_name = Localization.Substitute("Edit_city");
+        static string new_element_name = Localization.Substitute("New_appellation");
         public static long Create_Item()
         {
             City element = DB_Agent.Get_First_Deleted_Entity_or_New <City>(DB_Agent.Get_Cities());
@@ -23,20 +28,20 @@ namespace lib_postgres
          
             return DB_Agent.Create_Item <City>(element,
                                                             DB_Agent.Get_Cities(),
-                                                            "Добавить город", 
-                                                            "Название:", 
-                                                            "Город уже существует",
+                                                            form_caption,
+                                                            label_caption,
+                                                            deja_exists_caption,
                                                             creation_method);
         }
         public static long Edit_Item_by_ID(long id)
         {
             lib_postgres.City element = DB_Agent.Get_City(id);
-            var new_name = General_Manipulations.simple_element_modify("Изменить город", "Новое название:", element.Name);
+            var new_name = General_Manipulations.simple_element_modify(edit_element_name, new_element_name, element.Name);
             if (new_name != "")
             {
                 if (DB_Agent.db.Cities.ToList().Exists(e => e.Name == new_name))
                 {
-                    General_Manipulations.simple_message("Город уже существует");
+                    General_Manipulations.simple_message(deja_exists_caption);
                     return 0;
                 }
                 element.Name = new_name;

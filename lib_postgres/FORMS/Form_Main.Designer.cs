@@ -140,6 +140,9 @@
             this.ToolStripMenuItem_People_Edit = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_People_Delete = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_UI_Language = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem_UI_Language_RU = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem_UI_Language_FR = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem_UI_Language_EN = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem__Recommendations_Sho = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog_BD_Backup = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.book1BindingSource)).BeginInit();
@@ -900,8 +903,30 @@
             // 
             // ToolStripMenuItem_UI_Language
             // 
+            this.ToolStripMenuItem_UI_Language.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripMenuItem_UI_Language_RU,
+            this.ToolStripMenuItem_UI_Language_FR,
+            this.ToolStripMenuItem_UI_Language_EN});
             this.ToolStripMenuItem_UI_Language.Name = "ToolStripMenuItem_UI_Language";
             resources.ApplyResources(this.ToolStripMenuItem_UI_Language, "ToolStripMenuItem_UI_Language");
+            // 
+            // ToolStripMenuItem_UI_Language_RU
+            // 
+            this.ToolStripMenuItem_UI_Language_RU.Name = "ToolStripMenuItem_UI_Language_RU";
+            resources.ApplyResources(this.ToolStripMenuItem_UI_Language_RU, "ToolStripMenuItem_UI_Language_RU");
+            this.ToolStripMenuItem_UI_Language_RU.Click += new System.EventHandler(this.ToolStripMenuItem_UI_Language_Changing_Click);
+            // 
+            // ToolStripMenuItem_UI_Language_FR
+            // 
+            this.ToolStripMenuItem_UI_Language_FR.Name = "ToolStripMenuItem_UI_Language_FR";
+            resources.ApplyResources(this.ToolStripMenuItem_UI_Language_FR, "ToolStripMenuItem_UI_Language_FR");
+            this.ToolStripMenuItem_UI_Language_FR.Click += new System.EventHandler(this.ToolStripMenuItem_UI_Language_Changing_Click);
+            // 
+            // ToolStripMenuItem_UI_Language_EN
+            // 
+            this.ToolStripMenuItem_UI_Language_EN.Name = "ToolStripMenuItem_UI_Language_EN";
+            resources.ApplyResources(this.ToolStripMenuItem_UI_Language_EN, "ToolStripMenuItem_UI_Language_EN");
+            this.ToolStripMenuItem_UI_Language_EN.Click += new System.EventHandler(this.ToolStripMenuItem_UI_Language_Changing_Click);
             // 
             // ToolStripMenuItem__Recommendations_Sho
             // 
@@ -1042,5 +1067,8 @@
         private ToolStripMenuItem ToolStripMenuItem_File_RestoreBD;
         private OpenFileDialog openFileDialog_BD_Backup;
         private ToolStripMenuItem ToolStripMenuItem_UI_Language;
+        private ToolStripMenuItem ToolStripMenuItem_UI_Language_RU;
+        private ToolStripMenuItem ToolStripMenuItem_UI_Language_FR;
+        private ToolStripMenuItem ToolStripMenuItem_UI_Language_EN;
     }
 }

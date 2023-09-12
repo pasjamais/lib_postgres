@@ -76,6 +76,12 @@
   <data name="label_preset.Text" xml:space="preserve">
     <value>Préréglage</value>
   </data>
+  <data name="property.HeaderText" xml:space="preserve">
+    <value>propriété</value>
+  </data>
+  <data name="value.HeaderText" xml:space="preserve">
+    <value>valeur</value>
+  </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Visualisation Graphviz</value>
   </data>

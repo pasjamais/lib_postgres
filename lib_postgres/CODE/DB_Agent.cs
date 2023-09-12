@@ -516,8 +516,11 @@ namespace lib_postgres
             where T :   CODE.CRUD.IHas_field_IsDeleted, 
                         CODE.CRUD.IHas_field_Name, 
                         CODE.CRUD.IHas_field_ID, new()
-        {
-            var new_name = General_Manipulations.simple_element_add(form_caption, label_caption);
+
+        { 
+            string f_caption, l_caption;
+            Localization.Get_Local_Captions_for_Simple_Form<T>(out f_caption, out l_caption);
+            var new_name = General_Manipulations.simple_element_add(f_caption, l_caption);
             if (new_name != "")
             {
                 if (all_elements.Exists(e => e.Name == new_name))

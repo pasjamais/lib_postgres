@@ -79,9 +79,6 @@
   <data name="groupBox_Source.Text" xml:space="preserve">
     <value>Source de recommandation :</value>
   </data>
-  <data name="Label_Source_Another.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt, style=Bold</value>
-  </data>
   <data name="Label_Source_Another.Size" type="System.Drawing.Size, System.Drawing">
     <value>85, 15</value>
   </data>
@@ -105,6 +102,9 @@
   </data>
   <data name="Label_Source_Art.Text" xml:space="preserve">
     <value>Ouvrage :</value>
+  </data>
+  <data name="groupBox_ToRead.Text" xml:space="preserve">
+    <value>Recommаndation (à lire) :</value>
   </data>
   <data name="Label_Toread_Author.Location" type="System.Drawing.Point, System.Drawing">
     <value>112, 70</value>

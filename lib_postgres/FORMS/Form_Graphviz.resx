@@ -57,395 +57,395 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="&gt;&gt;panel_opt_top.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;CB_Preset.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;DGV_Graph_Options.Parent" xml:space="preserve">
-    <value>panel_DGV_opt</value>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="LL_Graphviz.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="LL_Graphviz.Location" type="System.Drawing.Point, System.Drawing">
     <value>25, 5</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="CB_Preset.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
-  </data>
-  <data name="BT_Show.Size" type="System.Drawing.Size, System.Drawing">
-    <value>83, 27</value>
-  </data>
-  <data name="&gt;&gt;BT_Show.Name" xml:space="preserve">
-    <value>BT_Show</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="label_preset.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Graphviz Visualization</value>
-  </data>
-  <data name="&gt;&gt;BT_Show.Parent" xml:space="preserve">
-    <value>panel_opt_bottom</value>
-  </data>
-  <data name="panel_DGV_opt.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 440</value>
-  </data>
-  <data name="label_preset.Text" xml:space="preserve">
-    <value>Preset:</value>
-  </data>
-  <data name="DGV_Graph_Options.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="DGV_Graph_Options.RowHeadersWidth" type="System.Int32, mscorlib">
-    <value>51</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="DGV_Graph_Options.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>10, 10, 10, 10</value>
-  </data>
-  <data name="&gt;&gt;BT_Cancel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;LL_Graphviz.Type" xml:space="preserve">
-    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;BT_Cancel.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="CB_Visualisation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>185, 23</value>
-  </data>
-  <data name="&gt;&gt;BT_Show.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;panel_DGV_opt.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="BT_Show.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top</value>
+  <data name="LL_Graphviz.Size" type="System.Drawing.Size, System.Drawing">
+    <value>146, 15</value>
   </data>
   <data name="LL_Graphviz.TabIndex" type="System.Int32, mscorlib">
     <value>86</value>
   </data>
-  <data name="panel_browser.Size" type="System.Drawing.Size, System.Drawing">
-    <value>847, 577</value>
-  </data>
-  <data name="CB_Preset.Location" type="System.Drawing.Point, System.Drawing">
-    <value>67, 42</value>
-  </data>
-  <data name="&gt;&gt;DGV_Graph_Options.Name" xml:space="preserve">
-    <value>DGV_Graph_Options</value>
-  </data>
-  <data name="DGV_Graph_Options.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="panel_opt_bottom.TabIndex" type="System.Int32, mscorlib">
-    <value>91</value>
-  </data>
-  <data name="&gt;&gt;panel_browser.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="BT_Cancel.Text" xml:space="preserve">
-    <value>Cancel</value>
-  </data>
-  <data name="property.Width" type="System.Int32, mscorlib">
-    <value>107</value>
-  </data>
-  <data name="&gt;&gt;CB_Visualisation.Name" xml:space="preserve">
-    <value>CB_Visualisation</value>
-  </data>
-  <data name="BT_Cancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>111, 27</value>
-  </data>
-  <data name="&gt;&gt;label_preset.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;value.Name" xml:space="preserve">
-    <value>value</value>
-  </data>
-  <data name="CB_Visualisation.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 13</value>
-  </data>
-  <data name="&gt;&gt;panel_DGV_opt.Name" xml:space="preserve">
-    <value>panel_DGV_opt</value>
-  </data>
-  <data name="&gt;&gt;label_preset.Name" xml:space="preserve">
-    <value>label_preset</value>
-  </data>
-  <data name="panel_opt_bottom.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 512</value>
-  </data>
-  <data name="&gt;&gt;panel_opt_top.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="BT_Show.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 27</value>
-  </data>
-  <data name="RelatedTo.HeaderText" xml:space="preserve">
-    <value>RelatedTo</value>
-  </data>
-  <data name="&gt;&gt;panel_opt_top.Parent" xml:space="preserve">
-    <value>panel2</value>
-  </data>
-  <data name="&gt;&gt;BT_Cancel.Parent" xml:space="preserve">
-    <value>panel_opt_bottom</value>
-  </data>
-  <data name="BT_Cancel.TabIndex" type="System.Int32, mscorlib">
-    <value>85</value>
-  </data>
-  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
-    <value>CenterScreen</value>
-  </data>
-  <data name="panel_browser.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="panel_DGV_opt.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="&gt;&gt;CB_Preset.Name" xml:space="preserve">
-    <value>CB_Preset</value>
-  </data>
-  <data name="&gt;&gt;CB_Visualisation.Parent" xml:space="preserve">
-    <value>panel_opt_top</value>
-  </data>
-  <data name="CB_Visualisation.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>Form_Graphviz</value>
-  </data>
-  <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 577</value>
-  </data>
-  <data name="panel_browser.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="label_preset.TabIndex" type="System.Int32, mscorlib">
-    <value>87</value>
-  </data>
-  <data name="&gt;&gt;label_preset.Parent" xml:space="preserve">
-    <value>panel_opt_top</value>
-  </data>
-  <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="&gt;&gt;BT_Cancel.Name" xml:space="preserve">
-    <value>BT_Cancel</value>
-  </data>
-  <data name="panel_opt_bottom.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 65</value>
-  </data>
-  <data name="panel_opt_bottom.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
-  </data>
-  <data name="&gt;&gt;value.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panel_browser.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="CB_Preset.Size" type="System.Drawing.Size, System.Drawing">
-    <value>127, 23</value>
-  </data>
-  <data name="&gt;&gt;property.Name" xml:space="preserve">
-    <value>property</value>
-  </data>
-  <data name="BT_Cancel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top</value>
-  </data>
   <data name="LL_Graphviz.Text" xml:space="preserve">
     <value>With gratitude to Graphviz</value>
-  </data>
-  <data name="panel_opt_top.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="panel2.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="BT_Show.TabIndex" type="System.Int32, mscorlib">
-    <value>84</value>
-  </data>
-  <data name="panel_opt_top.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="&gt;&gt;panel_DGV_opt.Parent" xml:space="preserve">
-    <value>panel2</value>
-  </data>
-  <data name="value.Width" type="System.Int32, mscorlib">
-    <value>107</value>
-  </data>
-  <data name="LL_Graphviz.Size" type="System.Drawing.Size, System.Drawing">
-    <value>146, 15</value>
-  </data>
-  <data name="&gt;&gt;CB_Preset.Parent" xml:space="preserve">
-    <value>panel_opt_top</value>
-  </data>
-  <data name="property.HeaderText" xml:space="preserve">
-    <value>свойство</value>
-  </data>
-  <data name="&gt;&gt;panel_browser.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="RelatedTo.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;DGV_Graph_Options.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="panel_opt_top.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="panel_DGV_opt.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 72</value>
-  </data>
-  <data name="panel_browser.Location" type="System.Drawing.Point, System.Drawing">
-    <value>200, 0</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="panel_opt_top.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 72</value>
-  </data>
-  <data name="CB_Visualisation.TabIndex" type="System.Int32, mscorlib">
-    <value>88</value>
-  </data>
-  <data name="DGV_Graph_Options.TabIndex" type="System.Int32, mscorlib">
-    <value>88</value>
-  </data>
-  <data name="&gt;&gt;panel2.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="BT_Show.Text" xml:space="preserve">
-    <value>Visualize</value>
-  </data>
-  <data name="&gt;&gt;panel2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panel2.Name" xml:space="preserve">
-    <value>panel2</value>
-  </data>
-  <data name="&gt;&gt;RelatedTo.Name" xml:space="preserve">
-    <value>RelatedTo</value>
-  </data>
-  <data name="&gt;&gt;property.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1047, 577</value>
-  </data>
-  <data name="panel_DGV_opt.TabIndex" type="System.Int32, mscorlib">
-    <value>89</value>
-  </data>
-  <data name="&gt;&gt;DGV_Graph_Options.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="panel_DGV_opt.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="panel2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Left</value>
-  </data>
-  <data name="label_preset.Size" type="System.Drawing.Size, System.Drawing">
-    <value>42, 15</value>
-  </data>
-  <data name="BT_Cancel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
-  </data>
-  <data name="&gt;&gt;CB_Preset.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;LL_Graphviz.Name" xml:space="preserve">
     <value>LL_Graphviz</value>
   </data>
-  <data name="label_preset.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
-  </data>
-  <data name="&gt;&gt;CB_Visualisation.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;BT_Show.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;RelatedTo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panel_DGV_opt.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="DGV_Graph_Options.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 440</value>
+  <data name="&gt;&gt;LL_Graphviz.Type" xml:space="preserve">
+    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;LL_Graphviz.Parent" xml:space="preserve">
     <value>panel_opt_bottom</value>
   </data>
-  <data name="&gt;&gt;panel_opt_top.Name" xml:space="preserve">
-    <value>panel_opt_top</value>
-  </data>
-  <data name="&gt;&gt;panel_opt_bottom.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="BT_Show.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
-  </data>
-  <data name="&gt;&gt;panel_opt_bottom.Parent" xml:space="preserve">
-    <value>panel2</value>
-  </data>
-  <data name="&gt;&gt;CB_Visualisation.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;panel_opt_bottom.Name" xml:space="preserve">
-    <value>panel_opt_bottom</value>
-  </data>
-  <data name="CB_Preset.TabIndex" type="System.Int32, mscorlib">
-    <value>86</value>
-  </data>
-  <data name="label_preset.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 46</value>
-  </data>
-  <data name="&gt;&gt;label_preset.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="panel_opt_top.TabIndex" type="System.Int32, mscorlib">
-    <value>90</value>
-  </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>7, 15</value>
-  </data>
   <data name="&gt;&gt;LL_Graphviz.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="LL_Graphviz.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="BT_Show.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top</value>
   </data>
-  <data name="&gt;&gt;panel_opt_bottom.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="BT_Show.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 27</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="BT_Show.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 2, 3, 2</value>
+  </data>
+  <data name="BT_Show.Size" type="System.Drawing.Size, System.Drawing">
+    <value>83, 27</value>
+  </data>
+  <data name="BT_Show.TabIndex" type="System.Int32, mscorlib">
+    <value>84</value>
+  </data>
+  <data name="BT_Show.Text" xml:space="preserve">
+    <value>Visualize</value>
+  </data>
+  <data name="&gt;&gt;BT_Show.Name" xml:space="preserve">
+    <value>BT_Show</value>
+  </data>
+  <data name="&gt;&gt;BT_Show.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;BT_Show.Parent" xml:space="preserve">
+    <value>panel_opt_bottom</value>
+  </data>
+  <data name="&gt;&gt;BT_Show.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="BT_Cancel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="BT_Cancel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>111, 27</value>
+  </data>
+  <data name="BT_Cancel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 2, 3, 2</value>
   </data>
   <data name="BT_Cancel.Size" type="System.Drawing.Size, System.Drawing">
     <value>83, 27</value>
   </data>
-  <data name="value.HeaderText" xml:space="preserve">
-    <value>значение</value>
+  <data name="BT_Cancel.TabIndex" type="System.Int32, mscorlib">
+    <value>85</value>
   </data>
-  <data name="&gt;&gt;panel_browser.Name" xml:space="preserve">
-    <value>panel_browser</value>
+  <data name="BT_Cancel.Text" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="&gt;&gt;BT_Cancel.Name" xml:space="preserve">
+    <value>BT_Cancel</value>
+  </data>
+  <data name="&gt;&gt;BT_Cancel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;BT_Cancel.Parent" xml:space="preserve">
+    <value>panel_opt_bottom</value>
+  </data>
+  <data name="&gt;&gt;BT_Cancel.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="panel_opt_bottom.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="panel_opt_bottom.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 512</value>
+  </data>
+  <data name="panel_opt_bottom.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 65</value>
+  </data>
+  <data name="panel_opt_bottom.TabIndex" type="System.Int32, mscorlib">
+    <value>91</value>
+  </data>
+  <data name="&gt;&gt;panel_opt_bottom.Name" xml:space="preserve">
+    <value>panel_opt_bottom</value>
+  </data>
+  <data name="&gt;&gt;panel_opt_bottom.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel_opt_bottom.Parent" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;panel_opt_bottom.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="panel_opt_top.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="CB_Visualisation.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="CB_Visualisation.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 13</value>
+  </data>
+  <data name="CB_Visualisation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>185, 23</value>
+  </data>
+  <data name="CB_Visualisation.TabIndex" type="System.Int32, mscorlib">
+    <value>88</value>
+  </data>
+  <data name="&gt;&gt;CB_Visualisation.Name" xml:space="preserve">
+    <value>CB_Visualisation</value>
+  </data>
+  <data name="&gt;&gt;CB_Visualisation.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CB_Visualisation.Parent" xml:space="preserve">
+    <value>panel_opt_top</value>
+  </data>
+  <data name="&gt;&gt;CB_Visualisation.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label_preset.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="label_preset.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label_preset.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 46</value>
+  </data>
+  <data name="label_preset.Size" type="System.Drawing.Size, System.Drawing">
+    <value>42, 15</value>
+  </data>
+  <data name="label_preset.TabIndex" type="System.Int32, mscorlib">
+    <value>87</value>
+  </data>
+  <data name="label_preset.Text" xml:space="preserve">
+    <value>Preset:</value>
+  </data>
+  <data name="&gt;&gt;label_preset.Name" xml:space="preserve">
+    <value>label_preset</value>
+  </data>
+  <data name="&gt;&gt;label_preset.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label_preset.Parent" xml:space="preserve">
+    <value>panel_opt_top</value>
+  </data>
+  <data name="&gt;&gt;label_preset.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="CB_Preset.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="CB_Preset.Location" type="System.Drawing.Point, System.Drawing">
+    <value>67, 42</value>
+  </data>
+  <data name="CB_Preset.Size" type="System.Drawing.Size, System.Drawing">
+    <value>127, 23</value>
+  </data>
+  <data name="CB_Preset.TabIndex" type="System.Int32, mscorlib">
+    <value>86</value>
+  </data>
+  <data name="&gt;&gt;CB_Preset.Name" xml:space="preserve">
+    <value>CB_Preset</value>
+  </data>
+  <data name="&gt;&gt;CB_Preset.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CB_Preset.Parent" xml:space="preserve">
+    <value>panel_opt_top</value>
+  </data>
+  <data name="&gt;&gt;CB_Preset.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="panel_opt_top.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="panel_opt_top.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="panel_opt_top.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 72</value>
+  </data>
+  <data name="panel_opt_top.TabIndex" type="System.Int32, mscorlib">
+    <value>90</value>
+  </data>
+  <data name="&gt;&gt;panel_opt_top.Name" xml:space="preserve">
+    <value>panel_opt_top</value>
+  </data>
+  <data name="&gt;&gt;panel_opt_top.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel_opt_top.Parent" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;panel_opt_top.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="panel_DGV_opt.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <metadata name="RelatedTo.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="RelatedTo.HeaderText" xml:space="preserve">
+    <value>RelatedTo</value>
+  </data>
+  <data name="RelatedTo.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <metadata name="property.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="RelatedTo.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
+  <data name="property.HeaderText" xml:space="preserve">
+    <value>property</value>
+  </data>
+  <data name="property.Width" type="System.Int32, mscorlib">
+    <value>107</value>
+  </data>
   <metadata name="value.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="value.HeaderText" xml:space="preserve">
+    <value>value</value>
+  </data>
+  <data name="value.Width" type="System.Int32, mscorlib">
+    <value>107</value>
+  </data>
+  <data name="DGV_Graph_Options.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="DGV_Graph_Options.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="DGV_Graph_Options.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>10, 10, 10, 10</value>
+  </data>
+  <data name="DGV_Graph_Options.RowHeadersWidth" type="System.Int32, mscorlib">
+    <value>51</value>
+  </data>
+  <data name="DGV_Graph_Options.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 440</value>
+  </data>
+  <data name="DGV_Graph_Options.TabIndex" type="System.Int32, mscorlib">
+    <value>88</value>
+  </data>
+  <data name="&gt;&gt;DGV_Graph_Options.Name" xml:space="preserve">
+    <value>DGV_Graph_Options</value>
+  </data>
+  <data name="&gt;&gt;DGV_Graph_Options.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DGV_Graph_Options.Parent" xml:space="preserve">
+    <value>panel_DGV_opt</value>
+  </data>
+  <data name="&gt;&gt;DGV_Graph_Options.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="panel_DGV_opt.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="panel_DGV_opt.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 72</value>
+  </data>
+  <data name="panel_DGV_opt.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 440</value>
+  </data>
+  <data name="panel_DGV_opt.TabIndex" type="System.Int32, mscorlib">
+    <value>89</value>
+  </data>
+  <data name="&gt;&gt;panel_DGV_opt.Name" xml:space="preserve">
+    <value>panel_DGV_opt</value>
+  </data>
+  <data name="&gt;&gt;panel_DGV_opt.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel_DGV_opt.Parent" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;panel_DGV_opt.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="panel2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 577</value>
+  </data>
+  <data name="panel2.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;panel2.Name" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;panel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel2.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="panel_browser.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="panel_browser.Location" type="System.Drawing.Point, System.Drawing">
+    <value>200, 0</value>
+  </data>
+  <data name="panel_browser.Size" type="System.Drawing.Size, System.Drawing">
+    <value>847, 577</value>
+  </data>
+  <data name="panel_browser.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;panel_browser.Name" xml:space="preserve">
+    <value>panel_browser</value>
+  </data>
+  <data name="&gt;&gt;panel_browser.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel_browser.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panel_browser.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>7, 15</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>1047, 577</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterScreen</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Graphviz Visualization</value>
+  </data>
+  <data name="&gt;&gt;RelatedTo.Name" xml:space="preserve">
+    <value>RelatedTo</value>
+  </data>
+  <data name="&gt;&gt;RelatedTo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;property.Name" xml:space="preserve">
+    <value>property</value>
+  </data>
+  <data name="&gt;&gt;property.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;value.Name" xml:space="preserve">
+    <value>value</value>
+  </data>
+  <data name="&gt;&gt;value.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>Form_Graphviz</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

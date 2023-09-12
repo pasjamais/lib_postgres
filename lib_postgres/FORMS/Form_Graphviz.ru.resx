@@ -73,6 +73,12 @@
   <data name="label_preset.Text" xml:space="preserve">
     <value>Шаблон:</value>
   </data>
+  <data name="property.HeaderText" xml:space="preserve">
+    <value>свойство</value>
+  </data>
+  <data name="value.HeaderText" xml:space="preserve">
+    <value>значение</value>
+  </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Визуализация Graphviz</value>
   </data>

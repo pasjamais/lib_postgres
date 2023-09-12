@@ -10,9 +10,11 @@ namespace lib_postgres.VISUAL.TreeViewViz
 {
     public class Graph_Agent
     {
-        public const string caption_from_books = "Из книг";
-        public const string caption_from_authors = "От авторов";
-        public const string caption_from_anothers = "Другое";
+        public static string caption_from_books = Localization.Substitute("caption_from_books");       // "Из книг"; 
+        public static string caption_from_authors = Localization.Substitute("caption_from_authors");   // "От авторов";
+        public static string caption_from_anothers = Localization.Substitute("caption_from_anothers"); // "Другое";
+        public static string _loc_book = Localization.Substitute("Authors");  // "Авторы"
+        public static string _loc_authors = Localization.Substitute("Books"); // "Книги"
         public struct Element
         {
             public long? number;
@@ -81,8 +83,6 @@ namespace lib_postgres.VISUAL.TreeViewViz
             return data;
         }
 
-
-
         #region from arts
         /// <summary>
         /// for DataTreeView
@@ -98,9 +98,9 @@ namespace lib_postgres.VISUAL.TreeViewViz
                 TreeNode node = new TreeNode(s.Text);
                 node.Tag = s.Id;
                 nodes.Add(node);
-                TreeNode node_books = new TreeNode("Книги");
+                TreeNode node_books = new TreeNode(_loc_book); 
                 node.Nodes.Add(node_books);
-                TreeNode node_authors = new TreeNode("Авторы");
+                TreeNode node_authors = new TreeNode(_loc_authors);
                 node.Nodes.Add(node_authors);
 
             }
@@ -111,7 +111,7 @@ namespace lib_postgres.VISUAL.TreeViewViz
                 TreeNode node = new TreeNode(s.Text);
                 node.Tag = s.Id;
                 var first_level_node = Get_First_Node_by_Tag(nodes, s.Id_Parent);
-                var second_level_node = Get_First_Node_by_Text(first_level_node.Nodes, "Книги");
+                var second_level_node = Get_First_Node_by_Text(first_level_node.Nodes, _loc_book);
                 second_level_node.Nodes.Add(node);
             }
 
@@ -121,7 +121,7 @@ namespace lib_postgres.VISUAL.TreeViewViz
                 TreeNode node = new TreeNode(s.Text);
                 node.Tag = s.Id;
                 var first_level_node = Get_First_Node_by_Tag(nodes, s.Id_Parent);
-                var second_level_node = Get_First_Node_by_Text(first_level_node.Nodes, "Авторы");
+                var second_level_node = Get_First_Node_by_Text(first_level_node.Nodes, _loc_authors);
                 second_level_node.Nodes.Add(node);
             }
         }
@@ -189,15 +189,15 @@ namespace lib_postgres.VISUAL.TreeViewViz
         {
             List<Recomendation> recomendatons = Get_Recommendations();
             List<Node_Simple_Element> sources = Get_Source_Authors(recomendatons);
-
+            
             foreach (var s in sources)
             {
                 TreeNode node = new TreeNode(s.Text);
                 node.Tag = s.Id;
                 nodes.Add(node);
-                TreeNode node_books = new TreeNode("Книги");
+                TreeNode node_books = new TreeNode(_loc_book);
                 node.Nodes.Add(node_books);
-                TreeNode node_authors = new TreeNode("Авторы");
+                TreeNode node_authors = new TreeNode(_loc_authors);
                 node.Nodes.Add(node_authors);
             }
             List<Node_Simple_Element> arts_recommended = Get_Recommended_Arts_for_Authors(sources, recomendatons);
@@ -209,7 +209,7 @@ namespace lib_postgres.VISUAL.TreeViewViz
                 var first_level_node = nodes.OfType<TreeNode>()
                             .FirstOrDefault(node => node.Tag.Equals(s.Id_Parent));
                 var second_level_node = first_level_node.Nodes.OfType<TreeNode>()
-                            .FirstOrDefault(node => node.Text.Equals("Книги"));
+                            .FirstOrDefault(node => node.Text.Equals(_loc_book));
                 second_level_node.Nodes.Add(node);
             }
             List<Node_Simple_Element> authors_recommended = Get_Recommended_Authors_for_Authors(sources, recomendatons);
@@ -220,7 +220,7 @@ namespace lib_postgres.VISUAL.TreeViewViz
                 var first_level_node = nodes.OfType<TreeNode>()
                             .FirstOrDefault(node => node.Tag.Equals(s.Id_Parent));
                 var second_level_node = first_level_node.Nodes.OfType<TreeNode>()
-                            .FirstOrDefault(node => node.Text.Equals("Авторы"));
+                            .FirstOrDefault(node => node.Text.Equals(_loc_authors));
                 second_level_node.Nodes.Add(node);
             }
         }
@@ -292,9 +292,9 @@ namespace lib_postgres.VISUAL.TreeViewViz
                 TreeNode node = new TreeNode(s.Text);
                 node.Tag = s.Id;
                 nodes.Add(node);
-                TreeNode node_books = new TreeNode("Книги");
+                TreeNode node_books = new TreeNode(_loc_book);
                 node.Nodes.Add(node_books);
-                TreeNode node_authors = new TreeNode("Авторы");
+                TreeNode node_authors = new TreeNode(_loc_authors);
                 node.Nodes.Add(node_authors);
             }
             List<Node_Simple_Element> arts_recommended = Get_Recommended_Arts_for_Anothers(sources, recomendatons);
@@ -306,7 +306,7 @@ namespace lib_postgres.VISUAL.TreeViewViz
                 var first_level_node = nodes.OfType<TreeNode>()
                             .FirstOrDefault(node => node.Tag.Equals(s.Id_Parent));
                 var second_level_node = first_level_node.Nodes.OfType<TreeNode>()
-                            .FirstOrDefault(node => node.Text.Equals("Книги"));
+                            .FirstOrDefault(node => node.Text.Equals(_loc_book));
                 second_level_node.Nodes.Add(node);
             }
             List<Node_Simple_Element> authors_recommended = Get_Recommended_Authors_for_Anothers(sources, recomendatons);
@@ -317,7 +317,7 @@ namespace lib_postgres.VISUAL.TreeViewViz
                 var first_level_node = nodes.OfType<TreeNode>()
                             .FirstOrDefault(node => node.Tag.Equals(s.Id_Parent));
                 var second_level_node = first_level_node.Nodes.OfType<TreeNode>()
-                            .FirstOrDefault(node => node.Text.Equals("Авторы"));
+                            .FirstOrDefault(node => node.Text.Equals(_loc_authors));
                 second_level_node.Nodes.Add(node);
             }
         }

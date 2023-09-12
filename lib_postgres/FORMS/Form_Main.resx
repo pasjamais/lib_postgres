@@ -371,16 +371,16 @@
     <value>Books</value>
   </data>
   <data name="ToolStripMenuItem_Arts_Show.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>176, 22</value>
   </data>
   <data name="ToolStripMenuItem_Arts_Show.Text" xml:space="preserve">
     <value>Show (Update) arts</value>
   </data>
   <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 6</value>
+    <value>173, 6</value>
   </data>
   <data name="ToolStripMenuItem_Arts_Add.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>176, 22</value>
   </data>
   <data name="ToolStripMenuItem_Arts_Add.Text" xml:space="preserve">
     <value>Add</value>
@@ -389,13 +389,13 @@
     <value>False</value>
   </data>
   <data name="ToolStripMenuItem_Arts_Edit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>176, 22</value>
   </data>
   <data name="ToolStripMenuItem_Arts_Edit.Text" xml:space="preserve">
     <value>Open (Edit)</value>
   </data>
   <data name="ToolStripMenuItem_Arts_Delete.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>176, 22</value>
   </data>
   <data name="ToolStripMenuItem_Arts_Delete.Text" xml:space="preserve">
     <value>Delete/Undelete art</value>
@@ -518,13 +518,13 @@
     <value>Delete/Undelete language</value>
   </data>
   <data name="ToolStripMenuItem_Languages.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>179, 22</value>
   </data>
   <data name="ToolStripMenuItem_Languages.Text" xml:space="preserve">
     <value>Languages</value>
   </data>
   <data name="toolStripSeparator11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 6</value>
+    <value>176, 6</value>
   </data>
   <data name="ToolStripMenuItem_Genres_Show.Size" type="System.Drawing.Size, System.Drawing">
     <value>192, 22</value>
@@ -557,7 +557,7 @@
     <value>Delete/Undelete genre</value>
   </data>
   <data name="ToolStripMenuItem_Genres.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>179, 22</value>
   </data>
   <data name="ToolStripMenuItem_Genres.Text" xml:space="preserve">
     <value>Genres</value>
@@ -593,7 +593,7 @@
     <value>Delete/Undelete city</value>
   </data>
   <data name="ToolStripMenuItem_Cities.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>179, 22</value>
   </data>
   <data name="ToolStripMenuItem_Cities.Text" xml:space="preserve">
     <value>Cities</value>
@@ -629,7 +629,7 @@
     <value>Delete/Undelete book series</value>
   </data>
   <data name="ToolStripMenuItem_Series.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>179, 22</value>
   </data>
   <data name="ToolStripMenuItem_Series.Text" xml:space="preserve">
     <value>Book series</value>
@@ -665,13 +665,13 @@
     <value>Delete/Undelete publishing house</value>
   </data>
   <data name="ToolStripMenuItem_PubHouse.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>179, 22</value>
   </data>
   <data name="ToolStripMenuItem_PubHouse.Text" xml:space="preserve">
     <value>Publishing houses</value>
   </data>
   <data name="toolStripSeparator10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 6</value>
+    <value>176, 6</value>
   </data>
   <data name="ToolStripMenuItem_Places_Show.Size" type="System.Drawing.Size, System.Drawing">
     <value>201, 22</value>
@@ -701,7 +701,7 @@
     <value>Delete/Undelete storage</value>
   </data>
   <data name="ToolStripMenuItem_Places.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>179, 22</value>
   </data>
   <data name="ToolStripMenuItem_Places.Text" xml:space="preserve">
     <value>Book storage places</value>
@@ -734,7 +734,7 @@
     <value>Delete/Undelete person</value>
   </data>
   <data name="ToolStripMenuItem_People.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>179, 22</value>
   </data>
   <data name="ToolStripMenuItem_People.Text" xml:space="preserve">
     <value>Persons</value>
@@ -745,14 +745,29 @@
   <data name="ToolStripMenuItem_Cataloques.Text" xml:space="preserve">
     <value>Catalogues</value>
   </data>
+  <data name="ToolStripMenuItem_UI_Language_RU.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="ToolStripMenuItem_UI_Language_RU.Text" xml:space="preserve">
+    <value>RU</value>
+  </data>
+  <data name="ToolStripMenuItem_UI_Language_FR.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="ToolStripMenuItem_UI_Language_FR.Text" xml:space="preserve">
+    <value>FR</value>
+  </data>
+  <data name="ToolStripMenuItem_UI_Language_EN.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="ToolStripMenuItem_UI_Language_EN.Text" xml:space="preserve">
+    <value>EN</value>
+  </data>
   <data name="ToolStripMenuItem_UI_Language.Size" type="System.Drawing.Size, System.Drawing">
     <value>193, 20</value>
   </data>
   <data name="ToolStripMenuItem_UI_Language.Text" xml:space="preserve">
     <value>ToolStripMenuItem_UI_Language</value>
-  </data>
-  <data name="ToolStripMenuItem_UI_Language.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
   </data>
   <data name="menuStrip1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
@@ -1451,6 +1466,24 @@
     <value>ToolStripMenuItem_UI_Language</value>
   </data>
   <data name="&gt;&gt;ToolStripMenuItem_UI_Language.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem_UI_Language_RU.Name" xml:space="preserve">
+    <value>ToolStripMenuItem_UI_Language_RU</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem_UI_Language_RU.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem_UI_Language_FR.Name" xml:space="preserve">
+    <value>ToolStripMenuItem_UI_Language_FR</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem_UI_Language_FR.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem_UI_Language_EN.Name" xml:space="preserve">
+    <value>ToolStripMenuItem_UI_Language_EN</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem_UI_Language_EN.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;ToolStripMenuItem__Recommendations_Sho.Name" xml:space="preserve">

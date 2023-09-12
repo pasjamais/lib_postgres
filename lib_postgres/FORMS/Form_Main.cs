@@ -17,6 +17,13 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 using System.Globalization;
 using System.Threading;
+using System.ComponentModel;
+using lib_postgres.Properties;
+using System.Resources;
+using System.Reflection;
+using Microsoft.Win32;
+using System.Text.RegularExpressions;
+using System.Xml.Linq;
 
 namespace lib_postgres
 {
@@ -39,16 +46,17 @@ namespace lib_postgres
 
         private Deploy deploy = new Deploy();
         public Form_Main()
-        {   InitializeComponent();
+        {
+            InitializeComponent();
             Binding_Elements();
             main_menu_generation();
             this.dgv_Visualisator = new DGV_Visualisator();
-            Turn_Off =  delegate () { this.Turn_Off_Current_Menu_Item(); };
-            Turn_ON =   delegate () { this.Turn_On_Current_Menu_Item(); };
+            Turn_Off = delegate () { this.Turn_Off_Current_Menu_Item(); };
+            Turn_ON = delegate () { this.Turn_On_Current_Menu_Item(); };
         }
 
         #region general
-             
+
         private void Form_Main_Shown(object sender, EventArgs e)
         {
             Type type = typeof(ViewBook);
@@ -86,21 +94,21 @@ namespace lib_postgres
                     return;
             }
         }
-// adding contextly to read-list is temporary out of order
-/*        private void cmi_item_add_art_to_read_Click(object sender, EventArgs e)
-        {
-            if (gridViewItemType == typeof(Art))
-            {
-                int index = dataGridView.SelectedRows[0].Index;
-                long id_art = (long)dataGridView.Rows[index].Cells["Id"].Value;
-                var id = ArtRead.Create_Item(id_art);
-                if (id > 0)
+        // adding contextly to read-list is temporary out of order
+        /*        private void cmi_item_add_art_to_read_Click(object sender, EventArgs e)
                 {
-                    ToolStripMenuItem__Read_Open_Click(sender, e);
-                    General_Manipulations.show_row(dataGridView, id.ToString(), "Id");
-                }
-            }
-        }*/
+                    if (gridViewItemType == typeof(Art))
+                    {
+                        int index = dataGridView.SelectedRows[0].Index;
+                        long id_art = (long)dataGridView.Rows[index].Cells["Id"].Value;
+                        var id = ArtRead.Create_Item(id_art);
+                        if (id > 0)
+                        {
+                            ToolStripMenuItem__Read_Open_Click(sender, e);
+                            General_Manipulations.show_row(dataGridView, id.ToString(), "Id");
+                        }
+                    }
+                }*/
         #endregion
 
         #region additional
@@ -157,6 +165,8 @@ namespace lib_postgres
                 newItem.DropDownItems.Add(language_item);
                 language_item.Click += show_arts_by_langue;
             }
+
+            Initial_Langues_Menu_Load();
         }
         #endregion  main_menu_creation
 
@@ -174,9 +184,9 @@ namespace lib_postgres
                 openFileDialog_BD_Backup.InitialDirectory = @"C:\";
             }
             if (openFileDialog_BD_Backup.ShowDialog() == DialogResult.Cancel)
-                return; 
+                return;
             string filename = openFileDialog_BD_Backup.FileName;
-            Deploy.Restore_BD(filename,Deploy.is_DB_Exists());
+            Deploy.Restore_BD(filename, Deploy.is_DB_Exists());
         }
         private void ToolStripMenuItem_File_Open_Settings_Click(object sender, EventArgs e)
         {
@@ -281,7 +291,7 @@ namespace lib_postgres
         }
         private void ToolStripMenuItem_Arts_Delete_Click(object sender, EventArgs e)
         {
-           Delete_Art();
+            Delete_Art();
         }
         #endregion
 
@@ -399,7 +409,7 @@ namespace lib_postgres
 
         private void ToolStripMenuItem_Places_Edit_Click(object sender, EventArgs e)
         {
-          Edit_Place();
+            Edit_Place();
         }
 
         private void ToolStripMenuItem_Places_Add_Click(object sender, EventArgs e)
@@ -574,7 +584,7 @@ namespace lib_postgres
         {
             Read_Locations();
         }
-    
+
         #endregion
 
         #endregion entities control
@@ -584,12 +594,12 @@ namespace lib_postgres
         {
             if (gridViewItemType == typeof(Place)) ;
             else if (gridViewItemType == typeof(Language)) ToolStripMenuItem_Language_Edit_Click(sender, e);
-            else if (gridViewItemType == typeof(Author))    Edit_Author();
+            else if (gridViewItemType == typeof(Author)) Edit_Author();
             else if (gridViewItemType == typeof(Action)) ToolStripMenuItem_Actions_Edit_Click(sender, e);
             else if (gridViewItemType == typeof(Series)) ToolStripMenuItem_Series_Edit_Click(sender, e);
             else if (gridViewItemType == typeof(PublishingHouse)) ToolStripMenuItem_PubHouse_Edit_Click(sender, e);
-            else if (gridViewItemType == typeof(City))      Edit_City();
-            else if (gridViewItemType == typeof(ViewBook))  Edit_Book();
+            else if (gridViewItemType == typeof(City)) Edit_City();
+            else if (gridViewItemType == typeof(ViewBook)) Edit_Book();
             else if (gridViewItemType == typeof(Art)) ToolStripMenuItem_Arts_Edit_Click(sender, e);
             else if (gridViewItemType == typeof(Genre)) ToolStripMenuItem_Genres_Edit_Click(sender, e);
             else if (gridViewItemType == typeof(ViewHasRead)) ToolStripMenuItem__Read_Edit_Click(sender, e);
@@ -607,8 +617,8 @@ namespace lib_postgres
         }
         private void Turn_Menu_Item(bool state)
         {
-          
-                 if (gridViewItemType == typeof(Language)) Turn_On_Off_Menu_Item(ToolStripMenuItem_Language_Edit, state);
+
+            if (gridViewItemType == typeof(Language)) Turn_On_Off_Menu_Item(ToolStripMenuItem_Language_Edit, state);
             else if (gridViewItemType == typeof(Author)) Turn_On_Off_Menu_Item(ToolStripMenuItem_Author_Edit, state);
             else if (gridViewItemType == typeof(Action)) Turn_On_Off_Menu_Item(ToolStripMenuItem_Actions_Edit, state);
             else if (gridViewItemType == typeof(Series)) Turn_On_Off_Menu_Item(ToolStripMenuItem_Series_Edit, state);
@@ -635,7 +645,7 @@ namespace lib_postgres
 
         #endregion enable_disable_menu_items
 
-            
+
         #region general CRUD
         private void Create_Item<T>()
         {
@@ -668,13 +678,13 @@ namespace lib_postgres
             if (id > 0)
             {
                 Type type = typeof(T);
-               if (type == typeof(ArtRead))
+                if (type == typeof(ArtRead))
                 {
                     Read_ArtReads();
                 }
-               else
+                else
                     dgv_Visualisator.Refresh_DGV_for_Item_Type<T>(dataGridView, Turn_Off, Turn_ON, StatusProperty);
-               General_Manipulations.show_row(dataGridView, id.ToString(), "Id");
+                General_Manipulations.show_row(dataGridView, id.ToString(), "Id");
             }
         }
         #endregion general CRUD
@@ -953,7 +963,7 @@ namespace lib_postgres
         }
         private void Delete_ArtRead()
         {
-               Delete_Item<ArtRead>();
+            Delete_Item<ArtRead>();
         }
         #endregion ArtRead CRUD
 
@@ -1022,6 +1032,123 @@ namespace lib_postgres
 
         }
 
+        #region Localosation
+
+        private void ToolStripMenuItem_UI_Language_Changing_Click(object sender, EventArgs e)
+        {
+            Set_visibility_to_Actual_ToolStripMenuItem(true);
+            CultureInfo new_Culture = new CultureInfo(Localization.UI_langs[sender.ToString()]);
+            ApplyCulture(new_Culture);
+            Show_Actual_Language_in_Top();
+            Set_visibility_to_Actual_ToolStripMenuItem(false);
+
+        }
+        /// <summary>
+        /// This method was borrowed from Stefan Troschuetz who described 
+        /// how it works so well that I wanted to save it in its entirety
+        //  https://www.codeproject.com/Articles/14002/UICultureChanger-component
+        /// </summary>
+        /// <param name="culture"></param>
+        private void ApplyCulture(CultureInfo culture)
+        {
+            // Applies culture to current Thread.
+
+            Thread.CurrentThread.CurrentUICulture = culture;
+
+            // Create a resource manager for this Form
+            // and determine its fields via reflection.
+
+            ComponentResourceManager resources = new ComponentResourceManager(this.GetType());
+            FieldInfo[] fieldInfos = this.GetType().GetFields(BindingFlags.Instance |
+                BindingFlags.DeclaredOnly | BindingFlags.NonPublic);
+
+            // Call SuspendLayout for Form and all fields derived from Control, so assignment of 
+            // localized text doesn't change layout immediately.
+
+            this.SuspendLayout();
+            for (int index = 0; index < fieldInfos.Length; index++)
+            {
+                if (fieldInfos[index].FieldType.IsSubclassOf(typeof(Control)))
+                {
+                    fieldInfos[index].FieldType.InvokeMember("SuspendLayout",
+                        BindingFlags.InvokeMethod, null,
+                        fieldInfos[index].GetValue(this), null);
+                }
+            }
+
+            // If available, assign localized text to Form and fields with Text property.
+
+            String text = resources.GetString("$this.Text");
+            if (text != null)
+                this.Text = text;
+            for (int index = 0; index < fieldInfos.Length; index++)
+            {
+                if (fieldInfos[index].FieldType.GetProperty("Text", typeof(String)) != null)
+                {
+                    text = resources.GetString(fieldInfos[index].Name + ".Text");
+                    if (text != null)
+                    {
+                        fieldInfos[index].FieldType.InvokeMember("Text",
+                            BindingFlags.SetProperty, null,
+                            fieldInfos[index].GetValue(this), new object[] { text });
+                    }
+                }
+            }
+
+            // Call ResumeLayout for Form and all fields
+            // derived from Control to resume layout logic.
+            // Call PerformLayout, so layout changes due
+            // to assignment of localized text are performed.
+
+            for (int index = 0; index < fieldInfos.Length; index++)
+            {
+                if (fieldInfos[index].FieldType.IsSubclassOf(typeof(Control)))
+                {
+                    fieldInfos[index].FieldType.InvokeMember("ResumeLayout",
+                            BindingFlags.InvokeMethod, null,
+                            fieldInfos[index].GetValue(this), new object[] { false });
+                }
+            }
+            this.ResumeLayout(false);
+            this.PerformLayout();
+        }
+
+        private void Initial_Langues_Menu_Load()
+        {
+            Show_Actual_Language_in_Top();
+            Set_visibility_to_Actual_ToolStripMenuItem(false);
+        }
+
+        private void Show_Actual_Language_in_Top()
+        {
+            CultureInfo current_Culture = Thread.CurrentThread.CurrentUICulture;
+            ToolStripMenuItem_UI_Language.Text = Localization.Get_Short_Language_Name_by_Culture(current_Culture);
+        }
+
+        private ToolStripMenuItem Get_ToolStripMenuItem_according_to_Actual_Culture()
+        {
+            string short_lang = Localization.Get_Short_Language_Name_by_Culture(Thread.CurrentThread.CurrentUICulture);
+            List<ToolStripMenuItem> lang_menu_items = new List<ToolStripMenuItem>();
+            Get_All_ToolStripMenuItem_Controls(ToolStripMenuItem_UI_Language, lang_menu_items);
+            return lang_menu_items.Where(x => x.Text == short_lang).First();
+        }
+
+        private void Set_visibility_to_Actual_ToolStripMenuItem(bool is_visible)
+        {
+            ToolStripMenuItem item = Get_ToolStripMenuItem_according_to_Actual_Culture();
+            item.Visible = is_visible;
+        }
+
+ 
+        private void Get_All_ToolStripMenuItem_Controls(ToolStripMenuItem container, List<ToolStripMenuItem> ControlList)
+        {
+            foreach (ToolStripMenuItem c in container.DropDownItems)
+            {
+                Get_All_ToolStripMenuItem_Controls(c, ControlList);
+                if (c is ToolStripMenuItem) ControlList.Add(c);
+            }
+        }
+        #endregion Localosation
 
     }
 }

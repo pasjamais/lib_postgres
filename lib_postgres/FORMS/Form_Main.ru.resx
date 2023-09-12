@@ -58,6 +58,12 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="ToolStripMenuItem_File.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 20</value>
+  </data>
+  <data name="ToolStripMenuItem_File.Text" xml:space="preserve">
+    <value>Файл</value>
+  </data>
   <data name="ToolStripMenuItem_File_BackupBD.Size" type="System.Drawing.Size, System.Drawing">
     <value>241, 22</value>
   </data>
@@ -76,11 +82,11 @@
   <data name="ToolStripMenuItem_File_Open_Settings.Text" xml:space="preserve">
     <value>Настройки...</value>
   </data>
-  <data name="ToolStripMenuItem_File.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 20</value>
+  <data name="toolStripMenuItemRecommendationToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 20</value>
   </data>
-  <data name="ToolStripMenuItem_File.Text" xml:space="preserve">
-    <value>Файл</value>
+  <data name="toolStripMenuItemRecommendationToolStripMenuItem.Text" xml:space="preserve">
+    <value>Рекомендации</value>
   </data>
   <data name="ToolStripMenuItem__Recommendations_Show.Size" type="System.Drawing.Size, System.Drawing">
     <value>315, 22</value>
@@ -109,6 +115,12 @@
   <data name="toolStripSeparator9.Size" type="System.Drawing.Size, System.Drawing">
     <value>312, 6</value>
   </data>
+  <data name="ToolStripMenuItem_SourceToreadAnother.Size" type="System.Drawing.Size, System.Drawing">
+    <value>315, 22</value>
+  </data>
+  <data name="ToolStripMenuItem_SourceToreadAnother.Text" xml:space="preserve">
+    <value>Другие источники рекомендаций</value>
+  </data>
   <data name="ToolStripMenuItem_SourceToreadAnother_Show.Size" type="System.Drawing.Size, System.Drawing">
     <value>422, 22</value>
   </data>
@@ -133,12 +145,6 @@
   <data name="ToolStripMenuItem_SourceToreadAnother_Delete.Text" xml:space="preserve">
     <value>Удалить/Отменить удаление другого источника рекомендаций</value>
   </data>
-  <data name="ToolStripMenuItem_SourceToreadAnother.Size" type="System.Drawing.Size, System.Drawing">
-    <value>315, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_SourceToreadAnother.Text" xml:space="preserve">
-    <value>Другие источники рекомендаций</value>
-  </data>
   <data name="toolStripSeparator12.Size" type="System.Drawing.Size, System.Drawing">
     <value>312, 6</value>
   </data>
@@ -154,11 +160,11 @@
   <data name="toolStripMenuItem2.Text" xml:space="preserve">
     <value>Показать дерево рекомендаций...</value>
   </data>
-  <data name="toolStripMenuItemRecommendationToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 20</value>
+  <data name="ToolStripMenuItem_Reader.Size" type="System.Drawing.Size, System.Drawing">
+    <value>69, 20</value>
   </data>
-  <data name="toolStripMenuItemRecommendationToolStripMenuItem.Text" xml:space="preserve">
-    <value>Рекомендации</value>
+  <data name="ToolStripMenuItem_Reader.Text" xml:space="preserve">
+    <value>Читатель</value>
   </data>
   <data name="ToolStripMenuItem__Read_Open.Size" type="System.Drawing.Size, System.Drawing">
     <value>313, 22</value>
@@ -187,6 +193,12 @@
   <data name="toolStripSeparator15.Size" type="System.Drawing.Size, System.Drawing">
     <value>310, 6</value>
   </data>
+  <data name="ToolStripMenuItem_Book_Format.Size" type="System.Drawing.Size, System.Drawing">
+    <value>313, 22</value>
+  </data>
+  <data name="ToolStripMenuItem_Book_Format.Text" xml:space="preserve">
+    <value>Форматы прочтения</value>
+  </data>
   <data name="ToolStripMenuItem_Book_Format_Show.Size" type="System.Drawing.Size, System.Drawing">
     <value>290, 22</value>
   </data>
@@ -211,11 +223,11 @@
   <data name="ToolStripMenuItem_Book_Format_Delete.Text" xml:space="preserve">
     <value>Удалить/Отменить удаление формата</value>
   </data>
-  <data name="ToolStripMenuItem_Book_Format.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="ToolStripMenuItem_Marks.Size" type="System.Drawing.Size, System.Drawing">
     <value>313, 22</value>
   </data>
-  <data name="ToolStripMenuItem_Book_Format.Text" xml:space="preserve">
-    <value>Форматы прочтения</value>
+  <data name="ToolStripMenuItem_Marks.Text" xml:space="preserve">
+    <value>Оценки</value>
   </data>
   <data name="ToolStripMenuItem_Marks_ٍShow.Size" type="System.Drawing.Size, System.Drawing">
     <value>274, 22</value>
@@ -241,17 +253,8 @@
   <data name="ToolStripMenuItem_Marks_ٍDelete.Text" xml:space="preserve">
     <value>Удалить/Отменить удаление оценки</value>
   </data>
-  <data name="ToolStripMenuItem_Marks.Size" type="System.Drawing.Size, System.Drawing">
-    <value>313, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_Marks.Text" xml:space="preserve">
-    <value>Оценки</value>
-  </data>
-  <data name="ToolStripMenuItem_Reader.Size" type="System.Drawing.Size, System.Drawing">
-    <value>69, 20</value>
-  </data>
-  <data name="ToolStripMenuItem_Reader.Text" xml:space="preserve">
-    <value>Читатель</value>
+  <data name="ToolStripMenuItem_Books.Text" xml:space="preserve">
+    <value>Книга</value>
   </data>
   <data name="ToolStripMenuItem_Book_Show.Size" type="System.Drawing.Size, System.Drawing">
     <value>266, 22</value>
@@ -280,8 +283,11 @@
   <data name="ToolStripMenuItem_Books_Delete.Text" xml:space="preserve">
     <value>Удалить/Отменить удаление книги</value>
   </data>
-  <data name="ToolStripMenuItem_Books.Text" xml:space="preserve">
-    <value>Книга</value>
+  <data name="ToolStripMenuItem_Arts.Size" type="System.Drawing.Size, System.Drawing">
+    <value>98, 20</value>
+  </data>
+  <data name="ToolStripMenuItem_Arts.Text" xml:space="preserve">
+    <value>Произведения</value>
   </data>
   <data name="ToolStripMenuItem_Arts_Show.Size" type="System.Drawing.Size, System.Drawing">
     <value>312, 22</value>
@@ -310,11 +316,8 @@
   <data name="ToolStripMenuItem_Arts_Delete.Text" xml:space="preserve">
     <value>Удалить/Отменить удаление произведения</value>
   </data>
-  <data name="ToolStripMenuItem_Arts.Size" type="System.Drawing.Size, System.Drawing">
-    <value>98, 20</value>
-  </data>
-  <data name="ToolStripMenuItem_Arts.Text" xml:space="preserve">
-    <value>Произведения</value>
+  <data name="ToolStripMenuItem_Autors.Text" xml:space="preserve">
+    <value>Авторы</value>
   </data>
   <data name="ToolStripMenuItem_Authors_Show.Size" type="System.Drawing.Size, System.Drawing">
     <value>278, 22</value>
@@ -343,8 +346,11 @@
   <data name="ToolStripMenuItem_Author_Delete.Text" xml:space="preserve">
     <value>Удалить/Отменить удаление автора</value>
   </data>
-  <data name="ToolStripMenuItem_Autors.Text" xml:space="preserve">
-    <value>Авторы</value>
+  <data name="ToolStripMenuItem_Actions.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 20</value>
+  </data>
+  <data name="ToolStripMenuItem_Actions.Text" xml:space="preserve">
+    <value>Действия</value>
   </data>
   <data name="ToolStripMenuItem_Actions_Open.Size" type="System.Drawing.Size, System.Drawing">
     <value>284, 22</value>
@@ -382,11 +388,17 @@
   <data name="ToolStripMenuItem_Location_Show.Text" xml:space="preserve">
     <value>Показать таблицу действий</value>
   </data>
-  <data name="ToolStripMenuItem_Actions.Size" type="System.Drawing.Size, System.Drawing">
-    <value>70, 20</value>
+  <data name="ToolStripMenuItem_Cataloques.Size" type="System.Drawing.Size, System.Drawing">
+    <value>134, 20</value>
   </data>
-  <data name="ToolStripMenuItem_Actions.Text" xml:space="preserve">
-    <value>Действия</value>
+  <data name="ToolStripMenuItem_Cataloques.Text" xml:space="preserve">
+    <value>Другие справочники</value>
+  </data>
+  <data name="ToolStripMenuItem_Languages.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="ToolStripMenuItem_Languages.Text" xml:space="preserve">
+    <value>Языки</value>
   </data>
   <data name="ToolStripMenuItem_Language_Show.Size" type="System.Drawing.Size, System.Drawing">
     <value>275, 22</value>
@@ -415,14 +427,14 @@
   <data name="ToolStripMenuItem_Language_Delete.Text" xml:space="preserve">
     <value>Удалить/Отменить удаление языка...</value>
   </data>
-  <data name="ToolStripMenuItem_Languages.Size" type="System.Drawing.Size, System.Drawing">
-    <value>163, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_Languages.Text" xml:space="preserve">
-    <value>Языки</value>
-  </data>
   <data name="toolStripSeparator11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>160, 6</value>
+    <value>177, 6</value>
+  </data>
+  <data name="ToolStripMenuItem_Genres.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="ToolStripMenuItem_Genres.Text" xml:space="preserve">
+    <value>Жанры</value>
   </data>
   <data name="ToolStripMenuItem_Genres_Show.Size" type="System.Drawing.Size, System.Drawing">
     <value>276, 22</value>
@@ -451,11 +463,11 @@
   <data name="ToolStripMenuItem__Genres_Delete.Text" xml:space="preserve">
     <value>Удалить/Отменить удаление жанра</value>
   </data>
-  <data name="ToolStripMenuItem_Genres.Size" type="System.Drawing.Size, System.Drawing">
-    <value>163, 22</value>
+  <data name="ToolStripMenuItem_Cities.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
   </data>
-  <data name="ToolStripMenuItem_Genres.Text" xml:space="preserve">
-    <value>Жанры</value>
+  <data name="ToolStripMenuItem_Cities.Text" xml:space="preserve">
+    <value>Города</value>
   </data>
   <data name="ToolStripMenuItem__City_Show.Size" type="System.Drawing.Size, System.Drawing">
     <value>279, 22</value>
@@ -484,11 +496,11 @@
   <data name="ToolStripMenuItem_City_Delete.Text" xml:space="preserve">
     <value>Удалить/Отменить удаление города</value>
   </data>
-  <data name="ToolStripMenuItem_Cities.Size" type="System.Drawing.Size, System.Drawing">
-    <value>163, 22</value>
+  <data name="ToolStripMenuItem_Series.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
   </data>
-  <data name="ToolStripMenuItem_Cities.Text" xml:space="preserve">
-    <value>Города</value>
+  <data name="ToolStripMenuItem_Series.Text" xml:space="preserve">
+    <value>Серии книг</value>
   </data>
   <data name="ToolStripMenuItem_Series_Show.Size" type="System.Drawing.Size, System.Drawing">
     <value>295, 22</value>
@@ -517,11 +529,11 @@
   <data name="ToolStripMenuItem_Series_Delete.Text" xml:space="preserve">
     <value>Удалить/Отменить удаление серии книг</value>
   </data>
-  <data name="ToolStripMenuItem_Series.Size" type="System.Drawing.Size, System.Drawing">
-    <value>163, 22</value>
+  <data name="ToolStripMenuItem_PubHouse.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
   </data>
-  <data name="ToolStripMenuItem_Series.Text" xml:space="preserve">
-    <value>Серии книг</value>
+  <data name="ToolStripMenuItem_PubHouse.Text" xml:space="preserve">
+    <value>Издательства</value>
   </data>
   <data name="ToolStripMenuItem_PubHouse_Show.Size" type="System.Drawing.Size, System.Drawing">
     <value>314, 22</value>
@@ -550,14 +562,14 @@
   <data name="ToolStripMenuItem_PubHouse_Delete.Text" xml:space="preserve">
     <value>Удалить/Отменить удаление издательства...</value>
   </data>
-  <data name="ToolStripMenuItem_PubHouse.Size" type="System.Drawing.Size, System.Drawing">
-    <value>163, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_PubHouse.Text" xml:space="preserve">
-    <value>Издательства</value>
-  </data>
   <data name="toolStripSeparator10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>160, 6</value>
+    <value>177, 6</value>
+  </data>
+  <data name="ToolStripMenuItem_Places.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="ToolStripMenuItem_Places.Text" xml:space="preserve">
+    <value>Места хранения</value>
   </data>
   <data name="ToolStripMenuItem_Places_Show.Size" type="System.Drawing.Size, System.Drawing">
     <value>321, 22</value>
@@ -583,11 +595,11 @@
   <data name="ToolStripMenuItem_Places_Delele.Text" xml:space="preserve">
     <value>Удалить/Отменить удаление места хранения</value>
   </data>
-  <data name="ToolStripMenuItem_Places.Size" type="System.Drawing.Size, System.Drawing">
-    <value>163, 22</value>
+  <data name="ToolStripMenuItem_People.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
   </data>
-  <data name="ToolStripMenuItem_Places.Text" xml:space="preserve">
-    <value>Места хранения</value>
+  <data name="ToolStripMenuItem_People.Text" xml:space="preserve">
+    <value>Люди</value>
   </data>
   <data name="ToolStripMenuItem_People_Show.Size" type="System.Drawing.Size, System.Drawing">
     <value>285, 22</value>
@@ -612,17 +624,5 @@
   </data>
   <data name="ToolStripMenuItem_People_Delete.Text" xml:space="preserve">
     <value>Удалить/Отменить удаление человека</value>
-  </data>
-  <data name="ToolStripMenuItem_People.Size" type="System.Drawing.Size, System.Drawing">
-    <value>163, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_People.Text" xml:space="preserve">
-    <value>Люди</value>
-  </data>
-  <data name="ToolStripMenuItem_Cataloques.Size" type="System.Drawing.Size, System.Drawing">
-    <value>134, 20</value>
-  </data>
-  <data name="ToolStripMenuItem_Cataloques.Text" xml:space="preserve">
-    <value>Другие справочники</value>
   </data>
 </root>
