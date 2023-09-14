@@ -15,6 +15,7 @@ namespace lib_postgres.FORMS
         public Form_DB()
         {
             InitializeComponent();
+            Initial_Langues_Menu_Load();
         }
 
         private void LL_Load_Existing_BD_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -40,5 +41,15 @@ namespace lib_postgres.FORMS
             this.Close();
         }
 
+        private void Initial_Langues_Menu_Load()
+        {
+            Localization.Initial_Langues_Form_Menu_Load(ToolStripMenuItem_UI_Language);
+        }
+
+        private void ToolStripMenuItem_UI_Language_Changing_Click(object sender, EventArgs e)
+        {
+            Localization.Change_Language(this, sender.ToString(), ToolStripMenuItem_UI_Language);
+
+        }
     }
 }

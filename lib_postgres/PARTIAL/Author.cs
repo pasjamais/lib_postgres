@@ -32,9 +32,6 @@ namespace lib_postgres
 
             return DB_Agent.Create_Item<Author>(element,
                                                           DB_Agent.Get_Authors(),
-                                                          form_caption,
-                                                          label_caption,
-                                                          deja_exists_caption,
                                                           creation_method);
 
         }

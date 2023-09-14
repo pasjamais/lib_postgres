@@ -21,9 +21,6 @@ namespace lib_postgres
 
             return DB_Agent.Create_Item<Language>(element,
                                                             DB_Agent.Get_Languages(),
-                                                            "Добавить язык",
-                                                            "Наименование:",
-                                                            "Язык уже существует",
                                                             creation_method);
         }
       

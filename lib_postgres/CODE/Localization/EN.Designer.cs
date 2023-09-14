@@ -61,6 +61,24 @@ namespace lib_postgres.CODE.Localization {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Action.
+        /// </summary>
+        internal static string Action {
+            get {
+                return ResourceManager.GetString("Action", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Action List.
+        /// </summary>
+        internal static string Action_list {
+            get {
+                return ResourceManager.GetString("Action_list", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Add another source.
         /// </summary>
         internal static string Add_another_source {
@@ -160,6 +178,15 @@ namespace lib_postgres.CODE.Localization {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Another.
+        /// </summary>
+        internal static string Another {
+            get {
+                return ResourceManager.GetString("Another", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Another source already exists.
         /// </summary>
         internal static string Another_source_already_exists {
@@ -169,11 +196,47 @@ namespace lib_postgres.CODE.Localization {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Name:.
+        ///   Recherche une chaîne localisée semblable à List of other sources of recommendations.
+        /// </summary>
+        internal static string another_source_list {
+            get {
+                return ResourceManager.GetString("another_source_list", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Name.
         /// </summary>
         internal static string Appellation {
             get {
                 return ResourceManager.GetString("Appellation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Art.
+        /// </summary>
+        internal static string Art {
+            get {
+                return ResourceManager.GetString("Art", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à List of arts.
+        /// </summary>
+        internal static string Art_list {
+            get {
+                return ResourceManager.GetString("Art_list", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Arts by language.
+        /// </summary>
+        internal static string Arts_by_language {
+            get {
+                return ResourceManager.GetString("Arts_by_language", resourceCulture);
             }
         }
         
@@ -196,11 +259,29 @@ namespace lib_postgres.CODE.Localization {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Author(s).
+        /// </summary>
+        internal static string Author_s {
+            get {
+                return ResourceManager.GetString("Author_s", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Authors.
         /// </summary>
         internal static string Authors {
             get {
                 return ResourceManager.GetString("Authors", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à List of authors.
+        /// </summary>
+        internal static string Authors_list {
+            get {
+                return ResourceManager.GetString("Authors_list", resourceCulture);
             }
         }
         
@@ -223,11 +304,38 @@ namespace lib_postgres.CODE.Localization {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Book.
+        /// </summary>
+        internal static string Book {
+            get {
+                return ResourceManager.GetString("Book", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Books.
         /// </summary>
         internal static string Books {
             get {
                 return ResourceManager.GetString("Books", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à List of books.
+        /// </summary>
+        internal static string Books_list {
+            get {
+                return ResourceManager.GetString("Books_list", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à List of books that were taken from me.
+        /// </summary>
+        internal static string Books_list_taken_by_others {
+            get {
+                return ResourceManager.GetString("Books_list_taken_by_others", resourceCulture);
             }
         }
         
@@ -277,11 +385,56 @@ namespace lib_postgres.CODE.Localization {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à List of cities.
+        /// </summary>
+        internal static string Cities_list {
+            get {
+                return ResourceManager.GetString("Cities_list", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à City.
+        /// </summary>
+        internal static string City {
+            get {
+                return ResourceManager.GetString("City", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à City already exists.
         /// </summary>
         internal static string City_already_exists {
             get {
                 return ResourceManager.GetString("City_already_exists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Code.
+        /// </summary>
+        internal static string Code {
+            get {
+                return ResourceManager.GetString("Code", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Comment.
+        /// </summary>
+        internal static string Comment {
+            get {
+                return ResourceManager.GetString("Comment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Date.
+        /// </summary>
+        internal static string Date {
+            get {
+                return ResourceManager.GetString("Date", resourceCulture);
             }
         }
         
@@ -385,11 +538,38 @@ namespace lib_postgres.CODE.Localization {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Format.
+        /// </summary>
+        internal static string Format {
+            get {
+                return ResourceManager.GetString("Format", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Format already exists.
         /// </summary>
         internal static string Format_already_exists {
             get {
                 return ResourceManager.GetString("Format_already_exists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à List of reading formats.
+        /// </summary>
+        internal static string Formats_list {
+            get {
+                return ResourceManager.GetString("Formats_list", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Genre.
+        /// </summary>
+        internal static string Genre {
+            get {
+                return ResourceManager.GetString("Genre", resourceCulture);
             }
         }
         
@@ -403,6 +583,33 @@ namespace lib_postgres.CODE.Localization {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à List of genres.
+        /// </summary>
+        internal static string Genres_list {
+            get {
+                return ResourceManager.GetString("Genres_list", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Book ID.
+        /// </summary>
+        internal static string ID_book_short_text {
+            get {
+                return ResourceManager.GetString("ID_book_short_text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Language.
+        /// </summary>
+        internal static string Language {
+            get {
+                return ResourceManager.GetString("Language", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Language already exists.
         /// </summary>
         internal static string Language_already_exists {
@@ -412,11 +619,56 @@ namespace lib_postgres.CODE.Localization {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Publication language.
+        /// </summary>
+        internal static string Language_pub {
+            get {
+                return ResourceManager.GetString("Language_pub", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à List of languages.
+        /// </summary>
+        internal static string Languages_list {
+            get {
+                return ResourceManager.GetString("Languages_list", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Original langue.
+        /// </summary>
+        internal static string Langue_original {
+            get {
+                return ResourceManager.GetString("Langue_original", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Mark.
+        /// </summary>
+        internal static string Mark {
+            get {
+                return ResourceManager.GetString("Mark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Mark already exists.
         /// </summary>
         internal static string Mark_already_exists {
             get {
                 return ResourceManager.GetString("Mark_already_exists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Message.
+        /// </summary>
+        internal static string Message {
+            get {
+                return ResourceManager.GetString("Message", resourceCulture);
             }
         }
         
@@ -448,6 +700,15 @@ namespace lib_postgres.CODE.Localization {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Notice.
+        /// </summary>
+        internal static string Notice {
+            get {
+                return ResourceManager.GetString("Notice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Others recommend authors.
         /// </summary>
         internal static string Others_recommend_authors {
@@ -462,6 +723,15 @@ namespace lib_postgres.CODE.Localization {
         internal static string Others_recommend_books {
             get {
                 return ResourceManager.GetString("Others_recommend_books", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Pages.
+        /// </summary>
+        internal static string Pages {
+            get {
+                return ResourceManager.GetString("Pages", resourceCulture);
             }
         }
         
@@ -493,6 +763,15 @@ namespace lib_postgres.CODE.Localization {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à List of people.
+        /// </summary>
+        internal static string Persons_list {
+            get {
+                return ResourceManager.GetString("Persons_list", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Storage location: already exists.
         /// </summary>
         internal static string Place_already_exists {
@@ -511,6 +790,33 @@ namespace lib_postgres.CODE.Localization {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Placement.
+        /// </summary>
+        internal static string Placement {
+            get {
+                return ResourceManager.GetString("Placement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Placements list.
+        /// </summary>
+        internal static string Placements_list {
+            get {
+                return ResourceManager.GetString("Placements_list", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Publishing house.
+        /// </summary>
+        internal static string Pubhouse {
+            get {
+                return ResourceManager.GetString("Pubhouse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Publishing house already exists.
         /// </summary>
         internal static string Pubhouse_already_exists {
@@ -520,11 +826,173 @@ namespace lib_postgres.CODE.Localization {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Name of publishing house:.
+        /// </summary>
+        internal static string Pubhouse_name {
+            get {
+                return ResourceManager.GetString("Pubhouse_name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à List of publishing houses.
+        /// </summary>
+        internal static string Pubhouses_list {
+            get {
+                return ResourceManager.GetString("Pubhouses_list", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Publication year.
+        /// </summary>
+        internal static string Publication_year {
+            get {
+                return ResourceManager.GetString("Publication_year", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Have read.
+        /// </summary>
+        internal static string Read_list {
+            get {
+                return ResourceManager.GetString("Read_list", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Recommendation.
+        /// </summary>
+        internal static string Recommendation {
+            get {
+                return ResourceManager.GetString("Recommendation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Recomm. type.
+        /// </summary>
+        internal static string Recommendation_type {
+            get {
+                return ResourceManager.GetString("Recommendation_type", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à List of recommendations.
+        /// </summary>
+        internal static string Recommendations_list {
+            get {
+                return ResourceManager.GetString("Recommendations_list", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Series.
+        /// </summary>
+        internal static string Series {
+            get {
+                return ResourceManager.GetString("Series", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Series already exist.
         /// </summary>
         internal static string Series_already_exist {
             get {
                 return ResourceManager.GetString("Series_already_exist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à List of series.
+        /// </summary>
+        internal static string Series_list {
+            get {
+                return ResourceManager.GetString("Series_list", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Name.
+        /// </summary>
+        internal static string Simple_proper_name {
+            get {
+                return ResourceManager.GetString("Simple_proper_name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Source.
+        /// </summary>
+        internal static string Source {
+            get {
+                return ResourceManager.GetString("Source", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Source type.
+        /// </summary>
+        internal static string Source_type {
+            get {
+                return ResourceManager.GetString("Source_type", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Storage.
+        /// </summary>
+        internal static string Storage {
+            get {
+                return ResourceManager.GetString("Storage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à List of storage locations.
+        /// </summary>
+        internal static string Storages_list {
+            get {
+                return ResourceManager.GetString("Storages_list", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Value cannot be empty.
+        /// </summary>
+        internal static string Value_cannot_be__empty {
+            get {
+                return ResourceManager.GetString("Value_cannot_be_ empty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Where are the books.
+        /// </summary>
+        internal static string Where_books {
+            get {
+                return ResourceManager.GetString("Where_books", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Who has my books.
+        /// </summary>
+        internal static string Who_has_my_books {
+            get {
+                return ResourceManager.GetString("Who_has_my_books", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Year of writing.
+        /// </summary>
+        internal static string Writing_year {
+            get {
+                return ResourceManager.GetString("Writing_year", resourceCulture);
             }
         }
     }

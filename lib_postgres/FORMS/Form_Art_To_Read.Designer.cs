@@ -61,16 +61,16 @@
             // 
             // button_OK
             // 
-            resources.ApplyResources(this.button_OK, "button_OK");
             this.button_OK.DialogResult = System.Windows.Forms.DialogResult.OK;
+            resources.ApplyResources(this.button_OK, "button_OK");
             this.button_OK.Name = "button_OK";
             this.button_OK.UseVisualStyleBackColor = true;
             this.button_OK.Click += new System.EventHandler(this.button_OK_Click);
             // 
             // button_Cancel
             // 
-            resources.ApplyResources(this.button_Cancel, "button_Cancel");
             this.button_Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            resources.ApplyResources(this.button_Cancel, "button_Cancel");
             this.button_Cancel.Name = "button_Cancel";
             this.button_Cancel.UseVisualStyleBackColor = true;
             this.button_Cancel.Click += new System.EventHandler(this.button_Cancel_Click);
@@ -97,7 +97,6 @@
             // 
             // groupBox_Source
             // 
-            resources.ApplyResources(this.groupBox_Source, "groupBox_Source");
             this.groupBox_Source.Controls.Add(this.RB_Source_Another);
             this.groupBox_Source.Controls.Add(this.RB_Source_Author);
             this.groupBox_Source.Controls.Add(this.RB_Source_Art);
@@ -110,6 +109,7 @@
             this.groupBox_Source.Controls.Add(this.TB_Comment);
             this.groupBox_Source.Controls.Add(this.Label_Source_Art);
             this.groupBox_Source.Controls.Add(this.CB_Source_Art);
+            resources.ApplyResources(this.groupBox_Source, "groupBox_Source");
             this.groupBox_Source.Name = "groupBox_Source";
             this.groupBox_Source.TabStop = false;
             // 
@@ -154,9 +154,9 @@
             // 
             // CB_Source_Another
             // 
-            resources.ApplyResources(this.CB_Source_Another, "CB_Source_Another");
             this.CB_Source_Another.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CB_Source_Another.FormattingEnabled = true;
+            resources.ApplyResources(this.CB_Source_Another, "CB_Source_Another");
             this.CB_Source_Another.Name = "CB_Source_Another";
             // 
             // Label_Source_Author
@@ -166,9 +166,9 @@
             // 
             // CB_Source_Author
             // 
-            resources.ApplyResources(this.CB_Source_Author, "CB_Source_Author");
             this.CB_Source_Author.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CB_Source_Author.FormattingEnabled = true;
+            resources.ApplyResources(this.CB_Source_Author, "CB_Source_Author");
             this.CB_Source_Author.Name = "CB_Source_Author";
             // 
             // Label_Source_Art
@@ -178,14 +178,13 @@
             // 
             // CB_Source_Art
             // 
-            resources.ApplyResources(this.CB_Source_Art, "CB_Source_Art");
             this.CB_Source_Art.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CB_Source_Art.FormattingEnabled = true;
+            resources.ApplyResources(this.CB_Source_Art, "CB_Source_Art");
             this.CB_Source_Art.Name = "CB_Source_Art";
             // 
             // groupBox_ToRead
             // 
-            resources.ApplyResources(this.groupBox_ToRead, "groupBox_ToRead");
             this.groupBox_ToRead.Controls.Add(this.RB_Toread_Author);
             this.groupBox_ToRead.Controls.Add(this.RB_Toread_Art);
             this.groupBox_ToRead.Controls.Add(this.BT__Toread_Author);
@@ -194,6 +193,7 @@
             this.groupBox_ToRead.Controls.Add(this.CB_Toread_Author);
             this.groupBox_ToRead.Controls.Add(this.Label_Toread_Art);
             this.groupBox_ToRead.Controls.Add(this.CB_Toread_Art);
+            resources.ApplyResources(this.groupBox_ToRead, "groupBox_ToRead");
             this.groupBox_ToRead.Name = "groupBox_ToRead";
             this.groupBox_ToRead.TabStop = false;
             // 
@@ -235,9 +235,9 @@
             // 
             // CB_Toread_Author
             // 
-            resources.ApplyResources(this.CB_Toread_Author, "CB_Toread_Author");
             this.CB_Toread_Author.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CB_Toread_Author.FormattingEnabled = true;
+            resources.ApplyResources(this.CB_Toread_Author, "CB_Toread_Author");
             this.CB_Toread_Author.Name = "CB_Toread_Author";
             // 
             // Label_Toread_Art
@@ -247,9 +247,9 @@
             // 
             // CB_Toread_Art
             // 
-            resources.ApplyResources(this.CB_Toread_Art, "CB_Toread_Art");
             this.CB_Toread_Art.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CB_Toread_Art.FormattingEnabled = true;
+            resources.ApplyResources(this.CB_Toread_Art, "CB_Toread_Art");
             this.CB_Toread_Art.Name = "CB_Toread_Art";
             // 
             // Form_Art_To_Read

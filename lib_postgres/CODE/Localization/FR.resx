@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Action" xml:space="preserve">
+    <value>Action</value>
+  </data>
+  <data name="Action_list" xml:space="preserve">
+    <value>Liste des actions</value>
+  </data>
   <data name="Add_another_source" xml:space="preserve">
     <value>Ajouter une autre source de recommandation</value>
   </data>
@@ -147,14 +153,32 @@
   <data name="Add_series" xml:space="preserve">
     <value>Ajouter une série de livres</value>
   </data>
+  <data name="Another" xml:space="preserve">
+    <value>Autre</value>
+  </data>
+  <data name="another_source_list" xml:space="preserve">
+    <value>Liste d'autres sources de recommandations</value>
+  </data>
   <data name="Appellation" xml:space="preserve">
-    <value>Nom de la ville</value>
+    <value>Nom</value>
+  </data>
+  <data name="Art" xml:space="preserve">
+    <value>Ouvrage</value>
+  </data>
+  <data name="Arts_by_language" xml:space="preserve">
+    <value>Ouvrages par langue</value>
+  </data>
+  <data name="Art_list" xml:space="preserve">
+    <value>Liste des ouvrages</value>
   </data>
   <data name="Author" xml:space="preserve">
     <value>Auteur</value>
   </data>
   <data name="Authors" xml:space="preserve">
     <value>Auteurs</value>
+  </data>
+  <data name="Authors_list" xml:space="preserve">
+    <value>Liste des auteurs</value>
   </data>
   <data name="Authors_recommend_authors" xml:space="preserve">
     <value>Les auteurs recommandent des auteurs</value>
@@ -165,8 +189,20 @@
   <data name="Author_alredy_exists" xml:space="preserve">
     <value>L'auteur déjà existe </value>
   </data>
+  <data name="Author_s" xml:space="preserve">
+    <value>Auteur(s)</value>
+  </data>
+  <data name="Book" xml:space="preserve">
+    <value>Livre</value>
+  </data>
   <data name="Books" xml:space="preserve">
     <value>Livres</value>
+  </data>
+  <data name="Books_list" xml:space="preserve">
+    <value>Liste des livres</value>
+  </data>
+  <data name="Books_list_taken_by_others" xml:space="preserve">
+    <value>Liste des mes livres empruntés par d'autres</value>
   </data>
   <data name="Books_recommend_authors" xml:space="preserve">
     <value>Les livres recommandent des auteurs</value>
@@ -185,6 +221,24 @@
   <data name="caption_from_books" xml:space="preserve">
     <value>Des livres</value>
     <comment>Из книг</comment>
+  </data>
+  <data name="Cities_list" xml:space="preserve">
+    <value>Liste des villes</value>
+  </data>
+  <data name="City" xml:space="preserve">
+    <value>Ville</value>
+  </data>
+  <data name="City_already_exists" xml:space="preserve">
+    <value>La ville déjà existe</value>
+  </data>
+  <data name="Code" xml:space="preserve">
+    <value>Code</value>
+  </data>
+  <data name="Comment" xml:space="preserve">
+    <value>Commentaire</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Date</value>
   </data>
   <data name="Edit_another_source" xml:space="preserve">
     <value>Modifier une autre source de recommandation</value>
@@ -219,17 +273,50 @@
   <data name="Edit_series" xml:space="preserve">
     <value>Modifier la série</value>
   </data>
+  <data name="Format" xml:space="preserve">
+    <value>Format</value>
+  </data>
+  <data name="Formats_list" xml:space="preserve">
+    <value>Liste des formats de lecture</value>
+  </data>
   <data name="Format_already_exists" xml:space="preserve">
     <value>Le format déjà existe </value>
+  </data>
+  <data name="Genre" xml:space="preserve">
+    <value>Genre</value>
+  </data>
+  <data name="Genres_list" xml:space="preserve">
+    <value>List des genres</value>
   </data>
   <data name="Genre_already_exists" xml:space="preserve">
     <value>Le genre déjà existe </value>
   </data>
+  <data name="ID_book_short_text" xml:space="preserve">
+    <value>Livre ID</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Langue</value>
+  </data>
+  <data name="Languages_list" xml:space="preserve">
+    <value>Liste des langues</value>
+  </data>
   <data name="Language_already_exists" xml:space="preserve">
     <value>La langue déjà existe </value>
   </data>
+  <data name="Language_pub" xml:space="preserve">
+    <value>Langue de publication</value>
+  </data>
+  <data name="Langue_original" xml:space="preserve">
+    <value>Langue d'original</value>
+  </data>
+  <data name="Mark" xml:space="preserve">
+    <value>Note</value>
+  </data>
   <data name="Mark_already_exists" xml:space="preserve">
     <value>La note déjà existe</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>Message</value>
   </data>
   <data name="New_appellation" xml:space="preserve">
     <value>Nouveau nom de la ville</value>
@@ -240,14 +327,23 @@
   <data name="New_name" xml:space="preserve">
     <value>Nouveau nom:</value>
   </data>
+  <data name="Notice" xml:space="preserve">
+    <value>Remarque</value>
+  </data>
   <data name="Others_recommend_authors" xml:space="preserve">
     <value>Les auteurs recommandent des auteurs</value>
   </data>
   <data name="Others_recommend_books" xml:space="preserve">
     <value>Les auteurs recommandent des livres</value>
   </data>
+  <data name="Pages" xml:space="preserve">
+    <value>Pages</value>
+  </data>
   <data name="Person" xml:space="preserve">
-    <value>Personne</value>
+    <value>Personne :</value>
+  </data>
+  <data name="Persons_list" xml:space="preserve">
+    <value>Liste des personnes</value>
   </data>
   <data name="Person_already_exists" xml:space="preserve">
     <value>La personne déjà existe</value>
@@ -255,16 +351,79 @@
   <data name="Person_short_name" xml:space="preserve">
     <value>Nom, prénom :</value>
   </data>
+  <data name="Placement" xml:space="preserve">
+    <value>Placement</value>
+  </data>
+  <data name="Placements_list" xml:space="preserve">
+    <value>Liste des emplacements</value>
+  </data>
   <data name="Place_already_exists" xml:space="preserve">
     <value>L'emplacement de stockage déjà existe </value>
   </data>
   <data name="Place_name" xml:space="preserve">
     <value>Nom du lieu de stockage :</value>
   </data>
+  <data name="Pubhouse" xml:space="preserve">
+    <value>Maison d'édition</value>
+  </data>
+  <data name="Pubhouses_list" xml:space="preserve">
+    <value>Liste des maisons d'édition</value>
+  </data>
   <data name="Pubhouse_already_exists" xml:space="preserve">
     <value>La maison d'édition déjà existe </value>
   </data>
+  <data name="Pubhouse_name" xml:space="preserve">
+    <value>Nom de la maison d'édition :</value>
+  </data>
+  <data name="Publication_year" xml:space="preserve">
+    <value>Année de publication</value>
+  </data>
+  <data name="Read_list" xml:space="preserve">
+    <value>Déjà lus</value>
+  </data>
+  <data name="Recommendation" xml:space="preserve">
+    <value>Recommandation</value>
+  </data>
+  <data name="Recommendations_list" xml:space="preserve">
+    <value>Liste des recommandations</value>
+  </data>
+  <data name="Recommendation_type" xml:space="preserve">
+    <value>Type de recomm. </value>
+  </data>
+  <data name="Series" xml:space="preserve">
+    <value>Série</value>
+  </data>
   <data name="Series_already_exist" xml:space="preserve">
     <value>La série déjà existe </value>
+  </data>
+  <data name="Series_list" xml:space="preserve">
+    <value>Liste des séries de livres</value>
+  </data>
+  <data name="Simple_proper_name" xml:space="preserve">
+    <value>Nom</value>
+  </data>
+  <data name="Source" xml:space="preserve">
+    <value>Source</value>
+  </data>
+  <data name="Source_type" xml:space="preserve">
+    <value>Type de source</value>
+  </data>
+  <data name="Storage" xml:space="preserve">
+    <value>Stockage</value>
+  </data>
+  <data name="Storages_list" xml:space="preserve">
+    <value>Liste des emplacements de stockage</value>
+  </data>
+  <data name="Value_cannot_be_ empty" xml:space="preserve">
+    <value>La valeur ne peut pas être vide</value>
+  </data>
+  <data name="Where_books" xml:space="preserve">
+    <value>Où sont les livres</value>
+  </data>
+  <data name="Who_has_my_books" xml:space="preserve">
+    <value>IIls sont chez qui mes livres</value>
+  </data>
+  <data name="Writing_year" xml:space="preserve">
+    <value>Année d'écriture</value>
   </data>
 </root>

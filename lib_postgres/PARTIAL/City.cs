@@ -28,9 +28,6 @@ namespace lib_postgres
          
             return DB_Agent.Create_Item <City>(element,
                                                             DB_Agent.Get_Cities(),
-                                                            form_caption,
-                                                            label_caption,
-                                                            deja_exists_caption,
                                                             creation_method);
         }
         public static long Edit_Item_by_ID(long id)

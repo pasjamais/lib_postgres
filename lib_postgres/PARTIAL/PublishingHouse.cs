@@ -21,9 +21,6 @@ namespace lib_postgres
 
             return DB_Agent.Create_Item<PublishingHouse>(element,
                                                             DB_Agent.Get_Publishing_Houses(),
-                                                            "Добавить издательство",
-                                                            "Название:",
-                                                            "Издательство уже существует",
                                                             creation_method);
         }
         public static long Edit_Item_by_ID(long id)

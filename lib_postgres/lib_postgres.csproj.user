@@ -1,10 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <Compile Update="FORMS\Form_Action.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FORMS\Form_Art.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="FORMS\Form_ArtRead.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="FORMS\Form_Art_To_Read.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FORMS\Form_Book.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="FORMS\Form_DB.cs">
@@ -14,15 +23,6 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="FORMS\Form_Main.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="FORMS\Form_Action.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="FORMS\Form_Book.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="FORMS\Form_Art.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="FORMS\Form_Person.cs">

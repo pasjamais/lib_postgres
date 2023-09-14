@@ -22,9 +22,6 @@ namespace lib_postgres
 
             return DB_Agent.Create_Item<Genre>(element,
                                                             DB_Agent.Get_Genres(),
-                                                            "Добавить жанр",
-                                                            "Наименование:",
-                                                            "Жанр уже существует",
                                                             creation_method);
         }
      

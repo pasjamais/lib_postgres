@@ -30,8 +30,8 @@ namespace lib_postgres.CODE
                 DGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
                 DGV.Columns[0].HeaderText = "Id"; DGV.Columns[0].FillWeight = (int)(DGV.Width * 0.15);
                 DGV.Columns[1].Visible = false;//name
-                DGV.Columns[2].HeaderText = "Дата"; DGV.Columns[2].FillWeight = (int)(DGV.Width * 0.20);
-                DGV.Columns[3].HeaderText = "Действие"; DGV.Columns[3].FillWeight = (int)(DGV.Width * 0.65);
+                DGV.Columns[2].HeaderText = _s("Date"); DGV.Columns[2].FillWeight = (int)(DGV.Width * 0.20);
+                DGV.Columns[3].HeaderText = _s("Action"); DGV.Columns[3].FillWeight = (int)(DGV.Width * 0.65);
                 DGV.Columns[4].Visible = false;//place
                 DGV.Columns[5].Visible = false;//action_type
                 DGV.Columns[6].Visible = false;//is_deleted
@@ -41,38 +41,40 @@ namespace lib_postgres.CODE
                 DGV.Columns[9].Visible = false;//posessions
                 DGV.Columns[10].Visible = false;
                 DGV.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                if (StatusProperty is not null) StatusProperty.Message = "Список действий";
+                if (StatusProperty is not null) StatusProperty.Message = _s("Action_list");
             }
             if (type == typeof(Author))
             {
                 Author.Prepare_DGV(DGV);
-                if (StatusProperty is not null) StatusProperty.Message = "Список авторов";
+                if (StatusProperty is not null) StatusProperty.Message = _s("Authors_list");
             }
+            
             else if (type == typeof(Language))
             {
+                
                 DGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
                 DGV.Columns[0].HeaderText = "Id";
-                DGV.Columns[1].HeaderText = "Язык";
+                DGV.Columns[1].HeaderText = _s("Language");
                 for (int i = 2; i < DGV.ColumnCount; i++)
                     DGV.Columns[i].Visible = false;
                 DGV.Columns[0].FillWeight = (int)(DGV.Width * 0.15);
                 DGV.Columns[1].FillWeight = (int)(DGV.Width * 0.85);
                 DGV.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                if (StatusProperty is not null) StatusProperty.Message = "Список языков";
+                if (StatusProperty is not null) StatusProperty.Message = _s("Languages_list");
             }
             else if (type == typeof(ViewBook))
             {
                 DGV.AutoSizeColumnsMode = (DataGridViewAutoSizeColumnsMode)DataGridViewAutoSizeColumnMode.Fill;
                 DGV.Columns[0].HeaderText = "Id"; DGV.Columns[0].FillWeight = 10;
-                DGV.Columns[1].HeaderText = "Название"; 
-                DGV.Columns[2].HeaderText = "Автор(ы)"; 
-                DGV.Columns[3].HeaderText = "Год издания"; DGV.Columns[3].FillWeight = 20;
-                DGV.Columns[4].HeaderText = "Жанр"; DGV.Columns[4].FillWeight = 40;
-                DGV.Columns[5].HeaderText = "Издательство"; DGV.Columns[5].FillWeight = 25;
-                DGV.Columns[6].HeaderText = "Шифр"; DGV.Columns[6].FillWeight = 10;
+                DGV.Columns[1].HeaderText = _s("Appellation"); 
+                DGV.Columns[2].HeaderText = _s("Author_s"); 
+                DGV.Columns[3].HeaderText = _s("Publication_year"); DGV.Columns[3].FillWeight = 20;
+                DGV.Columns[4].HeaderText = _s("Genre"); DGV.Columns[4].FillWeight = 40;
+                DGV.Columns[5].HeaderText = _s("Pubhouse"); DGV.Columns[5].FillWeight = 25;
+                DGV.Columns[6].HeaderText = _s("Code"); DGV.Columns[6].FillWeight = 10;
                 if (StatusProperty is not null)
                 {
-                    StatusProperty.Message = "Список книг";
+                    StatusProperty.Message = _s("Books_list");
                     StatusProperty.ToolStripMenuItem__Book_Edit = true;
                 }
             }
@@ -80,81 +82,99 @@ namespace lib_postgres.CODE
             {
                 DGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
                 DGV.Columns[0].HeaderText = "Id";
-                DGV.Columns[1].HeaderText = "Произведение";
-                DGV.Columns[2].HeaderText = "Автор(ы)";
-                DGV.Columns[3].HeaderText = "Жанр";
-                DGV.Columns[5].HeaderText = "Год написания";
-                DGV.Columns[4].HeaderText = "Язык ориг.";
+                DGV.Columns[1].HeaderText = _s("Art");
+                DGV.Columns[2].HeaderText = _s("Author_s");
+                DGV.Columns[3].HeaderText = _s("Genre");
+                DGV.Columns[5].HeaderText = _s("Writing_year");
+                DGV.Columns[4].HeaderText = _s("Langue_original");
                 DGV.Columns[5].Visible = false;
                 DGV.Columns[0].FillWeight = (int)(DGV.Width * 0.15);
                 DGV.Columns[1].FillWeight = (int)(DGV.Width * 0.35);
                 DGV.Columns[2].FillWeight = (int)(DGV.Width * 0.20);
                 DGV.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 DGV.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                if (StatusProperty is not null) StatusProperty.Message = "Список произведений";
+                if (StatusProperty is not null) StatusProperty.Message = _s("Art_list");
             }
             else if (type == typeof(City))
             {
                 DGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
                 DGV.Columns[0].HeaderText = "Id";
-                DGV.Columns[1].HeaderText = "Город";
+                DGV.Columns[1].HeaderText = _s("City");
                 DGV.Columns[2].Visible = false;
                 DGV.Columns[3].Visible = false;
                 DGV.Columns[0].FillWeight = (int)(DGV.Width * 0.15);
                 DGV.Columns[1].FillWeight = (int)(DGV.Width * 0.85);
                 DGV.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                if (StatusProperty is not null) StatusProperty.Message = "Список городов";
+                if (StatusProperty is not null) StatusProperty.Message = _s("Cities_list");
             }
             else if (type == typeof(Series))
             {
                 DGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
                 DGV.Columns[0].HeaderText = "Id";
-                DGV.Columns[1].HeaderText = "Серия";
+                DGV.Columns[1].HeaderText = _s("Series");
                 DGV.Columns[2].Visible = false;
                 DGV.Columns[3].Visible = false;
                 DGV.Columns[0].FillWeight = (int)(DGV.Width * 0.15);
                 DGV.Columns[1].FillWeight = (int)(DGV.Width * 0.85);
                 DGV.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                if (StatusProperty is not null) StatusProperty.Message = "Список серий книг";
+                if (StatusProperty is not null) StatusProperty.Message = _s("Series_list");
             }
             else if (type == typeof(PublishingHouse))
             {
                 DGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
                 DGV.Columns[0].HeaderText = "Id";
-                DGV.Columns[1].HeaderText = "Издательство";
+                DGV.Columns[1].HeaderText = _s("Pubhouse");
                 DGV.Columns[2].Visible = false;
                 DGV.Columns[3].Visible = false;
                 DGV.Columns[0].FillWeight = (int)(DGV.Width * 0.15);
                 DGV.Columns[1].FillWeight = (int)(DGV.Width * 0.85);
                 DGV.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                if (StatusProperty is not null) StatusProperty.Message = "Список издательств";
+                if (StatusProperty is not null) StatusProperty.Message = _s("Pubhouses_list");
             }
             else if (type == typeof(Genre))
             {
                 DGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
                 DGV.Columns[0].HeaderText = "Id";
-                DGV.Columns[1].HeaderText = "Жанр";
+                DGV.Columns[1].HeaderText = _s("Genre");
                 for (int i = 2; i < DGV.ColumnCount; i++)
                     DGV.Columns[i].Visible = false;
                 DGV.Columns[0].FillWeight = (int)(DGV.Width * 0.15);
                 DGV.Columns[1].FillWeight = (int)(DGV.Width * 0.85);
                 DGV.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                if (StatusProperty is not null) StatusProperty.Message = "Список жанров";
+                if (StatusProperty is not null) StatusProperty.Message = _s("Genres_list");
             }
             else if (type == typeof(ViewHasRead) || type == typeof(ArtRead))
             {
                 DGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                if (StatusProperty is not null) StatusProperty.Message = "Список прочтённого";
+                DGV.Columns[0].HeaderText = "Id";
+                DGV.Columns[1].HeaderText = _s("Date");
+                DGV.Columns[2].HeaderText = _s("Author_s");
+                DGV.Columns[3].HeaderText = _s("Appellation");
+                DGV.Columns[4].HeaderText = _s("Genre");
+                DGV.Columns[5].HeaderText = _s("Langue_original");
+                DGV.Columns[6].HeaderText = _s("Notice");
+                DGV.Columns[7].HeaderText = _s("Mark");
+                DGV.Columns[8].HeaderText = _s("Format");
+                if (StatusProperty is not null) StatusProperty.Message = _s("Read_list");
             }
             else if (type == typeof(ViewMyBooksInOtherHand))
             {
                 DGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 DGV.Columns[0].HeaderText = "Id";
-                DGV.Columns[1].Visible = false;//Место
+                DGV.Columns[1].Visible = false;//Place
+                DGV.Columns[2].HeaderText = _s("Notice");
+                DGV.Columns[3].HeaderText = _s("Action");
+                DGV.Columns[4].HeaderText = _s("Date");
+                DGV.Columns[5].HeaderText = _s("Appellation");
+                DGV.Columns[6].HeaderText = _s("Author_s");
                 for (int i = 7; i <= 13; i++) { DGV.Columns[i].Visible = false; }
-                DGV.Columns[0].FillWeight = (int)(DGV.Width * 0.1);
-                DGV.Columns[5].FillWeight = (int)(DGV.Width * 0.3);
-                if (StatusProperty is not null) StatusProperty.Message = "Список книг, которые у меня взяли";
+                DGV.Columns[0].FillWeight = (int)(DGV.Width * 0.05);
+                DGV.Columns[2].FillWeight = (int)(DGV.Width * 0.25);
+                DGV.Columns[3].FillWeight = (int)(DGV.Width * 0.05);
+                DGV.Columns[4].FillWeight = (int)(DGV.Width * 0.05);
+                DGV.Columns[5].FillWeight = (int)(DGV.Width * 0.25);
+                DGV.Columns[6].FillWeight = (int)(DGV.Width * 0.3);
+                if (StatusProperty is not null) StatusProperty.Message = _s("Books_list_taken_by_others");
             }
             else if (type == typeof(Mark))
             {
@@ -172,13 +192,13 @@ namespace lib_postgres.CODE
             {
                 DGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
                 DGV.Columns[0].HeaderText = "Id";
-                DGV.Columns[1].HeaderText = "Формат";
+                DGV.Columns[1].HeaderText = _s("Format");
                 DGV.Columns[2].Visible = false;
                 DGV.Columns[3].Visible = false;
                 DGV.Columns[0].FillWeight = (int)(DGV.Width * 0.15);
                 DGV.Columns[1].FillWeight = (int)(DGV.Width * 0.85);
                 DGV.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                if (StatusProperty is not null) StatusProperty.Message = "Список форматов прочтения";
+                if (StatusProperty is not null) StatusProperty.Message = _s("Formats_list");
             }
             else if (type == typeof(Place))
             {
@@ -188,69 +208,69 @@ namespace lib_postgres.CODE
                 DGV.Columns[5].Visible = false;
                 DGV.Columns[0].HeaderText = "Id";
                 DGV.Columns[0].FillWeight = (int)(DGV.Width * 0.15);
-                DGV.Columns[1].HeaderText = "Место хранения";
+                DGV.Columns[1].HeaderText = _s("Storage");
                 DGV.Columns[1].FillWeight = (int)(DGV.Width * 0.45);
-                DGV.Columns[2].HeaderText = "Комментарий";
+                DGV.Columns[2].HeaderText = _s("Comment");
                 DGV.Columns[2].FillWeight = (int)(DGV.Width * 0.45);
 
                 DGV.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                if (StatusProperty is not null) StatusProperty.Message = "Список мест хранения";
+                if (StatusProperty is not null) StatusProperty.Message = _s("Storages_list");
             }
             else if (type == typeof(Person))
             {
                 DGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
                 DGV.Columns[0].HeaderText = "Id";
-                DGV.Columns[1].HeaderText = "Имя";
+                DGV.Columns[1].HeaderText = _s("Simple_proper_name");
                 DGV.Columns[2].Visible = false;
                 DGV.Columns[3].Visible = false;
                 DGV.Columns[4].Visible = false;
                 DGV.Columns[0].FillWeight = (int)(DGV.Width * 0.15);
                 DGV.Columns[1].FillWeight = (int)(DGV.Width * 0.85);
                 DGV.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                if (StatusProperty is not null) StatusProperty.Message = "Список лиц";
+                if (StatusProperty is not null) StatusProperty.Message = _s("Persons_list");
             }
             else if (type == typeof(ArtToRead))
             {
                 DGV.AutoSizeColumnsMode = (DataGridViewAutoSizeColumnsMode)DataGridViewAutoSizeColumnMode.Fill;
                 DGV.Columns[0].HeaderText = "Id";
-                DGV.Columns[1].HeaderText = "Дата";
-                DGV.Columns[2].HeaderText = "Тип ист.";
-                DGV.Columns[3].HeaderText = "Источник";
-                DGV.Columns[4].HeaderText = "Тип рек.";
-                DGV.Columns[5].HeaderText = "Рекомендация";
-                DGV.Columns[6].HeaderText = "Комментарий";
+                DGV.Columns[1].HeaderText = _s("Date");
+                DGV.Columns[2].HeaderText = _s("Source_type");
+                DGV.Columns[3].HeaderText = _s("Source");
+                DGV.Columns[4].HeaderText = _s("Recommendation_type");
+                DGV.Columns[5].HeaderText = _s("Recommendation");
+                DGV.Columns[6].HeaderText = _s("Comment");
                 DGV.Columns[0].FillWeight = 20;
                 DGV.Columns[1].FillWeight = 20;
                 DGV.Columns[2].FillWeight = 20;
-                DGV.Columns[4].FillWeight = 20;
-                if (StatusProperty is not null) StatusProperty.Message = "Список рекомендаций";
+                DGV.Columns[4].FillWeight = 20; 
+                if (StatusProperty is not null) StatusProperty.Message = _s("Recommendations_list");
             }
             else if (type == typeof(SourceToreadAnother))
             {
                 DGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
                 DGV.Columns[0].HeaderText = "Id";
-                DGV.Columns[1].HeaderText = "Наименование";
+                DGV.Columns[1].HeaderText = _s("Appellation");
                 for (int i = 2; i < DGV.ColumnCount; i++)
                     DGV.Columns[i].Visible = false;
                 DGV.Columns[0].FillWeight = (int)(DGV.Width * 0.15);
                 DGV.Columns[1].FillWeight = (int)(DGV.Width * 0.85);
                 DGV.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                if (StatusProperty is not null) StatusProperty.Message = "Список иных источников рекомендаций";
+                if (StatusProperty is not null) StatusProperty.Message = _s("another_source_list");
              }
             else if (type == typeof(Location))
             {
                 DGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 DGV.Columns[0].HeaderText = "Id";
-                DGV.Columns[1].HeaderText = "Дата";
-                DGV.Columns[2].HeaderText = "Действие";
-                DGV.Columns[3].HeaderText = "Примечание";
-                DGV.Columns[4].HeaderText = "Название";
-                DGV.Columns[5].HeaderText = "Автор_ы";
-                DGV.Columns[6].HeaderText = "Жанр";
-                DGV.Columns[7].HeaderText = " Год изд.";
-                DGV.Columns[8].HeaderText = " Шифр";
-                DGV.Columns[9].HeaderText = "Id кн.";
-                DGV.Columns[10].HeaderText = "Размещение";
+                DGV.Columns[1].HeaderText = _s("Date");
+                DGV.Columns[2].HeaderText = _s("Action");
+                DGV.Columns[3].HeaderText = _s("Notice");
+                DGV.Columns[4].HeaderText = _s("Appellation");
+                DGV.Columns[5].HeaderText = _s("Author_s");
+                DGV.Columns[6].HeaderText = _s("Genre");
+                DGV.Columns[7].HeaderText = _s("Publication_year");
+                DGV.Columns[8].HeaderText = _s("Code");
+                DGV.Columns[9].HeaderText = _s("ID_book_short_text");
+                DGV.Columns[10].HeaderText = _s("Placement");
                 DGV.Columns[0].FillWeight = 10;
                 DGV.Columns[1].FillWeight = 20;
                 DGV.Columns[2].FillWeight = 27;
@@ -262,7 +282,7 @@ namespace lib_postgres.CODE
                 DGV.Columns[8].FillWeight = 10;
                 DGV.Columns[9].FillWeight = 10;
                 DGV.Columns[10].FillWeight = 25;
-                if (StatusProperty is not null) StatusProperty.Message = "Записи размещения";
+                if (StatusProperty is not null) StatusProperty.Message = _s("Placements_list");
             }
         }   
       
@@ -300,7 +320,8 @@ namespace lib_postgres.CODE
             foreach (DataGridViewRow row in DGV.Rows)
             {
                 var format_color_id = (from f in formats
-                                       where f.Name == row.Cells["Формат"].Value.ToString()
+                                  //     where f.Name == row.Cells[_s("Format")].Value.ToString()
+                                     where f.Name == row.Cells["Формат"].Value.ToString()
                                        select f.Id).First();
                 row.DefaultCellStyle.BackColor = lib_postgres.CODE.Data.format_colors[format_color_id];
                 var mark_color_id = (from m in marks
@@ -311,6 +332,33 @@ namespace lib_postgres.CODE
             }
 
         }
-
+        /// <summary>
+        /// just for substitute string with local version more simble in code
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        private string _s(string key)
+        {
+            return lib_postgres.Localization.Substitute(key);
+        }
+        public void Refresh_DGV_for_Get_Books_by_Place_Name(DataGridView DGV)
+        {
+          
+            DGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            DGV.Columns[0].HeaderText = "Id";
+            DGV.Columns[1].Visible = false;
+            DGV.Columns[2].HeaderText = _s("Notice");
+            DGV.Columns[3].HeaderText = _s("Action");
+            DGV.Columns[4].HeaderText = _s("Date");
+            DGV.Columns[5].HeaderText = _s("Appellation");
+            DGV.Columns[6].HeaderText = _s("Author_s");
+            DGV.Columns[7].HeaderText = _s("Genre");
+            DGV.Columns[8].HeaderText = _s("Langue_original");
+            DGV.Columns[9].HeaderText = _s("Language_pub");
+            DGV.Columns[10].HeaderText = _s("Publication_year");
+            DGV.Columns[11].HeaderText = _s("Pubhouse");
+            DGV.Columns[12].HeaderText = _s("Code");
+            DGV.Columns[13].HeaderText = _s("Pages");
+        }
     }
 }

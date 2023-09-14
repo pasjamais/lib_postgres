@@ -22,9 +22,6 @@ namespace lib_postgres
 
             return DB_Agent.Create_Item<Series>(element,
                                                             DB_Agent.Get_Series(),
-                                                            "Добавить серию книг",
-                                                            "Название:",
-                                                            "Серия уже существует",
                                                             creation_method);
         }
 

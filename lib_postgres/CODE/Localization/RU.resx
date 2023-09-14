@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Action" xml:space="preserve">
+    <value>Действие</value>
+  </data>
+  <data name="Action_list" xml:space="preserve">
+    <value>Список действий</value>
+  </data>
   <data name="Add_another_source" xml:space="preserve">
     <value>Добавить другой источник рекомендации</value>
   </data>
@@ -150,17 +156,35 @@
   <data name="Add_series" xml:space="preserve">
     <value>Добавить серию книг</value>
   </data>
+  <data name="Another" xml:space="preserve">
+    <value>Другое</value>
+  </data>
   <data name="Another_source_already_exists" xml:space="preserve">
     <value>Источник уже существует</value>
   </data>
+  <data name="another_source_list" xml:space="preserve">
+    <value>Список иных источников рекомендаций</value>
+  </data>
   <data name="Appellation" xml:space="preserve">
-    <value>Название:</value>
+    <value>Название</value>
+  </data>
+  <data name="Art" xml:space="preserve">
+    <value>Произведение</value>
+  </data>
+  <data name="Arts_by_language" xml:space="preserve">
+    <value>Произведения по языкам</value>
+  </data>
+  <data name="Art_list" xml:space="preserve">
+    <value>Список произведений</value>
   </data>
   <data name="Author" xml:space="preserve">
     <value>Автор</value>
   </data>
   <data name="Authors" xml:space="preserve">
     <value>Авторы</value>
+  </data>
+  <data name="Authors_list" xml:space="preserve">
+    <value>Список авторов</value>
   </data>
   <data name="Authors_recommend_authors" xml:space="preserve">
     <value>Авторы рекомендуют авторов</value>
@@ -171,8 +195,20 @@
   <data name="Author_alredy_exists" xml:space="preserve">
     <value>Автор уже существует</value>
   </data>
+  <data name="Author_s" xml:space="preserve">
+    <value>Автор(ы)</value>
+  </data>
+  <data name="Book" xml:space="preserve">
+    <value>Книга</value>
+  </data>
   <data name="Books" xml:space="preserve">
     <value>Книги</value>
+  </data>
+  <data name="Books_list" xml:space="preserve">
+    <value>Список книг</value>
+  </data>
+  <data name="Books_list_taken_by_others" xml:space="preserve">
+    <value>Список книг, которые у меня взяли</value>
   </data>
   <data name="Books_recommend_authors" xml:space="preserve">
     <value>Книги рекомендуют авторов</value>
@@ -189,8 +225,23 @@
   <data name="caption_from_books" xml:space="preserve">
     <value>Из книг</value>
   </data>
+  <data name="Cities_list" xml:space="preserve">
+    <value>Список городов</value>
+  </data>
+  <data name="City" xml:space="preserve">
+    <value>Город</value>
+  </data>
   <data name="City_already_exists" xml:space="preserve">
     <value>Город уже существует</value>
+  </data>
+  <data name="Code" xml:space="preserve">
+    <value>Шифр</value>
+  </data>
+  <data name="Comment" xml:space="preserve">
+    <value>Комментарий</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Дата</value>
   </data>
   <data name="Edit_another_source" xml:space="preserve">
     <value>Изменить иной источник рекомендации</value>
@@ -225,17 +276,50 @@
   <data name="Edit_series" xml:space="preserve">
     <value>Изменить серию</value>
   </data>
+  <data name="Format" xml:space="preserve">
+    <value>Формат</value>
+  </data>
+  <data name="Formats_list" xml:space="preserve">
+    <value>Список форматов прочтения</value>
+  </data>
   <data name="Format_already_exists" xml:space="preserve">
     <value>Формат уже существует</value>
+  </data>
+  <data name="Genre" xml:space="preserve">
+    <value>Жанр</value>
+  </data>
+  <data name="Genres_list" xml:space="preserve">
+    <value>Список жанров</value>
   </data>
   <data name="Genre_already_exists" xml:space="preserve">
     <value>Жанр уже существует</value>
   </data>
+  <data name="ID_book_short_text" xml:space="preserve">
+    <value>Id кн.</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Язык</value>
+  </data>
+  <data name="Languages_list" xml:space="preserve">
+    <value>Список языков</value>
+  </data>
   <data name="Language_already_exists" xml:space="preserve">
     <value>Язык уже существует</value>
   </data>
+  <data name="Language_pub" xml:space="preserve">
+    <value>Язык издания</value>
+  </data>
+  <data name="Langue_original" xml:space="preserve">
+    <value>Язык ориг.</value>
+  </data>
+  <data name="Mark" xml:space="preserve">
+    <value>Оценка</value>
+  </data>
   <data name="Mark_already_exists" xml:space="preserve">
     <value>Оценка уже существует</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>Сообщение</value>
   </data>
   <data name="New_appellation" xml:space="preserve">
     <value>Новое название:</value>
@@ -246,14 +330,23 @@
   <data name="New_name" xml:space="preserve">
     <value>Новое имя:</value>
   </data>
+  <data name="Notice" xml:space="preserve">
+    <value>Примечание</value>
+  </data>
   <data name="Others_recommend_authors" xml:space="preserve">
     <value>Другие рекомендуют авторов</value>
   </data>
   <data name="Others_recommend_books" xml:space="preserve">
     <value>Другие рекомендуют книги</value>
   </data>
+  <data name="Pages" xml:space="preserve">
+    <value>Страниц</value>
+  </data>
   <data name="Person" xml:space="preserve">
     <value>Лицо:</value>
+  </data>
+  <data name="Persons_list" xml:space="preserve">
+    <value>Список людей</value>
   </data>
   <data name="Person_already_exists" xml:space="preserve">
     <value>Лицо уже существует</value>
@@ -261,16 +354,79 @@
   <data name="Person_short_name" xml:space="preserve">
     <value>ФИО:</value>
   </data>
+  <data name="Placement" xml:space="preserve">
+    <value>Размещение</value>
+  </data>
+  <data name="Placements_list" xml:space="preserve">
+    <value>Записи размещения</value>
+  </data>
   <data name="Place_already_exists" xml:space="preserve">
     <value>Место хранения уже существует</value>
   </data>
   <data name="Place_name" xml:space="preserve">
     <value>Название места хранения:</value>
   </data>
+  <data name="Pubhouse" xml:space="preserve">
+    <value>Издательство</value>
+  </data>
+  <data name="Pubhouses_list" xml:space="preserve">
+    <value>Список издательств</value>
+  </data>
   <data name="Pubhouse_already_exists" xml:space="preserve">
     <value>Издательство уже существует</value>
   </data>
+  <data name="Pubhouse_name" xml:space="preserve">
+    <value>Название издательства:</value>
+  </data>
+  <data name="Publication_year" xml:space="preserve">
+    <value>Год изд.</value>
+  </data>
+  <data name="Read_list" xml:space="preserve">
+    <value>Список прочтённого</value>
+  </data>
+  <data name="Recommendation" xml:space="preserve">
+    <value>Рекомендация</value>
+  </data>
+  <data name="Recommendations_list" xml:space="preserve">
+    <value>Список рекомендаций</value>
+  </data>
+  <data name="Recommendation_type" xml:space="preserve">
+    <value>Тип рек.</value>
+  </data>
+  <data name="Series" xml:space="preserve">
+    <value>Серия</value>
+  </data>
   <data name="Series_already_exist" xml:space="preserve">
     <value>Серия уже существует</value>
+  </data>
+  <data name="Series_list" xml:space="preserve">
+    <value>Список серий книг</value>
+  </data>
+  <data name="Simple_proper_name" xml:space="preserve">
+    <value>Имя</value>
+  </data>
+  <data name="Source" xml:space="preserve">
+    <value>Источник</value>
+  </data>
+  <data name="Source_type" xml:space="preserve">
+    <value>Тип ист.</value>
+  </data>
+  <data name="Storage" xml:space="preserve">
+    <value>Место хранения</value>
+  </data>
+  <data name="Storages_list" xml:space="preserve">
+    <value>Список мест хранения</value>
+  </data>
+  <data name="Value_cannot_be_ empty" xml:space="preserve">
+    <value>Значение не может быть пустым</value>
+  </data>
+  <data name="Where_books" xml:space="preserve">
+    <value>Где книги</value>
+  </data>
+  <data name="Who_has_my_books" xml:space="preserve">
+    <value>У кого мои книги</value>
+  </data>
+  <data name="Writing_year" xml:space="preserve">
+    <value>Год написания</value>
   </data>
 </root>

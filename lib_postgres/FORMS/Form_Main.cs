@@ -140,8 +140,11 @@ namespace lib_postgres
         #region main_menu_creation
         private void main_menu_generation()
         {
-            ToolStripMenuItem newItem = new ToolStripMenuItem("Где книги");
+            ToolStripMenuItem newItem = new ToolStripMenuItem(Localization.Substitute("Where_books"));
             ToolStripMenuItem_Books.DropDownItems.Add(newItem);
+            newItem.Tag = "Where_books";
+            Add_for_Dynamic_Localization(newItem);
+            newItem.GetHashCode();
             var places = DB_Agent.Get_Places();
             foreach (var place in places)
             {
@@ -150,13 +153,17 @@ namespace lib_postgres
                 place_item.Click += show_books_in_place;
             }
 
-            newItem = new ToolStripMenuItem("У кого мои книги");
+            newItem = new ToolStripMenuItem(Localization.Substitute("Who_has_my_books"));
             ToolStripMenuItem_Books.DropDownItems.Add(newItem);
+            newItem.Tag = "Who_has_my_books";
+            Add_for_Dynamic_Localization(newItem);
             newItem.Click += get_My_Books_in_Other_Hands;
 
 
-            newItem = new ToolStripMenuItem("Произведения по языкам");
+            newItem = new ToolStripMenuItem(Localization.Substitute("Arts_by_language"));
             ToolStripMenuItem_Arts.DropDownItems.Add(newItem);
+            newItem.Tag = "Arts_by_language";
+            Add_for_Dynamic_Localization(newItem);
             var languages = DB_Agent.Get_Languages();
             var arts = DB_Agent.Get_Arts();
             foreach (var language in languages)
@@ -231,7 +238,9 @@ namespace lib_postgres
         }
         void show_books_in_place(object sender, EventArgs e)
         {
+            dataGridView.Columns.Clear();
             dataGridView.DataSource = Queries_LinQ.Get_Books_by_Place_Name(((ToolStripMenuItem)sender).Text);
+            dgv_Visualisator.Refresh_DGV_for_Get_Books_by_Place_Name(dataGridView);
         }
 
         #endregion menu_commands
@@ -1034,120 +1043,24 @@ namespace lib_postgres
 
         #region Localosation
 
+        public List<ToolStripMenuItem> dynamic_created_controls = new List<ToolStripMenuItem>();
+
         private void ToolStripMenuItem_UI_Language_Changing_Click(object sender, EventArgs e)
         {
-            Set_visibility_to_Actual_ToolStripMenuItem(true);
-            CultureInfo new_Culture = new CultureInfo(Localization.UI_langs[sender.ToString()]);
-            ApplyCulture(new_Culture);
-            Show_Actual_Language_in_Top();
-            Set_visibility_to_Actual_ToolStripMenuItem(false);
-
+            Localization.Change_Language(this, sender.ToString(), ToolStripMenuItem_UI_Language);
+            Localization.Update_Dynamic_Created_Controls(dynamic_created_controls);
         }
-        /// <summary>
-        /// This method was borrowed from Stefan Troschuetz who described 
-        /// how it works so well that I wanted to save it in its entirety
-        //  https://www.codeproject.com/Articles/14002/UICultureChanger-component
-        /// </summary>
-        /// <param name="culture"></param>
-        private void ApplyCulture(CultureInfo culture)
-        {
-            // Applies culture to current Thread.
-
-            Thread.CurrentThread.CurrentUICulture = culture;
-
-            // Create a resource manager for this Form
-            // and determine its fields via reflection.
-
-            ComponentResourceManager resources = new ComponentResourceManager(this.GetType());
-            FieldInfo[] fieldInfos = this.GetType().GetFields(BindingFlags.Instance |
-                BindingFlags.DeclaredOnly | BindingFlags.NonPublic);
-
-            // Call SuspendLayout for Form and all fields derived from Control, so assignment of 
-            // localized text doesn't change layout immediately.
-
-            this.SuspendLayout();
-            for (int index = 0; index < fieldInfos.Length; index++)
-            {
-                if (fieldInfos[index].FieldType.IsSubclassOf(typeof(Control)))
-                {
-                    fieldInfos[index].FieldType.InvokeMember("SuspendLayout",
-                        BindingFlags.InvokeMethod, null,
-                        fieldInfos[index].GetValue(this), null);
-                }
-            }
-
-            // If available, assign localized text to Form and fields with Text property.
-
-            String text = resources.GetString("$this.Text");
-            if (text != null)
-                this.Text = text;
-            for (int index = 0; index < fieldInfos.Length; index++)
-            {
-                if (fieldInfos[index].FieldType.GetProperty("Text", typeof(String)) != null)
-                {
-                    text = resources.GetString(fieldInfos[index].Name + ".Text");
-                    if (text != null)
-                    {
-                        fieldInfos[index].FieldType.InvokeMember("Text",
-                            BindingFlags.SetProperty, null,
-                            fieldInfos[index].GetValue(this), new object[] { text });
-                    }
-                }
-            }
-
-            // Call ResumeLayout for Form and all fields
-            // derived from Control to resume layout logic.
-            // Call PerformLayout, so layout changes due
-            // to assignment of localized text are performed.
-
-            for (int index = 0; index < fieldInfos.Length; index++)
-            {
-                if (fieldInfos[index].FieldType.IsSubclassOf(typeof(Control)))
-                {
-                    fieldInfos[index].FieldType.InvokeMember("ResumeLayout",
-                            BindingFlags.InvokeMethod, null,
-                            fieldInfos[index].GetValue(this), new object[] { false });
-                }
-            }
-            this.ResumeLayout(false);
-            this.PerformLayout();
-        }
-
+         
         private void Initial_Langues_Menu_Load()
         {
-            Show_Actual_Language_in_Top();
-            Set_visibility_to_Actual_ToolStripMenuItem(false);
+            Localization.Initial_Langues_Form_Menu_Load(ToolStripMenuItem_UI_Language);
+        }
+        private void Add_for_Dynamic_Localization(ToolStripMenuItem control)
+        {
+            dynamic_created_controls.Add(control);
         }
 
-        private void Show_Actual_Language_in_Top()
-        {
-            CultureInfo current_Culture = Thread.CurrentThread.CurrentUICulture;
-            ToolStripMenuItem_UI_Language.Text = Localization.Get_Short_Language_Name_by_Culture(current_Culture);
-        }
 
-        private ToolStripMenuItem Get_ToolStripMenuItem_according_to_Actual_Culture()
-        {
-            string short_lang = Localization.Get_Short_Language_Name_by_Culture(Thread.CurrentThread.CurrentUICulture);
-            List<ToolStripMenuItem> lang_menu_items = new List<ToolStripMenuItem>();
-            Get_All_ToolStripMenuItem_Controls(ToolStripMenuItem_UI_Language, lang_menu_items);
-            return lang_menu_items.Where(x => x.Text == short_lang).First();
-        }
-
-        private void Set_visibility_to_Actual_ToolStripMenuItem(bool is_visible)
-        {
-            ToolStripMenuItem item = Get_ToolStripMenuItem_according_to_Actual_Culture();
-            item.Visible = is_visible;
-        }
-
- 
-        private void Get_All_ToolStripMenuItem_Controls(ToolStripMenuItem container, List<ToolStripMenuItem> ControlList)
-        {
-            foreach (ToolStripMenuItem c in container.DropDownItems)
-            {
-                Get_All_ToolStripMenuItem_Controls(c, ControlList);
-                if (c is ToolStripMenuItem) ControlList.Add(c);
-            }
-        }
         #endregion Localosation
 
     }

@@ -35,6 +35,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.LL_Load_Empty_BD = new System.Windows.Forms.LinkLabel();
             this.LL_Load_Existing_BD = new System.Windows.Forms.LinkLabel();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.ToolStripMenuItem_UI_Language = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem_UI_Language_RU = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem_UI_Language_FR = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem_UI_Language_EN = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // button_OK
@@ -70,6 +76,40 @@
             this.LL_Load_Existing_BD.TabStop = true;
             this.LL_Load_Existing_BD.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LL_Load_Existing_BD_LinkClicked);
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripMenuItem_UI_Language});
+            resources.ApplyResources(this.menuStrip1, "menuStrip1");
+            this.menuStrip1.Name = "menuStrip1";
+            // 
+            // ToolStripMenuItem_UI_Language
+            // 
+            this.ToolStripMenuItem_UI_Language.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripMenuItem_UI_Language_RU,
+            this.ToolStripMenuItem_UI_Language_FR,
+            this.ToolStripMenuItem_UI_Language_EN});
+            this.ToolStripMenuItem_UI_Language.Name = "ToolStripMenuItem_UI_Language";
+            resources.ApplyResources(this.ToolStripMenuItem_UI_Language, "ToolStripMenuItem_UI_Language");
+            // 
+            // ToolStripMenuItem_UI_Language_RU
+            // 
+            this.ToolStripMenuItem_UI_Language_RU.Name = "ToolStripMenuItem_UI_Language_RU";
+            resources.ApplyResources(this.ToolStripMenuItem_UI_Language_RU, "ToolStripMenuItem_UI_Language_RU");
+            this.ToolStripMenuItem_UI_Language_RU.Click += new System.EventHandler(this.ToolStripMenuItem_UI_Language_Changing_Click);
+            // 
+            // ToolStripMenuItem_UI_Language_FR
+            // 
+            this.ToolStripMenuItem_UI_Language_FR.Name = "ToolStripMenuItem_UI_Language_FR";
+            resources.ApplyResources(this.ToolStripMenuItem_UI_Language_FR, "ToolStripMenuItem_UI_Language_FR");
+            this.ToolStripMenuItem_UI_Language_FR.Click += new System.EventHandler(this.ToolStripMenuItem_UI_Language_Changing_Click);
+            // 
+            // ToolStripMenuItem_UI_Language_EN
+            // 
+            this.ToolStripMenuItem_UI_Language_EN.Name = "ToolStripMenuItem_UI_Language_EN";
+            resources.ApplyResources(this.ToolStripMenuItem_UI_Language_EN, "ToolStripMenuItem_UI_Language_EN");
+            this.ToolStripMenuItem_UI_Language_EN.Click += new System.EventHandler(this.ToolStripMenuItem_UI_Language_Changing_Click);
+            // 
             // Form_DB
             // 
             this.AcceptButton = this.button_OK;
@@ -81,9 +121,12 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button_Cancel);
             this.Controls.Add(this.button_OK);
+            this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.Name = "Form_DB";
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -97,5 +140,10 @@
         private LinkLabel LL_Load_Empty_BD;
         private LinkLabel LL_Load_Existing_BD;
         protected internal Label label1;
+        private MenuStrip menuStrip1;
+        private ToolStripMenuItem ToolStripMenuItem_UI_Language;
+        private ToolStripMenuItem ToolStripMenuItem_UI_Language_RU;
+        private ToolStripMenuItem ToolStripMenuItem_UI_Language_FR;
+        private ToolStripMenuItem ToolStripMenuItem_UI_Language_EN;
     }
 }

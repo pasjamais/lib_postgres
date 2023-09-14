@@ -44,9 +44,6 @@ namespace lib_postgres
 
             return DB_Agent.Create_Item<SourceToreadAnother>(element,
                                                             DB_Agent.Get_Another_Sources(),
-                                                            "Добавить иной источник рекомендации",
-                                                            "Наименование:",
-                                                            "Источник уже существует",
                                                             creation_method);
         }
 
