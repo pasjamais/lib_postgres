@@ -63,14 +63,12 @@
             this.button_Cancel = new System.Windows.Forms.Button();
             this.button_OK = new System.Windows.Forms.Button();
             this.BT_Add_Art = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(304, 332);
+            this.label17.Location = new System.Drawing.Point(155, 334);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(41, 15);
             this.label17.TabIndex = 81;
@@ -78,17 +76,17 @@
             // 
             // TB_Code
             // 
-            this.TB_Code.Location = new System.Drawing.Point(351, 329);
+            this.TB_Code.Location = new System.Drawing.Point(202, 331);
             this.TB_Code.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.TB_Code.Name = "TB_Code";
-            this.TB_Code.Size = new System.Drawing.Size(89, 23);
+            this.TB_Code.Size = new System.Drawing.Size(91, 23);
             this.TB_Code.TabIndex = 80;
             // 
             // ChB_Series
             // 
             this.ChB_Series.AutoSize = true;
             this.ChB_Series.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.ChB_Series.Location = new System.Drawing.Point(26, 98);
+            this.ChB_Series.Location = new System.Drawing.Point(84, 126);
             this.ChB_Series.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ChB_Series.Name = "ChB_Series";
             this.ChB_Series.Size = new System.Drawing.Size(25, 13);
@@ -99,10 +97,8 @@
             // ChB_Language
             // 
             this.ChB_Language.AutoSize = true;
-            this.ChB_Language.Checked = true;
-            this.ChB_Language.CheckState = System.Windows.Forms.CheckState.Checked;
             this.ChB_Language.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.ChB_Language.Location = new System.Drawing.Point(26, 127);
+            this.ChB_Language.Location = new System.Drawing.Point(84, 155);
             this.ChB_Language.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ChB_Language.Name = "ChB_Language";
             this.ChB_Language.Size = new System.Drawing.Size(25, 13);
@@ -113,10 +109,8 @@
             // ChB_City
             // 
             this.ChB_City.AutoSize = true;
-            this.ChB_City.Checked = true;
-            this.ChB_City.CheckState = System.Windows.Forms.CheckState.Checked;
             this.ChB_City.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.ChB_City.Location = new System.Drawing.Point(26, 70);
+            this.ChB_City.Location = new System.Drawing.Point(84, 98);
             this.ChB_City.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ChB_City.Name = "ChB_City";
             this.ChB_City.Size = new System.Drawing.Size(25, 13);
@@ -127,10 +121,8 @@
             // ChB_Publishing_House
             // 
             this.ChB_Publishing_House.AutoSize = true;
-            this.ChB_Publishing_House.Checked = true;
-            this.ChB_Publishing_House.CheckState = System.Windows.Forms.CheckState.Checked;
             this.ChB_Publishing_House.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.ChB_Publishing_House.Location = new System.Drawing.Point(26, 42);
+            this.ChB_Publishing_House.Location = new System.Drawing.Point(84, 70);
             this.ChB_Publishing_House.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ChB_Publishing_House.Name = "ChB_Publishing_House";
             this.ChB_Publishing_House.Size = new System.Drawing.Size(25, 13);
@@ -142,7 +134,7 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label16.Location = new System.Drawing.Point(41, 10);
+            this.label16.Location = new System.Drawing.Point(12, 9);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(97, 15);
             this.label16.TabIndex = 72;
@@ -152,15 +144,15 @@
             // 
             this.CB_Art.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CB_Art.FormattingEnabled = true;
-            this.CB_Art.Location = new System.Drawing.Point(144, 7);
+            this.CB_Art.Location = new System.Drawing.Point(12, 36);
             this.CB_Art.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CB_Art.Name = "CB_Art";
-            this.CB_Art.Size = new System.Drawing.Size(296, 23);
+            this.CB_Art.Size = new System.Drawing.Size(486, 23);
             this.CB_Art.TabIndex = 71;
             // 
             // BT_Add_PubHouse
             // 
-            this.BT_Add_PubHouse.Location = new System.Drawing.Point(446, 34);
+            this.BT_Add_PubHouse.Location = new System.Drawing.Point(504, 62);
             this.BT_Add_PubHouse.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BT_Add_PubHouse.Name = "BT_Add_PubHouse";
             this.BT_Add_PubHouse.Size = new System.Drawing.Size(23, 23);
@@ -171,7 +163,7 @@
             // 
             // BT_Add_City
             // 
-            this.BT_Add_City.Location = new System.Drawing.Point(446, 63);
+            this.BT_Add_City.Location = new System.Drawing.Point(504, 91);
             this.BT_Add_City.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BT_Add_City.Name = "BT_Add_City";
             this.BT_Add_City.Size = new System.Drawing.Size(23, 23);
@@ -182,7 +174,7 @@
             // 
             // BT_Add_Serie
             // 
-            this.BT_Add_Serie.Location = new System.Drawing.Point(446, 92);
+            this.BT_Add_Serie.Location = new System.Drawing.Point(504, 120);
             this.BT_Add_Serie.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BT_Add_Serie.Name = "BT_Add_Serie";
             this.BT_Add_Serie.Size = new System.Drawing.Size(23, 23);
@@ -193,7 +185,7 @@
             // 
             // BT_Add_Langue_Book
             // 
-            this.BT_Add_Langue_Book.Location = new System.Drawing.Point(446, 122);
+            this.BT_Add_Langue_Book.Location = new System.Drawing.Point(504, 150);
             this.BT_Add_Langue_Book.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BT_Add_Langue_Book.Name = "BT_Add_Langue_Book";
             this.BT_Add_Langue_Book.Size = new System.Drawing.Size(23, 23);
@@ -205,8 +197,9 @@
             // CB_Book_Language
             // 
             this.CB_Book_Language.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CB_Book_Language.Enabled = false;
             this.CB_Book_Language.FormattingEnabled = true;
-            this.CB_Book_Language.Location = new System.Drawing.Point(144, 122);
+            this.CB_Book_Language.Location = new System.Drawing.Point(202, 150);
             this.CB_Book_Language.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CB_Book_Language.Name = "CB_Book_Language";
             this.CB_Book_Language.Size = new System.Drawing.Size(296, 23);
@@ -217,7 +210,7 @@
             this.CB_Series.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CB_Series.Enabled = false;
             this.CB_Series.FormattingEnabled = true;
-            this.CB_Series.Location = new System.Drawing.Point(144, 92);
+            this.CB_Series.Location = new System.Drawing.Point(202, 120);
             this.CB_Series.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CB_Series.Name = "CB_Series";
             this.CB_Series.Size = new System.Drawing.Size(296, 23);
@@ -226,7 +219,8 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(97, 95);
+            this.label15.Enabled = false;
+            this.label15.Location = new System.Drawing.Point(155, 123);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(41, 15);
             this.label15.TabIndex = 65;
@@ -235,7 +229,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(54, 222);
+            this.label13.Location = new System.Drawing.Point(112, 254);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(84, 15);
             this.label13.TabIndex = 62;
@@ -243,7 +237,7 @@
             // 
             // TB_Comment
             // 
-            this.TB_Comment.Location = new System.Drawing.Point(144, 219);
+            this.TB_Comment.Location = new System.Drawing.Point(202, 251);
             this.TB_Comment.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.TB_Comment.Name = "TB_Comment";
             this.TB_Comment.Size = new System.Drawing.Size(296, 23);
@@ -252,7 +246,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(84, 275);
+            this.label12.Location = new System.Drawing.Point(142, 307);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(54, 15);
             this.label12.TabIndex = 60;
@@ -260,7 +254,7 @@
             // 
             // TB_Notes
             // 
-            this.TB_Notes.Location = new System.Drawing.Point(144, 272);
+            this.TB_Notes.Location = new System.Drawing.Point(202, 304);
             this.TB_Notes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.TB_Notes.Name = "TB_Notes";
             this.TB_Notes.Size = new System.Drawing.Size(296, 23);
@@ -269,7 +263,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(23, 248);
+            this.label11.Location = new System.Drawing.Point(81, 280);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(115, 15);
             this.label11.TabIndex = 58;
@@ -277,7 +271,7 @@
             // 
             // TB_Family_Notes
             // 
-            this.TB_Family_Notes.Location = new System.Drawing.Point(144, 245);
+            this.TB_Family_Notes.Location = new System.Drawing.Point(202, 277);
             this.TB_Family_Notes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.TB_Family_Notes.Name = "TB_Family_Notes";
             this.TB_Family_Notes.Size = new System.Drawing.Size(296, 23);
@@ -286,7 +280,7 @@
             // CB_Art_Book
             // 
             this.CB_Art_Book.AutoSize = true;
-            this.CB_Art_Book.Location = new System.Drawing.Point(268, 177);
+            this.CB_Art_Book.Location = new System.Drawing.Point(202, 228);
             this.CB_Art_Book.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CB_Art_Book.Name = "CB_Art_Book";
             this.CB_Art_Book.Size = new System.Drawing.Size(80, 19);
@@ -297,7 +291,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(289, 153);
+            this.label10.Location = new System.Drawing.Point(347, 181);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(54, 15);
             this.label10.TabIndex = 55;
@@ -305,7 +299,7 @@
             // 
             // TB_Pages
             // 
-            this.TB_Pages.Location = new System.Drawing.Point(349, 150);
+            this.TB_Pages.Location = new System.Drawing.Point(407, 178);
             this.TB_Pages.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.TB_Pages.Name = "TB_Pages";
             this.TB_Pages.Size = new System.Drawing.Size(91, 23);
@@ -314,8 +308,9 @@
             // CB_City
             // 
             this.CB_City.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CB_City.Enabled = false;
             this.CB_City.FormattingEnabled = true;
-            this.CB_City.Location = new System.Drawing.Point(144, 63);
+            this.CB_City.Location = new System.Drawing.Point(202, 91);
             this.CB_City.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CB_City.Name = "CB_City";
             this.CB_City.Size = new System.Drawing.Size(296, 23);
@@ -324,7 +319,8 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(98, 68);
+            this.label9.Enabled = false;
+            this.label9.Location = new System.Drawing.Point(156, 96);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(40, 15);
             this.label9.TabIndex = 52;
@@ -333,7 +329,8 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(57, 40);
+            this.label8.Enabled = false;
+            this.label8.Location = new System.Drawing.Point(115, 68);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(81, 15);
             this.label8.TabIndex = 51;
@@ -342,8 +339,9 @@
             // CB_Publishing_House
             // 
             this.CB_Publishing_House.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CB_Publishing_House.Enabled = false;
             this.CB_Publishing_House.FormattingEnabled = true;
-            this.CB_Publishing_House.Location = new System.Drawing.Point(144, 35);
+            this.CB_Publishing_House.Location = new System.Drawing.Point(202, 63);
             this.CB_Publishing_House.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CB_Publishing_House.Name = "CB_Publishing_House";
             this.CB_Publishing_House.Size = new System.Drawing.Size(296, 23);
@@ -351,7 +349,7 @@
             // 
             // TB_Publication_Year
             // 
-            this.TB_Publication_Year.Location = new System.Drawing.Point(144, 150);
+            this.TB_Publication_Year.Location = new System.Drawing.Point(202, 178);
             this.TB_Publication_Year.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.TB_Publication_Year.Name = "TB_Publication_Year";
             this.TB_Publication_Year.Size = new System.Drawing.Size(91, 23);
@@ -360,7 +358,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(65, 153);
+            this.label7.Location = new System.Drawing.Point(123, 181);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(73, 15);
             this.label7.TabIndex = 48;
@@ -369,7 +367,8 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(57, 128);
+            this.label6.Enabled = false;
+            this.label6.Location = new System.Drawing.Point(115, 156);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(81, 15);
             this.label6.TabIndex = 47;
@@ -378,7 +377,7 @@
             // CB_Jacket
             // 
             this.CB_Jacket.AutoSize = true;
-            this.CB_Jacket.Location = new System.Drawing.Point(144, 177);
+            this.CB_Jacket.Location = new System.Drawing.Point(202, 205);
             this.CB_Jacket.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CB_Jacket.Name = "CB_Jacket";
             this.CB_Jacket.Size = new System.Drawing.Size(109, 19);
@@ -389,7 +388,7 @@
             // button_Cancel
             // 
             this.button_Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button_Cancel.Location = new System.Drawing.Point(369, 383);
+            this.button_Cancel.Location = new System.Drawing.Point(445, 383);
             this.button_Cancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button_Cancel.Name = "button_Cancel";
             this.button_Cancel.Size = new System.Drawing.Size(82, 22);
@@ -410,7 +409,7 @@
             // 
             // BT_Add_Art
             // 
-            this.BT_Add_Art.Location = new System.Drawing.Point(446, 7);
+            this.BT_Add_Art.Location = new System.Drawing.Point(504, 36);
             this.BT_Add_Art.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BT_Add_Art.Name = "BT_Add_Art";
             this.BT_Add_Art.Size = new System.Drawing.Size(23, 23);
@@ -419,28 +418,6 @@
             this.BT_Add_Art.UseVisualStyleBackColor = true;
             this.BT_Add_Art.Click += new System.EventHandler(this.BT_Add_Art_Click);
             // 
-            // button1
-            // 
-            this.button1.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.button1.Location = new System.Drawing.Point(12, 383);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(82, 22);
-            this.button1.TabIndex = 83;
-            this.button1.Text = "OK";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button2.Location = new System.Drawing.Point(369, 383);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(82, 22);
-            this.button2.TabIndex = 82;
-            this.button2.Text = "Cancel";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
             // Form_Book
             // 
             this.AcceptButton = this.button_OK;
@@ -448,11 +425,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.CancelButton = this.button_Cancel;
-            this.ClientSize = new System.Drawing.Size(476, 420);
+            this.ClientSize = new System.Drawing.Size(544, 420);
             this.Controls.Add(this.BT_Add_Art);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.button_Cancel);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.button_OK);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.TB_Code);
@@ -533,7 +508,5 @@
         public Label label6;
         public CheckBox CB_Jacket;
         public Button BT_Add_Art;
-        private Button button1;
-        private Button button2;
     }
 }

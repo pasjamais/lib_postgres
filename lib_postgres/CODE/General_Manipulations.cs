@@ -1,9 +1,12 @@
-﻿using System;
+﻿using lib_postgres.CODE;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static lib_postgres.Structures;
+
 namespace lib_postgres
 {
     public class General_Manipulations
@@ -108,7 +111,8 @@ namespace lib_postgres
                 var elements = DB_Agent.Get_Arts();
                 var item = (from q in elements
                             where q.Id == id
-                            select q).Take(1).First();
+                            //    select q).Take(1).First();
+                            select q).Take(1).FirstOrDefault();
                 CB_visual_reload<Art>(CB, elements.IndexOf(item), elements);
             }
             else if (type == typeof(Series))
@@ -116,7 +120,8 @@ namespace lib_postgres
                 var elements = DB_Agent.Get_Series();
                 var item = (from q in elements
                             where q.Id == id
-                            select q).Take(1).First();
+                            //  select q).Take(1).First();
+                            select q).Take(1).FirstOrDefault();
                 CB_visual_reload<Series>(CB, elements.IndexOf(item), elements);
             }
             else if (type == typeof(PublishingHouse))
@@ -124,7 +129,8 @@ namespace lib_postgres
                 var elements = DB_Agent.Get_Publishing_Houses();
                 var item = (from q in elements
                             where q.Id == id
-                            select q).Take(1).First();
+                            //  select q).Take(1).First();
+                            select q).Take(1).FirstOrDefault();
                 CB_visual_reload<PublishingHouse>(CB, elements.IndexOf(item), elements);
             }
             else if (type == typeof(City))
@@ -132,7 +138,8 @@ namespace lib_postgres
                 var elements = DB_Agent.Get_Cities();
                 var item = (from q in elements
                             where q.Id == id
-                            select q).Take(1).First();
+                            //select q).Take(1).First();
+                            select q).Take(1).FirstOrDefault();
                 CB_visual_reload<City>(CB, elements.IndexOf(item), elements);
             }
             else if (type == typeof(Language))
@@ -167,19 +174,21 @@ namespace lib_postgres
                             select q).Take(1).First();
                 CB_visual_reload<Mark>(CB, elements.IndexOf(item), elements);
             }
-else        if (type == typeof(ViewBook))
+            else if (type == typeof(ViewBook))
             {
-                CB.DataSource = CODE.Queries_LinQ.Get_Books_Short();
-                CB.ValueMember = "Id";
-                CB.DisplayMember = "Name";
-                CB.SelectedIndex = 1;
+                var elements = CODE.Queries_LinQ.Get_Books_Short();
+                var item = (from q in elements
+                            where q.Id == id
+                            select q).Take(1).FirstOrDefault();
+                CB_visual_reload<Structures.Short_Book>(CB, elements.IndexOf(item), elements);
             }
             if (type == typeof(Author))
             {
                 var elements = DB_Agent.Get_Authors();
                 var item = (from q in elements
                             where q.Id == id
-                            select q).Take(1).First();
+                            //select q).Take(1).First();
+                            select q).Take(1).FirstOrDefault();
                 CB_visual_reload<Author>(CB, elements.IndexOf(item), elements);
             }
             if (type == typeof(SourceToreadAnother))
@@ -187,8 +196,18 @@ else        if (type == typeof(ViewBook))
                 var elements = DB_Agent.Get_Another_Sources();
                 var item = (from q in elements
                             where q.Id == id
-                            select q).Take(1).First();
+                            // select q).Take(1).First();
+                            select q).Take(1).FirstOrDefault();
                 CB_visual_reload<SourceToreadAnother>(CB, elements.IndexOf(item), elements);
+            }
+            if (type == typeof(Short_Art))
+            {
+                var elements = Queries_LinQ.Get_Short_Arts();
+                var item = (from q in elements
+                            where q.Id == id
+                            // select q).Take(1).First();
+                            select q).Take(1).FirstOrDefault();
+                CB_visual_reload<Short_Art>(CB, elements.IndexOf(item), elements);
             }
         }
         #endregion

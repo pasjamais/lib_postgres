@@ -85,8 +85,8 @@ namespace lib_postgres
         public static void Fill_Element_Without_Authors(Art art, Form_Art form_Art)
         {
             art.Name = form_Art.tb_Name.Text;
-            art.Genre = (long)form_Art.CB_Genre.SelectedValue;
-            art.OrigLanguage = (System.Int64)form_Art.CB_Langue.SelectedValue;
+            if (form_Art.ChB_Genre.Checked) art.Genre = (long)form_Art.CB_Genre.SelectedValue;
+            if (form_Art.ChB_Language.Checked) art.OrigLanguage = (System.Int64)form_Art.CB_Langue.SelectedValue;
             if (form_Art.TB_YearCreation.Text != "")
             {
                 int x = 0;
@@ -133,8 +133,10 @@ namespace lib_postgres
         private static void Load_Item_in_Form(Art art, Form_Art form_Art)
         {
             if (art.Name != null) form_Art.tb_Name.Text = art.Name;
-            if (art.Genre != null) form_Art.CB_Genre.SelectedValue = art.Genre;
-            if (art.OrigLanguage != null) form_Art.CB_Langue.SelectedValue = art.OrigLanguage;
+            form_Art.ChB_Genre.Checked = art.Genre.HasValue;
+            form_Art.CB_Genre.SelectedValue = art.Genre ?? 0;
+            form_Art.ChB_Language.Checked = art.OrigLanguage.HasValue;
+            form_Art.CB_Langue.SelectedValue = art.OrigLanguage ?? 0;
             if (art.WritingYear != null) form_Art.TB_YearCreation.Text = art.WritingYear.Value.Year.ToString();
         }
 

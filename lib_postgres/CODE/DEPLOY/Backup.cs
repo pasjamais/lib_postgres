@@ -5,28 +5,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace lib_postgres.CODE
+namespace lib_postgres.CODE.DEPLOY
 {
     public class Backup
     {
         public static void BackupBD()
         {
-            Deploy.Ensure_Directory_Exists_by_Creation(Get_Backup_Dir_Name());
-            string virgules = "\"";
-            string pg_dump_exe =$"{virgules}{Deploy.pg_dump_exe_path}{virgules}";
-            string args = $"{DB_Agent.Get_Password()} {Get_Backup_Dir_Name()} {pg_dump_exe}";
-            Process.Start(Get_Backup_Bat_file_name(), args);
+            File_Level_Operations.Ensure_Directory_Exists_by_Creation(Get_Backup_Dir_Name());
+            Script_Engine.BackupBD();
         }
 
         public static void Backup_on_Start()
         {
-            if (Backup.is_Backup_on_Start())
+            if (is_Backup_on_Start())
                 BackupBD();
-        }
-
-        private static string Get_Backup_Bat_file_name()
-        {
-            return IniFileInteraction.Get_Value_from_Settings_File("Backup_Bat_file_name", "GENERAL");
         }
 
         public static string Get_Backup_Dir_Name()

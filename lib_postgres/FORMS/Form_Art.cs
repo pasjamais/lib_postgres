@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -181,6 +182,25 @@ namespace lib_postgres
         {
             if (this.DialogResult == DialogResult.TryAgain)
                 e.Cancel = true;
+        }
+
+        private void TB_YearCreation_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char number = e.KeyChar;
+            if (!Char.IsDigit(number))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void ChB_Language_CheckedChanged(object sender, EventArgs e)
+        {
+            label4.Enabled = CB_Langue.Enabled = ChB_Language.Checked;
+        }
+
+        private void ChB_Genre_CheckedChanged(object sender, EventArgs e)
+        {
+            label2.Enabled = CB_Genre.Enabled = ChB_Genre.Checked;
         }
     }
 }

@@ -35,6 +35,8 @@
             this.TB_Comment = new System.Windows.Forms.TextBox();
             this.Label_Comment = new System.Windows.Forms.Label();
             this.groupBox_Source = new System.Windows.Forms.GroupBox();
+            this.BT__Toread_Author_Source = new System.Windows.Forms.Button();
+            this.BT_Add_Art_Source = new System.Windows.Forms.Button();
             this.RB_Source_Another = new System.Windows.Forms.RadioButton();
             this.RB_Source_Author = new System.Windows.Forms.RadioButton();
             this.RB_Source_Art = new System.Windows.Forms.RadioButton();
@@ -119,6 +121,8 @@
             // 
             // groupBox_Source
             // 
+            this.groupBox_Source.Controls.Add(this.BT__Toread_Author_Source);
+            this.groupBox_Source.Controls.Add(this.BT_Add_Art_Source);
             this.groupBox_Source.Controls.Add(this.RB_Source_Another);
             this.groupBox_Source.Controls.Add(this.RB_Source_Author);
             this.groupBox_Source.Controls.Add(this.RB_Source_Art);
@@ -138,6 +142,29 @@
             this.groupBox_Source.TabIndex = 94;
             this.groupBox_Source.TabStop = false;
             this.groupBox_Source.Text = "Источник рекомендации:";
+            // 
+            // BT__Toread_Author_Source
+            // 
+            this.BT__Toread_Author_Source.Location = new System.Drawing.Point(639, 52);
+            this.BT__Toread_Author_Source.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.BT__Toread_Author_Source.Name = "BT__Toread_Author_Source";
+            this.BT__Toread_Author_Source.Size = new System.Drawing.Size(23, 23);
+            this.BT__Toread_Author_Source.TabIndex = 110;
+            this.BT__Toread_Author_Source.Text = "+";
+            this.BT__Toread_Author_Source.UseVisualStyleBackColor = true;
+            this.BT__Toread_Author_Source.Click += new System.EventHandler(this.BT__Toread_Author_Source_Click);
+            // 
+            // BT_Add_Art_Source
+            // 
+            this.BT_Add_Art_Source.Location = new System.Drawing.Point(639, 20);
+            this.BT_Add_Art_Source.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.BT_Add_Art_Source.Name = "BT_Add_Art_Source";
+            this.BT_Add_Art_Source.Size = new System.Drawing.Size(23, 23);
+            this.BT_Add_Art_Source.TabIndex = 109;
+            this.BT_Add_Art_Source.Tag = "CB_Source_Art";
+            this.BT_Add_Art_Source.Text = "+";
+            this.BT_Add_Art_Source.UseVisualStyleBackColor = true;
+            this.BT_Add_Art_Source.Click += new System.EventHandler(this.BT_Add_Art_Source_Click);
             // 
             // RB_Source_Another
             // 
@@ -205,6 +232,7 @@
             this.CB_Source_Another.Name = "CB_Source_Another";
             this.CB_Source_Another.Size = new System.Drawing.Size(399, 23);
             this.CB_Source_Another.TabIndex = 93;
+            this.CB_Source_Another.SelectionChangeCommitted += new System.EventHandler(this.CB_Source_Another_SelectionChangeCommitted);
             // 
             // Label_Source_Author
             // 
@@ -225,6 +253,7 @@
             this.CB_Source_Author.Name = "CB_Source_Author";
             this.CB_Source_Author.Size = new System.Drawing.Size(399, 23);
             this.CB_Source_Author.TabIndex = 91;
+            this.CB_Source_Author.SelectionChangeCommitted += new System.EventHandler(this.CB_Source_Author_SelectionChangeCommitted);
             // 
             // Label_Source_Art
             // 
@@ -245,6 +274,7 @@
             this.CB_Source_Art.Name = "CB_Source_Art";
             this.CB_Source_Art.Size = new System.Drawing.Size(399, 23);
             this.CB_Source_Art.TabIndex = 89;
+            this.CB_Source_Art.SelectionChangeCommitted += new System.EventHandler(this.CB_Source_Art_SelectionChangeCommitted);
             // 
             // groupBox_ToRead
             // 
@@ -305,6 +335,7 @@
             this.BT_Add_Art.Name = "BT_Add_Art";
             this.BT_Add_Art.Size = new System.Drawing.Size(23, 23);
             this.BT_Add_Art.TabIndex = 103;
+            this.BT_Add_Art.Tag = "CB_Toread_Art";
             this.BT_Add_Art.Text = "+";
             this.BT_Add_Art.UseVisualStyleBackColor = true;
             this.BT_Add_Art.Click += new System.EventHandler(this.BT_Add_Art_Click);
@@ -328,6 +359,7 @@
             this.CB_Toread_Author.Name = "CB_Toread_Author";
             this.CB_Toread_Author.Size = new System.Drawing.Size(399, 23);
             this.CB_Toread_Author.TabIndex = 99;
+            this.CB_Toread_Author.SelectionChangeCommitted += new System.EventHandler(this.CB_Toread_Author_SelectionChangeCommitted);
             // 
             // Label_Toread_Art
             // 
@@ -348,6 +380,7 @@
             this.CB_Toread_Art.Name = "CB_Toread_Art";
             this.CB_Toread_Art.Size = new System.Drawing.Size(399, 23);
             this.CB_Toread_Art.TabIndex = 97;
+            this.CB_Toread_Art.SelectionChangeCommitted += new System.EventHandler(this.CB_Toread_Art_SelectionChangeCommitted);
             // 
             // Form_Art_To_Read
             // 
@@ -406,5 +439,7 @@
         public RadioButton RB_Source_Another;
         public RadioButton RB_Source_Author;
         public RadioButton RB_Source_Art;
+        public Button BT_Add_Art_Source;
+        public Button BT__Toread_Author_Source;
     }
 }

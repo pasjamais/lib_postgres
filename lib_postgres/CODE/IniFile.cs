@@ -12,7 +12,6 @@ namespace lib_postgres.CODE
 {
     public class IniFile
     {
-        //  https://stackoverflow.com/questions/217902/reading-writing-an-ini-file
         string Path;
         string EXE = Assembly.GetExecutingAssembly().GetName().Name;
 
@@ -52,6 +51,13 @@ namespace lib_postgres.CODE
         public bool KeyExists(string Key, string Section = null)
         {
             return Read(Key, Section).Length > 0;
+        }
+        // Added (DK)
+        public static string Get_Value_from_Settings_File(string ini_file_name, string key, string section)
+        {
+            IniFile ini = new IniFile(ini_file_name);
+            string? value = ini.Read(key, section);
+            return value;
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using lib_postgres.CODE;
+using lib_postgres.CODE.DEPLOY;
 using lib_postgres.CODE.VIEW.DELITEMS;
 using lib_postgres.FORMS;
 using lib_postgres.VISUAL;
@@ -167,16 +168,7 @@ namespace lib_postgres
         }
         private void ToolStripMenuItem_File_RestoreBD_Click(object sender, EventArgs e)
         {
-            if (Directory.Exists(Deploy.backup_dir_path))
-                openFileDialog_BD_Backup.InitialDirectory = Deploy.backup_dir_path;
-            else
-            {
-                openFileDialog_BD_Backup.InitialDirectory = @"C:\";
-            }
-            if (openFileDialog_BD_Backup.ShowDialog() == DialogResult.Cancel)
-                return; 
-            string filename = openFileDialog_BD_Backup.FileName;
-            Deploy.Restore_BD(filename,Deploy.is_DB_Exists());
+            Restore.Choose_RestoreBD(openFileDialog_BD_Backup);
         }
         private void ToolStripMenuItem_File_Open_Settings_Click(object sender, EventArgs e)
         {
@@ -1022,7 +1014,26 @@ namespace lib_postgres
 
         }
 
+        private void ToolStripMenuItem_File_Delete_DB_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show(
+                   "Вы действительно хотите безвозвратно удалить базу даннаых?" +
+                   "После этого работа с программой будет завершена",
+                   "Предупреждение",
+                   MessageBoxButtons.YesNo,
+                   MessageBoxIcon.Warning,
+                   MessageBoxDefaultButton.Button2,
+                   MessageBoxOptions.DefaultDesktopOnly);
+            if (result == DialogResult.Yes)
+            {
+                Deploy.Drop_BD();
+                Application.Restart();
 
+            }
+
+
+
+        }
     }
 }
 

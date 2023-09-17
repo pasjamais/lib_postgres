@@ -1,4 +1,5 @@
-﻿using System;
+﻿using lib_postgres.CODE;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -15,21 +16,16 @@ namespace lib_postgres
         #region general
         public static string Get_Connection_String()
         {
-
-            return Get_Value_from_Settings_File(CODE.Data.ini_file_name, "connection_string", "GENERAL");
+            Connection connection = new Connection();
+            return connection.Prepare_Connection_String(false);
+        //    return CODE.IniFile.Get_Value_from_Settings_File(CODE.Data.ini_file_name, "connection_string", "GENERAL");
         }
 
         public static string Get_Password()
         {
-            return Get_Value_from_Settings_File(CODE.Data.ini_file_name, "password", "GENERAL");
+            return CODE.IniFile.Get_Value_from_Settings_File(CODE.Data.ini_file_name, "Password", "CONNECTION");
         }
 
-        private static string Get_Value_from_Settings_File(string ini_file_name, string key, string section)
-        {
-            CODE.IniFile ini = new CODE.IniFile(ini_file_name);
-            string? value = ini.Read(key, section);
-            return value;
-        }
         public static void Save_Changes()
         {
             db.SaveChanges();

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static lib_postgres.CODE.Queries_LinQ;
+using static lib_postgres.Structures;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace lib_postgres.CODE
@@ -18,15 +20,16 @@ namespace lib_postgres.CODE
                          ).ToList();
             return items;
         }
-        public static dynamic Get_Books_Short()
+
+        public static List<Short_Book> Get_Books_Short()
         {
             var books = Queries_from_Views.Get_Books();
             var items = (from b in books
-                         select new
+                         select new Short_Book()
                          {
                              Id = b.Id,
                              Name = b.Название + " | " + b.АвторЫ + " | "
-                                       + b.Жанр + " | " + b.Издательство + " | " + b.Шифр
+                                      + b.Жанр + " | " + b.Издательство + " | " + b.Шифр
                          }).ToList().OrderBy(n => n.Name).ToList();
             return items;
         }
@@ -43,7 +46,7 @@ namespace lib_postgres.CODE
             var genres = DB_Agent.Get_Genres();
             var pubhouse = DB_Agent.Get_Publishing_Houses();
             var cities = DB_Agent.Get_Cities();
-            // название и авторы
+            // art's title and authors
             var arts_authors = (from art in arts
                                 join aa in authors_arts on art.Id equals aa.Art
                                 join aut in authors on aa.Author equals aut.Id
@@ -57,18 +60,20 @@ namespace lib_postgres.CODE
                                     year_orig = g.Key.art.WritingYear,
                                     authors_concat = String.Join(",", g.Select(x => x.Name))
                                 }).ToList();
-            // остальные поля
+            // rest fields
             var items = (from art in arts_authors
-                         join gen in genres on art.art_genre equals gen.Id
-                         join lan_orig in languages on art.lan_orig equals lan_orig.Id
+                         join gen in genres on art.art_genre equals gen.Id into sub_genres // LEFT JOIN
+                         from sub_g in sub_genres.DefaultIfEmpty()                         // LEFT JOIN
+                         join lan_orig in languages on art.lan_orig equals lan_orig.Id into sub_language  // LEFT JOIN
+                         from sub_l in sub_language.DefaultIfEmpty()                                      // LEFT JOIN
                          select new Art_and_Author
                          {
                              Id = art.art_id,
                              Name = art.art_name ?? "",
                              Authors = art.authors_concat ?? "",
-                             Genre = gen.Name ?? "",
+                             Genre = sub_g == null ? "" : sub_g.Name,                       // LEFT JOIN
                              WritingYear = art.year_orig.HasValue ? art.year_orig.Value.Year.ToString() : "",
-                             OrigLanguage = lan_orig.Name ?? ""
+                             OrigLanguage = sub_l == null ? "" : sub_l.Name                 // LEFT JOIN
                          }).ToList();
             return items;
         }
@@ -113,75 +118,8 @@ namespace lib_postgres.CODE
                          }).ToList();
             return items;
         }
-        public static dynamic Get_Books_a_la_ancienne()
-        {
-            var languages = DB_Agent.Get_Languages();
-            var books = DB_Agent.Get_Books();
-            var pubhouse = DB_Agent.Get_Publishing_Houses();
-            var cities = DB_Agent.Get_Cities();
-            var arts_authors = Get_Arts();
-            var items = (from boo in books
-                         join art in arts_authors on boo.IdArt equals art.Id
-                         join pub in pubhouse on boo.IdPublishingHouse equals pub.Id
-                         join cit in cities on boo.IdCity equals cit.Id
-                         join lan_boo in languages on boo.IdLanguage equals lan_boo.Id
-                         select new
-                         {
-                             Id = boo.Id,
-                             Name = art.Name ?? "",
-                             Автор_ы = art.Authors ?? "",
-                             Жанр = art.Genre ?? "",
-                             Год_издания = boo.PublicationYear.HasValue ? boo.PublicationYear.Value.Year.ToString() : "",
-                             Издательство = pub.Name ?? "",
-                             Город = cit.Name ?? "",
-                             Страниц = boo.Pages.ToString() ?? "",
-                             Шифр = boo.Code ?? "",
-                             Язык_издания = lan_boo.Name ?? "",
-                             Язык_оригинала = art.OrigLanguage ?? "",
-                             Год_написания = art.WritingYear ?? ""
-                         }).ToList();
-            return items;
-        }
 
-        public struct Location_Record
-        {
-            public long Id { get; set; }
-            public DateOnly? Date { get; set; }
-            public string ActType { get; set; }
-            public string Comment { get; set; }
-            public string Name { get; set; }
-            public string Authors { get; set; }
-            public string Genre { get; set; }
-            public string PublicationYear { get; set; }
-            public string Code { get; set; }
-            public string Id_book { get; set; }
-            public string Place { get; set; }
-
-            public Location_Record(long id, 
-                                    DateOnly date,
-                                    string act_type,
-                                    string comment, 
-                                    string book_name, 
-                                    string authors,
-                                    string genre,
-                                    string publication_year, 
-                                    string code,
-                                    string id_book, 
-                                    string place)
-            {
-                Id = id;
-                Date = date;
-                ActType = act_type;
-                Comment = comment;
-                Name = book_name;
-                Authors = authors;
-                Genre = genre;
-                PublicationYear = publication_year;
-                Code = code;
-                Id_book = id_book;
-                Place = place;
-            }
-        }
+     
         public static dynamic Get_Locations()
         {
             var actions = DB_Agent.Get_Actions();
@@ -213,85 +151,8 @@ namespace lib_postgres.CODE
 
             return items;
         }
-        public static dynamic _Get_Locations()
-        {
-            var actions = DB_Agent.Get_Actions();
-            var places = DB_Agent.Get_Places();
-            var locations = DB_Agent.Get_Locations();
-            var books = Get_Books();
-            var act_type = DB_Agent.Get_ActionTypes();
-            var items = (from loc in locations
-                         join boo in books   on loc.Book equals boo.Id
-                         join pla in places  on loc.Place equals pla.Id into PL // LEFT JOIN
-                            from pl in PL.DefaultIfEmpty()                      // LEFT JOIN
 
-                         join acc in actions on loc.Action equals acc.Id
-                         join actype in act_type on acc.ActionType equals actype.Id
-                         select new
-                         {
-                             Id = loc.Id,
-                             Дата = acc.Date,
-                             действие = actype.Name,
-                             Примечание = acc.Comment,
-                             Название = boo.Name ?? "",
-                             Автор_ы = boo.Authors ?? "",
-                             Жанр = boo.Genre ?? "",
-                             Годизд = boo.PublicationYear ?? "",
-                             Шифр = boo.Code ?? "",
-                             Idкниги = boo.Id.ToString() ?? "",
-                             Размещение = pl == null ? "" : pl.Name, // LEFT JOIN
-                         }).ToList().OrderByDescending(n => n.Дата).ToList();
-            return items;
-        }
 
-        public static dynamic Get_Recommendations()
-        {
-            var arts_authors = Get_Arts();
-            var recs = DB_Agent.Get_Recommendations();
-            var temp = (from rec in recs
-                        join art_source in arts_authors on rec.SourceArtId equals art_source.Id
-                        select new
-                        {
-                            Id = rec.Id,
-                            Date = rec.Date,
-                            Art_Source = art_source.Name + " | " + art_source.Authors,
-                            Comment = rec.Comment,
-                            ToreadArtId = rec.ToreadArtId
-                        }).ToList();
-            arts_authors = Get_Arts();
-            var result = (from tem in temp
-                          join art_toread in arts_authors on tem.ToreadArtId equals art_toread.Id
-                          select new
-                          {
-                              Id = tem.Id,
-                              Date = tem.Date,
-                              Art_ToRead = art_toread.Name + " | " + art_toread.Authors,
-                              Art_Source = tem.Art_Source,
-                              Comment = tem.Comment
-                          }).ToList();
-            return result;
-        }
-
-        public struct Recommend
-        {
-            public long Id { get; set; }
-            public DateOnly? Date { get; set; }
-            public string Source_Type { get; set; }
-            public string Source { get; set; }
-            public string Recommend_Type { get; set; }
-            public string Recommended { get; set; }
-            public string Comment { get; set; }
-            public Recommend(long id, DateOnly? date, string source_type, string source, string recommend_type, string recommended, string comment)
-            {
-                Id = id;
-                Date = date;
-                Source_Type = source_type;
-                Source = source;
-                Recommend_Type = recommend_type;
-                Recommended = recommended;
-                Comment = comment;
-            }
-        }
 
         public static dynamic Get_All_Recommendations()
         {
@@ -416,6 +277,16 @@ namespace lib_postgres.CODE
                              .OrderBy(n => n.Id).ToList(); 
             return result;
         }
-
-}
+        public static List<Short_Art> Get_Short_Arts()
+        {
+            List<Art_and_Author> arts = Get_Arts();
+            List<Short_Art> items = (from art in arts
+                                     select new Short_Art()
+                         {
+                             Id = art.Id,
+                             Name = $"{art.Name} | {art.Authors} | {art.OrigLanguage} | {art.Genre} | {art.WritingYear}"    
+                         }).ToList().OrderBy(n => n.Name).ToList();
+            return items;
+        }
+    }
 }

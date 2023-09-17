@@ -18,7 +18,7 @@ namespace lib_postgres
         public Form_Book()
         {
             InitializeComponent();
-            General_Manipulations.CB_reload<Art>(CB_Art, 1);
+            General_Manipulations.CB_reload<Structures.Short_Art>(CB_Art, 1);
             General_Manipulations.CB_reload<Language>(CB_Book_Language, 3);//русский по-умолчанию
             General_Manipulations.CB_reload<City>(CB_City, 1);
             General_Manipulations.CB_reload<PublishingHouse>(CB_Publishing_House, 1);
@@ -48,7 +48,7 @@ namespace lib_postgres
         private void BT_Add_Art_Click(object sender, EventArgs e)
         {
             var id = Art.Create_Item();
-            if (id > 0) General_Manipulations.CB_reload<Art>(CB_Art, id);
+            if (id > 0) General_Manipulations.CB_reload<Structures.Short_Art>(CB_Art, id);
             DialogResult = DialogResult.None;
         }
 

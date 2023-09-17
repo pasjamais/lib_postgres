@@ -140,6 +140,7 @@
             this.ToolStripMenuItem_People_Delete = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem__Recommendations_Sho = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog_BD_Backup = new System.Windows.Forms.OpenFileDialog();
+            this.ToolStripMenuItem_File_Delete_DB = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.book1BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.contextMenuStrip.SuspendLayout();
@@ -214,7 +215,8 @@
             this.ToolStripMenuItem_File.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ToolStripMenuItem_File_BackupBD,
             this.ToolStripMenuItem_File_RestoreBD,
-            this.ToolStripMenuItem_File_Open_Settings});
+            this.ToolStripMenuItem_File_Open_Settings,
+            this.ToolStripMenuItem_File_Delete_DB});
             this.ToolStripMenuItem_File.Name = "ToolStripMenuItem_File";
             this.ToolStripMenuItem_File.Size = new System.Drawing.Size(48, 20);
             this.ToolStripMenuItem_File.Text = "Файл";
@@ -1019,6 +1021,13 @@
             this.ToolStripMenuItem__Recommendations_Sho.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.ToolStripMenuItem__Recommendations_Sho.Click += new System.EventHandler(this.ToolStripMenuItem__Recommendations_Show_Click);
             // 
+            // ToolStripMenuItem_File_Delete_DB
+            // 
+            this.ToolStripMenuItem_File_Delete_DB.Name = "ToolStripMenuItem_File_Delete_DB";
+            this.ToolStripMenuItem_File_Delete_DB.Size = new System.Drawing.Size(241, 22);
+            this.ToolStripMenuItem_File_Delete_DB.Text = "Delete_Base";
+            this.ToolStripMenuItem_File_Delete_DB.Click += new System.EventHandler(this.ToolStripMenuItem_File_Delete_DB_Click);
+            // 
             // Form_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1155,5 +1164,6 @@
         private ToolStripMenuItem ToolStripMenuItem_Book_Format_Delete;
         private ToolStripMenuItem ToolStripMenuItem_File_RestoreBD;
         private OpenFileDialog openFileDialog_BD_Backup;
+        private ToolStripMenuItem ToolStripMenuItem_File_Delete_DB;
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using lib_postgres.CODE.DEPLOY;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,23 +20,13 @@ namespace lib_postgres.FORMS
 
         private void LL_Load_Existing_BD_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            if (Directory.Exists(Deploy.backup_dir_path))
-                openFileDialog_BD_Backup.InitialDirectory = Deploy.backup_dir_path;
-            else
-            {
-                openFileDialog_BD_Backup.InitialDirectory = @"C:\";
-            }
-            if (openFileDialog_BD_Backup.ShowDialog() == DialogResult.Cancel)
-                return;
-            string filename = openFileDialog_BD_Backup.FileName;
-            Deploy.Restore_BD(filename, Deploy.is_DB_Exists());
-            this.DialogResult = DialogResult.OK;
+            this.DialogResult = Restore.Choose_RestoreBD(openFileDialog_BD_Backup);
             this.Close();
         }
 
         private void LL_Load_Empty_BD_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Deploy.Restore_Empty_BD((Deploy.is_DB_Exists()));
+            Restore.Restore_Empty_BD((Deploy.is_DB_Exists()));
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
