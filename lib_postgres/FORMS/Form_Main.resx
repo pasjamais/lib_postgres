@@ -136,6 +136,15 @@
   <data name="ToolStripMenuItem_File_RestoreBD.Text" xml:space="preserve">
     <value>Restore database from backup...</value>
   </data>
+  <data name="ToolStripMenuItem_File_Delete_DB.Size" type="System.Drawing.Size, System.Drawing">
+    <value>243, 22</value>
+  </data>
+  <data name="ToolStripMenuItem_File_Delete_DB.Text" xml:space="preserve">
+    <value>Delete Base...</value>
+  </data>
+  <data name="toolStripSeparator19.Size" type="System.Drawing.Size, System.Drawing">
+    <value>240, 6</value>
+  </data>
   <data name="ToolStripMenuItem_File_Open_Settings.Size" type="System.Drawing.Size, System.Drawing">
     <value>243, 22</value>
   </data>
@@ -169,6 +178,9 @@
   <data name="ToolStripMenuItem__Recommendations_Edit.Text" xml:space="preserve">
     <value>Open (Edit) recommendation...</value>
   </data>
+  <data name="ToolStripMenuItem__Recommendations_Delete.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="ToolStripMenuItem__Recommendations_Delete.Size" type="System.Drawing.Size, System.Drawing">
     <value>255, 22</value>
   </data>
@@ -198,6 +210,9 @@
   </data>
   <data name="ToolStripMenuItem_SourceToreadAnother_Edit.Text" xml:space="preserve">
     <value>Edit another source...</value>
+  </data>
+  <data name="ToolStripMenuItem_SourceToreadAnother_Delete.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="ToolStripMenuItem_SourceToreadAnother_Delete.Size" type="System.Drawing.Size, System.Drawing">
     <value>241, 22</value>
@@ -253,6 +268,9 @@
   <data name="ToolStripMenuItem__Read_Edit.Text" xml:space="preserve">
     <value>Open (Edit) reading...</value>
   </data>
+  <data name="ToolStripMenuItem__Read_Delete.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="ToolStripMenuItem__Read_Delete.Size" type="System.Drawing.Size, System.Drawing">
     <value>202, 22</value>
   </data>
@@ -283,6 +301,9 @@
   <data name="ToolStripMenuItem_Book_Format_Edit.Text" xml:space="preserve">
     <value>Open (Edit) format...</value>
   </data>
+  <data name="ToolStripMenuItem_Book_Format_Delete.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="ToolStripMenuItem_Book_Format_Delete.Size" type="System.Drawing.Size, System.Drawing">
     <value>198, 22</value>
   </data>
@@ -295,31 +316,34 @@
   <data name="ToolStripMenuItem_Book_Format.Text" xml:space="preserve">
     <value>Formats</value>
   </data>
-  <data name="ToolStripMenuItem_Marks_ٍShow.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="ToolStripMenuItem_Marks_Show.Size" type="System.Drawing.Size, System.Drawing">
     <value>189, 22</value>
   </data>
-  <data name="ToolStripMenuItem_Marks_ٍShow.Text" xml:space="preserve">
+  <data name="ToolStripMenuItem_Marks_Show.Text" xml:space="preserve">
     <value>Show (Update) marks</value>
   </data>
-  <data name="ToolStripMenuItem_Marks_ٍAdd.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="ToolStripMenuItem_Marks_Add.Size" type="System.Drawing.Size, System.Drawing">
     <value>189, 22</value>
   </data>
-  <data name="ToolStripMenuItem_Marks_ٍAdd.Text" xml:space="preserve">
+  <data name="ToolStripMenuItem_Marks_Add.Text" xml:space="preserve">
     <value>Add mark...</value>
   </data>
-  <data name="ToolStripMenuItem_Marks_ٍEdit.Enabled" type="System.Boolean, mscorlib">
+  <data name="ToolStripMenuItem_Mark_Edit.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="ToolStripMenuItem_Marks_ٍEdit.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="ToolStripMenuItem_Mark_Edit.Size" type="System.Drawing.Size, System.Drawing">
     <value>189, 22</value>
   </data>
-  <data name="ToolStripMenuItem_Marks_ٍEdit.Text" xml:space="preserve">
+  <data name="ToolStripMenuItem_Mark_Edit.Text" xml:space="preserve">
     <value>Open (Edit) mark...</value>
   </data>
-  <data name="ToolStripMenuItem_Marks_ٍDelete.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="ToolStripMenuItem_Marks_Delete.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="ToolStripMenuItem_Marks_Delete.Size" type="System.Drawing.Size, System.Drawing">
     <value>189, 22</value>
   </data>
-  <data name="ToolStripMenuItem_Marks_ٍDelete.Text" xml:space="preserve">
+  <data name="ToolStripMenuItem_Marks_Delete.Text" xml:space="preserve">
     <value>Delete/Undelete mark</value>
   </data>
   <data name="ToolStripMenuItem_Marks.Size" type="System.Drawing.Size, System.Drawing">
@@ -358,11 +382,137 @@
   <data name="ToolStripMenuItem__Book_Edit.Text" xml:space="preserve">
     <value>Open (Edit) book...</value>
   </data>
+  <data name="ToolStripMenuItem_Books_Delete.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="ToolStripMenuItem_Books_Delete.Size" type="System.Drawing.Size, System.Drawing">
     <value>189, 22</value>
   </data>
   <data name="ToolStripMenuItem_Books_Delete.Text" xml:space="preserve">
     <value>Delete/Undelete book</value>
+  </data>
+  <data name="toolStripSeparator20.Size" type="System.Drawing.Size, System.Drawing">
+    <value>186, 6</value>
+  </data>
+  <data name="ToolStripMenuItem__City_Show.Size" type="System.Drawing.Size, System.Drawing">
+    <value>182, 22</value>
+  </data>
+  <data name="ToolStripMenuItem__City_Show.Text" xml:space="preserve">
+    <value>Show (Update) cities</value>
+  </data>
+  <data name="toolStripSeparator7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>179, 6</value>
+  </data>
+  <data name="ToolStripMenuItem_City_Add.Size" type="System.Drawing.Size, System.Drawing">
+    <value>182, 22</value>
+  </data>
+  <data name="ToolStripMenuItem_City_Add.Text" xml:space="preserve">
+    <value>Add city...</value>
+  </data>
+  <data name="ToolStripMenuItem_City_Edit.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="ToolStripMenuItem_City_Edit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>182, 22</value>
+  </data>
+  <data name="ToolStripMenuItem_City_Edit.Text" xml:space="preserve">
+    <value>Open (Edit) city...</value>
+  </data>
+  <data name="ToolStripMenuItem_City_Delete.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="ToolStripMenuItem_City_Delete.Size" type="System.Drawing.Size, System.Drawing">
+    <value>182, 22</value>
+  </data>
+  <data name="ToolStripMenuItem_City_Delete.Text" xml:space="preserve">
+    <value>Delete/Undelete city</value>
+  </data>
+  <data name="ToolStripMenuItem_Cities.Size" type="System.Drawing.Size, System.Drawing">
+    <value>189, 22</value>
+  </data>
+  <data name="ToolStripMenuItem_Cities.Text" xml:space="preserve">
+    <value>Cities</value>
+  </data>
+  <data name="ToolStripMenuItem_Series_Show.Size" type="System.Drawing.Size, System.Drawing">
+    <value>221, 22</value>
+  </data>
+  <data name="ToolStripMenuItem_Series_Show.Text" xml:space="preserve">
+    <value>Show (Update) book series</value>
+  </data>
+  <data name="toolStripSeparator14.Size" type="System.Drawing.Size, System.Drawing">
+    <value>218, 6</value>
+  </data>
+  <data name="ToolStripMenuItem_Series_Add.Size" type="System.Drawing.Size, System.Drawing">
+    <value>221, 22</value>
+  </data>
+  <data name="ToolStripMenuItem_Series_Add.Text" xml:space="preserve">
+    <value>Add book book series...</value>
+  </data>
+  <data name="ToolStripMenuItem_Series_Edit.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="ToolStripMenuItem_Series_Edit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>221, 22</value>
+  </data>
+  <data name="ToolStripMenuItem_Series_Edit.Text" xml:space="preserve">
+    <value>Open (Edit) book series...</value>
+  </data>
+  <data name="ToolStripMenuItem_Series_Delete.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="ToolStripMenuItem_Series_Delete.Size" type="System.Drawing.Size, System.Drawing">
+    <value>221, 22</value>
+  </data>
+  <data name="ToolStripMenuItem_Series_Delete.Text" xml:space="preserve">
+    <value>Delete/Undelete book series</value>
+  </data>
+  <data name="ToolStripMenuItem_Series.Size" type="System.Drawing.Size, System.Drawing">
+    <value>189, 22</value>
+  </data>
+  <data name="ToolStripMenuItem_Series.Text" xml:space="preserve">
+    <value>Book series</value>
+  </data>
+  <data name="ToolStripMenuItem_PubHouse_Show.Size" type="System.Drawing.Size, System.Drawing">
+    <value>253, 22</value>
+  </data>
+  <data name="ToolStripMenuItem_PubHouse_Show.Text" xml:space="preserve">
+    <value>Show (Update) publishing houses</value>
+  </data>
+  <data name="toolStripSeparator6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>250, 6</value>
+  </data>
+  <data name="ToolStripMenuItem_PubHouse_Add.Size" type="System.Drawing.Size, System.Drawing">
+    <value>253, 22</value>
+  </data>
+  <data name="ToolStripMenuItem_PubHouse_Add.Text" xml:space="preserve">
+    <value>Add publishing house...</value>
+  </data>
+  <data name="ToolStripMenuItem_PubHouse_Edit.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="ToolStripMenuItem_PubHouse_Edit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>253, 22</value>
+  </data>
+  <data name="ToolStripMenuItem_PubHouse_Edit.Text" xml:space="preserve">
+    <value>Open (Edit) publishing house...</value>
+  </data>
+  <data name="ToolStripMenuItem_PubHouse_Delete.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="ToolStripMenuItem_PubHouse_Delete.Size" type="System.Drawing.Size, System.Drawing">
+    <value>253, 22</value>
+  </data>
+  <data name="ToolStripMenuItem_PubHouse_Delete.Text" xml:space="preserve">
+    <value>Delete/Undelete publishing house</value>
+  </data>
+  <data name="ToolStripMenuItem_PubHouse.Size" type="System.Drawing.Size, System.Drawing">
+    <value>189, 22</value>
+  </data>
+  <data name="ToolStripMenuItem_PubHouse.Text" xml:space="preserve">
+    <value>Publishing houses</value>
+  </data>
+  <data name="toolStripSeparator18.Size" type="System.Drawing.Size, System.Drawing">
+    <value>186, 6</value>
   </data>
   <data name="ToolStripMenuItem_Books.Size" type="System.Drawing.Size, System.Drawing">
     <value>51, 20</value>
@@ -394,11 +544,98 @@
   <data name="ToolStripMenuItem_Arts_Edit.Text" xml:space="preserve">
     <value>Open (Edit)</value>
   </data>
+  <data name="ToolStripMenuItem_Arts_Delete.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="ToolStripMenuItem_Arts_Delete.Size" type="System.Drawing.Size, System.Drawing">
     <value>176, 22</value>
   </data>
   <data name="ToolStripMenuItem_Arts_Delete.Text" xml:space="preserve">
     <value>Delete/Undelete art</value>
+  </data>
+  <data name="toolStripSeparator21.Size" type="System.Drawing.Size, System.Drawing">
+    <value>173, 6</value>
+  </data>
+  <data name="ToolStripMenuItem_Genres_Show.Size" type="System.Drawing.Size, System.Drawing">
+    <value>192, 22</value>
+  </data>
+  <data name="ToolStripMenuItem_Genres_Show.Text" xml:space="preserve">
+    <value>Show (Update) genres</value>
+  </data>
+  <data name="toolStripSeparator4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>189, 6</value>
+  </data>
+  <data name="ToolStripMenuItem_Genres_Add.Size" type="System.Drawing.Size, System.Drawing">
+    <value>192, 22</value>
+  </data>
+  <data name="ToolStripMenuItem_Genres_Add.Text" xml:space="preserve">
+    <value>Add genre...</value>
+  </data>
+  <data name="ToolStripMenuItem_Genres_Edit.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="ToolStripMenuItem_Genres_Edit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>192, 22</value>
+  </data>
+  <data name="ToolStripMenuItem_Genres_Edit.Text" xml:space="preserve">
+    <value>Open (Edit) genre...</value>
+  </data>
+  <data name="ToolStripMenuItem__Genres_Delete.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="ToolStripMenuItem__Genres_Delete.Size" type="System.Drawing.Size, System.Drawing">
+    <value>192, 22</value>
+  </data>
+  <data name="ToolStripMenuItem__Genres_Delete.Text" xml:space="preserve">
+    <value>Delete/Undelete genre</value>
+  </data>
+  <data name="ToolStripMenuItem_Genres.Size" type="System.Drawing.Size, System.Drawing">
+    <value>176, 22</value>
+  </data>
+  <data name="ToolStripMenuItem_Genres.Text" xml:space="preserve">
+    <value>Genres</value>
+  </data>
+  <data name="ToolStripMenuItem_Language_Show.Size" type="System.Drawing.Size, System.Drawing">
+    <value>211, 22</value>
+  </data>
+  <data name="ToolStripMenuItem_Language_Show.Text" xml:space="preserve">
+    <value>Show (Update) languages</value>
+  </data>
+  <data name="toolStripSeparator5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>208, 6</value>
+  </data>
+  <data name="ToolStripMenuItem_Language_Add.Size" type="System.Drawing.Size, System.Drawing">
+    <value>211, 22</value>
+  </data>
+  <data name="ToolStripMenuItem_Language_Add.Text" xml:space="preserve">
+    <value>Add language...</value>
+  </data>
+  <data name="ToolStripMenuItem_Language_Edit.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="ToolStripMenuItem_Language_Edit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>211, 22</value>
+  </data>
+  <data name="ToolStripMenuItem_Language_Edit.Text" xml:space="preserve">
+    <value>Open (Edit) language...</value>
+  </data>
+  <data name="ToolStripMenuItem_Language_Delete.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="ToolStripMenuItem_Language_Delete.Size" type="System.Drawing.Size, System.Drawing">
+    <value>211, 22</value>
+  </data>
+  <data name="ToolStripMenuItem_Language_Delete.Text" xml:space="preserve">
+    <value>Delete/Undelete language</value>
+  </data>
+  <data name="ToolStripMenuItem_Languages.Size" type="System.Drawing.Size, System.Drawing">
+    <value>176, 22</value>
+  </data>
+  <data name="ToolStripMenuItem_Languages.Text" xml:space="preserve">
+    <value>Languages</value>
+  </data>
+  <data name="toolStripSeparator17.Size" type="System.Drawing.Size, System.Drawing">
+    <value>173, 6</value>
   </data>
   <data name="ToolStripMenuItem_Arts.Size" type="System.Drawing.Size, System.Drawing">
     <value>40, 20</value>
@@ -430,6 +667,9 @@
   <data name="ToolStripMenuItem_Author_Edit.Text" xml:space="preserve">
     <value>Open (Edit) author...</value>
   </data>
+  <data name="ToolStripMenuItem_Author_Delete.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="ToolStripMenuItem_Author_Delete.Size" type="System.Drawing.Size, System.Drawing">
     <value>197, 22</value>
   </data>
@@ -447,6 +687,12 @@
   </data>
   <data name="ToolStripMenuItem_Actions_Open.Text" xml:space="preserve">
     <value>Show (Update) actions</value>
+  </data>
+  <data name="ToolStripMenuItem_Location_Show.Size" type="System.Drawing.Size, System.Drawing">
+    <value>195, 22</value>
+  </data>
+  <data name="ToolStripMenuItem_Location_Show.Text" xml:space="preserve">
+    <value>Show action table</value>
   </data>
   <data name="toolStripSeparator8.Size" type="System.Drawing.Size, System.Drawing">
     <value>192, 6</value>
@@ -466,6 +712,9 @@
   <data name="ToolStripMenuItem_Actions_Edit.Text" xml:space="preserve">
     <value>Open (Edit) action...</value>
   </data>
+  <data name="ToolStripMenuItem_Actions_Delete.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="ToolStripMenuItem_Actions_Delete.Size" type="System.Drawing.Size, System.Drawing">
     <value>195, 22</value>
   </data>
@@ -474,204 +723,6 @@
   </data>
   <data name="toolStripSeparator13.Size" type="System.Drawing.Size, System.Drawing">
     <value>192, 6</value>
-  </data>
-  <data name="ToolStripMenuItem_Location_Show.Size" type="System.Drawing.Size, System.Drawing">
-    <value>195, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_Location_Show.Text" xml:space="preserve">
-    <value>Show action table</value>
-  </data>
-  <data name="ToolStripMenuItem_Actions.Size" type="System.Drawing.Size, System.Drawing">
-    <value>59, 20</value>
-  </data>
-  <data name="ToolStripMenuItem_Actions.Text" xml:space="preserve">
-    <value>Actions</value>
-  </data>
-  <data name="ToolStripMenuItem_Language_Show.Size" type="System.Drawing.Size, System.Drawing">
-    <value>211, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_Language_Show.Text" xml:space="preserve">
-    <value>Show (Update) languages</value>
-  </data>
-  <data name="toolStripSeparator5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>208, 6</value>
-  </data>
-  <data name="ToolStripMenuItem_Language_Add.Size" type="System.Drawing.Size, System.Drawing">
-    <value>211, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_Language_Add.Text" xml:space="preserve">
-    <value>Add language...</value>
-  </data>
-  <data name="ToolStripMenuItem_Language_Edit.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="ToolStripMenuItem_Language_Edit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>211, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_Language_Edit.Text" xml:space="preserve">
-    <value>Open (Edit) language...</value>
-  </data>
-  <data name="ToolStripMenuItem_Language_Delete.Size" type="System.Drawing.Size, System.Drawing">
-    <value>211, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_Language_Delete.Text" xml:space="preserve">
-    <value>Delete/Undelete language</value>
-  </data>
-  <data name="ToolStripMenuItem_Languages.Size" type="System.Drawing.Size, System.Drawing">
-    <value>179, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_Languages.Text" xml:space="preserve">
-    <value>Languages</value>
-  </data>
-  <data name="toolStripSeparator11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 6</value>
-  </data>
-  <data name="ToolStripMenuItem_Genres_Show.Size" type="System.Drawing.Size, System.Drawing">
-    <value>192, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_Genres_Show.Text" xml:space="preserve">
-    <value>Show (Update) genres</value>
-  </data>
-  <data name="toolStripSeparator4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>189, 6</value>
-  </data>
-  <data name="ToolStripMenuItem_Genres_Add.Size" type="System.Drawing.Size, System.Drawing">
-    <value>192, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_Genres_Add.Text" xml:space="preserve">
-    <value>Add genre...</value>
-  </data>
-  <data name="ToolStripMenuItem_Genres_Edit.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="ToolStripMenuItem_Genres_Edit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>192, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_Genres_Edit.Text" xml:space="preserve">
-    <value>Open (Edit) genre...</value>
-  </data>
-  <data name="ToolStripMenuItem__Genres_Delete.Size" type="System.Drawing.Size, System.Drawing">
-    <value>192, 22</value>
-  </data>
-  <data name="ToolStripMenuItem__Genres_Delete.Text" xml:space="preserve">
-    <value>Delete/Undelete genre</value>
-  </data>
-  <data name="ToolStripMenuItem_Genres.Size" type="System.Drawing.Size, System.Drawing">
-    <value>179, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_Genres.Text" xml:space="preserve">
-    <value>Genres</value>
-  </data>
-  <data name="ToolStripMenuItem__City_Show.Size" type="System.Drawing.Size, System.Drawing">
-    <value>182, 22</value>
-  </data>
-  <data name="ToolStripMenuItem__City_Show.Text" xml:space="preserve">
-    <value>Show (Update) cities</value>
-  </data>
-  <data name="toolStripSeparator7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>179, 6</value>
-  </data>
-  <data name="ToolStripMenuItem_City_Add.Size" type="System.Drawing.Size, System.Drawing">
-    <value>182, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_City_Add.Text" xml:space="preserve">
-    <value>Add city...</value>
-  </data>
-  <data name="ToolStripMenuItem_City_Edit.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="ToolStripMenuItem_City_Edit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>182, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_City_Edit.Text" xml:space="preserve">
-    <value>Open (Edit) city...</value>
-  </data>
-  <data name="ToolStripMenuItem_City_Delete.Size" type="System.Drawing.Size, System.Drawing">
-    <value>182, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_City_Delete.Text" xml:space="preserve">
-    <value>Delete/Undelete city</value>
-  </data>
-  <data name="ToolStripMenuItem_Cities.Size" type="System.Drawing.Size, System.Drawing">
-    <value>179, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_Cities.Text" xml:space="preserve">
-    <value>Cities</value>
-  </data>
-  <data name="ToolStripMenuItem_Series_Show.Size" type="System.Drawing.Size, System.Drawing">
-    <value>221, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_Series_Show.Text" xml:space="preserve">
-    <value>Show (Update) book series</value>
-  </data>
-  <data name="toolStripSeparator14.Size" type="System.Drawing.Size, System.Drawing">
-    <value>218, 6</value>
-  </data>
-  <data name="ToolStripMenuItem_Series_Add.Size" type="System.Drawing.Size, System.Drawing">
-    <value>221, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_Series_Add.Text" xml:space="preserve">
-    <value>Add book book series...</value>
-  </data>
-  <data name="ToolStripMenuItem_Series_Edit.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="ToolStripMenuItem_Series_Edit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>221, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_Series_Edit.Text" xml:space="preserve">
-    <value>Open (Edit) book series...</value>
-  </data>
-  <data name="ToolStripMenuItem_Series_Delete.Size" type="System.Drawing.Size, System.Drawing">
-    <value>221, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_Series_Delete.Text" xml:space="preserve">
-    <value>Delete/Undelete book series</value>
-  </data>
-  <data name="ToolStripMenuItem_Series.Size" type="System.Drawing.Size, System.Drawing">
-    <value>179, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_Series.Text" xml:space="preserve">
-    <value>Book series</value>
-  </data>
-  <data name="ToolStripMenuItem_PubHouse_Show.Size" type="System.Drawing.Size, System.Drawing">
-    <value>253, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_PubHouse_Show.Text" xml:space="preserve">
-    <value>Show (Update) publishing houses</value>
-  </data>
-  <data name="toolStripSeparator6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>250, 6</value>
-  </data>
-  <data name="ToolStripMenuItem_PubHouse_Add.Size" type="System.Drawing.Size, System.Drawing">
-    <value>253, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_PubHouse_Add.Text" xml:space="preserve">
-    <value>Add publishing house...</value>
-  </data>
-  <data name="ToolStripMenuItem_PubHouse_Edit.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="ToolStripMenuItem_PubHouse_Edit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>253, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_PubHouse_Edit.Text" xml:space="preserve">
-    <value>Open (Edit) publishing house...</value>
-  </data>
-  <data name="ToolStripMenuItem_PubHouse_Delete.Size" type="System.Drawing.Size, System.Drawing">
-    <value>253, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_PubHouse_Delete.Text" xml:space="preserve">
-    <value>Delete/Undelete publishing house</value>
-  </data>
-  <data name="ToolStripMenuItem_PubHouse.Size" type="System.Drawing.Size, System.Drawing">
-    <value>179, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_PubHouse.Text" xml:space="preserve">
-    <value>Publishing houses</value>
-  </data>
-  <data name="toolStripSeparator10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 6</value>
   </data>
   <data name="ToolStripMenuItem_Places_Show.Size" type="System.Drawing.Size, System.Drawing">
     <value>201, 22</value>
@@ -694,6 +745,9 @@
   <data name="ToolStripMenuItem_Places_Edit.Text" xml:space="preserve">
     <value>Open (Edit) storage...</value>
   </data>
+  <data name="ToolStripMenuItem_Places_Delele.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="ToolStripMenuItem_Places_Delele.Size" type="System.Drawing.Size, System.Drawing">
     <value>201, 22</value>
   </data>
@@ -701,7 +755,7 @@
     <value>Delete/Undelete storage</value>
   </data>
   <data name="ToolStripMenuItem_Places.Size" type="System.Drawing.Size, System.Drawing">
-    <value>179, 22</value>
+    <value>195, 22</value>
   </data>
   <data name="ToolStripMenuItem_Places.Text" xml:space="preserve">
     <value>Book storage places</value>
@@ -727,6 +781,9 @@
   <data name="ToolStripMenuItem_People_Edit.Text" xml:space="preserve">
     <value>Open (Edit) person...</value>
   </data>
+  <data name="ToolStripMenuItem_People_Delete.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="ToolStripMenuItem_People_Delete.Size" type="System.Drawing.Size, System.Drawing">
     <value>198, 22</value>
   </data>
@@ -734,16 +791,25 @@
     <value>Delete/Undelete person</value>
   </data>
   <data name="ToolStripMenuItem_People.Size" type="System.Drawing.Size, System.Drawing">
-    <value>179, 22</value>
+    <value>195, 22</value>
   </data>
   <data name="ToolStripMenuItem_People.Text" xml:space="preserve">
     <value>Persons</value>
   </data>
+  <data name="toolStripSeparator22.Size" type="System.Drawing.Size, System.Drawing">
+    <value>192, 6</value>
+  </data>
+  <data name="ToolStripMenuItem_Actions.Size" type="System.Drawing.Size, System.Drawing">
+    <value>59, 20</value>
+  </data>
+  <data name="ToolStripMenuItem_Actions.Text" xml:space="preserve">
+    <value>Actions</value>
+  </data>
   <data name="ToolStripMenuItem_Cataloques.Size" type="System.Drawing.Size, System.Drawing">
-    <value>78, 20</value>
+    <value>61, 20</value>
   </data>
   <data name="ToolStripMenuItem_Cataloques.Text" xml:space="preserve">
-    <value>Catalogues</value>
+    <value>About...</value>
   </data>
   <data name="ToolStripMenuItem_UI_Language_RU.Size" type="System.Drawing.Size, System.Drawing">
     <value>180, 22</value>
@@ -861,6 +927,18 @@
   </data>
   <data name="&gt;&gt;ToolStripMenuItem_File_RestoreBD.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem_File_Delete_DB.Name" xml:space="preserve">
+    <value>ToolStripMenuItem_File_Delete_DB</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem_File_Delete_DB.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator19.Name" xml:space="preserve">
+    <value>toolStripSeparator19</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator19.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;ToolStripMenuItem_File_Open_Settings.Name" xml:space="preserve">
     <value>ToolStripMenuItem_File_Open_Settings</value>
@@ -1024,28 +1102,28 @@
   <data name="&gt;&gt;ToolStripMenuItem_Marks.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ToolStripMenuItem_Marks_ٍShow.Name" xml:space="preserve">
-    <value>ToolStripMenuItem_Marks_ٍShow</value>
+  <data name="&gt;&gt;ToolStripMenuItem_Marks_Show.Name" xml:space="preserve">
+    <value>ToolStripMenuItem_Marks_Show</value>
   </data>
-  <data name="&gt;&gt;ToolStripMenuItem_Marks_ٍShow.Type" xml:space="preserve">
+  <data name="&gt;&gt;ToolStripMenuItem_Marks_Show.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ToolStripMenuItem_Marks_ٍAdd.Name" xml:space="preserve">
-    <value>ToolStripMenuItem_Marks_ٍAdd</value>
+  <data name="&gt;&gt;ToolStripMenuItem_Marks_Add.Name" xml:space="preserve">
+    <value>ToolStripMenuItem_Marks_Add</value>
   </data>
-  <data name="&gt;&gt;ToolStripMenuItem_Marks_ٍAdd.Type" xml:space="preserve">
+  <data name="&gt;&gt;ToolStripMenuItem_Marks_Add.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ToolStripMenuItem_Marks_ٍEdit.Name" xml:space="preserve">
-    <value>ToolStripMenuItem_Marks_ٍEdit</value>
+  <data name="&gt;&gt;ToolStripMenuItem_Mark_Edit.Name" xml:space="preserve">
+    <value>ToolStripMenuItem_Mark_Edit</value>
   </data>
-  <data name="&gt;&gt;ToolStripMenuItem_Marks_ٍEdit.Type" xml:space="preserve">
+  <data name="&gt;&gt;ToolStripMenuItem_Mark_Edit.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ToolStripMenuItem_Marks_ٍDelete.Name" xml:space="preserve">
-    <value>ToolStripMenuItem_Marks_ٍDelete</value>
+  <data name="&gt;&gt;ToolStripMenuItem_Marks_Delete.Name" xml:space="preserve">
+    <value>ToolStripMenuItem_Marks_Delete</value>
   </data>
-  <data name="&gt;&gt;ToolStripMenuItem_Marks_ٍDelete.Type" xml:space="preserve">
+  <data name="&gt;&gt;ToolStripMenuItem_Marks_Delete.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;ToolStripMenuItem_Books.Name" xml:space="preserve">
@@ -1084,209 +1162,11 @@
   <data name="&gt;&gt;ToolStripMenuItem_Books_Delete.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ToolStripMenuItem_Arts.Name" xml:space="preserve">
-    <value>ToolStripMenuItem_Arts</value>
+  <data name="&gt;&gt;toolStripSeparator20.Name" xml:space="preserve">
+    <value>toolStripSeparator20</value>
   </data>
-  <data name="&gt;&gt;ToolStripMenuItem_Arts.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItem_Arts_Show.Name" xml:space="preserve">
-    <value>ToolStripMenuItem_Arts_Show</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItem_Arts_Show.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator1.Name" xml:space="preserve">
-    <value>toolStripSeparator1</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator1.Type" xml:space="preserve">
+  <data name="&gt;&gt;toolStripSeparator20.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItem_Arts_Add.Name" xml:space="preserve">
-    <value>ToolStripMenuItem_Arts_Add</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItem_Arts_Add.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItem_Arts_Edit.Name" xml:space="preserve">
-    <value>ToolStripMenuItem_Arts_Edit</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItem_Arts_Edit.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItem_Arts_Delete.Name" xml:space="preserve">
-    <value>ToolStripMenuItem_Arts_Delete</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItem_Arts_Delete.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItem_Autors.Name" xml:space="preserve">
-    <value>ToolStripMenuItem_Autors</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItem_Autors.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItem_Authors_Show.Name" xml:space="preserve">
-    <value>ToolStripMenuItem_Authors_Show</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItem_Authors_Show.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator3.Name" xml:space="preserve">
-    <value>toolStripSeparator3</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItem_Author_Add.Name" xml:space="preserve">
-    <value>ToolStripMenuItem_Author_Add</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItem_Author_Add.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItem_Author_Edit.Name" xml:space="preserve">
-    <value>ToolStripMenuItem_Author_Edit</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItem_Author_Edit.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItem_Author_Delete.Name" xml:space="preserve">
-    <value>ToolStripMenuItem_Author_Delete</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItem_Author_Delete.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItem_Actions.Name" xml:space="preserve">
-    <value>ToolStripMenuItem_Actions</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItem_Actions.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItem_Actions_Open.Name" xml:space="preserve">
-    <value>ToolStripMenuItem_Actions_Open</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItem_Actions_Open.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator8.Name" xml:space="preserve">
-    <value>toolStripSeparator8</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator8.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItem_Actions_Create.Name" xml:space="preserve">
-    <value>ToolStripMenuItem_Actions_Create</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItem_Actions_Create.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItem_Actions_Edit.Name" xml:space="preserve">
-    <value>ToolStripMenuItem_Actions_Edit</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItem_Actions_Edit.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItem_Actions_Delete.Name" xml:space="preserve">
-    <value>ToolStripMenuItem_Actions_Delete</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItem_Actions_Delete.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator13.Name" xml:space="preserve">
-    <value>toolStripSeparator13</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator13.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItem_Location_Show.Name" xml:space="preserve">
-    <value>ToolStripMenuItem_Location_Show</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItem_Location_Show.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItem_Cataloques.Name" xml:space="preserve">
-    <value>ToolStripMenuItem_Cataloques</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItem_Cataloques.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItem_Languages.Name" xml:space="preserve">
-    <value>ToolStripMenuItem_Languages</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItem_Languages.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItem_Language_Show.Name" xml:space="preserve">
-    <value>ToolStripMenuItem_Language_Show</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItem_Language_Show.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator5.Name" xml:space="preserve">
-    <value>toolStripSeparator5</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItem_Language_Add.Name" xml:space="preserve">
-    <value>ToolStripMenuItem_Language_Add</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItem_Language_Add.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItem_Language_Edit.Name" xml:space="preserve">
-    <value>ToolStripMenuItem_Language_Edit</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItem_Language_Edit.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItem_Language_Delete.Name" xml:space="preserve">
-    <value>ToolStripMenuItem_Language_Delete</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItem_Language_Delete.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator11.Name" xml:space="preserve">
-    <value>toolStripSeparator11</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator11.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItem_Genres.Name" xml:space="preserve">
-    <value>ToolStripMenuItem_Genres</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItem_Genres.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItem_Genres_Show.Name" xml:space="preserve">
-    <value>ToolStripMenuItem_Genres_Show</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItem_Genres_Show.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator4.Name" xml:space="preserve">
-    <value>toolStripSeparator4</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItem_Genres_Add.Name" xml:space="preserve">
-    <value>ToolStripMenuItem_Genres_Add</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItem_Genres_Add.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItem_Genres_Edit.Name" xml:space="preserve">
-    <value>ToolStripMenuItem_Genres_Edit</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItem_Genres_Edit.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItem__Genres_Delete.Name" xml:space="preserve">
-    <value>ToolStripMenuItem__Genres_Delete</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItem__Genres_Delete.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;ToolStripMenuItem_Cities.Name" xml:space="preserve">
     <value>ToolStripMenuItem_Cities</value>
@@ -1396,10 +1276,214 @@
   <data name="&gt;&gt;ToolStripMenuItem_PubHouse_Delete.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;toolStripSeparator10.Name" xml:space="preserve">
-    <value>toolStripSeparator10</value>
+  <data name="&gt;&gt;toolStripSeparator18.Name" xml:space="preserve">
+    <value>toolStripSeparator18</value>
   </data>
-  <data name="&gt;&gt;toolStripSeparator10.Type" xml:space="preserve">
+  <data name="&gt;&gt;toolStripSeparator18.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem_Arts.Name" xml:space="preserve">
+    <value>ToolStripMenuItem_Arts</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem_Arts.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem_Arts_Show.Name" xml:space="preserve">
+    <value>ToolStripMenuItem_Arts_Show</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem_Arts_Show.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator1.Name" xml:space="preserve">
+    <value>toolStripSeparator1</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem_Arts_Add.Name" xml:space="preserve">
+    <value>ToolStripMenuItem_Arts_Add</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem_Arts_Add.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem_Arts_Edit.Name" xml:space="preserve">
+    <value>ToolStripMenuItem_Arts_Edit</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem_Arts_Edit.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem_Arts_Delete.Name" xml:space="preserve">
+    <value>ToolStripMenuItem_Arts_Delete</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem_Arts_Delete.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator21.Name" xml:space="preserve">
+    <value>toolStripSeparator21</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator21.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem_Genres.Name" xml:space="preserve">
+    <value>ToolStripMenuItem_Genres</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem_Genres.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem_Genres_Show.Name" xml:space="preserve">
+    <value>ToolStripMenuItem_Genres_Show</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem_Genres_Show.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator4.Name" xml:space="preserve">
+    <value>toolStripSeparator4</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem_Genres_Add.Name" xml:space="preserve">
+    <value>ToolStripMenuItem_Genres_Add</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem_Genres_Add.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem_Genres_Edit.Name" xml:space="preserve">
+    <value>ToolStripMenuItem_Genres_Edit</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem_Genres_Edit.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem__Genres_Delete.Name" xml:space="preserve">
+    <value>ToolStripMenuItem__Genres_Delete</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem__Genres_Delete.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem_Languages.Name" xml:space="preserve">
+    <value>ToolStripMenuItem_Languages</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem_Languages.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem_Language_Show.Name" xml:space="preserve">
+    <value>ToolStripMenuItem_Language_Show</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem_Language_Show.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator5.Name" xml:space="preserve">
+    <value>toolStripSeparator5</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem_Language_Add.Name" xml:space="preserve">
+    <value>ToolStripMenuItem_Language_Add</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem_Language_Add.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem_Language_Edit.Name" xml:space="preserve">
+    <value>ToolStripMenuItem_Language_Edit</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem_Language_Edit.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem_Language_Delete.Name" xml:space="preserve">
+    <value>ToolStripMenuItem_Language_Delete</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem_Language_Delete.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator17.Name" xml:space="preserve">
+    <value>toolStripSeparator17</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator17.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem_Autors.Name" xml:space="preserve">
+    <value>ToolStripMenuItem_Autors</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem_Autors.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem_Authors_Show.Name" xml:space="preserve">
+    <value>ToolStripMenuItem_Authors_Show</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem_Authors_Show.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator3.Name" xml:space="preserve">
+    <value>toolStripSeparator3</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem_Author_Add.Name" xml:space="preserve">
+    <value>ToolStripMenuItem_Author_Add</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem_Author_Add.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem_Author_Edit.Name" xml:space="preserve">
+    <value>ToolStripMenuItem_Author_Edit</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem_Author_Edit.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem_Author_Delete.Name" xml:space="preserve">
+    <value>ToolStripMenuItem_Author_Delete</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem_Author_Delete.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem_Actions.Name" xml:space="preserve">
+    <value>ToolStripMenuItem_Actions</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem_Actions.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem_Actions_Open.Name" xml:space="preserve">
+    <value>ToolStripMenuItem_Actions_Open</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem_Actions_Open.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem_Location_Show.Name" xml:space="preserve">
+    <value>ToolStripMenuItem_Location_Show</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem_Location_Show.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator8.Name" xml:space="preserve">
+    <value>toolStripSeparator8</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem_Actions_Create.Name" xml:space="preserve">
+    <value>ToolStripMenuItem_Actions_Create</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem_Actions_Create.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem_Actions_Edit.Name" xml:space="preserve">
+    <value>ToolStripMenuItem_Actions_Edit</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem_Actions_Edit.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem_Actions_Delete.Name" xml:space="preserve">
+    <value>ToolStripMenuItem_Actions_Delete</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem_Actions_Delete.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator13.Name" xml:space="preserve">
+    <value>toolStripSeparator13</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator13.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;ToolStripMenuItem_Places.Name" xml:space="preserve">
@@ -1460,6 +1544,18 @@
     <value>ToolStripMenuItem_People_Delete</value>
   </data>
   <data name="&gt;&gt;ToolStripMenuItem_People_Delete.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator22.Name" xml:space="preserve">
+    <value>toolStripSeparator22</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator22.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem_Cataloques.Name" xml:space="preserve">
+    <value>ToolStripMenuItem_Cataloques</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem_Cataloques.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;ToolStripMenuItem_UI_Language.Name" xml:space="preserve">

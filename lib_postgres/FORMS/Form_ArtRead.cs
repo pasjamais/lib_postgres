@@ -15,7 +15,7 @@ namespace lib_postgres.FORMS
         public Form_ArtRead()
         {
             InitializeComponent();
-            General_Manipulations.CB_reload<Art>(CB_Art, 1);
+            General_Manipulations.CB_reload<Structures.Short_Art>(CB_Art, 1);
             General_Manipulations.CB_reload<BookFormat>(CB_BookFormat, 1);
             General_Manipulations.CB_reload<Mark>(CB_Mark, 1); 
             General_Manipulations.CB_reload<ViewBook>(CB_PaperBook, 1);

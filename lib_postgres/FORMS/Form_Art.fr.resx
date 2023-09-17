@@ -67,6 +67,9 @@
   <data name="label1.Text" xml:space="preserve">
     <value>Titre de l'ouvrage :</value>
   </data>
+  <data name="BT_Add_Langue_Original.Location" type="System.Drawing.Point, System.Drawing">
+    <value>489, 131</value>
+  </data>
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
     <value>22, 134</value>
   </data>
@@ -94,6 +97,9 @@
   <data name="CB_Genre.Size" type="System.Drawing.Size, System.Drawing">
     <value>316, 23</value>
   </data>
+  <data name="BT_Add_Genre.Location" type="System.Drawing.Point, System.Drawing">
+    <value>489, 100</value>
+  </data>
   <data name="DGV_Selected_Authors.Location" type="System.Drawing.Point, System.Drawing">
     <value>27, 209</value>
   </data>
@@ -104,7 +110,13 @@
     <value>15, 22</value>
   </data>
   <data name="BT_Deselect_Author.Location" type="System.Drawing.Point, System.Drawing">
-    <value>489, 217</value>
+    <value>489, 209</value>
+  </data>
+  <data name="ChB_Language.Location" type="System.Drawing.Point, System.Drawing">
+    <value>452, 136</value>
+  </data>
+  <data name="ChB_Genre.Location" type="System.Drawing.Point, System.Drawing">
+    <value>452, 104</value>
   </data>
   <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
     <value>179, 192</value>

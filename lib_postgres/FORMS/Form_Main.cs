@@ -619,22 +619,92 @@ namespace lib_postgres
         private void Turn_Menu_Item(bool state)
         {
 
-            if (gridViewItemType == typeof(Language)) Turn_On_Off_Menu_Item(ToolStripMenuItem_Language_Edit, state);
-            else if (gridViewItemType == typeof(Author)) Turn_On_Off_Menu_Item(ToolStripMenuItem_Author_Edit, state);
-            else if (gridViewItemType == typeof(Action)) Turn_On_Off_Menu_Item(ToolStripMenuItem_Actions_Edit, state);
-            else if (gridViewItemType == typeof(Series)) Turn_On_Off_Menu_Item(ToolStripMenuItem_Series_Edit, state);
-            else if (gridViewItemType == typeof(PublishingHouse)) Turn_On_Off_Menu_Item(ToolStripMenuItem_PubHouse_Edit, state);
-            else if (gridViewItemType == typeof(City)) Turn_On_Off_Menu_Item(ToolStripMenuItem_City_Edit, state);
-            else if (gridViewItemType == typeof(ViewBook)) Turn_On_Off_Menu_Item(ToolStripMenuItem__Book_Edit, state, cmi_item_find_book);
-            else if (gridViewItemType == typeof(Art)) Turn_On_Off_Menu_Item(ToolStripMenuItem_Arts_Edit, state, cmi_item_add_art_to_read); //ToolStripMenuItem_Book_Add
-            else if (gridViewItemType == typeof(Genre)) Turn_On_Off_Menu_Item(ToolStripMenuItem_Genres_Edit, state);
-            else if (gridViewItemType == typeof(ViewHasRead)) Turn_On_Off_Menu_Item(ToolStripMenuItem__Read_Edit, state);
-            else if (gridViewItemType == typeof(Mark)) Turn_On_Off_Menu_Item(ToolStripMenuItem_Marks_ٍEdit, state);
-            else if (gridViewItemType == typeof(BookFormat)) Turn_On_Off_Menu_Item(ToolStripMenuItem_Book_Format_Edit, state);
-            else if (gridViewItemType == typeof(Place)) Turn_On_Off_Menu_Item(ToolStripMenuItem_Places_Edit, state);
-            else if (gridViewItemType == typeof(Person)) Turn_On_Off_Menu_Item(ToolStripMenuItem_People_Edit, state);
-            else if (gridViewItemType == typeof(ArtToRead)) Turn_On_Off_Menu_Item(ToolStripMenuItem__Recommendations_Edit, state);
-            else if (gridViewItemType == typeof(SourceToreadAnother)) Turn_On_Off_Menu_Item(ToolStripMenuItem_SourceToreadAnother_Edit, state);
+            if (gridViewItemType == typeof(Language))
+            {
+                Turn_On_Off_Menu_Item(ToolStripMenuItem_Language_Edit, state);
+                Turn_On_Off_Menu_Item(ToolStripMenuItem_Language_Delete, state);
+            }
+            else if (gridViewItemType == typeof(Author))
+            {
+                Turn_On_Off_Menu_Item(ToolStripMenuItem_Author_Edit, state);
+                Turn_On_Off_Menu_Item(ToolStripMenuItem_Author_Delete, state);
+            }
+            else if (gridViewItemType == typeof(Action))
+            {
+                Turn_On_Off_Menu_Item(ToolStripMenuItem_Actions_Edit, state);
+                Turn_On_Off_Menu_Item(ToolStripMenuItem_Actions_Delete, state);
+            }
+            else if (gridViewItemType == typeof(Series))
+            {
+                
+                Turn_On_Off_Menu_Item(ToolStripMenuItem_Series_Edit, state);
+                Turn_On_Off_Menu_Item(ToolStripMenuItem_Series_Delete, state);
+            }
+            else if (gridViewItemType == typeof(PublishingHouse))
+            {
+                Turn_On_Off_Menu_Item(ToolStripMenuItem_PubHouse_Edit, state);
+                Turn_On_Off_Menu_Item(ToolStripMenuItem_PubHouse_Delete, state);
+            }
+            else if (gridViewItemType == typeof(City))
+            {
+                Turn_On_Off_Menu_Item(ToolStripMenuItem_City_Edit, state);
+                Turn_On_Off_Menu_Item(ToolStripMenuItem_City_Delete, state);
+            }
+            else if (gridViewItemType == typeof(ViewBook))
+            {
+                Turn_On_Off_Menu_Item(ToolStripMenuItem__Book_Edit, state, cmi_item_find_book);
+                Turn_On_Off_Menu_Item(ToolStripMenuItem_Books_Delete, state);
+            }
+            else if (gridViewItemType == typeof(Art))
+            {
+                Turn_On_Off_Menu_Item(ToolStripMenuItem_Arts_Edit, state, cmi_item_add_art_to_read); //ToolStripMenuItem_Book_Add
+                Turn_On_Off_Menu_Item(ToolStripMenuItem_Arts_Delete, state); 
+                
+            }
+            else if (gridViewItemType == typeof(Genre))
+            {
+                Turn_On_Off_Menu_Item(ToolStripMenuItem_Genres_Edit, state);
+                Turn_On_Off_Menu_Item(ToolStripMenuItem__Genres_Delete, state);
+            }
+            else if (gridViewItemType == typeof(ViewHasRead))
+            {
+                Turn_On_Off_Menu_Item(ToolStripMenuItem__Read_Edit, state);
+                Turn_On_Off_Menu_Item(ToolStripMenuItem__Read_Delete, state);
+
+            }
+            else if (gridViewItemType == typeof(Mark))
+            {
+                Turn_On_Off_Menu_Item(ToolStripMenuItem_Mark_Edit, state);
+                Turn_On_Off_Menu_Item(ToolStripMenuItem_Marks_Delete, state);
+
+            }
+            else if (gridViewItemType == typeof(BookFormat))
+            {
+                Turn_On_Off_Menu_Item(ToolStripMenuItem_Book_Format_Edit, state);
+                Turn_On_Off_Menu_Item(ToolStripMenuItem_Book_Format_Delete, state);
+            }
+
+            else if (gridViewItemType == typeof(Place))
+            {
+                Turn_On_Off_Menu_Item(ToolStripMenuItem_Places_Edit, state);
+                Turn_On_Off_Menu_Item(ToolStripMenuItem_Places_Delele, state);
+            }
+            else if (gridViewItemType == typeof(Person))
+            {
+                Turn_On_Off_Menu_Item(ToolStripMenuItem_People_Edit, state);
+                Turn_On_Off_Menu_Item(ToolStripMenuItem_People_Delete, state);
+
+            }
+            else if (gridViewItemType == typeof(ArtToRead))
+            {
+                Turn_On_Off_Menu_Item(ToolStripMenuItem__Recommendations_Edit, state);
+                Turn_On_Off_Menu_Item(ToolStripMenuItem__Recommendations_Delete, state);
+            }
+            else if (gridViewItemType == typeof(SourceToreadAnother))
+            {
+                Turn_On_Off_Menu_Item(ToolStripMenuItem_SourceToreadAnother_Edit, state);
+                Turn_On_Off_Menu_Item(ToolStripMenuItem_SourceToreadAnother_Delete, state);
+            }
         }
 
         private void Turn_On_Off_Menu_Item(ToolStripMenuItem menu_item, bool state, ToolStripMenuItem toolStripMenuItem = null)

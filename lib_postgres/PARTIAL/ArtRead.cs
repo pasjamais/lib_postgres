@@ -17,7 +17,7 @@ namespace lib_postgres
             ArtRead element = DB_Agent.Get_First_Deleted_Entity_or_New<ArtRead >(DB_Agent.Get_ArtReads());
             Form_ArtRead form = new Form_ArtRead();
             {
-                General_Manipulations.CB_reload<Art>(form.CB_Art, 1);
+                General_Manipulations.CB_reload<Structures.Short_Art>(form.CB_Art, 1);
                 General_Manipulations.CB_reload<BookFormat>(form.CB_BookFormat, 2);//2- электронный формат
             }
             DialogResult dialogResult = form.ShowDialog();

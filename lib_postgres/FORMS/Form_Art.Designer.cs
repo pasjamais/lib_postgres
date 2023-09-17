@@ -93,28 +93,19 @@
             // label4
             // 
             resources.ApplyResources(this.label4, "label4");
-            this.label4.AutoSize = true;
-            this.label4.Enabled = false;
-            this.label4.Location = new System.Drawing.Point(27, 134);
             this.label4.Name = "label4";
             // 
             // CB_Langue
             // 
             resources.ApplyResources(this.CB_Langue, "CB_Langue");
             this.CB_Langue.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CB_Langue.Enabled = false;
             this.CB_Langue.FormattingEnabled = true;
             this.CB_Langue.Name = "CB_Langue";
             // 
             // TB_YearCreation
             // 
             resources.ApplyResources(this.TB_YearCreation, "TB_YearCreation");
-            this.TB_YearCreation.Location = new System.Drawing.Point(132, 161);
-            this.TB_YearCreation.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.TB_YearCreation.MaxLength = 4;
             this.TB_YearCreation.Name = "TB_YearCreation";
-            this.TB_YearCreation.Size = new System.Drawing.Size(75, 23);
-            this.TB_YearCreation.TabIndex = 38;
             this.TB_YearCreation.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TB_YearCreation_KeyPress);
             // 
             // label3
@@ -125,16 +116,12 @@
             // label2
             // 
             resources.ApplyResources(this.label2, "label2");
-            this.label2.AutoSize = true;
-            this.label2.Enabled = false;
-            this.label2.Location = new System.Drawing.Point(85, 104);
             this.label2.Name = "label2";
             // 
             // CB_Genre
             // 
             resources.ApplyResources(this.CB_Genre, "CB_Genre");
             this.CB_Genre.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CB_Genre.Enabled = false;
             this.CB_Genre.FormattingEnabled = true;
             this.CB_Genre.Name = "CB_Genre";
             // 
@@ -216,29 +203,18 @@
             this.groupBox1.Controls.Add(this.CB_Langue);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // ChB_Language
             // 
-            this.ChB_Language.AutoSize = true;
-            this.ChB_Language.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.ChB_Language.Location = new System.Drawing.Point(430, 134);
-            this.ChB_Language.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            resources.ApplyResources(this.ChB_Language, "ChB_Language");
             this.ChB_Language.Name = "ChB_Language";
-            this.ChB_Language.Size = new System.Drawing.Size(25, 13);
-            this.ChB_Language.TabIndex = 81;
             this.ChB_Language.UseVisualStyleBackColor = true;
             this.ChB_Language.CheckedChanged += new System.EventHandler(this.ChB_Language_CheckedChanged);
             // 
             // ChB_Genre
             // 
-            this.ChB_Genre.AutoSize = true;
-            this.ChB_Genre.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.ChB_Genre.Location = new System.Drawing.Point(430, 106);
-            this.ChB_Genre.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            resources.ApplyResources(this.ChB_Genre, "ChB_Genre");
             this.ChB_Genre.Name = "ChB_Genre";
-            this.ChB_Genre.Size = new System.Drawing.Size(25, 13);
-            this.ChB_Genre.TabIndex = 80;
             this.ChB_Genre.UseVisualStyleBackColor = true;
             this.ChB_Genre.CheckedChanged += new System.EventHandler(this.ChB_Genre_CheckedChanged);
             // 

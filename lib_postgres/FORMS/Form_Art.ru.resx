@@ -64,6 +64,9 @@
   <data name="label1.Text" xml:space="preserve">
     <value>Название:</value>
   </data>
+  <data name="tb_Name.Size" type="System.Drawing.Size, System.Drawing">
+    <value>361, 63</value>
+  </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
     <value>99, 15</value>
   </data>
@@ -84,6 +87,9 @@
   </data>
   <data name="label2.Text" xml:space="preserve">
     <value>Жанр:</value>
+  </data>
+  <data name="DGV_Selected_Authors.Size" type="System.Drawing.Size, System.Drawing">
+    <value>466, 160</value>
   </data>
   <data name="groupBox1.Text" xml:space="preserve">
     <value>Произведение</value>

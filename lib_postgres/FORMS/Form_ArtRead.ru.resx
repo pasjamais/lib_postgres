@@ -77,7 +77,7 @@
     <value>Комментарий:</value>
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>364, 138</value>
+    <value>2, 177</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
     <value>145, 15</value>
@@ -96,6 +96,9 @@
   </data>
   <data name="label3.Text" xml:space="preserve">
     <value>Формат:</value>
+  </data>
+  <data name="ChB_PaperBook.Location" type="System.Drawing.Point, System.Drawing">
+    <value>153, 179</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
     <value>99, 15</value>

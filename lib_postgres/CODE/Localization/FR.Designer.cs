@@ -691,7 +691,7 @@ namespace lib_postgres.CODE.Localization {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Les auteurs recommandent des auteurs.
+        ///   Recherche une chaîne localisée semblable à Les autres recommandent des auteurs.
         /// </summary>
         internal static string Others_recommend_authors {
             get {
@@ -700,7 +700,7 @@ namespace lib_postgres.CODE.Localization {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Les auteurs recommandent des livres.
+        ///   Recherche une chaîne localisée semblable à Les autres recommandent des livres.
         /// </summary>
         internal static string Others_recommend_books {
             get {

@@ -331,10 +331,10 @@
     <value>Remarque</value>
   </data>
   <data name="Others_recommend_authors" xml:space="preserve">
-    <value>Les auteurs recommandent des auteurs</value>
+    <value>Les autres recommandent des auteurs</value>
   </data>
   <data name="Others_recommend_books" xml:space="preserve">
-    <value>Les auteurs recommandent des livres</value>
+    <value>Les autres recommandent des livres</value>
   </data>
   <data name="Pages" xml:space="preserve">
     <value>Pages</value>

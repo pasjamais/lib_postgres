@@ -81,9 +81,14 @@ namespace lib_postgres
             DialogResult = DialogResult.None;
         }
 
-        private void Form_Book_Load(object sender, EventArgs e)
-        {
 
+        private void TB_KeyPress_Check(object sender, KeyPressEventArgs e)
+        {
+            char number = e.KeyChar;
+            if (!Char.IsDigit(number))
+            {
+                e.Handled = true;
+            }
         }
     }
 }
