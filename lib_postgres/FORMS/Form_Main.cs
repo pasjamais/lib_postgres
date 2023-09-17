@@ -16,7 +16,15 @@ using System.Windows.Forms;
 using static System.Windows.Forms.DataFormats;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
-
+using System.Globalization;
+using System.Threading;
+using System.ComponentModel;
+using lib_postgres.Properties;
+using System.Resources;
+using System.Reflection;
+using Microsoft.Win32;
+using System.Text.RegularExpressions;
+using System.Xml.Linq;
 
 namespace lib_postgres
 {
@@ -39,17 +47,17 @@ namespace lib_postgres
 
         private Deploy deploy = new Deploy();
         public Form_Main()
-        {   InitializeComponent();
+        {
+            InitializeComponent();
             Binding_Elements();
             main_menu_generation();
-                
             this.dgv_Visualisator = new DGV_Visualisator();
-            Turn_Off =  delegate () { this.Turn_Off_Current_Menu_Item(); };
-            Turn_ON =   delegate () { this.Turn_On_Current_Menu_Item(); };
+            Turn_Off = delegate () { this.Turn_Off_Current_Menu_Item(); };
+            Turn_ON = delegate () { this.Turn_On_Current_Menu_Item(); };
         }
 
         #region general
-             
+
         private void Form_Main_Shown(object sender, EventArgs e)
         {
             Type type = typeof(ViewBook);
@@ -87,21 +95,21 @@ namespace lib_postgres
                     return;
             }
         }
-// adding contextly to read-list is temporary out of order
-/*        private void cmi_item_add_art_to_read_Click(object sender, EventArgs e)
-        {
-            if (gridViewItemType == typeof(Art))
-            {
-                int index = dataGridView.SelectedRows[0].Index;
-                long id_art = (long)dataGridView.Rows[index].Cells["Id"].Value;
-                var id = ArtRead.Create_Item(id_art);
-                if (id > 0)
+        // adding contextly to read-list is temporary out of order
+        /*        private void cmi_item_add_art_to_read_Click(object sender, EventArgs e)
                 {
-                    ToolStripMenuItem__Read_Open_Click(sender, e);
-                    General_Manipulations.show_row(dataGridView, id.ToString(), "Id");
-                }
-            }
-        }*/
+                    if (gridViewItemType == typeof(Art))
+                    {
+                        int index = dataGridView.SelectedRows[0].Index;
+                        long id_art = (long)dataGridView.Rows[index].Cells["Id"].Value;
+                        var id = ArtRead.Create_Item(id_art);
+                        if (id > 0)
+                        {
+                            ToolStripMenuItem__Read_Open_Click(sender, e);
+                            General_Manipulations.show_row(dataGridView, id.ToString(), "Id");
+                        }
+                    }
+                }*/
         #endregion
 
         #region additional
@@ -133,8 +141,11 @@ namespace lib_postgres
         #region main_menu_creation
         private void main_menu_generation()
         {
-            ToolStripMenuItem newItem = new ToolStripMenuItem("Где книги");
+            ToolStripMenuItem newItem = new ToolStripMenuItem(Localization.Substitute("Where_books"));
             ToolStripMenuItem_Books.DropDownItems.Add(newItem);
+            newItem.Tag = "Where_books";
+            Add_for_Dynamic_Localization(newItem);
+            newItem.GetHashCode();
             var places = DB_Agent.Get_Places();
             foreach (var place in places)
             {
@@ -143,13 +154,17 @@ namespace lib_postgres
                 place_item.Click += show_books_in_place;
             }
 
-            newItem = new ToolStripMenuItem("У кого мои книги");
+            newItem = new ToolStripMenuItem(Localization.Substitute("Who_has_my_books"));
             ToolStripMenuItem_Books.DropDownItems.Add(newItem);
+            newItem.Tag = "Who_has_my_books";
+            Add_for_Dynamic_Localization(newItem);
             newItem.Click += get_My_Books_in_Other_Hands;
 
 
-            newItem = new ToolStripMenuItem("Произведения по языкам");
+            newItem = new ToolStripMenuItem(Localization.Substitute("Arts_by_language"));
             ToolStripMenuItem_Arts.DropDownItems.Add(newItem);
+            newItem.Tag = "Arts_by_language";
+            Add_for_Dynamic_Localization(newItem);
             var languages = DB_Agent.Get_Languages();
             var arts = DB_Agent.Get_Arts();
             foreach (var language in languages)
@@ -158,6 +173,8 @@ namespace lib_postgres
                 newItem.DropDownItems.Add(language_item);
                 language_item.Click += show_arts_by_langue;
             }
+
+            Initial_Langues_Menu_Load();
         }
         #endregion  main_menu_creation
 
@@ -213,7 +230,9 @@ namespace lib_postgres
         }
         void show_books_in_place(object sender, EventArgs e)
         {
+            dataGridView.Columns.Clear();
             dataGridView.DataSource = Queries_LinQ.Get_Books_by_Place_Name(((ToolStripMenuItem)sender).Text);
+            dgv_Visualisator.Refresh_DGV_for_Get_Books_by_Place_Name(dataGridView);
         }
 
         #endregion menu_commands
@@ -273,7 +292,7 @@ namespace lib_postgres
         }
         private void ToolStripMenuItem_Arts_Delete_Click(object sender, EventArgs e)
         {
-           Delete_Art();
+            Delete_Art();
         }
         #endregion
 
@@ -391,7 +410,7 @@ namespace lib_postgres
 
         private void ToolStripMenuItem_Places_Edit_Click(object sender, EventArgs e)
         {
-          Edit_Place();
+            Edit_Place();
         }
 
         private void ToolStripMenuItem_Places_Add_Click(object sender, EventArgs e)
@@ -566,7 +585,7 @@ namespace lib_postgres
         {
             Read_Locations();
         }
-    
+
         #endregion
 
         #endregion entities control
@@ -576,12 +595,12 @@ namespace lib_postgres
         {
             if (gridViewItemType == typeof(Place)) ;
             else if (gridViewItemType == typeof(Language)) ToolStripMenuItem_Language_Edit_Click(sender, e);
-            else if (gridViewItemType == typeof(Author))    Edit_Author();
+            else if (gridViewItemType == typeof(Author)) Edit_Author();
             else if (gridViewItemType == typeof(Action)) ToolStripMenuItem_Actions_Edit_Click(sender, e);
             else if (gridViewItemType == typeof(Series)) ToolStripMenuItem_Series_Edit_Click(sender, e);
             else if (gridViewItemType == typeof(PublishingHouse)) ToolStripMenuItem_PubHouse_Edit_Click(sender, e);
-            else if (gridViewItemType == typeof(City))      Edit_City();
-            else if (gridViewItemType == typeof(ViewBook))  Edit_Book();
+            else if (gridViewItemType == typeof(City)) Edit_City();
+            else if (gridViewItemType == typeof(ViewBook)) Edit_Book();
             else if (gridViewItemType == typeof(Art)) ToolStripMenuItem_Arts_Edit_Click(sender, e);
             else if (gridViewItemType == typeof(Genre)) ToolStripMenuItem_Genres_Edit_Click(sender, e);
             else if (gridViewItemType == typeof(ViewHasRead)) ToolStripMenuItem__Read_Edit_Click(sender, e);
@@ -599,8 +618,8 @@ namespace lib_postgres
         }
         private void Turn_Menu_Item(bool state)
         {
-          
-                 if (gridViewItemType == typeof(Language)) Turn_On_Off_Menu_Item(ToolStripMenuItem_Language_Edit, state);
+
+            if (gridViewItemType == typeof(Language)) Turn_On_Off_Menu_Item(ToolStripMenuItem_Language_Edit, state);
             else if (gridViewItemType == typeof(Author)) Turn_On_Off_Menu_Item(ToolStripMenuItem_Author_Edit, state);
             else if (gridViewItemType == typeof(Action)) Turn_On_Off_Menu_Item(ToolStripMenuItem_Actions_Edit, state);
             else if (gridViewItemType == typeof(Series)) Turn_On_Off_Menu_Item(ToolStripMenuItem_Series_Edit, state);
@@ -627,7 +646,7 @@ namespace lib_postgres
 
         #endregion enable_disable_menu_items
 
-            
+
         #region general CRUD
         private void Create_Item<T>()
         {
@@ -660,13 +679,13 @@ namespace lib_postgres
             if (id > 0)
             {
                 Type type = typeof(T);
-               if (type == typeof(ArtRead))
+                if (type == typeof(ArtRead))
                 {
                     Read_ArtReads();
                 }
-               else
+                else
                     dgv_Visualisator.Refresh_DGV_for_Item_Type<T>(dataGridView, Turn_Off, Turn_ON, StatusProperty);
-               General_Manipulations.show_row(dataGridView, id.ToString(), "Id");
+                General_Manipulations.show_row(dataGridView, id.ToString(), "Id");
             }
         }
         #endregion general CRUD
@@ -945,7 +964,7 @@ namespace lib_postgres
         }
         private void Delete_ArtRead()
         {
-               Delete_Item<ArtRead>();
+            Delete_Item<ArtRead>();
         }
         #endregion ArtRead CRUD
 
@@ -1014,6 +1033,27 @@ namespace lib_postgres
 
         }
 
+        #region Localosation
+
+        public List<ToolStripMenuItem> dynamic_created_controls = new List<ToolStripMenuItem>();
+
+        private void ToolStripMenuItem_UI_Language_Changing_Click(object sender, EventArgs e)
+        {
+            Localization.Change_Language(this, sender.ToString(), ToolStripMenuItem_UI_Language);
+            Localization.Update_Dynamic_Created_Controls(dynamic_created_controls);
+        }
+         
+        private void Initial_Langues_Menu_Load()
+        {
+            Localization.Initial_Langues_Form_Menu_Load(ToolStripMenuItem_UI_Language);
+        }
+        private void Add_for_Dynamic_Localization(ToolStripMenuItem control)
+        {
+            dynamic_created_controls.Add(control);
+        }
+
+
+        #endregion Localosation
         private void ToolStripMenuItem_File_Delete_DB_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show(

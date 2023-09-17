@@ -57,4 +57,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="bt_show_art_sources.Text" xml:space="preserve">
+    <value>из книг</value>
+  </data>
+  <data name="bt_show_authors_sources.Text" xml:space="preserve">
+    <value>от авторов</value>
+  </data>
+  <data name="bt_show_another_sources.Text" xml:space="preserve">
+    <value>от других</value>
+  </data>
+  <data name="bt_cancel.Text" xml:space="preserve">
+    <value>Закрыть</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Рекомендации к чтению</value>
+  </data>
 </root>

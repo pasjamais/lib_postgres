@@ -82,6 +82,9 @@ namespace lib_postgres.FORMS
             System.Diagnostics.Process.Start("explorer", "https://graphviz.org/");
         }
 
+        private void DGV_Graph_Options_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
+        }
     }
 }

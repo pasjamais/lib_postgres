@@ -80,6 +80,11 @@ namespace lib_postgres
             if (id != 0) General_Manipulations.CB_reload<Series>(CB_Series, id);
             DialogResult = DialogResult.None;
         }
+
+        private void Form_Book_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

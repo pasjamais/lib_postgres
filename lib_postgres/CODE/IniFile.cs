@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-//  https://stackoverflow.com/questions/217902/reading-writing-an-ini-file
 using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;

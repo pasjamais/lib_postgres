@@ -22,9 +22,6 @@ namespace lib_postgres
 
             return DB_Agent.Create_Item<Person>(element,
                                                             DB_Agent.Get_Persons(),
-                                                            "Добавить лицо",
-                                                            "Лицо:",
-                                                            "Лицо уже существует",
                                                             creation_method);
         }
 

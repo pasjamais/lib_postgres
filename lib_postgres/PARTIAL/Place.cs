@@ -22,9 +22,6 @@ namespace lib_postgres
 
             return DB_Agent.Create_Item<Place>(element,
                                                             DB_Agent.Get_Places(),
-                                                            "Добавить место хранения",
-                                                            "Название места хранения:",
-                                                            "Место хранения уже существует",
                                                             creation_method);
         }
 

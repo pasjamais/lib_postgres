@@ -57,4 +57,716 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="button_OK.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 513</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="button_OK.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 2, 3, 2</value>
+  </data>
+  <data name="button_OK.Size" type="System.Drawing.Size, System.Drawing">
+    <value>82, 22</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="button_OK.TabIndex" type="System.Int32, mscorlib">
+    <value>86</value>
+  </data>
+  <data name="button_OK.Text" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="&gt;&gt;button_OK.Name" xml:space="preserve">
+    <value>button_OK</value>
+  </data>
+  <data name="&gt;&gt;button_OK.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button_OK.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;button_OK.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="button_Cancel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>632, 513</value>
+  </data>
+  <data name="button_Cancel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 2, 3, 2</value>
+  </data>
+  <data name="button_Cancel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>82, 22</value>
+  </data>
+  <data name="button_Cancel.TabIndex" type="System.Int32, mscorlib">
+    <value>87</value>
+  </data>
+  <data name="button_Cancel.Text" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="&gt;&gt;button_Cancel.Name" xml:space="preserve">
+    <value>button_Cancel</value>
+  </data>
+  <data name="&gt;&gt;button_Cancel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button_Cancel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;button_Cancel.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="dateTimePicker.Location" type="System.Drawing.Point, System.Drawing">
+    <value>245, 17</value>
+  </data>
+  <data name="dateTimePicker.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 2, 3, 2</value>
+  </data>
+  <data name="dateTimePicker.Size" type="System.Drawing.Size, System.Drawing">
+    <value>176, 23</value>
+  </data>
+  <data name="dateTimePicker.TabIndex" type="System.Int32, mscorlib">
+    <value>90</value>
+  </data>
+  <data name="&gt;&gt;dateTimePicker.Name" xml:space="preserve">
+    <value>dateTimePicker</value>
+  </data>
+  <data name="&gt;&gt;dateTimePicker.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DateTimePicker, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dateTimePicker.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;dateTimePicker.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="label2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>108, 23</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>131, 15</value>
+  </data>
+  <data name="label2.TabIndex" type="System.Int32, mscorlib">
+    <value>91</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Recommendation date:</value>
+  </data>
+  <data name="&gt;&gt;label2.Name" xml:space="preserve">
+    <value>label2</value>
+  </data>
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="TB_Comment.Location" type="System.Drawing.Point, System.Drawing">
+    <value>223, 129</value>
+  </data>
+  <data name="TB_Comment.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 2, 3, 2</value>
+  </data>
+  <data name="TB_Comment.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="TB_Comment.Size" type="System.Drawing.Size, System.Drawing">
+    <value>399, 173</value>
+  </data>
+  <data name="TB_Comment.TabIndex" type="System.Int32, mscorlib">
+    <value>92</value>
+  </data>
+  <data name="&gt;&gt;TB_Comment.Name" xml:space="preserve">
+    <value>TB_Comment</value>
+  </data>
+  <data name="&gt;&gt;TB_Comment.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TB_Comment.Parent" xml:space="preserve">
+    <value>groupBox_Source</value>
+  </data>
+  <data name="&gt;&gt;TB_Comment.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="Label_Comment.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="Label_Comment.Location" type="System.Drawing.Point, System.Drawing">
+    <value>86, 132</value>
+  </data>
+  <data name="Label_Comment.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 15</value>
+  </data>
+  <data name="Label_Comment.TabIndex" type="System.Int32, mscorlib">
+    <value>93</value>
+  </data>
+  <data name="Label_Comment.Text" xml:space="preserve">
+    <value>Comment:</value>
+  </data>
+  <data name="&gt;&gt;Label_Comment.Name" xml:space="preserve">
+    <value>Label_Comment</value>
+  </data>
+  <data name="&gt;&gt;Label_Comment.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Label_Comment.Parent" xml:space="preserve">
+    <value>groupBox_Source</value>
+  </data>
+  <data name="&gt;&gt;Label_Comment.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="RB_Source_Another.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="RB_Source_Another.Location" type="System.Drawing.Point, System.Drawing">
+    <value>47, 94</value>
+  </data>
+  <data name="RB_Source_Another.Size" type="System.Drawing.Size, System.Drawing">
+    <value>14, 13</value>
+  </data>
+  <data name="RB_Source_Another.TabIndex" type="System.Int32, mscorlib">
+    <value>108</value>
+  </data>
+  <data name="&gt;&gt;RB_Source_Another.Name" xml:space="preserve">
+    <value>RB_Source_Another</value>
+  </data>
+  <data name="&gt;&gt;RB_Source_Another.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;RB_Source_Another.Parent" xml:space="preserve">
+    <value>groupBox_Source</value>
+  </data>
+  <data name="&gt;&gt;RB_Source_Another.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="RB_Source_Author.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="RB_Source_Author.Location" type="System.Drawing.Point, System.Drawing">
+    <value>47, 57</value>
+  </data>
+  <data name="RB_Source_Author.Size" type="System.Drawing.Size, System.Drawing">
+    <value>14, 13</value>
+  </data>
+  <data name="RB_Source_Author.TabIndex" type="System.Int32, mscorlib">
+    <value>107</value>
+  </data>
+  <data name="&gt;&gt;RB_Source_Author.Name" xml:space="preserve">
+    <value>RB_Source_Author</value>
+  </data>
+  <data name="&gt;&gt;RB_Source_Author.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;RB_Source_Author.Parent" xml:space="preserve">
+    <value>groupBox_Source</value>
+  </data>
+  <data name="&gt;&gt;RB_Source_Author.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="RB_Source_Art.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="RB_Source_Art.Location" type="System.Drawing.Point, System.Drawing">
+    <value>47, 25</value>
+  </data>
+  <data name="RB_Source_Art.Size" type="System.Drawing.Size, System.Drawing">
+    <value>14, 13</value>
+  </data>
+  <data name="RB_Source_Art.TabIndex" type="System.Int32, mscorlib">
+    <value>106</value>
+  </data>
+  <data name="&gt;&gt;RB_Source_Art.Name" xml:space="preserve">
+    <value>RB_Source_Art</value>
+  </data>
+  <data name="&gt;&gt;RB_Source_Art.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;RB_Source_Art.Parent" xml:space="preserve">
+    <value>groupBox_Source</value>
+  </data>
+  <data name="&gt;&gt;RB_Source_Art.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="BT__Another_Source_Add.Location" type="System.Drawing.Point, System.Drawing">
+    <value>639, 89</value>
+  </data>
+  <data name="BT__Another_Source_Add.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 2, 3, 2</value>
+  </data>
+  <data name="BT__Another_Source_Add.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 23</value>
+  </data>
+  <data name="BT__Another_Source_Add.TabIndex" type="System.Int32, mscorlib">
+    <value>105</value>
+  </data>
+  <data name="BT__Another_Source_Add.Text" xml:space="preserve">
+    <value>+</value>
+  </data>
+  <data name="&gt;&gt;BT__Another_Source_Add.Name" xml:space="preserve">
+    <value>BT__Another_Source_Add</value>
+  </data>
+  <data name="&gt;&gt;BT__Another_Source_Add.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;BT__Another_Source_Add.Parent" xml:space="preserve">
+    <value>groupBox_Source</value>
+  </data>
+  <data name="&gt;&gt;BT__Another_Source_Add.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="Label_Source_Another.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="Label_Source_Another.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt, style=Bold</value>
+  </data>
+  <data name="Label_Source_Another.Location" type="System.Drawing.Point, System.Drawing">
+    <value>86, 92</value>
+  </data>
+  <data name="Label_Source_Another.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 15</value>
+  </data>
+  <data name="Label_Source_Another.TabIndex" type="System.Int32, mscorlib">
+    <value>94</value>
+  </data>
+  <data name="Label_Source_Another.Text" xml:space="preserve">
+    <value>Another source:</value>
+  </data>
+  <data name="&gt;&gt;Label_Source_Another.Name" xml:space="preserve">
+    <value>Label_Source_Another</value>
+  </data>
+  <data name="&gt;&gt;Label_Source_Another.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Label_Source_Another.Parent" xml:space="preserve">
+    <value>groupBox_Source</value>
+  </data>
+  <data name="&gt;&gt;Label_Source_Another.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="CB_Source_Another.Location" type="System.Drawing.Point, System.Drawing">
+    <value>223, 89</value>
+  </data>
+  <data name="CB_Source_Another.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 2, 3, 2</value>
+  </data>
+  <data name="CB_Source_Another.Size" type="System.Drawing.Size, System.Drawing">
+    <value>399, 23</value>
+  </data>
+  <data name="CB_Source_Another.TabIndex" type="System.Int32, mscorlib">
+    <value>93</value>
+  </data>
+  <data name="&gt;&gt;CB_Source_Another.Name" xml:space="preserve">
+    <value>CB_Source_Another</value>
+  </data>
+  <data name="&gt;&gt;CB_Source_Another.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CB_Source_Another.Parent" xml:space="preserve">
+    <value>groupBox_Source</value>
+  </data>
+  <data name="&gt;&gt;CB_Source_Another.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="Label_Source_Author.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="Label_Source_Author.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt, style=Bold</value>
+  </data>
+  <data name="Label_Source_Author.Location" type="System.Drawing.Point, System.Drawing">
+    <value>86, 56</value>
+  </data>
+  <data name="Label_Source_Author.Size" type="System.Drawing.Size, System.Drawing">
+    <value>49, 15</value>
+  </data>
+  <data name="Label_Source_Author.TabIndex" type="System.Int32, mscorlib">
+    <value>92</value>
+  </data>
+  <data name="Label_Source_Author.Text" xml:space="preserve">
+    <value>Author:</value>
+  </data>
+  <data name="&gt;&gt;Label_Source_Author.Name" xml:space="preserve">
+    <value>Label_Source_Author</value>
+  </data>
+  <data name="&gt;&gt;Label_Source_Author.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Label_Source_Author.Parent" xml:space="preserve">
+    <value>groupBox_Source</value>
+  </data>
+  <data name="&gt;&gt;Label_Source_Author.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="CB_Source_Author.Location" type="System.Drawing.Point, System.Drawing">
+    <value>223, 53</value>
+  </data>
+  <data name="CB_Source_Author.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 2, 3, 2</value>
+  </data>
+  <data name="CB_Source_Author.Size" type="System.Drawing.Size, System.Drawing">
+    <value>399, 23</value>
+  </data>
+  <data name="CB_Source_Author.TabIndex" type="System.Int32, mscorlib">
+    <value>91</value>
+  </data>
+  <data name="&gt;&gt;CB_Source_Author.Name" xml:space="preserve">
+    <value>CB_Source_Author</value>
+  </data>
+  <data name="&gt;&gt;CB_Source_Author.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CB_Source_Author.Parent" xml:space="preserve">
+    <value>groupBox_Source</value>
+  </data>
+  <data name="&gt;&gt;CB_Source_Author.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="Label_Source_Art.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="Label_Source_Art.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt, style=Bold</value>
+  </data>
+  <data name="Label_Source_Art.Location" type="System.Drawing.Point, System.Drawing">
+    <value>86, 24</value>
+  </data>
+  <data name="Label_Source_Art.Size" type="System.Drawing.Size, System.Drawing">
+    <value>28, 15</value>
+  </data>
+  <data name="Label_Source_Art.TabIndex" type="System.Int32, mscorlib">
+    <value>90</value>
+  </data>
+  <data name="Label_Source_Art.Text" xml:space="preserve">
+    <value>Art:</value>
+  </data>
+  <data name="&gt;&gt;Label_Source_Art.Name" xml:space="preserve">
+    <value>Label_Source_Art</value>
+  </data>
+  <data name="&gt;&gt;Label_Source_Art.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Label_Source_Art.Parent" xml:space="preserve">
+    <value>groupBox_Source</value>
+  </data>
+  <data name="&gt;&gt;Label_Source_Art.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="CB_Source_Art.Location" type="System.Drawing.Point, System.Drawing">
+    <value>223, 21</value>
+  </data>
+  <data name="CB_Source_Art.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 2, 3, 2</value>
+  </data>
+  <data name="CB_Source_Art.Size" type="System.Drawing.Size, System.Drawing">
+    <value>399, 23</value>
+  </data>
+  <data name="CB_Source_Art.TabIndex" type="System.Int32, mscorlib">
+    <value>89</value>
+  </data>
+  <data name="&gt;&gt;CB_Source_Art.Name" xml:space="preserve">
+    <value>CB_Source_Art</value>
+  </data>
+  <data name="&gt;&gt;CB_Source_Art.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CB_Source_Art.Parent" xml:space="preserve">
+    <value>groupBox_Source</value>
+  </data>
+  <data name="&gt;&gt;CB_Source_Art.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="groupBox_Source.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt, style=Bold</value>
+  </data>
+  <data name="groupBox_Source.Location" type="System.Drawing.Point, System.Drawing">
+    <value>22, 201</value>
+  </data>
+  <data name="groupBox_Source.Size" type="System.Drawing.Size, System.Drawing">
+    <value>679, 307</value>
+  </data>
+  <data name="groupBox_Source.TabIndex" type="System.Int32, mscorlib">
+    <value>94</value>
+  </data>
+  <data name="groupBox_Source.Text" xml:space="preserve">
+    <value>Source of recommenfation</value>
+  </data>
+  <data name="&gt;&gt;groupBox_Source.Name" xml:space="preserve">
+    <value>groupBox_Source</value>
+  </data>
+  <data name="&gt;&gt;groupBox_Source.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox_Source.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;groupBox_Source.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="RB_Toread_Author.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="RB_Toread_Author.Location" type="System.Drawing.Point, System.Drawing">
+    <value>47, 72</value>
+  </data>
+  <data name="RB_Toread_Author.Size" type="System.Drawing.Size, System.Drawing">
+    <value>14, 13</value>
+  </data>
+  <data name="RB_Toread_Author.TabIndex" type="System.Int32, mscorlib">
+    <value>105</value>
+  </data>
+  <data name="&gt;&gt;RB_Toread_Author.Name" xml:space="preserve">
+    <value>RB_Toread_Author</value>
+  </data>
+  <data name="&gt;&gt;RB_Toread_Author.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;RB_Toread_Author.Parent" xml:space="preserve">
+    <value>groupBox_ToRead</value>
+  </data>
+  <data name="&gt;&gt;RB_Toread_Author.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="RB_Toread_Art.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="RB_Toread_Art.Location" type="System.Drawing.Point, System.Drawing">
+    <value>47, 34</value>
+  </data>
+  <data name="RB_Toread_Art.Size" type="System.Drawing.Size, System.Drawing">
+    <value>14, 13</value>
+  </data>
+  <data name="RB_Toread_Art.TabIndex" type="System.Int32, mscorlib">
+    <value>98</value>
+  </data>
+  <data name="&gt;&gt;RB_Toread_Art.Name" xml:space="preserve">
+    <value>RB_Toread_Art</value>
+  </data>
+  <data name="&gt;&gt;RB_Toread_Art.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;RB_Toread_Art.Parent" xml:space="preserve">
+    <value>groupBox_ToRead</value>
+  </data>
+  <data name="&gt;&gt;RB_Toread_Art.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="BT__Toread_Author.Location" type="System.Drawing.Point, System.Drawing">
+    <value>639, 67</value>
+  </data>
+  <data name="BT__Toread_Author.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 2, 3, 2</value>
+  </data>
+  <data name="BT__Toread_Author.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 23</value>
+  </data>
+  <data name="BT__Toread_Author.TabIndex" type="System.Int32, mscorlib">
+    <value>104</value>
+  </data>
+  <data name="BT__Toread_Author.Text" xml:space="preserve">
+    <value>+</value>
+  </data>
+  <data name="&gt;&gt;BT__Toread_Author.Name" xml:space="preserve">
+    <value>BT__Toread_Author</value>
+  </data>
+  <data name="&gt;&gt;BT__Toread_Author.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;BT__Toread_Author.Parent" xml:space="preserve">
+    <value>groupBox_ToRead</value>
+  </data>
+  <data name="&gt;&gt;BT__Toread_Author.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="BT_Add_Art.Location" type="System.Drawing.Point, System.Drawing">
+    <value>639, 29</value>
+  </data>
+  <data name="BT_Add_Art.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 2, 3, 2</value>
+  </data>
+  <data name="BT_Add_Art.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 23</value>
+  </data>
+  <data name="BT_Add_Art.TabIndex" type="System.Int32, mscorlib">
+    <value>103</value>
+  </data>
+  <data name="BT_Add_Art.Text" xml:space="preserve">
+    <value>+</value>
+  </data>
+  <data name="&gt;&gt;BT_Add_Art.Name" xml:space="preserve">
+    <value>BT_Add_Art</value>
+  </data>
+  <data name="&gt;&gt;BT_Add_Art.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;BT_Add_Art.Parent" xml:space="preserve">
+    <value>groupBox_ToRead</value>
+  </data>
+  <data name="&gt;&gt;BT_Add_Art.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="Label_Toread_Author.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="Label_Toread_Author.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt, style=Bold</value>
+  </data>
+  <data name="Label_Toread_Author.Location" type="System.Drawing.Point, System.Drawing">
+    <value>86, 71</value>
+  </data>
+  <data name="Label_Toread_Author.Size" type="System.Drawing.Size, System.Drawing">
+    <value>49, 15</value>
+  </data>
+  <data name="Label_Toread_Author.TabIndex" type="System.Int32, mscorlib">
+    <value>100</value>
+  </data>
+  <data name="Label_Toread_Author.Text" xml:space="preserve">
+    <value>Author:</value>
+  </data>
+  <data name="&gt;&gt;Label_Toread_Author.Name" xml:space="preserve">
+    <value>Label_Toread_Author</value>
+  </data>
+  <data name="&gt;&gt;Label_Toread_Author.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Label_Toread_Author.Parent" xml:space="preserve">
+    <value>groupBox_ToRead</value>
+  </data>
+  <data name="&gt;&gt;Label_Toread_Author.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="CB_Toread_Author.Location" type="System.Drawing.Point, System.Drawing">
+    <value>223, 68</value>
+  </data>
+  <data name="CB_Toread_Author.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 2, 3, 2</value>
+  </data>
+  <data name="CB_Toread_Author.Size" type="System.Drawing.Size, System.Drawing">
+    <value>399, 23</value>
+  </data>
+  <data name="CB_Toread_Author.TabIndex" type="System.Int32, mscorlib">
+    <value>99</value>
+  </data>
+  <data name="&gt;&gt;CB_Toread_Author.Name" xml:space="preserve">
+    <value>CB_Toread_Author</value>
+  </data>
+  <data name="&gt;&gt;CB_Toread_Author.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CB_Toread_Author.Parent" xml:space="preserve">
+    <value>groupBox_ToRead</value>
+  </data>
+  <data name="&gt;&gt;CB_Toread_Author.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="Label_Toread_Art.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="Label_Toread_Art.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt, style=Bold</value>
+  </data>
+  <data name="Label_Toread_Art.Location" type="System.Drawing.Point, System.Drawing">
+    <value>86, 33</value>
+  </data>
+  <data name="Label_Toread_Art.Size" type="System.Drawing.Size, System.Drawing">
+    <value>28, 15</value>
+  </data>
+  <data name="Label_Toread_Art.TabIndex" type="System.Int32, mscorlib">
+    <value>98</value>
+  </data>
+  <data name="Label_Toread_Art.Text" xml:space="preserve">
+    <value>Art:</value>
+  </data>
+  <data name="&gt;&gt;Label_Toread_Art.Name" xml:space="preserve">
+    <value>Label_Toread_Art</value>
+  </data>
+  <data name="&gt;&gt;Label_Toread_Art.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Label_Toread_Art.Parent" xml:space="preserve">
+    <value>groupBox_ToRead</value>
+  </data>
+  <data name="&gt;&gt;Label_Toread_Art.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="CB_Toread_Art.Location" type="System.Drawing.Point, System.Drawing">
+    <value>223, 30</value>
+  </data>
+  <data name="CB_Toread_Art.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 2, 3, 2</value>
+  </data>
+  <data name="CB_Toread_Art.Size" type="System.Drawing.Size, System.Drawing">
+    <value>399, 23</value>
+  </data>
+  <data name="CB_Toread_Art.TabIndex" type="System.Int32, mscorlib">
+    <value>97</value>
+  </data>
+  <data name="&gt;&gt;CB_Toread_Art.Name" xml:space="preserve">
+    <value>CB_Toread_Art</value>
+  </data>
+  <data name="&gt;&gt;CB_Toread_Art.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CB_Toread_Art.Parent" xml:space="preserve">
+    <value>groupBox_ToRead</value>
+  </data>
+  <data name="&gt;&gt;CB_Toread_Art.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="groupBox_ToRead.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt, style=Bold</value>
+  </data>
+  <data name="groupBox_ToRead.Location" type="System.Drawing.Point, System.Drawing">
+    <value>22, 61</value>
+  </data>
+  <data name="groupBox_ToRead.Size" type="System.Drawing.Size, System.Drawing">
+    <value>679, 116</value>
+  </data>
+  <data name="groupBox_ToRead.TabIndex" type="System.Int32, mscorlib">
+    <value>97</value>
+  </data>
+  <data name="groupBox_ToRead.Text" xml:space="preserve">
+    <value>Recommendation (to read):</value>
+  </data>
+  <data name="&gt;&gt;groupBox_ToRead.Name" xml:space="preserve">
+    <value>groupBox_ToRead</value>
+  </data>
+  <data name="&gt;&gt;groupBox_ToRead.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox_ToRead.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;groupBox_ToRead.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>7, 15</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="$this.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>726, 559</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterParent</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Recommendation</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>Form_Art_To_Read</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

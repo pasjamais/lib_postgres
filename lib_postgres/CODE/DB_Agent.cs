@@ -505,15 +505,15 @@ namespace lib_postgres
         /// <returns></returns>
         public static long Create_Item<T> ( T element,
                                             List<T> all_elements, 
-                                            string form_caption, 
-                                            string label_caption, 
-                                            string deja_exists_caption,
                                             write_item_to_BD add) 
             where T :   CODE.CRUD.IHas_field_IsDeleted, 
                         CODE.CRUD.IHas_field_Name, 
                         CODE.CRUD.IHas_field_ID, new()
-        {
-            var new_name = General_Manipulations.simple_element_add(form_caption, label_caption);
+
+        { 
+            string f_caption, l_caption, deja_exists_caption;
+            Localization.Get_Local_Captions_for_Simple_Form<T>(out f_caption, out l_caption, out deja_exists_caption);
+            var new_name = General_Manipulations.simple_element_add(f_caption, l_caption);
             if (new_name != "")
             {
                 if (all_elements.Exists(e => e.Name == new_name))

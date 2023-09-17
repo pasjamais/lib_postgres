@@ -22,9 +22,6 @@ namespace lib_postgres
 
             return DB_Agent.Create_Item<BookFormat>(element,
                                                             DB_Agent.Get_BookFormats(),
-                                                            "Добавить формат",
-                                                            "Название:",
-                                                            "Формат уже существует",
                                                             creation_method);
         }
         public static long Edit_Item_by_ID(long id)

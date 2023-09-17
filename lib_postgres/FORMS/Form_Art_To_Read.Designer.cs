@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Art_To_Read));
             this.button_OK = new System.Windows.Forms.Button();
             this.button_Cancel = new System.Windows.Forms.Button();
             this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
@@ -63,61 +64,38 @@
             // button_OK
             // 
             this.button_OK.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.button_OK.Location = new System.Drawing.Point(12, 513);
-            this.button_OK.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            resources.ApplyResources(this.button_OK, "button_OK");
             this.button_OK.Name = "button_OK";
-            this.button_OK.Size = new System.Drawing.Size(82, 22);
-            this.button_OK.TabIndex = 86;
-            this.button_OK.Text = "OK";
             this.button_OK.UseVisualStyleBackColor = true;
             this.button_OK.Click += new System.EventHandler(this.button_OK_Click);
             // 
             // button_Cancel
             // 
             this.button_Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button_Cancel.Location = new System.Drawing.Point(632, 513);
-            this.button_Cancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            resources.ApplyResources(this.button_Cancel, "button_Cancel");
             this.button_Cancel.Name = "button_Cancel";
-            this.button_Cancel.Size = new System.Drawing.Size(82, 22);
-            this.button_Cancel.TabIndex = 87;
-            this.button_Cancel.Text = "Cancel";
             this.button_Cancel.UseVisualStyleBackColor = true;
             this.button_Cancel.Click += new System.EventHandler(this.button_Cancel_Click);
             // 
             // dateTimePicker
             // 
-            this.dateTimePicker.Location = new System.Drawing.Point(245, 17);
-            this.dateTimePicker.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            resources.ApplyResources(this.dateTimePicker, "dateTimePicker");
             this.dateTimePicker.Name = "dateTimePicker";
-            this.dateTimePicker.Size = new System.Drawing.Size(176, 23);
-            this.dateTimePicker.TabIndex = 90;
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(120, 23);
+            resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(119, 15);
-            this.label2.TabIndex = 91;
-            this.label2.Text = "Дата рекомендации:";
             // 
             // TB_Comment
             // 
-            this.TB_Comment.Location = new System.Drawing.Point(223, 129);
-            this.TB_Comment.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.TB_Comment.Multiline = true;
+            resources.ApplyResources(this.TB_Comment, "TB_Comment");
             this.TB_Comment.Name = "TB_Comment";
-            this.TB_Comment.Size = new System.Drawing.Size(399, 173);
-            this.TB_Comment.TabIndex = 92;
             // 
             // Label_Comment
             // 
-            this.Label_Comment.AutoSize = true;
-            this.Label_Comment.Location = new System.Drawing.Point(120, 132);
+            resources.ApplyResources(this.Label_Comment, "Label_Comment");
             this.Label_Comment.Name = "Label_Comment";
-            this.Label_Comment.Size = new System.Drawing.Size(91, 15);
-            this.Label_Comment.TabIndex = 93;
-            this.Label_Comment.Text = "Комментарий:";
             // 
             // groupBox_Source
             // 
@@ -135,13 +113,9 @@
             this.groupBox_Source.Controls.Add(this.TB_Comment);
             this.groupBox_Source.Controls.Add(this.Label_Source_Art);
             this.groupBox_Source.Controls.Add(this.CB_Source_Art);
-            this.groupBox_Source.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.groupBox_Source.Location = new System.Drawing.Point(22, 201);
+            resources.ApplyResources(this.groupBox_Source, "groupBox_Source");
             this.groupBox_Source.Name = "groupBox_Source";
-            this.groupBox_Source.Size = new System.Drawing.Size(679, 307);
-            this.groupBox_Source.TabIndex = 94;
             this.groupBox_Source.TabStop = false;
-            this.groupBox_Source.Text = "Источник рекомендации:";
             // 
             // BT__Toread_Author_Source
             // 
@@ -168,11 +142,8 @@
             // 
             // RB_Source_Another
             // 
-            this.RB_Source_Another.AutoSize = true;
-            this.RB_Source_Another.Location = new System.Drawing.Point(47, 94);
+            resources.ApplyResources(this.RB_Source_Another, "RB_Source_Another");
             this.RB_Source_Another.Name = "RB_Source_Another";
-            this.RB_Source_Another.Size = new System.Drawing.Size(14, 13);
-            this.RB_Source_Another.TabIndex = 108;
             this.RB_Source_Another.TabStop = true;
             this.RB_Source_Another.Tag = "SourceToreadAnother";
             this.RB_Source_Another.UseVisualStyleBackColor = true;
@@ -180,11 +151,8 @@
             // 
             // RB_Source_Author
             // 
-            this.RB_Source_Author.AutoSize = true;
-            this.RB_Source_Author.Location = new System.Drawing.Point(47, 57);
+            resources.ApplyResources(this.RB_Source_Author, "RB_Source_Author");
             this.RB_Source_Author.Name = "RB_Source_Author";
-            this.RB_Source_Author.Size = new System.Drawing.Size(14, 13);
-            this.RB_Source_Author.TabIndex = 107;
             this.RB_Source_Author.TabStop = true;
             this.RB_Source_Author.Tag = "Author";
             this.RB_Source_Author.UseVisualStyleBackColor = true;
@@ -192,11 +160,8 @@
             // 
             // RB_Source_Art
             // 
-            this.RB_Source_Art.AutoSize = true;
-            this.RB_Source_Art.Location = new System.Drawing.Point(47, 25);
+            resources.ApplyResources(this.RB_Source_Art, "RB_Source_Art");
             this.RB_Source_Art.Name = "RB_Source_Art";
-            this.RB_Source_Art.Size = new System.Drawing.Size(14, 13);
-            this.RB_Source_Art.TabIndex = 106;
             this.RB_Source_Art.TabStop = true;
             this.RB_Source_Art.Tag = "Art";
             this.RB_Source_Art.UseVisualStyleBackColor = true;
@@ -204,31 +169,21 @@
             // 
             // BT__Another_Source_Add
             // 
-            this.BT__Another_Source_Add.Location = new System.Drawing.Point(639, 89);
-            this.BT__Another_Source_Add.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            resources.ApplyResources(this.BT__Another_Source_Add, "BT__Another_Source_Add");
             this.BT__Another_Source_Add.Name = "BT__Another_Source_Add";
-            this.BT__Another_Source_Add.Size = new System.Drawing.Size(23, 23);
-            this.BT__Another_Source_Add.TabIndex = 105;
-            this.BT__Another_Source_Add.Text = "+";
             this.BT__Another_Source_Add.UseVisualStyleBackColor = true;
             this.BT__Another_Source_Add.Click += new System.EventHandler(this.BT__Another_Source_Add_Click);
             // 
             // Label_Source_Another
             // 
-            this.Label_Source_Another.AutoSize = true;
-            this.Label_Source_Another.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.Label_Source_Another.Location = new System.Drawing.Point(112, 92);
+            resources.ApplyResources(this.Label_Source_Another, "Label_Source_Another");
             this.Label_Source_Another.Name = "Label_Source_Another";
-            this.Label_Source_Another.Size = new System.Drawing.Size(105, 15);
-            this.Label_Source_Another.TabIndex = 94;
-            this.Label_Source_Another.Text = "Другой источник:";
             // 
             // CB_Source_Another
             // 
             this.CB_Source_Another.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CB_Source_Another.FormattingEnabled = true;
-            this.CB_Source_Another.Location = new System.Drawing.Point(223, 89);
-            this.CB_Source_Another.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            resources.ApplyResources(this.CB_Source_Another, "CB_Source_Another");
             this.CB_Source_Another.Name = "CB_Source_Another";
             this.CB_Source_Another.Size = new System.Drawing.Size(399, 23);
             this.CB_Source_Another.TabIndex = 93;
@@ -236,20 +191,14 @@
             // 
             // Label_Source_Author
             // 
-            this.Label_Source_Author.AutoSize = true;
-            this.Label_Source_Author.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.Label_Source_Author.Location = new System.Drawing.Point(173, 56);
+            resources.ApplyResources(this.Label_Source_Author, "Label_Source_Author");
             this.Label_Source_Author.Name = "Label_Source_Author";
-            this.Label_Source_Author.Size = new System.Drawing.Size(44, 15);
-            this.Label_Source_Author.TabIndex = 92;
-            this.Label_Source_Author.Text = "Автор:";
             // 
             // CB_Source_Author
             // 
             this.CB_Source_Author.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CB_Source_Author.FormattingEnabled = true;
-            this.CB_Source_Author.Location = new System.Drawing.Point(223, 53);
-            this.CB_Source_Author.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            resources.ApplyResources(this.CB_Source_Author, "CB_Source_Author");
             this.CB_Source_Author.Name = "CB_Source_Author";
             this.CB_Source_Author.Size = new System.Drawing.Size(399, 23);
             this.CB_Source_Author.TabIndex = 91;
@@ -257,20 +206,14 @@
             // 
             // Label_Source_Art
             // 
-            this.Label_Source_Art.AutoSize = true;
-            this.Label_Source_Art.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.Label_Source_Art.Location = new System.Drawing.Point(120, 25);
+            resources.ApplyResources(this.Label_Source_Art, "Label_Source_Art");
             this.Label_Source_Art.Name = "Label_Source_Art";
-            this.Label_Source_Art.Size = new System.Drawing.Size(97, 15);
-            this.Label_Source_Art.TabIndex = 90;
-            this.Label_Source_Art.Text = "Произведение:";
             // 
             // CB_Source_Art
             // 
             this.CB_Source_Art.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CB_Source_Art.FormattingEnabled = true;
-            this.CB_Source_Art.Location = new System.Drawing.Point(223, 21);
-            this.CB_Source_Art.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            resources.ApplyResources(this.CB_Source_Art, "CB_Source_Art");
             this.CB_Source_Art.Name = "CB_Source_Art";
             this.CB_Source_Art.Size = new System.Drawing.Size(399, 23);
             this.CB_Source_Art.TabIndex = 89;
@@ -286,32 +229,22 @@
             this.groupBox_ToRead.Controls.Add(this.CB_Toread_Author);
             this.groupBox_ToRead.Controls.Add(this.Label_Toread_Art);
             this.groupBox_ToRead.Controls.Add(this.CB_Toread_Art);
-            this.groupBox_ToRead.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.groupBox_ToRead.Location = new System.Drawing.Point(22, 61);
+            resources.ApplyResources(this.groupBox_ToRead, "groupBox_ToRead");
             this.groupBox_ToRead.Name = "groupBox_ToRead";
-            this.groupBox_ToRead.Size = new System.Drawing.Size(679, 116);
-            this.groupBox_ToRead.TabIndex = 97;
             this.groupBox_ToRead.TabStop = false;
-            this.groupBox_ToRead.Text = "Рекомендация (к прочтению):";
             // 
             // RB_Toread_Author
             // 
-            this.RB_Toread_Author.AutoSize = true;
-            this.RB_Toread_Author.Location = new System.Drawing.Point(47, 72);
+            resources.ApplyResources(this.RB_Toread_Author, "RB_Toread_Author");
             this.RB_Toread_Author.Name = "RB_Toread_Author";
-            this.RB_Toread_Author.Size = new System.Drawing.Size(14, 13);
-            this.RB_Toread_Author.TabIndex = 105;
             this.RB_Toread_Author.TabStop = true;
             this.RB_Toread_Author.UseVisualStyleBackColor = true;
             this.RB_Toread_Author.CheckedChanged += new System.EventHandler(this.radioButton_ToRead_CheckedChanged);
             // 
             // RB_Toread_Art
             // 
-            this.RB_Toread_Art.AutoSize = true;
-            this.RB_Toread_Art.Location = new System.Drawing.Point(47, 29);
+            resources.ApplyResources(this.RB_Toread_Art, "RB_Toread_Art");
             this.RB_Toread_Art.Name = "RB_Toread_Art";
-            this.RB_Toread_Art.Size = new System.Drawing.Size(14, 13);
-            this.RB_Toread_Art.TabIndex = 98;
             this.RB_Toread_Art.TabStop = true;
             this.RB_Toread_Art.Tag = "";
             this.RB_Toread_Art.UseVisualStyleBackColor = true;
@@ -319,19 +252,14 @@
             // 
             // BT__Toread_Author
             // 
-            this.BT__Toread_Author.Location = new System.Drawing.Point(639, 67);
-            this.BT__Toread_Author.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            resources.ApplyResources(this.BT__Toread_Author, "BT__Toread_Author");
             this.BT__Toread_Author.Name = "BT__Toread_Author";
-            this.BT__Toread_Author.Size = new System.Drawing.Size(23, 23);
-            this.BT__Toread_Author.TabIndex = 104;
-            this.BT__Toread_Author.Text = "+";
             this.BT__Toread_Author.UseVisualStyleBackColor = true;
             this.BT__Toread_Author.Click += new System.EventHandler(this.BT__Toread_Author_Click);
             // 
             // BT_Add_Art
             // 
-            this.BT_Add_Art.Location = new System.Drawing.Point(639, 29);
-            this.BT_Add_Art.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            resources.ApplyResources(this.BT_Add_Art, "BT_Add_Art");
             this.BT_Add_Art.Name = "BT_Add_Art";
             this.BT_Add_Art.Size = new System.Drawing.Size(23, 23);
             this.BT_Add_Art.TabIndex = 103;
@@ -342,20 +270,14 @@
             // 
             // Label_Toread_Author
             // 
-            this.Label_Toread_Author.AutoSize = true;
-            this.Label_Toread_Author.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.Label_Toread_Author.Location = new System.Drawing.Point(173, 71);
+            resources.ApplyResources(this.Label_Toread_Author, "Label_Toread_Author");
             this.Label_Toread_Author.Name = "Label_Toread_Author";
-            this.Label_Toread_Author.Size = new System.Drawing.Size(44, 15);
-            this.Label_Toread_Author.TabIndex = 100;
-            this.Label_Toread_Author.Text = "Автор:";
             // 
             // CB_Toread_Author
             // 
             this.CB_Toread_Author.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CB_Toread_Author.FormattingEnabled = true;
-            this.CB_Toread_Author.Location = new System.Drawing.Point(223, 68);
-            this.CB_Toread_Author.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            resources.ApplyResources(this.CB_Toread_Author, "CB_Toread_Author");
             this.CB_Toread_Author.Name = "CB_Toread_Author";
             this.CB_Toread_Author.Size = new System.Drawing.Size(399, 23);
             this.CB_Toread_Author.TabIndex = 99;
@@ -363,20 +285,14 @@
             // 
             // Label_Toread_Art
             // 
-            this.Label_Toread_Art.AutoSize = true;
-            this.Label_Toread_Art.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.Label_Toread_Art.Location = new System.Drawing.Point(120, 30);
+            resources.ApplyResources(this.Label_Toread_Art, "Label_Toread_Art");
             this.Label_Toread_Art.Name = "Label_Toread_Art";
-            this.Label_Toread_Art.Size = new System.Drawing.Size(97, 15);
-            this.Label_Toread_Art.TabIndex = 98;
-            this.Label_Toread_Art.Text = "Произведение:";
             // 
             // CB_Toread_Art
             // 
             this.CB_Toread_Art.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CB_Toread_Art.FormattingEnabled = true;
-            this.CB_Toread_Art.Location = new System.Drawing.Point(223, 30);
-            this.CB_Toread_Art.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            resources.ApplyResources(this.CB_Toread_Art, "CB_Toread_Art");
             this.CB_Toread_Art.Name = "CB_Toread_Art";
             this.CB_Toread_Art.Size = new System.Drawing.Size(399, 23);
             this.CB_Toread_Art.TabIndex = 97;
@@ -385,11 +301,9 @@
             // Form_Art_To_Read
             // 
             this.AcceptButton = this.button_OK;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.CancelButton = this.button_Cancel;
-            this.ClientSize = new System.Drawing.Size(726, 559);
             this.Controls.Add(this.groupBox_ToRead);
             this.Controls.Add(this.groupBox_Source);
             this.Controls.Add(this.label2);
@@ -399,8 +313,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.Name = "Form_Art_To_Read";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Рекомендация";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_Art_To_Read_FormClosing);
             this.groupBox_Source.ResumeLayout(false);
             this.groupBox_Source.PerformLayout();

@@ -1,0 +1,432 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Action" xml:space="preserve">
+    <value>Действие</value>
+  </data>
+  <data name="Action_list" xml:space="preserve">
+    <value>Список действий</value>
+  </data>
+  <data name="Add_another_source" xml:space="preserve">
+    <value>Добавить другой источник рекомендации</value>
+  </data>
+  <data name="Add_author" xml:space="preserve">
+    <value>Добавить автора:</value>
+  </data>
+  <data name="Add_city" xml:space="preserve">
+    <value>Добавить город</value>
+  </data>
+  <data name="Add_format" xml:space="preserve">
+    <value>Добавить формат</value>
+  </data>
+  <data name="Add_genre" xml:space="preserve">
+    <value>Добавить жанр</value>
+  </data>
+  <data name="Add_language" xml:space="preserve">
+    <value>Добавить язык</value>
+  </data>
+  <data name="Add_mark" xml:space="preserve">
+    <value>Добавить оценку</value>
+  </data>
+  <data name="Add_person" xml:space="preserve">
+    <value>Добавить лицо</value>
+  </data>
+  <data name="Add_place" xml:space="preserve">
+    <value>Добавить место хранения</value>
+  </data>
+  <data name="Add_pubhouse" xml:space="preserve">
+    <value>Добавить издательство</value>
+  </data>
+  <data name="Add_series" xml:space="preserve">
+    <value>Добавить серию книг</value>
+  </data>
+  <data name="Another" xml:space="preserve">
+    <value>Другое</value>
+  </data>
+  <data name="Another_source_already_exists" xml:space="preserve">
+    <value>Источник уже существует</value>
+  </data>
+  <data name="another_source_list" xml:space="preserve">
+    <value>Список иных источников рекомендаций</value>
+  </data>
+  <data name="Appellation" xml:space="preserve">
+    <value>Название</value>
+  </data>
+  <data name="Art" xml:space="preserve">
+    <value>Произведение</value>
+  </data>
+  <data name="Arts_by_language" xml:space="preserve">
+    <value>Произведения по языкам</value>
+  </data>
+  <data name="Art_list" xml:space="preserve">
+    <value>Список произведений</value>
+  </data>
+  <data name="Author" xml:space="preserve">
+    <value>Автор</value>
+  </data>
+  <data name="Authors" xml:space="preserve">
+    <value>Авторы</value>
+  </data>
+  <data name="Authors_list" xml:space="preserve">
+    <value>Список авторов</value>
+  </data>
+  <data name="Authors_recommend_authors" xml:space="preserve">
+    <value>Авторы рекомендуют авторов</value>
+  </data>
+  <data name="Authors_recommend_books" xml:space="preserve">
+    <value>Авторы рекомендуют книги</value>
+  </data>
+  <data name="Author_alredy_exists" xml:space="preserve">
+    <value>Автор уже существует</value>
+  </data>
+  <data name="Author_s" xml:space="preserve">
+    <value>Автор(ы)</value>
+  </data>
+  <data name="Book" xml:space="preserve">
+    <value>Книга</value>
+  </data>
+  <data name="Books" xml:space="preserve">
+    <value>Книги</value>
+  </data>
+  <data name="Books_list" xml:space="preserve">
+    <value>Список книг</value>
+  </data>
+  <data name="Books_list_taken_by_others" xml:space="preserve">
+    <value>Список книг, которые у меня взяли</value>
+  </data>
+  <data name="Books_recommend_authors" xml:space="preserve">
+    <value>Книги рекомендуют авторов</value>
+  </data>
+  <data name="Books_recommend_books" xml:space="preserve">
+    <value>Книги рекомендуют книги</value>
+  </data>
+  <data name="caption_from_anothers" xml:space="preserve">
+    <value>Другое</value>
+  </data>
+  <data name="caption_from_authors" xml:space="preserve">
+    <value>От авторов</value>
+  </data>
+  <data name="caption_from_books" xml:space="preserve">
+    <value>Из книг</value>
+  </data>
+  <data name="Cities_list" xml:space="preserve">
+    <value>Список городов</value>
+  </data>
+  <data name="City" xml:space="preserve">
+    <value>Город</value>
+  </data>
+  <data name="City_already_exists" xml:space="preserve">
+    <value>Город уже существует</value>
+  </data>
+  <data name="Code" xml:space="preserve">
+    <value>Шифр</value>
+  </data>
+  <data name="Comment" xml:space="preserve">
+    <value>Комментарий</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Дата</value>
+  </data>
+  <data name="Edit_another_source" xml:space="preserve">
+    <value>Изменить иной источник рекомендации</value>
+  </data>
+  <data name="Edit_author_name" xml:space="preserve">
+    <value>Изменить имя автора</value>
+  </data>
+  <data name="Edit_city" xml:space="preserve">
+    <value>Изменить город</value>
+  </data>
+  <data name="Edit_format" xml:space="preserve">
+    <value>Изменить формат</value>
+  </data>
+  <data name="Edit_genre" xml:space="preserve">
+    <value>Изменить жанр</value>
+  </data>
+  <data name="Edit_language" xml:space="preserve">
+    <value>Изменить язык</value>
+  </data>
+  <data name="Edit_mark" xml:space="preserve">
+    <value>Изменить оценку</value>
+  </data>
+  <data name="Edit_person" xml:space="preserve">
+    <value>Изменить лицо</value>
+  </data>
+  <data name="Edit_place" xml:space="preserve">
+    <value>Изменить название места хранения</value>
+  </data>
+  <data name="Edit_pubhouse" xml:space="preserve">
+    <value>Изменить издательство</value>
+  </data>
+  <data name="Edit_series" xml:space="preserve">
+    <value>Изменить серию</value>
+  </data>
+  <data name="Format" xml:space="preserve">
+    <value>Формат</value>
+  </data>
+  <data name="Formats_list" xml:space="preserve">
+    <value>Список форматов прочтения</value>
+  </data>
+  <data name="Format_already_exists" xml:space="preserve">
+    <value>Формат уже существует</value>
+  </data>
+  <data name="Genre" xml:space="preserve">
+    <value>Жанр</value>
+  </data>
+  <data name="Genres_list" xml:space="preserve">
+    <value>Список жанров</value>
+  </data>
+  <data name="Genre_already_exists" xml:space="preserve">
+    <value>Жанр уже существует</value>
+  </data>
+  <data name="ID_book_short_text" xml:space="preserve">
+    <value>Id кн.</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Язык</value>
+  </data>
+  <data name="Languages_list" xml:space="preserve">
+    <value>Список языков</value>
+  </data>
+  <data name="Language_already_exists" xml:space="preserve">
+    <value>Язык уже существует</value>
+  </data>
+  <data name="Language_pub" xml:space="preserve">
+    <value>Язык издания</value>
+  </data>
+  <data name="Langue_original" xml:space="preserve">
+    <value>Язык ориг.</value>
+  </data>
+  <data name="Mark" xml:space="preserve">
+    <value>Оценка</value>
+  </data>
+  <data name="Mark_already_exists" xml:space="preserve">
+    <value>Оценка уже существует</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>Сообщение</value>
+  </data>
+  <data name="New_appellation" xml:space="preserve">
+    <value>Новое название:</value>
+  </data>
+  <data name="New_format" xml:space="preserve">
+    <value>Новый формат:</value>
+  </data>
+  <data name="New_name" xml:space="preserve">
+    <value>Новое имя:</value>
+  </data>
+  <data name="Notice" xml:space="preserve">
+    <value>Примечание</value>
+  </data>
+  <data name="Others_recommend_authors" xml:space="preserve">
+    <value>Другие рекомендуют авторов</value>
+  </data>
+  <data name="Others_recommend_books" xml:space="preserve">
+    <value>Другие рекомендуют книги</value>
+  </data>
+  <data name="Pages" xml:space="preserve">
+    <value>Страниц</value>
+  </data>
+  <data name="Person" xml:space="preserve">
+    <value>Лицо:</value>
+  </data>
+  <data name="Persons_list" xml:space="preserve">
+    <value>Список людей</value>
+  </data>
+  <data name="Person_already_exists" xml:space="preserve">
+    <value>Лицо уже существует</value>
+  </data>
+  <data name="Person_short_name" xml:space="preserve">
+    <value>ФИО:</value>
+  </data>
+  <data name="Placement" xml:space="preserve">
+    <value>Размещение</value>
+  </data>
+  <data name="Placements_list" xml:space="preserve">
+    <value>Записи размещения</value>
+  </data>
+  <data name="Place_already_exists" xml:space="preserve">
+    <value>Место хранения уже существует</value>
+  </data>
+  <data name="Place_name" xml:space="preserve">
+    <value>Название места хранения:</value>
+  </data>
+  <data name="Pubhouse" xml:space="preserve">
+    <value>Издательство</value>
+  </data>
+  <data name="Pubhouses_list" xml:space="preserve">
+    <value>Список издательств</value>
+  </data>
+  <data name="Pubhouse_already_exists" xml:space="preserve">
+    <value>Издательство уже существует</value>
+  </data>
+  <data name="Pubhouse_name" xml:space="preserve">
+    <value>Название издательства:</value>
+  </data>
+  <data name="Publication_year" xml:space="preserve">
+    <value>Год изд.</value>
+  </data>
+  <data name="Read_list" xml:space="preserve">
+    <value>Список прочтённого</value>
+  </data>
+  <data name="Recommendation" xml:space="preserve">
+    <value>Рекомендация</value>
+  </data>
+  <data name="Recommendations_list" xml:space="preserve">
+    <value>Список рекомендаций</value>
+  </data>
+  <data name="Recommendation_type" xml:space="preserve">
+    <value>Тип рек.</value>
+  </data>
+  <data name="Series" xml:space="preserve">
+    <value>Серия</value>
+  </data>
+  <data name="Series_already_exist" xml:space="preserve">
+    <value>Серия уже существует</value>
+  </data>
+  <data name="Series_list" xml:space="preserve">
+    <value>Список серий книг</value>
+  </data>
+  <data name="Simple_proper_name" xml:space="preserve">
+    <value>Имя</value>
+  </data>
+  <data name="Source" xml:space="preserve">
+    <value>Источник</value>
+  </data>
+  <data name="Source_type" xml:space="preserve">
+    <value>Тип ист.</value>
+  </data>
+  <data name="Storage" xml:space="preserve">
+    <value>Место хранения</value>
+  </data>
+  <data name="Storages_list" xml:space="preserve">
+    <value>Список мест хранения</value>
+  </data>
+  <data name="Value_cannot_be_ empty" xml:space="preserve">
+    <value>Значение не может быть пустым</value>
+  </data>
+  <data name="Where_books" xml:space="preserve">
+    <value>Где книги</value>
+  </data>
+  <data name="Who_has_my_books" xml:space="preserve">
+    <value>У кого мои книги</value>
+  </data>
+  <data name="Writing_year" xml:space="preserve">
+    <value>Год написания</value>
+  </data>
+</root>

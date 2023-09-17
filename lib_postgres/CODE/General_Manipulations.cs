@@ -27,7 +27,7 @@ namespace lib_postgres
         public static void simple_message(String message)
         {
             MessageBox.Show(message,
-                    "Сообщение",
+                    Localization.Substitute("Message"),
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information,
                     MessageBoxDefaultButton.Button1,
@@ -62,7 +62,7 @@ namespace lib_postgres
                 return "";
             else if (form_element.tb_Name.Text == "")
             {
-                General_Manipulations.simple_message("Значение не может быть пустым");
+                General_Manipulations.simple_message(Localization.Substitute("Value_cannot_be_ empty"));
                 return "";
             }
             else
@@ -77,7 +77,7 @@ namespace lib_postgres
                 return "";
             else if (form_element.tb_Name.Text == "")
             {
-                General_Manipulations.simple_message("Значение не может быть пустым");
+                General_Manipulations.simple_message(Localization.Substitute("Value_cannot_be_ empty"));
                 return "";
             }
             else

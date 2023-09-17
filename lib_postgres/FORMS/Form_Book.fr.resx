@@ -1,0 +1,199 @@
+﻿<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="label17.Location" type="System.Drawing.Point, System.Drawing">
+    <value>315, 333</value>
+  </data>
+  <data name="label17.Size" type="System.Drawing.Size, System.Drawing">
+    <value>77, 15</value>
+  </data>
+  <data name="label17.Text" xml:space="preserve">
+    <value>Code du livre</value>
+  </data>
+  <data name="TB_Code.Location" type="System.Drawing.Point, System.Drawing">
+    <value>398, 330</value>
+  </data>
+  <data name="CB_Art.Size" type="System.Drawing.Size, System.Drawing">
+    <value>430, 23</value>
+  </data>
+  <data name="BT_Add_PubHouse.Location" type="System.Drawing.Point, System.Drawing">
+    <value>493, 35</value>
+  </data>
+  <data name="BT_Add_City.Location" type="System.Drawing.Point, System.Drawing">
+    <value>493, 64</value>
+  </data>
+  <data name="BT_Add_Serie.Location" type="System.Drawing.Point, System.Drawing">
+    <value>493, 93</value>
+  </data>
+  <data name="BT_Add_Langue_Book.Location" type="System.Drawing.Point, System.Drawing">
+    <value>493, 123</value>
+  </data>
+  <data name="CB_Book_Language.Location" type="System.Drawing.Point, System.Drawing">
+    <value>191, 123</value>
+  </data>
+  <data name="CB_Series.Location" type="System.Drawing.Point, System.Drawing">
+    <value>191, 93</value>
+  </data>
+  <data name="label15.Size" type="System.Drawing.Size, System.Drawing">
+    <value>37, 15</value>
+  </data>
+  <data name="label15.Text" xml:space="preserve">
+    <value>Séries</value>
+  </data>
+  <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 15</value>
+  </data>
+  <data name="label13.Text" xml:space="preserve">
+    <value>Commentaire</value>
+  </data>
+  <data name="TB_Comment.Location" type="System.Drawing.Point, System.Drawing">
+    <value>191, 220</value>
+  </data>
+  <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 15</value>
+  </data>
+  <data name="label12.Text" xml:space="preserve">
+    <value>Marques</value>
+  </data>
+  <data name="TB_Notes.Location" type="System.Drawing.Point, System.Drawing">
+    <value>191, 273</value>
+  </data>
+  <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>93, 15</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>Notes de famille</value>
+  </data>
+  <data name="TB_Family_Notes.Location" type="System.Drawing.Point, System.Drawing">
+    <value>191, 246</value>
+  </data>
+  <data name="CB_Art_Book.Location" type="System.Drawing.Point, System.Drawing">
+    <value>315, 178</value>
+  </data>
+  <data name="CB_Art_Book.Size" type="System.Drawing.Size, System.Drawing">
+    <value>79, 19</value>
+  </data>
+  <data name="CB_Art_Book.Text" xml:space="preserve">
+    <value>Beau-livre</value>
+  </data>
+  <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
+    <value>336, 154</value>
+  </data>
+  <data name="TB_Pages.Location" type="System.Drawing.Point, System.Drawing">
+    <value>396, 151</value>
+  </data>
+  <data name="CB_City.Location" type="System.Drawing.Point, System.Drawing">
+    <value>191, 64</value>
+  </data>
+  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>29, 15</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>Ville</value>
+  </data>
+  <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 15</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>Maison d'édition</value>
+  </data>
+  <data name="CB_Publishing_House.Location" type="System.Drawing.Point, System.Drawing">
+    <value>191, 36</value>
+  </data>
+  <data name="TB_Publication_Year.Location" type="System.Drawing.Point, System.Drawing">
+    <value>191, 151</value>
+  </data>
+  <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>55, 154</value>
+  </data>
+  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>127, 15</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>L'année de publication</value>
+  </data>
+  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>125, 15</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Langue de publication</value>
+  </data>
+  <data name="CB_Jacket.Location" type="System.Drawing.Point, System.Drawing">
+    <value>191, 178</value>
+  </data>
+  <data name="CB_Jacket.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 19</value>
+  </data>
+  <data name="CB_Jacket.Text" xml:space="preserve">
+    <value>Jaquette</value>
+  </data>
+  <data name="button_Cancel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>416, 384</value>
+  </data>
+  <data name="BT_Add_Art.Location" type="System.Drawing.Point, System.Drawing">
+    <value>493, 8</value>
+  </data>
+  <data name="button2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>416, 384</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Livre</value>
+  </data>
+</root>

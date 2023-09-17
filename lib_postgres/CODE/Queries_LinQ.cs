@@ -177,9 +177,9 @@ namespace lib_postgres.CODE
                          {
                              Id = art_source.Id,
                              Date = art_source.Date,
-                             Source_Type = "Книга",
+                             Source_Type = lib_postgres.Localization.Substitute("Book"),
                              Source = art_source.Source,
-                             Recommend_Type = "Книга",
+                             Recommend_Type = lib_postgres.Localization.Substitute("Book"),
                              Recommended = art_toread.Name + " | " + art_toread.Authors,
                              Comment = art_source.Comment
                          }).ToList();
@@ -190,9 +190,9 @@ namespace lib_postgres.CODE
                                 {
                                     Id = art_source.Id,
                                     Date = art_source.Date,
-                                       Source_Type = "Книга",
+                                       Source_Type = lib_postgres.Localization.Substitute("Book"),
                                        Source = art_source.Source,
-                                    Recommend_Type = "Автор",
+                                    Recommend_Type = lib_postgres.Localization.Substitute("Author"),
                                     Recommended = author.Name,
                                     Comment = art_source.Comment
                                 }).ToList();
@@ -215,9 +215,9 @@ namespace lib_postgres.CODE
                                 {
                                     Id = author_source.Id,
                                     Date = author_source.Date,
-                                       Source_Type = "Автор",
+                                       Source_Type = lib_postgres.Localization.Substitute("Author"),
                                        Source = author_source.Source,
-                                       Recommend_Type = "Книга",
+                                       Recommend_Type = lib_postgres.Localization.Substitute("Book"),
                                        Recommended = art_toread.Name + " | " + art_toread.Authors,
                                     Comment = author_source.Comment
                                 }).ToList();
@@ -227,9 +227,9 @@ namespace lib_postgres.CODE
                                    {
                                        Id = author_source.Id,
                                        Date = author_source.Date,
-                                       Source_Type = "Автор",
+                                       Source_Type = lib_postgres.Localization.Substitute("Author"),
                                        Source = author_source.Source,
-                                       Recommend_Type = "Автор",
+                                       Recommend_Type = lib_postgres.Localization.Substitute("Author"),
                                        Recommended = author.Name,
                                        Comment = author_source.Comment
                                    }).ToList();
@@ -253,9 +253,9 @@ namespace lib_postgres.CODE
                                    {
                                        Id = another.Id,
                                        Date = another.Date,
-                                       Source_Type = "Другое",
+                                       Source_Type = lib_postgres.Localization.Substitute("Another"),
                                        Source = another.Source,
-                                       Recommend_Type = "Книга",
+                                       Recommend_Type = lib_postgres.Localization.Substitute("Book"),
                                        Recommended = art_toread.Name + " | " + art_toread.Authors,
                                        Comment = another.Comment
                                    }).ToList();
@@ -265,9 +265,9 @@ namespace lib_postgres.CODE
                                       {
                                           Id = another.Id,
                                           Date = another.Date,
-                                          Source_Type = "Другое",
+                                          Source_Type = lib_postgres.Localization.Substitute("Another"),
                                           Source = another.Source,
-                                          Recommend_Type = "Автор",
+                                          Recommend_Type = lib_postgres.Localization.Substitute("Author"),
                                           Recommended = author.Name,
                                           Comment = another.Comment
                                       }).ToList();

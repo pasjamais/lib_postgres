@@ -22,9 +22,6 @@ namespace lib_postgres
 
             return DB_Agent.Create_Item<Mark>(element,
                                                             DB_Agent.Get_Marks(),
-                                                            "Добавить оценку",
-                                                            "Название:",
-                                                            "Оценка уже существует",
                                                             creation_method);
         }
 
