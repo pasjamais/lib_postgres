@@ -24,7 +24,8 @@ namespace lib_postgres.CODE
         {
             // return;
             Type type = typeof(T);
-            if (StatusProperty is not null) Form_Main.GridViewItemType = type;
+            Form_Main form = Form_Main.GetInstance();
+            if (StatusProperty is not null) form.Current_Working_Type = type;
             if (type == typeof(Action))
             {
                 DGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
@@ -180,13 +181,13 @@ namespace lib_postgres.CODE
             {
                 DGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
                 DGV.Columns[0].HeaderText = "Id";
-                DGV.Columns[1].HeaderText = "Оценка";
+                DGV.Columns[1].HeaderText = _s("Mark");
                 DGV.Columns[2].Visible = false;
                 DGV.Columns[3].Visible = false;
                 DGV.Columns[0].FillWeight = (int)(DGV.Width * 0.15);
                 DGV.Columns[1].FillWeight = (int)(DGV.Width * 0.85);
                 DGV.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                if (StatusProperty is not null) StatusProperty.Message = "Список оценок";
+                if (StatusProperty is not null) StatusProperty.Message = _s("Marks_list");
             }
             else if (type == typeof(BookFormat))
             {

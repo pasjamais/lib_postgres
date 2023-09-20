@@ -198,6 +198,18 @@ namespace lib_postgres
                 c.Text = Substitute(c.Tag.ToString());
             }
         }
+
+        /// <summary>
+        ///  This is how to get access to a Form resource. T is a form type
+        /// </summary>
+        public static string Get_String_from_Form_Resource<T>(string key)
+        {
+            Type type = typeof(T);
+            var resources = new ResourceManager(type);
+            string value = (string)resources.GetObject(key);
+            return value ?? "";
+        }
+
         #endregion Form_interaction
     }
 

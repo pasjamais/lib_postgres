@@ -33,8 +33,6 @@
             this.book1BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.cmi_item_find_book = new System.Windows.Forms.ToolStripMenuItem();
-            this.cmi_item_add_art_to_read = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.ToolStripMenuItem_File = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_File_BackupBD = new System.Windows.Forms.ToolStripMenuItem();
@@ -55,7 +53,7 @@
             this.ToolStripMenuItem_SourceToreadAnother_Delete = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator12 = new System.Windows.Forms.ToolStripSeparator();
             this.ToolStripMenuItem__Recommend_Vis_Graphviz = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem_Recomm_Tree = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Reader = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem__Read_Open = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem__Read_Add = new System.Windows.Forms.ToolStripMenuItem();
@@ -78,6 +76,8 @@
             this.ToolStripMenuItem_Book_Add = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem__Book_Edit = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Books_Delete = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
+            this.ToolStripMenuItem_Book_Find = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator20 = new System.Windows.Forms.ToolStripSeparator();
             this.ToolStripMenuItem_Cities = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem__City_Show = new System.Windows.Forms.ToolStripMenuItem();
@@ -104,11 +104,13 @@
             this.ToolStripMenuItem_Arts_Add = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Arts_Edit = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Arts_Delete = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
+            this.ToolStripMenuItem_Arts_Add_to_HaveRead = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator21 = new System.Windows.Forms.ToolStripSeparator();
             this.ToolStripMenuItem_Genres = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Genres_Show = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenauItem_Genres_Add = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.ToolStripMenuItem_Genres_Add = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Genres_Edit = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem__Genres_Delete = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Languages = new System.Windows.Forms.ToolStripMenuItem();
@@ -152,7 +154,6 @@
             this.openFileDialog_BD_Backup = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.book1BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
-            this.contextMenuStrip.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -175,22 +176,8 @@
             // contextMenuStrip
             // 
             this.contextMenuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cmi_item_find_book,
-            this.cmi_item_add_art_to_read});
             this.contextMenuStrip.Name = "contextMenuStrip";
             resources.ApplyResources(this.contextMenuStrip, "contextMenuStrip");
-            // 
-            // cmi_item_find_book
-            // 
-            this.cmi_item_find_book.Name = "cmi_item_find_book";
-            resources.ApplyResources(this.cmi_item_find_book, "cmi_item_find_book");
-            this.cmi_item_find_book.Click += new System.EventHandler(this.Cmi_item_find_book_Click);
-            // 
-            // cmi_item_add_art_to_read
-            // 
-            this.cmi_item_add_art_to_read.Name = "cmi_item_add_art_to_read";
-            resources.ApplyResources(this.cmi_item_add_art_to_read, "cmi_item_add_art_to_read");
             // 
             // menuStrip1
             // 
@@ -259,7 +246,7 @@
             this.ToolStripMenuItem_SourceToreadAnother,
             this.toolStripSeparator12,
             this.ToolStripMenuItem__Recommend_Vis_Graphviz,
-            this.toolStripMenuItem2});
+            this.toolStripMenuItem_Recomm_Tree});
             this.toolStripMenuItemRecommendationToolStripMenuItem.Name = "toolStripMenuItemRecommendationToolStripMenuItem";
             resources.ApplyResources(this.toolStripMenuItemRecommendationToolStripMenuItem, "toolStripMenuItemRecommendationToolStripMenuItem");
             // 
@@ -337,11 +324,11 @@
             resources.ApplyResources(this.ToolStripMenuItem__Recommend_Vis_Graphviz, "ToolStripMenuItem__Recommend_Vis_Graphviz");
             this.ToolStripMenuItem__Recommend_Vis_Graphviz.Click += new System.EventHandler(this.ToolStripMenuItem__Recommend_Vis_Graphviz_Click);
             // 
-            // toolStripMenuItem2
+            // toolStripMenuItem_Recomm_Tree
             // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            resources.ApplyResources(this.toolStripMenuItem2, "toolStripMenuItem2");
-            this.toolStripMenuItem2.Click += new System.EventHandler(this.ToolStripMenuItem__Recommendations_Tree_Click);
+            this.toolStripMenuItem_Recomm_Tree.Name = "toolStripMenuItem_Recomm_Tree";
+            resources.ApplyResources(this.toolStripMenuItem_Recomm_Tree, "toolStripMenuItem_Recomm_Tree");
+            this.toolStripMenuItem_Recomm_Tree.Click += new System.EventHandler(this.ToolStripMenuItem__Recommendations_Tree_Click);
             // 
             // ToolStripMenuItem_Reader
             // 
@@ -461,6 +448,8 @@
             this.ToolStripMenuItem_Book_Add,
             this.ToolStripMenuItem__Book_Edit,
             this.ToolStripMenuItem_Books_Delete,
+            this.toolStripSeparator10,
+            this.ToolStripMenuItem_Book_Find,
             this.toolStripSeparator20,
             this.ToolStripMenuItem_Cities,
             this.ToolStripMenuItem_Series,
@@ -497,6 +486,17 @@
             resources.ApplyResources(this.ToolStripMenuItem_Books_Delete, "ToolStripMenuItem_Books_Delete");
             this.ToolStripMenuItem_Books_Delete.Name = "ToolStripMenuItem_Books_Delete";
             this.ToolStripMenuItem_Books_Delete.Click += new System.EventHandler(this.ToolStripMenuItem_Books_Delete_Click);
+            // 
+            // toolStripSeparator10
+            // 
+            this.toolStripSeparator10.Name = "toolStripSeparator10";
+            resources.ApplyResources(this.toolStripSeparator10, "toolStripSeparator10");
+            // 
+            // ToolStripMenuItem_Book_Find
+            // 
+            this.ToolStripMenuItem_Book_Find.Name = "ToolStripMenuItem_Book_Find";
+            resources.ApplyResources(this.ToolStripMenuItem_Book_Find, "ToolStripMenuItem_Book_Find");
+            this.ToolStripMenuItem_Book_Find.Click += new System.EventHandler(this.Cmi_item_find_book_Click);
             // 
             // toolStripSeparator20
             // 
@@ -636,6 +636,8 @@
             this.ToolStripMenuItem_Arts_Add,
             this.ToolStripMenuItem_Arts_Edit,
             this.ToolStripMenuItem_Arts_Delete,
+            this.toolStripSeparator11,
+            this.ToolStripMenuItem_Arts_Add_to_HaveRead,
             this.toolStripSeparator21,
             this.ToolStripMenuItem_Genres,
             this.ToolStripMenuItem_Languages,
@@ -672,6 +674,17 @@
             this.ToolStripMenuItem_Arts_Delete.Name = "ToolStripMenuItem_Arts_Delete";
             this.ToolStripMenuItem_Arts_Delete.Click += new System.EventHandler(this.ToolStripMenuItem_Arts_Delete_Click);
             // 
+            // toolStripSeparator11
+            // 
+            this.toolStripSeparator11.Name = "toolStripSeparator11";
+            resources.ApplyResources(this.toolStripSeparator11, "toolStripSeparator11");
+            // 
+            // ToolStripMenuItem_Arts_Add_to_HaveRead
+            // 
+            resources.ApplyResources(this.ToolStripMenuItem_Arts_Add_to_HaveRead, "ToolStripMenuItem_Arts_Add_to_HaveRead");
+            this.ToolStripMenuItem_Arts_Add_to_HaveRead.Name = "ToolStripMenuItem_Arts_Add_to_HaveRead";
+            this.ToolStripMenuItem_Arts_Add_to_HaveRead.Click += new System.EventHandler(this.cmi_item_add_art_to_read_Click);
+            // 
             // toolStripSeparator21
             // 
             this.toolStripSeparator21.Name = "toolStripSeparator21";
@@ -681,8 +694,8 @@
             // 
             this.ToolStripMenuItem_Genres.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ToolStripMenuItem_Genres_Show,
+            this.ToolStripMenauItem_Genres_Add,
             this.toolStripSeparator4,
-            this.ToolStripMenuItem_Genres_Add,
             this.ToolStripMenuItem_Genres_Edit,
             this.ToolStripMenuItem__Genres_Delete});
             this.ToolStripMenuItem_Genres.Name = "ToolStripMenuItem_Genres";
@@ -694,16 +707,16 @@
             resources.ApplyResources(this.ToolStripMenuItem_Genres_Show, "ToolStripMenuItem_Genres_Show");
             this.ToolStripMenuItem_Genres_Show.Click += new System.EventHandler(this.ToolStripMenuItem_Genres_Show_Click);
             // 
+            // ToolStripMenauItem_Genres_Add
+            // 
+            this.ToolStripMenauItem_Genres_Add.Name = "ToolStripMenauItem_Genres_Add";
+            resources.ApplyResources(this.ToolStripMenauItem_Genres_Add, "ToolStripMenauItem_Genres_Add");
+            this.ToolStripMenauItem_Genres_Add.Click += new System.EventHandler(this.ToolStripMenuItem_Genres_Add_Click);
+            // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
             resources.ApplyResources(this.toolStripSeparator4, "toolStripSeparator4");
-            // 
-            // ToolStripMenuItem_Genres_Add
-            // 
-            this.ToolStripMenuItem_Genres_Add.Name = "ToolStripMenuItem_Genres_Add";
-            resources.ApplyResources(this.ToolStripMenuItem_Genres_Add, "ToolStripMenuItem_Genres_Add");
-            this.ToolStripMenuItem_Genres_Add.Click += new System.EventHandler(this.ToolStripMenuItem_Genres_Add_Click);
             // 
             // ToolStripMenuItem_Genres_Edit
             // 
@@ -980,7 +993,6 @@
             this.Shown += new System.EventHandler(this.Form_Main_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.book1BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
-            this.contextMenuStrip.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -1022,9 +1034,6 @@
         private ToolStripSeparator toolStripSeparator13;
         private ToolStripMenuItem ToolStripMenuItem__Read_Open;
         private ToolStripMenuItem ToolStripMenuItem__Read_Add;
-        private ContextMenuStrip contextMenuStrip;
-        protected ToolStripMenuItem cmi_item_find_book;
-        private ToolStripMenuItem cmi_item_add_art_to_read;
         private ToolStripMenuItem ToolStripMenuItem__Read_Edit;
         private ToolStripMenuItem ToolStripMenuItem__Read_Delete;
         private ToolStripSeparator toolStripSeparator15;
@@ -1035,7 +1044,7 @@
         private ToolStripMenuItem ToolStripMenuItem_File_Open_Settings;
         private ToolStripMenuItem toolStripMenuItemRecommendationToolStripMenuItem;
         private ToolStripMenuItem ToolStripMenuItem__Recommendations_ِAdd;
-        private ToolStripMenuItem toolStripMenuItem2;
+        private ToolStripMenuItem toolStripMenuItem_Recomm_Tree;
         private ToolStripMenuItem ToolStripMenuItem__Recommendations_Delete;
         private ToolStripMenuItem ToolStripMenuItem__Recommendations_Edit;
         private ToolStripSeparator toolStripSeparator9;
@@ -1090,7 +1099,7 @@
         private ToolStripMenuItem ToolStripMenuItem_Genres;
         private ToolStripMenuItem ToolStripMenuItem_Genres_Show;
         private ToolStripSeparator toolStripSeparator4;
-        private ToolStripMenuItem ToolStripMenuItem_Genres_Add;
+        private ToolStripMenuItem ToolStripMenauItem_Genres_Add;
         private ToolStripMenuItem ToolStripMenuItem_Genres_Edit;
         private ToolStripMenuItem ToolStripMenuItem__Genres_Delete;
         private ToolStripMenuItem ToolStripMenuItem_Places;
@@ -1110,5 +1119,10 @@
         private ToolStripMenuItem ToolStripMenuItem_Language_Add;
         private ToolStripMenuItem ToolStripMenuItem_Language_Edit;
         private ToolStripMenuItem ToolStripMenuItem_Language_Delete;
+        internal ContextMenuStrip contextMenuStrip;
+        private ToolStripSeparator toolStripSeparator10;
+        private ToolStripMenuItem ToolStripMenuItem_Book_Find;
+        private ToolStripSeparator toolStripSeparator11;
+        private ToolStripMenuItem ToolStripMenuItem_Arts_Add_to_HaveRead;
     }
 }

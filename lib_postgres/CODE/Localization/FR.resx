@@ -312,6 +312,9 @@
   <data name="Mark" xml:space="preserve">
     <value>Note</value>
   </data>
+  <data name="Marks_list" xml:space="preserve">
+    <value>List des notes</value>
+  </data>
   <data name="Mark_already_exists" xml:space="preserve">
     <value>La note déjà existe</value>
   </data>

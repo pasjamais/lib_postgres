@@ -664,6 +664,15 @@ namespace lib_postgres.CODE.Localization {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à List of marks.
+        /// </summary>
+        internal static string Marks_list {
+            get {
+                return ResourceManager.GetString("Marks_list", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Message.
         /// </summary>
         internal static string Message {

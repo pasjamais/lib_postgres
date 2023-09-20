@@ -30,7 +30,16 @@ namespace lib_postgres
 {
     public partial class Form_Main : Form
     {
-        private static Type? gridViewItemType;
+        private Type? current_Working_Type;
+        public Type? Current_Working_Type
+        {
+            get { return current_Working_Type; }
+            set
+            {
+                current_Working_Type = value;
+                After_Current_Working_Type_Changing();
+            }
+        }
         public Main_Form_Status_Update StatusProperty { get; set; } = new Main_Form_Status_Update();
         const string Caption = "Lib.";
         public Dictionary<string, long> sources_saved_positions = new Dictionary<string, long>()
@@ -46,7 +55,15 @@ namespace lib_postgres
         public DGV_Visualisator.Turn_Off_or_ON_Current_Menu_Item Turn_ON;
 
         private Deploy deploy = new Deploy();
-        public Form_Main()
+
+        //Singleton added for using Forms's methods in menu construction
+        private static Form_Main _instance;
+        public static Form_Main GetInstance()
+        {
+            if (_instance != null) return _instance;
+            return _instance = new Form_Main();
+        }
+        private Form_Main()
         {
             InitializeComponent();
             Binding_Elements();
@@ -61,10 +78,9 @@ namespace lib_postgres
         private void Form_Main_Shown(object sender, EventArgs e)
         {
             Type type = typeof(ViewBook);
-            GridViewItemType = type;
+            Current_Working_Type = type;
             Read_Books();
             Turn_On_Current_Menu_Item();
-
         }
 
         private void Backup_on_Start()
@@ -76,13 +92,16 @@ namespace lib_postgres
         {
             Backup.BackupBD();
         }
-
+        private void After_Current_Working_Type_Changing()
+        {
+            Update_Context_Menu();
+        }
         #endregion general 
 
         #region popup
         private void Cmi_item_find_book_Click(object? sender, EventArgs e)
         {
-            if (gridViewItemType == typeof(ViewBook))
+            if (current_Working_Type == typeof(ViewBook))
             {
                 int index = dataGridView.SelectedRows[0].Index;
                 long id = (long)dataGridView.Rows[index].Cells["Id"].Value;
@@ -95,40 +114,54 @@ namespace lib_postgres
                     return;
             }
         }
-        // adding contextly to read-list is temporary out of order
-        /*        private void cmi_item_add_art_to_read_Click(object sender, EventArgs e)
-                {
-                    if (gridViewItemType == typeof(Art))
-                    {
-                        int index = dataGridView.SelectedRows[0].Index;
-                        long id_art = (long)dataGridView.Rows[index].Cells["Id"].Value;
-                        var id = ArtRead.Create_Item(id_art);
-                        if (id > 0)
-                        {
-                            ToolStripMenuItem__Read_Open_Click(sender, e);
-                            General_Manipulations.show_row(dataGridView, id.ToString(), "Id");
-                        }
-                    }
-                }*/
+        private void cmi_item_add_art_to_read_Click(object sender, EventArgs e)
+        {
+                     if (current_Working_Type == typeof(Art))
+                     {
+                         int index = dataGridView.SelectedRows[0].Index;
+                         long id_art = (long)dataGridView.Rows[index].Cells["Id"].Value;
+                         var id = ArtRead.Create_Item_by_Art(id_art);
+                         if (id > 0)
+                         {
+                             ToolStripMenuItem__Read_Open_Click(sender, e);
+                             General_Manipulations.show_row(dataGridView, id.ToString(), "Id");
+                         }
+                     }
+        }
+        private void Update_Context_Menu()
+        {
+            contextMenuStrip.Items.Clear();
+            contextMenuStrip.Items.AddRange(Ask_for_New_Context_Menu_Strips());
+        }
+
+        /// <summary>
+        /// In fact, just to transmit some type as generique.
+        /// var new_strips = Context_Menu_Controller.Change_Working_Type<current_Working_Type>();
+        /// </summary>
+        private ToolStripItem[] Ask_for_New_Context_Menu_Strips()
+        {
+            ToolStripItem[] range = new ToolStripItem[0];
+            var methodInfo = typeof(Context_Menu_Controller).GetMethod("Change_Working_Type");
+            if (Current_Working_Type is not null)
+            {
+                var meth_ref = methodInfo.MakeGenericMethod(current_Working_Type);
+                range = (ToolStripItem[])meth_ref.Invoke(null, null);
+            }
+            return range;
+        }
+
+
         #endregion
 
         #region additional
         private void Binding_Elements()
         {
-            GridViewItemType = null;
+            Current_Working_Type = null;
             this.DataBindings.Add("Text", StatusProperty, "Message");
             //     this.DataBindings.Add("ToolStripMenuItem__Book_Edit.Enabled", StatusProperty, "ToolStripMenuItem__Book_Edit");
-
         }
 
-        public static Type? GridViewItemType
-        {
-            get { return gridViewItemType; }
-            set
-            {
-                gridViewItemType = value;
-            }
-        }
+
         public override string Text
         {
             get => base.Text;
@@ -199,7 +232,7 @@ namespace lib_postgres
             // save new deleted_elements visualisation to INI file
             dgv_Visualisator.deleted_Entities_Visuaisator.Write_Value_isShow_Deleted_to_INI_File();
 
-            if (gridViewItemType == typeof(ViewBook))
+            if (current_Working_Type == typeof(ViewBook))
                 dgv_Visualisator.Refresh_DGV_for_Item_Type<ViewBook>(dataGridView, Turn_Off, Turn_ON, StatusProperty);
         }
         void show_arts_by_langue(object sender, EventArgs e)
@@ -233,6 +266,32 @@ namespace lib_postgres
             dataGridView.Columns.Clear();
             dataGridView.DataSource = Queries_LinQ.Get_Books_by_Place_Name(((ToolStripMenuItem)sender).Text);
             dgv_Visualisator.Refresh_DGV_for_Get_Books_by_Place_Name(dataGridView);
+        }
+  
+        private void ToolStripMenuItem__Recommend_Vis_Graphviz_Click(object sender, EventArgs e)
+        {
+            FORMS.Form_Graphviz form_graphviz = new lib_postgres.FORMS.Form_Graphviz();
+            var DialogResult = form_graphviz.ShowDialog();
+
+        }
+
+
+        private void ToolStripMenuItem_File_Delete_DB_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show(
+                   "Вы действительно хотите безвозвратно удалить базу даннаых?" +
+                   "После этого работа с программой будет завершена",
+                   "Предупреждение",
+                   MessageBoxButtons.YesNo,
+                   MessageBoxIcon.Warning,
+                   MessageBoxDefaultButton.Button2,
+                   MessageBoxOptions.DefaultDesktopOnly);
+            if (result == DialogResult.Yes)
+            {
+                Deploy.Drop_BD();
+                Application.Restart();
+
+            }
         }
 
         #endregion menu_commands
@@ -317,19 +376,19 @@ namespace lib_postgres
         #endregion
 
         #region Book
-        private void ToolStripMenuItem_Book_Add_Click(object sender, EventArgs e)
+        internal void ToolStripMenuItem_Book_Add_Click(object sender, EventArgs e)
         {
             Create_Book();
         }
-        private void ToolStripMenuItem_Book_Show_Click(object sender, EventArgs e)
+        internal void ToolStripMenuItem_Book_Show_Click(object sender, EventArgs e)
         {
             Read_Books();
         }
-        private void ToolStripMenuItem__Book_Edit_Click(object sender, EventArgs e)
+        internal void ToolStripMenuItem__Book_Edit_Click(object sender, EventArgs e)
         {
             Edit_Book();
         }
-        private void ToolStripMenuItem_Books_Delete_Click(object sender, EventArgs e)
+        internal void ToolStripMenuItem_Books_Delete_Click(object sender, EventArgs e)
         {
             Delete_Book();
         }
@@ -593,17 +652,17 @@ namespace lib_postgres
         #region click
         private void dataGridView_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (gridViewItemType == typeof(Place)) ;
-            else if (gridViewItemType == typeof(Language)) ToolStripMenuItem_Language_Edit_Click(sender, e);
-            else if (gridViewItemType == typeof(Author)) Edit_Author();
-            else if (gridViewItemType == typeof(Action)) ToolStripMenuItem_Actions_Edit_Click(sender, e);
-            else if (gridViewItemType == typeof(Series)) ToolStripMenuItem_Series_Edit_Click(sender, e);
-            else if (gridViewItemType == typeof(PublishingHouse)) ToolStripMenuItem_PubHouse_Edit_Click(sender, e);
-            else if (gridViewItemType == typeof(City)) Edit_City();
-            else if (gridViewItemType == typeof(ViewBook)) Edit_Book();
-            else if (gridViewItemType == typeof(Art)) ToolStripMenuItem_Arts_Edit_Click(sender, e);
-            else if (gridViewItemType == typeof(Genre)) ToolStripMenuItem_Genres_Edit_Click(sender, e);
-            else if (gridViewItemType == typeof(ViewHasRead)) ToolStripMenuItem__Read_Edit_Click(sender, e);
+            if (current_Working_Type == typeof(Place)) ;
+            else if (current_Working_Type == typeof(Language)) ToolStripMenuItem_Language_Edit_Click(sender, e);
+            else if (current_Working_Type == typeof(Author)) Edit_Author();
+            else if (current_Working_Type == typeof(Action)) ToolStripMenuItem_Actions_Edit_Click(sender, e);
+            else if (current_Working_Type == typeof(Series)) ToolStripMenuItem_Series_Edit_Click(sender, e);
+            else if (current_Working_Type == typeof(PublishingHouse)) ToolStripMenuItem_PubHouse_Edit_Click(sender, e);
+            else if (current_Working_Type == typeof(City)) Edit_City();
+            else if (current_Working_Type == typeof(ViewBook)) Edit_Book();
+            else if (current_Working_Type == typeof(Art)) ToolStripMenuItem_Arts_Edit_Click(sender, e);
+            else if (current_Working_Type == typeof(Genre)) ToolStripMenuItem_Genres_Edit_Click(sender, e);
+            else if (current_Working_Type == typeof(ViewHasRead)) ToolStripMenuItem__Read_Edit_Click(sender, e);
         }
         #endregion click
 
@@ -619,88 +678,87 @@ namespace lib_postgres
         private void Turn_Menu_Item(bool state)
         {
 
-            if (gridViewItemType == typeof(Language))
+            if (current_Working_Type == typeof(Language))
             {
                 Turn_On_Off_Menu_Item(ToolStripMenuItem_Language_Edit, state);
                 Turn_On_Off_Menu_Item(ToolStripMenuItem_Language_Delete, state);
             }
-            else if (gridViewItemType == typeof(Author))
+            else if (current_Working_Type == typeof(Author))
             {
                 Turn_On_Off_Menu_Item(ToolStripMenuItem_Author_Edit, state);
                 Turn_On_Off_Menu_Item(ToolStripMenuItem_Author_Delete, state);
             }
-            else if (gridViewItemType == typeof(Action))
+            else if (current_Working_Type == typeof(Action))
             {
                 Turn_On_Off_Menu_Item(ToolStripMenuItem_Actions_Edit, state);
                 Turn_On_Off_Menu_Item(ToolStripMenuItem_Actions_Delete, state);
             }
-            else if (gridViewItemType == typeof(Series))
+            else if (current_Working_Type == typeof(Series))
             {
-                
+
                 Turn_On_Off_Menu_Item(ToolStripMenuItem_Series_Edit, state);
                 Turn_On_Off_Menu_Item(ToolStripMenuItem_Series_Delete, state);
             }
-            else if (gridViewItemType == typeof(PublishingHouse))
+            else if (current_Working_Type == typeof(PublishingHouse))
             {
                 Turn_On_Off_Menu_Item(ToolStripMenuItem_PubHouse_Edit, state);
                 Turn_On_Off_Menu_Item(ToolStripMenuItem_PubHouse_Delete, state);
             }
-            else if (gridViewItemType == typeof(City))
+            else if (current_Working_Type == typeof(City))
             {
                 Turn_On_Off_Menu_Item(ToolStripMenuItem_City_Edit, state);
                 Turn_On_Off_Menu_Item(ToolStripMenuItem_City_Delete, state);
             }
-            else if (gridViewItemType == typeof(ViewBook))
+            else if (current_Working_Type == typeof(ViewBook))
             {
-                Turn_On_Off_Menu_Item(ToolStripMenuItem__Book_Edit, state, cmi_item_find_book);
+                Turn_On_Off_Menu_Item(ToolStripMenuItem__Book_Edit, state);
                 Turn_On_Off_Menu_Item(ToolStripMenuItem_Books_Delete, state);
+                Turn_On_Off_Menu_Item(ToolStripMenuItem_Book_Find, state);
             }
-            else if (gridViewItemType == typeof(Art))
+            else if (current_Working_Type == typeof(Art))
             {
-                Turn_On_Off_Menu_Item(ToolStripMenuItem_Arts_Edit, state, cmi_item_add_art_to_read); //ToolStripMenuItem_Book_Add
-                Turn_On_Off_Menu_Item(ToolStripMenuItem_Arts_Delete, state); 
-                
+                Turn_On_Off_Menu_Item(ToolStripMenuItem_Arts_Edit, state);
+                Turn_On_Off_Menu_Item(ToolStripMenuItem_Arts_Delete, state);
+                Turn_On_Off_Menu_Item(ToolStripMenuItem_Arts_Add_to_HaveRead, state);
             }
-            else if (gridViewItemType == typeof(Genre))
+            else if (current_Working_Type == typeof(Genre))
             {
                 Turn_On_Off_Menu_Item(ToolStripMenuItem_Genres_Edit, state);
                 Turn_On_Off_Menu_Item(ToolStripMenuItem__Genres_Delete, state);
             }
-            else if (gridViewItemType == typeof(ViewHasRead))
+            else if (current_Working_Type == typeof(ViewHasRead))
             {
                 Turn_On_Off_Menu_Item(ToolStripMenuItem__Read_Edit, state);
                 Turn_On_Off_Menu_Item(ToolStripMenuItem__Read_Delete, state);
 
             }
-            else if (gridViewItemType == typeof(Mark))
+            else if (current_Working_Type == typeof(Mark))
             {
                 Turn_On_Off_Menu_Item(ToolStripMenuItem_Mark_Edit, state);
                 Turn_On_Off_Menu_Item(ToolStripMenuItem_Marks_Delete, state);
-
             }
-            else if (gridViewItemType == typeof(BookFormat))
+            else if (current_Working_Type == typeof(BookFormat))
             {
                 Turn_On_Off_Menu_Item(ToolStripMenuItem_Book_Format_Edit, state);
                 Turn_On_Off_Menu_Item(ToolStripMenuItem_Book_Format_Delete, state);
             }
 
-            else if (gridViewItemType == typeof(Place))
+            else if (current_Working_Type == typeof(Place))
             {
                 Turn_On_Off_Menu_Item(ToolStripMenuItem_Places_Edit, state);
                 Turn_On_Off_Menu_Item(ToolStripMenuItem_Places_Delele, state);
             }
-            else if (gridViewItemType == typeof(Person))
+            else if (current_Working_Type == typeof(Person))
             {
                 Turn_On_Off_Menu_Item(ToolStripMenuItem_People_Edit, state);
                 Turn_On_Off_Menu_Item(ToolStripMenuItem_People_Delete, state);
-
             }
-            else if (gridViewItemType == typeof(ArtToRead))
+            else if (current_Working_Type == typeof(ArtToRead))
             {
                 Turn_On_Off_Menu_Item(ToolStripMenuItem__Recommendations_Edit, state);
                 Turn_On_Off_Menu_Item(ToolStripMenuItem__Recommendations_Delete, state);
             }
-            else if (gridViewItemType == typeof(SourceToreadAnother))
+            else if (current_Working_Type == typeof(SourceToreadAnother))
             {
                 Turn_On_Off_Menu_Item(ToolStripMenuItem_SourceToreadAnother_Edit, state);
                 Turn_On_Off_Menu_Item(ToolStripMenuItem_SourceToreadAnother_Delete, state);
@@ -763,7 +821,7 @@ namespace lib_postgres
         #region CRUD
 
         #region book CRUD
-        private void Create_Book()
+        public void Create_Book()
         {
             Create_Item<Book>();
         }
@@ -771,7 +829,7 @@ namespace lib_postgres
         {
             dgv_Visualisator.Refresh_DGV_for_Item_Type<ViewBook>(dataGridView, Turn_Off, Turn_ON, StatusProperty);
         }
-        private void Edit_Book()
+        public void Edit_Book()
         {
             Edit_Item<ViewBook>(dgv_Visualisator.Get_Selected_Entity_ID(dataGridView));
         }
@@ -1096,12 +1154,7 @@ namespace lib_postgres
 
         #endregion CRUD
 
-        private void ToolStripMenuItem__Recommend_Vis_Graphviz_Click(object sender, EventArgs e)
-        {
-            FORMS.Form_Graphviz form_graphviz = new lib_postgres.FORMS.Form_Graphviz();
-            var DialogResult = form_graphviz.ShowDialog();
 
-        }
 
         #region Localosation
 
@@ -1111,8 +1164,9 @@ namespace lib_postgres
         {
             Localization.Change_Language(this, sender.ToString(), ToolStripMenuItem_UI_Language);
             Localization.Update_Dynamic_Created_Controls(dynamic_created_controls);
+            Update_Context_Menu();
         }
-         
+
         private void Initial_Langues_Menu_Load()
         {
             Localization.Initial_Langues_Form_Menu_Load(ToolStripMenuItem_UI_Language);
@@ -1124,26 +1178,14 @@ namespace lib_postgres
 
 
         #endregion Localosation
-        private void ToolStripMenuItem_File_Delete_DB_Click(object sender, EventArgs e)
-        {
-            DialogResult result = MessageBox.Show(
-                   "Вы действительно хотите безвозвратно удалить базу даннаых?" +
-                   "После этого работа с программой будет завершена",
-                   "Предупреждение",
-                   MessageBoxButtons.YesNo,
-                   MessageBoxIcon.Warning,
-                   MessageBoxDefaultButton.Button2,
-                   MessageBoxOptions.DefaultDesktopOnly);
-            if (result == DialogResult.Yes)
-            {
-                Deploy.Drop_BD();
-                Application.Restart();
-
-            }
 
 
 
-        }
+
+
+
+
+
     }
 }
 

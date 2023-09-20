@@ -18,7 +18,7 @@ namespace lib_postgres
             Form_ArtRead form = new Form_ArtRead();
             {
                 General_Manipulations.CB_reload<Structures.Short_Art>(form.CB_Art, 1);
-                General_Manipulations.CB_reload<BookFormat>(form.CB_BookFormat, 2);//2- электронный формат
+                General_Manipulations.CB_reload<BookFormat>(form.CB_BookFormat, 2);//2 is digital format. Sorry about magic constant
             }
             DialogResult dialogResult = form.ShowDialog();
             if (dialogResult != DialogResult.OK) return -1;
@@ -91,6 +91,21 @@ namespace lib_postgres
             List<long> deleted_items_IDs = (from item in deleted_items
                                             select item.Id).ToList(); ;
             return deleted_items_IDs;
+        }
+
+        public static long Create_Item_by_Art(long IDart) 
+        {
+            ArtRead element = DB_Agent.Get_First_Deleted_Entity_or_New<ArtRead>(DB_Agent.Get_ArtReads());
+            Form_ArtRead form = new Form_ArtRead();
+            {
+                General_Manipulations.CB_reload<Structures.Short_Art>(form.CB_Art, IDart);
+                General_Manipulations.CB_reload<BookFormat>(form.CB_BookFormat, 2);
+            }
+            DialogResult dialogResult = form.ShowDialog();
+            if (dialogResult != DialogResult.OK) return -1;
+            bool is_new_element = (element.Id == 0) ? true : false;
+            element = Save_ArtRead(element, form, is_new_element);
+            return element.Id;
         }
     }
 }

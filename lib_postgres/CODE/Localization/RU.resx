@@ -315,6 +315,9 @@
   <data name="Mark" xml:space="preserve">
     <value>Оценка</value>
   </data>
+  <data name="Marks_list" xml:space="preserve">
+    <value>Список оценок</value>
+  </data>
   <data name="Mark_already_exists" xml:space="preserve">
     <value>Оценка уже существует</value>
   </data>
