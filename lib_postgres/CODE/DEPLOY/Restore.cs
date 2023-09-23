@@ -10,8 +10,6 @@ namespace lib_postgres.CODE.DEPLOY
     public class Restore
     {
         private static string skeleton_script_filename = "skeleton.sql";
-        private static string RU_init_script_filenam = "RU_ini.sql";
-        
 
         public static void Restore_BD(string backup_file_path, bool need_drop)
         {
@@ -32,7 +30,7 @@ namespace lib_postgres.CODE.DEPLOY
             List<string> scripts = new List<string>();
             scripts.Add(skeleton_script_filename);
             if (need_init_with_values)
-                scripts.Add(RU_init_script_filenam);
+                scripts.Add(lib_postgres.Localization.Substitute("Filename_Init_Script"));
             Script_Engine.Run_PSQL_Script(scripts, connection.psql_exe_path());
             DB_Agent.Renew_Connection();
         }

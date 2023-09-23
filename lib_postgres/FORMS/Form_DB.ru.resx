@@ -62,7 +62,7 @@
     <value>318, 24</value>
   </data>
   <data name="L_main.Size" type="System.Drawing.Size, System.Drawing">
-    <value>337, 63</value>
+    <value>397, 40</value>
   </data>
   <data name="L_main.Text" xml:space="preserve">
     <value>Вас приветствует программа по работе с книгами! Для начала работы выберите подходящее действие:</value>
@@ -74,7 +74,7 @@
     <value>Cоздать новую пустую базу</value>
   </data>
   <data name="LL_Load_Existing_BD.Location" type="System.Drawing.Point, System.Drawing">
-    <value>318, 234</value>
+    <value>322, 251</value>
   </data>
   <data name="LL_Load_Existing_BD.Size" type="System.Drawing.Size, System.Drawing">
     <value>338, 19</value>
@@ -145,14 +145,38 @@
   <data name="LL_Connect.Text" xml:space="preserve">
     <value>Сохранить настройки и подключиться</value>
   </data>
+  <data name="LL_SelectBackupFile.Location" type="System.Drawing.Point, System.Drawing">
+    <value>386, 264</value>
+  </data>
+  <data name="LL_SelectBackupFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>217, 19</value>
+  </data>
+  <data name="LL_SelectBackupFile.Text" xml:space="preserve">
+    <value>Выбрать файл резервной копии </value>
+  </data>
+  <data name="LL_CreateDB.Location" type="System.Drawing.Point, System.Drawing">
+    <value>386, 253</value>
+  </data>
+  <data name="LL_CreateDB.Size" type="System.Drawing.Size, System.Drawing">
+    <value>188, 19</value>
+  </data>
+  <data name="LL_CreateDB.Text" xml:space="preserve">
+    <value>Создать новую базу данных</value>
+  </data>
   <data name="CHB_fill_with_initial.Location" type="System.Drawing.Point, System.Drawing">
-    <value>318, 211</value>
+    <value>290, 181</value>
+  </data>
+  <data name="CHB_fill_with_initial.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>450, 100</value>
   </data>
   <data name="CHB_fill_with_initial.Size" type="System.Drawing.Size, System.Drawing">
-    <value>388, 19</value>
+    <value>433, 49</value>
   </data>
   <data name="CHB_fill_with_initial.Text" xml:space="preserve">
-    <value>Remplir la base de données avec les valeurs initiales (Recommandé !)</value>
+    <value>Заполнить базу начальными значениями (Рекомендуется!) Важно:
+убедитесь, что вы выбрали нужный язык интерфейса, так как
+ первоначальное заполнение  будет производиться в соответствии с ним.
+</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Начало работы с программой</value>

@@ -279,6 +279,9 @@
   <data name="Edit_series" xml:space="preserve">
     <value>Изменить серию</value>
   </data>
+  <data name="Filename_Init_Script" xml:space="preserve">
+    <value>RU_ini.sql</value>
+  </data>
   <data name="Format" xml:space="preserve">
     <value>Формат</value>
   </data>

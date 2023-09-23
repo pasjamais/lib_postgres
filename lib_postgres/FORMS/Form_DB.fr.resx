@@ -77,7 +77,7 @@
     <value>Créer une nouvelle base de données</value>
   </data>
   <data name="LL_Load_Existing_BD.Location" type="System.Drawing.Point, System.Drawing">
-    <value>309, 223</value>
+    <value>309, 225</value>
   </data>
   <data name="LL_Load_Existing_BD.Size" type="System.Drawing.Size, System.Drawing">
     <value>392, 19</value>
@@ -125,7 +125,7 @@
     <value>Je souhaite créer une nouvelle base de données, même si la base de données existe déjà. Dans ce cas, la base de données pourrais  ê remplie de valeurs initiales conformément à la langue d'application sélectionnée.</value>
   </data>
   <data name="LB_RestoreBD.Location" type="System.Drawing.Point, System.Drawing">
-    <value>354, 249</value>
+    <value>347, 249</value>
   </data>
   <data name="LB_RestoreBD.Size" type="System.Drawing.Size, System.Drawing">
     <value>347, 30</value>
@@ -158,19 +158,33 @@
     <value>Enregistrer les paramètres et connecter</value>
   </data>
   <data name="LL_SelectBackupFile.Location" type="System.Drawing.Point, System.Drawing">
-    <value>417, 230</value>
+    <value>405, 260</value>
+  </data>
+  <data name="LL_SelectBackupFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>234, 19</value>
+  </data>
+  <data name="LL_SelectBackupFile.Text" xml:space="preserve">
+    <value>Sélectionner le fichier de sauvegarde </value>
   </data>
   <data name="LL_CreateDB.Location" type="System.Drawing.Point, System.Drawing">
-    <value>434, 233</value>
+    <value>384, 277</value>
+  </data>
+  <data name="LL_CreateDB.Size" type="System.Drawing.Size, System.Drawing">
+    <value>231, 19</value>
+  </data>
+  <data name="LL_CreateDB.Text" xml:space="preserve">
+    <value>Créer une nouvelle base de données</value>
   </data>
   <data name="CHB_fill_with_initial.Location" type="System.Drawing.Point, System.Drawing">
-    <value>318, 196</value>
+    <value>309, 200</value>
   </data>
   <data name="CHB_fill_with_initial.Size" type="System.Drawing.Size, System.Drawing">
-    <value>385, 19</value>
+    <value>409, 49</value>
   </data>
   <data name="CHB_fill_with_initial.Text" xml:space="preserve">
-    <value>Remplir la base de données avec les valeurs initiales (recommandé !)</value>
+    <value>Remplir la base de données avec les valeurs initiales (Recommandé !) 
+Important : assurez-vous que vous avez bien choisi la langue d'interface, 
+car le remplissage initial se fera conformément à celle-ci</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Premiers pas avec l'application</value>

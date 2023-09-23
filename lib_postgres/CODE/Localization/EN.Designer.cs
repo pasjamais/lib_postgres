@@ -547,6 +547,15 @@ namespace lib_postgres.CODE.Localization {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à EN_ini.sql.
+        /// </summary>
+        internal static string Filename_Init_Script {
+            get {
+                return ResourceManager.GetString("Filename_Init_Script", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Format.
         /// </summary>
         internal static string Format {

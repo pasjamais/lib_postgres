@@ -276,6 +276,9 @@
   <data name="Edit_series" xml:space="preserve">
     <value>Modifier la série</value>
   </data>
+  <data name="Filename_Init_Script" xml:space="preserve">
+    <value>FR_ini.sql</value>
+  </data>
   <data name="Format" xml:space="preserve">
     <value>Format</value>
   </data>
