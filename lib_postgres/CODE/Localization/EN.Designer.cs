@@ -430,6 +430,15 @@ namespace lib_postgres.CODE.Localization {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Connection established.
+        /// </summary>
+        internal static string Connection_established {
+            get {
+                return ResourceManager.GetString("Connection_established", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Date.
         /// </summary>
         internal static string Date {
@@ -601,6 +610,44 @@ namespace lib_postgres.CODE.Localization {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à The connection to the database server has been established, but the database was not found. It is recommended to create a new database or restore from a backup..
+        /// </summary>
+        internal static string Info_Connect_OK_DB_not_found {
+            get {
+                return ResourceManager.GetString("Info_Connect_OK_DB_not_found", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à The database is corrupted.
+        ///It is recommended to create a new database or restore from a backup..
+        /// </summary>
+        internal static string Info_DB_corrupted {
+            get {
+                return ResourceManager.GetString("Info_DB_corrupted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à The connection to the database server has not been established..
+        /// </summary>
+        internal static string Info_DB_No_Connection {
+            get {
+                return ResourceManager.GetString("Info_DB_No_Connection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à The database was not found.
+        ///It is recommended to create a new database or restore from a backup..
+        /// </summary>
+        internal static string Info_DB_not_found {
+            get {
+                return ResourceManager.GetString("Info_DB_not_found", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Language.
         /// </summary>
         internal static string Language {
@@ -741,6 +788,15 @@ namespace lib_postgres.CODE.Localization {
         internal static string Pages {
             get {
                 return ResourceManager.GetString("Pages", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à The password is correct.
+        /// </summary>
+        internal static string Password_Correct {
+            get {
+                return ResourceManager.GetString("Password_Correct", resourceCulture);
             }
         }
         
@@ -975,6 +1031,24 @@ namespace lib_postgres.CODE.Localization {
         internal static string Value_cannot_be__empty {
             get {
                 return ResourceManager.GetString("Value_cannot_be_ empty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Warning.
+        /// </summary>
+        internal static string Warning {
+            get {
+                return ResourceManager.GetString("Warning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Are you sure to permanently delete the database?.
+        /// </summary>
+        internal static string Warning_BD_Deleting {
+            get {
+                return ResourceManager.GetString("Warning_BD_Deleting", resourceCulture);
             }
         }
         

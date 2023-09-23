@@ -430,6 +430,15 @@ namespace lib_postgres.CODE.Localization {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Подключение установлено.
+        /// </summary>
+        internal static string Connection_established {
+            get {
+                return ResourceManager.GetString("Connection_established", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Дата.
         /// </summary>
         internal static string Date {
@@ -601,6 +610,45 @@ namespace lib_postgres.CODE.Localization {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Соединение с сервером баз данных установлено, однако, база данных не найдена.
+        ///Рекомендуется создать новую базу или восстановить из бэкапа..
+        /// </summary>
+        internal static string Info_Connect_OK_DB_not_found {
+            get {
+                return ResourceManager.GetString("Info_Connect_OK_DB_not_found", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à База данных повреждена.
+        ///Рекомендуется создать новую базу или восстановить из бэкапа..
+        /// </summary>
+        internal static string Info_DB_corrupted {
+            get {
+                return ResourceManager.GetString("Info_DB_corrupted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Соединение с сервером баз данных не установлено..
+        /// </summary>
+        internal static string Info_DB_No_Connection {
+            get {
+                return ResourceManager.GetString("Info_DB_No_Connection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à База данных не найдена.
+        ///Рекомендуется создать новую базу или восстановить из бэкапа..
+        /// </summary>
+        internal static string Info_DB_not_found {
+            get {
+                return ResourceManager.GetString("Info_DB_not_found", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Язык.
         /// </summary>
         internal static string Language {
@@ -741,6 +789,15 @@ namespace lib_postgres.CODE.Localization {
         internal static string Pages {
             get {
                 return ResourceManager.GetString("Pages", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Пароль верный.
+        /// </summary>
+        internal static string Password_Correct {
+            get {
+                return ResourceManager.GetString("Password_Correct", resourceCulture);
             }
         }
         
@@ -975,6 +1032,24 @@ namespace lib_postgres.CODE.Localization {
         internal static string Value_cannot_be__empty {
             get {
                 return ResourceManager.GetString("Value_cannot_be_ empty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Предупреждение.
+        /// </summary>
+        internal static string Warning {
+            get {
+                return ResourceManager.GetString("Warning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Вы действительно хотите безвозвратно удалить базу даннаых?.
+        /// </summary>
+        internal static string Warning_BD_Deleting {
+            get {
+                return ResourceManager.GetString("Warning_BD_Deleting", resourceCulture);
             }
         }
         

@@ -73,5 +73,21 @@ namespace lib_postgres.CODE
                 }
             }
         }
+
+        public static bool Connection_Test(string conn_string)
+        {
+            try
+            {
+                using (NpgsqlConnection connection = new NpgsqlConnection(conn_string))
+                {
+                    connection.Open();
+                    return true;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }

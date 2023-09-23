@@ -279,16 +279,16 @@ namespace lib_postgres
         private void ToolStripMenuItem_File_Delete_DB_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show(
-                   "Вы действительно хотите безвозвратно удалить базу даннаых?" +
-                   "После этого работа с программой будет завершена",
-                   "Предупреждение",
+                   Localization.Substitute("Warning_BD_Deleting"),
+                   Localization.Substitute("Warning"),
                    MessageBoxButtons.YesNo,
                    MessageBoxIcon.Warning,
                    MessageBoxDefaultButton.Button2,
                    MessageBoxOptions.DefaultDesktopOnly);
             if (result == DialogResult.Yes)
             {
-                Deploy.Drop_BD();
+                Connection connection = new Connection();
+                connection.Drop_BD();
                 Application.Restart();
 
             }
@@ -1176,16 +1176,13 @@ namespace lib_postgres
             dynamic_created_controls.Add(control);
         }
 
-
         #endregion Localosation
 
+        private void ToolStripMenuItem_About_Click(object sender, EventArgs e)
+        {
 
 
-
-
-
-
-
+        }
     }
 }
 

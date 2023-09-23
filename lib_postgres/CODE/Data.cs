@@ -18,7 +18,7 @@ namespace lib_postgres.CODE
         public static Dictionary<long, Color> marks_colors = new Dictionary<long, Color>
         {
             {1, Color.Black         },
-            {2, Color.Brown     },
+            {2, Color.Brown         },
             {3, Color.Gray          },
             {4, Color.Gray          },
             {5, Color.Gray          },

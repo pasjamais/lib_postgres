@@ -145,7 +145,7 @@
             this.ToolStripMenuItem_People_Edit = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_People_Delete = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator22 = new System.Windows.Forms.ToolStripSeparator();
-            this.ToolStripMenuItem_Cataloques = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem_About = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_UI_Language = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_UI_Language_RU = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_UI_Language_FR = new System.Windows.Forms.ToolStripMenuItem();
@@ -190,7 +190,7 @@
             this.ToolStripMenuItem_Arts,
             this.ToolStripMenuItem_Autors,
             this.ToolStripMenuItem_Actions,
-            this.ToolStripMenuItem_Cataloques,
+            this.ToolStripMenuItem_About,
             this.ToolStripMenuItem_UI_Language});
             resources.ApplyResources(this.menuStrip1, "menuStrip1");
             this.menuStrip1.Name = "menuStrip1";
@@ -944,10 +944,11 @@
             this.toolStripSeparator22.Name = "toolStripSeparator22";
             resources.ApplyResources(this.toolStripSeparator22, "toolStripSeparator22");
             // 
-            // ToolStripMenuItem_Cataloques
+            // ToolStripMenuItem_About
             // 
-            this.ToolStripMenuItem_Cataloques.Name = "ToolStripMenuItem_Cataloques";
-            resources.ApplyResources(this.ToolStripMenuItem_Cataloques, "ToolStripMenuItem_Cataloques");
+            this.ToolStripMenuItem_About.Name = "ToolStripMenuItem_About";
+            resources.ApplyResources(this.ToolStripMenuItem_About, "ToolStripMenuItem_About");
+            this.ToolStripMenuItem_About.Click += new System.EventHandler(this.ToolStripMenuItem_About_Click);
             // 
             // ToolStripMenuItem_UI_Language
             // 
@@ -1021,7 +1022,7 @@
         private ToolStripMenuItem ToolStripMenuItem_Author_Add;
         private ToolStripMenuItem ToolStripMenuItem_Author_Edit;
         private ToolStripMenuItem ToolStripMenuItem_Author_Delete;
-        private ToolStripMenuItem ToolStripMenuItem_Cataloques;
+        private ToolStripMenuItem ToolStripMenuItem_About;
         public DataGridView dataGridView;
         private ToolStripMenuItem ToolStripMenuItem_Actions;
         private ToolStripMenuItem ToolStripMenuItem_Actions_Open;

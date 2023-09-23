@@ -240,6 +240,9 @@
   <data name="Comment" xml:space="preserve">
     <value>Комментарий</value>
   </data>
+  <data name="Connection_established" xml:space="preserve">
+    <value>Подключение установлено</value>
+  </data>
   <data name="Date" xml:space="preserve">
     <value>Дата</value>
   </data>
@@ -297,6 +300,21 @@
   <data name="ID_book_short_text" xml:space="preserve">
     <value>Id кн.</value>
   </data>
+  <data name="Info_Connect_OK_DB_not_found" xml:space="preserve">
+    <value>Соединение с сервером баз данных установлено, однако, база данных не найдена.
+Рекомендуется создать новую базу или восстановить из бэкапа.</value>
+  </data>
+  <data name="Info_DB_corrupted" xml:space="preserve">
+    <value>База данных повреждена.
+Рекомендуется создать новую базу или восстановить из бэкапа.</value>
+  </data>
+  <data name="Info_DB_not_found" xml:space="preserve">
+    <value>База данных не найдена.
+Рекомендуется создать новую базу или восстановить из бэкапа.</value>
+  </data>
+  <data name="Info_DB_No_Connection" xml:space="preserve">
+    <value>Соединение с сервером баз данных не установлено.</value>
+  </data>
   <data name="Language" xml:space="preserve">
     <value>Язык</value>
   </data>
@@ -344,6 +362,9 @@
   </data>
   <data name="Pages" xml:space="preserve">
     <value>Страниц</value>
+  </data>
+  <data name="Password_Correct" xml:space="preserve">
+    <value>Пароль верный</value>
   </data>
   <data name="Person" xml:space="preserve">
     <value>Лицо:</value>
@@ -422,6 +443,12 @@
   </data>
   <data name="Value_cannot_be_ empty" xml:space="preserve">
     <value>Значение не может быть пустым</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>Предупреждение</value>
+  </data>
+  <data name="Warning_BD_Deleting" xml:space="preserve">
+    <value>Вы действительно хотите безвозвратно удалить базу даннаых?</value>
   </data>
   <data name="Where_books" xml:space="preserve">
     <value>Где книги</value>

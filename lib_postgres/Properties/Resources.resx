@@ -117,4 +117,29 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="black_hole" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\black_hole.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="broken_base" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\broken_base.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="creation01" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\creation01.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="happy_HDD" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\happy_HDD.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="img_good_DB" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\img_good_DB.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="img_HDD" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\img_HDD.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="img_noconnect" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\img_noconnect.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="wand" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\wand.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

@@ -412,6 +412,15 @@ namespace lib_postgres.CODE.Localization {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Connexion établie.
+        /// </summary>
+        internal static string Connection_established {
+            get {
+                return ResourceManager.GetString("Connection_established", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Date.
         /// </summary>
         internal static string Date {
@@ -583,6 +592,44 @@ namespace lib_postgres.CODE.Localization {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à La connexion au serveur a été établie mais la base de données n&apos;a pas été trouvée. Il est recommandé de créer une nouvelle base de données ou de la restaurer à partir d&apos;une sauvegarde..
+        /// </summary>
+        internal static string Info_Connect_OK_DB_not_found {
+            get {
+                return ResourceManager.GetString("Info_Connect_OK_DB_not_found", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à La base de données est corrompue.
+        ///Il est recommandé de créer une nouvelle base de données ou de la restaurer à partir d&apos;une sauvegarde..
+        /// </summary>
+        internal static string Info_DB_corrupted {
+            get {
+                return ResourceManager.GetString("Info_DB_corrupted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à La connexion au serveur de base de données n&apos;a pas été établie..
+        /// </summary>
+        internal static string Info_DB_No_Connection {
+            get {
+                return ResourceManager.GetString("Info_DB_No_Connection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à La base de données n&apos;a pas été trouvée.
+        ///Il est recommandé de créer une nouvelle base de données ou de la restaurer à partir d&apos;une sauvegarde..
+        /// </summary>
+        internal static string Info_DB_not_found {
+            get {
+                return ResourceManager.GetString("Info_DB_not_found", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Langue.
         /// </summary>
         internal static string Language {
@@ -723,6 +770,15 @@ namespace lib_postgres.CODE.Localization {
         internal static string Pages {
             get {
                 return ResourceManager.GetString("Pages", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Le mot de passe est correct.
+        /// </summary>
+        internal static string Password_Correct {
+            get {
+                return ResourceManager.GetString("Password_Correct", resourceCulture);
             }
         }
         
@@ -957,6 +1013,24 @@ namespace lib_postgres.CODE.Localization {
         internal static string Value_cannot_be__empty {
             get {
                 return ResourceManager.GetString("Value_cannot_be_ empty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Avertissement.
+        /// </summary>
+        internal static string Warning {
+            get {
+                return ResourceManager.GetString("Warning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Voulez-vous vraiment supprimer la base de données de façon définitive?.
+        /// </summary>
+        internal static string Warning_BD_Deleting {
+            get {
+                return ResourceManager.GetString("Warning_BD_Deleting", resourceCulture);
             }
         }
         

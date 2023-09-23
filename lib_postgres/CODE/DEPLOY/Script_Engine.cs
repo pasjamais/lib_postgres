@@ -41,18 +41,18 @@ namespace lib_postgres
             return args.ToString() ;
         }
 
-        public static void Restore_BD_from_Dump_File(string backup_file_path)
-        {
-            string exe = Get_Quotationned_String(Deploy.pg_restore_exe_path);
+        public static void Restore_BD_from_Dump_File(string backup_file_path, string exe_file)
+        {Connection connection = new Connection();
+            string exe = Get_Quotationned_String(exe_file);
             StringBuilder args = new StringBuilder();
             args.Append(Prepare_Ordinary_Parameters());
             args.Append($" {Get_Quotationned_String(backup_file_path)}");
             Run_Process(exe, args.ToString());
         }
 
-        public static void Run_PSQL_Script(List<string> scripts)
+        public static void Run_PSQL_Script(List<string> scripts, string exe_file)
         {
-            string exe = Get_Quotationned_String(Deploy.psql_exe_path);
+            string exe = Get_Quotationned_String(exe_file);
             StringBuilder args = new StringBuilder();
             args.Append(Prepare_Ordinary_Parameters());
             if (scripts is not null && scripts.Count > 0)
@@ -65,11 +65,11 @@ namespace lib_postgres
 
         public static void BackupBD()
         {
-            string exe = Get_Quotationned_String(Deploy.pg_dump_exe_path);
+            Connection connection = new Connection();
+            string exe = Get_Quotationned_String(connection.pg_dump_exe_path());
             //% 3 - h localhost - p 5432 - U postgres - F c - b - v - f ".\%2\lib.backup" lib
             //  - h localhost - p 5432 - U postgres - F c - b - v - f ".\%2\lib.backup" lib
             StringBuilder args = new StringBuilder();
-            Connection connection = new Connection();
             Dictionary<string, string> conn_properties = connection.Get_Connection_Properties();
             foreach (var (key, value) in cp_keys)
             {

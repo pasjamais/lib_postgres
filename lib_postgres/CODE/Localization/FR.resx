@@ -237,6 +237,9 @@
   <data name="Comment" xml:space="preserve">
     <value>Commentaire</value>
   </data>
+  <data name="Connection_established" xml:space="preserve">
+    <value>Connexion établie</value>
+  </data>
   <data name="Date" xml:space="preserve">
     <value>Date</value>
   </data>
@@ -294,6 +297,21 @@
   <data name="ID_book_short_text" xml:space="preserve">
     <value>Livre ID</value>
   </data>
+  <data name="Info_Connect_OK_DB_not_found" xml:space="preserve">
+    <value>La connexion au serveur a été établie mais la base de données n'a pas été trouvée. Il est recommandé de créer une nouvelle base de données ou de la restaurer à partir d'une sauvegarde.</value>
+  </data>
+  <data name="Info_DB_corrupted" xml:space="preserve">
+    <value>La base de données est corrompue.
+Il est recommandé de créer une nouvelle base de données ou de la restaurer à partir d'une sauvegarde.</value>
+  </data>
+  <data name="Info_DB_not_found" xml:space="preserve">
+    <value>La base de données n'a pas été trouvée.
+Il est recommandé de créer une nouvelle base de données ou de la restaurer à partir d'une sauvegarde.</value>
+    <comment>not in use</comment>
+  </data>
+  <data name="Info_DB_No_Connection" xml:space="preserve">
+    <value>La connexion au serveur de base de données n'a pas été établie.</value>
+  </data>
   <data name="Language" xml:space="preserve">
     <value>Langue</value>
   </data>
@@ -341,6 +359,10 @@
   </data>
   <data name="Pages" xml:space="preserve">
     <value>Pages</value>
+  </data>
+  <data name="Password_Correct" xml:space="preserve">
+    <value>Le mot de passe est correct</value>
+    <comment>not in use</comment>
   </data>
   <data name="Person" xml:space="preserve">
     <value>Personne :</value>
@@ -419,6 +441,12 @@
   </data>
   <data name="Value_cannot_be_ empty" xml:space="preserve">
     <value>La valeur ne peut pas être vide</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>Avertissement</value>
+  </data>
+  <data name="Warning_BD_Deleting" xml:space="preserve">
+    <value>Voulez-vous vraiment supprimer la base de données de façon définitive?</value>
   </data>
   <data name="Where_books" xml:space="preserve">
     <value>Où sont les livres</value>

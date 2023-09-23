@@ -22,7 +22,7 @@ namespace lib_postgres.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace lib_postgres.Properties {
         ///   Retourne l'instance ResourceManager mise en cache utilisée par cette classe.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("lib_postgres.Properties.Resources", typeof(Resources).Assembly);
@@ -51,12 +51,92 @@ namespace lib_postgres.Properties {
         ///   les recherches de ressources à l'aide de cette classe de ressource fortement typée.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap black_hole {
+            get {
+                object obj = ResourceManager.GetObject("black_hole", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap broken_base {
+            get {
+                object obj = ResourceManager.GetObject("broken_base", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap creation01 {
+            get {
+                object obj = ResourceManager.GetObject("creation01", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap happy_HDD {
+            get {
+                object obj = ResourceManager.GetObject("happy_HDD", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap img_good_DB {
+            get {
+                object obj = ResourceManager.GetObject("img_good_DB", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap img_HDD {
+            get {
+                object obj = ResourceManager.GetObject("img_HDD", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap img_noconnect {
+            get {
+                object obj = ResourceManager.GetObject("img_noconnect", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap wand {
+            get {
+                object obj = ResourceManager.GetObject("wand", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }

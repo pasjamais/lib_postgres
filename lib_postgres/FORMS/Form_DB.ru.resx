@@ -58,25 +58,103 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>332, 15</value>
+  <data name="L_main.Location" type="System.Drawing.Point, System.Drawing">
+    <value>318, 24</value>
   </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Можно создать новую базу или загрузить существующую.</value>
+  <data name="L_main.Size" type="System.Drawing.Size, System.Drawing">
+    <value>337, 63</value>
+  </data>
+  <data name="L_main.Text" xml:space="preserve">
+    <value>Вас приветствует программа по работе с книгами! Для начала работы выберите подходящее действие:</value>
   </data>
   <data name="LL_Load_Empty_BD.Size" type="System.Drawing.Size, System.Drawing">
-    <value>159, 15</value>
+    <value>186, 19</value>
   </data>
   <data name="LL_Load_Empty_BD.Text" xml:space="preserve">
     <value>Cоздать новую пустую базу</value>
   </data>
+  <data name="LL_Load_Existing_BD.Location" type="System.Drawing.Point, System.Drawing">
+    <value>318, 234</value>
+  </data>
   <data name="LL_Load_Existing_BD.Size" type="System.Drawing.Size, System.Drawing">
-    <value>293, 15</value>
+    <value>338, 19</value>
   </data>
   <data name="LL_Load_Existing_BD.Text" xml:space="preserve">
     <value>Загрузить существующую базу из резервной копии</value>
   </data>
+  <data name="TB_Password.Location" type="System.Drawing.Point, System.Drawing">
+    <value>409, 148</value>
+  </data>
+  <data name="LL_Connect_to_Existing_BD.Size" type="System.Drawing.Size, System.Drawing">
+    <value>292, 19</value>
+  </data>
+  <data name="LL_Connect_to_Existing_BD.Text" xml:space="preserve">
+    <value>Подключение к существующей базе данных</value>
+  </data>
+  <data name="label_password.Size" type="System.Drawing.Size, System.Drawing">
+    <value>112, 19</value>
+  </data>
+  <data name="label_password.Text" xml:space="preserve">
+    <value>Введите пароль:</value>
+  </data>
+  <data name="LB_existDB.Size" type="System.Drawing.Size, System.Drawing">
+    <value>350, 30</value>
+  </data>
+  <data name="LB_existDB.Text" xml:space="preserve">
+    <value>Я знаю или предполагаю, что база данных существует, и хочу попробовать к ней подключиться.</value>
+  </data>
+  <data name="LL_NewDB.Size" type="System.Drawing.Size, System.Drawing">
+    <value>315, 60</value>
+  </data>
+  <data name="LL_NewDB.Text" xml:space="preserve">
+    <value>Я хочу создать базу данных заново, даже если база уже существует. При этом база может быть заполнена начальными значениями в соответствии с выбранным языком приложения.</value>
+  </data>
+  <data name="LB_RestoreBD.Location" type="System.Drawing.Point, System.Drawing">
+    <value>348, 253</value>
+  </data>
+  <data name="LB_RestoreBD.Size" type="System.Drawing.Size, System.Drawing">
+    <value>330, 30</value>
+  </data>
+  <data name="LB_RestoreBD.Text" xml:space="preserve">
+    <value>У меня есть резервная копия (дамп) базы данных и я хочу использовать её для восстановления.</value>
+  </data>
+  <data name="LL_Back.Location" type="System.Drawing.Point, System.Drawing">
+    <value>318, 303</value>
+  </data>
+  <data name="LL_Back.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 15</value>
+  </data>
+  <data name="LL_Back.Text" xml:space="preserve">
+    <value>&lt; Назад</value>
+  </data>
+  <data name="LL_Test_Connect.Location" type="System.Drawing.Point, System.Drawing">
+    <value>428, 174</value>
+  </data>
+  <data name="LL_Test_Connect.Size" type="System.Drawing.Size, System.Drawing">
+    <value>126, 19</value>
+  </data>
+  <data name="LL_Test_Connect.Text" xml:space="preserve">
+    <value>Тест подключения</value>
+  </data>
+  <data name="LL_Connect.Location" type="System.Drawing.Point, System.Drawing">
+    <value>377, 208</value>
+  </data>
+  <data name="LL_Connect.Size" type="System.Drawing.Size, System.Drawing">
+    <value>253, 19</value>
+  </data>
+  <data name="LL_Connect.Text" xml:space="preserve">
+    <value>Сохранить настройки и подключиться</value>
+  </data>
+  <data name="CHB_fill_with_initial.Location" type="System.Drawing.Point, System.Drawing">
+    <value>318, 211</value>
+  </data>
+  <data name="CHB_fill_with_initial.Size" type="System.Drawing.Size, System.Drawing">
+    <value>388, 19</value>
+  </data>
+  <data name="CHB_fill_with_initial.Text" xml:space="preserve">
+    <value>Remplir la base de données avec les valeurs initiales (Recommandé !)</value>
+  </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>База данных не обнаружена</value>
+    <value>Начало работы с программой</value>
   </data>
 </root>

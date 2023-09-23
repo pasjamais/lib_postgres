@@ -57,260 +57,740 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="openFileDialog_BD_Backup.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>479, 17</value>
-  </metadata>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="button_OK.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="button_OK.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 138</value>
+  <data name="menuStrip1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="button_OK.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
-  </data>
-  <data name="button_OK.Size" type="System.Drawing.Size, System.Drawing">
-    <value>82, 22</value>
+  <data name="LL_Connect.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 10pt</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="button_OK.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="button_OK.Text" xml:space="preserve">
-    <value>OK</value>
-  </data>
-  <data name="button_OK.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;button_OK.Name" xml:space="preserve">
-    <value>button_OK</value>
-  </data>
-  <data name="&gt;&gt;button_OK.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;button_OK.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;button_OK.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="button_Cancel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="button_Cancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>400, 138</value>
-  </data>
-  <data name="button_Cancel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
-  </data>
-  <data name="button_Cancel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>82, 22</value>
-  </data>
-  <data name="button_Cancel.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="button_Cancel.Text" xml:space="preserve">
-    <value>Cancel</value>
-  </data>
-  <data name="&gt;&gt;button_Cancel.Name" xml:space="preserve">
-    <value>button_Cancel</value>
-  </data>
-  <data name="&gt;&gt;button_Cancel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;button_Cancel.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;button_Cancel.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
+  <data name="L_Resume.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="LL_Load_Existing_BD.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 10pt</value>
   </data>
-  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 40</value>
-  </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>314, 15</value>
-  </data>
-  <data name="label1.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>You can create a new database or restore it from a backup.</value>
-  </data>
-  <data name="&gt;&gt;label1.Name" xml:space="preserve">
-    <value>label1</value>
-  </data>
-  <data name="&gt;&gt;label1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="LL_Load_Empty_BD.AutoSize" type="System.Boolean, mscorlib">
+  <data name="LB_existDB.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="LL_Load_Empty_BD.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 69</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="pictureBox1.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
+    <value>StretchImage</value>
   </data>
-  <data name="LL_Load_Empty_BD.Size" type="System.Drawing.Size, System.Drawing">
-    <value>162, 15</value>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Getting started with the program</value>
   </data>
-  <data name="LL_Load_Empty_BD.TabIndex" type="System.Int32, mscorlib">
-    <value>87</value>
+  <data name="&gt;&gt;CHB_fill_with_initial.Name" xml:space="preserve">
+    <value>CHB_fill_with_initial</value>
   </data>
-  <data name="LL_Load_Empty_BD.Text" xml:space="preserve">
-    <value>Create a new empty database</value>
+  <data name="&gt;&gt;TB_Password.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem_UI_Language_EN.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="label_password.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 10pt</value>
+  </data>
+  <data name="pictureBox1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="LB_existDB.Text" xml:space="preserve">
+    <value>I know or assume that the database exists and I want to try to connect to it.</value>
+  </data>
+  <data name="LL_Test_Connect.Size" type="System.Drawing.Size, System.Drawing">
+    <value>106, 19</value>
+  </data>
+  <data name="LL_Test_Connect.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="LL_Connect_to_Existing_BD.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;LL_CreateDB.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="CHB_fill_with_initial.TabIndex" type="System.Int32, mscorlib">
+    <value>104</value>
   </data>
   <data name="&gt;&gt;LL_Load_Empty_BD.Name" xml:space="preserve">
     <value>LL_Load_Empty_BD</value>
   </data>
-  <data name="&gt;&gt;LL_Load_Empty_BD.Type" xml:space="preserve">
-    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;LL_Load_Empty_BD.Parent" xml:space="preserve">
+  <data name="&gt;&gt;LL_Connect.Parent" xml:space="preserve">
     <value>$this</value>
-  </data>
-  <data name="&gt;&gt;LL_Load_Empty_BD.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="LL_Load_Existing_BD.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="LL_Load_Existing_BD.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 98</value>
-  </data>
-  <data name="LL_Load_Existing_BD.Size" type="System.Drawing.Size, System.Drawing">
-    <value>198, 15</value>
-  </data>
-  <data name="LL_Load_Existing_BD.TabIndex" type="System.Int32, mscorlib">
-    <value>88</value>
-  </data>
-  <data name="LL_Load_Existing_BD.Text" xml:space="preserve">
-    <value>Load existing database from backup</value>
   </data>
   <data name="&gt;&gt;LL_Load_Existing_BD.Name" xml:space="preserve">
     <value>LL_Load_Existing_BD</value>
   </data>
+  <data name="LL_Test_Connect.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 10pt</value>
+  </data>
+  <data name="button_OK.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="LL_SelectBackupFile.Text" xml:space="preserve">
+    <value>Select backup file to restore</value>
+  </data>
+  <data name="LL_SelectBackupFile.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;LL_Connect_to_Existing_BD.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;L_Resume.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="L_main.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;button_OK.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="button_Cancel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 2, 3, 2</value>
+  </data>
+  <data name="ToolStripMenuItem_UI_Language_FR.Size" type="System.Drawing.Size, System.Drawing">
+    <value>89, 22</value>
+  </data>
+  <data name="LL_CreateDB.TabIndex" type="System.Int32, mscorlib">
+    <value>103</value>
+  </data>
+  <data name="LL_CreateDB.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem_UI_Language_EN.Name" xml:space="preserve">
+    <value>ToolStripMenuItem_UI_Language_EN</value>
+  </data>
+  <data name="LL_NewDB.Location" type="System.Drawing.Point, System.Drawing">
+    <value>371, 181</value>
+  </data>
+  <data name="&gt;&gt;LL_Connect_to_Existing_BD.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="LB_RestoreBD.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem_UI_Language.Name" xml:space="preserve">
+    <value>ToolStripMenuItem_UI_Language</value>
+  </data>
+  <data name="L_Resume.Text" xml:space="preserve">
+    <value>               </value>
+  </data>
+  <data name="&gt;&gt;openFileDialog_BD_Backup.Name" xml:space="preserve">
+    <value>openFileDialog_BD_Backup</value>
+  </data>
+  <data name="LL_Back.Size" type="System.Drawing.Size, System.Drawing">
+    <value>43, 15</value>
+  </data>
+  <data name="&gt;&gt;L_Resume.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="LL_Back.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="LL_NewDB.Size" type="System.Drawing.Size, System.Drawing">
+    <value>350, 45</value>
+  </data>
+  <data name="LL_Back.Location" type="System.Drawing.Point, System.Drawing">
+    <value>228, 308</value>
+  </data>
+  <data name="&gt;&gt;LL_Test_Connect.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="LL_CreateDB.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="&gt;&gt;CHB_fill_with_initial.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;button_OK.Name" xml:space="preserve">
+    <value>button_OK</value>
+  </data>
+  <data name="LL_Test_Connect.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="button_Cancel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>82, 22</value>
+  </data>
+  <data name="&gt;&gt;TB_Password.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="LB_existDB.Location" type="System.Drawing.Point, System.Drawing">
+    <value>371, 101</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem_UI_Language_FR.Name" xml:space="preserve">
+    <value>ToolStripMenuItem_UI_Language_FR</value>
+  </data>
+  <data name="LL_CreateDB.Size" type="System.Drawing.Size, System.Drawing">
+    <value>137, 19</value>
+  </data>
+  <data name="LL_Connect.Location" type="System.Drawing.Point, System.Drawing">
+    <value>449, 299</value>
+  </data>
+  <data name="LL_NewDB.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="LL_Test_Connect.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="LL_Connect_to_Existing_BD.Text" xml:space="preserve">
+    <value>Connect to existing database</value>
+  </data>
+  <data name="&gt;&gt;CHB_fill_with_initial.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;L_main.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LL_CreateDB.Type" xml:space="preserve">
+    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="LB_RestoreBD.Location" type="System.Drawing.Point, System.Drawing">
+    <value>371, 266</value>
+  </data>
+  <data name="&gt;&gt;LL_Connect_to_Existing_BD.Name" xml:space="preserve">
+    <value>LL_Connect_to_Existing_BD</value>
+  </data>
+  <data name="LL_Connect.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;LL_Back.Name" xml:space="preserve">
+    <value>LL_Back</value>
+  </data>
+  <data name="LL_SelectBackupFile.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="LL_Connect_to_Existing_BD.TabIndex" type="System.Int32, mscorlib">
+    <value>92</value>
+  </data>
+  <data name="LL_CreateDB.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="TB_Password.TabIndex" type="System.Int32, mscorlib">
+    <value>90</value>
+  </data>
+  <data name="L_Resume.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="button_OK.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="LL_NewDB.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>350, 0</value>
+  </data>
+  <data name="menuStrip1.Text" xml:space="preserve">
+    <value>menuStrip1</value>
+  </data>
+  <data name="CHB_fill_with_initial.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="LB_RestoreBD.Size" type="System.Drawing.Size, System.Drawing">
+    <value>306, 30</value>
+  </data>
+  <data name="CHB_fill_with_initial.Text" xml:space="preserve">
+    <value>Fill the database with initial values (Recommended!)</value>
+  </data>
+  <data name="LB_existDB.TabIndex" type="System.Int32, mscorlib">
+    <value>94</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.Name" xml:space="preserve">
+    <value>pictureBox1</value>
+  </data>
+  <data name="ToolStripMenuItem_UI_Language_EN.Size" type="System.Drawing.Size, System.Drawing">
+    <value>89, 22</value>
+  </data>
+  <data name="&gt;&gt;LL_SelectBackupFile.Name" xml:space="preserve">
+    <value>LL_SelectBackupFile</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>Form_DB</value>
+  </data>
+  <data name="LL_Load_Empty_BD.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 10pt</value>
+  </data>
+  <data name="button_OK.Text" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="LL_NewDB.TabIndex" type="System.Int32, mscorlib">
+    <value>95</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="L_main.Location" type="System.Drawing.Point, System.Drawing">
+    <value>319, 3</value>
+  </data>
+  <data name="&gt;&gt;button_Cancel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="LL_Load_Empty_BD.Size" type="System.Drawing.Size, System.Drawing">
+    <value>191, 19</value>
+  </data>
+  <data name="&gt;&gt;LL_SelectBackupFile.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="LL_Load_Empty_BD.Text" xml:space="preserve">
+    <value>Create a new empty database</value>
+  </data>
+  <data name="LL_SelectBackupFile.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;L_main.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="CHB_fill_with_initial.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;LL_Back.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;LL_Connect.Name" xml:space="preserve">
+    <value>LL_Connect</value>
+  </data>
+  <data name="&gt;&gt;label_password.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;button_OK.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="LL_Load_Existing_BD.TabIndex" type="System.Int32, mscorlib">
+    <value>88</value>
+  </data>
+  <data name="&gt;&gt;LL_NewDB.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="L_Resume.TabIndex" type="System.Int32, mscorlib">
+    <value>99</value>
+  </data>
+  <data name="ToolStripMenuItem_UI_Language_RU.Text" xml:space="preserve">
+    <value>RU</value>
+  </data>
+  <data name="LL_Load_Existing_BD.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;LL_NewDB.ZOrder" xml:space="preserve">
+    <value>17</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem_UI_Language.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="LL_CreateDB.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 10pt</value>
+  </data>
+  <data name="LB_RestoreBD.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterScreen</value>
+  </data>
+  <data name="&gt;&gt;button_Cancel.Name" xml:space="preserve">
+    <value>button_Cancel</value>
+  </data>
+  <data name="&gt;&gt;LB_existDB.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="LL_SelectBackupFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>177, 19</value>
+  </data>
+  <data name="ToolStripMenuItem_UI_Language.Text" xml:space="preserve">
+    <value>ToolStripMenuItem_UI_Language</value>
+  </data>
+  <data name="label_password.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;LL_Test_Connect.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="CHB_fill_with_initial.Size" type="System.Drawing.Size, System.Drawing">
+    <value>300, 19</value>
+  </data>
+  <data name="LL_Connect.Size" type="System.Drawing.Size, System.Drawing">
+    <value>168, 19</value>
+  </data>
+  <data name="L_main.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;L_main.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;LL_NewDB.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="LL_Connect_to_Existing_BD.Location" type="System.Drawing.Point, System.Drawing">
+    <value>290, 69</value>
+  </data>
+  <data name="TB_Password.Location" type="System.Drawing.Point, System.Drawing">
+    <value>449, 300</value>
+  </data>
+  <data name="LL_SelectBackupFile.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 10pt</value>
+  </data>
+  <data name="&gt;&gt;menuStrip1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ToolStripMenuItem_UI_Language_FR.Text" xml:space="preserve">
+    <value>FR</value>
+  </data>
+  <data name="&gt;&gt;LL_Load_Empty_BD.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="LL_SelectBackupFile.TabIndex" type="System.Int32, mscorlib">
+    <value>102</value>
+  </data>
+  <data name="button_OK.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 2, 3, 2</value>
+  </data>
+  <data name="LL_Load_Empty_BD.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="button_OK.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 318</value>
+  </data>
+  <data name="ToolStripMenuItem_UI_Language.Size" type="System.Drawing.Size, System.Drawing">
+    <value>193, 20</value>
+  </data>
+  <data name="LL_Connect.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;menuStrip1.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="LL_Load_Existing_BD.Text" xml:space="preserve">
+    <value>Load existing database from backup</value>
+  </data>
+  <data name="&gt;&gt;L_Resume.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="LL_Back.TabIndex" type="System.Int32, mscorlib">
+    <value>98</value>
+  </data>
+  <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>770, 24</value>
+  </data>
+  <data name="pictureBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>91</value>
+  </data>
+  <data name="&gt;&gt;LL_SelectBackupFile.Type" xml:space="preserve">
+    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TB_Password.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="LB_existDB.Size" type="System.Drawing.Size, System.Drawing">
+    <value>331, 30</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem_UI_Language_RU.Name" xml:space="preserve">
+    <value>ToolStripMenuItem_UI_Language_RU</value>
+  </data>
+  <data name="&gt;&gt;openFileDialog_BD_Backup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.OpenFileDialog, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="label_password.Text" xml:space="preserve">
+    <value>Enter password:</value>
+  </data>
+  <data name="&gt;&gt;menuStrip1.Name" xml:space="preserve">
+    <value>menuStrip1</value>
+  </data>
+  <data name="L_Resume.Size" type="System.Drawing.Size, System.Drawing">
+    <value>69, 19</value>
+  </data>
+  <data name="LL_Connect.TabIndex" type="System.Int32, mscorlib">
+    <value>101</value>
+  </data>
+  <data name="LL_Connect_to_Existing_BD.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 10pt</value>
+  </data>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>7, 15</value>
+  </data>
+  <data name="&gt;&gt;LL_Test_Connect.Name" xml:space="preserve">
+    <value>LL_Test_Connect</value>
+  </data>
+  <data name="&gt;&gt;menuStrip1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;label_password.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="label_password.Location" type="System.Drawing.Point, System.Drawing">
+    <value>318, 304</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem_UI_Language_FR.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="LL_Load_Existing_BD.Size" type="System.Drawing.Size, System.Drawing">
+    <value>229, 19</value>
+  </data>
+  <data name="&gt;&gt;LB_RestoreBD.ZOrder" xml:space="preserve">
+    <value>19</value>
+  </data>
+  <data name="&gt;&gt;button_Cancel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;LL_Back.Type" xml:space="preserve">
+    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LB_existDB.ZOrder" xml:space="preserve">
+    <value>18</value>
+  </data>
+  <data name="LL_Connect_to_Existing_BD.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="LL_SelectBackupFile.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="LB_RestoreBD.TabIndex" type="System.Int32, mscorlib">
+    <value>96</value>
+  </data>
+  <data name="button_OK.Size" type="System.Drawing.Size, System.Drawing">
+    <value>82, 22</value>
+  </data>
   <data name="&gt;&gt;LL_Load_Existing_BD.Type" xml:space="preserve">
     <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="LB_RestoreBD.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>350, 0</value>
+  </data>
+  <data name="L_Resume.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>400, 0</value>
+  </data>
+  <data name="LL_CreateDB.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="LB_RestoreBD.Text" xml:space="preserve">
+    <value>I have a database backup (dump) and I want to use it for recovery.</value>
+  </data>
+  <data name="LL_Back.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="LL_CreateDB.Text" xml:space="preserve">
+    <value>Create new database</value>
+  </data>
+  <data name="pictureBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>250, 250</value>
+  </data>
+  <data name="&gt;&gt;LL_CreateDB.Name" xml:space="preserve">
+    <value>LL_CreateDB</value>
+  </data>
+  <data name="&gt;&gt;LB_RestoreBD.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="L_main.Size" type="System.Drawing.Size, System.Drawing">
+    <value>383, 40</value>
+  </data>
+  <data name="CHB_fill_with_initial.Location" type="System.Drawing.Point, System.Drawing">
+    <value>396, 280</value>
+  </data>
+  <data name="&gt;&gt;LL_CreateDB.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="LL_Connect_to_Existing_BD.Size" type="System.Drawing.Size, System.Drawing">
+    <value>186, 19</value>
+  </data>
+  <data name="LL_Load_Existing_BD.Location" type="System.Drawing.Point, System.Drawing">
+    <value>290, 237</value>
+  </data>
+  <data name="&gt;&gt;button_Cancel.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="LL_Test_Connect.Location" type="System.Drawing.Point, System.Drawing">
+    <value>331, 320</value>
+  </data>
+  <data name="LL_Load_Empty_BD.TabIndex" type="System.Int32, mscorlib">
+    <value>87</value>
+  </data>
+  <data name="&gt;&gt;TB_Password.Name" xml:space="preserve">
+    <value>TB_Password</value>
+  </data>
+  <data name="&gt;&gt;label_password.Name" xml:space="preserve">
+    <value>label_password</value>
+  </data>
+  <data name="LL_NewDB.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="menuStrip1.TabIndex" type="System.Int32, mscorlib">
+    <value>89</value>
+  </data>
+  <data name="LB_existDB.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>350, 0</value>
+  </data>
+  <data name="button_Cancel.Text" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="&gt;&gt;L_Resume.Name" xml:space="preserve">
+    <value>L_Resume</value>
+  </data>
+  <data name="LL_Back.Text" xml:space="preserve">
+    <value>&lt; Back</value>
+  </data>
+  <data name="&gt;&gt;label_password.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="L_main.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 11pt, style=Bold</value>
+  </data>
+  <data name="&gt;&gt;LL_Back.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;LL_NewDB.Name" xml:space="preserve">
+    <value>LL_NewDB</value>
+  </data>
+  <data name="&gt;&gt;CHB_fill_with_initial.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="button_OK.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="&gt;&gt;LB_RestoreBD.Name" xml:space="preserve">
+    <value>LB_RestoreBD</value>
+  </data>
+  <data name="&gt;&gt;button_OK.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="pictureBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>21, 46</value>
+  </data>
+  <data name="&gt;&gt;LL_Load_Empty_BD.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;LL_SelectBackupFile.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="L_Resume.Location" type="System.Drawing.Point, System.Drawing">
+    <value>318, 24</value>
+  </data>
+  <data name="LL_Test_Connect.TabIndex" type="System.Int32, mscorlib">
+    <value>100</value>
+  </data>
+  <data name="label_password.Size" type="System.Drawing.Size, System.Drawing">
+    <value>106, 19</value>
+  </data>
+  <data name="L_Resume.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 10pt, style=Bold</value>
+  </data>
+  <data name="label_password.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="TB_Password.Size" type="System.Drawing.Size, System.Drawing">
+    <value>165, 23</value>
+  </data>
+  <data name="LL_Connect.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem_UI_Language_RU.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="TB_Password.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="label_password.TabIndex" type="System.Int32, mscorlib">
+    <value>93</value>
+  </data>
+  <data name="&gt;&gt;L_main.Name" xml:space="preserve">
+    <value>L_main</value>
+  </data>
+  <data name="&gt;&gt;LL_Test_Connect.Type" xml:space="preserve">
+    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LB_existDB.Name" xml:space="preserve">
+    <value>LB_existDB</value>
+  </data>
+  <data name="&gt;&gt;LL_Connect_to_Existing_BD.Type" xml:space="preserve">
+    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="LL_NewDB.Text" xml:space="preserve">
+    <value>I want to create a new database, even if the database already exists. In this case, the database can be filled with initial values in accordance with the selected application language.</value>
+  </data>
+  <data name="&gt;&gt;LB_RestoreBD.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="LL_Load_Empty_BD.Location" type="System.Drawing.Point, System.Drawing">
+    <value>290, 145</value>
+  </data>
+  <data name="button_Cancel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="LL_SelectBackupFile.Location" type="System.Drawing.Point, System.Drawing">
+    <value>483, 318</value>
+  </data>
+  <data name="L_main.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>400, 0</value>
+  </data>
+  <data name="LL_Back.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="ToolStripMenuItem_UI_Language_RU.Size" type="System.Drawing.Size, System.Drawing">
+    <value>89, 22</value>
+  </data>
+  <data name="&gt;&gt;LB_existDB.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;LL_Load_Empty_BD.Type" xml:space="preserve">
+    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="LL_Test_Connect.Text" xml:space="preserve">
+    <value>Сonnection test</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>770, 351</value>
+  </data>
+  <data name="button_Cancel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>653, 304</value>
+  </data>
+  <data name="L_main.Text" xml:space="preserve">
+    <value>Welcome to the book program! To get started, select the action that suits you:</value>
+  </data>
+  <data name="LL_CreateDB.Location" type="System.Drawing.Point, System.Drawing">
+    <value>417, 318</value>
+  </data>
+  <data name="&gt;&gt;LL_Connect.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
   <data name="&gt;&gt;LL_Load_Existing_BD.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;LL_Load_Existing_BD.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>12</value>
   </data>
-  <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>678, 17</value>
-  </metadata>
-  <data name="ToolStripMenuItem_UI_Language_RU.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_UI_Language_RU.Text" xml:space="preserve">
-    <value>RU</value>
-  </data>
-  <data name="ToolStripMenuItem_UI_Language_FR.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_UI_Language_FR.Text" xml:space="preserve">
-    <value>FR</value>
-  </data>
-  <data name="ToolStripMenuItem_UI_Language_EN.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+  <data name="LL_Connect.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="ToolStripMenuItem_UI_Language_EN.Text" xml:space="preserve">
     <value>EN</value>
   </data>
-  <data name="ToolStripMenuItem_UI_Language.Size" type="System.Drawing.Size, System.Drawing">
-    <value>193, 20</value>
+  <data name="LL_Connect.Text" xml:space="preserve">
+    <value>Save settings and connect</value>
   </data>
-  <data name="ToolStripMenuItem_UI_Language.Text" xml:space="preserve">
-    <value>ToolStripMenuItem_UI_Language</value>
+  <data name="&gt;&gt;LL_Connect.Type" xml:space="preserve">
+    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="menuStrip1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
+  <data name="button_Cancel.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
   </data>
-  <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>510, 24</value>
+  <data name="L_main.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="menuStrip1.TabIndex" type="System.Int32, mscorlib">
-    <value>89</value>
-  </data>
-  <data name="menuStrip1.Text" xml:space="preserve">
-    <value>menuStrip1</value>
-  </data>
-  <data name="&gt;&gt;menuStrip1.Name" xml:space="preserve">
-    <value>menuStrip1</value>
-  </data>
-  <data name="&gt;&gt;menuStrip1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;menuStrip1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;menuStrip1.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
+  <metadata name="openFileDialog_BD_Backup.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>479, 17</value>
+  </metadata>
+  <metadata name="$this.Language" type="System.Globalization.CultureInfo, System.Private.CoreLib, Culture=neutral, PublicKeyToken=7cec85d7bea7798e">
+    <value>fr</value>
+  </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>7, 15</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>510, 176</value>
-  </data>
-  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
-    <value>CenterScreen</value>
-  </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Database not found</value>
-  </data>
-  <data name="&gt;&gt;openFileDialog_BD_Backup.Name" xml:space="preserve">
-    <value>openFileDialog_BD_Backup</value>
-  </data>
-  <data name="&gt;&gt;openFileDialog_BD_Backup.Type" xml:space="preserve">
-    <value>System.Windows.Forms.OpenFileDialog, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItem_UI_Language.Name" xml:space="preserve">
-    <value>ToolStripMenuItem_UI_Language</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItem_UI_Language.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItem_UI_Language_RU.Name" xml:space="preserve">
-    <value>ToolStripMenuItem_UI_Language_RU</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItem_UI_Language_RU.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItem_UI_Language_FR.Name" xml:space="preserve">
-    <value>ToolStripMenuItem_UI_Language_FR</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItem_UI_Language_FR.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItem_UI_Language_EN.Name" xml:space="preserve">
-    <value>ToolStripMenuItem_UI_Language_EN</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItem_UI_Language_EN.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>Form_DB</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
+  <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>678, 17</value>
+  </metadata>
 </root>

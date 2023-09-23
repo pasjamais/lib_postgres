@@ -58,25 +58,121 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>400, 15</value>
+  <data name="L_main.Location" type="System.Drawing.Point, System.Drawing">
+    <value>309, 22</value>
   </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Vous pouvez créer une nouvelle base de données ou faire une récupération</value>
+  <data name="L_main.Size" type="System.Drawing.Size, System.Drawing">
+    <value>333, 40</value>
+  </data>
+  <data name="L_main.Text" xml:space="preserve">
+    <value>Bienvenue au programme sur les livres ! Pour commencer, sélectionnez l'option convenable :</value>
+  </data>
+  <data name="LL_Load_Empty_BD.Location" type="System.Drawing.Point, System.Drawing">
+    <value>309, 129</value>
   </data>
   <data name="LL_Load_Empty_BD.Size" type="System.Drawing.Size, System.Drawing">
-    <value>197, 15</value>
+    <value>231, 19</value>
   </data>
   <data name="LL_Load_Empty_BD.Text" xml:space="preserve">
     <value>Créer une nouvelle base de données</value>
   </data>
+  <data name="LL_Load_Existing_BD.Location" type="System.Drawing.Point, System.Drawing">
+    <value>309, 223</value>
+  </data>
   <data name="LL_Load_Existing_BD.Size" type="System.Drawing.Size, System.Drawing">
-    <value>333, 15</value>
+    <value>392, 19</value>
   </data>
   <data name="LL_Load_Existing_BD.Text" xml:space="preserve">
     <value>Charger la base de données existante à partir de la sauvegarde</value>
   </data>
+  <data name="TB_Password.Location" type="System.Drawing.Point, System.Drawing">
+    <value>417, 148</value>
+  </data>
+  <data name="LL_Connect_to_Existing_BD.Location" type="System.Drawing.Point, System.Drawing">
+    <value>309, 72</value>
+  </data>
+  <data name="LL_Connect_to_Existing_BD.Size" type="System.Drawing.Size, System.Drawing">
+    <value>262, 19</value>
+  </data>
+  <data name="LL_Connect_to_Existing_BD.Text" xml:space="preserve">
+    <value>Connecter à la base de données existante</value>
+  </data>
+  <data name="label_password.Location" type="System.Drawing.Point, System.Drawing">
+    <value>448, 126</value>
+  </data>
+  <data name="label_password.Size" type="System.Drawing.Size, System.Drawing">
+    <value>112, 19</value>
+  </data>
+  <data name="label_password.Text" xml:space="preserve">
+    <value>Le mot de passe:</value>
+  </data>
+  <data name="LB_existDB.Location" type="System.Drawing.Point, System.Drawing">
+    <value>348, 96</value>
+  </data>
+  <data name="LB_existDB.Size" type="System.Drawing.Size, System.Drawing">
+    <value>318, 30</value>
+  </data>
+  <data name="LB_existDB.Text" xml:space="preserve">
+    <value>Je sais ou suppose que la base de données existe et je veux essayer la connexion.</value>
+  </data>
+  <data name="LL_NewDB.Location" type="System.Drawing.Point, System.Drawing">
+    <value>347, 154</value>
+  </data>
+  <data name="LL_NewDB.Size" type="System.Drawing.Size, System.Drawing">
+    <value>349, 60</value>
+  </data>
+  <data name="LL_NewDB.Text" xml:space="preserve">
+    <value>Je souhaite créer une nouvelle base de données, même si la base de données existe déjà. Dans ce cas, la base de données pourrais  ê remplie de valeurs initiales conformément à la langue d'application sélectionnée.</value>
+  </data>
+  <data name="LB_RestoreBD.Location" type="System.Drawing.Point, System.Drawing">
+    <value>354, 249</value>
+  </data>
+  <data name="LB_RestoreBD.Size" type="System.Drawing.Size, System.Drawing">
+    <value>347, 30</value>
+  </data>
+  <data name="LB_RestoreBD.Text" xml:space="preserve">
+    <value>J'ai une sauvegarde de la base de données (dump) et je souhaite l'utiliser pour la récupérer.</value>
+  </data>
+  <data name="LL_Back.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 15</value>
+  </data>
+  <data name="LL_Back.Text" xml:space="preserve">
+    <value>&lt; Retour</value>
+  </data>
+  <data name="LL_Test_Connect.Location" type="System.Drawing.Point, System.Drawing">
+    <value>434, 174</value>
+  </data>
+  <data name="LL_Test_Connect.Size" type="System.Drawing.Size, System.Drawing">
+    <value>125, 19</value>
+  </data>
+  <data name="LL_Test_Connect.Text" xml:space="preserve">
+    <value>Tester la connexion</value>
+  </data>
+  <data name="LL_Connect.Location" type="System.Drawing.Point, System.Drawing">
+    <value>394, 214</value>
+  </data>
+  <data name="LL_Connect.Size" type="System.Drawing.Size, System.Drawing">
+    <value>248, 19</value>
+  </data>
+  <data name="LL_Connect.Text" xml:space="preserve">
+    <value>Enregistrer les paramètres et connecter</value>
+  </data>
+  <data name="LL_SelectBackupFile.Location" type="System.Drawing.Point, System.Drawing">
+    <value>417, 230</value>
+  </data>
+  <data name="LL_CreateDB.Location" type="System.Drawing.Point, System.Drawing">
+    <value>434, 233</value>
+  </data>
+  <data name="CHB_fill_with_initial.Location" type="System.Drawing.Point, System.Drawing">
+    <value>318, 196</value>
+  </data>
+  <data name="CHB_fill_with_initial.Size" type="System.Drawing.Size, System.Drawing">
+    <value>385, 19</value>
+  </data>
+  <data name="CHB_fill_with_initial.Text" xml:space="preserve">
+    <value>Remplir la base de données avec les valeurs initiales (recommandé !)</value>
+  </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Base de données introuvable</value>
+    <value>Premiers pas avec l'application</value>
   </data>
 </root>

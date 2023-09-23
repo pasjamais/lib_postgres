@@ -240,6 +240,9 @@
   <data name="Comment" xml:space="preserve">
     <value>Comment</value>
   </data>
+  <data name="Connection_established" xml:space="preserve">
+    <value>Connection established</value>
+  </data>
   <data name="Date" xml:space="preserve">
     <value>Date</value>
   </data>
@@ -297,6 +300,20 @@
   <data name="ID_book_short_text" xml:space="preserve">
     <value>Book ID</value>
   </data>
+  <data name="Info_Connect_OK_DB_not_found" xml:space="preserve">
+    <value>The connection to the database server has been established, but the database was not found. It is recommended to create a new database or restore from a backup.</value>
+  </data>
+  <data name="Info_DB_corrupted" xml:space="preserve">
+    <value>The database is corrupted.
+It is recommended to create a new database or restore from a backup.</value>
+  </data>
+  <data name="Info_DB_not_found" xml:space="preserve">
+    <value>The database was not found.
+It is recommended to create a new database or restore from a backup.</value>
+  </data>
+  <data name="Info_DB_No_Connection" xml:space="preserve">
+    <value>The connection to the database server has not been established.</value>
+  </data>
   <data name="Language" xml:space="preserve">
     <value>Language</value>
   </data>
@@ -344,6 +361,9 @@
   </data>
   <data name="Pages" xml:space="preserve">
     <value>Pages</value>
+  </data>
+  <data name="Password_Correct" xml:space="preserve">
+    <value>The password is correct</value>
   </data>
   <data name="Person" xml:space="preserve">
     <value>Person</value>
@@ -422,6 +442,12 @@
   </data>
   <data name="Value_cannot_be_ empty" xml:space="preserve">
     <value>Value cannot be empty</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>Warning</value>
+  </data>
+  <data name="Warning_BD_Deleting" xml:space="preserve">
+    <value>Are you sure to permanently delete the database?</value>
   </data>
   <data name="Where_books" xml:space="preserve">
     <value>Where are the books</value>

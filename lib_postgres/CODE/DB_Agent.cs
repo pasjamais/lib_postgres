@@ -18,14 +18,18 @@ namespace lib_postgres
         {
             Connection connection = new Connection();
             return connection.Prepare_Connection_String(false);
-        //    return CODE.IniFile.Get_Value_from_Settings_File(CODE.Data.ini_file_name, "connection_string", "GENERAL");
         }
 
-        public static string Get_Password()
+        public static string _Get_Password()
         {
+
             return CODE.IniFile.Get_Value_from_Settings_File(CODE.Data.ini_file_name, "Password", "CONNECTION");
         }
-
+        public static string Get_Password()
+        {
+            Connection connection = new Connection();
+            return connection.Get_Password();
+        }
         public static void Save_Changes()
         {
             db.SaveChanges();
