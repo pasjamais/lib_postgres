@@ -948,7 +948,6 @@
             // 
             this.ToolStripMenuItem_About.Name = "ToolStripMenuItem_About";
             resources.ApplyResources(this.ToolStripMenuItem_About, "ToolStripMenuItem_About");
-            this.ToolStripMenuItem_About.Click += new System.EventHandler(this.ToolStripMenuItem_About_Click);
             // 
             // ToolStripMenuItem_UI_Language
             // 

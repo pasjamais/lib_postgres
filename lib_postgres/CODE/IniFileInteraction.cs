@@ -20,7 +20,19 @@ namespace lib_postgres.CODE
             CODE.IniFile ini = new CODE.IniFile(CODE.Data.ini_file_name);
             ini.Write(key, new_value, section);
         }
-
-
+        public static bool String_to_Bool(string key, string section)
+        {
+            string txt = Get_Value_from_Settings_File(key, section);
+            bool is_Erasable;
+            try
+            {
+                 is_Erasable = Convert.ToBoolean(txt);
+            }
+            catch
+            {
+                return false;
+            }
+            return is_Erasable;
+        }
     }
 }

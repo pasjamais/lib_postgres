@@ -28,10 +28,7 @@ namespace lib_postgres.CODE.DEPLOY
 
         public static bool is_Backup_on_Start()
         {
-            string str_Backup_on_Start = IniFileInteraction.Get_Value_from_Settings_File("Backup_on_Start", "GENERAL");
-            bool is_Backup_on_Start = Convert.ToBoolean(str_Backup_on_Start);
-            if (is_Backup_on_Start) return true;
-            else return false;
+            return IniFileInteraction.String_to_Bool("Backup_on_Start", "GENERAL");
         }
         public static void Set_Value_Backup_on_Start(bool new_value)
         {

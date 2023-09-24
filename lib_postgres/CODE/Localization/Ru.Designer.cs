@@ -547,6 +547,24 @@ namespace lib_postgres.CODE.Localization {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Безвозвратно удалить произведение из базы.
+        /// </summary>
+        internal static string Erase_Art {
+            get {
+                return ResourceManager.GetString("Erase_Art", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Безвозвратно удалить книгу из базы.
+        /// </summary>
+        internal static string Erase_Book {
+            get {
+                return ResourceManager.GetString("Erase_Book", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à RU_ini.sql.
         /// </summary>
         internal static string Filename_Init_Script {

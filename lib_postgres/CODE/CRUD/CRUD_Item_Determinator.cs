@@ -1,4 +1,7 @@
-﻿using System.Reflection;
+﻿using lib_postgres.Properties;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.Reflection;
+using static System.Collections.Specialized.BitVector32;
 
 namespace lib_postgres.CODE.CRUD
 {
@@ -165,6 +168,28 @@ namespace lib_postgres.CODE.CRUD
             if (type == typeof(Location))
                 return CODE.Queries_LinQ.Get_Locations();
             else return -1;
+        }
+
+        public static long Erase_Item_by_ID<T>(long id)
+        {
+            string methodName = "Erase_Item_by_ID";
+            Type type = typeof(T);
+            if (type.GetMethod(methodName) != null)
+                return (long)type.GetMethod(methodName)
+                    .Invoke(null, new object[] {id });
+            else return -1;
+        }
+        public static bool is_Elements_Erasable()
+        {
+            return IniFileInteraction.String_to_Bool("Delete_Forever", "GENERAL");
+        }
+
+        public static void Set_Value_Delete_Forever(bool new_value)
+        {
+            Connection connection = new Connection();
+            string query = new_value ? Resources.Query_Set_On_Delete_Cascade : Resources.Query_Set_On_Delete_Cascade.Replace("CASCADE", "NO ACTION");
+            Queries_SQL_Direct.Execute_Command(query, connection.Prepare_Connection_String(false));
+            IniFileInteraction.Set_Value_into_Settings_File("Delete_Forever", new_value.ToString());
         }
     }
 }

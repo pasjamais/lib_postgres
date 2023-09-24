@@ -279,6 +279,12 @@
   <data name="Edit_series" xml:space="preserve">
     <value>Edit book series</value>
   </data>
+  <data name="Erase_Art" xml:space="preserve">
+    <value>Permanently delete art from the database</value>
+  </data>
+  <data name="Erase_Book" xml:space="preserve">
+    <value>Permanently delete book from the database</value>
+  </data>
   <data name="Filename_Init_Script" xml:space="preserve">
     <value>EN_ini.sql</value>
   </data>

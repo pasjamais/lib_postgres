@@ -1,4 +1,6 @@
-﻿using lib_postgres.CODE.DEPLOY;
+﻿using lib_postgres.CODE;
+using lib_postgres.CODE.CRUD;
+using lib_postgres.CODE.DEPLOY;
 using lib_postgres.CODE.VIEW.DELITEMS;
 using System;
 using System.Collections.Generic;
@@ -21,6 +23,7 @@ namespace lib_postgres.FORMS
             ChB_Backup_on_Start.Checked = Backup.is_Backup_on_Start();
             deleted_Entities_Visuaisator = new Deleted_Entities_Visuaisator();
             ChB_Show_Deleted_Entities.Checked = deleted_Entities_Visuaisator.Is_Colorize_deleted_items;
+            ChB_Delete_Forever.Checked = CRUD_Item_Determinator.is_Elements_Erasable();
         }
 
     }

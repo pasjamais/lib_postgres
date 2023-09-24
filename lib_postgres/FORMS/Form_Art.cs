@@ -22,7 +22,7 @@ namespace lib_postgres
             InitializeComponent();
             this.dgv_Visualisator = new DGV_Visualisator();
             General_Manipulations.CB_reload<Language>(CB_Langue, 3);//русский по-умолчанию
-            CB_Genre_reload(1);
+            CB_Genre_reload(DB_Agent.Get_Genres().FirstOrDefault().Id);
             selected_Autors = new List<Author>();
             DGV_All_Authors.DataSource      = General_Manipulations.Bind_List_to_DGV(DB_Agent.Get_Authors());
             DGV_Selected_Authors.DataSource = General_Manipulations.Bind_List_to_DGV(selected_Autors);

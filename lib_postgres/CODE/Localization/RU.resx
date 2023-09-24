@@ -279,6 +279,12 @@
   <data name="Edit_series" xml:space="preserve">
     <value>Изменить серию</value>
   </data>
+  <data name="Erase_Art" xml:space="preserve">
+    <value>Безвозвратно удалить произведение из базы</value>
+  </data>
+  <data name="Erase_Book" xml:space="preserve">
+    <value>Безвозвратно удалить книгу из базы</value>
+  </data>
   <data name="Filename_Init_Script" xml:space="preserve">
     <value>RU_ini.sql</value>
   </data>

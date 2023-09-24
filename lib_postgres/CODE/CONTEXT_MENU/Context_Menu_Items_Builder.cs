@@ -1,4 +1,5 @@
 ﻿using lib_postgres;
+using lib_postgres.CODE.CRUD;
 
 namespace lib_postgres
 {
@@ -30,6 +31,14 @@ namespace lib_postgres
             Form_Main form = Form_Main.GetInstance();
             EventHandler result = (EventHandler)Delegate.CreateDelegate(typeof(EventHandler), form, method_name);
             return result;
+        }
+
+        public static ToolStripMenuItem Create_Menu_Item_Erase_Entity_Forever(string title_key, string method_name)
+        {
+            var item = Create_Menu_Item_Using_Added_Resource(title_key, method_name);
+            item.ForeColor = Color.Red;
+            item.Enabled = CRUD_Item_Determinator.is_Elements_Erasable();
+            return item;
         }
     }
 }

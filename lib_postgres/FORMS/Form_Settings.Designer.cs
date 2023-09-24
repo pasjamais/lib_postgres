@@ -33,6 +33,7 @@
             this.button_OK = new System.Windows.Forms.Button();
             this.button_Cancel = new System.Windows.Forms.Button();
             this.ChB_Show_Deleted_Entities = new System.Windows.Forms.CheckBox();
+            this.ChB_Delete_Forever = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // ChB_Backup_on_Start
@@ -61,12 +62,19 @@
             this.ChB_Show_Deleted_Entities.Name = "ChB_Show_Deleted_Entities";
             this.ChB_Show_Deleted_Entities.UseVisualStyleBackColor = true;
             // 
+            // ChB_Delete_Forever
+            // 
+            resources.ApplyResources(this.ChB_Delete_Forever, "ChB_Delete_Forever");
+            this.ChB_Delete_Forever.Name = "ChB_Delete_Forever";
+            this.ChB_Delete_Forever.UseVisualStyleBackColor = true;
+            // 
             // Form_Settings
             // 
             this.AcceptButton = this.button_OK;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.button_Cancel;
+            this.Controls.Add(this.ChB_Delete_Forever);
             this.Controls.Add(this.ChB_Show_Deleted_Entities);
             this.Controls.Add(this.button_Cancel);
             this.Controls.Add(this.button_OK);
@@ -84,5 +92,6 @@
         private Button button_Cancel;
         public CheckBox ChB_Backup_on_Start;
         public CheckBox ChB_Show_Deleted_Entities;
+        public CheckBox ChB_Delete_Forever;
     }
 }
