@@ -1,4 +1,6 @@
-﻿using lib_postgres.CODE.CRUD;
+﻿using System;
+using System.Collections.Generic;
+using lib_postgres.CODE.CRUD;
 
 namespace lib_postgres
 {
