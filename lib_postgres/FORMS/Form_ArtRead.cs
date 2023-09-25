@@ -15,12 +15,13 @@ namespace lib_postgres.FORMS
         public Form_ArtRead()
         {
             InitializeComponent();
-            General_Manipulations.CB_reload<Structures.Short_Art>(CB_Art, 1);
-            General_Manipulations.CB_reload<BookFormat>(CB_BookFormat, 1);
-            General_Manipulations.CB_reload<Mark>(CB_Mark, 1); 
-            General_Manipulations.CB_reload<ViewBook>(CB_PaperBook, 1);
-            General_Manipulations.CB_reload<Language>(CB_Langue, 3);//русский по-умолчанию
-            ChB_PaperBook.Enabled = (long)CB_BookFormat.SelectedValue == 1;
+            ComboBox_Helper.CB_reload_for_Special_Types<Structures.Short_Art>(CB_Art);
+            ComboBox_Helper.CB_reload<BookFormat>(CB_BookFormat);
+            ComboBox_Helper.CB_reload<Mark>(CB_Mark);
+            ComboBox_Helper.CB_reload_for_Special_Types<ViewBook>(CB_PaperBook);
+            ComboBox_Helper.CB_reload<Language>(CB_Langue);//russian :3
+            if (CB_BookFormat.SelectedValue != null && (long)CB_BookFormat.SelectedValue == 1 ) 
+                ChB_PaperBook.Enabled = (long)CB_BookFormat.SelectedValue == 1; 
 
         }
 

@@ -9,6 +9,7 @@
             items.Add(Context_Menu_Items_Builder.Create_Menu_Item_Using_Form_Resource("ToolStripMenuItem__Recommendations_ِAdd.Text", "ToolStripMenuItem__Recommendation_Add_Click"));
             items.Add(Context_Menu_Items_Builder.Create_Menu_Item_Using_Form_Resource("ToolStripMenuItem__Recommendations_Edit.Text", "ToolStripMenuItem__Recommendations_Edit_Click"));
             items.Add(Context_Menu_Items_Builder.Create_Menu_Item_Using_Form_Resource("ToolStripMenuItem__Recommendations_Delete.Text", "ToolStripMenuItem__Recommendations_Delete_Click"));
+            items.Add(Context_Menu_Items_Builder.Create_Menu_Item_Erase_Entity_Forever("Erase_Recommendation", "Erase_Recommendation"));
             items.Add(new ToolStripSeparator());
             items.Add(Context_Menu_Items_Builder.Create_Menu_Item_Using_Form_Resource("ToolStripMenuItem__Recommend_Vis_Graphviz.Text", "ToolStripMenuItem__Recommend_Vis_Graphviz_Click"));
             items.Add(Context_Menu_Items_Builder.Create_Menu_Item_Using_Form_Resource("toolStripMenuItem_Recomm_Tree.Text", "ToolStripMenuItem__Recommendations_Tree_Click"));

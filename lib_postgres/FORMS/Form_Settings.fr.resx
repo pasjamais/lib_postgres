@@ -70,6 +70,12 @@
   <data name="ChB_Show_Deleted_Entities.Text" xml:space="preserve">
     <value>Afficher les enregistrements supprimés</value>
   </data>
+  <data name="ChB_Delete_Forever.Size" type="System.Drawing.Size, System.Drawing">
+    <value>291, 19</value>
+  </data>
+  <data name="ChB_Delete_Forever.Text" xml:space="preserve">
+    <value>Activer l'option de suppression des objets à jamais</value>
+  </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Paramètres</value>
   </data>

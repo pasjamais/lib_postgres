@@ -547,6 +547,150 @@ namespace lib_postgres.CODE.Localization {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Permanently delete action from the database.
+        /// </summary>
+        internal static string Erase_Action {
+            get {
+                return ResourceManager.GetString("Erase_Action", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Permanently delete art from the database.
+        /// </summary>
+        internal static string Erase_Art {
+            get {
+                return ResourceManager.GetString("Erase_Art", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Permanently delete record of reeading a book.
+        /// </summary>
+        internal static string Erase_ArtRead {
+            get {
+                return ResourceManager.GetString("Erase_ArtRead", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Permanently delete author from the database.
+        /// </summary>
+        internal static string Erase_Author {
+            get {
+                return ResourceManager.GetString("Erase_Author", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Permanently delete book from the database.
+        /// </summary>
+        internal static string Erase_Book {
+            get {
+                return ResourceManager.GetString("Erase_Book", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Permanently delete book reading format from the database.
+        /// </summary>
+        internal static string Erase_BookFormat {
+            get {
+                return ResourceManager.GetString("Erase_BookFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Permanently delete city from the database.
+        /// </summary>
+        internal static string Erase_City {
+            get {
+                return ResourceManager.GetString("Erase_City", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Permanently delete genre from the database.
+        /// </summary>
+        internal static string Erase_Genre {
+            get {
+                return ResourceManager.GetString("Erase_Genre", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Permanently delete language from the database.
+        /// </summary>
+        internal static string Erase_Language {
+            get {
+                return ResourceManager.GetString("Erase_Language", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Permanently delete mark from the database.
+        /// </summary>
+        internal static string Erase_Mark {
+            get {
+                return ResourceManager.GetString("Erase_Mark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Permanently delete person from the database.
+        /// </summary>
+        internal static string Erase_Person {
+            get {
+                return ResourceManager.GetString("Erase_Person", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Permanently delete storage from the database.
+        /// </summary>
+        internal static string Erase_Place {
+            get {
+                return ResourceManager.GetString("Erase_Place", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Permanently delete publishing house from the database.
+        /// </summary>
+        internal static string Erase_PublishingHouse {
+            get {
+                return ResourceManager.GetString("Erase_PublishingHouse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Permanently delete recommendation from the database.
+        /// </summary>
+        internal static string Erase_Recommendation {
+            get {
+                return ResourceManager.GetString("Erase_Recommendation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Permanently delete series from the database.
+        /// </summary>
+        internal static string Erase_Series {
+            get {
+                return ResourceManager.GetString("Erase_Series", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Permanently delete another source to read from the database.
+        /// </summary>
+        internal static string Erase_SourceToreadAnother {
+            get {
+                return ResourceManager.GetString("Erase_SourceToreadAnother", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à EN_ini.sql.
         /// </summary>
         internal static string Filename_Init_Script {

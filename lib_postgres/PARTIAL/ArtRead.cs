@@ -17,8 +17,8 @@ namespace lib_postgres
             ArtRead element = DB_Agent.Get_First_Deleted_Entity_or_New<ArtRead >(DB_Agent.Get_ArtReads());
             Form_ArtRead form = new Form_ArtRead();
             {
-                General_Manipulations.CB_reload<Structures.Short_Art>(form.CB_Art, 1);
-                General_Manipulations.CB_reload<BookFormat>(form.CB_BookFormat, 2);//2 is digital format. Sorry about magic constant
+                ComboBox_Helper.CB_reload_for_Special_Types<Structures.Short_Art>(form.CB_Art);
+                ComboBox_Helper.CB_reload<BookFormat>(form.CB_BookFormat, 2);//2 is digital format. Sorry about magic constant
             }
             DialogResult dialogResult = form.ShowDialog();
             if (dialogResult != DialogResult.OK) return -1;
@@ -33,7 +33,8 @@ namespace lib_postgres
             artRead.MarkId = (System.Int64)form.CB_Mark.SelectedValue;
             if (form.CB_Langue.SelectedValue is not null)
                 artRead.ReadLanguageId = (System.Int64)form.CB_Langue.SelectedValue;
-            artRead.BookFormatId = (System.Int64)form.CB_BookFormat.SelectedValue;
+
+            artRead.BookFormatId = form.CB_BookFormat.SelectedValue is null ? null : (System.Int64)form.CB_BookFormat.SelectedValue;
             if (form.TB_Comment.Text != "") artRead.Comment = form.TB_Comment.Text;
             artRead.Date = DateOnly.FromDateTime(form.dateTimePicker.Value.Date);
             artRead.BookId = form.ChB_PaperBook.Checked ? (System.Int64)form.CB_PaperBook.SelectedValue : null;
@@ -55,7 +56,7 @@ namespace lib_postgres
                 DateTime d = new DateTime(artRead.Date.Value.Year, artRead.Date.Value.Month, artRead.Date.Value.Day);
                 form.dateTimePicker.Value = d;
             }
-            form.CB_BookFormat.SelectedValue = artRead.BookFormatId;
+            form.CB_BookFormat.SelectedValue = artRead.BookFormatId ?? 0;
             form.CB_Langue.SelectedValue = artRead.ReadLanguageId ?? 0;
             form.CB_Mark.SelectedValue = artRead.MarkId ?? 0;
             form.TB_Comment.Text = artRead.Comment;
@@ -98,8 +99,8 @@ namespace lib_postgres
             ArtRead element = DB_Agent.Get_First_Deleted_Entity_or_New<ArtRead>(DB_Agent.Get_ArtReads());
             Form_ArtRead form = new Form_ArtRead();
             {
-                General_Manipulations.CB_reload<Structures.Short_Art>(form.CB_Art, IDart);
-                General_Manipulations.CB_reload<BookFormat>(form.CB_BookFormat, 2);
+                ComboBox_Helper.CB_reload_for_Special_Types<Structures.Short_Art>(form.CB_Art, IDart);
+                ComboBox_Helper.CB_reload<BookFormat>(form.CB_BookFormat, 2);//magic 
             }
             DialogResult dialogResult = form.ShowDialog();
             if (dialogResult != DialogResult.OK) return -1;

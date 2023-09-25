@@ -131,6 +131,36 @@ namespace lib_postgres.Properties {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à --all tables here: 
+        ///-- action
+        ///-- art
+        ///-- art_read
+        ///-- art_to_read
+        ///-- author_art
+        ///-- book
+        ///-- location
+        ///-- possession	
+        ///
+        ///-- public.author_art
+        ///
+        ///ALTER TABLE IF EXISTS public.author_art
+        ///	DROP CONSTRAINT author_art_art_fkey,
+        ///    ADD CONSTRAINT author_art_art_fkey FOREIGN KEY (art)
+        ///    REFERENCES public.art (id) MATCH SIMPLE
+        ///    ON UPDATE NO ACTION
+        ///    ON DELETE CASCADE;
+        ///	
+        ///ALTER TABLE IF EXISTS public.author_art
+        ///    DROP CONSTRAINT author_art_author_fkey,
+        ///	ADD CONSTRAINT author_art_author_fkey FORE [le reste de la chaîne a été tronqué]&quot;;.
+        /// </summary>
+        public static string Query_Set_On_Delete_Cascade {
+            get {
+                return ResourceManager.GetString("Query_Set_On_Delete_Cascade", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
         public static System.Drawing.Bitmap wand {

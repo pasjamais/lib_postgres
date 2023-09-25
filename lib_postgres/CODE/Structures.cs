@@ -1,4 +1,6 @@
-﻿using System;
+﻿using lib_postgres.CODE;
+using lib_postgres.CODE.VIEW.ComboBox;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,7 +21,8 @@ namespace lib_postgres
                 Name = name;
             }
         }
-        public struct Short_Art
+        public struct Short_Art : IShow_in_Combobox
+        
         {
             public long? Id { get; set; }
             public string Name { get; set; }
@@ -28,7 +31,21 @@ namespace lib_postgres
                 Id = id;
                 Name = name;
             }
+            public static void Show_in_Combobox(ComboBox CB)
+            {
+                var elements = Queries_LinQ.Get_Short_Arts();
+                long id = 0;
+                if (elements != null && elements.Count > 0 && elements.First().Id != null)
+                {
+                    id = (long)elements.First().Id;
+                }
+                CB.DataSource = elements;
+                ComboBox_Helper.CB_visual_reload(CB, id);
+            }
         }
+
+
+
         public struct Location_Record
         {
             public long Id { get; set; }

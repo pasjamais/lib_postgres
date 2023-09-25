@@ -321,15 +321,18 @@ namespace lib_postgres.CODE
             foreach (DataGridViewRow row in DGV.Rows)
             {
                 var format_color_id = (from f in formats
-                                  //     where f.Name == row.Cells[_s("Format")].Value.ToString()
-                                     where f.Name == row.Cells["Формат"].Value.ToString()
-                                       select f.Id).First();
-                row.DefaultCellStyle.BackColor = lib_postgres.CODE.Data.format_colors[format_color_id];
+                                       where row.Cells["Формат"].Value is not null
+                                       where f.Name == row.Cells["Формат"].Value.ToString()
+                                       select f.Id).FirstOrDefault();
+                if (lib_postgres.CODE.Data.format_colors.ContainsKey(format_color_id))
+                    row.DefaultCellStyle.BackColor = lib_postgres.CODE.Data.format_colors[format_color_id];
                 var mark_color_id = (from m in marks
+                                     where row.Cells["Оценка"].Value is not null
                                      where m.Name == row.Cells["Оценка"].Value.ToString()
-                                     select m.Id).First();
-                if (mark_color_id < 4 || mark_color_id > 6)
-                    row.Cells["Оценка"].Style.BackColor = lib_postgres.CODE.Data.marks_colors[mark_color_id];
+                                     select m.Id).FirstOrDefault();
+                if(lib_postgres.CODE.Data.marks_colors.ContainsKey(mark_color_id))
+                    if (mark_color_id < 4 || mark_color_id > 6)
+                        row.Cells["Оценка"].Style.BackColor = lib_postgres.CODE.Data.marks_colors[mark_color_id];
             }
 
         }

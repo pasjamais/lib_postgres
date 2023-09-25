@@ -21,8 +21,8 @@ namespace lib_postgres
         {
             InitializeComponent();
             this.dgv_Visualisator = new DGV_Visualisator();
-            General_Manipulations.CB_reload<Language>(CB_Langue, 3);//русский по-умолчанию
-            CB_Genre_reload(1);
+            ComboBox_Helper.CB_reload<Language>(CB_Langue); // here possible show language by default
+            ComboBox_Helper.CB_reload<Genre>(CB_Genre);
             selected_Autors = new List<Author>();
             DGV_All_Authors.DataSource      = General_Manipulations.Bind_List_to_DGV(DB_Agent.Get_Authors());
             DGV_Selected_Authors.DataSource = General_Manipulations.Bind_List_to_DGV(selected_Autors);
@@ -39,18 +39,6 @@ namespace lib_postgres
             selected_Autors = authors;
             DGV_Selected_Authors.DataSource = General_Manipulations.Bind_List_to_DGV(selected_Autors);
             DGV_Selected_Authors.Refresh();
-        }
-
-        private void CB_Genre_reload(long id)
-        {
-            var genres = DB_Agent.Get_Genres();
-            var item = (from q in genres
-                        where q.Id == id
-                        select q).Take(1).First();
-            CB_Genre.DataSource = genres;
-            CB_Genre.ValueMember = "Id";
-            CB_Genre.DisplayMember = "Name";
-            CB_Genre.SelectedIndex = genres.IndexOf(item);
         }
 
         private void BT_Add_Langue_Original_Click(object sender, EventArgs e)
@@ -146,14 +134,14 @@ namespace lib_postgres
         private void Create_Genre()
         {
             var id = Genre.Create_Item();
-            if (id > 0) CB_Genre_reload(id);
+            if (id > 0) ComboBox_Helper.CB_reload<Genre>(CB_Genre, id);
             DialogResult = DialogResult.None;
         }
 
         private void Create_Language()
         {
             var id = Language.Create_Item();
-            if (id != 0) General_Manipulations.CB_reload<Language>(CB_Langue, id);
+            if (id != 0) ComboBox_Helper.CB_reload<Language>(CB_Langue, id);
             DialogResult = DialogResult.None;
         }
 

@@ -57,56 +57,93 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="&gt;&gt;ChB_Backup_on_Start.Type" xml:space="preserve">
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="button_OK.TabIndex" type="System.Int32, mscorlib">
+    <value>86</value>
+  </data>
+  <data name="&gt;&gt;ChB_Show_Deleted_Entities.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;button_Cancel.Name" xml:space="preserve">
+    <value>button_Cancel</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Settings</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="ChB_Backup_on_Start.Size" type="System.Drawing.Size, System.Drawing">
-    <value>169, 19</value>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>800, 450</value>
+  </data>
+  <data name="button_Cancel.Text" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="&gt;&gt;button_OK.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="ChB_Backup_on_Start.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;ChB_Delete_Forever.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="ChB_Delete_Forever.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="ChB_Delete_Forever.Size" type="System.Drawing.Size, System.Drawing">
+    <value>279, 19</value>
+  </data>
+  <data name="ChB_Show_Deleted_Entities.Size" type="System.Drawing.Size, System.Drawing">
+    <value>139, 19</value>
+  </data>
+  <data name="button_Cancel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>82, 22</value>
+  </data>
+  <data name="&gt;&gt;button_Cancel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="ChB_Show_Deleted_Entities.Text" xml:space="preserve">
+    <value>Show deleted records</value>
+  </data>
+  <data name="ChB_Backup_on_Start.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 12</value>
+  </data>
+  <data name="ChB_Delete_Forever.TabIndex" type="System.Int32, mscorlib">
+    <value>89</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="ChB_Delete_Forever.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="&gt;&gt;ChB_Delete_Forever.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="button_OK.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 3, 2</value>
   </data>
-  <data name="button_Cancel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>82, 22</value>
+  <data name="&gt;&gt;ChB_Show_Deleted_Entities.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>7, 15</value>
-  </data>
-  <data name="button_Cancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>706, 417</value>
+  <data name="ChB_Show_Deleted_Entities.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 37</value>
   </data>
   <data name="&gt;&gt;ChB_Backup_on_Start.Name" xml:space="preserve">
     <value>ChB_Backup_on_Start</value>
   </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>Form_Settings</value>
+  <data name="&gt;&gt;ChB_Backup_on_Start.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;button_Cancel.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="&gt;&gt;ChB_Backup_on_Start.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
-  <data name="&gt;&gt;button_OK.Name" xml:space="preserve">
-    <value>button_OK</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="button_Cancel.TabIndex" type="System.Int32, mscorlib">
     <value>87</value>
   </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;ChB_Show_Deleted_Entities.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Settings</value>
-  </data>
-  <data name="&gt;&gt;button_OK.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;button_OK.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="button_OK.Size" type="System.Drawing.Size, System.Drawing">
-    <value>82, 22</value>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>Form_Settings</value>
   </data>
   <data name="&gt;&gt;ChB_Backup_on_Start.Parent" xml:space="preserve">
     <value>$this</value>
@@ -114,79 +151,75 @@
   <data name="&gt;&gt;button_Cancel.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="ChB_Show_Deleted_Entities.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 37</value>
-  </data>
-  <data name="&gt;&gt;button_Cancel.Name" xml:space="preserve">
-    <value>button_Cancel</value>
-  </data>
-  <data name="button_Cancel.Text" xml:space="preserve">
-    <value>Cancel</value>
-  </data>
-  <data name="ChB_Show_Deleted_Entities.Size" type="System.Drawing.Size, System.Drawing">
-    <value>139, 19</value>
-  </data>
-  <data name="&gt;&gt;ChB_Show_Deleted_Entities.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;ChB_Show_Deleted_Entities.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="button_OK.Text" xml:space="preserve">
-    <value>OK</value>
-  </data>
-  <data name="ChB_Backup_on_Start.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="ChB_Backup_on_Start.Text" xml:space="preserve">
+    <value>Database backup at startup</value>
   </data>
   <data name="ChB_Show_Deleted_Entities.TabIndex" type="System.Int32, mscorlib">
     <value>88</value>
   </data>
-  <data name="ChB_Backup_on_Start.Text" xml:space="preserve">
-    <value>Database backup at startup</value>
+  <data name="button_OK.Text" xml:space="preserve">
+    <value>OK</value>
   </data>
-  <data name="&gt;&gt;ChB_Show_Deleted_Entities.Name" xml:space="preserve">
-    <value>ChB_Show_Deleted_Entities</value>
+  <data name="&gt;&gt;ChB_Delete_Forever.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="button_Cancel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>706, 417</value>
   </data>
   <data name="&gt;&gt;button_OK.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;ChB_Backup_on_Start.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="button_OK.TabIndex" type="System.Int32, mscorlib">
-    <value>86</value>
-  </data>
-  <data name="ChB_Backup_on_Start.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 12</value>
+  <data name="ChB_Delete_Forever.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 62</value>
   </data>
   <data name="button_Cancel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 3, 2</value>
   </data>
-  <data name="&gt;&gt;ChB_Show_Deleted_Entities.ZOrder" xml:space="preserve">
+  <data name="button_OK.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 417</value>
+  </data>
+  <data name="&gt;&gt;button_Cancel.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;button_OK.Name" xml:space="preserve">
+    <value>button_OK</value>
+  </data>
+  <data name="&gt;&gt;button_OK.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ChB_Delete_Forever.Text" xml:space="preserve">
+    <value>Enable the option to delete objects permanently</value>
+  </data>
+  <data name="ChB_Backup_on_Start.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
+  </data>
+  <data name="button_OK.Size" type="System.Drawing.Size, System.Drawing">
+    <value>82, 22</value>
+  </data>
+  <data name="&gt;&gt;ChB_Delete_Forever.Name" xml:space="preserve">
+    <value>ChB_Delete_Forever</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterScreen</value>
+  </data>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>7, 15</value>
+  </data>
+  <data name="ChB_Backup_on_Start.Size" type="System.Drawing.Size, System.Drawing">
+    <value>169, 19</value>
   </data>
   <data name="ChB_Show_Deleted_Entities.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="ChB_Show_Deleted_Entities.Text" xml:space="preserve">
-    <value>Show deleted records</value>
+  <data name="&gt;&gt;ChB_Show_Deleted_Entities.Name" xml:space="preserve">
+    <value>ChB_Show_Deleted_Entities</value>
   </data>
-  <data name="button_OK.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 417</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
-    <value>CenterScreen</value>
-  </data>
-  <data name="&gt;&gt;button_Cancel.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="ChB_Backup_on_Start.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>800, 450</value>
-  </data>
+  <metadata name="$this.Language" type="System.Globalization.CultureInfo, System.Private.CoreLib, Culture=neutral, PublicKeyToken=7cec85d7bea7798e">
+    <value>fr</value>
+  </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>

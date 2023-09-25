@@ -547,6 +547,150 @@ namespace lib_postgres.CODE.Localization {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Безвозвратно удалить действие из базы.
+        /// </summary>
+        internal static string Erase_Action {
+            get {
+                return ResourceManager.GetString("Erase_Action", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Безвозвратно удалить произведение из базы.
+        /// </summary>
+        internal static string Erase_Art {
+            get {
+                return ResourceManager.GetString("Erase_Art", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Безвозвратно удалить запись о прочитанном произведении из базы.
+        /// </summary>
+        internal static string Erase_ArtRead {
+            get {
+                return ResourceManager.GetString("Erase_ArtRead", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Безвозвратно удалить автора из базы.
+        /// </summary>
+        internal static string Erase_Author {
+            get {
+                return ResourceManager.GetString("Erase_Author", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Безвозвратно удалить книгу из базы.
+        /// </summary>
+        internal static string Erase_Book {
+            get {
+                return ResourceManager.GetString("Erase_Book", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Безвозвратно удалить формат прочтения из базы.
+        /// </summary>
+        internal static string Erase_BookFormat {
+            get {
+                return ResourceManager.GetString("Erase_BookFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Безвозвратно удалить город из базы.
+        /// </summary>
+        internal static string Erase_City {
+            get {
+                return ResourceManager.GetString("Erase_City", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Безвозвратно удалить жанр из базы.
+        /// </summary>
+        internal static string Erase_Genre {
+            get {
+                return ResourceManager.GetString("Erase_Genre", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Безвозвратно удалить язык из базы.
+        /// </summary>
+        internal static string Erase_Language {
+            get {
+                return ResourceManager.GetString("Erase_Language", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Безвозвратно удалить оценку из базы.
+        /// </summary>
+        internal static string Erase_Mark {
+            get {
+                return ResourceManager.GetString("Erase_Mark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Безвозвратно удалить лицо из базы.
+        /// </summary>
+        internal static string Erase_Person {
+            get {
+                return ResourceManager.GetString("Erase_Person", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Безвозвратно удалить место хранения из базы.
+        /// </summary>
+        internal static string Erase_Place {
+            get {
+                return ResourceManager.GetString("Erase_Place", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Безвозвратно удалить издательство из базы.
+        /// </summary>
+        internal static string Erase_PublishingHouse {
+            get {
+                return ResourceManager.GetString("Erase_PublishingHouse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Безвозвратно удалить рекомендацию из базы.
+        /// </summary>
+        internal static string Erase_Recommendation {
+            get {
+                return ResourceManager.GetString("Erase_Recommendation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Безвозвратно удалить серию книг из базы.
+        /// </summary>
+        internal static string Erase_Series {
+            get {
+                return ResourceManager.GetString("Erase_Series", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Безвозвратно удалить иной источник рекомендации из базы.
+        /// </summary>
+        internal static string Erase_SourceToreadAnother {
+            get {
+                return ResourceManager.GetString("Erase_SourceToreadAnother", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à RU_ini.sql.
         /// </summary>
         internal static string Filename_Init_Script {

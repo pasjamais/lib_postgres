@@ -85,8 +85,8 @@ namespace lib_postgres
         public static void Fill_Element_Without_Authors(Art art, Form_Art form_Art)
         {
             art.Name = form_Art.tb_Name.Text;
-            if (form_Art.ChB_Genre.Checked) art.Genre = (long)form_Art.CB_Genre.SelectedValue;
-            if (form_Art.ChB_Language.Checked) art.OrigLanguage = (System.Int64)form_Art.CB_Langue.SelectedValue;
+            if (form_Art.ChB_Genre.Checked) art.Genre = form_Art.CB_Genre.SelectedValue is null ? null : (long)form_Art.CB_Genre.SelectedValue;
+            if (form_Art.ChB_Language.Checked) art.OrigLanguage = form_Art.CB_Langue.SelectedValue is null ? null : (System.Int64)form_Art.CB_Langue.SelectedValue;
             if (form_Art.TB_YearCreation.Text != "")
             {
                 int x = 0;

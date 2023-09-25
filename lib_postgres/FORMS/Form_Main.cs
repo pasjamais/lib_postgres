@@ -25,6 +25,8 @@ using System.Reflection;
 using Microsoft.Win32;
 using System.Text.RegularExpressions;
 using System.Xml.Linq;
+using lib_postgres.CODE.CRUD;
+using System.Security.Cryptography.Xml;
 
 namespace lib_postgres
 {
@@ -53,6 +55,10 @@ namespace lib_postgres
         DGV_Visualisator dgv_Visualisator;
         public DGV_Visualisator.Turn_Off_or_ON_Current_Menu_Item Turn_Off;
         public DGV_Visualisator.Turn_Off_or_ON_Current_Menu_Item Turn_ON;
+
+        // for reload table after exit from settings form, renew DGV after operations of erasing
+        private delegate void Last_DGV_Update_Operation();
+        Last_DGV_Update_Operation last_DGV_Update_Operation;
 
         private Deploy deploy = new Deploy();
 
@@ -116,17 +122,17 @@ namespace lib_postgres
         }
         private void cmi_item_add_art_to_read_Click(object sender, EventArgs e)
         {
-                     if (current_Working_Type == typeof(Art))
-                     {
-                         int index = dataGridView.SelectedRows[0].Index;
-                         long id_art = (long)dataGridView.Rows[index].Cells["Id"].Value;
-                         var id = ArtRead.Create_Item_by_Art(id_art);
-                         if (id > 0)
-                         {
-                             ToolStripMenuItem__Read_Open_Click(sender, e);
-                             General_Manipulations.show_row(dataGridView, id.ToString(), "Id");
-                         }
-                     }
+            if (current_Working_Type == typeof(Art))
+            {
+                int index = dataGridView.SelectedRows[0].Index;
+                long id_art = (long)dataGridView.Rows[index].Cells["Id"].Value;
+                var id = ArtRead.Create_Item_by_Art(id_art);
+                if (id > 0)
+                {
+                    ToolStripMenuItem__Read_Open_Click(sender, e);
+                    General_Manipulations.show_row(dataGridView, id.ToString(), "Id");
+                }
+            }
         }
         private void Update_Context_Menu()
         {
@@ -149,8 +155,6 @@ namespace lib_postgres
             }
             return range;
         }
-
-
         #endregion
 
         #region additional
@@ -167,8 +171,6 @@ namespace lib_postgres
             get => base.Text;
             set => base.Text = Caption + value;
         }
-
-
         #endregion additional
 
         #region main_menu_creation
@@ -226,14 +228,19 @@ namespace lib_postgres
             DialogResult dialogResult = form_Settings.ShowDialog();
             if (dialogResult != DialogResult.OK) return;
 
+            // 1. Backup
             Backup.Set_Value_Backup_on_Start(form_Settings.ChB_Backup_on_Start.Checked);
+
+            // 2. Is_Colorize_deleted_items
             // save new deleted_elements visualisation into object property
             dgv_Visualisator.deleted_Entities_Visuaisator.Is_Colorize_deleted_items = form_Settings.ChB_Show_Deleted_Entities.Checked;
             // save new deleted_elements visualisation to INI file
             dgv_Visualisator.deleted_Entities_Visuaisator.Write_Value_isShow_Deleted_to_INI_File();
+            
+            // 3. Set_Value_Delete_Forever
+            CRUD_Item_Determinator.Set_Value_Delete_Forever(form_Settings.ChB_Delete_Forever.Checked);
 
-            if (current_Working_Type == typeof(ViewBook))
-                dgv_Visualisator.Refresh_DGV_for_Item_Type<ViewBook>(dataGridView, Turn_Off, Turn_ON, StatusProperty);
+            last_DGV_Update_Operation();
         }
         void show_arts_by_langue(object sender, EventArgs e)
         {
@@ -267,7 +274,7 @@ namespace lib_postgres
             dataGridView.DataSource = Queries_LinQ.Get_Books_by_Place_Name(((ToolStripMenuItem)sender).Text);
             dgv_Visualisator.Refresh_DGV_for_Get_Books_by_Place_Name(dataGridView);
         }
-  
+
         private void ToolStripMenuItem__Recommend_Vis_Graphviz_Click(object sender, EventArgs e)
         {
             FORMS.Form_Graphviz form_graphviz = new lib_postgres.FORMS.Form_Graphviz();
@@ -315,6 +322,11 @@ namespace lib_postgres
         {
             Delete_Genre();
         }
+
+        private void Erase_Genre(object sender, EventArgs e)
+        {
+            Erase_Item<Genre>();
+        }
         #endregion
 
         #region Authors
@@ -334,6 +346,10 @@ namespace lib_postgres
         {
             Delete_Author();
         }
+        private void Erase_Author(object sender, EventArgs e)
+        {
+            Erase_Item<Author>();
+        }
         #endregion
 
         #region Art
@@ -352,6 +368,13 @@ namespace lib_postgres
         private void ToolStripMenuItem_Arts_Delete_Click(object sender, EventArgs e)
         {
             Delete_Art();
+        }
+        private void Erase_Art(object sender, EventArgs e)
+        {
+            Erase_Item<Art>();
+
+
+
         }
         #endregion
 
@@ -373,6 +396,10 @@ namespace lib_postgres
         {
             Delete_Language();
         }
+        private void Erase_Language(object sender, EventArgs e)
+        {
+            Erase_Item<Language>();
+        }
         #endregion
 
         #region Book
@@ -391,6 +418,10 @@ namespace lib_postgres
         internal void ToolStripMenuItem_Books_Delete_Click(object sender, EventArgs e)
         {
             Delete_Book();
+        }
+        private void Erase_Book(object sender, EventArgs e)
+        {
+            Erase_Item<Book>();
         }
         #endregion
 
@@ -411,6 +442,10 @@ namespace lib_postgres
         {
             Delete_PublishingHouse();
         }
+        private void Erase_PublishingHouse(object sender, EventArgs e)
+        {
+            Erase_Item<PublishingHouse>();
+        }
         #endregion
 
         #region City
@@ -430,6 +465,10 @@ namespace lib_postgres
         private void ToolStripMenuItem_City_Delete_Click(object sender, EventArgs e)
         {
             Delete_City();
+        }
+        private void Erase_City(object sender, EventArgs e)
+        {
+            Erase_Item<City>();
         }
         #endregion
 
@@ -454,6 +493,11 @@ namespace lib_postgres
         {
             Edit_Book_Format();
         }
+
+        private void Erase_BookFormat(object sender, EventArgs e)
+        {
+            Erase_Item<BookFormat>();
+        }
         #endregion Book_Format
 
         #region Place
@@ -476,6 +520,11 @@ namespace lib_postgres
         {
             Create_Place();
         }
+        private void Erase_Place(object sender, EventArgs e)
+        {
+            Erase_Item<Place>();
+        }
+
         #endregion Place
 
         #region People
@@ -498,6 +547,11 @@ namespace lib_postgres
         {
             Delete_Person();
         }
+
+        private void Erase_Person(object sender, EventArgs e)
+        {
+            Erase_Item<Person>();
+        }
         #endregion People
 
         #region Actions
@@ -516,6 +570,10 @@ namespace lib_postgres
         private void ToolStripMenuItem_Actions_Delete_Click(object sender, EventArgs e)
         {
             Delete_Action();
+        }
+        private void Erase_Action(object sender, EventArgs e)
+        {
+            Erase_Item<Action>();
         }
         #endregion
 
@@ -539,6 +597,11 @@ namespace lib_postgres
         {
             Edit_Mark();
         }
+
+        private void Erase_Mark(object sender, EventArgs e)
+        {
+            Erase_Item<Mark>();
+        }
         #endregion Marks
 
         #region Series
@@ -558,6 +621,11 @@ namespace lib_postgres
         {
             Delete_Series();
         }
+        private void Erase_Series(object sender, EventArgs e)
+        {
+            Erase_Item<Series>();
+        }
+
         #endregion
 
         #region ArtRead
@@ -587,9 +655,14 @@ namespace lib_postgres
                 General_Manipulations.show_row(dataGridView, id.ToString(), "Id");
             }
         }
+
+        private void Erase_ArtRead(object sender, EventArgs e)
+        {
+            Erase_Item<ArtRead>();
+        }
         #endregion ArtRead
 
-        #region recommendations
+        #region ArtToRead
 
         private void ToolStripMenuItem__Recommendation_Add_Click(object sender, EventArgs e)
         {
@@ -615,7 +688,11 @@ namespace lib_postgres
             var DialogResult = form_Recommendation.ShowDialog();
         }
 
-        #endregion recommendations
+        private void Erase_Recommendation(object sender, EventArgs e)
+        {
+            Erase_Item<ArtToRead>();
+        }
+        #endregion ArtToRead
 
         #region  SourceToreadAnother
         private void ToolStripMenuItem_SourceToreadAnother_Show_Click(object sender, EventArgs e)
@@ -636,6 +713,11 @@ namespace lib_postgres
         private void ToolStripMenuItem_SourceToreadAnother_Delete_Click(object sender, EventArgs e)
         {
             Delete_SourceToreadAnother();
+        }
+
+        private void Erase_SourceToreadAnother(object sender, EventArgs e)
+        {
+            Erase_Item<SourceToreadAnother>();
         }
         #endregion SourceToreadAnother
 
@@ -816,6 +898,12 @@ namespace lib_postgres
                 General_Manipulations.show_row(dataGridView, id.ToString(), "Id");
             }
         }
+
+        private void Erase_Item<T>()
+        {
+            long id = CODE.CRUD.CRUD_Item_Determinator.Erase_Item_by_ID<T>(dgv_Visualisator.Get_Selected_Entity_ID(dataGridView));
+            last_DGV_Update_Operation();
+        }
         #endregion general CRUD
 
         #region CRUD
@@ -827,6 +915,7 @@ namespace lib_postgres
         }
         private void Read_Books()
         {
+            last_DGV_Update_Operation = Read_Books;
             dgv_Visualisator.Refresh_DGV_for_Item_Type<ViewBook>(dataGridView, Turn_Off, Turn_ON, StatusProperty);
         }
         public void Edit_Book()
@@ -846,6 +935,7 @@ namespace lib_postgres
         }
         private void Read_Authors()
         {
+            last_DGV_Update_Operation = Read_Authors;
             dgv_Visualisator.Refresh_DGV_for_Item_Type<Author>(dataGridView, Turn_Off, Turn_ON, StatusProperty);
         }
         private void Edit_Author()
@@ -865,6 +955,7 @@ namespace lib_postgres
         }
         private void Read_Cities()
         {
+            last_DGV_Update_Operation = Read_Cities;
             dgv_Visualisator.Refresh_DGV_for_Item_Type<City>(dataGridView, Turn_Off, Turn_ON, StatusProperty);
         }
         private void Edit_City()
@@ -884,6 +975,7 @@ namespace lib_postgres
         }
         private void Read_Genre()
         {
+            last_DGV_Update_Operation = Read_Genre;
             dgv_Visualisator.Refresh_DGV_for_Item_Type<Genre>(dataGridView, Turn_Off, Turn_ON, StatusProperty);
         }
         private void Edit_Genre()
@@ -903,6 +995,7 @@ namespace lib_postgres
         }
         private void Read_Arts()
         {
+            last_DGV_Update_Operation = Read_Arts;
             dgv_Visualisator.Refresh_DGV_for_Item_Type<Art>(dataGridView, Turn_Off, Turn_ON, StatusProperty);
         }
         private void Edit_Art()
@@ -922,6 +1015,7 @@ namespace lib_postgres
         }
         private void Read_Languages()
         {
+            last_DGV_Update_Operation = Read_Languages;
             dgv_Visualisator.Refresh_DGV_for_Item_Type<Language>(dataGridView, Turn_Off, Turn_ON, StatusProperty);
         }
         private void Edit_Language()
@@ -941,6 +1035,7 @@ namespace lib_postgres
         }
         private void Read_Marks()
         {
+            last_DGV_Update_Operation = Read_Marks;
             dgv_Visualisator.Refresh_DGV_for_Item_Type<Mark>(dataGridView, Turn_Off, Turn_ON, StatusProperty);
         }
         private void Edit_Mark()
@@ -960,6 +1055,7 @@ namespace lib_postgres
         }
         private void Read_PublishingHouses()
         {
+            last_DGV_Update_Operation = Read_PublishingHouses;
             dgv_Visualisator.Refresh_DGV_for_Item_Type<PublishingHouse>(dataGridView, Turn_Off, Turn_ON, StatusProperty);
         }
         private void Edit_PublishingHouse()
@@ -979,6 +1075,7 @@ namespace lib_postgres
         }
         private void Read_Series()
         {
+            last_DGV_Update_Operation = Read_Series;
             dgv_Visualisator.Refresh_DGV_for_Item_Type<Series>(dataGridView, Turn_Off, Turn_ON, StatusProperty);
         }
 
@@ -1000,6 +1097,7 @@ namespace lib_postgres
         }
         private void Read_Actions()
         {
+            last_DGV_Update_Operation = Read_Actions;
             dgv_Visualisator.Refresh_DGV_for_Item_Type<Action>(dataGridView, Turn_Off, Turn_ON, StatusProperty);
         }
         private void Edit_Action()
@@ -1020,6 +1118,7 @@ namespace lib_postgres
         }
         private void Read_Book_Formats()
         {
+            last_DGV_Update_Operation = Read_Book_Formats;
             dgv_Visualisator.Refresh_DGV_for_Item_Type<BookFormat>(dataGridView, Turn_Off, Turn_ON, StatusProperty);
         }
         private void Edit_Book_Format()
@@ -1039,6 +1138,7 @@ namespace lib_postgres
         }
         private void Read_Places()
         {
+            last_DGV_Update_Operation = Read_Places;
             dgv_Visualisator.Refresh_DGV_for_Item_Type<Place>(dataGridView, Turn_Off, Turn_ON, StatusProperty);
         }
         private void Edit_Place()
@@ -1058,6 +1158,7 @@ namespace lib_postgres
         }
         private void Read_People()
         {
+            last_DGV_Update_Operation = Read_People;
             dgv_Visualisator.Refresh_DGV_for_Item_Type<Person>(dataGridView, Turn_Off, Turn_ON, StatusProperty);
         }
         private void Edit_Person()
@@ -1077,6 +1178,8 @@ namespace lib_postgres
         }
         private void Read_ArtReads()
         {
+            last_DGV_Update_Operation = Read_ArtReads;
+
             dataGridView.Columns.Clear();
             dataGridView.DataSource = DB_Agent.Get_ViewHasReads();
             Turn_Off_Current_Menu_Item();
@@ -1108,6 +1211,7 @@ namespace lib_postgres
         }
         private void Read_Recommendations()
         {
+            last_DGV_Update_Operation = Read_Recommendations;
             dgv_Visualisator.Refresh_DGV_for_Item_Type<ArtToRead>(dataGridView, Turn_Off, Turn_ON, StatusProperty);
         }
         private void Edit_Recommendation()
@@ -1130,6 +1234,7 @@ namespace lib_postgres
         }
         private void Read_SourceToreadAnothers()
         {
+            last_DGV_Update_Operation = Read_SourceToreadAnothers;
             dgv_Visualisator.Refresh_DGV_for_Item_Type<SourceToreadAnother>(dataGridView, Turn_Off, Turn_ON, StatusProperty);
         }
         private void Edit_SourceToreadAnother()
@@ -1145,6 +1250,7 @@ namespace lib_postgres
         #region Location CRUD
         private void Read_Locations()
         {
+            last_DGV_Update_Operation = Read_Locations;
             dgv_Visualisator.Refresh_DGV_for_Item_Type<Location>(dataGridView, Turn_Off, Turn_ON, StatusProperty);
 
         }
@@ -1153,8 +1259,6 @@ namespace lib_postgres
         #endregion Location CRUD
 
         #endregion CRUD
-
-
 
         #region Localosation
 
@@ -1178,11 +1282,7 @@ namespace lib_postgres
 
         #endregion Localosation
 
-        private void ToolStripMenuItem_About_Click(object sender, EventArgs e)
-        {
-
-
-        }
+   
     }
 }
 

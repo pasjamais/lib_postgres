@@ -18,11 +18,11 @@ namespace lib_postgres
         public Form_Book()
         {
             InitializeComponent();
-            General_Manipulations.CB_reload<Structures.Short_Art>(CB_Art, 1);
-            General_Manipulations.CB_reload<Language>(CB_Book_Language, 3);//русский по-умолчанию
-            General_Manipulations.CB_reload<City>(CB_City, 1);
-            General_Manipulations.CB_reload<PublishingHouse>(CB_Publishing_House, 1);
-            General_Manipulations.CB_reload<Series>(CB_Series, 1);
+            ComboBox_Helper.CB_reload_for_Special_Types<Structures.Short_Art>(CB_Art);
+            ComboBox_Helper.CB_reload<Language>(CB_Book_Language);// Langue default
+            ComboBox_Helper.CB_reload<City>(CB_City);
+            ComboBox_Helper.CB_reload<PublishingHouse>(CB_Publishing_House);
+            ComboBox_Helper.CB_reload<Series>(CB_Series);
         }
 
         private void ChB_Publishing_House_CheckedChanged(object sender, EventArgs e)
@@ -48,7 +48,7 @@ namespace lib_postgres
         private void BT_Add_Art_Click(object sender, EventArgs e)
         {
             var id = Art.Create_Item();
-            if (id > 0) General_Manipulations.CB_reload<Structures.Short_Art>(CB_Art, id);
+            if (id > 0) ComboBox_Helper.CB_reload_for_Special_Types<Structures.Short_Art>(CB_Art, id);
             DialogResult = DialogResult.None;
         }
 
@@ -56,28 +56,28 @@ namespace lib_postgres
         private void BT_Add_Maison_Click(object sender, EventArgs e)
         {
             var id = PublishingHouse.Create_Item();
-            if (id != 0) General_Manipulations.CB_reload<PublishingHouse>(CB_Publishing_House, id);
+            if (id != 0) ComboBox_Helper.CB_reload<PublishingHouse>(CB_Publishing_House, id);
             DialogResult = DialogResult.None;
         }
 
         private void BT_Add_Langue_Book_Click(object sender, EventArgs e)
         {
             var id = Language.Create_Item();
-            if (id != 0) General_Manipulations.CB_reload<Language>(CB_Book_Language, id);
+            if (id != 0) ComboBox_Helper.CB_reload<Language>(CB_Book_Language, id);
             DialogResult = DialogResult.None;
         }
 
         private void BT_Add_City_Click(object sender, EventArgs e)
         {
             var id = City.Create_Item();
-            if (id != 0) General_Manipulations.CB_reload<City>( CB_City, id);
+            if (id != 0) ComboBox_Helper.CB_reload<City>( CB_City, id);
             DialogResult = DialogResult.None;
         }
 
         private void BT_Add_Serie_Click(object sender, EventArgs e)
         {
             var id = Series.Create_Item();
-            if (id != 0) General_Manipulations.CB_reload<Series>(CB_Series, id);
+            if (id != 0) ComboBox_Helper.CB_reload<Series>(CB_Series, id);
             DialogResult = DialogResult.None;
         }
 

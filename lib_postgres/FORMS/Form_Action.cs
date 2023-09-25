@@ -21,8 +21,8 @@ namespace lib_postgres.FORMS
         {
             InitializeComponent();
             this.dgv_Visualisator = new DGV_Visualisator();
-            General_Manipulations.CB_reload<Place>(CB_Place, 1);
-            General_Manipulations.CB_reload<ActionType>(CB_Action_Type, 1);
+            ComboBox_Helper.CB_reload<Place>(CB_Place);
+            ComboBox_Helper.CB_reload<ActionType>(CB_Action_Type);
 
             all_books = Queries_from_Views.Get_Books();
             DGV_AllBooks.DataSource = General_Manipulations.Bind_List_to_DGV(all_books);

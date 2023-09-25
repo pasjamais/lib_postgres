@@ -279,6 +279,54 @@
   <data name="Edit_series" xml:space="preserve">
     <value>Edit book series</value>
   </data>
+  <data name="Erase_Action" xml:space="preserve">
+    <value>Permanently delete action from the database</value>
+  </data>
+  <data name="Erase_Art" xml:space="preserve">
+    <value>Permanently delete art from the database</value>
+  </data>
+  <data name="Erase_ArtRead" xml:space="preserve">
+    <value>Permanently delete record of reeading a book</value>
+  </data>
+  <data name="Erase_Author" xml:space="preserve">
+    <value>Permanently delete author from the database</value>
+  </data>
+  <data name="Erase_Book" xml:space="preserve">
+    <value>Permanently delete book from the database</value>
+  </data>
+  <data name="Erase_BookFormat" xml:space="preserve">
+    <value>Permanently delete book reading format from the database</value>
+  </data>
+  <data name="Erase_City" xml:space="preserve">
+    <value>Permanently delete city from the database</value>
+  </data>
+  <data name="Erase_Genre" xml:space="preserve">
+    <value>Permanently delete genre from the database</value>
+  </data>
+  <data name="Erase_Language" xml:space="preserve">
+    <value>Permanently delete language from the database</value>
+  </data>
+  <data name="Erase_Mark" xml:space="preserve">
+    <value>Permanently delete mark from the database</value>
+  </data>
+  <data name="Erase_Person" xml:space="preserve">
+    <value>Permanently delete person from the database</value>
+  </data>
+  <data name="Erase_Place" xml:space="preserve">
+    <value>Permanently delete storage from the database</value>
+  </data>
+  <data name="Erase_PublishingHouse" xml:space="preserve">
+    <value>Permanently delete publishing house from the database</value>
+  </data>
+  <data name="Erase_Recommendation" xml:space="preserve">
+    <value>Permanently delete recommendation from the database</value>
+  </data>
+  <data name="Erase_Series" xml:space="preserve">
+    <value>Permanently delete series from the database</value>
+  </data>
+  <data name="Erase_SourceToreadAnother" xml:space="preserve">
+    <value>Permanently delete another source to read from the database</value>
+  </data>
   <data name="Filename_Init_Script" xml:space="preserve">
     <value>EN_ini.sql</value>
   </data>

@@ -279,6 +279,54 @@
   <data name="Edit_series" xml:space="preserve">
     <value>Изменить серию</value>
   </data>
+  <data name="Erase_Action" xml:space="preserve">
+    <value>Безвозвратно удалить действие из базы</value>
+  </data>
+  <data name="Erase_Art" xml:space="preserve">
+    <value>Безвозвратно удалить произведение из базы</value>
+  </data>
+  <data name="Erase_ArtRead" xml:space="preserve">
+    <value>Безвозвратно удалить запись о прочитанном произведении из базы</value>
+  </data>
+  <data name="Erase_Author" xml:space="preserve">
+    <value>Безвозвратно удалить автора из базы</value>
+  </data>
+  <data name="Erase_Book" xml:space="preserve">
+    <value>Безвозвратно удалить книгу из базы</value>
+  </data>
+  <data name="Erase_BookFormat" xml:space="preserve">
+    <value>Безвозвратно удалить формат прочтения из базы</value>
+  </data>
+  <data name="Erase_City" xml:space="preserve">
+    <value>Безвозвратно удалить город из базы</value>
+  </data>
+  <data name="Erase_Genre" xml:space="preserve">
+    <value>Безвозвратно удалить жанр из базы</value>
+  </data>
+  <data name="Erase_Language" xml:space="preserve">
+    <value>Безвозвратно удалить язык из базы</value>
+  </data>
+  <data name="Erase_Mark" xml:space="preserve">
+    <value>Безвозвратно удалить оценку из базы</value>
+  </data>
+  <data name="Erase_Person" xml:space="preserve">
+    <value>Безвозвратно удалить лицо из базы</value>
+  </data>
+  <data name="Erase_Place" xml:space="preserve">
+    <value>Безвозвратно удалить место хранения из базы</value>
+  </data>
+  <data name="Erase_PublishingHouse" xml:space="preserve">
+    <value>Безвозвратно удалить издательство из базы</value>
+  </data>
+  <data name="Erase_Recommendation" xml:space="preserve">
+    <value>Безвозвратно удалить рекомендацию из базы</value>
+  </data>
+  <data name="Erase_Series" xml:space="preserve">
+    <value>Безвозвратно удалить серию книг из базы</value>
+  </data>
+  <data name="Erase_SourceToreadAnother" xml:space="preserve">
+    <value>Безвозвратно удалить иной источник рекомендации из базы</value>
+  </data>
   <data name="Filename_Init_Script" xml:space="preserve">
     <value>RU_ini.sql</value>
   </data>

@@ -23,21 +23,21 @@ namespace lib_postgres.FORMS
         public Form_Art_To_Read(Dictionary<string, long> sources_saved_positions) : this()
         {
             Sources_saved_positions = sources_saved_positions;
-            General_Manipulations.CB_reload<Short_Art>(CB_Toread_Art, sources_saved_positions["art_to_read"]);
-            General_Manipulations.CB_reload<Author>(CB_Toread_Author, sources_saved_positions["author_to_read"]);
-            General_Manipulations.CB_reload<Short_Art>(CB_Source_Art, sources_saved_positions["art"]);
-            General_Manipulations.CB_reload<Author>(CB_Source_Author, sources_saved_positions["author"]);
-            General_Manipulations.CB_reload<SourceToreadAnother>(CB_Source_Another, sources_saved_positions["another"]);
+            ComboBox_Helper.CB_reload_for_Special_Types<Short_Art>(CB_Toread_Art, sources_saved_positions["art_to_read"]);
+            ComboBox_Helper.CB_reload<Author>(CB_Toread_Author, sources_saved_positions["author_to_read"]);
+            ComboBox_Helper.CB_reload_for_Special_Types<Short_Art>(CB_Source_Art, sources_saved_positions["art"]);
+            ComboBox_Helper.CB_reload<Author>(CB_Source_Author, sources_saved_positions["author"]);
+            ComboBox_Helper.CB_reload<SourceToreadAnother>(CB_Source_Another, sources_saved_positions["another"]);
         
         }
         public Form_Art_To_Read()
         {
             InitializeComponent();
-            General_Manipulations.CB_reload<Art>(CB_Toread_Art, 1);
-            General_Manipulations.CB_reload<Author>(CB_Toread_Author, 1);
-            General_Manipulations.CB_reload<Art>(CB_Source_Art, 1);
-            General_Manipulations.CB_reload<Author>(CB_Source_Author, 1);
-            General_Manipulations.CB_reload<SourceToreadAnother>(CB_Source_Another, 1);
+            ComboBox_Helper.CB_reload<Art>(CB_Toread_Art);
+            ComboBox_Helper.CB_reload<Author>(CB_Toread_Author);
+            ComboBox_Helper.CB_reload<Art>(CB_Source_Art);
+            ComboBox_Helper.CB_reload<Author>(CB_Source_Author);
+            ComboBox_Helper.CB_reload<SourceToreadAnother>(CB_Source_Another);
             RB_Toread_Art.Tag = true;
             RB_Toread_Author.Tag = false;
         }
@@ -48,8 +48,8 @@ namespace lib_postgres.FORMS
             if (id > 0)
             {   if(CB_Source_Art.SelectedValue != null)
                     CB_Source_Art.Tag = CB_Source_Art.SelectedValue;
-                General_Manipulations.CB_reload<Art>(CB_Toread_Art, id);
-                General_Manipulations.CB_reload<Art>(CB_Source_Art, (long)CB_Source_Art.Tag);
+                ComboBox_Helper.CB_reload<Art>(CB_Toread_Art, id);
+                ComboBox_Helper.CB_reload<Art>(CB_Source_Art, (long)CB_Source_Art.Tag);
                 RB_Toread_Art.Checked = true;
             }
             DialogResult = DialogResult.None;
@@ -63,8 +63,8 @@ namespace lib_postgres.FORMS
             {
                 if (CB_Source_Author.SelectedValue != null)
                     CB_Source_Author.Tag = CB_Source_Author.SelectedValue;
-                General_Manipulations.CB_reload<Author>(CB_Toread_Author, id);
-                General_Manipulations.CB_reload<Author>(CB_Source_Author, (long)CB_Source_Author.Tag);
+                ComboBox_Helper.CB_reload<Author>(CB_Toread_Author, id);
+                ComboBox_Helper.CB_reload<Author>(CB_Source_Author, (long)CB_Source_Author.Tag);
                 RB_Toread_Author.Checked = true;
             }
             DialogResult = DialogResult.None;
@@ -76,7 +76,7 @@ namespace lib_postgres.FORMS
             var id = SourceToreadAnother.Create_Item();
             if (id > 0)
             {
-                General_Manipulations.CB_reload<SourceToreadAnother>(CB_Source_Another, id);
+                ComboBox_Helper.CB_reload<SourceToreadAnother>(CB_Source_Another, id);
                 RB_Source_Another.Checked = true;
             }
             DialogResult = DialogResult.None;
@@ -149,8 +149,8 @@ namespace lib_postgres.FORMS
                 if (CB_Toread_Art.SelectedValue != null)
                     CB_Toread_Art.Tag = CB_Toread_Art.SelectedValue;
 
-                General_Manipulations.CB_reload<Art>(CB_Toread_Art, (long) CB_Toread_Art.Tag);
-                General_Manipulations.CB_reload<Art>(CB_Source_Art, id);
+                ComboBox_Helper.CB_reload<Art>(CB_Toread_Art, (long) CB_Toread_Art.Tag);
+                ComboBox_Helper.CB_reload<Art>(CB_Source_Art, id);
                 RB_Source_Art.Checked = true;
             }
             DialogResult = DialogResult.None;
@@ -164,8 +164,8 @@ namespace lib_postgres.FORMS
             {
                 if (CB_Toread_Author.SelectedValue != null)
                     CB_Toread_Author.Tag = CB_Toread_Author.SelectedValue;
-                General_Manipulations.CB_reload<Author>(CB_Toread_Author, (long)CB_Toread_Author.Tag);
-                General_Manipulations.CB_reload<Author>(CB_Source_Author, id);
+                ComboBox_Helper.CB_reload<Author>(CB_Toread_Author, (long)CB_Toread_Author.Tag);
+                ComboBox_Helper.CB_reload<Author>(CB_Source_Author, id);
                 RB_Source_Author.Checked = true;
             }
             DialogResult = DialogResult.None;

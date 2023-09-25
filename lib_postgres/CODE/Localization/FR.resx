@@ -276,6 +276,54 @@
   <data name="Edit_series" xml:space="preserve">
     <value>Modifier la série</value>
   </data>
+  <data name="Erase_Action" xml:space="preserve">
+    <value>Supprimer définitivement l'action de la base</value>
+  </data>
+  <data name="Erase_Art" xml:space="preserve">
+    <value>Supprimer définitivement l'ouvrage de la base</value>
+  </data>
+  <data name="Erase_ArtRead" xml:space="preserve">
+    <value>Supprimer définitivement le livre de la base</value>
+  </data>
+  <data name="Erase_Author" xml:space="preserve">
+    <value>Supprimer définitivement l'auteur de la base</value>
+  </data>
+  <data name="Erase_Book" xml:space="preserve">
+    <value>Supprimer définitivement le livre de la base</value>
+  </data>
+  <data name="Erase_BookFormat" xml:space="preserve">
+    <value>Supprimer définitivement le format de la base</value>
+  </data>
+  <data name="Erase_City" xml:space="preserve">
+    <value>Supprimer définitivement la ville de la base</value>
+  </data>
+  <data name="Erase_Genre" xml:space="preserve">
+    <value>Supprimer définitivement le genre de la base</value>
+  </data>
+  <data name="Erase_Language" xml:space="preserve">
+    <value>Supprimer définitivement la langue de la base</value>
+  </data>
+  <data name="Erase_Mark" xml:space="preserve">
+    <value>Supprimer définitivement lanote de la base</value>
+  </data>
+  <data name="Erase_Person" xml:space="preserve">
+    <value>Supprimer définitivement la personne de la base</value>
+  </data>
+  <data name="Erase_Place" xml:space="preserve">
+    <value>Supprimer définitivement le stockage de la base</value>
+  </data>
+  <data name="Erase_PublishingHouse" xml:space="preserve">
+    <value>Supprimer définitivement la maison d'édition de la base</value>
+  </data>
+  <data name="Erase_Recommendation" xml:space="preserve">
+    <value>Supprimer définitivement la recommandation de la base</value>
+  </data>
+  <data name="Erase_Series" xml:space="preserve">
+    <value>Supprimer définitivement la série de la base</value>
+  </data>
+  <data name="Erase_SourceToreadAnother" xml:space="preserve">
+    <value>Supprimer définitivement l'autre source de recommandation de la base</value>
+  </data>
   <data name="Filename_Init_Script" xml:space="preserve">
     <value>FR_ini.sql</value>
   </data>

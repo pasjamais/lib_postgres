@@ -139,6 +139,238 @@
   <data name="img_noconnect" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\img_noconnect.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Query_Set_On_Delete_Cascade" xml:space="preserve">
+    <value>--all tables here: 
+-- action
+-- art
+-- art_read
+-- art_to_read
+-- author_art
+-- book
+-- location
+-- possession	
+
+-- public.author_art
+
+ALTER TABLE IF EXISTS public.author_art
+	DROP CONSTRAINT author_art_art_fkey,
+    ADD CONSTRAINT author_art_art_fkey FOREIGN KEY (art)
+    REFERENCES public.art (id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE CASCADE;
+	
+ALTER TABLE IF EXISTS public.author_art
+    DROP CONSTRAINT author_art_author_fkey,
+	ADD CONSTRAINT author_art_author_fkey FOREIGN KEY (author)
+    REFERENCES public.author (id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE CASCADE;
+	
+-- public.book
+
+ALTER TABLE IF EXISTS public.book
+    DROP CONSTRAINT book_id_art_fkey,
+	ADD CONSTRAINT book_id_art_fkey FOREIGN KEY (id_art)
+    REFERENCES public.art (id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE CASCADE;
+	
+ALTER TABLE IF EXISTS public.book
+    DROP CONSTRAINT book_id_city_fkey,
+	ADD CONSTRAINT book_id_city_fkey FOREIGN KEY (id_city)
+    REFERENCES public.city (id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE CASCADE;	
+	
+ALTER TABLE IF EXISTS public.book
+    DROP CONSTRAINT book_id_language_fkey,
+	ADD CONSTRAINT book_id_language_fkey FOREIGN KEY (id_language)
+    REFERENCES public.language (id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE CASCADE;
+
+ALTER TABLE IF EXISTS public.book
+    DROP CONSTRAINT book_id_publishing_house_fkey,
+	ADD CONSTRAINT book_id_publishing_house_fkey FOREIGN KEY (id_publishing_house)
+    REFERENCES public.publishing_house (id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE CASCADE;
+
+ALTER TABLE IF EXISTS public.book
+    DROP CONSTRAINT book_id_series_fkey,
+	ADD CONSTRAINT book_id_series_fkey FOREIGN KEY (id_series)
+    REFERENCES public.series (id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE CASCADE;
+	
+-- public.location
+	
+ALTER TABLE IF EXISTS public.location
+    DROP CONSTRAINT location_action_fkey,
+	ADD CONSTRAINT location_action_fkey FOREIGN KEY (action)
+    REFERENCES public.action (id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE CASCADE;
+
+ALTER TABLE IF EXISTS public.location
+    DROP CONSTRAINT location_book_fkey,
+	ADD CONSTRAINT location_book_fkey FOREIGN KEY (book)
+    REFERENCES public.book (id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE CASCADE;
+	
+ALTER TABLE IF EXISTS public.location
+    DROP CONSTRAINT location_place_fkey,
+	ADD CONSTRAINT location_place_fkey FOREIGN KEY (place)
+    REFERENCES public.place (id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE CASCADE;
+
+ALTER TABLE IF EXISTS public.location
+    DROP CONSTRAINT locationn_owner_fkey,
+	ADD CONSTRAINT locationn_owner_fkey FOREIGN KEY (owner)
+    REFERENCES public.people (id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE CASCADE;
+	
+-- public.art_read
+
+ALTER TABLE IF EXISTS public.art_read
+    DROP CONSTRAINT art_read_art_id_fkey,
+	ADD CONSTRAINT art_read_art_id_fkey FOREIGN KEY (art_id)
+    REFERENCES public.art (id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE CASCADE
+    NOT VALID;
+
+ALTER TABLE IF EXISTS public.art_read
+    DROP CONSTRAINT art_read_book_format_id_fkey,
+	ADD CONSTRAINT art_read_book_format_id_fkey FOREIGN KEY (book_format_id)
+    REFERENCES public.book_format (id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE CASCADE
+    NOT VALID;
+
+ALTER TABLE IF EXISTS public.art_read
+    DROP CONSTRAINT art_read_book_id_fkey,
+	ADD CONSTRAINT art_read_book_id_fkey FOREIGN KEY (book_id)
+    REFERENCES public.book (id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE CASCADE;
+
+ALTER TABLE IF EXISTS public.art_read
+    DROP CONSTRAINT art_read_mark_id_fkey,
+	ADD CONSTRAINT art_read_mark_id_fkey FOREIGN KEY (mark_id)
+    REFERENCES public.mark (id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE CASCADE
+    NOT VALID;
+
+ALTER TABLE IF EXISTS public.art_read
+    DROP CONSTRAINT art_read_read_language_id_fkey,
+	ADD CONSTRAINT art_read_read_language_id_fkey FOREIGN KEY (read_language_id)
+    REFERENCES public.language (id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE CASCADE
+    NOT VALID;
+
+--  public.action
+
+	ALTER TABLE IF EXISTS public.action
+    DROP CONSTRAINT  action_action_type_fkey,
+	ADD CONSTRAINT action_action_type_fkey FOREIGN KEY (action_type)
+    REFERENCES public.action_type (id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE CASCADE;
+
+ALTER TABLE IF EXISTS public.action
+    DROP CONSTRAINT action_place_fkey,
+	ADD CONSTRAINT action_place_fkey FOREIGN KEY (place)
+    REFERENCES public.place (id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE CASCADE;
+
+--  public.art
+
+ALTER TABLE IF EXISTS public.art
+    DROP CONSTRAINT art_genre_fkey,
+	ADD CONSTRAINT art_genre_fkey FOREIGN KEY (genre)
+    REFERENCES public.genre (id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE CASCADE;
+
+ALTER TABLE IF EXISTS public.art
+    DROP CONSTRAINT art_orig_language_fkey,
+    ADD CONSTRAINT art_orig_language_fkey FOREIGN KEY (orig_language)
+    REFERENCES public.language (id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE CASCADE;
+
+--  public.art_to_read
+
+ALTER TABLE IF EXISTS public.art_to_read
+	DROP CONSTRAINT art_to_read_source_another_id_fkey,
+	ADD CONSTRAINT art_to_read_source_another_id_fkey FOREIGN KEY (source_another_id)
+    REFERENCES public.source_toread_another (id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE CASCADE
+    NOT VALID;
+
+ALTER TABLE IF EXISTS public.art_to_read
+	DROP CONSTRAINT art_to_read_source_art_id_fkey,
+	ADD CONSTRAINT art_to_read_source_art_id_fkey FOREIGN KEY (source_art_id)
+    REFERENCES public.art (id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE CASCADE
+    NOT VALID;
+
+ALTER TABLE IF EXISTS public.art_to_read
+	DROP CONSTRAINT art_to_read_source_author_id_fkey,
+	ADD CONSTRAINT art_to_read_source_author_id_fkey FOREIGN KEY (source_author_id)
+    REFERENCES public.author (id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE CASCADE
+    NOT VALID;
+
+ALTER TABLE IF EXISTS public.art_to_read
+	DROP CONSTRAINT art_to_read_toread_art_id_fkey,
+	ADD CONSTRAINT art_to_read_toread_art_id_fkey FOREIGN KEY (toread_art_id)
+    REFERENCES public.art (id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE CASCADE
+    NOT VALID;
+
+ALTER TABLE IF EXISTS public.art_to_read
+    DROP CONSTRAINT art_to_read_toread_author_id_fkey,
+	ADD CONSTRAINT art_to_read_toread_author_id_fkey FOREIGN KEY (toread_author_id)
+    REFERENCES public.author (id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE CASCADE
+    NOT VALID;
+	
+--  public.possession	
+
+ALTER TABLE IF EXISTS public.possession
+    DROP CONSTRAINT possession_action_fkey,
+	ADD CONSTRAINT possession_action_fkey FOREIGN KEY (action)
+    REFERENCES public.action (id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE CASCADE;
+
+ALTER TABLE IF EXISTS public.possession
+    DROP CONSTRAINT possession_book_fkey,
+	ADD CONSTRAINT possession_book_fkey FOREIGN KEY (book)
+    REFERENCES public.book (id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE CASCADE;
+
+ALTER TABLE IF EXISTS public.possession
+    DROP CONSTRAINT possession_person_fkey,
+	ADD CONSTRAINT possession_person_fkey FOREIGN KEY (person)
+    REFERENCES public.people (id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE CASCADE;</value>
+  </data>
   <data name="wand" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\wand.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
