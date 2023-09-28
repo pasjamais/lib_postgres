@@ -7,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
-
-
+using lib_postgres.VIEW.COMBOBOX;
+using lib_postgres.VIEW.NOTICE;
+using lib_postgres.VIEW.SPEC_ENTITIES_VIEWS;
 
 namespace lib_postgres
 {

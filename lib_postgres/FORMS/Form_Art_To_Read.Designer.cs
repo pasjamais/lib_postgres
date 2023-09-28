@@ -1,4 +1,6 @@
-﻿namespace lib_postgres.FORMS
+﻿using lib_postgres.VIEW.NOTICE;
+
+namespace lib_postgres.FORMS
 {
     partial class Form_Art_To_Read
     {

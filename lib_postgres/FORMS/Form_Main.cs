@@ -1,6 +1,4 @@
-﻿using lib_postgres.CODE;
-using lib_postgres.CODE.DEPLOY;
-using lib_postgres.CODE.VIEW.DELITEMS;
+﻿using lib_postgres.VIEW.DELITEMS;
 using lib_postgres.FORMS;
 using lib_postgres.VISUAL;
 using Microsoft.EntityFrameworkCore;
@@ -25,8 +23,14 @@ using System.Reflection;
 using Microsoft.Win32;
 using System.Text.RegularExpressions;
 using System.Xml.Linq;
-using lib_postgres.CODE.CRUD;
 using System.Security.Cryptography.Xml;
+using lib_postgres.DEPLOY;
+using lib_postgres.CRUD;
+using lib_postgres.VIEW.CONTEXT_MENU;
+using lib_postgres.VIEW;
+using lib_postgres.VIEW.SPEC_ENTITIES_VIEWS;
+using lib_postgres.QUERIES;
+using lib_postgres.LOCALIZATION;
 
 namespace lib_postgres
 {
@@ -124,7 +128,7 @@ namespace lib_postgres
                 long id = (long)dataGridView.Rows[index].Cells["Id"].Value;
                 Form_Report form_report = new Form_Report();
                 form_report.Text = (string)dataGridView.Rows[index].Cells["Название"].Value + " / " + (string)dataGridView.Rows[index].Cells["АвторЫ"].Value;
-                form_report.DGV.DataSource = CODE.Queries_SQL_Direct.Fill_DataTable_by_Query_with_Parameter
+                form_report.DGV.DataSource = Queries_SQL_Direct.Fill_DataTable_by_Query_with_Parameter
                     <long>(DB_Agent.Get_Query(2).Text, ":book_id_parameter", id);
                 var DialogResult = form_report.ShowDialog();
                 if (DialogResult != DialogResult.OK)
@@ -256,7 +260,7 @@ namespace lib_postgres
         }
         void show_arts_by_langue(object sender, EventArgs e)
         {
-            List<Art_and_Author> arts = CODE.Queries_LinQ.Get_Arts_by_LanguageName(((ToolStripMenuItem)sender).Text);
+            List<Art_and_Author> arts = Queries_LinQ.Get_Arts_by_LanguageName(((ToolStripMenuItem)sender).Text);
             // ++ sept 2023
             // Pasted from DGV_Visualisator.Refresh_DGV_for_Item_Type
             // for special projection of selection for languages
@@ -266,7 +270,7 @@ namespace lib_postgres
             Turn_Off_Current_Menu_Item();
             dgv_Visualisator.Prepare_DGV_For_Type<Art>(dataGridView, StatusProperty);
             //++ colorization of deleted elements 
-            List<long> deleted_IDs = CODE.CRUD.CRUD_Item_Determinator.Get_Deleted_Items_IDs<Art>();
+            List<long> deleted_IDs = CRUD_Item_Determinator.Get_Deleted_Items_IDs<Art>();
             dgv_Visualisator.deleted_Entities_Visuaisator.RunCommand(deleted_IDs, dataGridView);
             //-- colorization of deleted elements
             Turn_On_Current_Menu_Item();
@@ -872,7 +876,7 @@ namespace lib_postgres
         #region general CRUD
         private void Create_Item<T>()
         {
-            long _id = CODE.CRUD.CRUD_Item_Determinator.Create_Item<T>();
+            long _id = CRUD_Item_Determinator.Create_Item<T>();
             if (_id > 0)
             {
                 //++ обработка особого случая отображения Book
@@ -888,7 +892,7 @@ namespace lib_postgres
         }
         private void Edit_Item<T>(long id)
         {
-            long _id = CODE.CRUD.CRUD_Item_Determinator.Edit_Item_by_ID<T>(id);
+            long _id = CRUD_Item_Determinator.Edit_Item_by_ID<T>(id);
             if (_id > 0)
             {
                 dgv_Visualisator.Refresh_DGV_for_Item_Type<T>(dataGridView, Turn_Off, Turn_ON, StatusProperty);
@@ -897,7 +901,7 @@ namespace lib_postgres
         }
         private void Delete_Item<T>()
         {
-            long id = CODE.CRUD.CRUD_Item_Determinator.Delete_Item_by_ID<T>(dgv_Visualisator.Get_Selected_Entity_ID(dataGridView));
+            long id = CRUD_Item_Determinator.Delete_Item_by_ID<T>(dgv_Visualisator.Get_Selected_Entity_ID(dataGridView));
             if (id > 0)
             {
                 Type type = typeof(T);
@@ -913,7 +917,7 @@ namespace lib_postgres
 
         private void Erase_Item<T>()
         {
-            long id = CODE.CRUD.CRUD_Item_Determinator.Erase_Item_by_ID<T>(dgv_Visualisator.Get_Selected_Entity_ID(dataGridView));
+            long id = CRUD_Item_Determinator.Erase_Item_by_ID<T>(dgv_Visualisator.Get_Selected_Entity_ID(dataGridView));
             last_DGV_Update_Operation();
         }
         #endregion general CRUD
@@ -1198,7 +1202,7 @@ namespace lib_postgres
             dgv_Visualisator.Prepare_DGV_For_Type<ViewHasRead>(dataGridView, StatusProperty);
             Turn_On_Current_Menu_Item();
             dgv_Visualisator.Colorise_DGV(dataGridView);
-            List<long> deleted_IDs = CODE.CRUD.CRUD_Item_Determinator.Get_Deleted_Items_IDs<ArtRead>();
+            List<long> deleted_IDs = CRUD_Item_Determinator.Get_Deleted_Items_IDs<ArtRead>();
             dgv_Visualisator.deleted_Entities_Visuaisator.RunCommand(deleted_IDs, dataGridView);
         }
         private void Edit_ArtRead()

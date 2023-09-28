@@ -5,6 +5,9 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using lib_postgres.QUERIES;
+using lib_postgres.LOCALIZATION;
+using lib_postgres.CRUD;
 
 namespace lib_postgres.VISUAL.TreeViewViz
 {
@@ -59,7 +62,7 @@ namespace lib_postgres.VISUAL.TreeViewViz
         }
          public static List<Recomendation> Get_Recommendations()
         {
-            var rec = CODE.Queries_SQL_Direct.Fill_DataTable_by_Query(DB_Agent.Get_Query(3).Text, DB_Agent.Get_Connection_String());
+            var rec = Queries_SQL_Direct.Fill_DataTable_by_Query(DB_Agent.Get_Query(3).Text, DB_Agent.Get_Connection_String());
             List<Recomendation> data = new List<Recomendation>();
             data = (from DataRow row in rec.Rows
                     select new Recomendation
@@ -133,7 +136,7 @@ namespace lib_postgres.VISUAL.TreeViewViz
                                     where rec.SourceArtId != null
                                     select rec.SourceArtId)
                                                        .Distinct().ToList();
-            var arts_authors = CODE.Queries_LinQ.Get_Arts();
+            var arts_authors = Queries_LinQ.Get_Arts();
             List<Node_Simple_Element> arts_sources =
 
                (from art_source_id in arts_sources_ids

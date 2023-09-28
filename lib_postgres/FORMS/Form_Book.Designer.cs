@@ -1,4 +1,6 @@
-﻿namespace lib_postgres
+﻿using lib_postgres.VIEW.NOTICE;
+
+namespace lib_postgres
 {
     partial class Form_Book
     {

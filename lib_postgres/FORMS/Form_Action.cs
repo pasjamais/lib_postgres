@@ -1,4 +1,7 @@
-﻿using lib_postgres.CODE;
+﻿using lib_postgres.QUERIES;
+using lib_postgres.VIEW;
+using lib_postgres.VIEW.COMBOBOX;
+using lib_postgres.LOCALIZATION;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

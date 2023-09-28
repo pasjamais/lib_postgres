@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using static lib_postgres.VISUAL.TreeViewViz.Graph_Agent;
 using System.Windows.Forms;
-using lib_postgres;
+using lib_postgres.LOCALIZATION;
 
 namespace lib_postgres.VISUAL.GraphViz
 {

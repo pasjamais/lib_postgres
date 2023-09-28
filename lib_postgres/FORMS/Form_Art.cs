@@ -1,4 +1,6 @@
-﻿using lib_postgres.CODE;
+﻿using lib_postgres.VIEW;
+using lib_postgres.VIEW.COMBOBOX;
+using lib_postgres.LOCALIZATION;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.DataFormats;
+using lib_postgres.CRUD;
 
 namespace lib_postgres
 {

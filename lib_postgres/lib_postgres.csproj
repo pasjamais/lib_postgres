@@ -9,11 +9,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="CODE\Localization\FR.Designer.cs" />
+    <Compile Remove="LOCALIZATION\FR.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="CODE\Localization\FR.Designer.cs">
+    <EmbeddedResource Include="LOCALIZATION\FR.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>FR.resx</DependentUpon>
@@ -33,12 +33,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="CODE\Localization\EN.Designer.cs">
+    <Compile Update="LOCALIZATION\EN.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>EN.resx</DependentUpon>
     </Compile>
-    <Compile Update="CODE\Localization\Ru.Designer.cs">
+    <Compile Update="LOCALIZATION\Ru.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>RU.resx</DependentUpon>
@@ -56,15 +56,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="CODE\Localization\EN.resx">
+    <EmbeddedResource Update="LOCALIZATION\EN.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>EN.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Update="CODE\Localization\FR.resx">
+    <EmbeddedResource Update="LOCALIZATION\FR.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>FR.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Update="CODE\Localization\RU.resx">
+    <EmbeddedResource Update="LOCALIZATION\RU.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Ru.Designer.cs</LastGenOutput>
     </EmbeddedResource>

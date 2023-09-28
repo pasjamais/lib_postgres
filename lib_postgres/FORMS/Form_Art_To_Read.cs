@@ -1,4 +1,6 @@
-﻿using System;
+﻿using lib_postgres.VIEW.COMBOBOX;
+using lib_postgres.VIEW.NOTICE;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,7 +10,7 @@ using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static lib_postgres.Structures;
+using static lib_postgres.VIEW.SPEC_ENTITIES_VIEWS.Structures;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
 using RadioButton = System.Windows.Forms.RadioButton;

@@ -1,7 +1,9 @@
-﻿using lib_postgres.CODE;
-using lib_postgres.CODE.DEPLOY;
+﻿using lib_postgres.DEPLOY;
+using lib_postgres.QUERIES;
+using lib_postgres.LOCALIZATION;
 using System.Linq.Expressions;
 using System.Windows.Forms;
+using lib_postgres.CRUD;
 
 namespace lib_postgres.FORMS
 {
