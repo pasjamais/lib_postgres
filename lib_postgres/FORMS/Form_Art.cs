@@ -149,13 +149,13 @@ namespace lib_postgres
         {
             if (tb_Name.Text == "")
             {
-                General_Manipulations.simple_message("Не указано названия");
+                General_Manipulations.simple_message(Localization.Substitute("No_title_specified"));
                 this.DialogResult = DialogResult.TryAgain;
             }
             else
                if ((selected_Autors == null) || (selected_Autors.Count == 0))
             {
-                General_Manipulations.simple_message("Не указано ни одного автора");
+                General_Manipulations.simple_message(Localization.Substitute("No_author_selected"));
                 this.DialogResult = DialogResult.TryAgain;
             }
             else this.DialogResult = DialogResult.OK;

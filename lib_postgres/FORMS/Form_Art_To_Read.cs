@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static lib_postgres.Structures;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
 using RadioButton = System.Windows.Forms.RadioButton;
 
 namespace lib_postgres.FORMS
@@ -17,7 +18,7 @@ namespace lib_postgres.FORMS
     public partial class Form_Art_To_Read : Form
     {
      
-        public RadioButton selectedrb_toread, // selectedrb_toread.Tag = true : art; = false : author
+        public RadioButton_Colorized selectedrb_toread, // selectedrb_toread.Tag = true : art; = false : author
                            selectedrb_source; // selectedrb_source.Tag can be "Art", "Author" or "SourceToreadAnother"  
         private Dictionary<string, long> Sources_saved_positions;
         public Form_Art_To_Read(Dictionary<string, long> sources_saved_positions) : this()
@@ -85,7 +86,7 @@ namespace lib_postgres.FORMS
 
         private void radioButton_ToRead_CheckedChanged(object sender, EventArgs e)
         {
-            RadioButton rb = sender as RadioButton;
+            RadioButton_Colorized rb = sender as RadioButton_Colorized;
             if (rb == null)
             {
                 return;
@@ -98,7 +99,7 @@ namespace lib_postgres.FORMS
 
         private void radioButton_Source_CheckedChanged(object sender, EventArgs e)
         {
-            RadioButton rb = sender as RadioButton;
+            RadioButton_Colorized rb = sender as RadioButton_Colorized;
             if (rb == null)
             {
                 return;
@@ -111,10 +112,49 @@ namespace lib_postgres.FORMS
 
         private void button_OK_Click(object sender, EventArgs e)
         {
-            if (selectedrb_toread == null || selectedrb_source == null)
+            Notice notice = new Notice();
+            /*        if (selectedrb_toread == null || selectedrb_source == null)
+                    {
+                        this.DialogResult = DialogResult.TryAgain;
+                        Notice_to_Fill_RBs();
+                    }*/
+            if (selectedrb_toread == null || !selectedrb_toread.Checked)
             {
                 this.DialogResult = DialogResult.TryAgain;
-                Notice_to_Fill_RBs();
+                notice.Notice_by_Color<RadioButton_Colorized>(RB_Toread_Art);
+                notice.Notice_by_Color<RadioButton_Colorized>(RB_Toread_Author);
+            }
+            else if (selectedrb_source == null || !selectedrb_source.Checked)
+            {
+                this.DialogResult = DialogResult.TryAgain;
+                notice.Notice_by_Color<RadioButton_Colorized>(RB_Source_Another);
+                notice.Notice_by_Color<RadioButton_Colorized>(RB_Source_Art);
+                notice.Notice_by_Color<RadioButton_Colorized>(RB_Source_Author);
+            }
+            else if ((bool)selectedrb_toread.Tag && CB_Toread_Art.SelectedValue == null) //art
+            {
+                this.DialogResult = DialogResult.TryAgain;
+                notice.Notice_by_Color<RadioButton_Colorized>(RB_Toread_Art);
+            }
+            else if (!(bool)selectedrb_toread.Tag && CB_Toread_Author.SelectedValue == null) //author
+            {
+                this.DialogResult = DialogResult.TryAgain;
+                notice.Notice_by_Color<RadioButton_Colorized>(RB_Toread_Author);
+            }
+            else if ((string)selectedrb_source.Tag == "Art" && CB_Source_Art.SelectedValue == null)
+            {
+                this.DialogResult = DialogResult.TryAgain;
+                notice.Notice_by_Color<RadioButton_Colorized>(RB_Source_Art);
+            }
+            else if ((string)selectedrb_source.Tag == "Author" && CB_Source_Author.SelectedValue == null)
+            {
+                this.DialogResult = DialogResult.TryAgain;
+                notice.Notice_by_Color<RadioButton_Colorized>(RB_Source_Author);
+            }
+            else if ((string)selectedrb_source.Tag == "SourceToreadAnother" && CB_Source_Another.SelectedValue == null)
+            {
+                this.DialogResult = DialogResult.TryAgain;
+                notice.Notice_by_Color<RadioButton_Colorized>(RB_Source_Another);
             }
             else this.DialogResult = DialogResult.OK;
         }
@@ -130,15 +170,14 @@ namespace lib_postgres.FORMS
             if (this.DialogResult == DialogResult.TryAgain)
                 e.Cancel = true;
         }
-        private async void Notice_to_Fill_RBs()
+        private  void Notice_to_Fill_RBs()
         {
-            RB_Source_Another.BackColor = Color.Red;
-            RB_Source_Art.BackColor = Color.Red;
-            RB_Source_Author.BackColor = Color.Red;
-            RB_Toread_Art.BackColor = Color.Red;
-            RB_Toread_Author.BackColor = Color.Red;
-            await Task.Delay(500);
-            DefaultBackColor_to_RBs();
+            Notice notice = new Notice();
+            notice.Notice_by_Color<RadioButton_Colorized>(RB_Source_Another);
+            notice.Notice_by_Color<RadioButton_Colorized>(RB_Source_Art);
+            notice.Notice_by_Color<RadioButton_Colorized>(RB_Source_Author);
+            notice.Notice_by_Color<RadioButton_Colorized>(RB_Toread_Art);
+            notice.Notice_by_Color<RadioButton_Colorized>(RB_Toread_Author);
         }
 
         private void BT_Add_Art_Source_Click(object sender, EventArgs e)
@@ -154,7 +193,6 @@ namespace lib_postgres.FORMS
                 RB_Source_Art.Checked = true;
             }
             DialogResult = DialogResult.None;
-            
         }
 
         private void BT__Toread_Author_Source_Click(object sender, EventArgs e)
@@ -169,9 +207,6 @@ namespace lib_postgres.FORMS
                 RB_Source_Author.Checked = true;
             }
             DialogResult = DialogResult.None;
-            
-
-
         }
 
         private void CB_Toread_Art_SelectionChangeCommitted(object sender, EventArgs e)
@@ -197,15 +232,6 @@ namespace lib_postgres.FORMS
         private void CB_Source_Another_SelectionChangeCommitted(object sender, EventArgs e)
         {
             RB_Source_Another.Checked = true;
-        }
-
-        private void DefaultBackColor_to_RBs()
-        {
-            RB_Source_Another.BackColor = DefaultBackColor;
-            RB_Source_Art.BackColor = DefaultBackColor;
-            RB_Source_Author.BackColor = DefaultBackColor;
-            RB_Toread_Art.BackColor = DefaultBackColor;
-            RB_Toread_Author.BackColor = DefaultBackColor;
         }
     }
 }

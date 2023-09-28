@@ -405,6 +405,18 @@
   <data name="Notice" xml:space="preserve">
     <value>Примечание</value>
   </data>
+  <data name="No_action_notes_specified" xml:space="preserve">
+    <value>Не указано примечания к действию</value>
+  </data>
+  <data name="No_author_selected" xml:space="preserve">
+    <value>Не указано ни одного автора</value>
+  </data>
+  <data name="No_books_selected" xml:space="preserve">
+    <value>Не выбрано ни одной книги</value>
+  </data>
+  <data name="No_title_specified" xml:space="preserve">
+    <value>Не указано названия</value>
+  </data>
   <data name="Others_recommend_authors" xml:space="preserve">
     <value>Другие рекомендуют авторов</value>
   </data>

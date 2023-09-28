@@ -38,9 +38,9 @@
             this.groupBox_Source = new System.Windows.Forms.GroupBox();
             this.BT__Toread_Author_Source = new System.Windows.Forms.Button();
             this.BT_Add_Art_Source = new System.Windows.Forms.Button();
-            this.RB_Source_Another = new System.Windows.Forms.RadioButton();
-            this.RB_Source_Author = new System.Windows.Forms.RadioButton();
-            this.RB_Source_Art = new System.Windows.Forms.RadioButton();
+            this.RB_Source_Another = new RadioButton_Colorized();
+            this.RB_Source_Author = new RadioButton_Colorized();
+            this.RB_Source_Art = new RadioButton_Colorized();
             this.BT__Another_Source_Add = new System.Windows.Forms.Button();
             this.Label_Source_Another = new System.Windows.Forms.Label();
             this.CB_Source_Another = new System.Windows.Forms.ComboBox();
@@ -49,8 +49,8 @@
             this.Label_Source_Art = new System.Windows.Forms.Label();
             this.CB_Source_Art = new System.Windows.Forms.ComboBox();
             this.groupBox_ToRead = new System.Windows.Forms.GroupBox();
-            this.RB_Toread_Author = new System.Windows.Forms.RadioButton();
-            this.RB_Toread_Art = new System.Windows.Forms.RadioButton();
+            this.RB_Toread_Author = new RadioButton_Colorized();
+            this.RB_Toread_Art = new RadioButton_Colorized();
             this.BT__Toread_Author = new System.Windows.Forms.Button();
             this.BT_Add_Art = new System.Windows.Forms.Button();
             this.Label_Toread_Author = new System.Windows.Forms.Label();
@@ -346,11 +346,11 @@
         public Button BT_Add_Art;
         public Button BT__Toread_Author;
         public Button BT__Another_Source_Add;
-        public RadioButton RB_Toread_Author;
-        public RadioButton RB_Toread_Art;
-        public RadioButton RB_Source_Another;
-        public RadioButton RB_Source_Author;
-        public RadioButton RB_Source_Art;
+        public RadioButton_Colorized RB_Toread_Author;
+        public RadioButton_Colorized RB_Toread_Art;
+        public RadioButton_Colorized RB_Source_Another;
+        public RadioButton_Colorized RB_Source_Author;
+        public RadioButton_Colorized RB_Source_Art;
         public Button BT_Add_Art_Source;
         public Button BT__Toread_Author_Source;
     }

@@ -404,6 +404,18 @@ It is recommended to create a new database or restore from a backup.</value>
   <data name="Notice" xml:space="preserve">
     <value>Notice</value>
   </data>
+  <data name="No_action_notes_specified" xml:space="preserve">
+    <value>No action notes specified</value>
+  </data>
+  <data name="No_author_selected" xml:space="preserve">
+    <value>No author selected</value>
+  </data>
+  <data name="No_books_selected" xml:space="preserve">
+    <value>No books selected</value>
+  </data>
+  <data name="No_title_specified" xml:space="preserve">
+    <value>No title specified</value>
+  </data>
   <data name="Others_recommend_authors" xml:space="preserve">
     <value>Others recommend authors</value>
   </data>

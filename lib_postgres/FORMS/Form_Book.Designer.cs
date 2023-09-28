@@ -35,7 +35,7 @@
             this.ChB_Language = new System.Windows.Forms.CheckBox();
             this.ChB_City = new System.Windows.Forms.CheckBox();
             this.ChB_Publishing_House = new System.Windows.Forms.CheckBox();
-            this.label16 = new System.Windows.Forms.Label();
+            this.Label_Art = new Label_Colorized();
             this.CB_Art = new System.Windows.Forms.ComboBox();
             this.BT_Add_PubHouse = new System.Windows.Forms.Button();
             this.BT_Add_City = new System.Windows.Forms.Button();
@@ -104,16 +104,16 @@
             this.ChB_Publishing_House.UseVisualStyleBackColor = true;
             this.ChB_Publishing_House.CheckedChanged += new System.EventHandler(this.ChB_Publishing_House_CheckedChanged);
             // 
-            // label16
+            // Label_Art
             // 
-            resources.ApplyResources(this.label16, "label16");
-            this.label16.Name = "label16";
+            resources.ApplyResources(this.Label_Art, "Label_Art");
+            this.Label_Art.Name = "Label_Art";
             // 
             // CB_Art
             // 
-            resources.ApplyResources(this.CB_Art, "CB_Art");
             this.CB_Art.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CB_Art.FormattingEnabled = true;
+            resources.ApplyResources(this.CB_Art, "CB_Art");
             this.CB_Art.Name = "CB_Art";
             // 
             // BT_Add_PubHouse
@@ -146,15 +146,15 @@
             // 
             // CB_Book_Language
             // 
-            resources.ApplyResources(this.CB_Book_Language, "CB_Book_Language");
             this.CB_Book_Language.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.CB_Book_Language, "CB_Book_Language");
             this.CB_Book_Language.FormattingEnabled = true;
             this.CB_Book_Language.Name = "CB_Book_Language";
             // 
             // CB_Series
             // 
-            resources.ApplyResources(this.CB_Series, "CB_Series");
             this.CB_Series.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.CB_Series, "CB_Series");
             this.CB_Series.FormattingEnabled = true;
             this.CB_Series.Name = "CB_Series";
             // 
@@ -212,8 +212,8 @@
             // 
             // CB_City
             // 
-            resources.ApplyResources(this.CB_City, "CB_City");
             this.CB_City.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.CB_City, "CB_City");
             this.CB_City.FormattingEnabled = true;
             this.CB_City.Name = "CB_City";
             // 
@@ -229,8 +229,8 @@
             // 
             // CB_Publishing_House
             // 
-            resources.ApplyResources(this.CB_Publishing_House, "CB_Publishing_House");
             this.CB_Publishing_House.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.CB_Publishing_House, "CB_Publishing_House");
             this.CB_Publishing_House.FormattingEnabled = true;
             this.CB_Publishing_House.Name = "CB_Publishing_House";
             // 
@@ -258,17 +258,19 @@
             // 
             // button_Cancel
             // 
-            resources.ApplyResources(this.button_Cancel, "button_Cancel");
             this.button_Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            resources.ApplyResources(this.button_Cancel, "button_Cancel");
             this.button_Cancel.Name = "button_Cancel";
             this.button_Cancel.UseVisualStyleBackColor = true;
+            this.button_Cancel.Click += new System.EventHandler(this.button_Cancel_Click);
             // 
             // button_OK
             // 
-            resources.ApplyResources(this.button_OK, "button_OK");
             this.button_OK.DialogResult = System.Windows.Forms.DialogResult.OK;
+            resources.ApplyResources(this.button_OK, "button_OK");
             this.button_OK.Name = "button_OK";
             this.button_OK.UseVisualStyleBackColor = true;
+            this.button_OK.Click += new System.EventHandler(this.button_OK_Click);
             // 
             // BT_Add_Art
             // 
@@ -292,7 +294,7 @@
             this.Controls.Add(this.ChB_Language);
             this.Controls.Add(this.ChB_City);
             this.Controls.Add(this.ChB_Publishing_House);
-            this.Controls.Add(this.label16);
+            this.Controls.Add(this.Label_Art);
             this.Controls.Add(this.CB_Art);
             this.Controls.Add(this.BT_Add_PubHouse);
             this.Controls.Add(this.BT_Add_City);
@@ -321,6 +323,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.Name = "Form_Book";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_Book_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -335,7 +338,6 @@
         public CheckBox ChB_Language;
         public CheckBox ChB_City;
         public CheckBox ChB_Publishing_House;
-        public Label label16;
         public ComboBox CB_Art;
         public Button BT_Add_PubHouse;
         public Button BT_Add_City;
@@ -362,5 +364,6 @@
         public Label label6;
         public CheckBox CB_Jacket;
         public Button BT_Add_Art;
+        public Label_Colorized Label_Art;
     }
 }

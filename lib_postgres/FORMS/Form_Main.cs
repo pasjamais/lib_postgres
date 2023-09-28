@@ -44,14 +44,7 @@ namespace lib_postgres
         }
         public Main_Form_Status_Update StatusProperty { get; set; } = new Main_Form_Status_Update();
         const string Caption = "Lib.";
-        public Dictionary<string, long> sources_saved_positions = new Dictionary<string, long>()
-            {// for faster preparation recommendation form it remembers  last choise to show it again
-                { "art_to_read",    1  },
-                { "author_to_read", 1  },
-                { "art",    1  },
-                { "author", 1  },
-                { "another",1  },
-            };
+        public Dictionary<string, long> sources_saved_positions = new Dictionary<string, long>();
         DGV_Visualisator dgv_Visualisator;
         public DGV_Visualisator.Turn_Off_or_ON_Current_Menu_Item Turn_Off;
         public DGV_Visualisator.Turn_Off_or_ON_Current_Menu_Item Turn_ON;
@@ -69,6 +62,7 @@ namespace lib_postgres
             if (_instance != null) return _instance;
             return _instance = new Form_Main();
         }
+        public static bool Is_DGV_Has_rows;
         private Form_Main()
         {
             InitializeComponent();
@@ -77,6 +71,7 @@ namespace lib_postgres
             this.dgv_Visualisator = new DGV_Visualisator();
             Turn_Off = delegate () { this.Turn_Off_Current_Menu_Item(); };
             Turn_ON = delegate () { this.Turn_On_Current_Menu_Item(); };
+            sources_saved_positions_Initialisation();
         }
 
         #region general
@@ -102,6 +97,22 @@ namespace lib_postgres
         {
             Update_Context_Menu();
         }
+        public bool Is_DGV_Has_Any_Row()
+        {
+            if (dataGridView.RowCount > 0)
+                return true;
+            else return false;
+        }
+        private void sources_saved_positions_Initialisation()
+        {
+            sources_saved_positions.Add("art_to_read", CRUD_Item_Determinator.Get_ID_of_First_Element_if_Exists<Art>(CRUD_Item_Determinator.Get_All_Elements_of_This_Type_If_Exist<Art>()));
+            sources_saved_positions.Add("author_to_read", CRUD_Item_Determinator.Get_ID_of_First_Element_if_Exists<Author>(CRUD_Item_Determinator.Get_All_Elements_of_This_Type_If_Exist<Author>()));
+            sources_saved_positions.Add("art", sources_saved_positions["art_to_read"]);
+            sources_saved_positions.Add("author", sources_saved_positions["author_to_read"]);
+            sources_saved_positions.Add("another", CRUD_Item_Determinator.Get_ID_of_First_Element_if_Exists<SourceToreadAnother>(CRUD_Item_Determinator.Get_All_Elements_of_This_Type_If_Exist<SourceToreadAnother>()));
+        }
+
+
         #endregion general 
 
         #region popup
@@ -136,6 +147,7 @@ namespace lib_postgres
         }
         private void Update_Context_Menu()
         {
+            Is_DGV_Has_rows = Is_DGV_Has_Any_Row();
             contextMenuStrip.Items.Clear();
             contextMenuStrip.Items.AddRange(Ask_for_New_Context_Menu_Strips());
         }
@@ -755,7 +767,7 @@ namespace lib_postgres
         }
         private void Turn_On_Current_Menu_Item()
         {
-            Turn_Menu_Item(true);
+            Turn_Menu_Item(Is_DGV_Has_Any_Row());
         }
         private void Turn_Menu_Item(bool state)
         {

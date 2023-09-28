@@ -910,6 +910,42 @@ namespace lib_postgres.CODE.Localization {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Не указано примечания к действию.
+        /// </summary>
+        internal static string No_action_notes_specified {
+            get {
+                return ResourceManager.GetString("No_action_notes_specified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Не указано ни одного автора.
+        /// </summary>
+        internal static string No_author_selected {
+            get {
+                return ResourceManager.GetString("No_author_selected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Не выбрано ни одной книги.
+        /// </summary>
+        internal static string No_books_selected {
+            get {
+                return ResourceManager.GetString("No_books_selected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Не указано названия.
+        /// </summary>
+        internal static string No_title_specified {
+            get {
+                return ResourceManager.GetString("No_title_specified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Примечание.
         /// </summary>
         internal static string Notice {

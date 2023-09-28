@@ -402,6 +402,18 @@ Il est recommandé de créer une nouvelle base de données ou de la restaurer à
   <data name="Notice" xml:space="preserve">
     <value>Remarque</value>
   </data>
+  <data name="No_action_notes_specified" xml:space="preserve">
+    <value>Aucune remarque spécifiée</value>
+  </data>
+  <data name="No_author_selected" xml:space="preserve">
+    <value>Aucun auteur sélectionné</value>
+  </data>
+  <data name="No_books_selected" xml:space="preserve">
+    <value>Aucun livre sélectionné</value>
+  </data>
+  <data name="No_title_specified" xml:space="preserve">
+    <value>Aucun titre précisé</value>
+  </data>
   <data name="Others_recommend_authors" xml:space="preserve">
     <value>Les autres recommandent des auteurs</value>
   </data>

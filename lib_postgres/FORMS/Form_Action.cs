@@ -100,13 +100,13 @@ namespace lib_postgres.FORMS
         {
             if (TB_Comment.Text == "")
             {
-                General_Manipulations.simple_message("Не указано примечания к действию");
+                General_Manipulations.simple_message(Localization.Substitute("No_action_notes_specified"));
                 this.DialogResult = DialogResult.TryAgain;
             }
             else 
                 if (action_books == null || action_books.Count < 1)
             {
-                General_Manipulations.simple_message("Не выбрано ни одной книги");
+                General_Manipulations.simple_message(Localization.Substitute("No_books_selected"));
                 this.DialogResult = DialogResult.TryAgain;
             }
             else this.DialogResult = DialogResult.OK;

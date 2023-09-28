@@ -30,7 +30,7 @@ namespace lib_postgres
         private static ArtRead Save_ArtRead (ArtRead artRead, Form_ArtRead form, bool is_new_ArtRead)
         {
             artRead.ArtId = (System.Int64)form.CB_Art.SelectedValue;
-            artRead.MarkId = (System.Int64)form.CB_Mark.SelectedValue;
+            artRead.MarkId = form.CB_Mark.SelectedValue is null ? null : (System.Int64)form.CB_Mark.SelectedValue;
             if (form.CB_Langue.SelectedValue is not null)
                 artRead.ReadLanguageId = (System.Int64)form.CB_Langue.SelectedValue;
 

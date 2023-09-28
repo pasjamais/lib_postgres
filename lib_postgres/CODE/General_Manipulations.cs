@@ -19,11 +19,16 @@ namespace lib_postgres
             DataGridViewRow row = DGV.Rows
                 .Cast<DataGridViewRow>()
                 .Where(r => r.Cells[cell_name].Value.ToString().Equals(string_to_find))
-                .First();
-            rowIndex = row.Index;
+                .FirstOrDefault();
+            if (row is not null)
+                rowIndex = row.Index;
             DGV.ClearSelection();
-            DGV.Rows[rowIndex].Selected = true;
-            DGV.FirstDisplayedScrollingRowIndex = rowIndex;
+            if (rowIndex > 0)
+            {
+                DGV.Rows[rowIndex].Selected = true;
+                DGV.FirstDisplayedScrollingRowIndex = rowIndex;
+            }
+     
         }
         public static void simple_message(String message)
         {

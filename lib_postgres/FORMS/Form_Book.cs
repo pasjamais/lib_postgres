@@ -90,6 +90,28 @@ namespace lib_postgres
                 e.Handled = true;
             }
         }
+
+        private void button_OK_Click(object sender, EventArgs e)
+        {
+            if (CB_Art.SelectedValue == null || (System.Int64)CB_Art.SelectedValue < 1)
+            {
+                this.DialogResult = DialogResult.TryAgain;
+                Notice notice = new Notice();
+                notice.Notice_by_Color<Label_Colorized>(Label_Art);
+            }
+            else this.DialogResult = DialogResult.OK;
+        }
+
+        private void button_Cancel_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+        }
+
+        private void Form_Book_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (this.DialogResult == DialogResult.TryAgain)
+                e.Cancel = true;
+        }
     }
 }
 

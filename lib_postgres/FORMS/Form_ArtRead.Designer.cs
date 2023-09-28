@@ -31,7 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_ArtRead));
             this.button_Cancel = new System.Windows.Forms.Button();
             this.button_OK = new System.Windows.Forms.Button();
-            this.label16 = new System.Windows.Forms.Label();
+            // this.Label_Art = new System.Windows.Forms.Label();
+                this.Label_Art = new Label_Colorized();
             this.CB_Art = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
@@ -51,28 +52,30 @@
             // 
             // button_Cancel
             // 
-            resources.ApplyResources(this.button_Cancel, "button_Cancel");
             this.button_Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            resources.ApplyResources(this.button_Cancel, "button_Cancel");
             this.button_Cancel.Name = "button_Cancel";
             this.button_Cancel.UseVisualStyleBackColor = true;
+            this.button_Cancel.Click += new System.EventHandler(this.button_Cancel_Click);
             // 
             // button_OK
             // 
-            resources.ApplyResources(this.button_OK, "button_OK");
             this.button_OK.DialogResult = System.Windows.Forms.DialogResult.OK;
+            resources.ApplyResources(this.button_OK, "button_OK");
             this.button_OK.Name = "button_OK";
             this.button_OK.UseVisualStyleBackColor = true;
+            this.button_OK.Click += new System.EventHandler(this.button_OK_Click);
             // 
-            // label16
+            // Label_Art
             // 
-            resources.ApplyResources(this.label16, "label16");
-            this.label16.Name = "label16";
+            resources.ApplyResources(this.Label_Art, "Label_Art");
+            this.Label_Art.Name = "Label_Art";
             // 
             // CB_Art
             // 
-            resources.ApplyResources(this.CB_Art, "CB_Art");
             this.CB_Art.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CB_Art.FormattingEnabled = true;
+            resources.ApplyResources(this.CB_Art, "CB_Art");
             this.CB_Art.Name = "CB_Art";
             // 
             // label2
@@ -102,9 +105,9 @@
             // 
             // CB_Mark
             // 
-            resources.ApplyResources(this.CB_Mark, "CB_Mark");
             this.CB_Mark.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CB_Mark.FormattingEnabled = true;
+            resources.ApplyResources(this.CB_Mark, "CB_Mark");
             this.CB_Mark.Name = "CB_Mark";
             // 
             // label9
@@ -114,9 +117,9 @@
             // 
             // CB_BookFormat
             // 
-            resources.ApplyResources(this.CB_BookFormat, "CB_BookFormat");
             this.CB_BookFormat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CB_BookFormat.FormattingEnabled = true;
+            resources.ApplyResources(this.CB_BookFormat, "CB_BookFormat");
             this.CB_BookFormat.Name = "CB_BookFormat";
             this.CB_BookFormat.SelectionChangeCommitted += new System.EventHandler(this.CB_BookFormat_SelectionChangeCommitted);
             // 
@@ -127,9 +130,9 @@
             // 
             // CB_PaperBook
             // 
-            resources.ApplyResources(this.CB_PaperBook, "CB_PaperBook");
             this.CB_PaperBook.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CB_PaperBook.FormattingEnabled = true;
+            resources.ApplyResources(this.CB_PaperBook, "CB_PaperBook");
             this.CB_PaperBook.Name = "CB_PaperBook";
             // 
             // ChB_PaperBook
@@ -142,9 +145,9 @@
             // 
             // CB_Langue
             // 
-            resources.ApplyResources(this.CB_Langue, "CB_Langue");
             this.CB_Langue.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CB_Langue.FormattingEnabled = true;
+            resources.ApplyResources(this.CB_Langue, "CB_Langue");
             this.CB_Langue.Name = "CB_Langue";
             // 
             // label4
@@ -177,13 +180,14 @@
             this.Controls.Add(this.TB_Comment);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dateTimePicker);
-            this.Controls.Add(this.label16);
+            this.Controls.Add(this.Label_Art);
             this.Controls.Add(this.CB_Art);
             this.Controls.Add(this.button_Cancel);
             this.Controls.Add(this.button_OK);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.Name = "Form_ArtRead";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_ArtRead_FormClosing);
             this.Load += new System.EventHandler(this.Form_ArtRead_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -194,7 +198,7 @@
 
         private Button button_Cancel;
         private Button button_OK;
-        public Label label16;
+        public Label_Colorized Label_Art;
         public ComboBox CB_Art;
         public Label label2;
         public DateTimePicker dateTimePicker;

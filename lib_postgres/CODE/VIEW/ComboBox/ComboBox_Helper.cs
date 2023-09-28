@@ -1,4 +1,5 @@
-﻿using lib_postgres.CODE.VIEW.ComboBox;
+﻿using lib_postgres.CODE.CRUD;
+using lib_postgres.CODE.VIEW.ComboBox;
 using System.Collections.Generic;
 
 namespace lib_postgres
@@ -14,17 +15,8 @@ namespace lib_postgres
 
         public static void CB_reload<T>(ComboBox CB) where T : CODE.CRUD.IHas_field_ID
         {
-            List<T> elements = new List<T>();
-
-            string methodName = "Get_All_Elements_of_This_Type";
-            Type type = typeof(T);
-            if (type.GetMethod(methodName) != null)
-                elements = (List<T>)type.GetMethod(methodName).Invoke(null, null);
-            long id = 0;
-            if (elements != null && elements.Count > 0)
-            {
-                id = elements.First().Id;
-            }
+            List<T> elements = CRUD_Item_Determinator.Get_All_Elements_of_This_Type_If_Exist<T>();
+            long id = CRUD_Item_Determinator.Get_ID_of_First_Element_if_Exists(elements);
             CB.DataSource = elements;
             CB_visual_reload(CB, id);
         }
