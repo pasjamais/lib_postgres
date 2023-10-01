@@ -17,9 +17,9 @@ namespace lib_postgres.VISUAL.TreeViewViz
             Id = id;
             Text = text;
         }
-        public Node_Simple_Element(long? id, string? text, long? id_father) : this(id, text)
+        public Node_Simple_Element(long? id, string? text, long? id_parent) : this(id, text)
         {
-            Id_Parent = id_father;
+            Id_Parent = id_parent;
         }
     }
 }

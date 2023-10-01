@@ -247,6 +247,7 @@ namespace lib_postgres.VIEW
                 DGV.Columns[4].HeaderText = _s("Recommendation_type");
                 DGV.Columns[5].HeaderText = _s("Recommendation");
                 DGV.Columns[6].HeaderText = _s("Comment");
+                for (int i = 7; i <= 11; i++) { DGV.Columns[i].Visible = false; }
                 DGV.Columns[0].FillWeight = 20;
                 DGV.Columns[1].FillWeight = 20;
                 DGV.Columns[2].FillWeight = 20;

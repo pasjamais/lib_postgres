@@ -547,6 +547,21 @@
   <data name="ToolStripMenuItem_Author_Delete.Text" xml:space="preserve">
     <value>Supprimer/Annuler la suppression de l'auteur</value>
   </data>
+  <data name="toolStripSeparator16.Size" type="System.Drawing.Size, System.Drawing">
+    <value>310, 6</value>
+  </data>
+  <data name="ToolStripMenuItem_Author_Find_Arts_of_Author.Size" type="System.Drawing.Size, System.Drawing">
+    <value>313, 22</value>
+  </data>
+  <data name="ToolStripMenuItem_Author_Find_Arts_of_Author.Text" xml:space="preserve">
+    <value>Trouver les ouvrages de l'auteur</value>
+  </data>
+  <data name="ToolStripMenuItem_Author__Find_Recommendations.Size" type="System.Drawing.Size, System.Drawing">
+    <value>313, 22</value>
+  </data>
+  <data name="ToolStripMenuItem_Author__Find_Recommendations.Text" xml:space="preserve">
+    <value>Trouver les recommandations liées à l'auteur</value>
+  </data>
   <data name="ToolStripMenuItem_Actions_Open.Size" type="System.Drawing.Size, System.Drawing">
     <value>312, 22</value>
   </data>
@@ -645,11 +660,5 @@
   </data>
   <data name="toolStripSeparator22.Size" type="System.Drawing.Size, System.Drawing">
     <value>309, 6</value>
-  </data>
-  <data name="ToolStripMenuItem_Cataloques.Size" type="System.Drawing.Size, System.Drawing">
-    <value>76, 20</value>
-  </data>
-  <data name="ToolStripMenuItem_Cataloques.Text" xml:space="preserve">
-    <value>À propos...</value>
   </data>
 </root>

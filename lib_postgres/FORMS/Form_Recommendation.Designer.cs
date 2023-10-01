@@ -75,17 +75,17 @@
             // 
             // panel_buttons
             // 
-            resources.ApplyResources(this.panel_buttons, "panel_buttons");
             this.panel_buttons.Controls.Add(this.bt_show_art_sources);
             this.panel_buttons.Controls.Add(this.bt_cancel);
             this.panel_buttons.Controls.Add(this.bt_show_authors_sources);
             this.panel_buttons.Controls.Add(this.bt_show_another_sources);
+            resources.ApplyResources(this.panel_buttons, "panel_buttons");
             this.panel_buttons.Name = "panel_buttons";
             // 
             // panel_main
             // 
-            resources.ApplyResources(this.panel_main, "panel_main");
             this.panel_main.Controls.Add(this.treeView);
+            resources.ApplyResources(this.panel_main, "panel_main");
             this.panel_main.Name = "panel_main";
             // 
             // Form_Recommendation
@@ -96,6 +96,7 @@
             this.Controls.Add(this.panel_main);
             this.Controls.Add(this.panel_buttons);
             this.Name = "Form_Recommendation";
+            this.ShowInTaskbar = false;
             this.panel_buttons.ResumeLayout(false);
             this.panel_main.ResumeLayout(false);
             this.ResumeLayout(false);

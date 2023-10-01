@@ -62,7 +62,6 @@
             // 
             // panel1
             // 
-            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.button_Del_Book_from_Action);
             this.panel1.Controls.Add(this.label2);
@@ -73,6 +72,7 @@
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.label13);
             this.panel1.Controls.Add(this.TB_Comment);
+            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
             // 
             // label3
@@ -99,9 +99,9 @@
             // 
             // CB_Action_Type
             // 
-            resources.ApplyResources(this.CB_Action_Type, "CB_Action_Type");
             this.CB_Action_Type.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CB_Action_Type.FormattingEnabled = true;
+            resources.ApplyResources(this.CB_Action_Type, "CB_Action_Type");
             this.CB_Action_Type.Name = "CB_Action_Type";
             // 
             // label1
@@ -111,9 +111,9 @@
             // 
             // CB_Place
             // 
-            resources.ApplyResources(this.CB_Place, "CB_Place");
             this.CB_Place.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CB_Place.FormattingEnabled = true;
+            resources.ApplyResources(this.CB_Place, "CB_Place");
             this.CB_Place.Name = "CB_Place";
             // 
             // label6
@@ -133,12 +133,12 @@
             // 
             // DGV_ActionBooks
             // 
-            resources.ApplyResources(this.DGV_ActionBooks, "DGV_ActionBooks");
             this.DGV_ActionBooks.AllowUserToAddRows = false;
             this.DGV_ActionBooks.AllowUserToDeleteRows = false;
             this.DGV_ActionBooks.AllowUserToResizeRows = false;
             this.DGV_ActionBooks.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DGV_ActionBooks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            resources.ApplyResources(this.DGV_ActionBooks, "DGV_ActionBooks");
             this.DGV_ActionBooks.MultiSelect = false;
             this.DGV_ActionBooks.Name = "DGV_ActionBooks";
             this.DGV_ActionBooks.ReadOnly = true;
@@ -148,26 +148,26 @@
             // 
             // groupBox1
             // 
-            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Controls.Add(this.DGV_ActionBooks);
             this.groupBox1.Controls.Add(this.panel1);
+            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
             // 
             // groupBox2
             // 
-            resources.ApplyResources(this.groupBox2, "groupBox2");
             this.groupBox2.Controls.Add(this.panel3);
             this.groupBox2.Controls.Add(this.DGV_AllBooks);
+            resources.ApplyResources(this.groupBox2, "groupBox2");
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.TabStop = false;
             // 
             // panel3
             // 
-            resources.ApplyResources(this.panel3, "panel3");
             this.panel3.Controls.Add(this.label4);
             this.panel3.Controls.Add(this.button_New_Book);
             this.panel3.Controls.Add(this.button_Add_Book_to_Action);
+            resources.ApplyResources(this.panel3, "panel3");
             this.panel3.Name = "panel3";
             // 
             // label4
@@ -191,12 +191,12 @@
             // 
             // DGV_AllBooks
             // 
-            resources.ApplyResources(this.DGV_AllBooks, "DGV_AllBooks");
             this.DGV_AllBooks.AllowUserToAddRows = false;
             this.DGV_AllBooks.AllowUserToDeleteRows = false;
             this.DGV_AllBooks.AllowUserToResizeRows = false;
             this.DGV_AllBooks.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DGV_AllBooks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            resources.ApplyResources(this.DGV_AllBooks, "DGV_AllBooks");
             this.DGV_AllBooks.MultiSelect = false;
             this.DGV_AllBooks.Name = "DGV_AllBooks";
             this.DGV_AllBooks.ReadOnly = true;
@@ -206,23 +206,23 @@
             // 
             // button_OK
             // 
-            resources.ApplyResources(this.button_OK, "button_OK");
             this.button_OK.DialogResult = System.Windows.Forms.DialogResult.OK;
+            resources.ApplyResources(this.button_OK, "button_OK");
             this.button_OK.Name = "button_OK";
             this.button_OK.UseVisualStyleBackColor = true;
             this.button_OK.Click += new System.EventHandler(this.button_OK_Click);
             // 
             // panel_Bottom
             // 
-            resources.ApplyResources(this.panel_Bottom, "panel_Bottom");
             this.panel_Bottom.Controls.Add(this.button_Cancel);
             this.panel_Bottom.Controls.Add(this.button_OK);
+            resources.ApplyResources(this.panel_Bottom, "panel_Bottom");
             this.panel_Bottom.Name = "panel_Bottom";
             // 
             // button_Cancel
             // 
-            resources.ApplyResources(this.button_Cancel, "button_Cancel");
             this.button_Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            resources.ApplyResources(this.button_Cancel, "button_Cancel");
             this.button_Cancel.Name = "button_Cancel";
             this.button_Cancel.UseVisualStyleBackColor = true;
             this.button_Cancel.Click += new System.EventHandler(this.button_Cancel_Click);
@@ -239,6 +239,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.Name = "Form_Action";
+            this.ShowInTaskbar = false;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_Action_FormClosing);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

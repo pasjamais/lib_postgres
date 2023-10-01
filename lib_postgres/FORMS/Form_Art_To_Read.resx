@@ -174,6 +174,10 @@
   <data name="TB_Comment.Multiline" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="TB_Comment.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+    <value>Vertical</value>
+  </data>
   <data name="TB_Comment.Size" type="System.Drawing.Size, System.Drawing">
     <value>399, 173</value>
   </data>
@@ -190,7 +194,7 @@
     <value>groupBox_Source</value>
   </data>
   <data name="&gt;&gt;TB_Comment.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>11</value>
   </data>
   <data name="Label_Comment.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -217,7 +221,61 @@
     <value>groupBox_Source</value>
   </data>
   <data name="&gt;&gt;Label_Comment.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>9</value>
+  </data>
+  <data name="BT__Toread_Author_Source.Location" type="System.Drawing.Point, System.Drawing">
+    <value>639, 52</value>
+  </data>
+  <data name="BT__Toread_Author_Source.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 2, 3, 2</value>
+  </data>
+  <data name="BT__Toread_Author_Source.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 23</value>
+  </data>
+  <data name="BT__Toread_Author_Source.TabIndex" type="System.Int32, mscorlib">
+    <value>110</value>
+  </data>
+  <data name="BT__Toread_Author_Source.Text" xml:space="preserve">
+    <value>+</value>
+  </data>
+  <data name="&gt;&gt;BT__Toread_Author_Source.Name" xml:space="preserve">
+    <value>BT__Toread_Author_Source</value>
+  </data>
+  <data name="&gt;&gt;BT__Toread_Author_Source.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;BT__Toread_Author_Source.Parent" xml:space="preserve">
+    <value>groupBox_Source</value>
+  </data>
+  <data name="&gt;&gt;BT__Toread_Author_Source.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="BT_Add_Art_Source.Location" type="System.Drawing.Point, System.Drawing">
+    <value>639, 20</value>
+  </data>
+  <data name="BT_Add_Art_Source.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 2, 3, 2</value>
+  </data>
+  <data name="BT_Add_Art_Source.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 23</value>
+  </data>
+  <data name="BT_Add_Art_Source.TabIndex" type="System.Int32, mscorlib">
+    <value>109</value>
+  </data>
+  <data name="BT_Add_Art_Source.Text" xml:space="preserve">
+    <value>+</value>
+  </data>
+  <data name="&gt;&gt;BT_Add_Art_Source.Name" xml:space="preserve">
+    <value>BT_Add_Art_Source</value>
+  </data>
+  <data name="&gt;&gt;BT_Add_Art_Source.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;BT_Add_Art_Source.Parent" xml:space="preserve">
+    <value>groupBox_Source</value>
+  </data>
+  <data name="&gt;&gt;BT_Add_Art_Source.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="RB_Source_Another.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -235,13 +293,13 @@
     <value>RB_Source_Another</value>
   </data>
   <data name="&gt;&gt;RB_Source_Another.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>lib_postgres.VIEW.NOTICE.RadioButton_Colorized, lib_postgres, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;RB_Source_Another.Parent" xml:space="preserve">
     <value>groupBox_Source</value>
   </data>
   <data name="&gt;&gt;RB_Source_Another.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="RB_Source_Author.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -259,13 +317,13 @@
     <value>RB_Source_Author</value>
   </data>
   <data name="&gt;&gt;RB_Source_Author.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>lib_postgres.VIEW.NOTICE.RadioButton_Colorized, lib_postgres, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;RB_Source_Author.Parent" xml:space="preserve">
     <value>groupBox_Source</value>
   </data>
   <data name="&gt;&gt;RB_Source_Author.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="RB_Source_Art.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -283,13 +341,13 @@
     <value>RB_Source_Art</value>
   </data>
   <data name="&gt;&gt;RB_Source_Art.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>lib_postgres.VIEW.NOTICE.RadioButton_Colorized, lib_postgres, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;RB_Source_Art.Parent" xml:space="preserve">
     <value>groupBox_Source</value>
   </data>
   <data name="&gt;&gt;RB_Source_Art.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="BT__Another_Source_Add.Location" type="System.Drawing.Point, System.Drawing">
     <value>639, 89</value>
@@ -316,7 +374,7 @@
     <value>groupBox_Source</value>
   </data>
   <data name="&gt;&gt;BT__Another_Source_Add.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="Label_Source_Another.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -346,7 +404,7 @@
     <value>groupBox_Source</value>
   </data>
   <data name="&gt;&gt;Label_Source_Another.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="CB_Source_Another.Location" type="System.Drawing.Point, System.Drawing">
     <value>223, 89</value>
@@ -370,7 +428,7 @@
     <value>groupBox_Source</value>
   </data>
   <data name="&gt;&gt;CB_Source_Another.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>7</value>
   </data>
   <data name="Label_Source_Author.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -400,7 +458,7 @@
     <value>groupBox_Source</value>
   </data>
   <data name="&gt;&gt;Label_Source_Author.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>8</value>
   </data>
   <data name="CB_Source_Author.Location" type="System.Drawing.Point, System.Drawing">
     <value>223, 53</value>
@@ -424,7 +482,7 @@
     <value>groupBox_Source</value>
   </data>
   <data name="&gt;&gt;CB_Source_Author.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>10</value>
   </data>
   <data name="Label_Source_Art.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -454,7 +512,7 @@
     <value>groupBox_Source</value>
   </data>
   <data name="&gt;&gt;Label_Source_Art.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>12</value>
   </data>
   <data name="CB_Source_Art.Location" type="System.Drawing.Point, System.Drawing">
     <value>223, 21</value>
@@ -478,7 +536,7 @@
     <value>groupBox_Source</value>
   </data>
   <data name="&gt;&gt;CB_Source_Art.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>13</value>
   </data>
   <data name="groupBox_Source.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt, style=Bold</value>
@@ -523,7 +581,7 @@
     <value>RB_Toread_Author</value>
   </data>
   <data name="&gt;&gt;RB_Toread_Author.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>lib_postgres.VIEW.NOTICE.RadioButton_Colorized, lib_postgres, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;RB_Toread_Author.Parent" xml:space="preserve">
     <value>groupBox_ToRead</value>
@@ -547,7 +605,7 @@
     <value>RB_Toread_Art</value>
   </data>
   <data name="&gt;&gt;RB_Toread_Art.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>lib_postgres.VIEW.NOTICE.RadioButton_Colorized, lib_postgres, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;RB_Toread_Art.Parent" xml:space="preserve">
     <value>groupBox_ToRead</value>
@@ -750,7 +808,6 @@
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>7, 15</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="$this.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>

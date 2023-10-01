@@ -254,7 +254,7 @@
     <value>Label_Art</value>
   </data>
   <data name="&gt;&gt;Label_Art.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>lib_postgres.VIEW.NOTICE.Label_Colorized, lib_postgres, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;Label_Art.Parent" xml:space="preserve">
     <value>$this</value>

@@ -126,6 +126,9 @@
             this.ToolStripMenuItem_Author_Add = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Author_Edit = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Author_Delete = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator16 = new System.Windows.Forms.ToolStripSeparator();
+            this.ToolStripMenuItem_Author_Find_Arts_of_Author = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem_Author__Find_Recommendations = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Actions = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Actions_Open = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Location_Show = new System.Windows.Forms.ToolStripMenuItem();
@@ -782,7 +785,10 @@
             this.toolStripSeparator3,
             this.ToolStripMenuItem_Author_Add,
             this.ToolStripMenuItem_Author_Edit,
-            this.ToolStripMenuItem_Author_Delete});
+            this.ToolStripMenuItem_Author_Delete,
+            this.toolStripSeparator16,
+            this.ToolStripMenuItem_Author_Find_Arts_of_Author,
+            this.ToolStripMenuItem_Author__Find_Recommendations});
             this.ToolStripMenuItem_Autors.Name = "ToolStripMenuItem_Autors";
             resources.ApplyResources(this.ToolStripMenuItem_Autors, "ToolStripMenuItem_Autors");
             // 
@@ -814,6 +820,23 @@
             resources.ApplyResources(this.ToolStripMenuItem_Author_Delete, "ToolStripMenuItem_Author_Delete");
             this.ToolStripMenuItem_Author_Delete.Name = "ToolStripMenuItem_Author_Delete";
             this.ToolStripMenuItem_Author_Delete.Click += new System.EventHandler(this.ToolStripMenuItem_Author_Delete_Click);
+            // 
+            // toolStripSeparator16
+            // 
+            this.toolStripSeparator16.Name = "toolStripSeparator16";
+            resources.ApplyResources(this.toolStripSeparator16, "toolStripSeparator16");
+            // 
+            // ToolStripMenuItem_Author_Find_Arts_of_Author
+            // 
+            resources.ApplyResources(this.ToolStripMenuItem_Author_Find_Arts_of_Author, "ToolStripMenuItem_Author_Find_Arts_of_Author");
+            this.ToolStripMenuItem_Author_Find_Arts_of_Author.Name = "ToolStripMenuItem_Author_Find_Arts_of_Author";
+            this.ToolStripMenuItem_Author_Find_Arts_of_Author.Click += new System.EventHandler(this.ToolStripMenuItem_Author_Find_Arts_of_Author_Click);
+            // 
+            // ToolStripMenuItem_Author__Find_Recommendations
+            // 
+            resources.ApplyResources(this.ToolStripMenuItem_Author__Find_Recommendations, "ToolStripMenuItem_Author__Find_Recommendations");
+            this.ToolStripMenuItem_Author__Find_Recommendations.Name = "ToolStripMenuItem_Author__Find_Recommendations";
+            this.ToolStripMenuItem_Author__Find_Recommendations.Click += new System.EventHandler(this.ToolStripMenuItem_Author__Find_Recommendations_Click);
             // 
             // ToolStripMenuItem_Actions
             // 
@@ -1124,5 +1147,7 @@
         private ToolStripMenuItem ToolStripMenuItem_Book_Find;
         private ToolStripSeparator toolStripSeparator11;
         private ToolStripMenuItem ToolStripMenuItem_Arts_Add_to_HaveRead;
+        private ToolStripMenuItem ToolStripMenuItem_Author_Find_Arts_of_Author;
+        private ToolStripMenuItem ToolStripMenuItem_Author__Find_Recommendations;
     }
 }

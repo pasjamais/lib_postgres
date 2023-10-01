@@ -33,8 +33,7 @@ namespace lib_postgres.FORMS
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_ArtRead));
             this.button_Cancel = new System.Windows.Forms.Button();
             this.button_OK = new System.Windows.Forms.Button();
-            // this.Label_Art = new System.Windows.Forms.Label();
-                this.Label_Art = new Label_Colorized();
+            this.Label_Art = new lib_postgres.VIEW.NOTICE.Label_Colorized();
             this.CB_Art = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
@@ -189,6 +188,7 @@ namespace lib_postgres.FORMS
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.Name = "Form_ArtRead";
+            this.ShowInTaskbar = false;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_ArtRead_FormClosing);
             this.Load += new System.EventHandler(this.Form_ArtRead_Load);
             this.ResumeLayout(false);

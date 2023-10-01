@@ -262,8 +262,11 @@
   <data name="ToolStripMenuItem_Marks_Delete.Text" xml:space="preserve">
     <value>Удалить/Отменить удаление оценки</value>
   </data>
+  <data name="ToolStripMenuItem_Books.Size" type="System.Drawing.Size, System.Drawing">
+    <value>52, 20</value>
+  </data>
   <data name="ToolStripMenuItem_Books.Text" xml:space="preserve">
-    <value>Книга</value>
+    <value>Книги</value>
   </data>
   <data name="ToolStripMenuItem_Book_Show.Size" type="System.Drawing.Size, System.Drawing">
     <value>266, 22</value>
@@ -524,31 +527,46 @@
     <value>Авторы</value>
   </data>
   <data name="ToolStripMenuItem_Authors_Show.Size" type="System.Drawing.Size, System.Drawing">
-    <value>278, 22</value>
+    <value>312, 22</value>
   </data>
   <data name="ToolStripMenuItem_Authors_Show.Text" xml:space="preserve">
     <value>Показать (Обновить) список авторов</value>
   </data>
   <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>275, 6</value>
+    <value>309, 6</value>
   </data>
   <data name="ToolStripMenuItem_Author_Add.Size" type="System.Drawing.Size, System.Drawing">
-    <value>278, 22</value>
+    <value>312, 22</value>
   </data>
   <data name="ToolStripMenuItem_Author_Add.Text" xml:space="preserve">
     <value>Добавить автора...</value>
   </data>
   <data name="ToolStripMenuItem_Author_Edit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>278, 22</value>
+    <value>312, 22</value>
   </data>
   <data name="ToolStripMenuItem_Author_Edit.Text" xml:space="preserve">
     <value>Открыть (Редактировать) автора...</value>
   </data>
   <data name="ToolStripMenuItem_Author_Delete.Size" type="System.Drawing.Size, System.Drawing">
-    <value>278, 22</value>
+    <value>312, 22</value>
   </data>
   <data name="ToolStripMenuItem_Author_Delete.Text" xml:space="preserve">
     <value>Удалить/Отменить удаление автора</value>
+  </data>
+  <data name="toolStripSeparator16.Size" type="System.Drawing.Size, System.Drawing">
+    <value>309, 6</value>
+  </data>
+  <data name="ToolStripMenuItem_Author_Find_Arts_of_Author.Size" type="System.Drawing.Size, System.Drawing">
+    <value>312, 22</value>
+  </data>
+  <data name="ToolStripMenuItem_Author_Find_Arts_of_Author.Text" xml:space="preserve">
+    <value>Найти произведения автора</value>
+  </data>
+  <data name="ToolStripMenuItem_Author__Find_Recommendations.Size" type="System.Drawing.Size, System.Drawing">
+    <value>312, 22</value>
+  </data>
+  <data name="ToolStripMenuItem_Author__Find_Recommendations.Text" xml:space="preserve">
+    <value>Найти связанные с автором рекомендации</value>
   </data>
   <data name="ToolStripMenuItem_Actions.Size" type="System.Drawing.Size, System.Drawing">
     <value>70, 20</value>
@@ -654,20 +672,5 @@
   </data>
   <data name="toolStripSeparator22.Size" type="System.Drawing.Size, System.Drawing">
     <value>281, 6</value>
-  </data>
-  <data name="ToolStripMenuItem_Cataloques.Size" type="System.Drawing.Size, System.Drawing">
-    <value>103, 20</value>
-  </data>
-  <data name="ToolStripMenuItem_Cataloques.Text" xml:space="preserve">
-    <value>О программе...</value>
-  </data>
-  <data name="ToolStripMenuItem_UI_Language_RU.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_UI_Language_FR.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_UI_Language_EN.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
   </data>
 </root>

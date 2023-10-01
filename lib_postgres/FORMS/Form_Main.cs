@@ -31,11 +31,14 @@ using lib_postgres.VIEW;
 using lib_postgres.VIEW.SPEC_ENTITIES_VIEWS;
 using lib_postgres.QUERIES;
 using lib_postgres.LOCALIZATION;
+using lib_postgres.VISUAL.TreeViewViz;
+using static lib_postgres.VIEW.SPEC_ENTITIES_VIEWS.Structures;
 
 namespace lib_postgres
 {
     public partial class Form_Main : Form
     {
+        //current view roules the set of available commands
         private Type? current_Working_Type;
         public Type? Current_Working_Type
         {
@@ -237,6 +240,7 @@ namespace lib_postgres
         private void ToolStripMenuItem_File_RestoreBD_Click(object sender, EventArgs e)
         {
             Restore.Choose_RestoreBD(openFileDialog_BD_Backup);
+            last_DGV_Update_Operation();
         }
         private void ToolStripMenuItem_File_Open_Settings_Click(object sender, EventArgs e)
         {
@@ -282,11 +286,13 @@ namespace lib_postgres
             dataGridView.DataSource = Queries_from_Views.Get_My_Books_in_Other_Hands();
             Turn_Off_Current_Menu_Item();
             dgv_Visualisator.Prepare_DGV_For_Type<ViewMyBooksInOtherHand>(dataGridView, StatusProperty);
+            Current_Working_Type = typeof(ViewBook);
             Turn_On_Current_Menu_Item();
         }
         void show_books_in_place(object sender, EventArgs e)
         {
             dataGridView.Columns.Clear();
+            Current_Working_Type = typeof(ViewBook);
             dataGridView.DataSource = Queries_LinQ.Get_Books_by_Place_Name(((ToolStripMenuItem)sender).Text);
             dgv_Visualisator.Refresh_DGV_for_Get_Books_by_Place_Name(dataGridView);
         }
@@ -315,6 +321,30 @@ namespace lib_postgres
                 Application.Restart();
 
             }
+        }
+        private void ToolStripMenuItem_Author_Find_Arts_of_Author_Click(object sender, EventArgs e)
+        {
+            long authorID = dgv_Visualisator.Get_Selected_Entity_ID(dataGridView); 
+            dataGridView.Columns.Clear();
+            dataGridView.DataSource =  Queries_LinQ.Get_Arts(authorID);
+            Turn_Off_Current_Menu_Item();
+            dgv_Visualisator.Prepare_DGV_For_Type<Art>(dataGridView, StatusProperty);
+            //++ colorization of deleted elements 
+            List<long> deleted_IDs = CRUD_Item_Determinator.Get_Deleted_Items_IDs<Art>();
+            dgv_Visualisator.deleted_Entities_Visuaisator.RunCommand(deleted_IDs, dataGridView);
+            //-- colorization of deleted elements
+            Turn_On_Current_Menu_Item();
+        }
+
+        private void ToolStripMenuItem_Author__Find_Recommendations_Click(object sender, EventArgs e)
+        {
+            long authorID = dgv_Visualisator.Get_Selected_Entity_ID(dataGridView);
+            Author author = DB_Agent.Get_Author(authorID);
+            List <Art_and_Author> arts_of_author = Queries_LinQ.Get_Arts(authorID);
+            Read_Recommendations();
+            List<Recommend> dt = (List <Recommend>) dataGridView.DataSource;
+            dt = Queries_LinQ.ArtRead_Projection(dt, author, arts_of_author);
+            dataGridView.DataSource = dt;
         }
 
         #endregion menu_commands
@@ -785,6 +815,9 @@ namespace lib_postgres
             {
                 Turn_On_Off_Menu_Item(ToolStripMenuItem_Author_Edit, state);
                 Turn_On_Off_Menu_Item(ToolStripMenuItem_Author_Delete, state);
+                Turn_On_Off_Menu_Item(ToolStripMenuItem_Author_Find_Arts_of_Author, state);
+                Turn_On_Off_Menu_Item(ToolStripMenuItem_Author__Find_Recommendations, state);
+                
             }
             else if (current_Working_Type == typeof(Action))
             {
@@ -818,6 +851,7 @@ namespace lib_postgres
                 Turn_On_Off_Menu_Item(ToolStripMenuItem_Arts_Edit, state);
                 Turn_On_Off_Menu_Item(ToolStripMenuItem_Arts_Delete, state);
                 Turn_On_Off_Menu_Item(ToolStripMenuItem_Arts_Add_to_HaveRead, state);
+           
             }
             else if (current_Working_Type == typeof(Genre))
             {
@@ -1285,7 +1319,9 @@ namespace lib_postgres
             Localization.Change_Language(this, sender.ToString(), ToolStripMenuItem_UI_Language);
             Localization.Update_Dynamic_Created_Controls(dynamic_created_controls);
             Update_Context_Menu();
+            Updade_DGV_Title();
         }
+     
 
         private void Initial_Langues_Menu_Load()
         {
@@ -1295,10 +1331,21 @@ namespace lib_postgres
         {
             dynamic_created_controls.Add(control);
         }
+        private void Updade_DGV_Title()
+        {// reflection and generic
+            if (StatusProperty is not null)
+            {
+                Type type = typeof(DGV_Visualisator);
+                MethodInfo methodInfo = type.GetMethod("Prepare_DGV_For_Type");
+                object classInstance = Activator.CreateInstance(type, null);
+                var meth_ref = methodInfo.MakeGenericMethod(current_Working_Type);
+                meth_ref.Invoke(classInstance, new object[] { dataGridView, StatusProperty });
+            }
+        }
 
         #endregion Localosation
 
-   
+
     }
 }
 

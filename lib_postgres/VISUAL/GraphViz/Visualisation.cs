@@ -38,7 +38,6 @@ namespace lib_postgres.VISUAL.GraphViz
 
         public string Visualize(Preset preset)
         {
-            Visualisation_Selector visualisation_Selector = new Visualisation_Selector();
             return engine(preset,
                       source(),
                       recommended());

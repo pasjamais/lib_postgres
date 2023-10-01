@@ -36,9 +36,9 @@ namespace lib_postgres.FORMS
         public Form_Art_To_Read()
         {
             InitializeComponent();
-            ComboBox_Helper.CB_reload<Art>(CB_Toread_Art);
+            ComboBox_Helper.CB_reload_for_Special_Types<Short_Art>(CB_Toread_Art);
             ComboBox_Helper.CB_reload<Author>(CB_Toread_Author);
-            ComboBox_Helper.CB_reload<Art>(CB_Source_Art);
+            ComboBox_Helper.CB_reload_for_Special_Types<Short_Art>(CB_Source_Art);
             ComboBox_Helper.CB_reload<Author>(CB_Source_Author);
             ComboBox_Helper.CB_reload<SourceToreadAnother>(CB_Source_Another);
             RB_Toread_Art.Tag = true;

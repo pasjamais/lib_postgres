@@ -95,7 +95,16 @@ namespace lib_postgres.VIEW.SPEC_ENTITIES_VIEWS
             public string Recommend_Type { get; set; }
             public string Recommended { get; set; }
             public string Comment { get; set; }
-            public Recommend(long id, DateOnly? date, string source_type, string source, string recommend_type, string recommended, string comment)
+
+            //++ for projections option
+            public long? SourceArtId { get; set; }
+            public long? SourceAuthorId { get; set; }
+            public long? SourceAnotherId { get; set; }
+            public long? ToreadArtId { get; set; }
+            public long? ToreadAuthorId { get; set; }
+            //-- for projections option
+            public Recommend(long id, DateOnly? date, string source_type, string source, string recommend_type, string recommended, string comment,
+                  long? sourceArtId, long? sourceAuthorId, long? sourceAnotherId, long? toreadArtId, long? toreadAuthorId)
             {
                 Id = id;
                 Date = date;
@@ -104,7 +113,14 @@ namespace lib_postgres.VIEW.SPEC_ENTITIES_VIEWS
                 Recommend_Type = recommend_type;
                 Recommended = recommended;
                 Comment = comment;
+
+                SourceArtId = sourceArtId;
+                SourceAuthorId = sourceAuthorId;
+                SourceAnotherId = sourceAnotherId;
+                ToreadArtId = toreadArtId;
+                ToreadAuthorId = toreadAuthorId;
             }
+
         }
     }
 }

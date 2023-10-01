@@ -9,6 +9,7 @@ using lib_postgres.VIEW.SPEC_ENTITIES_VIEWS;
 using static System.Net.Mime.MediaTypeNames;
 using static lib_postgres.VIEW.SPEC_ENTITIES_VIEWS.Structures;
 using lib_postgres.CRUD;
+using lib_postgres.VISUAL.TreeViewViz;
 
 namespace lib_postgres.QUERIES
 {
@@ -37,18 +38,13 @@ namespace lib_postgres.QUERIES
             return items;
         }
 
-        public static List<Art_and_Author> Get_Arts()
+        public static List<Art_and_Author> Get_Arts(long authorID = -1)
         {
-            var places = DB_Agent.Get_Places();
             var authors = DB_Agent.Get_Authors();
             var authors_arts = DB_Agent.Get_AuthorArts();
             var languages = DB_Agent.Get_Languages();
             var arts = DB_Agent.Get_Arts();
-            var locations = DB_Agent.Get_Locations();
-            var books = DB_Agent.Get_Books();
             var genres = DB_Agent.Get_Genres();
-            var pubhouse = DB_Agent.Get_Publishing_Houses();
-            var cities = DB_Agent.Get_Cities();
             // art's title and authors
             var arts_authors = (from art in arts
                                 join aa in authors_arts on art.Id equals aa.Art
@@ -61,8 +57,13 @@ namespace lib_postgres.QUERIES
                                     art_genre = g.Key.art.Genre,
                                     lan_orig = g.Key.art.OrigLanguage,
                                     year_orig = g.Key.art.WritingYear,
-                                    authors_concat = string.Join(",", g.Select(x => x.Name))
+                                    authors_concat = string.Join(",", g.Select(x => x.Name)),
+                                    // for projection by author
+                                    authors_IDs = g.Select(x => x.Id).ToList()
                                 }).ToList();
+            // projection by author:
+            if (authorID != -1)
+                arts_authors = arts_authors.Where(s => s.authors_IDs.Contains(authorID)).ToList();
             // rest fields
             var items = (from art in arts_authors
                          join gen in genres on art.art_genre equals gen.Id into sub_genres // LEFT JOIN
@@ -157,7 +158,7 @@ namespace lib_postgres.QUERIES
 
 
 
-        public static dynamic Get_All_Recommendations()
+        public static List<Recommend> Get_All_Recommendations()
         {
 
             var recs = DB_Agent.Get_Recommendations();
@@ -171,10 +172,11 @@ namespace lib_postgres.QUERIES
                                     Source = art_source.Name + " | " + art_source.Authors,
                                     rec.Comment,
                                     rec.ToreadArtId,
-                                    rec.ToreadAuthorId
+                                    rec.ToreadAuthorId,
+                                    rec.SourceArtId
                                 }).ToList();
             _arts_authors = Get_Arts();
-            var arts_to_arts = (from art_source in _art_sources
+            List<Recommend> arts_to_arts = (from art_source in _art_sources
                                 join art_toread in _arts_authors on art_source.ToreadArtId equals art_toread.Id
                                 select new Recommend()
                                 {
@@ -184,10 +186,12 @@ namespace lib_postgres.QUERIES
                                     Source = art_source.Source,
                                     Recommend_Type = Localization.Substitute("Book"),
                                     Recommended = art_toread.Name + " | " + art_toread.Authors,
-                                    Comment = art_source.Comment
-                                }).ToList();
+                                    Comment = art_source.Comment,
+                                    SourceArtId = art_source.SourceArtId,
+                                    ToreadArtId = art_source.ToreadArtId
+        }).ToList();
             var _authors = DB_Agent.Get_Authors();
-            var arts_to_authors = (from art_source in _art_sources
+            List<Recommend> arts_to_authors = (from art_source in _art_sources
                                    join author in _authors on art_source.ToreadAuthorId equals author.Id
                                    select new Recommend()
                                    {
@@ -197,10 +201,23 @@ namespace lib_postgres.QUERIES
                                        Source = art_source.Source,
                                        Recommend_Type = Localization.Substitute("Author"),
                                        Recommended = author.Name,
-                                       Comment = art_source.Comment
+                                       Comment = art_source.Comment,
+                                       SourceArtId = art_source.SourceArtId,
+                                       ToreadAuthorId = art_source.ToreadAuthorId
                                    }).ToList();
+            List<Recommend> arts_to_free = (from art_source in _art_sources
+                                            where art_source.ToreadArtId is null  & art_source.ToreadAuthorId is null 
+                                            select new Recommend()
+                                            {
+                                                Id = art_source.Id,
+                                                Date = art_source.Date,
+                                                Source_Type = Localization.Substitute("Book"),
+                                                Source = art_source.Source,
+                                                Recommend_Type = "",
+                                                Recommended = "",
+                                                Comment = art_source.Comment
+                                            }).ToList();
             /////////////////
-
             var _authors_sources = (from rec in recs
                                     join author in _authors on rec.SourceAuthorId equals author.Id
                                     select new
@@ -210,9 +227,10 @@ namespace lib_postgres.QUERIES
                                         Source = author.Name,
                                         rec.Comment,
                                         rec.ToreadArtId,
-                                        rec.ToreadAuthorId
+                                        rec.ToreadAuthorId,
+                                        rec.SourceAuthorId
                                     }).ToList();
-            var authors_to_arts = (from author_source in _authors_sources
+            List<Recommend> authors_to_arts = (from author_source in _authors_sources
                                    join art_toread in _arts_authors on author_source.ToreadArtId equals art_toread.Id
                                    select new Recommend()
                                    {
@@ -222,9 +240,12 @@ namespace lib_postgres.QUERIES
                                        Source = author_source.Source,
                                        Recommend_Type = Localization.Substitute("Book"),
                                        Recommended = art_toread.Name + " | " + art_toread.Authors,
-                                       Comment = author_source.Comment
+                                       Comment = author_source.Comment,
+                                       SourceAuthorId = author_source.SourceAuthorId,
+                                       ToreadArtId = author_source.ToreadArtId,
+
                                    }).ToList();
-            var authors_to_authors = (from author_source in _authors_sources
+            List<Recommend> authors_to_authors = (from author_source in _authors_sources
                                       join author in _authors on author_source.ToreadAuthorId equals author.Id
                                       select new Recommend()
                                       {
@@ -234,9 +255,22 @@ namespace lib_postgres.QUERIES
                                           Source = author_source.Source,
                                           Recommend_Type = Localization.Substitute("Author"),
                                           Recommended = author.Name,
-                                          Comment = author_source.Comment
+                                          Comment = author_source.Comment,
+                                          SourceAuthorId = author_source.SourceAuthorId,
+                                          ToreadAuthorId = author_source.ToreadAuthorId
                                       }).ToList();
-
+            List<Recommend> authors_to_free = (from author_source in _authors_sources
+                                               where author_source.ToreadArtId is null & author_source.ToreadAuthorId is null
+                                            select new Recommend()
+                                            {
+                                                Id = author_source.Id,
+                                                Date = author_source.Date,
+                                                Source_Type = Localization.Substitute("Author"),
+                                                Source = author_source.Source,
+                                                Recommend_Type = "",
+                                                Recommended = "",
+                                                Comment = author_source.Comment
+                                            }).ToList();
             /////////////////
             var _anothers = DB_Agent.Get_Another_Sources();
             var _another_sources = (from rec in recs
@@ -248,9 +282,10 @@ namespace lib_postgres.QUERIES
                                         Source = another.Name,
                                         rec.Comment,
                                         rec.ToreadArtId,
-                                        rec.ToreadAuthorId
+                                        rec.ToreadAuthorId,
+                                        rec.SourceAnotherId
                                     }).ToList();
-            var another_to_arts = (from another in _another_sources
+            List<Recommend> another_to_arts = (from another in _another_sources
                                    join art_toread in _arts_authors on another.ToreadArtId equals art_toread.Id
                                    select new Recommend()
                                    {
@@ -260,9 +295,11 @@ namespace lib_postgres.QUERIES
                                        Source = another.Source,
                                        Recommend_Type = Localization.Substitute("Book"),
                                        Recommended = art_toread.Name + " | " + art_toread.Authors,
-                                       Comment = another.Comment
+                                       Comment = another.Comment,
+                                       SourceAnotherId = another.SourceAnotherId,
+                                       ToreadAuthorId= another.ToreadAuthorId
                                    }).ToList();
-            var another_to_authors = (from another in _another_sources
+            List<Recommend> another_to_authors = (from another in _another_sources
                                       join author in _authors on another.ToreadAuthorId equals author.Id
                                       select new Recommend()
                                       {
@@ -272,11 +309,41 @@ namespace lib_postgres.QUERIES
                                           Source = another.Source,
                                           Recommend_Type = Localization.Substitute("Author"),
                                           Recommended = author.Name,
-                                          Comment = another.Comment
+                                          Comment = another.Comment,
+                                          SourceAnotherId = another.SourceAnotherId,
+                                          ToreadAuthorId= another.ToreadAuthorId
                                       }).ToList();
-            var result = arts_to_arts.Union(arts_to_authors)
-                             .Union(authors_to_arts).Union(authors_to_authors)
-                             .Union(another_to_arts).Union(another_to_authors)
+            List<Recommend> another_to_free = (from another in _another_sources
+                                               where another.ToreadArtId is null & another.ToreadAuthorId is null
+                                               select new Recommend()
+                                               {
+                                                   Id = another.Id,
+                                                   Date = another.Date,
+                                                   Source_Type = Localization.Substitute("Author"),
+                                                   Source = another.Source,
+                                                   Recommend_Type = "",
+                                                   Recommended = "",
+                                                   Comment = another.Comment
+                                               }).ToList();
+            /////////////////
+            var unknown = (from rec in recs
+                           where (rec.SourceArtId is null & rec.SourceAuthorId is null & rec.SourceAnotherId is null)
+                                || (rec.ToreadArtId is null & rec.ToreadAuthorId is null)
+                           select new Recommend()
+                                 {
+                                     Id = rec.Id,
+                                     Date = rec.Date,
+                                     Source_Type = "",
+                                     Source = "",
+                                     Recommend_Type = "",
+                                     Recommended = "",
+                                     Comment = rec.Comment ?? ""
+                                 }).ToList();
+            //
+            var result = arts_to_arts.Union(arts_to_authors).Union(arts_to_free)
+                             .Union(authors_to_arts).Union(authors_to_authors).Union(authors_to_free)
+                             .Union(another_to_arts).Union(another_to_authors).Union(another_to_free)
+                             .Union(unknown)
                              .OrderBy(n => n.Id).ToList();
             return result;
         }
@@ -291,5 +358,28 @@ namespace lib_postgres.QUERIES
                                      }).ToList().OrderBy(n => n.Name).ToList();
             return items;
         }
+
+        public static List<Recommend> ArtRead_Projection(List<Recommend> original_table, Author author = null, List<Art_and_Author> art_and_author_list = null)
+        {
+            List <Recommend> result = new();
+            if (author != null)
+            {
+                var by_author = (from recommend in original_table
+                                          where recommend.SourceAuthorId == author.Id ||
+                                            recommend.ToreadAuthorId == author.Id
+                                          select recommend).ToList();
+                result = by_author;
+            }
+            if (art_and_author_list != null)
+            {
+                var art_IDs = (from a in art_and_author_list
+                             select a.Id).ToList();
+                var by_source_art = original_table.IntersectBy(art_IDs, x => x.SourceArtId ?? 0).ToList();
+                var by_rec_art = original_table.IntersectBy(art_IDs, x => x.ToreadArtId ?? 0).ToList();
+                result = result.Union(by_source_art).Union(by_rec_art).ToList();
+            }
+            return result;
+        }
+
     }
 }

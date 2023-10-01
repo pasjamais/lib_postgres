@@ -245,6 +245,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.Name = "Form_Art";
+            this.ShowInTaskbar = false;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_Art_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.DGV_All_Authors)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_Selected_Authors)).EndInit();

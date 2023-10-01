@@ -40,9 +40,9 @@ namespace lib_postgres.FORMS
             this.groupBox_Source = new System.Windows.Forms.GroupBox();
             this.BT__Toread_Author_Source = new System.Windows.Forms.Button();
             this.BT_Add_Art_Source = new System.Windows.Forms.Button();
-            this.RB_Source_Another = new RadioButton_Colorized();
-            this.RB_Source_Author = new RadioButton_Colorized();
-            this.RB_Source_Art = new RadioButton_Colorized();
+            this.RB_Source_Another = new lib_postgres.VIEW.NOTICE.RadioButton_Colorized();
+            this.RB_Source_Author = new lib_postgres.VIEW.NOTICE.RadioButton_Colorized();
+            this.RB_Source_Art = new lib_postgres.VIEW.NOTICE.RadioButton_Colorized();
             this.BT__Another_Source_Add = new System.Windows.Forms.Button();
             this.Label_Source_Another = new System.Windows.Forms.Label();
             this.CB_Source_Another = new System.Windows.Forms.ComboBox();
@@ -51,8 +51,8 @@ namespace lib_postgres.FORMS
             this.Label_Source_Art = new System.Windows.Forms.Label();
             this.CB_Source_Art = new System.Windows.Forms.ComboBox();
             this.groupBox_ToRead = new System.Windows.Forms.GroupBox();
-            this.RB_Toread_Author = new RadioButton_Colorized();
-            this.RB_Toread_Art = new RadioButton_Colorized();
+            this.RB_Toread_Author = new lib_postgres.VIEW.NOTICE.RadioButton_Colorized();
+            this.RB_Toread_Art = new lib_postgres.VIEW.NOTICE.RadioButton_Colorized();
             this.BT__Toread_Author = new System.Windows.Forms.Button();
             this.BT_Add_Art = new System.Windows.Forms.Button();
             this.Label_Toread_Author = new System.Windows.Forms.Label();
@@ -121,24 +121,16 @@ namespace lib_postgres.FORMS
             // 
             // BT__Toread_Author_Source
             // 
-            this.BT__Toread_Author_Source.Location = new System.Drawing.Point(639, 52);
-            this.BT__Toread_Author_Source.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            resources.ApplyResources(this.BT__Toread_Author_Source, "BT__Toread_Author_Source");
             this.BT__Toread_Author_Source.Name = "BT__Toread_Author_Source";
-            this.BT__Toread_Author_Source.Size = new System.Drawing.Size(23, 23);
-            this.BT__Toread_Author_Source.TabIndex = 110;
-            this.BT__Toread_Author_Source.Text = "+";
             this.BT__Toread_Author_Source.UseVisualStyleBackColor = true;
             this.BT__Toread_Author_Source.Click += new System.EventHandler(this.BT__Toread_Author_Source_Click);
             // 
             // BT_Add_Art_Source
             // 
-            this.BT_Add_Art_Source.Location = new System.Drawing.Point(639, 20);
-            this.BT_Add_Art_Source.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            resources.ApplyResources(this.BT_Add_Art_Source, "BT_Add_Art_Source");
             this.BT_Add_Art_Source.Name = "BT_Add_Art_Source";
-            this.BT_Add_Art_Source.Size = new System.Drawing.Size(23, 23);
-            this.BT_Add_Art_Source.TabIndex = 109;
             this.BT_Add_Art_Source.Tag = "CB_Source_Art";
-            this.BT_Add_Art_Source.Text = "+";
             this.BT_Add_Art_Source.UseVisualStyleBackColor = true;
             this.BT_Add_Art_Source.Click += new System.EventHandler(this.BT_Add_Art_Source_Click);
             // 
@@ -187,8 +179,6 @@ namespace lib_postgres.FORMS
             this.CB_Source_Another.FormattingEnabled = true;
             resources.ApplyResources(this.CB_Source_Another, "CB_Source_Another");
             this.CB_Source_Another.Name = "CB_Source_Another";
-            this.CB_Source_Another.Size = new System.Drawing.Size(399, 23);
-            this.CB_Source_Another.TabIndex = 93;
             this.CB_Source_Another.SelectionChangeCommitted += new System.EventHandler(this.CB_Source_Another_SelectionChangeCommitted);
             // 
             // Label_Source_Author
@@ -202,8 +192,6 @@ namespace lib_postgres.FORMS
             this.CB_Source_Author.FormattingEnabled = true;
             resources.ApplyResources(this.CB_Source_Author, "CB_Source_Author");
             this.CB_Source_Author.Name = "CB_Source_Author";
-            this.CB_Source_Author.Size = new System.Drawing.Size(399, 23);
-            this.CB_Source_Author.TabIndex = 91;
             this.CB_Source_Author.SelectionChangeCommitted += new System.EventHandler(this.CB_Source_Author_SelectionChangeCommitted);
             // 
             // Label_Source_Art
@@ -217,8 +205,6 @@ namespace lib_postgres.FORMS
             this.CB_Source_Art.FormattingEnabled = true;
             resources.ApplyResources(this.CB_Source_Art, "CB_Source_Art");
             this.CB_Source_Art.Name = "CB_Source_Art";
-            this.CB_Source_Art.Size = new System.Drawing.Size(399, 23);
-            this.CB_Source_Art.TabIndex = 89;
             this.CB_Source_Art.SelectionChangeCommitted += new System.EventHandler(this.CB_Source_Art_SelectionChangeCommitted);
             // 
             // groupBox_ToRead
@@ -263,10 +249,7 @@ namespace lib_postgres.FORMS
             // 
             resources.ApplyResources(this.BT_Add_Art, "BT_Add_Art");
             this.BT_Add_Art.Name = "BT_Add_Art";
-            this.BT_Add_Art.Size = new System.Drawing.Size(23, 23);
-            this.BT_Add_Art.TabIndex = 103;
             this.BT_Add_Art.Tag = "CB_Toread_Art";
-            this.BT_Add_Art.Text = "+";
             this.BT_Add_Art.UseVisualStyleBackColor = true;
             this.BT_Add_Art.Click += new System.EventHandler(this.BT_Add_Art_Click);
             // 
@@ -281,8 +264,6 @@ namespace lib_postgres.FORMS
             this.CB_Toread_Author.FormattingEnabled = true;
             resources.ApplyResources(this.CB_Toread_Author, "CB_Toread_Author");
             this.CB_Toread_Author.Name = "CB_Toread_Author";
-            this.CB_Toread_Author.Size = new System.Drawing.Size(399, 23);
-            this.CB_Toread_Author.TabIndex = 99;
             this.CB_Toread_Author.SelectionChangeCommitted += new System.EventHandler(this.CB_Toread_Author_SelectionChangeCommitted);
             // 
             // Label_Toread_Art
@@ -296,8 +277,6 @@ namespace lib_postgres.FORMS
             this.CB_Toread_Art.FormattingEnabled = true;
             resources.ApplyResources(this.CB_Toread_Art, "CB_Toread_Art");
             this.CB_Toread_Art.Name = "CB_Toread_Art";
-            this.CB_Toread_Art.Size = new System.Drawing.Size(399, 23);
-            this.CB_Toread_Art.TabIndex = 97;
             this.CB_Toread_Art.SelectionChangeCommitted += new System.EventHandler(this.CB_Toread_Art_SelectionChangeCommitted);
             // 
             // Form_Art_To_Read
@@ -315,6 +294,7 @@ namespace lib_postgres.FORMS
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.Name = "Form_Art_To_Read";
+            this.ShowInTaskbar = false;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_Art_To_Read_FormClosing);
             this.groupBox_Source.ResumeLayout(false);
             this.groupBox_Source.PerformLayout();
