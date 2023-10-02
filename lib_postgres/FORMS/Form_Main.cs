@@ -1343,9 +1343,14 @@ namespace lib_postgres
             }
         }
 
+
         #endregion Localosation
 
-
+        private void ToolStripMenuItem_About_Click(object sender, EventArgs e)
+        {
+            Form_About form_About = new Form_About();
+            form_About.ShowDialog();
+        }
     }
 }
 

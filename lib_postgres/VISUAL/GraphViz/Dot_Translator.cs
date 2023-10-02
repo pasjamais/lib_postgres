@@ -27,7 +27,10 @@ namespace lib_postgres.VISUAL.GraphViz
         public void Add_Elements(List<Node_Simple_Element> nodes)
         {
             foreach (var node in nodes)
-                elements.Add(new Element(node.Id, node.Text));
+            {
+                elements.Add(new Element(node));
+            }
+                
             elements = elements.Distinct().ToList().OrderBy(d => d.number).ToList();
         }
         public void Add_Relations(List<Relation> relations_to_add)
@@ -93,19 +96,5 @@ namespace lib_postgres.VISUAL.GraphViz
         {
             return "\n}\n";
         }
-
-        public static List<Relation> Get_Recomendations_Arts_to_Arts_for_Graphviz()
-        {
-            List<Relation> relations = new List<Relation>();
-            List<Recomendation> recomendatons = Get_Recommendations();
-            List<Node_Simple_Element> arts_sources = Get_Source_Arts(recomendatons);
-            List<Node_Simple_Element> arts_recommended = Get_Recommended_Arts_for_Arts(arts_sources, recomendatons);
-            foreach (var s in arts_recommended)
-            {
-                relations.Add(new Relation(s.Id_Parent, s.Id));
-            }
-            return relations;
-        }
-
     }
 }

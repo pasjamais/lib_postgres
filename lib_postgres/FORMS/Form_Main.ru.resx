@@ -673,4 +673,10 @@
   <data name="toolStripSeparator22.Size" type="System.Drawing.Size, System.Drawing">
     <value>281, 6</value>
   </data>
+  <data name="ToolStripMenuItem_About.Size" type="System.Drawing.Size, System.Drawing">
+    <value>103, 20</value>
+  </data>
+  <data name="ToolStripMenuItem_About.Text" xml:space="preserve">
+    <value>О программе...</value>
+  </data>
 </root>

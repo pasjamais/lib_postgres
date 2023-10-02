@@ -480,6 +480,9 @@
   <data name="Recommendation_type" xml:space="preserve">
     <value>Тип рек.</value>
   </data>
+  <data name="Recommend_All_to_All" xml:space="preserve">
+    <value>Все рекомендуют всех</value>
+  </data>
   <data name="Series" xml:space="preserve">
     <value>Серия</value>
   </data>

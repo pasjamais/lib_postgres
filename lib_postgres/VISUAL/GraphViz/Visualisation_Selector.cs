@@ -22,6 +22,7 @@ namespace lib_postgres.VISUAL.GraphViz
         private string Authors_recommend_authors;
         private string Others_recommend_books;
         private string Others_recommend_authors;
+        private string Recommend_All_to_All;
 
         public Visualisation_Selector()
         {
@@ -31,10 +32,11 @@ namespace lib_postgres.VISUAL.GraphViz
             Localization.Substitute(ref Authors_recommend_authors);
             Localization.Substitute(ref Others_recommend_books);
             Localization.Substitute(ref Others_recommend_authors);
-            
+            Localization.Substitute(ref Recommend_All_to_All);
+
 
             this.visualisations = new List<Visualisation>();
-            for (int i = 1; i <= 6; i++)
+            for (int i = 1; i <= 7; i++)
                 Add_Visualisation(Populate_with_Standart_Visualisation(i));
         }
 
@@ -94,6 +96,13 @@ namespace lib_postgres.VISUAL.GraphViz
                         vis.name = Others_recommend_authors; // "Другие рекомендуют авторов";
                         vis.Add_Source_Methode(Graph_Agent.Get_Another_Sources);
                         vis.Add_Recommended_Methode(Graph_Agent.Get_Recommended_Authors_for_Anothers); ;
+                        return vis;
+                    }
+                case 7:
+                    {
+                        vis.name = Recommend_All_to_All; // "Everyone recommends everyone";
+                        vis.Add_Source_Methode(Graph_Agent.Get_All_Valid_Sources);
+                        vis.Add_Recommended_Methode(Graph_Agent.Get_All_Valid_Recommendations); 
                         return vis;
                     }
                 default:

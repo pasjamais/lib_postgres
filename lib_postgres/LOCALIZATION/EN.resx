@@ -479,6 +479,9 @@ It is recommended to create a new database or restore from a backup.</value>
   <data name="Recommendation_type" xml:space="preserve">
     <value>Recomm. type</value>
   </data>
+  <data name="Recommend_All_to_All" xml:space="preserve">
+    <value>Everyone recommends everyone</value>
+  </data>
   <data name="Series" xml:space="preserve">
     <value>Series</value>
   </data>

@@ -68,8 +68,6 @@ namespace lib_postgres.DEPLOY
         {
             Connection connection = new Connection();
             string exe = Get_Quotationned_String(connection.pg_dump_exe_path());
-            //% 3 - h localhost - p 5432 - U postgres - F c - b - v - f ".\%2\lib.backup" lib
-            //  - h localhost - p 5432 - U postgres - F c - b - v - f ".\%2\lib.backup" lib
             StringBuilder args = new StringBuilder();
             Dictionary<string, string> conn_properties = connection.Get_Connection_Properties();
             foreach (var (key, value) in cp_keys)

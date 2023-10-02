@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using lib_postgres.QUERIES;
 using lib_postgres.LOCALIZATION;
 using lib_postgres.CRUD;
+using lib_postgres.DEPLOY;
 
 namespace lib_postgres.VISUAL.TreeViewViz
 {
@@ -16,26 +17,27 @@ namespace lib_postgres.VISUAL.TreeViewViz
         public static string caption_from_books = Localization.Substitute("caption_from_books");       // "Из книг"; 
         public static string caption_from_authors = Localization.Substitute("caption_from_authors");   // "От авторов";
         public static string caption_from_anothers = Localization.Substitute("caption_from_anothers"); // "Другое";
-        public static string _loc_book = Localization.Substitute("Authors");  // "Авторы"
-        public static string _loc_authors = Localization.Substitute("Books"); // "Книги"
+        public static string _loc_book = Localization.Substitute("Books");  // "Books"
+        public static string _loc_authors = Localization.Substitute("Authors"); // "Authors" 
         public struct Element
         {
-            public long? number;
+            public string? number;
             public string label;
-            public Element(long? number, string label)
+            public Element(Node_Simple_Element node)
             {
-                this.number = number;
-                this.label = label;
+                this.number = $"{node.Short_Element_Type}{node.Id}";
+                this.label = node.Text;
             }
+           
         }
         public struct Relation
         {
-            public long? number_parent;
-            public long? number;
-            public Relation(long? number_parent, long? number)
+            public string? number_parent;
+            public string? number;
+            public Relation(Node_Simple_Element node)
             {
-                this.number_parent = number_parent;
-                this.number = number;
+                this.number_parent = $"{node.Short_Parent_Type}{node.Id_Parent}";
+                this.number = $"{node.Short_Element_Type}{node.Id}";
             }
         }
         public static TreeNode? Get_First_Node_by_Text(TreeNodeCollection nodes, string text_to_find)
@@ -141,7 +143,13 @@ namespace lib_postgres.VISUAL.TreeViewViz
 
                (from art_source_id in arts_sources_ids
                 join rec in arts_authors on art_source_id equals rec.Id
-                select new Node_Simple_Element(art_source_id, rec.Authors + " — " + rec.Name )).OrderBy(simple_element => simple_element.Text).ToList();
+                select new Node_Simple_Element()
+                {
+                    Id = art_source_id, 
+                    Text = rec.Authors + " — " + rec.Name,
+                    Short_Element_Type = Node_Simple_Element.Types.Art,
+                    Short_Parent_Type = Node_Simple_Element.Types.None
+                } ).OrderBy(simple_element => simple_element.Text).ToList();
             return arts_sources;
         }
         public static List<Node_Simple_Element> Get_Source_Arts()
@@ -155,9 +163,14 @@ namespace lib_postgres.VISUAL.TreeViewViz
                                     join rec in recomendatons
                                     on source_art.Id equals rec.SourceArtId
                                     where rec.ToreadArtId is not null
-                                    select new Node_Simple_Element(
-                                        rec.ToreadArtId,
-                                        rec.Art_ToRead_Text, source_art.Id)
+                                    select new Node_Simple_Element()
+                                    {
+                                        Id = rec.ToreadArtId,
+                                        Text = rec.Art_ToRead_Text,
+                                        Id_Parent = source_art.Id,
+                                        Short_Element_Type = Node_Simple_Element.Types.Art,
+                                        Short_Parent_Type = Node_Simple_Element.Types.Art
+                                    }
                                    ).OrderBy(simple_element => simple_element.Text).ToList();
             return arts_recommended;
         }
@@ -171,9 +184,14 @@ namespace lib_postgres.VISUAL.TreeViewViz
                                     join rec in recomendatons
                                     on source_art.Id equals rec.SourceArtId
                                     where rec.ToreadAuthorId is not null
-                                    select new Node_Simple_Element(
-                                        rec.ToreadAuthorId,
-                                        rec.Author_ToRead_Text, source_art.Id)
+                                    select new Node_Simple_Element()
+                                    {
+                                        Id = rec.ToreadAuthorId,
+                                        Text = rec.Author_ToRead_Text,
+                                        Id_Parent = source_art.Id,
+                                        Short_Element_Type = Node_Simple_Element.Types.Author,
+                                        Short_Parent_Type = Node_Simple_Element.Types.Art
+                                    }
                                    ).OrderBy(simple_element => simple_element.Text).ToList();
             return arts_recommended;
         }
@@ -239,7 +257,14 @@ namespace lib_postgres.VISUAL.TreeViewViz
 
                (from source_id in authors_sources_ids
                 join rec in authors on source_id equals rec.Id
-                select new Node_Simple_Element(source_id, rec.Name)).OrderBy(simple_element => simple_element.Text).ToList();
+                select new Node_Simple_Element()
+                { 
+                Id = source_id,
+                Text = rec.Name,
+                Short_Element_Type = Node_Simple_Element.Types.Author,
+                Short_Parent_Type  = Node_Simple_Element.Types.None,
+                }
+                ).OrderBy(simple_element => simple_element.Text).ToList();
             return authors_sources;
         }
         public static List<Node_Simple_Element> Get_Source_Authors()
@@ -252,9 +277,14 @@ namespace lib_postgres.VISUAL.TreeViewViz
                                     join rec in recomendatons
                                     on source.Id equals rec.SourceAuthorId
                                     where rec.ToreadArtId is not null
-                                    select new Node_Simple_Element(
-                                        rec.ToreadArtId,
-                                        rec.Art_ToRead_Text, source.Id)
+                                    select new Node_Simple_Element()
+                                    {
+                                        Id = rec.ToreadArtId,
+                                        Text = rec.Art_ToRead_Text,
+                                        Id_Parent = source.Id,
+                                        Short_Element_Type = Node_Simple_Element.Types.Art,
+                                        Short_Parent_Type = Node_Simple_Element.Types.Author
+                                    }
                                    ).OrderBy(simple_element => simple_element.Text).ToList();
             return arts_recommended;
         }
@@ -268,9 +298,14 @@ namespace lib_postgres.VISUAL.TreeViewViz
                                     join rec in recomendatons
                                     on source.Id equals rec.SourceAuthorId
                                     where rec.ToreadAuthorId is not null
-                                    select new Node_Simple_Element(
-                                        rec.ToreadAuthorId,
-                                        rec.Author_ToRead_Text, source.Id)
+                                    select new Node_Simple_Element()
+                                    {
+                                        Id = rec.ToreadAuthorId,
+                                        Text = rec.Author_ToRead_Text,
+                                        Id_Parent = source.Id,
+                                        Short_Parent_Type = Node_Simple_Element.Types.Author,
+                                        Short_Element_Type = Node_Simple_Element.Types.Author
+                                    }
                                    ).OrderBy(simple_element => simple_element.Text).ToList();
             return arts_recommended;
         }
@@ -336,7 +371,14 @@ namespace lib_postgres.VISUAL.TreeViewViz
 
                (from source_id in authors_sources_ids
                 join rec in anothers on source_id equals rec.Id
-                select new Node_Simple_Element(source_id, rec.Name)).OrderBy(simple_element => simple_element.Text).ToList();
+                select new Node_Simple_Element()
+                {
+                    Id = source_id,
+                    Text = rec.Name,
+                    Short_Element_Type = Node_Simple_Element.Types.Another,
+                    Short_Parent_Type = Node_Simple_Element.Types.None
+                }
+                ).OrderBy(simple_element => simple_element.Text).ToList();
             return authors_sources;
         }
 
@@ -351,9 +393,14 @@ namespace lib_postgres.VISUAL.TreeViewViz
                                     join rec in recomendatons
                                     on source.Id equals rec.SourceAnotherId // существенно
                                     where rec.ToreadArtId is not null
-                                    select new Node_Simple_Element(
-                                        rec.ToreadArtId,
-                                        rec.Art_ToRead_Text, source.Id)
+                                    select new Node_Simple_Element()
+                                    {
+                                        Id= rec.ToreadArtId,
+                                        Text = rec.Art_ToRead_Text,
+                                        Id_Parent = source.Id,
+                                        Short_Parent_Type = Node_Simple_Element.Types.Another,
+                                        Short_Element_Type = Node_Simple_Element.Types.Art
+                                    }
                                    ).OrderBy(simple_element => simple_element.Text).ToList();
             return arts_recommended;
         }
@@ -367,9 +414,14 @@ namespace lib_postgres.VISUAL.TreeViewViz
                                     join rec in recomendatons
                                     on source.Id equals rec.SourceAnotherId // существенно
                                     where rec.ToreadAuthorId is not null
-                                    select new Node_Simple_Element(
-                                        rec.ToreadAuthorId,
-                                        rec.Author_ToRead_Text, source.Id)
+                                    select new Node_Simple_Element()
+                                    {
+                                        Id= rec.ToreadAuthorId,
+                                        Text = rec.Author_ToRead_Text,
+                                        Id_Parent= source.Id,
+                                        Short_Element_Type = Node_Simple_Element.Types.Author,
+                                        Short_Parent_Type = Node_Simple_Element.Types.Another
+                                    }
                                    ).OrderBy(simple_element => simple_element.Text).ToList();
             return arts_recommended;
         }
@@ -379,5 +431,18 @@ namespace lib_postgres.VISUAL.TreeViewViz
         }
         #endregion
 
+        public static List<Node_Simple_Element> Get_All_Valid_Sources()
+        {
+           return Get_Source_Arts().Union(Get_Source_Authors()).Union(Get_Another_Sources()).ToList();
+        }
+        public static List<Node_Simple_Element> Get_All_Valid_Recommendations()
+        {
+            return Get_Recommended_Arts_for_Arts().
+                Union(Get_Recommended_Arts_for_Authors()).
+                Union(Get_Recommended_Arts_for_Anothers()).
+                Union(Get_Recommended_Authors_for_Arts()).
+                Union(Get_Recommended_Authors_for_Authors()).
+                Union(Get_Recommended_Authors_for_Anothers()).ToList();
+        }
     }
 }

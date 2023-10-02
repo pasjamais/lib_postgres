@@ -1116,6 +1116,15 @@ namespace lib_postgres.LOCALIZATION {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Everyone recommends everyone.
+        /// </summary>
+        internal static string Recommend_All_to_All {
+            get {
+                return ResourceManager.GetString("Recommend_All_to_All", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Recommendation.
         /// </summary>
         internal static string Recommendation {

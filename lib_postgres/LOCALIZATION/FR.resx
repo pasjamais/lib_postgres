@@ -478,6 +478,9 @@ Il est recommandé de créer une nouvelle base de données ou de la restaurer à
   <data name="Recommendation_type" xml:space="preserve">
     <value>Type de recomm. </value>
   </data>
+  <data name="Recommend_All_to_All" xml:space="preserve">
+    <value>Tous ensemble</value>
+  </data>
   <data name="Series" xml:space="preserve">
     <value>Série</value>
   </data>

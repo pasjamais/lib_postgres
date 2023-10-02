@@ -64,7 +64,7 @@ namespace lib_postgres.VISUAL.GraphViz
             List<Relation> relations = new List<Relation>();
             foreach (var s in recommended)
             {
-                relations.Add(new Relation(s.Id_Parent, s.Id));
+                relations.Add(new Relation(s));
             }
             return relations;
         }

@@ -103,6 +103,16 @@ namespace lib_postgres.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap img_bookshelf {
+            get {
+                object obj = ResourceManager.GetObject("img_bookshelf", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap img_good_DB {
             get {
                 object obj = ResourceManager.GetObject("img_good_DB", resourceCulture);
