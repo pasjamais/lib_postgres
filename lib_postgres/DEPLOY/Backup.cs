@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace lib_postgres.DEPLOY
+﻿namespace lib_postgres.DEPLOY
 {
     public class Backup
     {
@@ -37,6 +30,11 @@ namespace lib_postgres.DEPLOY
         public static string Get_Backup_Dir_Path()
         {
             return AppDomain.CurrentDomain.BaseDirectory + Get_Backup_Dir_Name();
+        }
+
+        public static void Open_Backup_Folder_in_Explorer()
+        {
+            Script_Engine.Run_Process("Explorer.exe", Get_Backup_Dir_Name());
         }
     }
 }

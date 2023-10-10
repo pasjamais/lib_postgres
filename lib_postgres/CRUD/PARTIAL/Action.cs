@@ -1,10 +1,11 @@
 ﻿using lib_postgres.CRUD;
 using lib_postgres.FORMS;
 using lib_postgres.QUERIES;
+using lib_postgres.VIEW.SPEC_ENTITIES_VIEWS;
 
 namespace lib_postgres
 {
-    public partial class Action : ICan_Erase_by_ID, ICan_Create_Item
+    public partial class Action : ICan_Erase_by_ID, ICan_Create_Item, ICan_Prepare_View
     {
         public static long Erase_Item_by_ID(long id)
         {
@@ -172,14 +173,20 @@ namespace lib_postgres
 
         private static void Load_Modifications_to_Action_from_Form_without_Authors(Action action, Form_Action form_Action)
         {
-            if (form_Action.CB_Place.SelectedValue != null)
-                if (action.Place != (System.Int64)form_Action.CB_Place.SelectedValue)
-                    action.Place = (System.Int64)form_Action.CB_Place.SelectedValue;
-
             if (form_Action.CB_Action_Type.SelectedValue != null)
                 if (action.ActionType != (System.Int64)form_Action.CB_Action_Type.SelectedValue)
                     action.ActionType = (System.Int64)form_Action.CB_Action_Type.SelectedValue;
 
+            if (!Location.Get_Operation(action.ActionType))
+            {
+                action.Place = null;
+            }
+            else
+            {
+                if (form_Action.CB_Place.SelectedValue != null)
+                    if (action.Place != (System.Int64)form_Action.CB_Place.SelectedValue)
+                        action.Place = (System.Int64)form_Action.CB_Place.SelectedValue;
+            }
             action.Comment = General_Manipulations.compare_string_values(action.Comment, form_Action.TB_Comment.Text);
 
             action.Date = DateOnly.FromDateTime(form_Action.dateTimePicker.Value.Date);
@@ -224,6 +231,30 @@ namespace lib_postgres
                 item.IsDeleted = true;
             DB_Agent.db.SaveChanges();
             return item.Id;
+        }
+
+        public static dynamic Prepare_View()
+        {
+            var actions = DB_Agent.Get_Actions();
+            var places = DB_Agent.Get_Places();
+            var act_types = DB_Agent.Get_ActionTypes();
+            var result = (from a in actions
+                         join p in places on a.Place equals p.Id into left_places
+                         from left_p in left_places.DefaultIfEmpty()
+                         join t in act_types on a.ActionType equals t.Id into left_act_types
+                         from left_t in left_act_types.DefaultIfEmpty()
+                         select new 
+                         {
+                             Id         = a.Id,
+                             Date       = a.Date,
+                             ActionType = left_t == null ? "" : left_t.Name,
+                             Comment = a.Comment,
+                             Place      = left_p == null ? "" : left_p.Name,
+                             Name = a.Name,
+                         }).ToList();
+
+
+            return result;
         }
 
     }

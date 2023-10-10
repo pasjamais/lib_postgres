@@ -24,26 +24,12 @@ namespace lib_postgres.VIEW
 
         public void Prepare_DGV_For_Type<T>(DataGridView DGV, Main_Form_Status_Update? StatusProperty = null)
         {
-            // return;
             Type type = typeof(T);
             Form_Main form = Form_Main.GetInstance();
             if (StatusProperty is not null) form.Current_Working_Type = type;
             if (type == typeof(Action))
             {
-                DGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
-                DGV.Columns[0].HeaderText = "Id"; DGV.Columns[0].FillWeight = (int)(DGV.Width * 0.15);
-                DGV.Columns[1].Visible = false;//name
-                DGV.Columns[2].HeaderText = _s("Date"); DGV.Columns[2].FillWeight = (int)(DGV.Width * 0.20);
-                DGV.Columns[3].HeaderText = _s("Action"); DGV.Columns[3].FillWeight = (int)(DGV.Width * 0.65);
-                DGV.Columns[4].Visible = false;//place
-                DGV.Columns[5].Visible = false;//action_type
-                DGV.Columns[6].Visible = false;//is_deleted
-                DGV.Columns[7].Visible = false;//navigation
-                DGV.Columns[8].Visible = false;//navigation
-                DGV.Columns[9].Visible = false;//locations
-                DGV.Columns[9].Visible = false;//posessions
-                DGV.Columns[10].Visible = false;
-                DGV.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                Action.Prepare_DGV(DGV);
                 if (StatusProperty is not null) StatusProperty.Message = _s("Action_list");
             }
             if (type == typeof(Author))
@@ -175,7 +161,7 @@ namespace lib_postgres.VIEW
                 DGV.Columns[4].HeaderText = _s("Date");
                 DGV.Columns[5].HeaderText = _s("Appellation");
                 DGV.Columns[6].HeaderText = _s("Author_s");
-                for (int i = 7; i <= 13; i++) { DGV.Columns[i].Visible = false; }
+                for (int i = 7; i <= 14; i++) { DGV.Columns[i].Visible = false; }
                 DGV.Columns[0].FillWeight = (int)(DGV.Width * 0.05);
                 DGV.Columns[2].FillWeight = (int)(DGV.Width * 0.25);
                 DGV.Columns[3].FillWeight = (int)(DGV.Width * 0.05);
@@ -299,6 +285,7 @@ namespace lib_postgres.VIEW
                                                  Turn_Off_or_ON_Current_Menu_Item Turn_Off_Current_Menu_Item,
                                                  Turn_Off_or_ON_Current_Menu_Item Turn_On_Current_Menu_Item,
                                                  Main_Form_Status_Update? StatusProperty = null)
+                  where T : new()
         {
             DGV.Columns.Clear();
             DGV.DataSource = CRUD_Item_Determinator.Get_All_Items_List_by_Type<T>();
@@ -352,25 +339,6 @@ namespace lib_postgres.VIEW
         private string _s(string key)
         {
             return Localization.Substitute(key);
-        }
-        public void Refresh_DGV_for_Get_Books_by_Place_Name(DataGridView DGV)
-        {
-
-            DGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            DGV.Columns[0].HeaderText = "Id";
-            DGV.Columns[1].Visible = false;
-            DGV.Columns[2].HeaderText = _s("Notice");
-            DGV.Columns[3].HeaderText = _s("Action");
-            DGV.Columns[4].HeaderText = _s("Date");
-            DGV.Columns[5].HeaderText = _s("Appellation");
-            DGV.Columns[6].HeaderText = _s("Author_s");
-            DGV.Columns[7].HeaderText = _s("Genre");
-            DGV.Columns[8].HeaderText = _s("Langue_original");
-            DGV.Columns[9].HeaderText = _s("Language_pub");
-            DGV.Columns[10].HeaderText = _s("Publication_year");
-            DGV.Columns[11].HeaderText = _s("Pubhouse");
-            DGV.Columns[12].HeaderText = _s("Code");
-            DGV.Columns[13].HeaderText = _s("Pages");
         }
     }
 }

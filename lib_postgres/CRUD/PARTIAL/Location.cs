@@ -51,19 +51,19 @@ namespace lib_postgres
         }
         public static Location Update_Location_with_Action_values_and_BookID(Location location, Action action, long? BookID)
         {
-            location.Action = action.Id;
+            if (location.Action != action.Id) location.Action = action.Id;
             if (action.ActionType == 2) location.Owner = null; //book gone away
                 else location.Owner = 1;
             location.Operation = Get_Operation(action.ActionType);
             if (Get_Operation(action.ActionType)) location.Place = action.Place;
                 else location.Place = null;
             //!!! В Action хранится Place указанный пользователем в форме, а в Location - действительное расположение, в т. ч. null
-            location.Comment = action.Comment;
+            location.Comment = General_Manipulations.compare_string_values(location.Comment, action.Comment);
             location.Book = BookID;
             return location;
         }
 
-        private static bool Get_Operation(long? operation)
+        public static bool Get_Operation(long? operation)
         {
             if (operation != null)
                 if (operation == 1 || operation == 3 || operation == 5)

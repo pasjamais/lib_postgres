@@ -75,7 +75,7 @@ namespace lib_postgres
                 return form_element.tb_Name.Text;
         }
 
-        public static string simple_element_add(string caption, string label)
+        public static string Simple_Element_Add(string caption, string label)
         {
             Form_Simple_Element form_element = new Form_Simple_Element(caption, label);
             var DialogResult = form_element.ShowDialog();

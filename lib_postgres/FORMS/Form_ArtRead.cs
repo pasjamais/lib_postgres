@@ -7,9 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using lib_postgres.QUERIES;
 using lib_postgres.VIEW.COMBOBOX;
 using lib_postgres.VIEW.NOTICE;
 using lib_postgres.VIEW.SPEC_ENTITIES_VIEWS;
+using static lib_postgres.VIEW.SPEC_ENTITIES_VIEWS.Structures;
 
 namespace lib_postgres.FORMS
 {
@@ -70,6 +72,18 @@ namespace lib_postgres.FORMS
         private void button_Cancel_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
+        }
+
+        private void CB_Art_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            Propose_Book_for_this_Art();
+        }
+        private void Propose_Book_for_this_Art()
+        {
+            var books = Queries_LinQ.Projection_Books_by_ArtID((long)CB_Art.SelectedValue);
+            if (books.Count < 1) return;
+            ComboBox_Helper.CB_reload_for_Special_Types<ViewBook>(CB_PaperBook, books.FirstOrDefault().Id);
+            ComboBox_Helper.CB_reload<BookFormat>(CB_BookFormat, 1);
         }
     }
 }

@@ -67,10 +67,10 @@
   <data name="label17.Text" xml:space="preserve">
     <value>Шифр</value>
   </data>
-  <data name="label16.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="Label_Art.Size" type="System.Drawing.Size, System.Drawing">
     <value>97, 15</value>
   </data>
-  <data name="label16.Text" xml:space="preserve">
+  <data name="Label_Art.Text" xml:space="preserve">
     <value>Произведение:</value>
   </data>
   <data name="label15.Size" type="System.Drawing.Size, System.Drawing">

@@ -25,7 +25,7 @@ namespace lib_postgres.VISUAL.TreeViewViz
             public string label;
             public Element(Node_Simple_Element node)
             {
-                this.number = $"{node.Short_Element_Type}{node.Id}";
+                this.number = $"{((char)node.Short_Element_Type)}{node.Id}";
                 this.label = node.Text;
             }
            
@@ -36,8 +36,8 @@ namespace lib_postgres.VISUAL.TreeViewViz
             public string? number;
             public Relation(Node_Simple_Element node)
             {
-                this.number_parent = $"{node.Short_Parent_Type}{node.Id_Parent}";
-                this.number = $"{node.Short_Element_Type}{node.Id}";
+                this.number_parent = $"{((char)node.Short_Parent_Type)}{node.Id_Parent}";
+                this.number = $"{((char)node.Short_Element_Type)}{node.Id}";
             }
         }
         public static TreeNode? Get_First_Node_by_Text(TreeNodeCollection nodes, string text_to_find)

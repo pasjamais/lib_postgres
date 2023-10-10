@@ -132,7 +132,7 @@ namespace lib_postgres.CRUD
             else return new List<long>();
         }
 
-        public static object Get_All_Items_List_by_Type<T>()
+        public static object Get_All_Items_List_by_Type<T>() where T : new()
         {
             Type type = typeof(T);
             if (type == typeof(ViewBook))
@@ -152,7 +152,7 @@ namespace lib_postgres.CRUD
             if (type == typeof(PublishingHouse))
                 return DB_Agent.Get_Publishing_Houses();
             if (type == typeof(Action))
-                return DB_Agent.Get_Actions();
+                return Prepare_View<T>();
             if (type == typeof(Mark))
                 return DB_Agent.Get_Marks();
             if (type == typeof(BookFormat))
@@ -210,6 +210,16 @@ namespace lib_postgres.CRUD
             if (type.GetMethod(methodName) != null)
                 elements = (List<T>)type.GetMethod(methodName).Invoke(null, null);
             return elements ?? new List<T>(); ;
+        }
+
+        public static dynamic Prepare_View<T>()
+              where T : new()
+        {
+            string methodName = "Prepare_View";
+            Type type = typeof(T);
+            if (type.GetMethod(methodName) != null)
+                return type.GetMethod(methodName).Invoke(null, new object[] { });
+            else return new T();
         }
     }
 }

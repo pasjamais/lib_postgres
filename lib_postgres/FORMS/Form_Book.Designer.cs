@@ -113,9 +113,9 @@ namespace lib_postgres
             // 
             // CB_Art
             // 
+            resources.ApplyResources(this.CB_Art, "CB_Art");
             this.CB_Art.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CB_Art.FormattingEnabled = true;
-            resources.ApplyResources(this.CB_Art, "CB_Art");
             this.CB_Art.Name = "CB_Art";
             // 
             // BT_Add_PubHouse
@@ -148,15 +148,15 @@ namespace lib_postgres
             // 
             // CB_Book_Language
             // 
-            this.CB_Book_Language.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             resources.ApplyResources(this.CB_Book_Language, "CB_Book_Language");
+            this.CB_Book_Language.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CB_Book_Language.FormattingEnabled = true;
             this.CB_Book_Language.Name = "CB_Book_Language";
             // 
             // CB_Series
             // 
-            this.CB_Series.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             resources.ApplyResources(this.CB_Series, "CB_Series");
+            this.CB_Series.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CB_Series.FormattingEnabled = true;
             this.CB_Series.Name = "CB_Series";
             // 
@@ -214,8 +214,8 @@ namespace lib_postgres
             // 
             // CB_City
             // 
-            this.CB_City.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             resources.ApplyResources(this.CB_City, "CB_City");
+            this.CB_City.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CB_City.FormattingEnabled = true;
             this.CB_City.Name = "CB_City";
             // 
@@ -231,8 +231,8 @@ namespace lib_postgres
             // 
             // CB_Publishing_House
             // 
-            this.CB_Publishing_House.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             resources.ApplyResources(this.CB_Publishing_House, "CB_Publishing_House");
+            this.CB_Publishing_House.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CB_Publishing_House.FormattingEnabled = true;
             this.CB_Publishing_House.Name = "CB_Publishing_House";
             // 
@@ -260,16 +260,16 @@ namespace lib_postgres
             // 
             // button_Cancel
             // 
-            this.button_Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             resources.ApplyResources(this.button_Cancel, "button_Cancel");
+            this.button_Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.button_Cancel.Name = "button_Cancel";
             this.button_Cancel.UseVisualStyleBackColor = true;
             this.button_Cancel.Click += new System.EventHandler(this.button_Cancel_Click);
             // 
             // button_OK
             // 
-            this.button_OK.DialogResult = System.Windows.Forms.DialogResult.OK;
             resources.ApplyResources(this.button_OK, "button_OK");
+            this.button_OK.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.button_OK.Name = "button_OK";
             this.button_OK.UseVisualStyleBackColor = true;
             this.button_OK.Click += new System.EventHandler(this.button_OK_Click);

@@ -91,11 +91,6 @@ namespace lib_postgres
             Turn_On_Current_Menu_Item();
         }
 
-        private void Backup_on_Start()
-        {
-            Backup.Backup_on_Start();
-        }
-
         private void BackupBD()
         {
             Backup.BackupBD();
@@ -199,7 +194,7 @@ namespace lib_postgres
             ToolStripMenuItem_Books.DropDownItems.Add(newItem);
             newItem.Tag = "Where_books";
             Add_for_Dynamic_Localization(newItem);
-            newItem.GetHashCode();
+
             var places = DB_Agent.Get_Places();
             foreach (var place in places)
             {
@@ -282,19 +277,15 @@ namespace lib_postgres
         }
         void get_My_Books_in_Other_Hands(object sender, EventArgs e)
         {
-            dataGridView.Columns.Clear();
-            dataGridView.DataSource = Queries_from_Views.Get_My_Books_in_Other_Hands();
-            Turn_Off_Current_Menu_Item();
-            dgv_Visualisator.Prepare_DGV_For_Type<ViewMyBooksInOtherHand>(dataGridView, StatusProperty);
-            Current_Working_Type = typeof(ViewBook);
-            Turn_On_Current_Menu_Item();
+            last_DGV_Update_Operation = Get_My_Books_in_Other_Hands;
+            Get_My_Books_in_Other_Hands();
         }
         void show_books_in_place(object sender, EventArgs e)
         {
             dataGridView.Columns.Clear();
             Current_Working_Type = typeof(ViewBook);
             dataGridView.DataSource = Queries_LinQ.Get_Books_by_Place_Name(((ToolStripMenuItem)sender).Text);
-            dgv_Visualisator.Refresh_DGV_for_Get_Books_by_Place_Name(dataGridView);
+            ViewBook.Prepare_DGV(dataGridView);
         }
 
         private void ToolStripMenuItem__Recommend_Vis_Graphviz_Click(object sender, EventArgs e)
@@ -908,7 +899,7 @@ namespace lib_postgres
 
 
         #region general CRUD
-        private void Create_Item<T>()
+        private void Create_Item<T>() where T : new()
         {
             long _id = CRUD_Item_Determinator.Create_Item<T>();
             if (_id > 0)
@@ -924,7 +915,7 @@ namespace lib_postgres
                 General_Manipulations.show_row(dataGridView, _id.ToString(), "Id");
             }
         }
-        private void Edit_Item<T>(long id)
+        private void Edit_Item<T>(long id) where T : new()
         {
             long _id = CRUD_Item_Determinator.Edit_Item_by_ID<T>(id);
             if (_id > 0)
@@ -933,7 +924,7 @@ namespace lib_postgres
                 General_Manipulations.show_row(dataGridView, _id.ToString(), "Id");
             }
         }
-        private void Delete_Item<T>()
+        private void Delete_Item<T>() where T : new()
         {
             long id = CRUD_Item_Determinator.Delete_Item_by_ID<T>(dgv_Visualisator.Get_Selected_Entity_ID(dataGridView));
             if (id > 0)
@@ -1350,6 +1341,21 @@ namespace lib_postgres
         {
             Form_About form_About = new Form_About();
             form_About.ShowDialog();
+        }
+
+        private void ToolStripMenuItem_File_Open_Backup_Folder_Click(object sender, EventArgs e)
+        {
+           Backup.Open_Backup_Folder_in_Explorer();
+        }
+
+        private void Get_My_Books_in_Other_Hands()
+        {
+            dataGridView.Columns.Clear();
+            dataGridView.DataSource = Queries_from_Views.Get_My_Books_in_Other_Hands();
+            Turn_Off_Current_Menu_Item();
+            dgv_Visualisator.Prepare_DGV_For_Type<ViewMyBooksInOtherHand>(dataGridView, StatusProperty);
+            Current_Working_Type = typeof(ViewBook);
+            Turn_On_Current_Menu_Item();
         }
     }
 }

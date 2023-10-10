@@ -518,7 +518,7 @@ namespace lib_postgres.CRUD
         {
             string f_caption, l_caption, deja_exists_caption;
             Localization.Get_Local_Captions_for_Simple_Form<T>(out f_caption, out l_caption, out deja_exists_caption);
-            var new_name = General_Manipulations.simple_element_add(f_caption, l_caption);
+            var new_name = General_Manipulations.Simple_Element_Add(f_caption, l_caption);
             if (new_name != "")
             {
                 if (all_elements.Exists(e => e.Name == new_name))

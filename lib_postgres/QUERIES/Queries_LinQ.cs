@@ -381,5 +381,14 @@ namespace lib_postgres.QUERIES
             return result;
         }
 
+        public static List<Book> Projection_Books_by_ArtID(long ArtID)
+        {
+            List<Book> books = DB_Agent.Get_Books();
+            var books_by_art = (from book in books
+                         where book.IdArt == ArtID
+                         select book).ToList();
+            return books_by_art;
+        }
+
     }
 }
