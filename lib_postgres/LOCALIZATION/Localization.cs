@@ -65,7 +65,7 @@ namespace lib_postgres.LOCALIZATION
             Set_visibility_to_Actual_ToolStripMenuItem(true, ToolStripMenuItem_UI_Language);
             CultureInfo new_Culture = new CultureInfo(UI_langs[short_lang_name]);
             Thread.CurrentThread.CurrentUICulture = new_Culture;
-         //   ApplyCulture(form, new_Culture);
+            ApplyCulture(form, new_Culture);
             Show_Actual_Language_in_Top(ToolStripMenuItem_UI_Language);
             Set_visibility_to_Actual_ToolStripMenuItem(false, ToolStripMenuItem_UI_Language);
         }
