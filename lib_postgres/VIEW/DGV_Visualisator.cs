@@ -10,6 +10,10 @@ using Microsoft.VisualBasic.Logging;
 using lib_postgres.CRUD;
 using lib_postgres.VIEW.DELITEMS;
 using lib_postgres.LOCALIZATION;
+using lib_postgres.QUERIES;
+using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
+using static lib_postgres.VIEW.SPEC_ENTITIES_VIEWS.Structures;
+using lib_postgres.VIEW.SPEC_ENTITIES_VIEWS;
 
 namespace lib_postgres.VIEW
 {
@@ -26,259 +30,27 @@ namespace lib_postgres.VIEW
         {
             Type type = typeof(T);
             Form_Main form = Form_Main.GetInstance();
-            if (StatusProperty is not null) form.Current_Working_Type = type;
-            if (type == typeof(Action))
-            {
-                Action.Prepare_DGV(DGV);
-                if (StatusProperty is not null) StatusProperty.Message = _s("Action_list");
-            }
-            if (type == typeof(Author))
-            {
-                DGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
-                DGV.Columns[0].HeaderText = "Id"; DGV.Columns[0].FillWeight = (int)(DGV.Width * 0.15);
-                DGV.Columns[1].HeaderText = Localization.Substitute("Author"); DGV.Columns[1].FillWeight = (int)(DGV.Width * 0.85);
-                for (int i = 2; i < DGV.ColumnCount; i++)
-                    DGV.Columns[i].Visible = false;
-                DGV.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                if (StatusProperty is not null) StatusProperty.Message = _s("Authors_list");
-            }
-
-            else if (type == typeof(Language))
+            if (StatusProperty is not null)
             {
 
-                DGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
-                DGV.Columns[0].HeaderText = "Id";
-                DGV.Columns[1].HeaderText = _s("Language");
-                for (int i = 2; i < DGV.ColumnCount; i++)
-                    DGV.Columns[i].Visible = false;
-                DGV.Columns[0].FillWeight = (int)(DGV.Width * 0.15);
-                DGV.Columns[1].FillWeight = (int)(DGV.Width * 0.85);
-                DGV.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                if (StatusProperty is not null) StatusProperty.Message = _s("Languages_list");
-            }
-            else if (type == typeof(ViewBook))
-            {
-                DGV.AutoSizeColumnsMode = (DataGridViewAutoSizeColumnsMode)DataGridViewAutoSizeColumnMode.Fill;
-                DGV.Columns[0].HeaderText = "Id"; DGV.Columns[0].FillWeight = 10;
-                DGV.Columns[1].HeaderText = _s("Appellation");
-                DGV.Columns[2].HeaderText = _s("Author_s");
-                DGV.Columns[3].HeaderText = _s("Publication_year"); DGV.Columns[3].FillWeight = 20;
-                DGV.Columns[4].HeaderText = _s("Genre"); DGV.Columns[4].FillWeight = 40;
-                DGV.Columns[5].HeaderText = _s("Pubhouse"); DGV.Columns[5].FillWeight = 25;
-                DGV.Columns[6].HeaderText = _s("Code"); DGV.Columns[6].FillWeight = 10;
-                if (StatusProperty is not null)
+                if (type == typeof(ArtRead))              // special
+                    form.Current_Working_Type = typeof(ViewHasRead);
+                else
+                    form.Current_Working_Type = type;
+                StatusProperty.Message = Get_Caption<T>();
+                if (type == typeof(ViewBook))
                 {
-                    StatusProperty.Message = _s("Books_list");
                     StatusProperty.ToolStripMenuItem__Book_Edit = true;
                 }
             }
-            else if (type == typeof(Art))
+            if (type == typeof(ViewHasRead) || type == typeof(ArtRead))  // special
             {
-                DGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
-                DGV.Columns[0].HeaderText = "Id";
-                DGV.Columns[1].HeaderText = _s("Art");
-                DGV.Columns[2].HeaderText = _s("Author_s");
-                DGV.Columns[3].HeaderText = _s("Genre");
-                DGV.Columns[5].HeaderText = _s("Writing_year");
-                DGV.Columns[4].HeaderText = _s("Langue_original");
-                DGV.Columns[5].Visible = false;
-                DGV.Columns[0].FillWeight = (int)(DGV.Width * 0.15);
-                DGV.Columns[1].FillWeight = (int)(DGV.Width * 0.35);
-                DGV.Columns[2].FillWeight = (int)(DGV.Width * 0.20);
-                DGV.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                DGV.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                if (StatusProperty is not null) StatusProperty.Message = _s("Art_list");
+                Prepare_DGV<ArtRead>(DGV);    
             }
-            else if (type == typeof(City))
-            {
-                DGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
-                DGV.Columns[0].HeaderText = "Id";
-                DGV.Columns[1].HeaderText = _s("City");
-                DGV.Columns[2].Visible = false;
-                DGV.Columns[3].Visible = false;
-                DGV.Columns[0].FillWeight = (int)(DGV.Width * 0.15);
-                DGV.Columns[1].FillWeight = (int)(DGV.Width * 0.85);
-                DGV.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                if (StatusProperty is not null) StatusProperty.Message = _s("Cities_list");
-            }
-            else if (type == typeof(Series))
-            {
-                DGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
-                DGV.Columns[0].HeaderText = "Id";
-                DGV.Columns[1].HeaderText = _s("Series");
-                DGV.Columns[2].Visible = false;
-                DGV.Columns[3].Visible = false;
-                DGV.Columns[0].FillWeight = (int)(DGV.Width * 0.15);
-                DGV.Columns[1].FillWeight = (int)(DGV.Width * 0.85);
-                DGV.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                if (StatusProperty is not null) StatusProperty.Message = _s("Series_list");
-            }
-            else if (type == typeof(PublishingHouse))
-            {
-                DGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
-                DGV.Columns[0].HeaderText = "Id";
-                DGV.Columns[1].HeaderText = _s("Pubhouse");
-                DGV.Columns[2].Visible = false;
-                DGV.Columns[3].Visible = false;
-                DGV.Columns[0].FillWeight = (int)(DGV.Width * 0.15);
-                DGV.Columns[1].FillWeight = (int)(DGV.Width * 0.85);
-                DGV.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                if (StatusProperty is not null) StatusProperty.Message = _s("Pubhouses_list");
-            }
-            else if (type == typeof(Genre))
-            {
-                DGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
-                DGV.Columns[0].HeaderText = "Id";
-                DGV.Columns[1].HeaderText = _s("Genre");
-                for (int i = 2; i < DGV.ColumnCount; i++)
-                    DGV.Columns[i].Visible = false;
-                DGV.Columns[0].FillWeight = (int)(DGV.Width * 0.15);
-                DGV.Columns[1].FillWeight = (int)(DGV.Width * 0.85);
-                DGV.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                if (StatusProperty is not null) StatusProperty.Message = _s("Genres_list");
-            }
-            else if (type == typeof(ViewHasRead) || type == typeof(ArtRead))
-            {
-                DGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                DGV.Columns[0].HeaderText = "Id";
-                DGV.Columns[1].HeaderText = _s("Date");
-                DGV.Columns[2].HeaderText = _s("Author_s");
-                DGV.Columns[3].HeaderText = _s("Appellation");
-                DGV.Columns[4].HeaderText = _s("Genre");
-                DGV.Columns[5].HeaderText = _s("Langue_original");
-                DGV.Columns[6].HeaderText = _s("Notice");
-                DGV.Columns[7].HeaderText = _s("Mark");
-                DGV.Columns[8].HeaderText = _s("Format");
-                if (StatusProperty is not null) StatusProperty.Message = _s("Read_list");
-            }
-            else if (type == typeof(ViewMyBooksInOtherHand))
-            {
-                DGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                DGV.Columns[0].HeaderText = "Id";
-                DGV.Columns[1].Visible = false;//Place
-                DGV.Columns[2].HeaderText = _s("Notice");
-                DGV.Columns[3].HeaderText = _s("Action");
-                DGV.Columns[4].HeaderText = _s("Date");
-                DGV.Columns[5].HeaderText = _s("Appellation");
-                DGV.Columns[6].HeaderText = _s("Author_s");
-                for (int i = 7; i <= 14; i++) { DGV.Columns[i].Visible = false; }
-                DGV.Columns[0].FillWeight = (int)(DGV.Width * 0.05);
-                DGV.Columns[2].FillWeight = (int)(DGV.Width * 0.25);
-                DGV.Columns[3].FillWeight = (int)(DGV.Width * 0.05);
-                DGV.Columns[4].FillWeight = (int)(DGV.Width * 0.05);
-                DGV.Columns[5].FillWeight = (int)(DGV.Width * 0.25);
-                DGV.Columns[6].FillWeight = (int)(DGV.Width * 0.3);
-                if (StatusProperty is not null) StatusProperty.Message = _s("Books_list_taken_by_others");
-            }
-            else if (type == typeof(Mark))
-            {
-                DGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
-                DGV.Columns[0].HeaderText = "Id";
-                DGV.Columns[1].HeaderText = _s("Mark");
-                DGV.Columns[2].Visible = false;
-                DGV.Columns[3].Visible = false;
-                DGV.Columns[0].FillWeight = (int)(DGV.Width * 0.15);
-                DGV.Columns[1].FillWeight = (int)(DGV.Width * 0.85);
-                DGV.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                if (StatusProperty is not null) StatusProperty.Message = _s("Marks_list");
-            }
-            else if (type == typeof(BookFormat))
-            {
-                DGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
-                DGV.Columns[0].HeaderText = "Id";
-                DGV.Columns[1].HeaderText = _s("Format");
-                DGV.Columns[2].Visible = false;
-                DGV.Columns[3].Visible = false;
-                DGV.Columns[0].FillWeight = (int)(DGV.Width * 0.15);
-                DGV.Columns[1].FillWeight = (int)(DGV.Width * 0.85);
-                DGV.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                if (StatusProperty is not null) StatusProperty.Message = _s("Formats_list");
-            }
-            else if (type == typeof(Place))
-            {
-                DGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
-                DGV.Columns[3].Visible = false;
-                DGV.Columns[4].Visible = false;
-                DGV.Columns[5].Visible = false;
-                DGV.Columns[0].HeaderText = "Id";
-                DGV.Columns[0].FillWeight = (int)(DGV.Width * 0.15);
-                DGV.Columns[1].HeaderText = _s("Storage");
-                DGV.Columns[1].FillWeight = (int)(DGV.Width * 0.45);
-                DGV.Columns[2].HeaderText = _s("Comment");
-                DGV.Columns[2].FillWeight = (int)(DGV.Width * 0.45);
-
-                DGV.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                if (StatusProperty is not null) StatusProperty.Message = _s("Storages_list");
-            }
-            else if (type == typeof(Person))
-            {
-                DGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
-                DGV.Columns[0].HeaderText = "Id";
-                DGV.Columns[1].HeaderText = _s("Simple_proper_name");
-                DGV.Columns[2].Visible = false;
-                DGV.Columns[3].Visible = false;
-                DGV.Columns[4].Visible = false;
-                DGV.Columns[0].FillWeight = (int)(DGV.Width * 0.15);
-                DGV.Columns[1].FillWeight = (int)(DGV.Width * 0.85);
-                DGV.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                if (StatusProperty is not null) StatusProperty.Message = _s("Persons_list");
-            }
-            else if (type == typeof(ArtToRead))
-            {
-                DGV.AutoSizeColumnsMode = (DataGridViewAutoSizeColumnsMode)DataGridViewAutoSizeColumnMode.Fill;
-                DGV.Columns[0].HeaderText = "Id";
-                DGV.Columns[1].HeaderText = _s("Date");
-                DGV.Columns[2].HeaderText = _s("Source_type");
-                DGV.Columns[3].HeaderText = _s("Source");
-                DGV.Columns[4].HeaderText = _s("Recommendation_type");
-                DGV.Columns[5].HeaderText = _s("Recommendation");
-                DGV.Columns[6].HeaderText = _s("Comment");
-                for (int i = 7; i <= 11; i++) { DGV.Columns[i].Visible = false; }
-                DGV.Columns[0].FillWeight = 20;
-                DGV.Columns[1].FillWeight = 20;
-                DGV.Columns[2].FillWeight = 20;
-                DGV.Columns[4].FillWeight = 20;
-                if (StatusProperty is not null) StatusProperty.Message = _s("Recommendations_list");
-            }
-            else if (type == typeof(SourceToreadAnother))
-            {
-                DGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
-                DGV.Columns[0].HeaderText = "Id";
-                DGV.Columns[1].HeaderText = _s("Appellation");
-                for (int i = 2; i < DGV.ColumnCount; i++)
-                    DGV.Columns[i].Visible = false;
-                DGV.Columns[0].FillWeight = (int)(DGV.Width * 0.15);
-                DGV.Columns[1].FillWeight = (int)(DGV.Width * 0.85);
-                DGV.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                if (StatusProperty is not null) StatusProperty.Message = _s("another_source_list");
-            }
-            else if (type == typeof(Location))
-            {
-                DGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                DGV.Columns[0].HeaderText = "Id";
-                DGV.Columns[1].HeaderText = _s("Date");
-                DGV.Columns[2].HeaderText = _s("Action");
-                DGV.Columns[3].HeaderText = _s("Notice");
-                DGV.Columns[4].HeaderText = _s("Appellation");
-                DGV.Columns[5].HeaderText = _s("Author_s");
-                DGV.Columns[6].HeaderText = _s("Genre");
-                DGV.Columns[7].HeaderText = _s("Publication_year");
-                DGV.Columns[8].HeaderText = _s("Code");
-                DGV.Columns[9].HeaderText = _s("ID_book_short_text");
-                DGV.Columns[10].HeaderText = _s("Placement");
-                DGV.Columns[0].FillWeight = 10;
-                DGV.Columns[1].FillWeight = 20;
-                DGV.Columns[2].FillWeight = 27;
-                DGV.Columns[3].FillWeight = 30;
-                //   DGV.Columns[4].FillWeight = 20;
-                //   DGV.Columns[5].FillWeight = 20;
-                DGV.Columns[6].FillWeight = 10;
-                DGV.Columns[7].FillWeight = 8;
-                DGV.Columns[8].FillWeight = 10;
-                DGV.Columns[9].FillWeight = 10;
-                DGV.Columns[10].FillWeight = 25;
-                if (StatusProperty is not null) StatusProperty.Message = _s("Placements_list");
-            }
+            else 
+                Prepare_DGV<T>(DGV);
+            for (int i = 0; i < DGV.ColumnCount; i++) ///for sorting by clicking oh table header
+                DGV.Columns[i].SortMode = DataGridViewColumnSortMode.Automatic;
         }
 
         public void Refresh_DGV_for_Item_Type<T>(DataGridView DGV,
@@ -288,13 +60,10 @@ namespace lib_postgres.VIEW
                   where T : new()
         {
             DGV.Columns.Clear();
-            DGV.DataSource = CRUD_Item_Determinator.Get_All_Items_List_by_Type<T>();
+            Assign_to_DGV_According_Type<T>(DGV);
             Turn_Off_Current_Menu_Item();
             Prepare_DGV_For_Type<T>(DGV, StatusProperty);
-            //++ colorization of deleted elements 
-            List<long> deleted_IDs = CRUD_Item_Determinator.Get_Deleted_Items_IDs<T>();
-            deleted_Entities_Visuaisator.RunCommand(deleted_IDs, DGV);
-            //-- colorization of deleted elements
+            Highlighting<T>(DGV);
             Turn_On_Current_Menu_Item();
         }
 
@@ -305,40 +74,65 @@ namespace lib_postgres.VIEW
             return id;
         }
 
-        /// <summary>
-        /// for art have read only
-        /// </summary>
-        /// <param name="DGV"></param>
-        public void Colorise_DGV(DataGridView DGV)
-        {
-            var formats = Get_BookFormats();
-            var marks = Get_Marks();
-            foreach (DataGridViewRow row in DGV.Rows)
-            {
-                var format_color_id = (from f in formats
-                                       where row.Cells["Формат"].Value is not null
-                                       where f.Name == row.Cells["Формат"].Value.ToString()
-                                       select f.Id).FirstOrDefault();
-                if (Data.format_colors.ContainsKey(format_color_id))
-                    row.DefaultCellStyle.BackColor = Data.format_colors[format_color_id];
-                var mark_color_id = (from m in marks
-                                     where row.Cells["Оценка"].Value is not null
-                                     where m.Name == row.Cells["Оценка"].Value.ToString()
-                                     select m.Id).FirstOrDefault();
-                if (Data.marks_colors.ContainsKey(mark_color_id))
-                    if (mark_color_id < 4 || mark_color_id > 6)
-                        row.Cells["Оценка"].Style.BackColor = Data.marks_colors[mark_color_id];
-            }
 
-        }
-        /// <summary>
-        /// just for substitute string with local version more simble in code
-        /// </summary>
-        /// <param name="key"></param>
-        /// <returns></returns>
-        private string _s(string key)
+        //for sorting by clicking oh table header
+        public void Assign_SortableBindingList_to_DGV<T>(DataGridView dgv, List<T> elements_to_show) 
         {
-            return Localization.Substitute(key);
+            dgv.DataSource = new SortableBindingList<T>(elements_to_show);
         }
+
+        public void Prepare_DGV<T>(DataGridView DGV)
+        {
+            string methodName = "Prepare_DGV";
+            Type type = typeof(T);
+            if (type.GetMethod(methodName) != null)
+                type.GetMethod(methodName).Invoke(null, new object[] { DGV });
+        }
+        public string Get_Caption<T>()
+        {
+            string methodName = "Get_Caption";
+            Type type = typeof(T);
+            if (type.GetMethod(methodName) != null)
+                return type.GetMethod(methodName).Invoke(null, new object[] { }).ToString();
+            else return "";
+        }
+
+        // adapter for some view not corresponding to basic type (for sorting in DGV)
+        private void Assign_to_DGV_According_Type<T>(DataGridView DGV) where T : new()
+        {
+            Type type = typeof(T);
+            if (type == typeof(Action))
+                Assign_SortableBindingList_to_DGV<View_Action>(DGV, CRUD_Item_Determinator.Prepare_View<T>());
+            else if (type == typeof(Art))
+                Assign_SortableBindingList_to_DGV<Art_and_Author>(DGV, CRUD_Item_Determinator.Prepare_View<T>());
+            else if (type == typeof(ArtToRead))
+                Assign_SortableBindingList_to_DGV<Recommend>(DGV, CRUD_Item_Determinator.Prepare_View<T>());
+            else if (type == typeof(Location))
+                Assign_SortableBindingList_to_DGV<Location_Record>(DGV, CRUD_Item_Determinator.Prepare_View<T>());
+            else if (type == typeof(ArtRead))
+                Assign_SortableBindingList_to_DGV<ViewHasRead>(DGV, CRUD_Item_Determinator.Prepare_View<T>());
+            else
+                Assign_SortableBindingList_to_DGV<T>(DGV, (List<T>)CRUD_Item_Determinator.Prepare_View<T>());
+        }
+
+        private void  Deleted_Items_DGV_Colorization<T>(DataGridView DGV)
+        {  
+            List<long> deleted_IDs = CRUD_Item_Determinator.Get_Deleted_Items_IDs<T>();
+            deleted_Entities_Visuaisator.RunCommand(deleted_IDs, DGV);
+        }
+        public void Special_Highlighting<T>(DataGridView DGV)
+        {
+            string methodName = "Highlighting";
+            Type type = typeof(T);
+            if (type.GetMethod(methodName) != null)
+                type.GetMethod(methodName).Invoke(null, new object[] { DGV });
+        }
+        public void Highlighting<T>(DataGridView DGV)
+        {
+            Special_Highlighting<T>(DGV);
+            Deleted_Items_DGV_Colorization<T>(DGV);
+        }
+
     }
+    
 }

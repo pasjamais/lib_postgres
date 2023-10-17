@@ -21,7 +21,7 @@ namespace lib_postgres
             return deleted_arts;
         }
 
-        public static List<long> Get_Deleted_Arts_IDs()
+        public static List<long> Get_Deleted_Items_IDs()
         {
             List<lib_postgres.Art> deleted_arts = Get_Deleted_Arts();
             List<long> del_arts_id = (from art in deleted_arts

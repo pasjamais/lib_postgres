@@ -122,5 +122,15 @@ namespace lib_postgres.VIEW.SPEC_ENTITIES_VIEWS
             }
 
         }
+
+        public struct View_Action
+        {
+            public long? Id { get; set; }
+            public DateOnly? Date { get; set; }
+            public string ActionType { get; set; }
+            public string Comment { get; set; }
+            public string Place { get; set; }
+            public string Name { get; set; }
+        }
     }
 }

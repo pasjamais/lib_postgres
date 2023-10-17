@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using lib_postgres.QUERIES;
+using lib_postgres.VIEW;
 using lib_postgres.VIEW.COMBOBOX;
 using lib_postgres.VIEW.NOTICE;
 using lib_postgres.VIEW.SPEC_ENTITIES_VIEWS;
@@ -84,6 +85,20 @@ namespace lib_postgres.FORMS
             if (books.Count < 1) return;
             ComboBox_Helper.CB_reload_for_Special_Types<ViewBook>(CB_PaperBook, books.FirstOrDefault().Id);
             ComboBox_Helper.CB_reload<BookFormat>(CB_BookFormat, 1);
+        }
+
+        private void BT_Add_Art_Click(object sender, EventArgs e)
+        {
+            var id = Art.Create_Item();
+            if (id > 0) ComboBox_Helper.CB_reload_for_Special_Types<Structures.Short_Art>(CB_Art, id);
+            DialogResult = DialogResult.None;
+        }
+
+        private void BT_Add_Book_Click(object sender, EventArgs e)
+        {
+            long book_id = Book.Create_Item();
+            if (book_id > 0) ComboBox_Helper.CB_reload_for_Special_Types<ViewBook>(CB_PaperBook, book_id);
+            DialogResult = DialogResult.None;
         }
     }
 }

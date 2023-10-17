@@ -28,7 +28,7 @@ namespace lib_postgres
         /// for view
         /// </summary>
         /// <returns></returns>
-        public static List<long> Get_Deleted_Authors_IDs()
+        public static List<long> Get_Deleted_Items_IDs()
         {
             List<lib_postgres.Author> deleted_items = Get_Deleted_Authors();
             List<long> deleted_items_IDs = (from item in deleted_items

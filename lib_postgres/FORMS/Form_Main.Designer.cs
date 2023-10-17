@@ -176,6 +176,7 @@
             this.dataGridView.RowHeadersVisible = false;
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellContentDoubleClick);
+            this.dataGridView.Sorted += new System.EventHandler(this.dataGridView_Sorted);
             // 
             // contextMenuStrip
             // 

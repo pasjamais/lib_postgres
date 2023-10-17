@@ -47,7 +47,7 @@ namespace lib_postgres
             return book.Id;
         }
 
-        public static long Edit_Book(long id)
+        public static long Edit_Item_by_ID(long id)
         {
             lib_postgres.Book book = DB_Agent.Get_Book(id);
             Form_Book formBook = new Form_Book();

@@ -366,7 +366,7 @@ namespace lib_postgres
         public Label label7;
         public Label label6;
         public CheckBox CB_Jacket;
-        public Button BT_Add_Art;
         public Label_Colorized Label_Art;
+        public Button BT_Add_Art;
     }
 }

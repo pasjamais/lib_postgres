@@ -118,9 +118,7 @@ namespace lib_postgres
             List<ViewBook> action_books_before_modification = new List<ViewBook>(action_books);
             //-- preparation
 
-            Form_Action form_Action = new Form_Action();
-
-            Load_Element_in_Form(action, form_Action, all_books, action_books);
+            Form_Action form_Action = new Form_Action(action, action_books);
 
             DialogResult dialog_result = form_Action.ShowDialog();
             if (dialog_result != DialogResult.OK) return -1;
@@ -192,36 +190,6 @@ namespace lib_postgres
             action.Date = DateOnly.FromDateTime(form_Action.dateTimePicker.Value.Date);
         }
 
-
-        private static void Load_Element_in_Form(Action action, Form_Action form_Action,
-                                                   List<ViewBook> all_books,
-                                                   List<ViewBook> action_books
-                                                   )
-        {
-            // loading authors
-            BindingSource source_action_books = new BindingSource();
-            source_action_books.DataSource = action_books;
-            form_Action.DGV_ActionBooks.DataSource = source_action_books;
-            form_Action.DGV_ActionBooks.Refresh();
-
-            BindingSource source_all_books = new BindingSource();
-            source_all_books.DataSource = all_books;
-            form_Action.DGV_AllBooks.DataSource = source_all_books;
-            form_Action.DGV_AllBooks.Refresh();
-
-            // loading current authors
-            form_Action.action_books = action_books;
-
-            // loading remaining action content
-            if (action.Place != null) form_Action.CB_Place.SelectedValue = action.Place;
-            if (action.ActionType != null) form_Action.CB_Action_Type.SelectedValue = action.ActionType;
-            if (action.Comment != null) form_Action.TB_Comment.Text = action.Comment;
-            if (action.Date is not null)
-            {
-                DateTime d = new DateTime(action.Date.Value.Year, action.Date.Value.Month, action.Date.Value.Day);
-                form_Action.dateTimePicker.Value = d;
-            }
-        }
         public static long Delete_Item_by_ID(long id)
         {
             lib_postgres.Action item = DB_Agent.Get_Action(id);
@@ -231,30 +199,6 @@ namespace lib_postgres
                 item.IsDeleted = true;
             DB_Agent.db.SaveChanges();
             return item.Id;
-        }
-
-        public static dynamic Prepare_View()
-        {
-            var actions = DB_Agent.Get_Actions();
-            var places = DB_Agent.Get_Places();
-            var act_types = DB_Agent.Get_ActionTypes();
-            var result = (from a in actions
-                         join p in places on a.Place equals p.Id into left_places
-                         from left_p in left_places.DefaultIfEmpty()
-                         join t in act_types on a.ActionType equals t.Id into left_act_types
-                         from left_t in left_act_types.DefaultIfEmpty()
-                         select new 
-                         {
-                             Id         = a.Id,
-                             Date       = a.Date,
-                             ActionType = left_t == null ? "" : left_t.Name,
-                             Comment = a.Comment,
-                             Place      = left_p == null ? "" : left_p.Name,
-                             Name = a.Name,
-                         }).ToList();
-
-
-            return result;
         }
 
     }

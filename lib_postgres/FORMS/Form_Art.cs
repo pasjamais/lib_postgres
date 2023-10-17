@@ -27,9 +27,8 @@ namespace lib_postgres
             ComboBox_Helper.CB_reload<Language>(CB_Langue); // here possible show language by default
             ComboBox_Helper.CB_reload<Genre>(CB_Genre);
             selected_Autors = new List<Author>();
-            DGV_All_Authors.DataSource      = General_Manipulations.Bind_List_to_DGV(DB_Agent.Get_Authors());
-            DGV_Selected_Authors.DataSource = General_Manipulations.Bind_List_to_DGV(selected_Autors);
-
+            Assign_All_Authors();
+            Assign_Selected_Authors();
 
             dgv_Visualisator.Prepare_DGV_For_Type<Author>(DGV_All_Authors);
             dgv_Visualisator.Prepare_DGV_For_Type<Author>(DGV_Selected_Authors);
@@ -40,7 +39,7 @@ namespace lib_postgres
         public Form_Art(List<Author>? authors) : this() // for ToolStripMenuItem_Arts_Edit_Click
         {
             selected_Autors = authors;
-            DGV_Selected_Authors.DataSource = General_Manipulations.Bind_List_to_DGV(selected_Autors);
+            Assign_Selected_Authors();
             DGV_Selected_Authors.Refresh();
         }
 
@@ -81,29 +80,20 @@ namespace lib_postgres
 
         private void DGV_Selected_Authors_Refresh()
         {
-            BindingSource source = new BindingSource();
-            source.DataSource = selected_Autors;
-            DGV_Selected_Authors.DataSource = source;
+            Assign_Selected_Authors();
             DialogResult = DialogResult.None;
         }
-
-        ///////////////
 
         private void Select_Author_for_Art()
         {
             int index = DGV_All_Authors.SelectedRows[0].Index;
             int idAuthor = int.Parse(DGV_All_Authors[0, index].Value.ToString());
-            // here another way to manipulate with DB. True legacy!
-            using (libContext db = new libContext())
-            {
-                Author author = db.Authors.Find((long)idAuthor);
+            Author author = DB_Agent.Get_Author((long)idAuthor);
                 if (author != null && selected_Autors != null)
                 {
-                    //                      if (!selected_Autors.Exists(e => e.Name == author.Name))
                     if (!selected_Autors.Exists(e => e.Id == author.Id))
                         selected_Autors.Add(author);
                 }
-            }
             DGV_Selected_Authors_Refresh();
         }
         private void Remove_Author_from_Art()
@@ -113,12 +103,11 @@ namespace lib_postgres
                 int index = DGV_Selected_Authors.SelectedRows[0].Index;
                 int idAuthor = int.Parse(DGV_Selected_Authors[0, index].Value.ToString());
                 Author author = DB_Agent.Get_Author(idAuthor);
-                //                if (selected_Autors.Exists(e => e.Name == author.Name))
                 if (selected_Autors.Exists(e => e.Id == author.Id))
                 {
                     selected_Autors.RemoveAt(index);
                 }
-                DGV_Selected_Authors.DataSource = General_Manipulations.Bind_List_to_DGV(selected_Autors);
+                Assign_Selected_Authors();
                 DialogResult = DialogResult.None;
             }
         }
@@ -127,7 +116,7 @@ namespace lib_postgres
             var id = Author.Create_Item();
             if (id > 0)
             {
-                DGV_All_Authors.DataSource = DB_Agent.Get_Authors();
+                Assign_All_Authors();
                 dgv_Visualisator.Prepare_DGV_For_Type<Author>(DGV_All_Authors);
                 General_Manipulations.show_row(DGV_All_Authors, id.ToString(), "Id");
             }
@@ -192,6 +181,14 @@ namespace lib_postgres
         private void ChB_Genre_CheckedChanged(object sender, EventArgs e)
         {
             label2.Enabled = CB_Genre.Enabled = ChB_Genre.Checked;
+        }
+        private void Assign_All_Authors()
+        {
+            dgv_Visualisator.Assign_SortableBindingList_to_DGV<Author>(DGV_All_Authors, DB_Agent.Get_Authors());
+        }
+        private void Assign_Selected_Authors()
+        {
+            dgv_Visualisator.Assign_SortableBindingList_to_DGV<Author>(DGV_Selected_Authors, selected_Autors);
         }
     }
 }

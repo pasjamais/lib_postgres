@@ -39,7 +39,7 @@ namespace lib_postgres
                                                           DB_Agent.Get_Authors(),
                                                           creation_method);
         }
-        public static long Edit_Author(long id)
+        public static long Edit_Item_by_ID(long id)
         {
             lib_postgres.Author element = DB_Agent.Get_Author(id);
             var new_name = General_Manipulations.simple_element_modify(edit_element_name, new_element_name, element.Name);

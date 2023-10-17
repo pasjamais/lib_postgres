@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using lib_postgres.CRUD;
 
 namespace lib_postgres.FORMS
 {
@@ -28,16 +29,29 @@ namespace lib_postgres.FORMS
             ComboBox_Helper.CB_reload<ActionType>(CB_Action_Type);
 
             all_books = Queries_from_Views.Get_Books();
-            DGV_AllBooks.DataSource = General_Manipulations.Bind_List_to_DGV(all_books);
+            Assign_All_Books();
             dgv_Visualisator.Prepare_DGV_For_Type<ViewBook>(DGV_AllBooks);
             DGV_AllBooks.Refresh();
 
             action_books = new();
-            DGV_ActionBooks.DataSource = General_Manipulations.Bind_List_to_DGV(action_books);
+            Assign_Selected_Books();
             dgv_Visualisator.Prepare_DGV_For_Type<ViewBook>(DGV_ActionBooks);
             DGV_ActionBooks.Refresh();
         }
-
+        public Form_Action(Action action, List<ViewBook> action_books) : this()
+        {   
+            this.action_books = action_books;
+            Assign_Selected_Books();
+            // loading remaining action content
+            if (action.Place != null) CB_Place.SelectedValue = action.Place;
+            if (action.ActionType != null) CB_Action_Type.SelectedValue = action.ActionType;
+            if (action.Comment != null) TB_Comment.Text = action.Comment;
+            if (action.Date is not null)
+            {
+                DateTime d = new DateTime(action.Date.Value.Year, action.Date.Value.Month, action.Date.Value.Day);
+                dateTimePicker.Value = d;
+            }
+        }
 
         private void button_New_Book_Click(object sender, EventArgs e)
         {
@@ -45,7 +59,7 @@ namespace lib_postgres.FORMS
             if (book_id > 0)
             {
                 all_books = Queries_from_Views.Get_Books();
-                DGV_AllBooks.DataSource = General_Manipulations.Bind_List_to_DGV(all_books);
+                Assign_All_Books();
                 dgv_Visualisator.Prepare_DGV_For_Type<ViewBook>(DGV_AllBooks);
 
                 General_Manipulations.show_row(DGV_AllBooks, book_id.ToString(), "Id");
@@ -62,14 +76,12 @@ namespace lib_postgres.FORMS
                      select x).ToList().First();
             if (b is not null && !action_books.Exists(e => e.Id == b.Id))
                 action_books.Add(b);
-            DGV_AcrtionBooks_Refresh();
+            DGV_ActionBooks_Refresh();
         }
 
-        private void DGV_AcrtionBooks_Refresh()
+        private void DGV_ActionBooks_Refresh()
         {
-            BindingSource source = new BindingSource();
-            source.DataSource = action_books;
-            DGV_ActionBooks.DataSource = source;
+            Assign_Selected_Books();
             DialogResult = DialogResult.None;
         }
 
@@ -85,7 +97,7 @@ namespace lib_postgres.FORMS
 
                 if (b is not null && action_books.Exists(e => e.Id == b.Id))
                     action_books.Remove(b);
-                DGV_AcrtionBooks_Refresh();
+                DGV_ActionBooks_Refresh();
             }
         }
 
@@ -124,6 +136,14 @@ namespace lib_postgres.FORMS
         {
             if (this.DialogResult == DialogResult.TryAgain)
                 e.Cancel = true;
+        }
+        private void Assign_All_Books()
+        {
+            dgv_Visualisator.Assign_SortableBindingList_to_DGV<ViewBook>(DGV_AllBooks, all_books);
+        }
+        private void Assign_Selected_Books()
+        {
+            dgv_Visualisator.Assign_SortableBindingList_to_DGV<ViewBook>(DGV_ActionBooks, action_books);
         }
     }
 }

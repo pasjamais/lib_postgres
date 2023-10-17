@@ -39,26 +39,7 @@ namespace lib_postgres
                     MessageBoxDefaultButton.Button1,
                     MessageBoxOptions.DefaultDesktopOnly);
         }
-        // ++ тут безобразие, не знаю как исправить
-        public static object Bind_List_to_DGV(List<Author> list)
-        {
-            BindingSource source = new BindingSource();
-            source.DataSource = list;
-            return source;
-        }
-        public static object Bind_List_to_DGV(List<ViewBook> list)
-        {
-            BindingSource source = new BindingSource();
-            source.DataSource = list;
-            return source;
-        }
-        public static object Bind_List_to_DGV(List<Book> list)
-        {
-            BindingSource source = new BindingSource();
-            source.DataSource = list;
-            return source;
-        }
-        // --
+
         public static string simple_element_modify(string caption, string label, string name)
         {
             Form_Simple_Element form_element = new Form_Simple_Element(caption, label);

@@ -124,7 +124,7 @@ namespace lib_postgres.QUERIES
         }
 
 
-        public static dynamic Get_Locations()
+        public static List<Location_Record> Get_Locations()
         {
             var actions = DB_Agent.Get_Actions();
             var places = DB_Agent.Get_Places();

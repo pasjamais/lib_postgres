@@ -8,7 +8,7 @@ namespace lib_postgres
 {
     partial class ViewMyBooksInOtherHand
     {        
-        // Added for correctly working menu commands for this typw of view of entity "Book"
+        // Added for correctly working menu commands for this type of view of entity "Book"
         // and Form_Main.Cmi_item_find_book_Click correctly working
         public long Id
         {

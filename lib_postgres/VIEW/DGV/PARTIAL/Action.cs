@@ -1,4 +1,6 @@
-﻿using lib_postgres.LOCALIZATION;
+﻿using lib_postgres.CRUD;
+using lib_postgres.LOCALIZATION;
+using static lib_postgres.VIEW.SPEC_ENTITIES_VIEWS.Structures;
 
 namespace lib_postgres
 {
@@ -14,6 +16,31 @@ namespace lib_postgres
             dgv.Columns[3].HeaderText = Localization.Substitute("Comment"); dgv.Columns[3].FillWeight = (int)(dgv.Width * 0.55);
             dgv.Columns[4].HeaderText = Localization.Substitute("Place"); dgv.Columns[4].FillWeight = (int)(dgv.Width * 0.15);
             dgv.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+        }
+        public static List<View_Action> Prepare_View()
+        {
+            var actions = DB_Agent.Get_Actions();
+            var places = DB_Agent.Get_Places();
+            var act_types = DB_Agent.Get_ActionTypes();
+            var result = (from a in actions
+                          join p in places on a.Place equals p.Id into left_places
+                          from left_p in left_places.DefaultIfEmpty()
+                          join t in act_types on a.ActionType equals t.Id into left_act_types
+                          from left_t in left_act_types.DefaultIfEmpty()
+                          select new View_Action
+                          {
+                              Id = a.Id,
+                              Date = a.Date,
+                              ActionType = left_t == null ? "" : left_t.Name,
+                              Comment = a.Comment == null ? "" : a.Comment,
+                              Place = left_p == null ? "" : left_p.Name,
+                              Name = a.Name == null ? "" : a.Name
+                          }).ToList();
+            return result;
+        }
+        public static string Get_Caption()
+        {
+           return Localization.Substitute("Action_list");
         }
     }
 }

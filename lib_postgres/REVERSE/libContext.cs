@@ -8,7 +8,7 @@ namespace lib_postgres
 {
     public partial class libContext : DbContext
     {
-        readonly StreamWriter logStream = new StreamWriter(DEPLOY.Deploy.Output_Directory+ "\\libermundi.log", true);
+        public StreamWriter logStream = new StreamWriter(DEPLOY.Deploy.Output_Directory+ "\\libermundi.log", true);
         public libContext()
         {
         }
@@ -16,6 +16,12 @@ namespace lib_postgres
         public libContext(DbContextOptions<libContext> options)
             : base(options)
         {
+        }
+
+        public override void Dispose() 
+        {
+            logStream.Close();
+            base.Dispose();
         }
 
         public virtual DbSet<Action> Actions { get; set; } = null!;

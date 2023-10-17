@@ -37,7 +37,8 @@ namespace lib_postgres
                 artRead.ReadLanguageId = (System.Int64)form.CB_Langue.SelectedValue;
 
             artRead.BookFormatId = form.CB_BookFormat.SelectedValue is null ? null : (System.Int64)form.CB_BookFormat.SelectedValue;
-            if (form.TB_Comment.Text != "") artRead.Comment = form.TB_Comment.Text;
+            artRead.Comment = General_Manipulations.compare_string_values(artRead.Comment, form.TB_Comment.Text);
+            //if (form.TB_Comment.Text != "") artRead.Comment = form.TB_Comment.Text;
             artRead.Date = DateOnly.FromDateTime(form.dateTimePicker.Value.Date);
             artRead.BookId = form.ChB_PaperBook.Checked ? (System.Int64)form.CB_PaperBook.SelectedValue : null;
             if (is_new_ArtRead) DB_Agent.ArtRead_Add(artRead);
@@ -48,7 +49,7 @@ namespace lib_postgres
             }
             return artRead;
         }
-        public static long Edit_ArtRead(long id)
+        public static long Edit_Item_by_ID(long id)
         {
             lib_postgres.ArtRead artRead = DB_Agent.Get_ArtRead(id);
             Form_ArtRead form = new Form_ArtRead();

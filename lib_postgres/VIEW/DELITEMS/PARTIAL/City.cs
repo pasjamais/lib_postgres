@@ -19,7 +19,7 @@ namespace lib_postgres
             return deleted_cities;
         }
 
-        public static List<long> Get_Deleted_Cities_IDs()
+        public static List<long> Get_Deleted_Items_IDs()
         {
             List<lib_postgres.City> deleted_cities = Get_Deleted_Cities();
             List<long> del_cities_id = (from city in deleted_cities

@@ -1,10 +1,13 @@
-﻿using lib_postgres.LOCALIZATION;
+﻿using lib_postgres.CRUD;
+using lib_postgres.LOCALIZATION;
+using lib_postgres.QUERIES;
+using static lib_postgres.VIEW.SPEC_ENTITIES_VIEWS.Structures;
 
 namespace lib_postgres
 {
     public partial class ViewBook
     {
-        public static void Prepare_DGV(DataGridView dgv)
+        public static void Prepare_DGV_Detailed(DataGridView dgv)
         {
             dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgv.Columns[0].HeaderText = "Id";
@@ -21,6 +24,25 @@ namespace lib_postgres
             dgv.Columns[11].HeaderText = Localization.Substitute("Pubhouse");
             dgv.Columns[12].HeaderText = Localization.Substitute("Code");
             dgv.Columns[13].HeaderText = Localization.Substitute("Pages");
+        }
+        public static void Prepare_DGV(DataGridView DGV)
+        {
+            DGV.AutoSizeColumnsMode = (DataGridViewAutoSizeColumnsMode)DataGridViewAutoSizeColumnMode.Fill;
+            DGV.Columns[0].HeaderText = "Id"; DGV.Columns[0].FillWeight = 10;
+            DGV.Columns[1].HeaderText = Localization.Substitute("Appellation");
+            DGV.Columns[2].HeaderText = Localization.Substitute("Author_s");
+            DGV.Columns[3].HeaderText = Localization.Substitute("Publication_year"); DGV.Columns[3].FillWeight = 20;
+            DGV.Columns[4].HeaderText = Localization.Substitute("Genre"); DGV.Columns[4].FillWeight = 40;
+            DGV.Columns[5].HeaderText = Localization.Substitute("Pubhouse"); DGV.Columns[5].FillWeight = 25;
+            DGV.Columns[6].HeaderText = Localization.Substitute("Code"); DGV.Columns[6].FillWeight = 10;
+        }
+        public static dynamic Prepare_View()
+        {
+            return Queries_from_Views.Get_Books();
+        }
+        public static string Get_Caption()
+        {
+            return Localization.Substitute("Books_list");
         }
     }
 }
