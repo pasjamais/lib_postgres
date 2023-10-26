@@ -41,12 +41,12 @@ namespace lib_postgres
         public static long Edit_Item_by_ID(long id)
         {
             lib_postgres.PublishingHouse element = DB_Agent.Get_Publishing_House(id);
-            var new_name = General_Manipulations.simple_element_modify(edit_element_name, new_element_name, element.Name); 
+            var new_name = General_Manipulations.Simple_Element_Modify(edit_element_name, new_element_name, element.Name); 
             if (new_name != "")
             {
                 if (DB_Agent.db.PublishingHouses.ToList().Exists(e => e.Name == new_name))
                 {
-                    General_Manipulations.simple_message(deja_exists_caption);
+                    General_Manipulations.Simple_Message(deja_exists_caption);
                     return 0;
                 }
                 element.Name = new_name;

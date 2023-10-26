@@ -146,7 +146,7 @@ namespace lib_postgres
                 if (id > 0)
                 {
                     ToolStripMenuItem__Read_Open_Click(sender, e);
-                    General_Manipulations.show_row(dataGridView, id.ToString(), "Id");
+                    General_Manipulations.Show_Row(dataGridView, id.ToString(), "Id");
                 }
             }
         }
@@ -286,9 +286,12 @@ namespace lib_postgres
         void show_books_in_place(object sender, EventArgs e)
         {
             dataGridView.Columns.Clear();
-            Current_Working_Type = typeof(ViewBook);
             dgv_Visualisator.Assign_SortableBindingList_to_DGV<ViewAllRealBook>(dataGridView, Queries_LinQ.Get_Books_by_Place_Name(((ToolStripMenuItem)sender).Text));
+            Turn_Off_Current_Menu_Item();
+            Current_Working_Type = typeof(ViewBook);
             ViewBook.Prepare_DGV_Detailed(dataGridView);
+            ViewBook.Highlighting(dataGridView);
+            Turn_On_Current_Menu_Item();
         }
 
         private void ToolStripMenuItem__Recommend_Vis_Graphviz_Click(object sender, EventArgs e)
@@ -907,7 +910,7 @@ namespace lib_postgres
                     Read_ArtReads();
                 //-- обработка особого случая отображения Book
                 else dgv_Visualisator.Refresh_DGV_for_Item_Type<T>(dataGridView, Turn_Off, Turn_ON, StatusProperty);
-                General_Manipulations.show_row(dataGridView, _id.ToString(), "Id");
+                General_Manipulations.Show_Row(dataGridView, _id.ToString(), "Id");
             }
         }
         private void Edit_Item<T>(long id) where T : new()
@@ -916,7 +919,7 @@ namespace lib_postgres
             if (_id > 0)
             {
                 dgv_Visualisator.Refresh_DGV_for_Item_Type<T>(dataGridView, Turn_Off, Turn_ON, StatusProperty);
-                General_Manipulations.show_row(dataGridView, _id.ToString(), "Id");
+                General_Manipulations.Show_Row(dataGridView, _id.ToString(), "Id");
             }
         }
         private void Delete_Item<T>() where T : new()
@@ -931,7 +934,7 @@ namespace lib_postgres
                 }
                 else
                     dgv_Visualisator.Refresh_DGV_for_Item_Type<T>(dataGridView, Turn_Off, Turn_ON, StatusProperty);
-                General_Manipulations.show_row(dataGridView, id.ToString(), "Id");
+                General_Manipulations.Show_Row(dataGridView, id.ToString(), "Id");
             }
         }
 
@@ -1234,7 +1237,7 @@ namespace lib_postgres
             if (id > 0)
             {
                 Read_Recommendations();
-                General_Manipulations.show_row(dataGridView, id.ToString(), "Id");
+                General_Manipulations.Show_Row(dataGridView, id.ToString(), "Id");
             }
         }
         private void Read_Recommendations()

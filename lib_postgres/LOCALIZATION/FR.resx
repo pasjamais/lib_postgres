@@ -475,6 +475,9 @@ Il est recommandé de créer une nouvelle base de données ou de la restaurer à
   <data name="Recommendations_list" xml:space="preserve">
     <value>Liste des recommandations</value>
   </data>
+  <data name="Recommendation_already_exists_and_has_ID" xml:space="preserve">
+    <value>L'enregistrement existe déjà avec l'ID </value>
+  </data>
   <data name="Recommendation_type" xml:space="preserve">
     <value>Type de recomm. </value>
   </data>

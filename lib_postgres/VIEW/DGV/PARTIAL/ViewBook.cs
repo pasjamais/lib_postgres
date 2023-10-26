@@ -44,5 +44,18 @@ namespace lib_postgres
         {
             return Localization.Substitute("Books_list");
         }
+        private static void Colorise_DGV(DataGridView DGV)
+        {
+            List<long?> books_read_IDs = Get_HaveRead_Items_IDs();
+            foreach (DataGridViewRow this_row in DGV.Rows)
+            {
+                if (books_read_IDs.Contains((long)this_row.Cells["Id"].Value))
+                    this_row.DefaultCellStyle.BackColor = System.Drawing.ColorTranslator.FromHtml("#9ab973");
+            }
+        }
+        public static void Highlighting(DataGridView DGV)
+        {
+            Colorise_DGV(DGV);
+        }
     }
 }

@@ -1,4 +1,6 @@
-﻿using lib_postgres.VIEW.COMBOBOX;
+﻿using lib_postgres.CRUD;
+using lib_postgres.LOCALIZATION;
+using lib_postgres.VIEW.COMBOBOX;
 using lib_postgres.VIEW.NOTICE;
 using System;
 using System.Collections.Generic;
@@ -19,9 +21,10 @@ namespace lib_postgres.FORMS
 {
     public partial class Form_Art_To_Read : Form
     {
-     
-        public RadioButton_Colorized selectedrb_toread, // selectedrb_toread.Tag = true : art; = false : author
-                           selectedrb_source; // selectedrb_source.Tag can be "Art", "Author" or "SourceToreadAnother"  
+        private ArtToRead item = new();
+
+        public RadioButton_Colorized    selectedrb_toread, // selectedrb_toread.Tag = true : art; = false : author
+                                        selectedrb_source; // selectedrb_source.Tag can be "Art", "Author" or "SourceToreadAnother"  
         private Dictionary<string, long> Sources_saved_positions;
         public Form_Art_To_Read(Dictionary<string, long> sources_saved_positions) : this()
         {
@@ -44,7 +47,11 @@ namespace lib_postgres.FORMS
             RB_Toread_Art.Tag = true;
             RB_Toread_Author.Tag = false;
         }
-
+        public Form_Art_To_Read(ArtToRead item) : this()
+        {
+            this.item = item;
+            Load_Item_in_Form(item);
+        }
         private void BT_Add_Art_Click(object sender, EventArgs e)
         {
             var id = Art.Create_Item();
@@ -115,11 +122,7 @@ namespace lib_postgres.FORMS
         private void button_OK_Click(object sender, EventArgs e)
         {
             Notice notice = new Notice();
-            /*        if (selectedrb_toread == null || selectedrb_source == null)
-                    {
-                        this.DialogResult = DialogResult.TryAgain;
-                        Notice_to_Fill_RBs();
-                    }*/
+
             if (selectedrb_toread == null || !selectedrb_toread.Checked)
             {
                 this.DialogResult = DialogResult.TryAgain;
@@ -158,7 +161,11 @@ namespace lib_postgres.FORMS
                 this.DialogResult = DialogResult.TryAgain;
                 notice.Notice_by_Color<RadioButton_Colorized>(RB_Source_Another);
             }
-            else this.DialogResult = DialogResult.OK;
+            else
+            {
+                Check_if_Recommendation_Already_Exists();
+                //this.DialogResult = DialogResult.OK;
+            }
         }
 
         private void button_Cancel_Click(object sender, EventArgs e)
@@ -234,6 +241,80 @@ namespace lib_postgres.FORMS
         private void CB_Source_Another_SelectionChangeCommitted(object sender, EventArgs e)
         {
             RB_Source_Another.Checked = true;
+        }
+
+        private void Load_Item_in_Form(ArtToRead item)
+        {
+            if (item.Date is not null)
+            {
+                DateTime d = new DateTime(item.Date.Value.Year, item.Date.Value.Month, item.Date.Value.Day);
+                dateTimePicker.Value = d;
+            }
+            if (item.Comment != null) TB_Comment.Text = item.Comment;
+            if (item.ToreadArtId != null)
+            {
+                CB_Toread_Art.SelectedValue = item.ToreadArtId;
+                RB_Toread_Art.Checked = true;
+                selectedrb_toread = RB_Toread_Art;
+            }
+            if (item.ToreadAuthorId != null)
+            {
+                CB_Toread_Author.SelectedValue = item.ToreadAuthorId;
+                RB_Toread_Author.Checked = true;
+                selectedrb_toread = RB_Toread_Author;
+            }
+            if (item.SourceAnotherId != null)
+            {
+                CB_Source_Another.SelectedValue = item.SourceAnotherId;
+                RB_Source_Another.Checked = true;
+                selectedrb_source = RB_Source_Another;
+            }
+            if (item.SourceAuthorId != null)
+            {
+                CB_Source_Author.SelectedValue = item.SourceAuthorId;
+                RB_Source_Author.Checked = true;
+                selectedrb_source = RB_Source_Author;
+            }
+            if (item.SourceArtId != null)
+            {
+                CB_Source_Art.SelectedValue = item.SourceArtId;
+                RB_Source_Art.Checked = true;
+                selectedrb_source = RB_Source_Art;
+            }
+        }
+        public void Check_if_Recommendation_Already_Exists()
+        {
+            ArtToRead item_in_DB = new();
+            ArtToRead.Get_Sources_and_Recommendations_from_Form(item_in_DB, this);
+            long item_in_DB_ID = ArtToRead.Get_Already_Existing_Recommendation_ID(item_in_DB);
+            if (item_in_DB_ID > 0) // exists in BD
+            {
+                if (item.Id == 0) // trying to add existing record
+                {
+                    this.DialogResult = DialogResult.TryAgain;
+                    General_Manipulations.Simple_Message(Localization.Substitute("Recommendation_already_exists_and_has_ID") + item_in_DB_ID.ToString());
+                }
+                else if (item.Id == item_in_DB_ID) //existing record edition
+                {
+                    this.DialogResult = DialogResult.OK;
+                }
+                else //trying to edit existing record, but result record already exists
+                {
+                    this.DialogResult = DialogResult.TryAgain;
+                    General_Manipulations.Simple_Message(Localization.Substitute("Recommendation_already_exists_and_has_ID") + item_in_DB_ID.ToString());
+                }
+            }
+            else // does not exist in BD
+            {
+                if (item.Id == 0) // new element adding
+                {
+                    this.DialogResult = DialogResult.OK;
+                }
+                else // impossible case
+                { 
+                
+                }
+            }
         }
     }
 }

@@ -37,7 +37,7 @@ namespace lib_postgres
                 artRead.ReadLanguageId = (System.Int64)form.CB_Langue.SelectedValue;
 
             artRead.BookFormatId = form.CB_BookFormat.SelectedValue is null ? null : (System.Int64)form.CB_BookFormat.SelectedValue;
-            artRead.Comment = General_Manipulations.compare_string_values(artRead.Comment, form.TB_Comment.Text);
+            artRead.Comment = General_Manipulations.Compare_String_Values(artRead.Comment, form.TB_Comment.Text);
             //if (form.TB_Comment.Text != "") artRead.Comment = form.TB_Comment.Text;
             artRead.Date = DateOnly.FromDateTime(form.dateTimePicker.Value.Date);
             artRead.BookId = form.ChB_PaperBook.Checked ? (System.Int64)form.CB_PaperBook.SelectedValue : null;

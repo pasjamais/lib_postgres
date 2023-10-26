@@ -118,7 +118,7 @@ namespace lib_postgres
             {
                 Assign_All_Authors();
                 dgv_Visualisator.Prepare_DGV_For_Type<Author>(DGV_All_Authors);
-                General_Manipulations.show_row(DGV_All_Authors, id.ToString(), "Id");
+                General_Manipulations.Show_Row(DGV_All_Authors, id.ToString(), "Id");
             }
             DialogResult = DialogResult.None;
         }
@@ -141,13 +141,13 @@ namespace lib_postgres
         {
             if (tb_Name.Text == "")
             {
-                General_Manipulations.simple_message(Localization.Substitute("No_title_specified"));
+                General_Manipulations.Simple_Message(Localization.Substitute("No_title_specified"));
                 this.DialogResult = DialogResult.TryAgain;
             }
             else
                if ((selected_Autors == null) || (selected_Autors.Count == 0))
             {
-                General_Manipulations.simple_message(Localization.Substitute("No_author_selected"));
+                General_Manipulations.Simple_Message(Localization.Substitute("No_author_selected"));
                 this.DialogResult = DialogResult.TryAgain;
             }
             else this.DialogResult = DialogResult.OK;

@@ -185,7 +185,7 @@ namespace lib_postgres
                     if (action.Place != (System.Int64)form_Action.CB_Place.SelectedValue)
                         action.Place = (System.Int64)form_Action.CB_Place.SelectedValue;
             }
-            action.Comment = General_Manipulations.compare_string_values(action.Comment, form_Action.TB_Comment.Text);
+            action.Comment = General_Manipulations.Compare_String_Values(action.Comment, form_Action.TB_Comment.Text);
 
             action.Date = DateOnly.FromDateTime(form_Action.dateTimePicker.Value.Date);
         }

@@ -62,7 +62,7 @@ namespace lib_postgres.FORMS
                 Assign_All_Books();
                 dgv_Visualisator.Prepare_DGV_For_Type<ViewBook>(DGV_AllBooks);
 
-                General_Manipulations.show_row(DGV_AllBooks, book_id.ToString(), "Id");
+                General_Manipulations.Show_Row(DGV_AllBooks, book_id.ToString(), "Id");
             }
             DialogResult = DialogResult.None; // works?
         }
@@ -115,13 +115,13 @@ namespace lib_postgres.FORMS
         {
             if (TB_Comment.Text == "")
             {
-                General_Manipulations.simple_message(Localization.Substitute("No_action_notes_specified"));
+                General_Manipulations.Simple_Message(Localization.Substitute("No_action_notes_specified"));
                 this.DialogResult = DialogResult.TryAgain;
             }
             else 
                 if (action_books == null || action_books.Count < 1)
             {
-                General_Manipulations.simple_message(Localization.Substitute("No_books_selected"));
+                General_Manipulations.Simple_Message(Localization.Substitute("No_books_selected"));
                 this.DialogResult = DialogResult.TryAgain;
             }
             else this.DialogResult = DialogResult.OK;

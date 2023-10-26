@@ -523,7 +523,7 @@ namespace lib_postgres.CRUD
             {
                 if (all_elements.Exists(e => e.Name == new_name))
                 {
-                    General_Manipulations.simple_message(deja_exists_caption);
+                    General_Manipulations.Simple_Message(deja_exists_caption);
                     return 0;
                 }
                 element.Name = new_name;

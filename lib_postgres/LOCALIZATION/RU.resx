@@ -477,6 +477,9 @@
   <data name="Recommendations_list" xml:space="preserve">
     <value>Список рекомендаций</value>
   </data>
+  <data name="Recommendation_already_exists_and_has_ID" xml:space="preserve">
+    <value>Запись уже существует и имеет ID </value>
+  </data>
   <data name="Recommendation_type" xml:space="preserve">
     <value>Тип рек.</value>
   </data>

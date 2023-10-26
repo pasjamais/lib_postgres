@@ -58,7 +58,7 @@ namespace lib_postgres
             if (Get_Operation(action.ActionType)) location.Place = action.Place;
                 else location.Place = null;
             //!!! В Action хранится Place указанный пользователем в форме, а в Location - действительное расположение, в т. ч. null
-            location.Comment = General_Manipulations.compare_string_values(location.Comment, action.Comment);
+            location.Comment = General_Manipulations.Compare_String_Values(location.Comment, action.Comment);
             location.Book = BookID;
             return location;
         }

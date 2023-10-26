@@ -12,7 +12,7 @@ namespace lib_postgres
 {
     public class General_Manipulations
     {
-        public static void show_row(DataGridView DGV, String string_to_find, String cell_name)
+        public static void Show_Row(DataGridView DGV, String string_to_find, String cell_name)
         {
             int rowIndex = -1;
             DGV.Refresh();
@@ -30,7 +30,7 @@ namespace lib_postgres
             }
      
         }
-        public static void simple_message(String message)
+        public static void Simple_Message(String message)
         {
             MessageBox.Show(message,
                     Localization.Substitute("Message"),
@@ -40,7 +40,7 @@ namespace lib_postgres
                     MessageBoxOptions.DefaultDesktopOnly);
         }
 
-        public static string simple_element_modify(string caption, string label, string name)
+        public static string Simple_Element_Modify(string caption, string label, string name)
         {
             Form_Simple_Element form_element = new Form_Simple_Element(caption, label);
             form_element.tb_Name.Text = name;
@@ -49,7 +49,7 @@ namespace lib_postgres
                 return "";
             else if (form_element.tb_Name.Text == "")
             {
-                General_Manipulations.simple_message(Localization.Substitute("Value_cannot_be_ empty"));
+                General_Manipulations.Simple_Message(Localization.Substitute("Value_cannot_be_ empty"));
                 return "";
             }
             else
@@ -64,7 +64,7 @@ namespace lib_postgres
                 return "";
             else if (form_element.tb_Name.Text == "")
             {
-                General_Manipulations.simple_message(Localization.Substitute("Value_cannot_be_ empty"));
+                General_Manipulations.Simple_Message(Localization.Substitute("Value_cannot_be_ empty"));
                 return "";
             }
             else
@@ -72,7 +72,7 @@ namespace lib_postgres
         }
      
         #region Traitement of data
-        public static string? compare_string_values(string? old_string, string new_string)
+        public static string? Compare_String_Values(string? old_string, string new_string)
         {
             bool A = old_string is not null;
             bool B = new_string != "";
@@ -89,7 +89,7 @@ namespace lib_postgres
                 return null; // Хотя и перезапись
         }
 
-        public static long? compare_values_logic(long? old_value, object? new_value, bool checked_in_form)
+        public static long? Compare_Logic_Values(long? old_value, object? new_value, bool checked_in_form)
         {
             if (!checked_in_form) return null;
             else
@@ -97,7 +97,7 @@ namespace lib_postgres
                 else return (System.Int64)new_value;
         }
 
-        public static DateOnly? compare_data_values(DateOnly? d, string? t)
+        public static DateOnly? Compare_Date_Values(DateOnly? d, string? t)
         {
             if (t != "")
             {

@@ -76,18 +76,18 @@ namespace lib_postgres
             if (formBook.CB_Art.SelectedValue != null)
                 if (book.IdArt != (System.Int64)formBook.CB_Art.SelectedValue)
                     book.IdArt = (System.Int64)formBook.CB_Art.SelectedValue;
-            book.IdPublishingHouse = General_Manipulations.compare_values_logic(book.IdPublishingHouse, formBook.CB_Publishing_House.SelectedValue, formBook.ChB_Publishing_House.Checked);
-            book.IdCity = General_Manipulations.compare_values_logic(book.IdCity, formBook.CB_City.SelectedValue, formBook.ChB_City.Checked);
-            book.IdLanguage = General_Manipulations.compare_values_logic(book.IdLanguage, formBook.CB_Book_Language.SelectedValue, formBook.ChB_Language.Checked);
-            book.IdSeries = General_Manipulations.compare_values_logic(book.IdSeries, formBook.CB_Series.SelectedValue, formBook.ChB_Series.Checked);
-            book.PublicationYear = General_Manipulations.compare_data_values(book.PublicationYear, formBook.TB_Publication_Year.Text);
+            book.IdPublishingHouse = General_Manipulations.Compare_Logic_Values(book.IdPublishingHouse, formBook.CB_Publishing_House.SelectedValue, formBook.ChB_Publishing_House.Checked);
+            book.IdCity = General_Manipulations.Compare_Logic_Values(book.IdCity, formBook.CB_City.SelectedValue, formBook.ChB_City.Checked);
+            book.IdLanguage = General_Manipulations.Compare_Logic_Values(book.IdLanguage, formBook.CB_Book_Language.SelectedValue, formBook.ChB_Language.Checked);
+            book.IdSeries = General_Manipulations.Compare_Logic_Values(book.IdSeries, formBook.CB_Series.SelectedValue, formBook.ChB_Series.Checked);
+            book.PublicationYear = General_Manipulations.Compare_Date_Values(book.PublicationYear, formBook.TB_Publication_Year.Text);
             book.HasJacket = formBook.CB_Jacket.Checked;
             book.IsArtBook = formBook.CB_Art_Book.Checked;
-            book.Comment = General_Manipulations.compare_string_values(book.Comment, formBook.TB_Comment.Text);
-            book.Notes = General_Manipulations.compare_string_values(book.Notes, formBook.TB_Notes.Text);
-            book.Code = General_Manipulations.compare_string_values(book.Code, formBook.TB_Code.Text);
-            book.FamilyNotes = General_Manipulations.compare_string_values(book.FamilyNotes, formBook.TB_Family_Notes.Text);
-            book.Pages = General_Manipulations.Get_Number_from_String(General_Manipulations.compare_string_values(book.Pages.ToString(), formBook.TB_Pages.Text));
+            book.Comment = General_Manipulations.Compare_String_Values(book.Comment, formBook.TB_Comment.Text);
+            book.Notes = General_Manipulations.Compare_String_Values(book.Notes, formBook.TB_Notes.Text);
+            book.Code = General_Manipulations.Compare_String_Values(book.Code, formBook.TB_Code.Text);
+            book.FamilyNotes = General_Manipulations.Compare_String_Values(book.FamilyNotes, formBook.TB_Family_Notes.Text);
+            book.Pages = General_Manipulations.Get_Number_from_String(General_Manipulations.Compare_String_Values(book.Pages.ToString(), formBook.TB_Pages.Text));
             DB_Agent.db.SaveChanges();
             return book.Id;
         }

@@ -1134,6 +1134,15 @@ namespace lib_postgres.LOCALIZATION {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Record already exists and has ID number .
+        /// </summary>
+        internal static string Recommendation_already_exists_and_has_ID {
+            get {
+                return ResourceManager.GetString("Recommendation_already_exists_and_has_ID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Recomm. type.
         /// </summary>
         internal static string Recommendation_type {

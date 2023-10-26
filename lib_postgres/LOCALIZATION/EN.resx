@@ -476,6 +476,9 @@ It is recommended to create a new database or restore from a backup.</value>
   <data name="Recommendations_list" xml:space="preserve">
     <value>List of recommendations</value>
   </data>
+  <data name="Recommendation_already_exists_and_has_ID" xml:space="preserve">
+    <value>Record already exists and has ID number </value>
+  </data>
   <data name="Recommendation_type" xml:space="preserve">
     <value>Recomm. type</value>
   </data>

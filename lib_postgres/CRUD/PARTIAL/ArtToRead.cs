@@ -16,7 +16,8 @@ namespace lib_postgres
         {
             Form_Art_To_Read form = new Form_Art_To_Read(sources_saved_positions);
             DialogResult dialogResult = form.ShowDialog();
-            if (dialogResult != DialogResult.OK) return -1;
+            if (dialogResult == DialogResult.Abort) return -2;
+            else if (dialogResult != DialogResult.OK) return -1;
 
             ArtToRead item = DB_Agent.Get_First_Deleted_Entity_or_New<ArtToRead>(DB_Agent.Get_Recommendations());
             bool is_new_element = reset_element_if_not_new(item);
@@ -33,9 +34,13 @@ namespace lib_postgres
 
         public static void Save_Element_from_Form(ArtToRead item, Form_Art_To_Read form, Dictionary<string, long> sources_saved_positions)
         {
-            //++ space of recommendation determination
             item.Date = DateOnly.FromDateTime(form.dateTimePicker.Value.Date);
             item.Comment = form.TB_Comment.Text;
+            Get_Sources_and_Recommendations_from_Form(item, form, sources_saved_positions);
+        }
+        public static void Get_Sources_and_Recommendations_from_Form(ArtToRead item, Form_Art_To_Read form, Dictionary<string, long> sources_saved_positions)
+        {
+            //++ space of recommendation determination
             if ((bool)form.selectedrb_toread.Tag)
             {//+art
                 if (form.CB_Toread_Art.SelectedValue != null)
@@ -83,6 +88,39 @@ namespace lib_postgres
             //-- space of source determination
         }
 
+        public static void Get_Sources_and_Recommendations_from_Form(ArtToRead item, Form_Art_To_Read form)
+        {
+            //++ space of recommendation determination
+            if ((bool)form.selectedrb_toread.Tag)
+            {//+art
+                if (form.CB_Toread_Art.SelectedValue != null)
+                    item.ToreadArtId = (long)form.CB_Toread_Art.SelectedValue;
+            }
+            else
+            {//+author
+                if (form.CB_Toread_Author.SelectedValue != null)
+                    item.ToreadAuthorId = (long)form.CB_Toread_Author.SelectedValue;
+           }
+            //-- space of recommendation determination
+
+            //++ space of source determination
+            if ((string)form.selectedrb_source.Tag == "Art")
+            {
+                if (form.CB_Source_Art.SelectedValue != null)
+                    item.SourceArtId = (long)form.CB_Source_Art.SelectedValue;
+            }
+            else if ((string)form.selectedrb_source.Tag == "Author")
+            {
+                if (form.CB_Source_Author.SelectedValue != null)
+                    item.SourceAuthorId = (long)form.CB_Source_Author.SelectedValue;
+            }
+            else if ((string)form.selectedrb_source.Tag == "SourceToreadAnother")
+            {
+                if (form.CB_Source_Another.SelectedValue != null)
+                    item.SourceAnotherId = (long)form.CB_Source_Another.SelectedValue;
+            }
+            //-- space of source determination
+        }
         private static bool reset_element_if_not_new(ArtToRead item)
         {
             bool is_new_element = (item.Id == 0) ? true : false;
@@ -111,8 +149,7 @@ namespace lib_postgres
         public static long Edit_Item_by_ID(long id)
         {
             ArtToRead item = DB_Agent.Get_ArtToRead(id);
-            Form_Art_To_Read form = new Form_Art_To_Read();
-            Load_Item_in_Form(item, form);
+            Form_Art_To_Read form = new Form_Art_To_Read(item);
             DialogResult dialogResult = form.ShowDialog();
             if (dialogResult != DialogResult.OK) return -1;
             bool is_new_element = reset_element_if_not_new(item);
@@ -126,46 +163,6 @@ namespace lib_postgres
             return item.Id;
         }
 
-        private static void Load_Item_in_Form(ArtToRead item, Form_Art_To_Read form)
-        {
-            if (item.Date is not null)
-            {
-                DateTime d = new DateTime(item.Date.Value.Year, item.Date.Value.Month, item.Date.Value.Day);
-                form.dateTimePicker.Value = d;
-            }
-            if (item.Comment != null) form.TB_Comment.Text = item.Comment;
-            if (item.ToreadArtId != null)
-            {
-                form.CB_Toread_Art.SelectedValue = item.ToreadArtId;
-                form.RB_Toread_Art.Checked = true;
-                form.selectedrb_toread = form.RB_Toread_Art;
-            }
-            if (item.ToreadAuthorId != null)
-            {
-                form.CB_Toread_Author.SelectedValue = item.ToreadAuthorId;
-                form.RB_Toread_Author.Checked = true;
-                form.selectedrb_toread = form.RB_Toread_Author;
-            }
-            if (item.SourceAnotherId != null)
-            {
-                form.CB_Source_Another.SelectedValue = item.SourceAnotherId;
-                form.RB_Source_Another.Checked = true;
-                form.selectedrb_source = form.RB_Source_Another;
-            }
-            if (item.SourceAuthorId != null)
-            {
-                form.CB_Source_Author.SelectedValue = item.SourceAuthorId;
-                form.RB_Source_Author.Checked = true;
-                form.selectedrb_source = form.RB_Source_Author;
-            }
-            if (item.SourceArtId != null)
-            {
-                form.CB_Source_Art.SelectedValue = item.SourceArtId;
-                form.RB_Source_Art.Checked = true;
-                form.selectedrb_source = form.RB_Source_Art;
-            }
-        }
-
         public static long Delete_Item_by_ID(long id)
         {
             ArtToRead item = DB_Agent.Get_ArtToRead(id);
@@ -176,6 +173,18 @@ namespace lib_postgres
             DB_Agent.db.SaveChanges();
             return item.Id;
         }
-
+        public static long Get_Already_Existing_Recommendation_ID(ArtToRead item)
+        {
+            List<ArtToRead> all_recommendations = DB_Agent.Get_Recommendations();
+            ArtToRead found_element = (from rec in all_recommendations
+                          where rec.SourceArtId == item.SourceArtId
+                             && rec.SourceAuthorId == item.SourceAuthorId
+                             && rec.SourceAnotherId == item.SourceAnotherId
+                             && rec.ToreadArtId  == item.ToreadArtId
+                             && rec.ToreadAuthorId == item.ToreadAuthorId
+                          select rec).FirstOrDefault();
+            if (found_element != null) return found_element.Id;
+            else return 0;
+        }
     }
 }
