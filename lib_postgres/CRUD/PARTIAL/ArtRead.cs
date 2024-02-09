@@ -9,7 +9,7 @@ namespace lib_postgres
     {//it's ViewHasRead visually
         public static long Erase_Item_by_ID(long id)
         {
-            lib_postgres.ArtRead element = DB_Agent.Get_ArtRead(id);
+            ArtRead element = DB_Agent.Get_ArtRead(id);
             DB_Agent.db.ArtReads.Remove(element);
             DB_Agent.Save_Changes();
             return element.Id;
@@ -51,7 +51,7 @@ namespace lib_postgres
         }
         public static long Edit_Item_by_ID(long id)
         {
-            lib_postgres.ArtRead artRead = DB_Agent.Get_ArtRead(id);
+            ArtRead artRead = DB_Agent.Get_ArtRead(id);
             Form_ArtRead form = new Form_ArtRead();
             form.CB_Art.SelectedValue = artRead.ArtId;
             if (artRead.Date is not null)

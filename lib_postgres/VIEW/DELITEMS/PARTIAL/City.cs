@@ -10,10 +10,10 @@ namespace lib_postgres
 {
     public partial class City : IHas_field_ID 
     {
-        public static List<lib_postgres.City> Get_Deleted_Cities()
+        public static List<City> Get_Deleted_Cities()
         {
-            List< lib_postgres.City > cities = DB_Agent.Get_Cities();
-            List<lib_postgres.City> deleted_cities = (from city in cities
+            List< City > cities = DB_Agent.Get_Cities();
+            List<City> deleted_cities = (from city in cities
                                          where city.IsDeleted is true
                                       select city).ToList();
             return deleted_cities;
@@ -21,7 +21,7 @@ namespace lib_postgres
 
         public static List<long> Get_Deleted_Items_IDs()
         {
-            List<lib_postgres.City> deleted_cities = Get_Deleted_Cities();
+            List<City> deleted_cities = Get_Deleted_Cities();
             List<long> del_cities_id = (from city in deleted_cities
                                         select city.Id).ToList(); 
             return del_cities_id;

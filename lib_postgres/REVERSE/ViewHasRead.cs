@@ -11,6 +11,7 @@ namespace lib_postgres
         public string? Название { get; set; }
         public string? Жанр { get; set; }
         public string? ЯзыкОригинала { get; set; }
+        public string? ЯзыкПрочтения { get; set; }
         public string? Впечатление { get; set; }
         public string? Оценка { get; set; }
         public string? Формат { get; set; }

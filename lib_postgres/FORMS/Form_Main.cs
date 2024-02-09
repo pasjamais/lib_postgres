@@ -254,7 +254,7 @@ namespace lib_postgres
             dgv_Visualisator.deleted_Entities_Visuaisator.Is_Colorize_deleted_items = form_Settings.ChB_Show_Deleted_Entities.Checked;
             // save new deleted_elements visualisation to INI file
             dgv_Visualisator.deleted_Entities_Visuaisator.Write_Value_isShow_Deleted_to_INI_File();
-            
+
             // 3. Set_Value_Delete_Forever
             CRUD_Item_Determinator.Set_Value_Delete_Forever(form_Settings.ChB_Delete_Forever.Checked);
 
@@ -268,7 +268,7 @@ namespace lib_postgres
             // for special projection of selection for languages
             // added for better view in DGV
             dataGridView.Columns.Clear();
-            dgv_Visualisator.Assign_SortableBindingList_to_DGV<Art_and_Author>(dataGridView,arts);
+            dgv_Visualisator.Assign_SortableBindingList_to_DGV<Art_and_Author>(dataGridView, arts);
             Turn_Off_Current_Menu_Item();
             dgv_Visualisator.Prepare_DGV_For_Type<Art>(dataGridView, StatusProperty);
             //++ colorization of deleted elements 
@@ -296,7 +296,7 @@ namespace lib_postgres
 
         private void ToolStripMenuItem__Recommend_Vis_Graphviz_Click(object sender, EventArgs e)
         {
-            FORMS.Form_Graphviz form_graphviz = new lib_postgres.FORMS.Form_Graphviz();
+            FORMS.Form_Graphviz form_graphviz = new FORMS.Form_Graphviz();
             var DialogResult = form_graphviz.ShowDialog();
 
         }
@@ -321,9 +321,9 @@ namespace lib_postgres
         }
         private void ToolStripMenuItem_Author_Find_Arts_of_Author_Click(object sender, EventArgs e)
         {
-            long authorID = dgv_Visualisator.Get_Selected_Entity_ID(dataGridView); 
-            dataGridView.Columns.Clear(); 
-            dgv_Visualisator.Assign_SortableBindingList_to_DGV< Art_and_Author>(dataGridView, Queries_LinQ.Get_Arts(authorID));
+            long authorID = dgv_Visualisator.Get_Selected_Entity_ID(dataGridView);
+            dataGridView.Columns.Clear();
+            dgv_Visualisator.Assign_SortableBindingList_to_DGV<Art_and_Author>(dataGridView, Queries_LinQ.Get_Arts(authorID));
             Turn_Off_Current_Menu_Item();
             dgv_Visualisator.Prepare_DGV_For_Type<Art>(dataGridView, StatusProperty);
             //++ colorization of deleted elements 
@@ -337,10 +337,10 @@ namespace lib_postgres
         {
             long authorID = dgv_Visualisator.Get_Selected_Entity_ID(dataGridView);
             Author author = DB_Agent.Get_Author(authorID);
-            List <Art_and_Author> arts_of_author = Queries_LinQ.Get_Arts(authorID);
+            List<Art_and_Author> arts_of_author = Queries_LinQ.Get_Arts(authorID);
             Read_Recommendations();
-            List<Recommend> dt = (List <Recommend>) dataGridView.DataSource;
-            dgv_Visualisator.Assign_SortableBindingList_to_DGV< Recommend>(dataGridView,Queries_LinQ.ArtRead_Projection(dt, author, arts_of_author));
+            List<Recommend> dt = (List<Recommend>)dataGridView.DataSource;
+            dgv_Visualisator.Assign_SortableBindingList_to_DGV<Recommend>(dataGridView, Queries_LinQ.ArtRead_Projection(dt, author, arts_of_author));
         }
 
         #endregion menu_commands
@@ -764,6 +764,29 @@ namespace lib_postgres
 
         #endregion
 
+        #region Bibliography
+        private void ToolStripMenuItem__Bibliography_Show_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void ToolStripMenuItem__Biblography_ِAdd_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ToolStripMenuItem__Bibliography_Edit_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ToolStripMenuItem__Bibliography_Delete_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        #endregion
+
+
         #endregion entities control
 
         #region click
@@ -806,7 +829,7 @@ namespace lib_postgres
                 Turn_On_Off_Menu_Item(ToolStripMenuItem_Author_Delete, state);
                 Turn_On_Off_Menu_Item(ToolStripMenuItem_Author_Find_Arts_of_Author, state);
                 Turn_On_Off_Menu_Item(ToolStripMenuItem_Author__Find_Recommendations, state);
-                
+
             }
             else if (current_Working_Type == typeof(Action))
             {
@@ -840,7 +863,7 @@ namespace lib_postgres
                 Turn_On_Off_Menu_Item(ToolStripMenuItem_Arts_Edit, state);
                 Turn_On_Off_Menu_Item(ToolStripMenuItem_Arts_Delete, state);
                 Turn_On_Off_Menu_Item(ToolStripMenuItem_Arts_Add_to_HaveRead, state);
-           
+
             }
             else if (current_Working_Type == typeof(Genre))
             {
@@ -1289,7 +1312,28 @@ namespace lib_postgres
 
         #endregion Location CRUD
 
-        #endregion CRUD
+
+        #region Bibliography CRUD
+
+        private void Create_Bibliography()
+        {
+            Create_Item<Bibliography>();
+        }
+        private void Read_Bibliography()
+        {
+        }
+        private void Edit_Read_Bibliography()
+        {
+            
+        }
+        private void Delete_Read_Bibliography()
+        {
+           
+        }
+
+        #endregion Bibliography CRUD
+
+#endregion CRUD
 
         #region Localosation
 
@@ -1302,7 +1346,7 @@ namespace lib_postgres
             Update_Context_Menu();
             Updade_DGV_Title();
         }
-     
+
 
         private void Initial_Langues_Menu_Load()
         {
@@ -1334,13 +1378,13 @@ namespace lib_postgres
 
         private void ToolStripMenuItem_File_Open_Backup_Folder_Click(object sender, EventArgs e)
         {
-           Backup.Open_Backup_Folder_in_Explorer();
+            Backup.Open_Backup_Folder_in_Explorer();
         }
 
         private void Get_My_Books_in_Other_Hands()
         {
             last_DGV_Update_Operation = Get_My_Books_in_Other_Hands;
-      //      dgv_Visualisator.Refresh_DGV_for_Item_Type<ViewMyBooksInOtherHand>(dataGridView, Turn_Off, Turn_ON, StatusProperty);
+            //      dgv_Visualisator.Refresh_DGV_for_Item_Type<ViewMyBooksInOtherHand>(dataGridView, Turn_Off, Turn_ON, StatusProperty);
             dataGridView.Columns.Clear();
             dgv_Visualisator.Assign_SortableBindingList_to_DGV<ViewMyBooksInOtherHand>(dataGridView, Queries_from_Views.Get_My_Books_in_Other_Hands());
             Turn_Off_Current_Menu_Item();
@@ -1355,8 +1399,9 @@ namespace lib_postgres
             MethodInfo methodInfo = type.GetMethod("Highlighting");
             object classInstance = Activator.CreateInstance(type, null);
             var meth_ref = methodInfo.MakeGenericMethod(current_Working_Type);
-            meth_ref.Invoke(classInstance, new object[] { dataGridView});
+            meth_ref.Invoke(classInstance, new object[] { dataGridView });
         }
+
     }
 }
 

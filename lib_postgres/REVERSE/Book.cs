@@ -28,7 +28,7 @@ namespace lib_postgres
         public string? FamilyNotes { get; set; }
         public bool? IsArtBook { get; set; }
         public bool? IsDeleted { get; set; }
-
+        public string? Name { get; set; }
         public virtual Art IdArtNavigation { get; set; } = null!;
         public virtual City? IdCityNavigation { get; set; }
         public virtual Language? IdLanguageNavigation { get; set; }

@@ -12,7 +12,7 @@ namespace lib_postgres
     {
         public static long Create_Item()
         {
-            lib_postgres.Book book = DB_Agent.Get_First_Deleted_Entity_or_New<lib_postgres.Book>(DB_Agent.Get_Books());
+            Book book = DB_Agent.Get_First_Deleted_Entity_or_New<Book>(DB_Agent.Get_Books());
             Form_Book formBook = new Form_Book();
             DialogResult dialogResult = formBook.ShowDialog();
             if (dialogResult != DialogResult.OK) return -1;
@@ -49,7 +49,7 @@ namespace lib_postgres
 
         public static long Edit_Item_by_ID(long id)
         {
-            lib_postgres.Book book = DB_Agent.Get_Book(id);
+            Book book = DB_Agent.Get_Book(id);
             Form_Book formBook = new Form_Book();
             formBook.CB_Art.SelectedValue = book.IdArt;
             formBook.CB_Publishing_House.SelectedValue = book.IdPublishingHouse ?? 0;
@@ -94,7 +94,7 @@ namespace lib_postgres
 
         public static long Delete_Item_by_ID(long id)
         {
-            lib_postgres.Book book = DB_Agent.Get_Book(id);
+            Book book = DB_Agent.Get_Book(id);
             if (book.IsDeleted.HasValue)
                 book.IsDeleted = !book.IsDeleted;
             else
@@ -105,7 +105,7 @@ namespace lib_postgres
 
         public static long Erase_Item_by_ID(long id)
         {
-            lib_postgres.Book element = DB_Agent.Get_Book(id);
+            Book element = DB_Agent.Get_Book(id);
             DB_Agent.db.Books.Remove(element);
             DB_Agent.Save_Changes();
             return element.Id;

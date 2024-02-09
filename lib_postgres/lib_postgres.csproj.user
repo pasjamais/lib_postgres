@@ -4,6 +4,9 @@
     <Compile Update="FORMS\Form_About.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="FORMS\Form_Bibliography.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="VIEW\NOTICE\Label_Colorized.cs">
       <SubType>Component</SubType>
     </Compile>

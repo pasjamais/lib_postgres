@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace lib_postgres
 {
-    public partial class Author 
+    public partial class Author
     {
         public Author()
         {
@@ -16,6 +16,8 @@ namespace lib_postgres
         public long Id { get; set; }
         public string Name { get; set; } = null!;
         public bool? IsDeleted { get; set; }
+        public string? NameOriginal { get; set; }
+        public DateOnly? Birthday { get; set; }
 
         public virtual ICollection<ArtToRead> ArtToReadSourceAuthors { get; set; }
         public virtual ICollection<ArtToRead> ArtToReadToreadAuthors { get; set; }

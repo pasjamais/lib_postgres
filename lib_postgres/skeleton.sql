@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 15.1
--- Dumped by pg_dump version 15.1
+-- Dumped from database version 16.1
+-- Dumped by pg_dump version 16.1
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -45,7 +45,7 @@ CREATE SEQUENCE public."City_id_seq"
     CACHE 1;
 
 
-ALTER TABLE public."City_id_seq" OWNER TO postgres;
+ALTER SEQUENCE public."City_id_seq" OWNER TO postgres;
 
 --
 -- Name: City_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
@@ -83,7 +83,7 @@ CREATE SEQUENCE public.action_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.action_id_seq OWNER TO postgres;
+ALTER SEQUENCE public.action_id_seq OWNER TO postgres;
 
 --
 -- Name: action_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
@@ -118,7 +118,7 @@ CREATE SEQUENCE public.action_type_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.action_type_id_seq OWNER TO postgres;
+ALTER SEQUENCE public.action_type_id_seq OWNER TO postgres;
 
 --
 -- Name: action_type_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
@@ -137,7 +137,10 @@ CREATE TABLE public.art (
     genre bigint,
     writing_year date,
     orig_language bigint,
-    _is_deleted boolean
+    _is_deleted boolean,
+    name_original character varying(250),
+    comment text,
+    is_banned boolean
 );
 
 
@@ -155,7 +158,7 @@ CREATE SEQUENCE public.art_genre_seq
     CACHE 1;
 
 
-ALTER TABLE public.art_genre_seq OWNER TO postgres;
+ALTER SEQUENCE public.art_genre_seq OWNER TO postgres;
 
 --
 -- Name: art_genre_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
@@ -176,7 +179,7 @@ CREATE SEQUENCE public.art_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.art_id_seq OWNER TO postgres;
+ALTER SEQUENCE public.art_id_seq OWNER TO postgres;
 
 --
 -- Name: art_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
@@ -197,7 +200,7 @@ CREATE SEQUENCE public.art_orig_language_seq
     CACHE 1;
 
 
-ALTER TABLE public.art_orig_language_seq OWNER TO postgres;
+ALTER SEQUENCE public.art_orig_language_seq OWNER TO postgres;
 
 --
 -- Name: art_orig_language_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
@@ -282,7 +285,8 @@ CREATE TABLE public.art_to_read (
     toread_art_id bigint,
     toread_author_id bigint,
     comment character varying,
-    _is_deleted boolean
+    _is_deleted boolean,
+    id_biblopgraphy bigint
 );
 
 
@@ -309,7 +313,9 @@ ALTER TABLE public.art_to_read ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY 
 CREATE TABLE public.author (
     id bigint NOT NULL,
     name character varying(100) NOT NULL,
-    _is_deleted boolean
+    _is_deleted boolean,
+    name_original character varying(250),
+    birthday date
 );
 
 
@@ -341,7 +347,7 @@ CREATE SEQUENCE public.author_art_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.author_art_id_seq OWNER TO postgres;
+ALTER SEQUENCE public.author_art_id_seq OWNER TO postgres;
 
 --
 -- Name: author_art_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
@@ -362,7 +368,7 @@ CREATE SEQUENCE public.author_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.author_id_seq OWNER TO postgres;
+ALTER SEQUENCE public.author_id_seq OWNER TO postgres;
 
 --
 -- Name: author_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
@@ -370,6 +376,21 @@ ALTER TABLE public.author_id_seq OWNER TO postgres;
 
 ALTER SEQUENCE public.author_id_seq OWNED BY public.author.id;
 
+
+--
+-- Name: bibliography; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.bibliography (
+    id bigint NOT NULL,
+    name character varying(250),
+    date date,
+    comment character varying(250),
+    _is_deleted boolean
+);
+
+
+ALTER TABLE public.bibliography OWNER TO postgres;
 
 --
 -- Name: book; Type: TABLE; Schema: public; Owner: postgres
@@ -391,7 +412,8 @@ CREATE TABLE public.book (
     state integer,
     family_notes text,
     is_art_book boolean,
-    _is_deleted boolean
+    _is_deleted boolean,
+    name character varying(250)
 );
 
 
@@ -436,7 +458,7 @@ CREATE SEQUENCE public.book_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.book_id_seq OWNER TO postgres;
+ALTER SEQUENCE public.book_id_seq OWNER TO postgres;
 
 --
 -- Name: book_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
@@ -471,7 +493,7 @@ CREATE SEQUENCE public.chifres_names_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.chifres_names_id_seq OWNER TO postgres;
+ALTER SEQUENCE public.chifres_names_id_seq OWNER TO postgres;
 
 --
 -- Name: chifres_names_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
@@ -505,7 +527,7 @@ CREATE SEQUENCE public.genre_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.genre_id_seq OWNER TO postgres;
+ALTER SEQUENCE public.genre_id_seq OWNER TO postgres;
 
 --
 -- Name: genre_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
@@ -540,7 +562,7 @@ CREATE SEQUENCE public.language_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.language_id_seq OWNER TO postgres;
+ALTER SEQUENCE public.language_id_seq OWNER TO postgres;
 
 --
 -- Name: language_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
@@ -619,7 +641,7 @@ CREATE SEQUENCE public.people_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.people_id_seq OWNER TO postgres;
+ALTER SEQUENCE public.people_id_seq OWNER TO postgres;
 
 --
 -- Name: people_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
@@ -654,7 +676,7 @@ CREATE SEQUENCE public.place_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.place_id_seq OWNER TO postgres;
+ALTER SEQUENCE public.place_id_seq OWNER TO postgres;
 
 --
 -- Name: place_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
@@ -692,7 +714,7 @@ CREATE SEQUENCE public.possession_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.possession_id_seq OWNER TO postgres;
+ALTER SEQUENCE public.possession_id_seq OWNER TO postgres;
 
 --
 -- Name: possession_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
@@ -726,7 +748,7 @@ CREATE SEQUENCE public.publishing_house_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.publishing_house_id_seq OWNER TO postgres;
+ALTER SEQUENCE public.publishing_house_id_seq OWNER TO postgres;
 
 --
 -- Name: publishing_house_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
@@ -775,7 +797,7 @@ CREATE SEQUENCE public.registration_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.registration_id_seq OWNER TO postgres;
+ALTER SEQUENCE public.registration_id_seq OWNER TO postgres;
 
 --
 -- Name: registration_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
@@ -809,7 +831,7 @@ CREATE SEQUENCE public.series_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.series_id_seq OWNER TO postgres;
+ALTER SEQUENCE public.series_id_seq OWNER TO postgres;
 
 --
 -- Name: series_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
@@ -889,7 +911,7 @@ CREATE VIEW public.view_actions AS
   ORDER BY action.date;
 
 
-ALTER TABLE public.view_actions OWNER TO postgres;
+ALTER VIEW public.view_actions OWNER TO postgres;
 
 --
 -- Name: view_all_real_books; Type: VIEW; Schema: public; Owner: postgres
@@ -944,7 +966,7 @@ CREATE VIEW public.view_all_real_books AS
   ORDER BY unique_book.unique_book_id;
 
 
-ALTER TABLE public.view_all_real_books OWNER TO postgres;
+ALTER VIEW public.view_all_real_books OWNER TO postgres;
 
 --
 -- Name: view_arts; Type: VIEW; Schema: public; Owner: postgres
@@ -963,7 +985,7 @@ CREATE VIEW public.view_arts AS
      LEFT JOIN public.genre ON ((art.genre = genre.id)));
 
 
-ALTER TABLE public.view_arts OWNER TO postgres;
+ALTER VIEW public.view_arts OWNER TO postgres;
 
 --
 -- Name: view_arts_with_id; Type: VIEW; Schema: public; Owner: postgres
@@ -983,7 +1005,7 @@ CREATE VIEW public.view_arts_with_id AS
      LEFT JOIN public.genre ON ((art.genre = genre.id)));
 
 
-ALTER TABLE public.view_arts_with_id OWNER TO postgres;
+ALTER VIEW public.view_arts_with_id OWNER TO postgres;
 
 --
 -- Name: view_books; Type: VIEW; Schema: public; Owner: postgres
@@ -1009,7 +1031,7 @@ CREATE VIEW public.view_books AS
   ORDER BY book.id;
 
 
-ALTER TABLE public.view_books OWNER TO postgres;
+ALTER VIEW public.view_books OWNER TO postgres;
 
 --
 -- Name: view_codes; Type: VIEW; Schema: public; Owner: postgres
@@ -1026,20 +1048,20 @@ CREATE VIEW public.view_codes AS
   ORDER BY book.code;
 
 
-ALTER TABLE public.view_codes OWNER TO postgres;
+ALTER VIEW public.view_codes OWNER TO postgres;
 
 --
 -- Name: view_genres; Type: VIEW; Schema: public; Owner: postgres
 --
 
 CREATE VIEW public.view_genres AS
- SELECT genre.id,
-    genre.name
+ SELECT id,
+    name
    FROM public.genre
-  ORDER BY genre.name;
+  ORDER BY name;
 
 
-ALTER TABLE public.view_genres OWNER TO postgres;
+ALTER VIEW public.view_genres OWNER TO postgres;
 
 --
 -- Name: view_has_read; Type: VIEW; Schema: public; Owner: postgres
@@ -1052,10 +1074,11 @@ CREATE VIEW public.view_has_read AS
     t_art.art_name AS "Название",
     t_art.genre_name AS "Жанр",
     t_art.orig_language AS "Язык оригинала",
+    language_2.name AS "Язык прочтения",
     art_read.comment AS "Впечатление",
     mark.name AS "Оценка",
     book_format.name AS "Формат"
-   FROM ((((public.art_read
+   FROM (((((public.art_read
      JOIN ( SELECT art.id,
             art.name AS art_name,
             genre.name AS genre_name,
@@ -1070,10 +1093,11 @@ CREATE VIEW public.view_has_read AS
           GROUP BY author_art.art) art_authors ON ((t_art.id = art_authors.art)))
      LEFT JOIN public.mark ON ((art_read.mark_id = mark.id)))
      LEFT JOIN public.book_format ON ((art_read.book_format_id = book_format.id)))
+     LEFT JOIN public.language language_2 ON ((art_read.read_language_id = language_2.id)))
   ORDER BY art_read.date;
 
 
-ALTER TABLE public.view_has_read OWNER TO postgres;
+ALTER VIEW public.view_has_read OWNER TO postgres;
 
 --
 -- Name: view_hint_art_to_art; Type: VIEW; Schema: public; Owner: postgres
@@ -1092,7 +1116,7 @@ CREATE VIEW public.view_hint_art_to_art AS
   ORDER BY view_arts_with_id.id;
 
 
-ALTER TABLE public.view_hint_art_to_art OWNER TO postgres;
+ALTER VIEW public.view_hint_art_to_art OWNER TO postgres;
 
 --
 -- Name: view_hint_art_to_author; Type: VIEW; Schema: public; Owner: postgres
@@ -1110,7 +1134,7 @@ CREATE VIEW public.view_hint_art_to_author AS
   ORDER BY view_arts_with_id.id;
 
 
-ALTER TABLE public.view_hint_art_to_author OWNER TO postgres;
+ALTER VIEW public.view_hint_art_to_author OWNER TO postgres;
 
 --
 -- Name: view_hint_author_to_author; Type: VIEW; Schema: public; Owner: postgres
@@ -1127,7 +1151,7 @@ CREATE VIEW public.view_hint_author_to_author AS
   WHERE (art_to_read.source_author_id IS NOT NULL);
 
 
-ALTER TABLE public.view_hint_author_to_author OWNER TO postgres;
+ALTER VIEW public.view_hint_author_to_author OWNER TO postgres;
 
 --
 -- Name: view_hint_from_another; Type: VIEW; Schema: public; Owner: postgres
@@ -1147,7 +1171,7 @@ CREATE VIEW public.view_hint_from_another AS
   WHERE (art_to_read.source_another_id IS NOT NULL);
 
 
-ALTER TABLE public.view_hint_from_another OWNER TO postgres;
+ALTER VIEW public.view_hint_from_another OWNER TO postgres;
 
 --
 -- Name: view_hint_from_art; Type: VIEW; Schema: public; Owner: postgres
@@ -1168,7 +1192,7 @@ CREATE VIEW public.view_hint_from_art AS
   ORDER BY view_arts_with_id.id;
 
 
-ALTER TABLE public.view_hint_from_art OWNER TO postgres;
+ALTER VIEW public.view_hint_from_art OWNER TO postgres;
 
 --
 -- Name: view_hint_from_author; Type: VIEW; Schema: public; Owner: postgres
@@ -1188,7 +1212,7 @@ CREATE VIEW public.view_hint_from_author AS
   WHERE (art_to_read.source_author_id IS NOT NULL);
 
 
-ALTER TABLE public.view_hint_from_author OWNER TO postgres;
+ALTER VIEW public.view_hint_from_author OWNER TO postgres;
 
 --
 -- Name: view_my_books; Type: VIEW; Schema: public; Owner: postgres
@@ -1246,7 +1270,7 @@ CREATE VIEW public.view_my_books AS
   ORDER BY place.name, action.comment, t_art.art_name;
 
 
-ALTER TABLE public.view_my_books OWNER TO postgres;
+ALTER VIEW public.view_my_books OWNER TO postgres;
 
 --
 -- Name: view_my_books_in_other_hands; Type: VIEW; Schema: public; Owner: postgres
@@ -1304,7 +1328,7 @@ CREATE VIEW public.view_my_books_in_other_hands AS
   ORDER BY place.name, action.comment, t_art.art_name;
 
 
-ALTER TABLE public.view_my_books_in_other_hands OWNER TO postgres;
+ALTER VIEW public.view_my_books_in_other_hands OWNER TO postgres;
 
 --
 -- Name: action id; Type: DEFAULT; Schema: public; Owner: postgres
@@ -1491,6 +1515,14 @@ ALTER TABLE ONLY public.author
 
 
 --
+-- Name: bibliography bibliography_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.bibliography
+    ADD CONSTRAINT bibliography_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: book_format book_format_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1663,7 +1695,7 @@ ALTER TABLE ONLY public.art_read
 --
 
 ALTER TABLE ONLY public.art_read
-    ADD CONSTRAINT art_read_book_id_fkey FOREIGN KEY (book_id) REFERENCES public.book(id) NOT VALID;
+    ADD CONSTRAINT art_read_book_id_fkey FOREIGN KEY (book_id) REFERENCES public.book(id);
 
 
 --
@@ -1696,6 +1728,14 @@ ALTER TABLE ONLY public.art_spec_register
 
 ALTER TABLE ONLY public.art_spec_register
     ADD CONSTRAINT art_spec_register_spec_register_attribute_id_fkey FOREIGN KEY (spec_register_attribute_id) REFERENCES public.spec_register_attribute(id) NOT VALID;
+
+
+--
+-- Name: art_to_read art_to_read_id_biblopgraphy_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.art_to_read
+    ADD CONSTRAINT art_to_read_id_biblopgraphy_fkey FOREIGN KEY (id_biblopgraphy) REFERENCES public.bibliography(id) NOT VALID;
 
 
 --

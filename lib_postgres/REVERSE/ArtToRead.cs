@@ -14,7 +14,9 @@ namespace lib_postgres
         public long? ToreadAuthorId { get; set; }
         public string? Comment { get; set; }
         public bool? IsDeleted { get; set; }
+        public long? IdBiblopgraphy { get; set; }
 
+        public virtual Bibliography? IdBiblopgraphyNavigation { get; set; }
         public virtual SourceToreadAnother? SourceAnother { get; set; }
         public virtual Art? SourceArt { get; set; }
         public virtual Author? SourceAuthor { get; set; }

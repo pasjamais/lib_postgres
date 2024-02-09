@@ -37,7 +37,7 @@ namespace lib_postgres
             this.ChB_Language = new System.Windows.Forms.CheckBox();
             this.ChB_City = new System.Windows.Forms.CheckBox();
             this.ChB_Publishing_House = new System.Windows.Forms.CheckBox();
-            this.Label_Art = new lib_postgres.VIEW.NOTICE.Label_Colorized();
+            this.Label_Art = new VIEW.NOTICE.Label_Colorized();
             this.CB_Art = new System.Windows.Forms.ComboBox();
             this.BT_Add_PubHouse = new System.Windows.Forms.Button();
             this.BT_Add_City = new System.Windows.Forms.Button();

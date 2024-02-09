@@ -1,4 +1,64 @@
-﻿<root>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!--
+    Microsoft ResX Schema 
+
+    Version 2.0
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
+    associated with the data types.
+
+    Example:
+
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+
+    There are any number of "resheader" rows that contain simple
+    name/value pairs.
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
+    mimetype set.
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
+    extensible. For a given mimetype the value must be set accordingly:
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
+    read any of the formats listed below.
+
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
@@ -78,18 +138,14 @@
     <value>Fill</value>
   </data>
   <data name="dataGridView.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 24</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="dataGridView.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>0, 30</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="dataGridView.RowHeadersWidth" type="System.Int32, mscorlib">
     <value>51</value>
   </data>
   <data name="dataGridView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1036, 362</value>
+    <value>1184, 485</value>
   </data>
   <data name="dataGridView.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -109,53 +165,53 @@
   <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>215, 17</value>
   </metadata>
-  <data name="ToolStripMenuItem_File_BackupBD.Size" type="System.Drawing.Size, System.Drawing">
-    <value>243, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_File_BackupBD.Text" xml:space="preserve">
-    <value>Create database backup...</value>
-  </data>
-  <data name="ToolStripMenuItem_File_Open_Backup_Folder.Size" type="System.Drawing.Size, System.Drawing">
-    <value>243, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_File_Open_Backup_Folder.Text" xml:space="preserve">
-    <value>Open backup folder</value>
-  </data>
-  <data name="ToolStripMenuItem_File_RestoreBD.Size" type="System.Drawing.Size, System.Drawing">
-    <value>243, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_File_RestoreBD.Text" xml:space="preserve">
-    <value>Restore database from backup...</value>
-  </data>
-  <data name="ToolStripMenuItem_File_Delete_DB.Size" type="System.Drawing.Size, System.Drawing">
-    <value>243, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_File_Delete_DB.Text" xml:space="preserve">
-    <value>Delete Base...</value>
-  </data>
-  <data name="toolStripSeparator19.Size" type="System.Drawing.Size, System.Drawing">
-    <value>240, 6</value>
-  </data>
-  <data name="ToolStripMenuItem_File_Open_Settings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>243, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_File_Open_Settings.Text" xml:space="preserve">
-    <value>Settings...</value>
-  </data>
   <data name="ToolStripMenuItem_File.Size" type="System.Drawing.Size, System.Drawing">
-    <value>37, 20</value>
+    <value>44, 24</value>
   </data>
   <data name="ToolStripMenuItem_File.Text" xml:space="preserve">
     <value>File</value>
   </data>
+  <data name="ToolStripMenuItem__Bibliography_Show.Size" type="System.Drawing.Size, System.Drawing">
+    <value>306, 24</value>
+  </data>
+  <data name="ToolStripMenuItem__Bibliography_Show.Text" xml:space="preserve">
+    <value>Show bibliographies</value>
+  </data>
+  <data name="ToolStripMenuItem__Biblography_ِAdd.Size" type="System.Drawing.Size, System.Drawing">
+    <value>306, 24</value>
+  </data>
+  <data name="ToolStripMenuItem__Biblography_ِAdd.Text" xml:space="preserve">
+    <value>Add bibliography...</value>
+  </data>
+  <data name="ToolStripMenuItem__Bibliography_Edit.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="ToolStripMenuItem__Bibliography_Edit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>306, 24</value>
+  </data>
+  <data name="ToolStripMenuItem__Bibliography_Edit.Text" xml:space="preserve">
+    <value>Open (Edit) bibliography...</value>
+  </data>
+  <data name="ToolStripMenuItem__Bibliography_Delete.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="ToolStripMenuItem__Bibliography_Delete.Size" type="System.Drawing.Size, System.Drawing">
+    <value>306, 24</value>
+  </data>
+  <data name="ToolStripMenuItem__Bibliography_Delete.Text" xml:space="preserve">
+    <value>Delete/Undelete bibliography</value>
+  </data>
+  <data name="toolStripSeparator9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>303, 6</value>
+  </data>
   <data name="ToolStripMenuItem__Recommendations_Show.Size" type="System.Drawing.Size, System.Drawing">
-    <value>255, 22</value>
+    <value>306, 24</value>
   </data>
   <data name="ToolStripMenuItem__Recommendations_Show.Text" xml:space="preserve">
     <value>Show (Update) recommendations</value>
   </data>
   <data name="ToolStripMenuItem__Recommendations_ِAdd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>255, 22</value>
+    <value>306, 24</value>
   </data>
   <data name="ToolStripMenuItem__Recommendations_ِAdd.Text" xml:space="preserve">
     <value>Add recommendation...</value>
@@ -164,7 +220,7 @@
     <value>False</value>
   </data>
   <data name="ToolStripMenuItem__Recommendations_Edit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>255, 22</value>
+    <value>306, 24</value>
   </data>
   <data name="ToolStripMenuItem__Recommendations_Edit.Text" xml:space="preserve">
     <value>Open (Edit) recommendation...</value>
@@ -173,697 +229,79 @@
     <value>False</value>
   </data>
   <data name="ToolStripMenuItem__Recommendations_Delete.Size" type="System.Drawing.Size, System.Drawing">
-    <value>255, 22</value>
+    <value>306, 24</value>
   </data>
   <data name="ToolStripMenuItem__Recommendations_Delete.Text" xml:space="preserve">
     <value>Delete/Undelete recommendation</value>
   </data>
-  <data name="toolStripSeparator9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>252, 6</value>
-  </data>
-  <data name="ToolStripMenuItem_SourceToreadAnother_Show.Size" type="System.Drawing.Size, System.Drawing">
-    <value>241, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_SourceToreadAnother_Show.Text" xml:space="preserve">
-    <value>Show (Update) another sources</value>
-  </data>
-  <data name="ToolStripMenuItem_SourceToreadAnother_Create.Size" type="System.Drawing.Size, System.Drawing">
-    <value>241, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_SourceToreadAnother_Create.Text" xml:space="preserve">
-    <value>Add another source...</value>
-  </data>
-  <data name="ToolStripMenuItem_SourceToreadAnother_Edit.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="ToolStripMenuItem_SourceToreadAnother_Edit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>241, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_SourceToreadAnother_Edit.Text" xml:space="preserve">
-    <value>Edit another source...</value>
-  </data>
-  <data name="ToolStripMenuItem_SourceToreadAnother_Delete.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="ToolStripMenuItem_SourceToreadAnother_Delete.Size" type="System.Drawing.Size, System.Drawing">
-    <value>241, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_SourceToreadAnother_Delete.Text" xml:space="preserve">
-    <value>Delete/Undelete another source</value>
+  <data name="toolStripSeparator23.Size" type="System.Drawing.Size, System.Drawing">
+    <value>303, 6</value>
   </data>
   <data name="ToolStripMenuItem_SourceToreadAnother.Size" type="System.Drawing.Size, System.Drawing">
-    <value>255, 22</value>
+    <value>306, 24</value>
   </data>
   <data name="ToolStripMenuItem_SourceToreadAnother.Text" xml:space="preserve">
     <value>Another recommendation sources</value>
   </data>
   <data name="toolStripSeparator12.Size" type="System.Drawing.Size, System.Drawing">
-    <value>252, 6</value>
+    <value>303, 6</value>
   </data>
   <data name="ToolStripMenuItem__Recommend_Vis_Graphviz.Size" type="System.Drawing.Size, System.Drawing">
-    <value>255, 22</value>
+    <value>306, 24</value>
   </data>
   <data name="ToolStripMenuItem__Recommend_Vis_Graphviz.Text" xml:space="preserve">
     <value>Visualize...</value>
   </data>
   <data name="toolStripMenuItem_Recomm_Tree.Size" type="System.Drawing.Size, System.Drawing">
-    <value>255, 22</value>
+    <value>306, 24</value>
   </data>
   <data name="toolStripMenuItem_Recomm_Tree.Text" xml:space="preserve">
     <value>Recommendation tree...</value>
   </data>
   <data name="toolStripMenuItemRecommendationToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>119, 20</value>
+    <value>145, 24</value>
   </data>
   <data name="toolStripMenuItemRecommendationToolStripMenuItem.Text" xml:space="preserve">
     <value>Recommendations</value>
   </data>
-  <data name="ToolStripMenuItem__Read_Open.Size" type="System.Drawing.Size, System.Drawing">
-    <value>202, 22</value>
-  </data>
-  <data name="ToolStripMenuItem__Read_Open.Text" xml:space="preserve">
-    <value>Show (Update) readings</value>
-  </data>
-  <data name="ToolStripMenuItem__Read_Add.Size" type="System.Drawing.Size, System.Drawing">
-    <value>202, 22</value>
-  </data>
-  <data name="ToolStripMenuItem__Read_Add.Text" xml:space="preserve">
-    <value>Add reading...</value>
-  </data>
-  <data name="ToolStripMenuItem__Read_Edit.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="ToolStripMenuItem__Read_Edit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>202, 22</value>
-  </data>
-  <data name="ToolStripMenuItem__Read_Edit.Text" xml:space="preserve">
-    <value>Open (Edit) reading...</value>
-  </data>
-  <data name="ToolStripMenuItem__Read_Delete.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="ToolStripMenuItem__Read_Delete.Size" type="System.Drawing.Size, System.Drawing">
-    <value>202, 22</value>
-  </data>
-  <data name="ToolStripMenuItem__Read_Delete.Text" xml:space="preserve">
-    <value>Delete/Undelete reading</value>
-  </data>
-  <data name="toolStripSeparator15.Size" type="System.Drawing.Size, System.Drawing">
-    <value>199, 6</value>
-  </data>
-  <data name="ToolStripMenuItem_Book_Format_Show.Size" type="System.Drawing.Size, System.Drawing">
-    <value>198, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_Book_Format_Show.Text" xml:space="preserve">
-    <value>Show (Update) formats</value>
-  </data>
-  <data name="ToolStripMenuItem_Book_Format_Add.Size" type="System.Drawing.Size, System.Drawing">
-    <value>198, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_Book_Format_Add.Text" xml:space="preserve">
-    <value>Add format...</value>
-  </data>
-  <data name="ToolStripMenuItem_Book_Format_Edit.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="ToolStripMenuItem_Book_Format_Edit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>198, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_Book_Format_Edit.Text" xml:space="preserve">
-    <value>Open (Edit) format...</value>
-  </data>
-  <data name="ToolStripMenuItem_Book_Format_Delete.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="ToolStripMenuItem_Book_Format_Delete.Size" type="System.Drawing.Size, System.Drawing">
-    <value>198, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_Book_Format_Delete.Text" xml:space="preserve">
-    <value>Delete/Undelete format</value>
-  </data>
-  <data name="ToolStripMenuItem_Book_Format.Size" type="System.Drawing.Size, System.Drawing">
-    <value>202, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_Book_Format.Text" xml:space="preserve">
-    <value>Formats</value>
-  </data>
-  <data name="ToolStripMenuItem_Marks_Show.Size" type="System.Drawing.Size, System.Drawing">
-    <value>189, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_Marks_Show.Text" xml:space="preserve">
-    <value>Show (Update) marks</value>
-  </data>
-  <data name="ToolStripMenuItem_Marks_Add.Size" type="System.Drawing.Size, System.Drawing">
-    <value>189, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_Marks_Add.Text" xml:space="preserve">
-    <value>Add mark...</value>
-  </data>
-  <data name="ToolStripMenuItem_Mark_Edit.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="ToolStripMenuItem_Mark_Edit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>189, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_Mark_Edit.Text" xml:space="preserve">
-    <value>Open (Edit) mark...</value>
-  </data>
-  <data name="ToolStripMenuItem_Marks_Delete.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="ToolStripMenuItem_Marks_Delete.Size" type="System.Drawing.Size, System.Drawing">
-    <value>189, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_Marks_Delete.Text" xml:space="preserve">
-    <value>Delete/Undelete mark</value>
-  </data>
-  <data name="ToolStripMenuItem_Marks.Size" type="System.Drawing.Size, System.Drawing">
-    <value>202, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_Marks.Text" xml:space="preserve">
-    <value>Marks</value>
-  </data>
   <data name="ToolStripMenuItem_Reader.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 20</value>
+    <value>68, 24</value>
   </data>
   <data name="ToolStripMenuItem_Reader.Text" xml:space="preserve">
     <value>Reader</value>
   </data>
-  <data name="ToolStripMenuItem_Book_Show.Size" type="System.Drawing.Size, System.Drawing">
-    <value>189, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_Book_Show.Text" xml:space="preserve">
-    <value>Show (Update) books</value>
-  </data>
-  <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>186, 6</value>
-  </data>
-  <data name="ToolStripMenuItem_Book_Add.Size" type="System.Drawing.Size, System.Drawing">
-    <value>189, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_Book_Add.Text" xml:space="preserve">
-    <value>Add book...</value>
-  </data>
-  <data name="ToolStripMenuItem__Book_Edit.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="ToolStripMenuItem__Book_Edit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>189, 22</value>
-  </data>
-  <data name="ToolStripMenuItem__Book_Edit.Text" xml:space="preserve">
-    <value>Open (Edit) book...</value>
-  </data>
-  <data name="ToolStripMenuItem_Books_Delete.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="ToolStripMenuItem_Books_Delete.Size" type="System.Drawing.Size, System.Drawing">
-    <value>189, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_Books_Delete.Text" xml:space="preserve">
-    <value>Delete/Undelete book</value>
-  </data>
-  <data name="toolStripSeparator10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>186, 6</value>
-  </data>
-  <data name="ToolStripMenuItem_Book_Find.Size" type="System.Drawing.Size, System.Drawing">
-    <value>189, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_Book_Find.Text" xml:space="preserve">
-    <value>Find the book...</value>
-  </data>
-  <data name="toolStripSeparator20.Size" type="System.Drawing.Size, System.Drawing">
-    <value>186, 6</value>
-  </data>
-  <data name="ToolStripMenuItem__City_Show.Size" type="System.Drawing.Size, System.Drawing">
-    <value>182, 22</value>
-  </data>
-  <data name="ToolStripMenuItem__City_Show.Text" xml:space="preserve">
-    <value>Show (Update) cities</value>
-  </data>
-  <data name="toolStripSeparator7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>179, 6</value>
-  </data>
-  <data name="ToolStripMenuItem_City_Add.Size" type="System.Drawing.Size, System.Drawing">
-    <value>182, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_City_Add.Text" xml:space="preserve">
-    <value>Add city...</value>
-  </data>
-  <data name="ToolStripMenuItem_City_Edit.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="ToolStripMenuItem_City_Edit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>182, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_City_Edit.Text" xml:space="preserve">
-    <value>Open (Edit) city...</value>
-  </data>
-  <data name="ToolStripMenuItem_City_Delete.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="ToolStripMenuItem_City_Delete.Size" type="System.Drawing.Size, System.Drawing">
-    <value>182, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_City_Delete.Text" xml:space="preserve">
-    <value>Delete/Undelete city</value>
-  </data>
-  <data name="ToolStripMenuItem_Cities.Size" type="System.Drawing.Size, System.Drawing">
-    <value>189, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_Cities.Text" xml:space="preserve">
-    <value>Cities</value>
-  </data>
-  <data name="ToolStripMenuItem_Series_Show.Size" type="System.Drawing.Size, System.Drawing">
-    <value>221, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_Series_Show.Text" xml:space="preserve">
-    <value>Show (Update) book series</value>
-  </data>
-  <data name="toolStripSeparator14.Size" type="System.Drawing.Size, System.Drawing">
-    <value>218, 6</value>
-  </data>
-  <data name="ToolStripMenuItem_Series_Add.Size" type="System.Drawing.Size, System.Drawing">
-    <value>221, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_Series_Add.Text" xml:space="preserve">
-    <value>Add book book series...</value>
-  </data>
-  <data name="ToolStripMenuItem_Series_Edit.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="ToolStripMenuItem_Series_Edit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>221, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_Series_Edit.Text" xml:space="preserve">
-    <value>Open (Edit) book series...</value>
-  </data>
-  <data name="ToolStripMenuItem_Series_Delete.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="ToolStripMenuItem_Series_Delete.Size" type="System.Drawing.Size, System.Drawing">
-    <value>221, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_Series_Delete.Text" xml:space="preserve">
-    <value>Delete/Undelete book series</value>
-  </data>
-  <data name="ToolStripMenuItem_Series.Size" type="System.Drawing.Size, System.Drawing">
-    <value>189, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_Series.Text" xml:space="preserve">
-    <value>Book series</value>
-  </data>
-  <data name="ToolStripMenuItem_PubHouse_Show.Size" type="System.Drawing.Size, System.Drawing">
-    <value>253, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_PubHouse_Show.Text" xml:space="preserve">
-    <value>Show (Update) publishing houses</value>
-  </data>
-  <data name="toolStripSeparator6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>250, 6</value>
-  </data>
-  <data name="ToolStripMenuItem_PubHouse_Add.Size" type="System.Drawing.Size, System.Drawing">
-    <value>253, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_PubHouse_Add.Text" xml:space="preserve">
-    <value>Add publishing house...</value>
-  </data>
-  <data name="ToolStripMenuItem_PubHouse_Edit.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="ToolStripMenuItem_PubHouse_Edit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>253, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_PubHouse_Edit.Text" xml:space="preserve">
-    <value>Open (Edit) publishing house...</value>
-  </data>
-  <data name="ToolStripMenuItem_PubHouse_Delete.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="ToolStripMenuItem_PubHouse_Delete.Size" type="System.Drawing.Size, System.Drawing">
-    <value>253, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_PubHouse_Delete.Text" xml:space="preserve">
-    <value>Delete/Undelete publishing house</value>
-  </data>
-  <data name="ToolStripMenuItem_PubHouse.Size" type="System.Drawing.Size, System.Drawing">
-    <value>189, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_PubHouse.Text" xml:space="preserve">
-    <value>Publishing houses</value>
-  </data>
-  <data name="toolStripSeparator18.Size" type="System.Drawing.Size, System.Drawing">
-    <value>186, 6</value>
-  </data>
   <data name="ToolStripMenuItem_Books.Size" type="System.Drawing.Size, System.Drawing">
-    <value>51, 20</value>
+    <value>61, 24</value>
   </data>
   <data name="ToolStripMenuItem_Books.Text" xml:space="preserve">
     <value>Books</value>
   </data>
-  <data name="ToolStripMenuItem_Arts_Show.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_Arts_Show.Text" xml:space="preserve">
-    <value>Show (Update) arts</value>
-  </data>
-  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>173, 6</value>
-  </data>
-  <data name="ToolStripMenuItem_Arts_Add.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_Arts_Add.Text" xml:space="preserve">
-    <value>Add art...</value>
-  </data>
-  <data name="ToolStripMenuItem_Arts_Edit.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="ToolStripMenuItem_Arts_Edit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_Arts_Edit.Text" xml:space="preserve">
-    <value>Open (Edit)</value>
-  </data>
-  <data name="ToolStripMenuItem_Arts_Delete.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="ToolStripMenuItem_Arts_Delete.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_Arts_Delete.Text" xml:space="preserve">
-    <value>Delete/Undelete art</value>
-  </data>
-  <data name="toolStripSeparator11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>173, 6</value>
-  </data>
-  <data name="ToolStripMenuItem_Arts_Add_to_HaveRead.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="ToolStripMenuItem_Arts_Add_to_HaveRead.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_Arts_Add_to_HaveRead.Text" xml:space="preserve">
-    <value>Mark as read...</value>
-  </data>
-  <data name="toolStripSeparator21.Size" type="System.Drawing.Size, System.Drawing">
-    <value>173, 6</value>
-  </data>
-  <data name="ToolStripMenuItem_Genres_Show.Size" type="System.Drawing.Size, System.Drawing">
-    <value>192, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_Genres_Show.Text" xml:space="preserve">
-    <value>Show (Update) genres</value>
-  </data>
-  <data name="ToolStripMenauItem_Genres_Add.Size" type="System.Drawing.Size, System.Drawing">
-    <value>192, 22</value>
-  </data>
-  <data name="ToolStripMenauItem_Genres_Add.Text" xml:space="preserve">
-    <value>Add genre...</value>
-  </data>
-  <data name="toolStripSeparator4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>189, 6</value>
-  </data>
-  <data name="ToolStripMenuItem_Genres_Edit.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="ToolStripMenuItem_Genres_Edit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>192, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_Genres_Edit.Text" xml:space="preserve">
-    <value>Open (Edit) genre...</value>
-  </data>
-  <data name="ToolStripMenuItem__Genres_Delete.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="ToolStripMenuItem__Genres_Delete.Size" type="System.Drawing.Size, System.Drawing">
-    <value>192, 22</value>
-  </data>
-  <data name="ToolStripMenuItem__Genres_Delete.Text" xml:space="preserve">
-    <value>Delete/Undelete genre</value>
-  </data>
-  <data name="ToolStripMenuItem_Genres.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_Genres.Text" xml:space="preserve">
-    <value>Genres</value>
-  </data>
-  <data name="ToolStripMenuItem_Language_Show.Size" type="System.Drawing.Size, System.Drawing">
-    <value>211, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_Language_Show.Text" xml:space="preserve">
-    <value>Show (Update) languages</value>
-  </data>
-  <data name="toolStripSeparator5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>208, 6</value>
-  </data>
-  <data name="ToolStripMenuItem_Language_Add.Size" type="System.Drawing.Size, System.Drawing">
-    <value>211, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_Language_Add.Text" xml:space="preserve">
-    <value>Add language...</value>
-  </data>
-  <data name="ToolStripMenuItem_Language_Edit.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="ToolStripMenuItem_Language_Edit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>211, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_Language_Edit.Text" xml:space="preserve">
-    <value>Open (Edit) language...</value>
-  </data>
-  <data name="ToolStripMenuItem_Language_Delete.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="ToolStripMenuItem_Language_Delete.Size" type="System.Drawing.Size, System.Drawing">
-    <value>211, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_Language_Delete.Text" xml:space="preserve">
-    <value>Delete/Undelete language</value>
-  </data>
-  <data name="ToolStripMenuItem_Languages.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_Languages.Text" xml:space="preserve">
-    <value>Languages</value>
-  </data>
-  <data name="toolStripSeparator17.Size" type="System.Drawing.Size, System.Drawing">
-    <value>173, 6</value>
-  </data>
   <data name="ToolStripMenuItem_Arts.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 20</value>
+    <value>47, 24</value>
   </data>
   <data name="ToolStripMenuItem_Arts.Text" xml:space="preserve">
     <value>Arts</value>
   </data>
-  <data name="ToolStripMenuItem_Authors_Show.Size" type="System.Drawing.Size, System.Drawing">
-    <value>308, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_Authors_Show.Text" xml:space="preserve">
-    <value>Show (Update) authors</value>
-  </data>
-  <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>305, 6</value>
-  </data>
-  <data name="ToolStripMenuItem_Author_Add.Size" type="System.Drawing.Size, System.Drawing">
-    <value>308, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_Author_Add.Text" xml:space="preserve">
-    <value>Add author...</value>
-  </data>
-  <data name="ToolStripMenuItem_Author_Edit.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="ToolStripMenuItem_Author_Edit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>308, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_Author_Edit.Text" xml:space="preserve">
-    <value>Open (Edit) author...</value>
-  </data>
-  <data name="ToolStripMenuItem_Author_Delete.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="ToolStripMenuItem_Author_Delete.Size" type="System.Drawing.Size, System.Drawing">
-    <value>308, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_Author_Delete.Text" xml:space="preserve">
-    <value>Delete/Undelete author</value>
-  </data>
-  <data name="toolStripSeparator16.Size" type="System.Drawing.Size, System.Drawing">
-    <value>305, 6</value>
-  </data>
-  <data name="ToolStripMenuItem_Author_Find_Arts_of_Author.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="ToolStripMenuItem_Author_Find_Arts_of_Author.Size" type="System.Drawing.Size, System.Drawing">
-    <value>308, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_Author_Find_Arts_of_Author.Text" xml:space="preserve">
-    <value>Find author's works</value>
-  </data>
-  <data name="ToolStripMenuItem_Author__Find_Recommendations.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="ToolStripMenuItem_Author__Find_Recommendations.Size" type="System.Drawing.Size, System.Drawing">
-    <value>308, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_Author__Find_Recommendations.Text" xml:space="preserve">
-    <value>Find recommendations related to the author</value>
-  </data>
   <data name="ToolStripMenuItem_Autors.Size" type="System.Drawing.Size, System.Drawing">
-    <value>61, 20</value>
+    <value>72, 24</value>
   </data>
   <data name="ToolStripMenuItem_Autors.Text" xml:space="preserve">
     <value>Authors</value>
   </data>
-  <data name="ToolStripMenuItem_Actions_Open.Size" type="System.Drawing.Size, System.Drawing">
-    <value>195, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_Actions_Open.Text" xml:space="preserve">
-    <value>Show (Update) actions</value>
-  </data>
-  <data name="ToolStripMenuItem_Location_Show.Size" type="System.Drawing.Size, System.Drawing">
-    <value>195, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_Location_Show.Text" xml:space="preserve">
-    <value>Show action table</value>
-  </data>
-  <data name="toolStripSeparator8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>192, 6</value>
-  </data>
-  <data name="ToolStripMenuItem_Actions_Create.Size" type="System.Drawing.Size, System.Drawing">
-    <value>195, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_Actions_Create.Text" xml:space="preserve">
-    <value>Add action...</value>
-  </data>
-  <data name="ToolStripMenuItem_Actions_Edit.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="ToolStripMenuItem_Actions_Edit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>195, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_Actions_Edit.Text" xml:space="preserve">
-    <value>Open (Edit) action...</value>
-  </data>
-  <data name="ToolStripMenuItem_Actions_Delete.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="ToolStripMenuItem_Actions_Delete.Size" type="System.Drawing.Size, System.Drawing">
-    <value>195, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_Actions_Delete.Text" xml:space="preserve">
-    <value>Delete/Undelete action</value>
-  </data>
-  <data name="toolStripSeparator13.Size" type="System.Drawing.Size, System.Drawing">
-    <value>192, 6</value>
-  </data>
-  <data name="ToolStripMenuItem_Places_Show.Size" type="System.Drawing.Size, System.Drawing">
-    <value>201, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_Places_Show.Text" xml:space="preserve">
-    <value>Show (Update) storages</value>
-  </data>
-  <data name="ToolStripMenuItem_Places_Add.Size" type="System.Drawing.Size, System.Drawing">
-    <value>201, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_Places_Add.Text" xml:space="preserve">
-    <value>Add storage...</value>
-  </data>
-  <data name="ToolStripMenuItem_Places_Edit.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="ToolStripMenuItem_Places_Edit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>201, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_Places_Edit.Text" xml:space="preserve">
-    <value>Open (Edit) storage...</value>
-  </data>
-  <data name="ToolStripMenuItem_Places_Delele.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="ToolStripMenuItem_Places_Delele.Size" type="System.Drawing.Size, System.Drawing">
-    <value>201, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_Places_Delele.Text" xml:space="preserve">
-    <value>Delete/Undelete storage</value>
-  </data>
-  <data name="ToolStripMenuItem_Places.Size" type="System.Drawing.Size, System.Drawing">
-    <value>195, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_Places.Text" xml:space="preserve">
-    <value>Book storage places</value>
-  </data>
-  <data name="ToolStripMenuItem_People_Show.Size" type="System.Drawing.Size, System.Drawing">
-    <value>198, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_People_Show.Text" xml:space="preserve">
-    <value>Show (Update) persons</value>
-  </data>
-  <data name="ToolStripMenuItem_People_Add.Size" type="System.Drawing.Size, System.Drawing">
-    <value>198, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_People_Add.Text" xml:space="preserve">
-    <value>Add person...</value>
-  </data>
-  <data name="ToolStripMenuItem_People_Edit.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="ToolStripMenuItem_People_Edit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>198, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_People_Edit.Text" xml:space="preserve">
-    <value>Open (Edit) person...</value>
-  </data>
-  <data name="ToolStripMenuItem_People_Delete.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="ToolStripMenuItem_People_Delete.Size" type="System.Drawing.Size, System.Drawing">
-    <value>198, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_People_Delete.Text" xml:space="preserve">
-    <value>Delete/Undelete person</value>
-  </data>
-  <data name="ToolStripMenuItem_People.Size" type="System.Drawing.Size, System.Drawing">
-    <value>195, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_People.Text" xml:space="preserve">
-    <value>Persons</value>
-  </data>
-  <data name="toolStripSeparator22.Size" type="System.Drawing.Size, System.Drawing">
-    <value>192, 6</value>
-  </data>
   <data name="ToolStripMenuItem_Actions.Size" type="System.Drawing.Size, System.Drawing">
-    <value>59, 20</value>
+    <value>70, 24</value>
   </data>
   <data name="ToolStripMenuItem_Actions.Text" xml:space="preserve">
     <value>Actions</value>
   </data>
   <data name="ToolStripMenuItem_About.Size" type="System.Drawing.Size, System.Drawing">
-    <value>61, 20</value>
+    <value>71, 24</value>
   </data>
   <data name="ToolStripMenuItem_About.Text" xml:space="preserve">
     <value>About...</value>
   </data>
-  <data name="ToolStripMenuItem_UI_Language_RU.Size" type="System.Drawing.Size, System.Drawing">
-    <value>89, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_UI_Language_RU.Text" xml:space="preserve">
-    <value>RU</value>
-  </data>
-  <data name="ToolStripMenuItem_UI_Language_FR.Size" type="System.Drawing.Size, System.Drawing">
-    <value>89, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_UI_Language_FR.Text" xml:space="preserve">
-    <value>FR</value>
-  </data>
-  <data name="ToolStripMenuItem_UI_Language_EN.Size" type="System.Drawing.Size, System.Drawing">
-    <value>89, 22</value>
-  </data>
-  <data name="ToolStripMenuItem_UI_Language_EN.Text" xml:space="preserve">
-    <value>EN</value>
-  </data>
   <data name="ToolStripMenuItem_UI_Language.Size" type="System.Drawing.Size, System.Drawing">
-    <value>193, 20</value>
+    <value>239, 24</value>
   </data>
   <data name="ToolStripMenuItem_UI_Language.Text" xml:space="preserve">
     <value>ToolStripMenuItem_UI_Language</value>
@@ -871,11 +309,12 @@
   <data name="menuStrip1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="menuStrip1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>5, 2, 0, 2</value>
+    <value>6, 3, 0, 3</value>
   </data>
   <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1036, 24</value>
+    <value>1184, 30</value>
   </data>
   <data name="menuStrip1.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -895,6 +334,657 @@
   <data name="&gt;&gt;menuStrip1.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="ToolStripMenuItem_File_BackupBD.Size" type="System.Drawing.Size, System.Drawing">
+    <value>290, 24</value>
+  </data>
+  <data name="ToolStripMenuItem_File_BackupBD.Text" xml:space="preserve">
+    <value>Create database backup...</value>
+  </data>
+  <data name="ToolStripMenuItem_File_Open_Backup_Folder.Size" type="System.Drawing.Size, System.Drawing">
+    <value>290, 24</value>
+  </data>
+  <data name="ToolStripMenuItem_File_Open_Backup_Folder.Text" xml:space="preserve">
+    <value>Open backup folder</value>
+  </data>
+  <data name="ToolStripMenuItem_File_RestoreBD.Size" type="System.Drawing.Size, System.Drawing">
+    <value>290, 24</value>
+  </data>
+  <data name="ToolStripMenuItem_File_RestoreBD.Text" xml:space="preserve">
+    <value>Restore database from backup...</value>
+  </data>
+  <data name="ToolStripMenuItem_File_Delete_DB.Size" type="System.Drawing.Size, System.Drawing">
+    <value>290, 24</value>
+  </data>
+  <data name="ToolStripMenuItem_File_Delete_DB.Text" xml:space="preserve">
+    <value>Delete Base...</value>
+  </data>
+  <data name="toolStripSeparator19.Size" type="System.Drawing.Size, System.Drawing">
+    <value>287, 6</value>
+  </data>
+  <data name="ToolStripMenuItem_File_Open_Settings.Size" type="System.Drawing.Size, System.Drawing">
+    <value>290, 24</value>
+  </data>
+  <data name="ToolStripMenuItem_File_Open_Settings.Text" xml:space="preserve">
+    <value>Settings...</value>
+  </data>
+  <data name="ToolStripMenuItem_SourceToreadAnother_Show.Size" type="System.Drawing.Size, System.Drawing">
+    <value>290, 24</value>
+  </data>
+  <data name="ToolStripMenuItem_SourceToreadAnother_Show.Text" xml:space="preserve">
+    <value>Show (Update) another sources</value>
+  </data>
+  <data name="ToolStripMenuItem_SourceToreadAnother_Create.Size" type="System.Drawing.Size, System.Drawing">
+    <value>290, 24</value>
+  </data>
+  <data name="ToolStripMenuItem_SourceToreadAnother_Create.Text" xml:space="preserve">
+    <value>Add another source...</value>
+  </data>
+  <data name="ToolStripMenuItem_SourceToreadAnother_Edit.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="ToolStripMenuItem_SourceToreadAnother_Edit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>290, 24</value>
+  </data>
+  <data name="ToolStripMenuItem_SourceToreadAnother_Edit.Text" xml:space="preserve">
+    <value>Edit another source...</value>
+  </data>
+  <data name="ToolStripMenuItem_SourceToreadAnother_Delete.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="ToolStripMenuItem_SourceToreadAnother_Delete.Size" type="System.Drawing.Size, System.Drawing">
+    <value>290, 24</value>
+  </data>
+  <data name="ToolStripMenuItem_SourceToreadAnother_Delete.Text" xml:space="preserve">
+    <value>Delete/Undelete another source</value>
+  </data>
+  <data name="ToolStripMenuItem__Read_Open.Size" type="System.Drawing.Size, System.Drawing">
+    <value>243, 24</value>
+  </data>
+  <data name="ToolStripMenuItem__Read_Open.Text" xml:space="preserve">
+    <value>Show (Update) readings</value>
+  </data>
+  <data name="ToolStripMenuItem__Read_Add.Size" type="System.Drawing.Size, System.Drawing">
+    <value>243, 24</value>
+  </data>
+  <data name="ToolStripMenuItem__Read_Add.Text" xml:space="preserve">
+    <value>Add reading...</value>
+  </data>
+  <data name="ToolStripMenuItem__Read_Edit.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="ToolStripMenuItem__Read_Edit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>243, 24</value>
+  </data>
+  <data name="ToolStripMenuItem__Read_Edit.Text" xml:space="preserve">
+    <value>Open (Edit) reading...</value>
+  </data>
+  <data name="ToolStripMenuItem__Read_Delete.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="ToolStripMenuItem__Read_Delete.Size" type="System.Drawing.Size, System.Drawing">
+    <value>243, 24</value>
+  </data>
+  <data name="ToolStripMenuItem__Read_Delete.Text" xml:space="preserve">
+    <value>Delete/Undelete reading</value>
+  </data>
+  <data name="toolStripSeparator15.Size" type="System.Drawing.Size, System.Drawing">
+    <value>240, 6</value>
+  </data>
+  <data name="ToolStripMenuItem_Book_Format.Size" type="System.Drawing.Size, System.Drawing">
+    <value>243, 24</value>
+  </data>
+  <data name="ToolStripMenuItem_Book_Format.Text" xml:space="preserve">
+    <value>Formats</value>
+  </data>
+  <data name="ToolStripMenuItem_Book_Format_Show.Size" type="System.Drawing.Size, System.Drawing">
+    <value>237, 24</value>
+  </data>
+  <data name="ToolStripMenuItem_Book_Format_Show.Text" xml:space="preserve">
+    <value>Show (Update) formats</value>
+  </data>
+  <data name="ToolStripMenuItem_Book_Format_Add.Size" type="System.Drawing.Size, System.Drawing">
+    <value>237, 24</value>
+  </data>
+  <data name="ToolStripMenuItem_Book_Format_Add.Text" xml:space="preserve">
+    <value>Add format...</value>
+  </data>
+  <data name="ToolStripMenuItem_Book_Format_Edit.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="ToolStripMenuItem_Book_Format_Edit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>237, 24</value>
+  </data>
+  <data name="ToolStripMenuItem_Book_Format_Edit.Text" xml:space="preserve">
+    <value>Open (Edit) format...</value>
+  </data>
+  <data name="ToolStripMenuItem_Book_Format_Delete.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="ToolStripMenuItem_Book_Format_Delete.Size" type="System.Drawing.Size, System.Drawing">
+    <value>237, 24</value>
+  </data>
+  <data name="ToolStripMenuItem_Book_Format_Delete.Text" xml:space="preserve">
+    <value>Delete/Undelete format</value>
+  </data>
+  <data name="ToolStripMenuItem_Marks.Size" type="System.Drawing.Size, System.Drawing">
+    <value>243, 24</value>
+  </data>
+  <data name="ToolStripMenuItem_Marks.Text" xml:space="preserve">
+    <value>Marks</value>
+  </data>
+  <data name="ToolStripMenuItem_Marks_Show.Size" type="System.Drawing.Size, System.Drawing">
+    <value>225, 24</value>
+  </data>
+  <data name="ToolStripMenuItem_Marks_Show.Text" xml:space="preserve">
+    <value>Show (Update) marks</value>
+  </data>
+  <data name="ToolStripMenuItem_Marks_Add.Size" type="System.Drawing.Size, System.Drawing">
+    <value>225, 24</value>
+  </data>
+  <data name="ToolStripMenuItem_Marks_Add.Text" xml:space="preserve">
+    <value>Add mark...</value>
+  </data>
+  <data name="ToolStripMenuItem_Mark_Edit.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="ToolStripMenuItem_Mark_Edit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>225, 24</value>
+  </data>
+  <data name="ToolStripMenuItem_Mark_Edit.Text" xml:space="preserve">
+    <value>Open (Edit) mark...</value>
+  </data>
+  <data name="ToolStripMenuItem_Marks_Delete.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="ToolStripMenuItem_Marks_Delete.Size" type="System.Drawing.Size, System.Drawing">
+    <value>225, 24</value>
+  </data>
+  <data name="ToolStripMenuItem_Marks_Delete.Text" xml:space="preserve">
+    <value>Delete/Undelete mark</value>
+  </data>
+  <data name="ToolStripMenuItem_Book_Show.Size" type="System.Drawing.Size, System.Drawing">
+    <value>226, 24</value>
+  </data>
+  <data name="ToolStripMenuItem_Book_Show.Text" xml:space="preserve">
+    <value>Show (Update) books</value>
+  </data>
+  <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>223, 6</value>
+  </data>
+  <data name="ToolStripMenuItem_Book_Add.Size" type="System.Drawing.Size, System.Drawing">
+    <value>226, 24</value>
+  </data>
+  <data name="ToolStripMenuItem_Book_Add.Text" xml:space="preserve">
+    <value>Add book...</value>
+  </data>
+  <data name="ToolStripMenuItem__Book_Edit.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="ToolStripMenuItem__Book_Edit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>226, 24</value>
+  </data>
+  <data name="ToolStripMenuItem__Book_Edit.Text" xml:space="preserve">
+    <value>Open (Edit) book...</value>
+  </data>
+  <data name="ToolStripMenuItem_Books_Delete.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="ToolStripMenuItem_Books_Delete.Size" type="System.Drawing.Size, System.Drawing">
+    <value>226, 24</value>
+  </data>
+  <data name="ToolStripMenuItem_Books_Delete.Text" xml:space="preserve">
+    <value>Delete/Undelete book</value>
+  </data>
+  <data name="toolStripSeparator10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>223, 6</value>
+  </data>
+  <data name="ToolStripMenuItem_Book_Find.Size" type="System.Drawing.Size, System.Drawing">
+    <value>226, 24</value>
+  </data>
+  <data name="ToolStripMenuItem_Book_Find.Text" xml:space="preserve">
+    <value>Find the book...</value>
+  </data>
+  <data name="toolStripSeparator20.Size" type="System.Drawing.Size, System.Drawing">
+    <value>223, 6</value>
+  </data>
+  <data name="ToolStripMenuItem_Cities.Size" type="System.Drawing.Size, System.Drawing">
+    <value>226, 24</value>
+  </data>
+  <data name="ToolStripMenuItem_Cities.Text" xml:space="preserve">
+    <value>Cities</value>
+  </data>
+  <data name="ToolStripMenuItem__City_Show.Size" type="System.Drawing.Size, System.Drawing">
+    <value>215, 24</value>
+  </data>
+  <data name="ToolStripMenuItem__City_Show.Text" xml:space="preserve">
+    <value>Show (Update) cities</value>
+  </data>
+  <data name="toolStripSeparator7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>212, 6</value>
+  </data>
+  <data name="ToolStripMenuItem_City_Add.Size" type="System.Drawing.Size, System.Drawing">
+    <value>215, 24</value>
+  </data>
+  <data name="ToolStripMenuItem_City_Add.Text" xml:space="preserve">
+    <value>Add city...</value>
+  </data>
+  <data name="ToolStripMenuItem_City_Edit.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="ToolStripMenuItem_City_Edit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>215, 24</value>
+  </data>
+  <data name="ToolStripMenuItem_City_Edit.Text" xml:space="preserve">
+    <value>Open (Edit) city...</value>
+  </data>
+  <data name="ToolStripMenuItem_City_Delete.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="ToolStripMenuItem_City_Delete.Size" type="System.Drawing.Size, System.Drawing">
+    <value>215, 24</value>
+  </data>
+  <data name="ToolStripMenuItem_City_Delete.Text" xml:space="preserve">
+    <value>Delete/Undelete city</value>
+  </data>
+  <data name="ToolStripMenuItem_Series.Size" type="System.Drawing.Size, System.Drawing">
+    <value>226, 24</value>
+  </data>
+  <data name="ToolStripMenuItem_Series.Text" xml:space="preserve">
+    <value>Book series</value>
+  </data>
+  <data name="ToolStripMenuItem_Series_Show.Size" type="System.Drawing.Size, System.Drawing">
+    <value>267, 24</value>
+  </data>
+  <data name="ToolStripMenuItem_Series_Show.Text" xml:space="preserve">
+    <value>Show (Update) book series</value>
+  </data>
+  <data name="toolStripSeparator14.Size" type="System.Drawing.Size, System.Drawing">
+    <value>264, 6</value>
+  </data>
+  <data name="ToolStripMenuItem_Series_Add.Size" type="System.Drawing.Size, System.Drawing">
+    <value>267, 24</value>
+  </data>
+  <data name="ToolStripMenuItem_Series_Add.Text" xml:space="preserve">
+    <value>Add book book series...</value>
+  </data>
+  <data name="ToolStripMenuItem_Series_Edit.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="ToolStripMenuItem_Series_Edit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>267, 24</value>
+  </data>
+  <data name="ToolStripMenuItem_Series_Edit.Text" xml:space="preserve">
+    <value>Open (Edit) book series...</value>
+  </data>
+  <data name="ToolStripMenuItem_Series_Delete.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="ToolStripMenuItem_Series_Delete.Size" type="System.Drawing.Size, System.Drawing">
+    <value>267, 24</value>
+  </data>
+  <data name="ToolStripMenuItem_Series_Delete.Text" xml:space="preserve">
+    <value>Delete/Undelete book series</value>
+  </data>
+  <data name="ToolStripMenuItem_PubHouse.Size" type="System.Drawing.Size, System.Drawing">
+    <value>226, 24</value>
+  </data>
+  <data name="ToolStripMenuItem_PubHouse.Text" xml:space="preserve">
+    <value>Publishing houses</value>
+  </data>
+  <data name="ToolStripMenuItem_PubHouse_Show.Size" type="System.Drawing.Size, System.Drawing">
+    <value>304, 24</value>
+  </data>
+  <data name="ToolStripMenuItem_PubHouse_Show.Text" xml:space="preserve">
+    <value>Show (Update) publishing houses</value>
+  </data>
+  <data name="toolStripSeparator6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>301, 6</value>
+  </data>
+  <data name="ToolStripMenuItem_PubHouse_Add.Size" type="System.Drawing.Size, System.Drawing">
+    <value>304, 24</value>
+  </data>
+  <data name="ToolStripMenuItem_PubHouse_Add.Text" xml:space="preserve">
+    <value>Add publishing house...</value>
+  </data>
+  <data name="ToolStripMenuItem_PubHouse_Edit.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="ToolStripMenuItem_PubHouse_Edit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>304, 24</value>
+  </data>
+  <data name="ToolStripMenuItem_PubHouse_Edit.Text" xml:space="preserve">
+    <value>Open (Edit) publishing house...</value>
+  </data>
+  <data name="ToolStripMenuItem_PubHouse_Delete.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="ToolStripMenuItem_PubHouse_Delete.Size" type="System.Drawing.Size, System.Drawing">
+    <value>304, 24</value>
+  </data>
+  <data name="ToolStripMenuItem_PubHouse_Delete.Text" xml:space="preserve">
+    <value>Delete/Undelete publishing house</value>
+  </data>
+  <data name="toolStripSeparator18.Size" type="System.Drawing.Size, System.Drawing">
+    <value>223, 6</value>
+  </data>
+  <data name="ToolStripMenuItem_Arts_Show.Size" type="System.Drawing.Size, System.Drawing">
+    <value>210, 24</value>
+  </data>
+  <data name="ToolStripMenuItem_Arts_Show.Text" xml:space="preserve">
+    <value>Show (Update) arts</value>
+  </data>
+  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>207, 6</value>
+  </data>
+  <data name="ToolStripMenuItem_Arts_Add.Size" type="System.Drawing.Size, System.Drawing">
+    <value>210, 24</value>
+  </data>
+  <data name="ToolStripMenuItem_Arts_Add.Text" xml:space="preserve">
+    <value>Add art...</value>
+  </data>
+  <data name="ToolStripMenuItem_Arts_Edit.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="ToolStripMenuItem_Arts_Edit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>210, 24</value>
+  </data>
+  <data name="ToolStripMenuItem_Arts_Edit.Text" xml:space="preserve">
+    <value>Open (Edit)</value>
+  </data>
+  <data name="ToolStripMenuItem_Arts_Delete.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="ToolStripMenuItem_Arts_Delete.Size" type="System.Drawing.Size, System.Drawing">
+    <value>210, 24</value>
+  </data>
+  <data name="ToolStripMenuItem_Arts_Delete.Text" xml:space="preserve">
+    <value>Delete/Undelete art</value>
+  </data>
+  <data name="toolStripSeparator11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>207, 6</value>
+  </data>
+  <data name="ToolStripMenuItem_Arts_Add_to_HaveRead.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="ToolStripMenuItem_Arts_Add_to_HaveRead.Size" type="System.Drawing.Size, System.Drawing">
+    <value>210, 24</value>
+  </data>
+  <data name="ToolStripMenuItem_Arts_Add_to_HaveRead.Text" xml:space="preserve">
+    <value>Mark as read...</value>
+  </data>
+  <data name="toolStripSeparator21.Size" type="System.Drawing.Size, System.Drawing">
+    <value>207, 6</value>
+  </data>
+  <data name="ToolStripMenuItem_Genres.Size" type="System.Drawing.Size, System.Drawing">
+    <value>210, 24</value>
+  </data>
+  <data name="ToolStripMenuItem_Genres.Text" xml:space="preserve">
+    <value>Genres</value>
+  </data>
+  <data name="ToolStripMenuItem_Genres_Show.Size" type="System.Drawing.Size, System.Drawing">
+    <value>230, 24</value>
+  </data>
+  <data name="ToolStripMenuItem_Genres_Show.Text" xml:space="preserve">
+    <value>Show (Update) genres</value>
+  </data>
+  <data name="ToolStripMenauItem_Genres_Add.Size" type="System.Drawing.Size, System.Drawing">
+    <value>230, 24</value>
+  </data>
+  <data name="ToolStripMenauItem_Genres_Add.Text" xml:space="preserve">
+    <value>Add genre...</value>
+  </data>
+  <data name="toolStripSeparator4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>227, 6</value>
+  </data>
+  <data name="ToolStripMenuItem_Genres_Edit.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="ToolStripMenuItem_Genres_Edit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>230, 24</value>
+  </data>
+  <data name="ToolStripMenuItem_Genres_Edit.Text" xml:space="preserve">
+    <value>Open (Edit) genre...</value>
+  </data>
+  <data name="ToolStripMenuItem__Genres_Delete.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="ToolStripMenuItem__Genres_Delete.Size" type="System.Drawing.Size, System.Drawing">
+    <value>230, 24</value>
+  </data>
+  <data name="ToolStripMenuItem__Genres_Delete.Text" xml:space="preserve">
+    <value>Delete/Undelete genre</value>
+  </data>
+  <data name="ToolStripMenuItem_Languages.Size" type="System.Drawing.Size, System.Drawing">
+    <value>210, 24</value>
+  </data>
+  <data name="ToolStripMenuItem_Languages.Text" xml:space="preserve">
+    <value>Languages</value>
+  </data>
+  <data name="ToolStripMenuItem_Language_Show.Size" type="System.Drawing.Size, System.Drawing">
+    <value>254, 24</value>
+  </data>
+  <data name="ToolStripMenuItem_Language_Show.Text" xml:space="preserve">
+    <value>Show (Update) languages</value>
+  </data>
+  <data name="toolStripSeparator5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>251, 6</value>
+  </data>
+  <data name="ToolStripMenuItem_Language_Add.Size" type="System.Drawing.Size, System.Drawing">
+    <value>254, 24</value>
+  </data>
+  <data name="ToolStripMenuItem_Language_Add.Text" xml:space="preserve">
+    <value>Add language...</value>
+  </data>
+  <data name="ToolStripMenuItem_Language_Edit.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="ToolStripMenuItem_Language_Edit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>254, 24</value>
+  </data>
+  <data name="ToolStripMenuItem_Language_Edit.Text" xml:space="preserve">
+    <value>Open (Edit) language...</value>
+  </data>
+  <data name="ToolStripMenuItem_Language_Delete.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="ToolStripMenuItem_Language_Delete.Size" type="System.Drawing.Size, System.Drawing">
+    <value>254, 24</value>
+  </data>
+  <data name="ToolStripMenuItem_Language_Delete.Text" xml:space="preserve">
+    <value>Delete/Undelete language</value>
+  </data>
+  <data name="toolStripSeparator17.Size" type="System.Drawing.Size, System.Drawing">
+    <value>207, 6</value>
+  </data>
+  <data name="ToolStripMenuItem_Authors_Show.Size" type="System.Drawing.Size, System.Drawing">
+    <value>371, 24</value>
+  </data>
+  <data name="ToolStripMenuItem_Authors_Show.Text" xml:space="preserve">
+    <value>Show (Update) authors</value>
+  </data>
+  <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>368, 6</value>
+  </data>
+  <data name="ToolStripMenuItem_Author_Add.Size" type="System.Drawing.Size, System.Drawing">
+    <value>371, 24</value>
+  </data>
+  <data name="ToolStripMenuItem_Author_Add.Text" xml:space="preserve">
+    <value>Add author...</value>
+  </data>
+  <data name="ToolStripMenuItem_Author_Edit.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="ToolStripMenuItem_Author_Edit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>371, 24</value>
+  </data>
+  <data name="ToolStripMenuItem_Author_Edit.Text" xml:space="preserve">
+    <value>Open (Edit) author...</value>
+  </data>
+  <data name="ToolStripMenuItem_Author_Delete.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="ToolStripMenuItem_Author_Delete.Size" type="System.Drawing.Size, System.Drawing">
+    <value>371, 24</value>
+  </data>
+  <data name="ToolStripMenuItem_Author_Delete.Text" xml:space="preserve">
+    <value>Delete/Undelete author</value>
+  </data>
+  <data name="toolStripSeparator16.Size" type="System.Drawing.Size, System.Drawing">
+    <value>368, 6</value>
+  </data>
+  <data name="ToolStripMenuItem_Author_Find_Arts_of_Author.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="ToolStripMenuItem_Author_Find_Arts_of_Author.Size" type="System.Drawing.Size, System.Drawing">
+    <value>371, 24</value>
+  </data>
+  <data name="ToolStripMenuItem_Author_Find_Arts_of_Author.Text" xml:space="preserve">
+    <value>Find author's works</value>
+  </data>
+  <data name="ToolStripMenuItem_Author__Find_Recommendations.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="ToolStripMenuItem_Author__Find_Recommendations.Size" type="System.Drawing.Size, System.Drawing">
+    <value>371, 24</value>
+  </data>
+  <data name="ToolStripMenuItem_Author__Find_Recommendations.Text" xml:space="preserve">
+    <value>Find recommendations related to the author</value>
+  </data>
+  <data name="ToolStripMenuItem_Actions_Open.Size" type="System.Drawing.Size, System.Drawing">
+    <value>233, 24</value>
+  </data>
+  <data name="ToolStripMenuItem_Actions_Open.Text" xml:space="preserve">
+    <value>Show (Update) actions</value>
+  </data>
+  <data name="ToolStripMenuItem_Location_Show.Size" type="System.Drawing.Size, System.Drawing">
+    <value>233, 24</value>
+  </data>
+  <data name="ToolStripMenuItem_Location_Show.Text" xml:space="preserve">
+    <value>Show action table</value>
+  </data>
+  <data name="toolStripSeparator8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>230, 6</value>
+  </data>
+  <data name="ToolStripMenuItem_Actions_Create.Size" type="System.Drawing.Size, System.Drawing">
+    <value>233, 24</value>
+  </data>
+  <data name="ToolStripMenuItem_Actions_Create.Text" xml:space="preserve">
+    <value>Add action...</value>
+  </data>
+  <data name="ToolStripMenuItem_Actions_Edit.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="ToolStripMenuItem_Actions_Edit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>233, 24</value>
+  </data>
+  <data name="ToolStripMenuItem_Actions_Edit.Text" xml:space="preserve">
+    <value>Open (Edit) action...</value>
+  </data>
+  <data name="ToolStripMenuItem_Actions_Delete.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="ToolStripMenuItem_Actions_Delete.Size" type="System.Drawing.Size, System.Drawing">
+    <value>233, 24</value>
+  </data>
+  <data name="ToolStripMenuItem_Actions_Delete.Text" xml:space="preserve">
+    <value>Delete/Undelete action</value>
+  </data>
+  <data name="toolStripSeparator13.Size" type="System.Drawing.Size, System.Drawing">
+    <value>230, 6</value>
+  </data>
+  <data name="ToolStripMenuItem_Places.Size" type="System.Drawing.Size, System.Drawing">
+    <value>233, 24</value>
+  </data>
+  <data name="ToolStripMenuItem_Places.Text" xml:space="preserve">
+    <value>Book storage places</value>
+  </data>
+  <data name="ToolStripMenuItem_Places_Show.Size" type="System.Drawing.Size, System.Drawing">
+    <value>242, 24</value>
+  </data>
+  <data name="ToolStripMenuItem_Places_Show.Text" xml:space="preserve">
+    <value>Show (Update) storages</value>
+  </data>
+  <data name="ToolStripMenuItem_Places_Add.Size" type="System.Drawing.Size, System.Drawing">
+    <value>242, 24</value>
+  </data>
+  <data name="ToolStripMenuItem_Places_Add.Text" xml:space="preserve">
+    <value>Add storage...</value>
+  </data>
+  <data name="ToolStripMenuItem_Places_Edit.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="ToolStripMenuItem_Places_Edit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>242, 24</value>
+  </data>
+  <data name="ToolStripMenuItem_Places_Edit.Text" xml:space="preserve">
+    <value>Open (Edit) storage...</value>
+  </data>
+  <data name="ToolStripMenuItem_Places_Delele.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="ToolStripMenuItem_Places_Delele.Size" type="System.Drawing.Size, System.Drawing">
+    <value>242, 24</value>
+  </data>
+  <data name="ToolStripMenuItem_Places_Delele.Text" xml:space="preserve">
+    <value>Delete/Undelete storage</value>
+  </data>
+  <data name="ToolStripMenuItem_People.Size" type="System.Drawing.Size, System.Drawing">
+    <value>233, 24</value>
+  </data>
+  <data name="ToolStripMenuItem_People.Text" xml:space="preserve">
+    <value>Persons</value>
+  </data>
+  <data name="ToolStripMenuItem_People_Show.Size" type="System.Drawing.Size, System.Drawing">
+    <value>237, 24</value>
+  </data>
+  <data name="ToolStripMenuItem_People_Show.Text" xml:space="preserve">
+    <value>Show (Update) persons</value>
+  </data>
+  <data name="ToolStripMenuItem_People_Add.Size" type="System.Drawing.Size, System.Drawing">
+    <value>237, 24</value>
+  </data>
+  <data name="ToolStripMenuItem_People_Add.Text" xml:space="preserve">
+    <value>Add person...</value>
+  </data>
+  <data name="ToolStripMenuItem_People_Edit.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="ToolStripMenuItem_People_Edit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>237, 24</value>
+  </data>
+  <data name="ToolStripMenuItem_People_Edit.Text" xml:space="preserve">
+    <value>Open (Edit) person...</value>
+  </data>
+  <data name="ToolStripMenuItem_People_Delete.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="ToolStripMenuItem_People_Delete.Size" type="System.Drawing.Size, System.Drawing">
+    <value>237, 24</value>
+  </data>
+  <data name="ToolStripMenuItem_People_Delete.Text" xml:space="preserve">
+    <value>Delete/Undelete person</value>
+  </data>
+  <data name="toolStripSeparator22.Size" type="System.Drawing.Size, System.Drawing">
+    <value>230, 6</value>
+  </data>
+  <data name="ToolStripMenuItem_UI_Language_RU.Size" type="System.Drawing.Size, System.Drawing">
+    <value>97, 24</value>
+  </data>
+  <data name="ToolStripMenuItem_UI_Language_RU.Text" xml:space="preserve">
+    <value>RU</value>
+  </data>
+  <data name="ToolStripMenuItem_UI_Language_FR.Size" type="System.Drawing.Size, System.Drawing">
+    <value>97, 24</value>
+  </data>
+  <data name="ToolStripMenuItem_UI_Language_FR.Text" xml:space="preserve">
+    <value>FR</value>
+  </data>
+  <data name="ToolStripMenuItem_UI_Language_EN.Size" type="System.Drawing.Size, System.Drawing">
+    <value>97, 24</value>
+  </data>
+  <data name="ToolStripMenuItem_UI_Language_EN.Text" xml:space="preserve">
+    <value>EN</value>
+  </data>
   <data name="ToolStripMenuItem__Recommendations_Sho.Size" type="System.Drawing.Size, System.Drawing">
     <value>248, 22</value>
   </data>
@@ -911,13 +1001,10 @@
     <value>True</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>7, 15</value>
+    <value>8, 20</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1036, 386</value>
-  </data>
-  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>1184, 515</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterScreen</value>
@@ -979,6 +1066,36 @@
   <data name="&gt;&gt;toolStripMenuItemRecommendationToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;ToolStripMenuItem__Bibliography_Show.Name" xml:space="preserve">
+    <value>ToolStripMenuItem__Bibliography_Show</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem__Bibliography_Show.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem__Biblography_ِAdd.Name" xml:space="preserve">
+    <value>ToolStripMenuItem__Biblography_ِAdd</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem__Biblography_ِAdd.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem__Bibliography_Edit.Name" xml:space="preserve">
+    <value>ToolStripMenuItem__Bibliography_Edit</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem__Bibliography_Edit.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem__Bibliography_Delete.Name" xml:space="preserve">
+    <value>ToolStripMenuItem__Bibliography_Delete</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem__Bibliography_Delete.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator9.Name" xml:space="preserve">
+    <value>toolStripSeparator9</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator9.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;ToolStripMenuItem__Recommendations_Show.Name" xml:space="preserve">
     <value>ToolStripMenuItem__Recommendations_Show</value>
   </data>
@@ -1003,10 +1120,10 @@
   <data name="&gt;&gt;ToolStripMenuItem__Recommendations_Delete.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;toolStripSeparator9.Name" xml:space="preserve">
-    <value>toolStripSeparator9</value>
+  <data name="&gt;&gt;toolStripSeparator23.Name" xml:space="preserve">
+    <value>toolStripSeparator23</value>
   </data>
-  <data name="&gt;&gt;toolStripSeparator9.Type" xml:space="preserve">
+  <data name="&gt;&gt;toolStripSeparator23.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;ToolStripMenuItem_SourceToreadAnother.Name" xml:space="preserve">

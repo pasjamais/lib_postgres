@@ -40,9 +40,9 @@ namespace lib_postgres.FORMS
             this.groupBox_Source = new System.Windows.Forms.GroupBox();
             this.BT__Toread_Author_Source = new System.Windows.Forms.Button();
             this.BT_Add_Art_Source = new System.Windows.Forms.Button();
-            this.RB_Source_Another = new lib_postgres.VIEW.NOTICE.RadioButton_Colorized();
-            this.RB_Source_Author = new lib_postgres.VIEW.NOTICE.RadioButton_Colorized();
-            this.RB_Source_Art = new lib_postgres.VIEW.NOTICE.RadioButton_Colorized();
+            this.RB_Source_Another = new VIEW.NOTICE.RadioButton_Colorized();
+            this.RB_Source_Author = new VIEW.NOTICE.RadioButton_Colorized();
+            this.RB_Source_Art = new VIEW.NOTICE.RadioButton_Colorized();
             this.BT__Another_Source_Add = new System.Windows.Forms.Button();
             this.Label_Source_Another = new System.Windows.Forms.Label();
             this.CB_Source_Another = new System.Windows.Forms.ComboBox();
@@ -51,8 +51,8 @@ namespace lib_postgres.FORMS
             this.Label_Source_Art = new System.Windows.Forms.Label();
             this.CB_Source_Art = new System.Windows.Forms.ComboBox();
             this.groupBox_ToRead = new System.Windows.Forms.GroupBox();
-            this.RB_Toread_Author = new lib_postgres.VIEW.NOTICE.RadioButton_Colorized();
-            this.RB_Toread_Art = new lib_postgres.VIEW.NOTICE.RadioButton_Colorized();
+            this.RB_Toread_Author = new VIEW.NOTICE.RadioButton_Colorized();
+            this.RB_Toread_Art = new VIEW.NOTICE.RadioButton_Colorized();
             this.BT__Toread_Author = new System.Windows.Forms.Button();
             this.BT_Add_Art = new System.Windows.Forms.Button();
             this.Label_Toread_Author = new System.Windows.Forms.Label();

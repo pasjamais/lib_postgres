@@ -1,4 +1,5 @@
-﻿using lib_postgres.LOCALIZATION;
+﻿using lib_postgres.CRUD;
+using lib_postgres.LOCALIZATION;
 using lib_postgres.QUERIES;
 
 namespace lib_postgres
@@ -29,5 +30,21 @@ namespace lib_postgres
         {
             return Localization.Substitute("Recommendations_list");
         }
+        private static void Colorise_DGV(DataGridView DGV)
+        {
+            List<long> arts_read_IDs = Art.Get_HaveRead_Items_IDs();
+            foreach (DataGridViewRow this_row in DGV.Rows)
+            {
+                if ((this_row.Cells["ToreadArtId"].Value) is not null )
+                    if (arts_read_IDs.Contains((long)this_row.Cells["ToreadArtId"].Value))
+                        this_row.DefaultCellStyle.BackColor = System.Drawing.ColorTranslator.FromHtml("#9ab973");
+            }
+
+        }
+        public static void Highlighting(DataGridView DGV)
+        {
+            Colorise_DGV(DGV);
+        }
+       
     }
 }

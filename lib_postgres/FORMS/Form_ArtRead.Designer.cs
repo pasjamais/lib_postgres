@@ -33,7 +33,7 @@ namespace lib_postgres.FORMS
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_ArtRead));
             this.button_Cancel = new System.Windows.Forms.Button();
             this.button_OK = new System.Windows.Forms.Button();
-            this.Label_Art = new lib_postgres.VIEW.NOTICE.Label_Colorized();
+            this.Label_Art = new VIEW.NOTICE.Label_Colorized();
             this.CB_Art = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.dateTimePicker = new System.Windows.Forms.DateTimePicker();

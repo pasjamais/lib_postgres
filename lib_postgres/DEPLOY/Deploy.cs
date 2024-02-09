@@ -16,7 +16,7 @@ namespace lib_postgres.DEPLOY
         public static string pg_restore_file_name = "pg_restore.exe";
         private static string output_directory_path = AppDomain.CurrentDomain.BaseDirectory + output_directory;
         public static string InitialDirectory = @"C:\";
-        public static int tables_quantity = 24;
+        public static int tables_quantity = 25;
         public static string ini_file_name = "settings.ini";
         public static string Output_Directory
         { get { return output_directory_path; } }

@@ -21,6 +21,9 @@ namespace lib_postgres
         public DateOnly? WritingYear { get; set; }
         public long? OrigLanguage { get; set; }
         public bool? IsDeleted { get; set; }
+        public string? NameOriginal { get; set; }
+        public string? Comment { get; set; }
+        public bool? IsBanned { get; set; }
 
         public virtual Genre? GenreNavigation { get; set; }
         public virtual Language? OrigLanguageNavigation { get; set; }

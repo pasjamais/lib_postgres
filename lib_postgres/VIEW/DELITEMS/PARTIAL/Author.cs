@@ -16,10 +16,10 @@ namespace lib_postgres
         /// for view
         /// </summary>
         /// <returns></returns>
-        public static List<lib_postgres.Author> Get_Deleted_Authors()
+        public static List<Author> Get_Deleted_Authors()
         {
-            List<lib_postgres.Author> items = DB_Agent.Get_Authors();
-            List<lib_postgres.Author> deleted_items = (from item in items
+            List<Author> items = DB_Agent.Get_Authors();
+            List<Author> deleted_items = (from item in items
                                                        where item.IsDeleted is true
                                                        select item).ToList();
             return deleted_items;
@@ -30,7 +30,7 @@ namespace lib_postgres
         /// <returns></returns>
         public static List<long> Get_Deleted_Items_IDs()
         {
-            List<lib_postgres.Author> deleted_items = Get_Deleted_Authors();
+            List<Author> deleted_items = Get_Deleted_Authors();
             List<long> deleted_items_IDs = (from item in deleted_items
                                             select item.Id).ToList(); 
             return deleted_items_IDs;

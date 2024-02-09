@@ -9,7 +9,7 @@ namespace lib_postgres
     {
         public static long Erase_Item_by_ID(long id)
         {
-            lib_postgres.Action element = DB_Agent.Get_Action(id);
+            Action element = DB_Agent.Get_Action(id);
             DB_Agent.db.Actions.Remove(element);
             DB_Agent.Save_Changes();
             return element.Id;
@@ -104,7 +104,7 @@ namespace lib_postgres
 
         public static long Edit_Item_by_ID(long id)
         {
-            lib_postgres.Action action = DB_Agent.Get_Action(id);
+            Action action = DB_Agent.Get_Action(id);
             //++ preparation
             List<Location> all_locations = DB_Agent.Get_Locations();
             List<long?> action_books_Ids = (from loc in all_locations
@@ -192,7 +192,7 @@ namespace lib_postgres
 
         public static long Delete_Item_by_ID(long id)
         {
-            lib_postgres.Action item = DB_Agent.Get_Action(id);
+            Action item = DB_Agent.Get_Action(id);
             if (item.IsDeleted.HasValue)
                 item.IsDeleted = !item.IsDeleted;
             else

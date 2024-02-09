@@ -15,7 +15,7 @@ namespace lib_postgres
         static string new_element_name = Localization.Substitute("New_appellation");
         public static long Erase_Item_by_ID(long id)
         {
-            lib_postgres.Series element = DB_Agent.Get_Serie(id);
+            Series element = DB_Agent.Get_Serie(id);
             DB_Agent.db.Series.Remove(element);
             DB_Agent.Save_Changes();
             return element.Id;
@@ -41,7 +41,7 @@ namespace lib_postgres
 
         public static long Edit_Item_by_ID(long id)
         {
-            lib_postgres.Series element = DB_Agent.Get_Serie(id);
+                Series element = DB_Agent.Get_Serie(id);
             var new_name = General_Manipulations.Simple_Element_Modify(edit_element_name, new_element_name, element.Name);
             if (new_name != "")
             {
@@ -58,7 +58,7 @@ namespace lib_postgres
         }
         public static long Delete_Item_by_ID(long id)
         {
-            lib_postgres.Series item = DB_Agent.Get_Serie(id);
+            Series item = DB_Agent.Get_Serie(id);
             if (item.IsDeleted.HasValue)
                 item.IsDeleted = !item.IsDeleted;
             else

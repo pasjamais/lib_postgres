@@ -15,7 +15,7 @@ namespace lib_postgres
         static string new_element_name = Localization.Substitute("New_appellation");
         public static long Erase_Item_by_ID(long id)
         {
-            lib_postgres.Place element = DB_Agent.Get_Place(id);
+            Place element = DB_Agent.Get_Place(id);
             DB_Agent.db.Places.Remove(element);
             DB_Agent.Save_Changes();
             return element.Id;

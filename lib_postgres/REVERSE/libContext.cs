@@ -8,7 +8,6 @@ namespace lib_postgres
 {
     public partial class libContext : DbContext
     {
-        public StreamWriter logStream = new StreamWriter(DEPLOY.Deploy.Output_Directory+ "\\libermundi.log", true);
         public libContext()
         {
         }
@@ -16,12 +15,6 @@ namespace lib_postgres
         public libContext(DbContextOptions<libContext> options)
             : base(options)
         {
-        }
-
-        public override void Dispose() 
-        {
-            logStream.Close();
-            base.Dispose();
         }
 
         public virtual DbSet<Action> Actions { get; set; } = null!;
@@ -32,6 +25,7 @@ namespace lib_postgres
         public virtual DbSet<ArtToRead> ArtToReads { get; set; } = null!;
         public virtual DbSet<Author> Authors { get; set; } = null!;
         public virtual DbSet<AuthorArt> AuthorArts { get; set; } = null!;
+        public virtual DbSet<Bibliography> Bibliographies { get; set; } = null!;
         public virtual DbSet<Book> Books { get; set; } = null!;
         public virtual DbSet<BookFormat> BookFormats { get; set; } = null!;
         public virtual DbSet<ChifresName> ChifresNames { get; set; } = null!;
@@ -51,22 +45,19 @@ namespace lib_postgres
         public virtual DbSet<ViewAction> ViewActions { get; set; } = null!;
         public virtual DbSet<ViewAllRealBook> ViewAllRealBooks { get; set; } = null!;
         public virtual DbSet<ViewArt> ViewArts { get; set; } = null!;
+        public virtual DbSet<ViewArtsWithId> ViewArtsWithIds { get; set; } = null!;
         public virtual DbSet<ViewBook> ViewBooks { get; set; } = null!;
         public virtual DbSet<ViewCode> ViewCodes { get; set; } = null!;
         public virtual DbSet<ViewGenre> ViewGenres { get; set; } = null!;
         public virtual DbSet<ViewHasRead> ViewHasReads { get; set; } = null!;
+        public virtual DbSet<ViewHintArtToArt> ViewHintArtToArts { get; set; } = null!;
+        public virtual DbSet<ViewHintArtToAuthor> ViewHintArtToAuthors { get; set; } = null!;
+        public virtual DbSet<ViewHintAuthorToAuthor> ViewHintAuthorToAuthors { get; set; } = null!;
+        public virtual DbSet<ViewHintFromAnother> ViewHintFromAnothers { get; set; } = null!;
+        public virtual DbSet<ViewHintFromArt> ViewHintFromArts { get; set; } = null!;
+        public virtual DbSet<ViewHintFromAuthor> ViewHintFromAuthors { get; set; } = null!;
         public virtual DbSet<ViewMyBook> ViewMyBooks { get; set; } = null!;
         public virtual DbSet<ViewMyBooksInOtherHand> ViewMyBooksInOtherHands { get; set; } = null!;
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseNpgsql(DB_Agent.Get_Connection_String());
-                optionsBuilder.LogTo(logStream.WriteLine, Microsoft.Extensions.Logging.LogLevel.Warning);
-            }
-        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -126,13 +117,21 @@ namespace lib_postgres
 
                 entity.Property(e => e.Id).HasColumnName("id");
 
+                entity.Property(e => e.Comment).HasColumnName("comment");
+
                 entity.Property(e => e.Genre).HasColumnName("genre");
+
+                entity.Property(e => e.IsBanned).HasColumnName("is_banned");
 
                 entity.Property(e => e.IsDeleted).HasColumnName("_is_deleted");
 
                 entity.Property(e => e.Name)
                     .HasMaxLength(100)
                     .HasColumnName("name");
+
+                entity.Property(e => e.NameOriginal)
+                    .HasMaxLength(250)
+                    .HasColumnName("name_original");
 
                 entity.Property(e => e.OrigLanguage).HasColumnName("orig_language");
 
@@ -247,6 +246,8 @@ namespace lib_postgres
 
                 entity.Property(e => e.Date).HasColumnName("date");
 
+                entity.Property(e => e.IdBiblopgraphy).HasColumnName("id_biblopgraphy");
+
                 entity.Property(e => e.IsDeleted).HasColumnName("_is_deleted");
 
                 entity.Property(e => e.SourceAnotherId).HasColumnName("source_another_id");
@@ -258,6 +259,11 @@ namespace lib_postgres
                 entity.Property(e => e.ToreadArtId).HasColumnName("toread_art_id");
 
                 entity.Property(e => e.ToreadAuthorId).HasColumnName("toread_author_id");
+
+                entity.HasOne(d => d.IdBiblopgraphyNavigation)
+                    .WithMany(p => p.ArtToReads)
+                    .HasForeignKey(d => d.IdBiblopgraphy)
+                    .HasConstraintName("art_to_read_id_biblopgraphy_fkey");
 
                 entity.HasOne(d => d.SourceAnother)
                     .WithMany(p => p.ArtToReads)
@@ -291,11 +297,17 @@ namespace lib_postgres
 
                 entity.Property(e => e.Id).HasColumnName("id");
 
+                entity.Property(e => e.Birthday).HasColumnName("birthday");
+
                 entity.Property(e => e.IsDeleted).HasColumnName("_is_deleted");
 
                 entity.Property(e => e.Name)
                     .HasMaxLength(100)
                     .HasColumnName("name");
+
+                entity.Property(e => e.NameOriginal)
+                    .HasMaxLength(250)
+                    .HasColumnName("name_original");
             });
 
             modelBuilder.Entity<AuthorArt>(entity =>
@@ -319,6 +331,27 @@ namespace lib_postgres
                     .WithMany(p => p.AuthorArts)
                     .HasForeignKey(d => d.Author)
                     .HasConstraintName("author_art_author_fkey");
+            });
+
+            modelBuilder.Entity<Bibliography>(entity =>
+            {
+                entity.ToTable("bibliography");
+
+                entity.Property(e => e.Id)
+                    .ValueGeneratedNever()
+                    .HasColumnName("id");
+
+                entity.Property(e => e.Comment)
+                    .HasMaxLength(250)
+                    .HasColumnName("comment");
+
+                entity.Property(e => e.Date).HasColumnName("date");
+
+                entity.Property(e => e.IsDeleted).HasColumnName("_is_deleted");
+
+                entity.Property(e => e.Name)
+                    .HasMaxLength(250)
+                    .HasColumnName("name");
             });
 
             modelBuilder.Entity<Book>(entity =>
@@ -350,6 +383,10 @@ namespace lib_postgres
                 entity.Property(e => e.IsArtBook).HasColumnName("is_art_book");
 
                 entity.Property(e => e.IsDeleted).HasColumnName("_is_deleted");
+
+                entity.Property(e => e.Name)
+                    .HasMaxLength(250)
+                    .HasColumnName("name");
 
                 entity.Property(e => e.Notes).HasColumnName("notes");
 
@@ -743,6 +780,21 @@ namespace lib_postgres
                 entity.Property(e => e.Название).HasMaxLength(100);
             });
 
+            modelBuilder.Entity<ViewArtsWithId>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToView("view_arts_with_id");
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.АвторЫ).HasColumnName("Автор(ы)");
+
+                entity.Property(e => e.Жанр).HasMaxLength(100);
+
+                entity.Property(e => e.Название).HasMaxLength(100);
+            });
+
             modelBuilder.Entity<ViewBook>(entity =>
             {
                 entity.HasNoKey();
@@ -821,6 +873,160 @@ namespace lib_postgres
                 entity.Property(e => e.ЯзыкОригинала)
                     .HasColumnType("character varying")
                     .HasColumnName("Язык оригинала");
+
+                entity.Property(e => e.ЯзыкПрочтения)
+                    .HasColumnType("character varying")
+                    .HasColumnName("Язык прочтения");
+            });
+
+            modelBuilder.Entity<ViewHintArtToArt>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToView("view_hint_art_to_art");
+
+                entity.Property(e => e.Comment)
+                    .HasColumnType("character varying")
+                    .HasColumnName("comment");
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.ИсточникАвтор).HasColumnName("Источник (Автор)");
+
+                entity.Property(e => e.ИсточникКнига)
+                    .HasMaxLength(100)
+                    .HasColumnName("Источник (Книга)");
+
+                entity.Property(e => e.РекомендацияАвтор).HasColumnName("Рекомендация (Автор)");
+
+                entity.Property(e => e.РекомендацияКнига)
+                    .HasMaxLength(100)
+                    .HasColumnName("Рекомендация (Книга)");
+            });
+
+            modelBuilder.Entity<ViewHintArtToAuthor>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToView("view_hint_art_to_author");
+
+                entity.Property(e => e.Comment)
+                    .HasColumnType("character varying")
+                    .HasColumnName("comment");
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.ИсточникАвтор).HasColumnName("Источник (Автор)");
+
+                entity.Property(e => e.ИсточникКнига)
+                    .HasMaxLength(100)
+                    .HasColumnName("Источник (Книга)");
+
+                entity.Property(e => e.РекомендацияАвтор)
+                    .HasMaxLength(100)
+                    .HasColumnName("Рекомендация (Автор)");
+            });
+
+            modelBuilder.Entity<ViewHintAuthorToAuthor>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToView("view_hint_author_to_author");
+
+                entity.Property(e => e.Comment)
+                    .HasColumnType("character varying")
+                    .HasColumnName("comment");
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.ИсточникАвтор)
+                    .HasMaxLength(100)
+                    .HasColumnName("Источник (Автор)");
+
+                entity.Property(e => e.РекомендацияАвтор)
+                    .HasMaxLength(100)
+                    .HasColumnName("Рекомендация (Автор)");
+            });
+
+            modelBuilder.Entity<ViewHintFromAnother>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToView("view_hint_from_another");
+
+                entity.Property(e => e.Comment)
+                    .HasColumnType("character varying")
+                    .HasColumnName("comment");
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.Источник).HasColumnType("character varying");
+
+                entity.Property(e => e.РекомендацияАвтор)
+                    .HasMaxLength(100)
+                    .HasColumnName("Рекомендация (Автор)");
+
+                entity.Property(e => e.РекомендацияАвторКниги).HasColumnName("Рекомендация (Автор книги)");
+
+                entity.Property(e => e.РекомендацияКнига)
+                    .HasMaxLength(100)
+                    .HasColumnName("Рекомендация (Книга)");
+            });
+
+            modelBuilder.Entity<ViewHintFromArt>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToView("view_hint_from_art");
+
+                entity.Property(e => e.Comment)
+                    .HasColumnType("character varying")
+                    .HasColumnName("comment");
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.ИсточникАвтор).HasColumnName("Источник (Автор)");
+
+                entity.Property(e => e.ИсточникКнига)
+                    .HasMaxLength(100)
+                    .HasColumnName("Источник (Книга)");
+
+                entity.Property(e => e.РекомендацияАвтор)
+                    .HasMaxLength(100)
+                    .HasColumnName("Рекомендация (Автор)");
+
+                entity.Property(e => e.РекомендацияАвторКниги).HasColumnName("Рекомендация (Автор книги)");
+
+                entity.Property(e => e.РекомендацияКнига)
+                    .HasMaxLength(100)
+                    .HasColumnName("Рекомендация (Книга)");
+            });
+
+            modelBuilder.Entity<ViewHintFromAuthor>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToView("view_hint_from_author");
+
+                entity.Property(e => e.Comment)
+                    .HasColumnType("character varying")
+                    .HasColumnName("comment");
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.ИсточникАвтор)
+                    .HasMaxLength(100)
+                    .HasColumnName("Источник (Автор)");
+
+                entity.Property(e => e.РекомендацияАвтор)
+                    .HasMaxLength(100)
+                    .HasColumnName("Рекомендация (Автор)");
+
+                entity.Property(e => e.РекомендацияАвторКниги).HasColumnName("Рекомендация (Автор книги)");
+
+                entity.Property(e => e.РекомендацияКнига)
+                    .HasMaxLength(100)
+                    .HasColumnName("Рекомендация (Книга)");
             });
 
             modelBuilder.Entity<ViewMyBook>(entity =>

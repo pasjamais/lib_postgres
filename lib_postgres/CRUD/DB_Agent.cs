@@ -52,6 +52,8 @@ namespace lib_postgres.CRUD
 
         #endregion general
 
+        #region Entities
+
         #region Books
         public static void Book_Add(Book book)
         {
@@ -458,6 +460,26 @@ namespace lib_postgres.CRUD
         }
 
         #endregion Recommendations
+
+        #region Bibliography
+        public static List<Bibliography> Get_bibliographies()
+        {
+            return db.Bibliographies.ToList().OrderBy(n => n.Id).ToList();
+        }
+
+        public static Bibliography Get_Bibliography(long id)
+        {
+            return db.Bibliographies.Find(id);
+        }
+
+        public static void Add_Mark(Bibliography bibliography)
+        {
+            db.Bibliographies.Add(bibliography);
+            Save_Changes();
+        }
+        #endregion
+
+        #endregion Entities
 
         #region general CRUD
         public static dynamic Get_Deleted_Items<T>(List<T> all_elements)

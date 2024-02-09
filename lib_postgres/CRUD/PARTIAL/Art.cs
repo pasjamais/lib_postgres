@@ -9,7 +9,7 @@ namespace lib_postgres
     {
         public static long Erase_Item_by_ID(long id)
         {
-            lib_postgres.Art element = DB_Agent.Get_Art(id);
+            Art element = DB_Agent.Get_Art(id);
             foreach (Book book in element.Books) 
             {
                 DB_Agent.db.Books.Remove(book);
@@ -64,7 +64,7 @@ namespace lib_postgres
                                        from aut in all_authors
                                        where aut_art.Art == art.Id && aut_art.Author == aut.Id
                                        select aut).ToList();
-            Form_Art form_Art = new lib_postgres.Form_Art(authors_of_this_art);
+            Form_Art form_Art = new Form_Art(authors_of_this_art);
             Load_Item_in_Form(art, form_Art);
             DialogResult dialog_result = form_Art.ShowDialog();
             if (dialog_result != DialogResult.OK) return -1;
@@ -107,7 +107,7 @@ namespace lib_postgres
         }
         public static void Save_Authors_of_Art_from_Form(Art art, List<Author> selected_Autors)
         {
-            foreach (lib_postgres.Author author in selected_Autors)
+            foreach (Author author in selected_Autors)
             {
                 AuthorArt authorArt = DB_Agent.Get_First_Deleted_Entity_or_New<AuthorArt>(DB_Agent.Get_AuthorArts());
                 bool is_new_authorArt = AuthorArt.Reset_Element_if_not_New(authorArt);
@@ -152,7 +152,7 @@ namespace lib_postgres
 
         public static long Delete_Item_by_ID(long id)
         {
-            lib_postgres.Art art = DB_Agent.Get_Art(id);
+            Art art = DB_Agent.Get_Art(id);
             if (art.IsDeleted.HasValue)
                 art.IsDeleted = !art.IsDeleted;
             else
